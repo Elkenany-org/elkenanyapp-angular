@@ -1,0 +1,64 @@
+
+.courses-slider {
+  padding: 1.5rem 50px;
+  width: 100%;
+
+  .sub__header {
+    margin-bottom: 1.5rem;
+    transition: 0.2s all ease-in-out;
+
+    a {
+      text-decoration: none;
+      color: $bg-color-second;
+      font-size: 1.6rem;
+
+      @media (max-width: 767px) {
+        font-size: 1.3rem;
+      }
+
+    }
+
+    &:hover {
+      a {
+        color: $bg-color-main;
+      }
+    }
+  }
+
+  .courses {
+    width: 100%;
+
+    .slick-dots {
+      bottom: -50px;
+      left: 0;
+
+      li {
+        button {
+          &::before {
+            color: $bg-color-main !important;
+          }
+        }
+      }
+    }
+
+    .slick-arrow {
+      top: 45%;
+
+      &::before {
+        color: $bg-color-main;
+        font-size: 2.6rem;
+      }
+    }
+
+    .slick-prev {
+      right: 0 !important;
+    }
+
+    .slick-next {
+      left: 2%;
+    }
+
+  }
+
+
+}

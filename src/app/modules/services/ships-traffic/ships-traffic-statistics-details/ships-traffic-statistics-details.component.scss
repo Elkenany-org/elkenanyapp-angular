@@ -1,0 +1,74 @@
+
+
+.test{
+    width: 59rem;
+}
+
+.accordion {
+    // position: absolute !important;
+    width: 100%  !important;
+
+}
+.ngx {
+    flex-direction: row ;
+    flex-wrap: wrap 
+}
+
+
+
+
+@media only screen and (min-width: 1800px) {
+
+    .chart-legend{
+        position: absolute;
+
+        margin-right:500px;
+    }
+}
+
+@media only screen and (min-width: 1400px)  and (max-width: 1800px){
+
+    .chart-legend{
+        position: absolute;
+
+        margin-right:300px;
+    }
+}
+
+@media only screen and  (max-width: 1400px) {
+    .ngx-charts{
+        margin: auto;
+    }
+    .chart-legend{
+
+        display: none !important;
+     
+    }
+
+
+}
+
+
+// @media only screen and (min-width: 777px) and (max-width: 920px){
+
+//     .table> :not(caption) > * > *{
+//         width: 750px !important;
+//         border: 5px solid black !important;        
+//     }
+//     .card{
+//         width: 100% !important;
+
+//     }
+// }
+
+// @media only screen and (min-width: 390px)and (max-width: 777px) {
+
+//     .table> :not(caption) > * > *{
+//         width: 450px !important;
+//         border: 5px solid black !important;        
+//     }
+//     .card{
+//         width: 100% !important;
+
+//     }
+// }

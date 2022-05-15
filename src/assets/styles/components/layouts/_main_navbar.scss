@@ -1,0 +1,176 @@
+﻿// Start Global //
+.dropdown-menu {
+  border-radius: 10px;
+  padding: 0;
+  border: 1px solid #ddd;
+  margin: 0;
+
+  .dropdown-item {
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #F0F0F0;
+    }
+
+    .active, &:active {
+      background-color: $bg-color-second;
+    }
+
+    &:first-of-type {
+      border-radius: 10px 10px 0 0;
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 10px 10px;
+    }
+  }
+
+  .dropdown-divider {
+    margin: 0;
+  }
+}
+
+.collapsing {
+  transition: 0s !important;
+}
+
+// End Global //
+
+// Start Navigation Bar // 
+.navbar {
+  direction: rtl;
+  background-color: $bg-color-third !important;
+  box-shadow: $fixed-box-shadow-regular2;
+
+  .navbar-brand {
+    img {
+      width: 69px;
+    }
+  }
+
+  .collapse {
+    .navbar-nav {
+      // margin: 0 10px 0 0 !important;
+      .nav-item {
+        .nav-link {
+          color: $font-color-second;
+          font-weight: bold;
+          margin-right: 10px;
+
+          &:hover {
+            background-color: #F0F0F0;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+
+    form {
+      background-color: #F0F0F0 !important;
+      padding: 5px 10px 5px 0;
+      border-radius: 20px;
+      margin-right: 10px;
+      display: flex;
+      flex-flow: row nowrap;
+      height: 35px;
+
+      .submit {
+        border: none;
+        outline: none;
+        background-color: transparent;
+
+        i {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .sign-box {
+      // margin: 0 auto 0 0;
+      a {
+        color: $font-color-second;
+        font-weight: bold;
+        background-color: transparent;
+        padding: 10px;
+        border-radius: 20px;
+        transition: all .2s;
+        display: inline-block;
+        margin-right: 10px;
+
+        &:hover {
+          background-color: $bg-color-main;
+        }
+      }
+    }
+  }
+}
+
+// End Navigation Bar //
+
+// Start Media Query //
+@media (max-width: 1200px) {
+  .navbar {
+    .collapse {
+      text-align: center;
+    }
+
+    .sign-box {
+      margin-top: 10px !important;
+    }
+  }
+}
+
+.dropdown-item {
+  color: $color-main;
+
+  &:hover {
+    color: $color-main;
+  }
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+
+  .dropdown-menu li {
+    position: relative;
+  }
+
+  .dropdown-menu .submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+  }
+
+  .dropdown-menu .submenu-left {
+    right: 100%;
+    left: auto;
+  }
+
+  .dropdown-menu > li:hover {
+    background-color: #f1f1f1;
+    color: $color-main;
+
+  }
+
+  .dropdown-menu > li:hover > .submenu {
+    display: block;
+  }
+}
+
+/* ============ desktop view .end// ============ */
+
+/* ============ small devices ============ */
+@media (max-width: 991px) {
+  .dropdown-menu .dropdown-menu {
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-bottom: .5rem;
+  }
+}
+
+/* ============ small devices .end// ============ */
+
+
