@@ -1,0 +1,292 @@
+<!-- <app-loader *ngIf="loading"></app-loader> -->
+
+<div class="main__content__body">  
+
+
+ <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+ <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
+ <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
+
+<div class="global__container" >
+    <article class="table__header__filter special__container" *ngIf="type_stock === 'fodder'"> 
+        <section class="head new__cards__header">
+            <div class="card">
+                <div class="card-header" id="itemsSelect">
+                    <button 
+                    aria-expanded="false" 
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    id="dropdownMenuButton"
+                    appDropdown
+                    #s="appDropDown" 
+                    class="card__button"
+                    data-target="#collapseItemsSelect">
+                        الشركة
+                    </button>
+                </div>
+                <div  [ngClass]="{'show':s.isOpen}" class="dropdown-menu" aria-labelledby="dropdownMenuButton"  aria-labelledby="itemsSelect" class="collapse" data-parent="#accordion"
+                     id="collapseItemsSelect">
+                    <div class="card-body">
+                        <div class="multiselect multiselect-accordion" id="multiselect-companies-accordion">
+                            <div class="checkboxes" id="checkboxes-companies-accordion">
+                                <div class="company__search">
+                                    <label for="searchCompany">
+                                        <input class="searchInput" id="searchCompany" name="search"
+                                               placeholder="ابحث عن"
+                                               type="search">
+                                    </label>
+                                </div>
+                                <div class="all__labels" >
+                                     <label class="company__filter__label" for="company-accordion-one" *ngFor="let company of companies">
+                                        <input class="checks checks-company-accordion" id="company-accordion-one"
+                                               name="companies-accordion" type="checkbox">{{company.name}} 
+                                   </label> 
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="head new__cards__header">
+            <div class="card">
+                <div class="card-header" id="itemsSelect2">
+                    <button aria-expanded="false" 
+                    aria-expanded="false" 
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    id="dropdownMenuButton"
+                    appDropdown
+                    #s1="appDropDown" 
+                    class="card__button"
+                    data-target="#collapseItemsSelect">
+                        الصنف
+                    </button>
+                </div>
+
+
+                <div  [ngClass]="{'show':s1.isOpen}" class="dropdown-menu" aria-labelledby="dropdownMenuButton"  aria-labelledby="itemsSelect" class="collapse" data-parent="#accordion"
+                id="collapseItemsSelect">
+                    <div class="card-body">
+                        <div class="multiselect multiselect-accordion" id="multiselect-types-accordion">
+                            <div class="checkboxes" id="checkboxes-types-accordion">
+                                <div class="company__search">
+                                    <label for="searchTypes">
+                                        <input class="searchInput" id="searchTypes" name="search"
+                                               placeholder="ابحث عن"
+                                               type="search">
+                                    </label>
+                                </div>
+                                <div class="all__labels">
+                                     <label class="type__filter__label" for="type-accordion-one"  *ngFor="let feed of feeds">
+                                        <input class="checks checks-type-accordion" id="type-accordion-one"
+                                               name="companies-accordion" type="radio"> {{feed.name}}
+                                        </label> 
+                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    <!-- Start Table 5 cols with chart -->
+    <section class="table__container table-chart-5 special__container">
+        <section class="table__head">
+            <span  
+                *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
+                [ngClass]="{' title__chart  d-lg-flex d-none': isLast}"
+                class="title" >{{column}}</span>
+        </section>
+        <!--  add row__shadow when rows length > = 3  -->
+        <div class="table__body row__shadow">
+            <!-- Start One Row    add ads class if ad  -->
+            <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart  d-lg-flex d-none': isLast}">
+                <a class="cell__container" [routerLink]="['/companies-guid/companies_details/5']">
+                    <div class="cell__content__with__image">
+                        <img alt="logo"
+                             class="image"
+                             [src]="member.image">
+                             <span class="cell__content">  {{member.name}}</span>
+                    </div>
+                </a>
+         
+                <div class="wall"></div>
+                <section class="cell__container">
+                    <span class="cell__content">{{member.feed}}</span>
+                </section>
+                <div class="wall"></div>
+                <section class="cell__container">
+                    <span class="data__content">{{member.price}}</span>
+                </section>
+                <div class="wall"></div>
+                <section class="cell__container">
+                    <span class="cell__content">{{member.change_date}}</span>
+                    <span class="cell__content">07:05</span>
+                    <span class="cell__content">2021-05-30</span>
+                </section>
+                <div class="wall  d-lg-block d-none"></div>
+                <section class="cell__container data__charts d-lg-block d-none">
+                    <div id="chart-5-ads"></div>
+                    <script>
+                        new ApexCharts(document.querySelector("#chart-5-ads"), {
+                            series: [{
+                                name: "",
+                                data: [2, -1, 5, -3, 4, 0, 2],
+                            }],
+                            chart: {
+                                height: 120,
+                                width: '100%',
+                                type: 'line',
+                                zoom: {
+                                    enabled: false
+                                },
+                                toolbar: {
+                                    show: false
+                                }
+                            },
+                            yaxis: {
+                                show: false
+                            },
+                            dataLabels: {
+                                enabled: false
+                            },
+                            stroke: {
+                                curve: 'straight',
+                                colors: ['#008000'],
+                                width: 2,
+                            },
+                            title: {
+                                text: '',
+                                align: 'left'
+                            },
+                            grid: {
+                                show: false,
+                                row: {
+                                    opacity: 0.5
+                                },
+                            },
+                            xaxis: {
+                                categories: ['20/1', '21/1', '22/1', '23/1', '24/1', '25/1', '26/1']
+                            },
+                            markers: {
+                                colors: ['#000']
+                            },
+                            tooltip: {
+                                fillSeriesColor: true,
+                                theme: true,
+                                style: {
+                                    fontSize: '15px'
+                                },
+                                onDatasetHover: {
+                                    highlightDataSeries: false,
+                                },
+                            }
+                        }).render();
+                    </script>
+                </section>
+            </section>
+            <!-- End One Row  -->
+
+   
+
+            <!-- Start One Row    add ads class if ad  -->
+            <section class="table__row row__image">
+                <a class="cell__container" href="../companies/companies_details.html">
+                    <div class="cell__content__with__image">
+                        <img alt="logo"
+                             class="image"
+                             src="http://phpstack-597257-1931215.cloudwaysapps.com/public/uploads/company/images/24-05-211621860503318011700.png">
+                        <span class="name name__big">الحيانى</span>
+                    </div>
+                </a>
+                <div class="wall"></div>
+                <section class="cell__container">
+                    <span class="cell__content"> دواجن بادي تسمين سوبر 23%</span>
+                </section>
+                <div class="wall"></div>
+                <section class="cell__container">
+                    <span class="cell__content">0.00</span>
+                    <span class="cell__content">07:05</span>
+                    <span class="cell__content">2021-05-30</span>
+                </section>
+                <div class="wall"></div>
+                <section class="cell__container">
+                    <span class="data__content">0</span>
+                </section>
+                <div class="wall  d-lg-block d-none"></div>
+                <section class="cell__container data__charts d-lg-block d-none">
+                    <div id="chart-5-8"></div>
+                    <script>
+                        new ApexCharts(document.querySelector("#chart-5-8"), {
+                            series: [{
+                                name: "",
+                                data: [0, 1, -1, 2, -3, 3, 5],
+                            }],
+                            chart: {
+                                height: 120,
+                                width: '100%',
+                                type: 'line',
+                                zoom: {
+                                    enabled: false
+                                },
+                                toolbar: {
+                                    show: false
+                                }
+                            },
+                            yaxis: {
+                                show: false
+                            },
+                            dataLabels: {
+                                enabled: false
+                            },
+                            stroke: {
+                                curve: 'straight',
+                                colors: ['#eca008'],
+                                width: 2,
+                            },
+                            title: {
+                                text: '',
+                                align: 'left'
+                            },
+                            grid: {
+                                show: false,
+                                row: {
+                                    opacity: 0.5
+                                },
+                            },
+                            xaxis: {
+                                categories: ['20/1', '21/1', '22/1', '23/1', '24/1', '25/1', '26/1']
+                            },
+                            markers: {
+                                colors: ['#000']
+                            },
+                            tooltip: {
+                                fillSeriesColor: true,
+                                theme: true,
+                                style: {
+                                    fontSize: '15px'
+                                },
+                                onDatasetHover: {
+                                    highlightDataSeries: false,
+                                },
+                            }
+                        }).render();
+                    </script>
+                </section>
+            </section>
+            <!-- End One Row  -->
+        </div>
+    </section>
+    <!-- End Table -->
+
+
+</div>
+

@@ -17,8 +17,8 @@ export class ShipsTrafficService {
     return this.http.get<ApiResponse<Ships>>(`${env.ApiUrl}/ships/all-ships?date=${date}`)
   }
 
-  Statistics():Observable<ApiResponse<StatisticsShips>> {
-    return this.http.get<ApiResponse<StatisticsShips>>(`${env.ApiUrl}/ships/statistics-ships`)
+  Statistics(type='', from='',to='', country=''):Observable<ApiResponse<StatisticsShips>> {
+    return this.http.get<ApiResponse<StatisticsShips>>(`${env.ApiUrl}/ships/statistics-ships?type=${type}&from=${from}&to=${to}&country=${country}`)
   }
 
   StatisticsDetails(from:string, to:string, country:string, TyprId:number):Observable<ApiResponse<StatisticsDetials>> {

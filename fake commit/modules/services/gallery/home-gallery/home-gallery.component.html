@@ -1,0 +1,45 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div class="main__content__body">
+    <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+    <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
+    <app-horizontal-search (newItemEvent)="filter($event)" [data]="search_form" ></app-horizontal-search>
+
+    <article class="container global__container">
+        <div class="row">
+
+            <section class="right main__right__container col-lg-4 col-md-12 col-sm-12">
+                <app-vertical-search  (newItemEvent)="filter($event)" [data]="search_form" ></app-vertical-search>
+            </section>
+
+            <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
+                <app-card (navigation)="navigate($event)" [data]="galleryData" [loading] ="loading"></app-card>
+                <!-- <app-navigation></app-navigation> -->
+                <div class="row pagination__container">
+                    <div class="col-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item" (click)="next_page(page.current_page-1)">
+                                    <a aria-label="Previous" class="page-link">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"
+                                
+                                *ngFor="let _ of [].constructor(page.last_page); let i = index"><a class="page-link" (click)="next_page(i+1)"
+                                [ngStyle]="{'background-color': page.current_page == i+1? '#FFAA00' : '' }">{{i+1}}</a></li>
+                                <li class="page-item" (click)="next_page(page.current_page+1)">
+                                    <a aria-label="Next" class="page-link">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div> 
+            </section>
+
+        </div>
+    </article>
+
+</div>

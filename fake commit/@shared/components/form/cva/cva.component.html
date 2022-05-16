@@ -1,0 +1,40 @@
+<div class="breadcrumb__container container">
+    <div class="custom__breadcrumb">
+        <h1 class="page__title">{{data?.title}}</h1>
+    </div>
+</div> 
+<!-- End breadcrumb -->
+
+   <article class="inner-search-box d-lg-block d-none">
+    <div class="container">
+        <form class="box-tabs">
+            <div class="search-box-overlay"></div>
+            <section [class]="data?.class" *ngFor="let control of data?.controls">
+                <i [class]="control.icon"></i>
+                <h4 class="title">{{control.name}}</h4>
+                <input class="form-control"  *ngIf="control.type === 'text'"  id="searchInput" placeholder="بحث" [type]="control.type">
+                <select  class="form-control"  *ngIf="control.type === 'select'">
+                  <option  *ngFor="let value of control.option" [value]="value.type">{{value.name}}</option>
+              </select>
+              <a  *ngIf="control.type === 'a'" [class]="control.class" [routerLink]="'/stock-exchange/poultry/statistics'">{{control.name}}</a>
+            </section>
+        </form>
+    </div>
+</article>  
+
+  
+   
+
+              
+             
+               
+                  
+                   
+                 
+               
+           
+           
+              
+       
+ 
+  

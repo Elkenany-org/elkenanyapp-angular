@@ -1,0 +1,52 @@
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import { LayoutComponent } from '@app/@shared/components/layout/layout.component';
+import {NotFoundComponent} from '@app/@shared/pages/not-found/not-found.component';
+import { ComparisonComponent } from './comparison/comparison.component';
+import { HomeStockExchangeComponent } from './home-stock-exchange/home-stock-exchange.component';
+import { StockExchangeComponent } from './stock-exchange/stock-exchange.component';
+
+const children: Routes = [
+  {
+    path: '',
+    component: HomeStockExchangeComponent
+  },
+  {
+    path: 'stock-exchange/:type/:type_stock/:id',
+    // resolve: {
+    //   resolve: LocalStockFodder
+    // },
+    component: StockExchangeComponent,
+  },
+
+  {
+    path: 'comparison/:id',
+    component: ComparisonComponent
+  },
+  {
+    path:"statistics",
+    loadChildren: () => 
+    import('./statistics-module/statistics.module').then((m) => m.StockExchangeModule)
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  }
+];
+
+const routes: Routes = [
+  {
+    path: '',
+    component: LayoutComponent,
+    children
+  },
+];
+
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class StockExchangeRoutingModule {
+}
+

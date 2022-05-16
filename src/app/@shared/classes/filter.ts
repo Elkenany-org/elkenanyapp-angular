@@ -11,7 +11,7 @@ export class Fillter{
         section_id:"",
         sub_id:"",
         sort:"",
-        country_id:"1",
+        country_id:"",//was 1
         city_id:"1",
         search: "",
         page:'1'

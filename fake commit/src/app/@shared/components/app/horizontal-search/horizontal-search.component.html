@@ -1,0 +1,87 @@
+
+
+<div class="breadcrumb__container container">
+    <div class="custom__breadcrumb">
+        <h1 class="page__title">{{data?.title}}</h1>
+    </div>
+</div> 
+    <!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
+   <article class="inner-search-box d-lg-block d-none">
+    <div class="container">
+        <form class="box-tabs">
+            <div class="search-box-overlay"></div>
+            <div class="edge"></div>
+
+            <section [class]="data?.class" *ngFor="let control of data?.controls">
+                <i [class]="control.icon"></i>
+
+                <h4 class="title">{{control.name}}:</h4>
+                <input  [class]="control.class"  *ngIf="control.type === 'date' ||control.type === 'text'"  id="searchInput" [type]="control.type"
+                        (change)="selectOption($any($event.target).value,control.role)" >
+                <select (change)="selectOption($any($event.target).value,control.role)"
+                [class]="control.class"  *ngIf="control.type === 'select'">
+                  <option   
+                  *ngFor="let value of control.option"
+                  [value]="(value.type || value.name )"
+                  [selected]="value.selected == 1 ? true : null"
+                  class="company__filter__label">{{value.name}}</option>
+              </select>
+              <a  *ngIf="control.type === 'a'" [class]="control.class" [routerLink]="control.routerLink">{{control.name}}</a>
+
+              <div *ngIf="control.type === 'checkbox'" class="multiselect" id="multiselect-companies">
+                <div class="selectBox" onclick="showCheckboxes('companies')">
+                    <select>
+                        <option>اختر الشركات</option>
+                    </select>
+                    <span class="warning">حد أقصي 3 شركات</span>
+                    <span class="companies-error">اختر شركة واحد علي الاقل</span>
+
+                    <div class="overSelect"></div>
+                </div>
+                <div class="checkboxes" id="checkboxes-companies">
+                    <div class="company__search">
+                        <label for="search">
+                            <input class="" id="search" name="search" placeholder="ابحث عن"
+                                   type="search">
+                        </label>
+                    </div>
+                    <label class="company__filter__label" for="company-one">
+                        <input class="checks  checks-company" id="company-one" name="companies"
+                               type="checkbox">شركة الكناني
+                        جروب</label>
+                    <label class="company__filter__label" for="company-two">
+                        <input class="checks  checks-company" id="company-two" name="companies"
+                               type="checkbox">شركة الكناني
+                        جروب</label>
+                    <label class="company__filter__label" for="company-three">
+                        <input class="checks  checks-company" id="company-three" name="companies"
+                               type="checkbox">شركة الكناني
+                        جروب</label>
+                    <label class="company__filter__label" for="company-four">
+                        <input class="checks  checks-company" id="company-four" name="companies"
+                               type="checkbox">شركة الكناني
+                        جروب</label>
+                    <label class="company__filter__label" for="company-five">
+                        <input class="checks  checks-company" id="company-five" name="companies"
+                               type="checkbox">شركة الكناني
+                        جروب</label>
+                    <label class="company__filter__label" for="company-six">
+                        <input class="checks  checks-company" id="company-six" name="companies"
+                               type="checkbox">شركة الكناني
+                        جروب</label>
+                    <label class="company__filter__label" for="company-seven">
+                        <input class="checks  checks-company" id="company-seven" name="companies"
+                               type="checkbox">شركة الكناني
+                        جروب</label>
+                </div>
+            </div>
+            </section>
+
+            
+        </form>
+    </div>
+</article>  
+
+
+
+   

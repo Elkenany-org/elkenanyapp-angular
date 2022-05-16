@@ -1,0 +1,21 @@
+@import '../../../../assets/styles/abstract/varibales';
+
+
+
+
+
+.slick-slider {
+    width: 100%;
+    direction: ltr;
+  
+  }
+  
+  body .slick-prev, 
+  body .slick-next {
+    height: 45px;
+    width: 40px;
+    z-index: 100;
+  }
+  
+
+  

@@ -1,0 +1,46 @@
+
+    <!-- End Partners -->
+
+    <section class="global__container news__container container">
+        <div class="row">
+            <div class="col-12">
+                <div class="news__container-content">
+                    <div class="news__header">
+                        <img alt="" [src]="news_content?.image">
+                    </div>
+                    <div class="content">
+                        <h1 class="content__title">{{news_content?.title}}</h1>
+
+                        <div   class="content__description" [innerHTML]=" news_content?.desc"></div>
+                    </div>
+                </div>
+                <div class="read__more">
+                    <h2 class="read__more-title">إقرا أيضا :</h2>
+                    <div class="new__cards row">
+                        <div class="col-12 col-lg-6" *ngFor="let news of news_content?.news ">
+                            <div class="product__card min-sm-0  regular__hover">
+                                <div class="image__card semi__image">
+                                    <img alt='product-image'
+                                         [src]='news.image'/>
+                                </div>
+                                <div class="product__content">
+                                    <header class="product__title semi__title">
+                                        <a [routerLink]="['/news','farm',news.id]">
+                                            {{news.title}}
+                                        </a>
+                                    </header>
+                                    <section class="product__bottom justify-content-end">
+                                        <section class="date__box">
+                                            <span class="date">{{news.created_at}}</span>
+                                        </section>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

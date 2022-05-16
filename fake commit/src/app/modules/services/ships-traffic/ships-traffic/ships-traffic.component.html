@@ -1,0 +1,265 @@
+    <!-- Start Right Section -->
+    <div class="main__content__body">
+        <app-banners-logo   [type]="'banner'"></app-banners-logo>
+        <app-banners-logo    [type]="'logo'"></app-banners-logo>
+        <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
+        
+        <section class="special__accordion container d-lg-none d-block d-md-block">
+            <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
+                    href="#accordion"
+                    id="show-hide-accordion" role="button">
+                حدد بحثك
+                <i class="icon-s fas fa-search"></i>
+            </button>
+            <div class="accordion collapse show" id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingSearch">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseSearch" aria-expanded="false"
+                                    class="btn btn-link collapsed" data-target="#collapseSearch"
+                                    data-toggle="collapse">
+                                <i class="fas fa-search"></i>
+                                البحث
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
+                         id="collapseSearch">
+                        <div class="card-body">
+                            <input class="search__input" placeholder="بحث" type="search">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link"
+                                    data-target="#collapseOne" data-toggle="collapse">
+                                <i class="fas fa-align-justify"></i>
+                                القطاع
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingOne" class="collapse " data-parent="#accordion"
+                         id="collapseOne">
+                        <div class="card-body">
+                            <ul>
+                                <li>
+                                    <a>
+                                        <input checked id="tab-1-val-1" name="tab-1-values" type="radio"
+                                               value="">
+                                        <label for="tab-1-val-1">الداجني</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-1-val-2" name="tab-1-values" type="radio" value="">
+                                        <label for="tab-1-val-2">الحيواني</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-1-val-3" name="tab-1-values" type="radio" value="">
+                                        <label for="tab-1-val-3">الزراعي</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-1-val-4" name="tab-1-values" type="radio" value="">
+                                        <label for="tab-1-val-4">السمكي</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-1-val-5" name="tab-1-values" type="radio" value="">
+                                        <label for="tab-1-val-5">الخيول العربية</label>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseThree" aria-expanded="false"
+                                    class="btn btn-link collapsed" data-target="#collapseThree"
+                                    data-toggle="collapse">
+                                <i class="fas fa-list-ul"></i>
+                                القسم
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingThree" class="collapse" data-parent="#accordion"
+                         id="collapseThree">
+                        <div class="card-body">
+                            <ul>
+                                <li>
+                                    <a>
+                                        <input checked id="tab-3-val-1" name="tab-3-values" type="radio"
+                                               value="">
+                                        <label for="tab-3-val-1">الداجني</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-3-val-2" name="tab-3-values" type="radio" value="">
+                                        <label for="tab-3-val-2">الحيواني</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-3-val-3" name="tab-3-values" type="radio" value="">
+                                        <label for="tab-3-val-3">الزراعي</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-3-val-4" name="tab-3-values" type="radio" value="">
+                                        <label for="tab-3-val-4">السمكي</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-3-val-5" name="tab-3-values" type="radio" value="">
+                                        <label for="tab-3-val-5">الخيول العربية</label>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseFour" aria-expanded="false"
+                                    class="btn btn-link collapsed" data-target="#collapseFour"
+                                    data-toggle="collapse">
+                                <i class="fas fa-poll"></i>
+                                الاحصائيات
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingFour" class="collapse" data-parent="#accordion"
+                         id="collapseFour">
+                        <div class="card-body">
+                            <a class="stats__btn" href="ships-traffic-statistics.html">احصائيات</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseFive" aria-expanded="false"
+                                    class="btn btn-link collapsed" data-target="#collapseFive" data-toggle="collapse">
+                                <i class="fas fa-sort-amount-down"></i>
+                                الترتيب
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingFive" class="collapse" data-parent="#accordion"
+                         id="collapseFive">
+                        <div class="card-body">
+                            <ul>
+                                <li>
+                                    <a>
+                                        <input checked id="tab-5-val-1" name="tab-5-values" type="radio"
+                                               value="">
+                                        <label for="tab-5-val-1">الداجني</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-5-val-2" name="tab-5-values" type="radio" value="">
+                                        <label for="tab-5-val-2">الحيواني</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-5-val-3" name="tab-5-values" type="radio" value="">
+                                        <label for="tab-5-val-3">الزراعي</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-5-val-4" name="tab-5-values" type="radio" value="">
+                                        <label for="tab-5-val-4">السمكي</label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <input id="tab-5-val-5" name="tab-5-values" type="radio" value="">
+                                        <label for="tab-5-val-5">الخيول العربية</label>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Right Section -->
+    
+    
+        <!-- Start Table 7 cols without chart -->
+        <section class="table__container table-7 special__container">
+            <section class="table__head">
+                <span class="title">اسم السفينة</span>
+                <span class="title">تاريخ التوجيه</span>
+                <span class="title">الحمولة / طن</span>
+                <span class="title">النوع</span>
+                <span class="title">المنشأ</span>
+                <span class="title">تاريخ الوصول</span>
+                <span class="title">الجهة المستوردة</span>
+                <span class="title">الوكيل الملاحي</span>
+                <span class="title">ميناء التفريغ</span>
+            </section>
+            <!--  add row__shadow when rows length > = 3  -->
+            <div class="table__body row__shadow">
+    
+                <!-- Start One Row    add ads class if ad  -->
+                <section class="table__row " *ngFor="let i of data?.ships">
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.name}}</span>
+                    </section>
+                    <div class="wall"></div>
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.dir_date}}</span>
+                    </section>
+                    <div class="wall"></div>
+
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.load}}</span>
+                    </section>
+                    <div class="wall"></div>
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.product}}</span>
+                    </section>
+                    <div class="wall"></div>
+                    <section class="cell__container">
+                        <span class="data__content">{{i.country}}</span>
+                    </section>
+                    <div class="wall"></div>
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.date}}</span>
+                    </section>
+                    <div class="wall"></div>
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.company}}</span>
+                    </section>
+                    <div class="wall"></div>
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.agent}}</span>
+                    </section>
+                    <div class="wall"></div>
+                    <section class="cell__container">
+                        <span class="cell__content">{{i.Port}}</span>
+                    </section>
+                </section>
+                <!-- End One Row  -->
+
+            </div>
+        </section>
+    
+    </div>
+    

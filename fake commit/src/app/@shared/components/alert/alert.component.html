@@ -1,0 +1,4 @@
+<div class="spinner"*ngFor="let alert of alerts" class="{{cssClass(alert)}}">
+    <a class="close" (click)="removeAlert(alert)">&times;</a>
+    <span class="mx-2"[innerHTML]="alert.message"></span>
+</div>

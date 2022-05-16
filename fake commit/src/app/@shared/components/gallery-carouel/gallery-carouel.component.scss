@@ -1,0 +1,41 @@
+.inside preview-image .ng-star-inserted{
+    margin: 10px;
+}
+
+.preview-image{
+    margin: 10px;
+    // border:solid red 23px;
+   width: 5100px !important
+}
+
+ .preview-image{
+     margin: 10px;
+    //  border:solid red 23px;
+}
+
+.preview-image.active{
+    margin: 10px;
+   //  border:solid red 23px;
+   border:solid #FFAA00 4px;
+}
+.dots-container  .dot {
+    background:#1f6b00 !important
+}
+
+.dots-container  .dot.active {
+    background:#FFAA00 !important
+}
+
+
+
+.right-arrow-image, .left-arrow-image {
+    background-color: #1f6b00 !important;
+    border-radius: 50%;
+    // padding: 10px !important;
+    width: 40px  !important;
+    height: 40px  !important;
+    background-position:9px;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+

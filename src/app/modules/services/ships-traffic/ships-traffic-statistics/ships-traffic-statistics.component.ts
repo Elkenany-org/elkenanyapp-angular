@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ship_traffic_Statistics_Search_Form, StatisticsShips } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
@@ -7,14 +7,18 @@ import { ToasterService } from '@app/@shared/services/toastr.service';
 import { ShipsTrafficService } from '../_core/services/ships-traffic.service';
 import { single } from './../_core/services/data';
 import { Fillter } from '@shared/classes/filter';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-ships-traffic-statistics',
   templateUrl: './ships-traffic-statistics.component.html',
-  styleUrls: ['./ships-traffic-statistics.component.scss']
+  styleUrls: ['./ships-traffic-statistics.component.scss'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class ShipsTrafficStatisticsComponent implements OnInit {
   public data?:StatisticsShips
+  // public originandSortsForm!:FormGroup
   single?: any[];
   view: any[] = [700, 400];
   chart:{name: string,value: number} [] =[]
@@ -36,12 +40,18 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
   public h_search_form?:JsonFormData  
   constructor( private toster:ToasterService,
                private route:ActivatedRoute,
+               private fb:FormBuilder,
                private BannerLogoService:BannersLogoservice,
                private ship: ShipsTrafficService,) {   
                   // Object.assign(this, { single });
               }
 
   ngOnInit(): void {
+
+    // this.originandSortsForm = this.fb.group({
+    //   origin:'',
+    //   sort: '',
+    // })
     this.h_search_form = ship_traffic_Statistics_Search_Form
     this.route.data.subscribe(data => {
       this.toster.stopLoading()
@@ -56,10 +66,12 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
   }
 
   filter(value:any):void {
-  this.fillter.filter(value)
-    console.log(this.fillter.filterdata );
+    console.log(value)
+     this.fillter.filter(value)
+     let f = this.fillter.filterdata
+     console.log(this.fillter.filterdata );
 
-    this.ship.Statistics().subscribe(res => {
+    this.ship.Statistics(f['sort'],f['from'],f['to'], f['country_id']).subscribe(res => {
       this.data = res.data
       console.log(res);
       

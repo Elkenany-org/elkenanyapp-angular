@@ -1,0 +1,160 @@
+header.banner__header {
+  direction: ltr;
+  margin-top: 1em;
+  margin-bottom: 1.5rem;
+
+  .banner {
+    border-radius: 12px;
+    margin: auto;
+    width: 75%;
+    min-height: 125px;
+    @media (max-width: 762px) {
+      width: 100%;
+    }
+  }
+}
+
+.slider {
+  padding: 0;
+
+  .slick-dots {
+    display: none !important;
+  }
+}
+
+.global__container {
+  margin: 2rem auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main__right__container {
+  position: relative;
+}
+
+// .main__left__container {
+
+// }
+
+.one-full-slider-banner {
+  direction: rtl;
+}
+
+.one-full-slider {
+  direction: rtl;
+}
+
+.sidebar__sticky {
+  position: sticky;
+  top: 1rem;
+  right: 0;
+}
+
+.display__flex {
+  @include semi-flex(center, center, column, nowrap);
+}
+
+.list__shadow {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) inset;
+}
+
+.action__yellow__green__button {
+  width: auto;
+  border-radius: $rd-8;
+  padding: 9px 10px 0;
+  height: 48px;
+  margin: 10px auto 0;
+  background-color: $font-color-main !important;
+  color: $font-color-second;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 4px 5px #ddd;
+  display: block;
+  transition: all .5s;
+  text-align: center;
+
+  &:hover {
+    background-color: $bg-color-main-hover;
+    color: $font-color-second;
+  }
+}
+
+
+.global__rating {
+  direction: ltr;
+  position: relative;
+  width: 180px;
+  background: $color-white;
+  @include semi-flex(center, center, row, nowrap);
+  gap: .3em;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 2px $bg-color-main;
+  border: 1px $bg-color-main solid;
+
+  .rating__result {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-10px) translateX(-5px);
+    z-index: -9;
+    font: 3em Arial, Helvetica, sans-serif;
+    color: #9D9D9D;
+    pointer-events: none;
+  }
+
+  .rating__star {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: $bg-color-main;
+    transition: filter linear .3s;
+  }
+
+  .rating__star:hover {
+    filter: drop-shadow(1px 1px 4px gold);
+  }
+}
+
+
+.search__input {
+  border: solid 1px #e8e8e8;
+  border-radius: 4px;
+  width: 100%;
+  height: 40px;
+  padding: 0.5rem;
+  transition: $transition-200ms;
+  color: $color-main;
+
+  &:hover {
+    border-color: $color-main;
+  }
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    border-radius: 50em;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:focus::-webkit-search-cancel-button {
+    opacity: .3;
+    pointer-events: all;
+  }
+}

@@ -1,0 +1,59 @@
+<!-- <app-loader *ngIf="loading"></app-loader> -->
+
+<div class="main__content__body">
+   
+    <!-- Start Header -->
+    <header class="banner__header">
+        <div class="container-fluid one-full-slider-banner">
+            <div class="splide" id="image-slider">
+                <div class="splide__track" >
+                    <div class="splide" id="image-slider">
+                        <!-- <app-carousel [config]="carousel_banner" [loading]="loading"></app-carousel> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Start Partners -->
+    <article class="partners slider">
+        <div class="container-fluid logos__holder">
+            <section class="partners-slider" dir="rtl">
+                <section class="splide" id="partnerCarousel">
+                    
+                    <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
+                    
+                </section>
+            </section>
+        </div>
+    </article>
+    <!-- End Partners -->
+
+    <!-- Start breadcrumb -->
+    <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
+    <!-- End Search Box -->
+
+    <!-- Start Global Content -->
+    <article class="container global__container">
+        <div class="row">
+             <!-- Start Right Section -->
+            <section class="right main__right__container col-lg-4 col-md-12 col-sm-12">
+                <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
+            </section>
+            <!-- End Right Section -->
+            <!-- Start Left Section -->
+            <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
+                <section class="title-box">
+                    <h2 class="title">{{typeAr}}</h2>
+                    <span class="sections-number">{{Companies_Home_Data?.sub_sections?.length}} قسم</span>
+                </section>
+                <app-card (navigation)="navigate($event)" [data]="Companies_Home_Data?.sub_sections" [loading] ="loading"></app-card>
+        
+
+            </section>
+            <!-- End Left Section -->
+        </div>
+    </article>
+    <!-- End Global Content -->
+</div>
