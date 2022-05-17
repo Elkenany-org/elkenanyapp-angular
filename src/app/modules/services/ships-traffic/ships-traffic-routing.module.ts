@@ -22,7 +22,7 @@ const children:Routes= [
         component: ShipsTrafficStatisticsComponent
     },
     {
-        path:'statistics-details/:id',
+        path:'statistics-details/:id/:country',
         resolve:{
             resolve: ShipsTrafficStatisticsDetailsResolver
         },

@@ -164,7 +164,7 @@
                         <section class="rows"  *ngFor="let i of data?.ships">
                             <section class="data display__flex">
                                 <h4 class="data__content">
-                                    <a class="item__link" [routerLink]="['/ships-traffic/statistics-details',i.id]">{{i.product}}</a>
+                                    <a class="item__link" [routerLink]="['/ships-traffic/statistics-details',product(i.product),i.country]">{{i.product}}</a>
                                 </h4>
                             </section>
                             <div class="wall"></div>

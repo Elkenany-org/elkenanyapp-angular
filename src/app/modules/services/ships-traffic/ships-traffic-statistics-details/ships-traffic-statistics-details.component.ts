@@ -2,12 +2,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { ToasterService } from '@app/@shared/services/toastr.service';
 import { ship_traffic_Statistics_Search_Form } from '@core/interfaces/ships-traffic/ships-traffic';
-import { single } from './../_core/services/data';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { ShipsTrafficService } from '../_core/services/ships-traffic.service';
-import { ActivatedRoute, Data } from '@angular/router';
-import { StatisticsDetials,data } from '@core/interfaces/ships-traffic/ships-traffic';
-import { map } from 'rxjs';
+import { ActivatedRoute  } from '@angular/router';
+import { StatisticsDetials } from '@core/interfaces/ships-traffic/ships-traffic';
 import { Fillter } from '@shared/classes/filter';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -21,6 +19,8 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
   public data?:StatisticsDetials
   public id:number = 0
   public h_search_form?:JsonFormData
+  country=''
+    open:boolean= false
   fillter =   new Fillter()
   fromToForm!:FormGroup
   single?: any[];
@@ -44,11 +44,16 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fromToForm= this.fb.group({
+      country: [],
       from: [],
       to:[]
     })
     this.h_search_form = ship_traffic_Statistics_Search_Form
-    this.route.params.subscribe(prm => this.id= prm['id'])
+    this.route.params.subscribe(prm => {
+      this.id= prm['id']
+      this.country = prm['country']
+
+    })
     this.route.data.subscribe(res => {
       this.data = res['resolve'].data// data.data
       this.toster.stopLoading()
@@ -59,24 +64,33 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
   }
 
   filter(value:any,type:string):void { //type come from small screen
-    if(type){
-      console.log(this.fromToForm.controls['to'].value);  
-      console.log(this.fromToForm.controls['from'].value);  
-      this.ship.StatisticsDetails(this.fromToForm.controls['from'].value,this.fromToForm.controls['to'].value,'',this.id).subscribe(res => {
-        console.log(res)
+    if(type){ //this  condation works only  at small view port screen
+          let f = this.fromToForm.controls 
+
+          console.log(f['from'].value)
+          console.log(this.country)
+
+      this.ship.StatisticsDetails(f['from'].value,f['to'].value,this.country,this.id).subscribe(res => {
+        this.toster.stopLoading()
+        this.data = res.data
       })
    
     }else{
+      let f = this.fillter.filterdata
       this.toster.loading('حاري التحميل')
       this.fillter.filter(value)
-      this.ship.StatisticsDetails(this.fillter.filterdata['from'],this.fillter.filterdata['to'],'',263).subscribe(res => {
+      console.log(f)
+      this.country = f['country_id']
+
+      this.ship.StatisticsDetails(f['from'],f['to'],f['country_id'],this.id).subscribe(res => {
         this.data = res.data
-        console.log(res);
         this.toster.stopLoading()
       })
     }
   
   }
-  
+  toggle(){
+    this.open= !this.open
+  }
 
 }

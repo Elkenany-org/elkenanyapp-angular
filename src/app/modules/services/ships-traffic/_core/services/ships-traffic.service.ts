@@ -22,6 +22,7 @@ export class ShipsTrafficService {
   }
 
   StatisticsDetails(from:string, to:string, country:string, TyprId:number):Observable<ApiResponse<StatisticsDetials>> {
+ 
     return this.http.get<ApiResponse<StatisticsDetials>>(`${env.ApiUrl}/ships/statistics-ships-detials?from=${from}&to=${to}&country=${country}&id=${TyprId}`)
   }
 }

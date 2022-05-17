@@ -19,7 +19,7 @@ export class Fillter{
 
 
       public filter(option:any):{[key:string]:string} {
-        console.log(option);
+        // console.log(option);
         // this.toster.loading('حاري التحميل')
         switch (option.type){
           case "date-to":

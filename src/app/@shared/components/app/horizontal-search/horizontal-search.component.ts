@@ -103,9 +103,6 @@ export class HorizontalSearchComponent implements OnChanges {
 
   selectOption(value: any, type?:string, name?:string) { //ex: value = animal , type = sector, name = بورصه الاعلاف
 
-    console.log(value)
-    console.log(type)
-    console.log(name)
 
     
     //   Search for id that inside options that inside controls 

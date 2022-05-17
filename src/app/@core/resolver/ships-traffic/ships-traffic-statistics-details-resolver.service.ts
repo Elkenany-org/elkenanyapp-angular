@@ -17,9 +17,10 @@ export class ShipsTrafficStatisticsDetailsResolver implements Resolve<ApiRespons
   constructor(private ship: ShipsTrafficService ,private router: Router,private toster:ToasterService) { }
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<StatisticsDetials>>  {
-    console.log("resolver is work ",route.paramMap.get('type'))
+    console.log("resolver is work ",    route.params['country'])
     this.toster.loading('حاري التحميل')
-   return this.ship.StatisticsDetails('','','الأرجنتين',1).pipe(
+    route.params
+   return this.ship.StatisticsDetails('','', route.params['country'], route.params['id']).pipe(
      
      catchError(() => {
        this.router.navigate([""]);
