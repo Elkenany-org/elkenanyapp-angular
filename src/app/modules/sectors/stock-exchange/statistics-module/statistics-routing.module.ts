@@ -9,7 +9,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: '',
     component: StatisticsComponent
   },
 

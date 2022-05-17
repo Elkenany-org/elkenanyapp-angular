@@ -18,7 +18,25 @@ export interface ChangesMember {
   counts: number
 }
 
+//------------------------------- Stock Exchange ---------------------------------------//
+export interface StatisticsSubsSections {
+  Section: string
+  list_subs: ListSub[]
+  changes_subs: ChangesSub[]
+}
 
+export interface ListSub {
+  id: number
+  name: string
+  image_url: string
+}
+
+export interface ChangesSub {
+  id: number
+  name: string
+  change: string
+  counts: number
+}
 
 //------------------------------- Stock Exchange ---------------------------------------//
 

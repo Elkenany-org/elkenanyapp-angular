@@ -41,7 +41,13 @@ export class HomeStockExchangeComponent implements OnInit  {
     private router: Router ) { }
 
   ngOnInit(): void {
-    this.h_search_form = Home_Stock_Search_Form_Data //set initial data to horizontal component 
+    this.activatedRoute.params.subscribe(prm => {
+      this.h_search_form = Home_Stock_Search_Form_Data
+      this.h_search_form.controls[3].routerLink = `/stock-exchange/${prm['type']}/statistics`  
+    })
+
+
+     //set initial data to horizontal component 
     this.activatedRoute.data.pipe(
       map((data) => {
         console.log(data)

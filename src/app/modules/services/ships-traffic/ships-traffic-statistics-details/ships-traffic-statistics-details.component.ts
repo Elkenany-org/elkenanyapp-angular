@@ -57,6 +57,7 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
     this.route.data.subscribe(res => {
       this.data = res['resolve'].data// data.data
       this.toster.stopLoading()
+      console.log(this.data);
       
       this.data?.ships_charts.forEach(item => this.chart?.push({name:item.product,value:item.load}))
       this.single =this.chart;

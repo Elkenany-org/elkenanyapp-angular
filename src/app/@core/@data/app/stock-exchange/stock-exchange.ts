@@ -1,7 +1,7 @@
 import { JsonFormData } from "@app/@shared/components/form/cva/cva.component";
 
   
-export const Stock_Search_Form_Data: JsonFormData =
+export let Stock_Search_Form_Data: JsonFormData =
 {   
   title: "البورصة اليومية",
   class:"tabs tabs-4",
@@ -62,7 +62,7 @@ export const Stock_Search_Form_Data: JsonFormData =
 
 
   
-export const Home_Stock_Search_Form_Data: JsonFormData =
+export let Home_Stock_Search_Form_Data: JsonFormData =
 {   
   title: "البورصة اليومية",
   class:"tabs tabs-4",
@@ -111,7 +111,7 @@ export const Home_Stock_Search_Form_Data: JsonFormData =
         value: "",
         icon:"fas fa-poll",
         type: "a",
-        routerLink: "/stock-exchange/poultry/statistics",
+        routerLink: "",
         validators: {
           required: false,
         }
