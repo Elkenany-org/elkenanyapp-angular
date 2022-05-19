@@ -29,7 +29,7 @@ export class StockExchangeComponent implements OnInit {
   public carousel_banner?: any = Banner_test;
   public carousel_logos:any = logo_test;
   public h_search_form: JsonFormData | any;
-  public stock_Ex_Data?:LocalStockFodder;
+  public stock_Ex_Data?:any;
 
 
   public feeds?: FodderCategory [];
@@ -58,37 +58,47 @@ export class StockExchangeComponent implements OnInit {
   ngOnInit(): void {
     this.h_search_form = Stock_Search_Form_Data
     this.route.params.subscribe((prm:Params) => {
-      if(prm['type_stock'] === 'fodder') {
-
-
+      this.stockExchange.LocalStockandFodderSub(prm['id'],prm['type_stock'],'').subscribe(res => {
+        console.log(res);
+        this.stock_Ex_Data = res.data  
+        this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
+        this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
         
-        this.stockExchange.fodder(prm['id'],'2022-02-12').subscribe( res => {
-          console.log('fodder')
-
-          this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
-          this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
-          this.stock_Ex_Data = res.data  
-          this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
-          this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-            console.log('fodder')
-            this.type_stock = prm['type_stock']
-            this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as FodderCategory[]
-            this.loading = false;   
-          })
-          this.stockExchange.companies_items(prm['id']).subscribe( res => {
-            console.log('fodder')
-
-            this.companies= res.data
-          })
-        })
-      }else if(prm['type_stock'] === 'local')
-      console.log('local')
-      this.stockExchange.local(21,'local','2022-02-12').subscribe( res => {
-        this.stock_Ex_Data = res.data  as LocalStockFodder
-        this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
-          this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
-        })
       })
+
+
+      //if(prm['type_stock'] === 'fodder') {
+
+
+
+       // this.stockExchange.fodder(prm['id'],'2022-02-12').subscribe( res => {
+
+          // this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
+          // this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
+          // this.stock_Ex_Data = res.data  
+          // this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
+
+          //this.stockExchange.feeds_items(prm['id']).subscribe( res => {
+            // console.log('fodder')
+            // this.type_stock = prm['type_stock']
+            // this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as FodderCategory[]
+            // this.loading = false;   
+          //})
+
+          //this.stockExchange.companies_items(prm['id']).subscribe( res => {
+            // console.log('fodder')
+
+            // this.companies= res.data
+          //})
+       // })
+     // }else if(prm['type_stock'] === 'local')
+      // console.log('local')
+      //.stockExchange.local(21,'local','2022-02-12').subscribe( res => {
+        // this.stock_Ex_Data = res.data  as LocalStockFodder
+        // this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
+        //   this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
+        // })
+      //})
     })
   }
 

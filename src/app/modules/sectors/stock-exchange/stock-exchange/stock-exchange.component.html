@@ -103,7 +103,7 @@
             <span  
                 *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
                 [ngClass]="{' title__chart  d-lg-flex d-none': isLast}"
-                class="title" >{{column}}</span>
+                class="title" >{{column?.title}}</span>
         </section>
         <!--  add row__shadow when rows length > = 3  -->
         <div class="table__body row__shadow">
@@ -120,7 +120,7 @@
          
                 <div class="wall"></div>
                 <section class="cell__container">
-                    <span class="cell__content">{{member.feed}}</span>
+                    <span class="cell__content">{{member.price}}</span>
                 </section>
                 <div class="wall"></div>
                 <section class="cell__container">

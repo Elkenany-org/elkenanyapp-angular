@@ -47,8 +47,8 @@ export class StockExchangeService {
   // ----------------------------------------- < Local Stock and Fodder Sub > -----------------------------------------------//
 
 
-  LocalStockandFodderSub(id:number, type:string, data:string) : Observable<ApiResponse<LocalStockFodder>> {
-    return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/localstock/new-local-stock-show-sub-section?id=${id}&type=${type}&date=${data}`)
+  LocalStockandFodderSub(id:number, type:string, date:string) : Observable<ApiResponse<LocalStockFodder>> {
+    return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/localstock/new-local-stock-show-sub-section?id=${id}&type=${type}&date=${date}`)
   }
   newLocalStockandFodderSub(id:number, type:string, data:string) : Observable<ApiResponse<LocalStockFodder>> {
     return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/localstock/new-local-stock-show-sub-section?id=${id}&type=${type}&date=${data}`)
