@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 // import { StatisicsMembers, StatisicsMembersDetials, StatisicsStocksDetials, StatisicsSubSections, StatisticsMember } from './statistics';
 import { StatisticsMember, StatisticsSubsSections } from './statistics';
 import {environment as env} from '../../../../../../environments/environment';
+import { FilterList } from './../../../../../@core/interfaces/_app/filter-list';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class StatisticsService {
   StatisicsSubSections(type:string, from:string, to:string, id:string):Observable<ApiResponse<StatisticsSubsSections>> {
     return this.http.get<ApiResponse<StatisticsSubsSections>>(`${env.ApiUrl}/localstock/statistics-stock-sections?type=${type}&from=${from}&to=${to}&id=${id}`)
   }
+
 
   // StatisicsStocksDetials(type:string, search:string):Observable<ApiResponse<StatisicsStocksDetials>> {
   //   return this.http.get<ApiResponse<StatisicsStocksDetials>>(`${env.ApiUrl}/localstock/statistics-detials-local-stock?id=2`)

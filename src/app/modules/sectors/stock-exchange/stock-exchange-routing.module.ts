@@ -29,6 +29,11 @@ const children: Routes = [
     import('./statistics-module/statistics.module').then((m) => m.StockExchangeModule)
   },
   {
+    path:"comarsion",
+    component:ComparisonComponent
+
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   }

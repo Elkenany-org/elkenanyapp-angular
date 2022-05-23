@@ -6,6 +6,7 @@ import {environment as env} from '../../../../../environments/environment';
 import { CompaniesItems, FeedsItems, Fodder,StockExchange, ComprisonFodderGetData ,LocalStockFodder, FilterListSub} from '@app/@core/interfaces/stock-exchanges/Stock-exchange';
 import { Comparison } from '@app/@core/interfaces/stock-exchanges/conversion';
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
+import { FilterListSubItems } from '../statistics-module/_core/statistics';
 
 
 @Injectable({
@@ -54,6 +55,9 @@ export class StockExchangeService {
     return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/localstock/new-local-stock-show-sub-section?id=${id}&type=${type}&date=${data}`)
   }
 
+  FilterListItemSub(type:string, type_stock:string,  id:string):Observable<ApiResponse<FilterListSubItems>> {
+    return this.http.get<ApiResponse<FilterListSubItems>>(`${env.ApiUrl}/localstock/filter-stock-show-sub-section?id=${id}id&type=${type}&type_stock=${type_stock}`)
+  }
 
 
   feeds_items(stock_id:number |string, mini_id?:number) : Observable<ApiResponse<FeedsItems>> {
@@ -67,9 +71,9 @@ export class StockExchangeService {
 
 
 
-  fodder(id:number, data:string,fod_id?:number) : Observable<ApiResponse<LocalStockFodder>> {
+  fodder(id:number, data:string,fod_id?:number,comp_id?:number) : Observable<ApiResponse<LocalStockFodder>> {
                                                                       
-    return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/v2/fodder/tables?id=${id}&date=${data}&fod_id=316`)
+    return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/v2/fodder/tables?id=${id}?date=${data}?fod_id=${fod_id}?comp_id=${comp_id}`)
   }
 
   local(id:number, type:string, data:string) : Observable<ApiResponse<Fodder>> {

@@ -11,10 +11,8 @@
         <form class="box-tabs">
             <div class="search-box-overlay"></div>
             <div class="edge"></div>
-
             <section [class]="data?.class" *ngFor="let control of data?.controls">
                 <i [class]="control.icon"></i>
-
                 <h4 class="title">{{control.name}}:</h4>
                 <input  [class]="control.class"  *ngIf="control.type === 'date' ||control.type === 'text'"  id="searchInput" [type]="control.type"
                         (change)="selectOption($any($event.target).value,control.role)" >
@@ -27,7 +25,7 @@
                   class="company__filter__label">{{value.name}}</option>
               </select>
               <a  *ngIf="control.type === 'a'" [class]="control.class" [routerLink]="control.routerLink">{{control.name}}</a>
-
+<!-- 
               <div *ngIf="control.type === 'checkbox'" class="multiselect" id="multiselect-companies">
                 <div class="selectBox" onclick="showCheckboxes('companies')">
                     <select>
@@ -74,7 +72,7 @@
                                type="checkbox">شركة الكناني
                         جروب</label>
                 </div>
-            </div>
+            </div> -->
             </section>
 
             

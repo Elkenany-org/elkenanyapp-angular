@@ -7,17 +7,6 @@ export let Stock_Search_Form_Data: JsonFormData =
   class:"tabs tabs-4",
     controls: [
       {
-        name: "بحث",
-        type: "text",
-        role:"search",
-        class: "form-control",
-        value: "",
-        icon:"fas fa-search",
-        validators: {
-          required: false,
-        }
-      },
-      {
         name: "القطاع",
         type: "select",
         role: "sector",
@@ -30,18 +19,42 @@ export let Stock_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "الترتيب",
+        name: "البورصة",
         type: "select",
-        role:"sort",
+        role: "stock",
         class: "form-control",
         value: "",
-        icon:"fas fa-sort-amount-down",
+        icon:"fas fa-puzzle-piece",
         option: [],
         validators: {
           required: false,
         }
       },
-   
+      {
+        name: "التاريخ",
+        type: "date",
+        role: "date",
+        class: "form-control",
+        value: "",
+        icon:"fas fa-puzzle-piece",
+        option: [],
+        validators: {
+          required: false,
+        }
+      },
+      {
+        name: "مقارنة",
+        label: "Size",
+        class:"stats__btn",
+        role:"sort",
+        value: "",
+        icon:"fas fa-poll",
+        type: "a",
+        routerLink: "/stock-exchange/poultry/comarsion",
+        validators: {
+          required: false,
+        }
+      },
       {
         name: "احصائيات",
         label: "Size",

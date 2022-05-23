@@ -7,9 +7,125 @@
  <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
  <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
 
+
+
+
+ <article class="table__header__filter special__container">
+    <section class="head new__cards__header">
+        <div class="card">
+            <div class="card-header" id="itemsSelect2">
+                <button  class="card__button"
+                          (click)="toggle('company')">
+                    الشركة
+                </button>
+            </div>
+            <div  class="collapse "   [ngClass]="{'show':collapse==1}"
+                 id="collapseItemsSelect2">
+                <div class="card-body">
+                    <div class="multiselect multiselect-accordion" id="multiselect-companies-accordion">
+                        <div class="checkboxes" id="checkboxes-companies-accordion">
+                            <div class="company__search">
+                                <label for="searchCompany">
+                                    <input class="searchInput" id="searchCompany" name="search" 
+                                             name="username" #company
+                                            (change)="filter2(company.value)"
+                                           placeholder="ابحث عن"
+                                           type="search">
+                                </label>
+                            </div>
+                            <div class="all__labels">
+
+
+
+                                <form [formGroup]="form2" (ngSubmit)="submit2()">
+                                    <label style="display: block" formArrayName="orders" *ngFor="let order of ordersFormArray2.controls; let i = index">
+                                      <input type="checkbox" [formControlName]="i">
+                                      {{companiesList![i].name}}
+                                    </label>
+                                  </form>
+
+
+                                <label class="company__filter__label" for="company-accordion-one">
+                                    <input class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox">شركة الكناني
+                                    جروب
+                                </label>
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="head new__cards__header">
+        <div class="card">
+            <div class="card-header" id="itemsSelect">
+                <button  class="card__button"
+                         (click)="toggle('feeds')">
+                    الصنف
+                </button>
+            </div>
+            <div  class="collapse" [ngClass]="{'show':collapse==2}" 
+                 id="collapseItemsSelect">
+                <div class="card-body">
+                    <div class="multiselect multiselect-accordion" id="multiselect-types-accordion">
+                        <div class="checkboxes" id="checkboxes-types-accordion">
+                            <div class="company__search">
+                                <label for="searchTypes">
+                                    <input class="searchInput" id="searchTypes" name="search"
+                                    name="username" #feeds
+                                    (change)="filter2(feeds.value)"
+                                           placeholder="ابحث عن"
+                                           type="search">
+                                </label>
+                            </div>
+                            <div class="all__labels">
+                                <label class="type__filter__label" for="type-accordion-one">
+                                    <input class="checks checks-type-accordion" id="type-accordion-one"
+                                           name="companies-accordion" type="radio">شركة الكناني
+                                    جروب</label>
+                                <label class="type__filter__label" for="type-accordion-two">
+                                    <input class="checks checks-type-accordion" id="type-accordion-two"
+                                           name="companies-accordion" type="radio">شركة الكناني
+                                    جروب</label>
+                                <label class="type__filter__label" for="type-accordion-three">
+                                    <input class="checks checks-type-accordion" id="type-accordion-three"
+                                           name="companies-accordion" type="radio">شركة
+                                    الكناني
+                                    جروب</label>
+                                <label class="type__filter__label" for="type-accordion-four">
+                                    <input class="checks checks-type-accordion" id="type-accordion-four"
+                                           name="companies-accordion" type="radio">شركة
+                                    الكناني
+                                    جروب</label>
+                                <label class="type__filter__label" for="type-accordion-five">
+                                    <input class="checks checks-type-accordion" id="type-accordion-five"
+                                           name="companies-accordion" type="radio">شركة
+                                    الكناني
+                                    جروب</label>
+                                <label class="type__filter__label" for="type-accordion-six">
+                                    <input class="checks checks-type-accordion" id="type-accordion-six"
+                                           name="companies-accordion" type="radio">شركة الكناني
+                                    جروب</label>
+                                <label class="type__filter__label" for="type-accordion-seven">
+                                    <input class="checks checks-type-accordion" id="type-accordion-seven"
+                                           name="companies-accordion" type="radio">شركة
+                                    الكناني
+                                    جروب</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+</article>
+
+
 <div class="global__container" >
-    <article class="table__header__filter special__container" *ngIf="type_stock === 'fodder'"> 
-        <section class="head new__cards__header">
+    <!-- <article class="table__header__filter special__container" *ngIf="type_stock === 'fodder'"> 
+        <section class="head new__cards__header ">
             <div class="card">
                 <div class="card-header" id="itemsSelect">
                     <button 
@@ -95,7 +211,7 @@
                 </div>
             </div>
         </section>
-    </article>
+    </article> -->
 
     <!-- Start Table 5 cols with chart -->
     <section class="table__container table-chart-5 special__container">
@@ -129,68 +245,13 @@
                 <div class="wall"></div>
                 <section class="cell__container">
                     <span class="cell__content">{{member.change_date}}</span>
-                    <span class="cell__content">07:05</span>
-                    <span class="cell__content">2021-05-30</span>
+                    <!-- <span class="cell__content">07:05</span>
+                    <span class="cell__content">2021-05-30</span> -->
                 </section>
                 <div class="wall  d-lg-block d-none"></div>
                 <section class="cell__container data__charts d-lg-block d-none">
                     <div id="chart-5-ads"></div>
-                    <script>
-                        new ApexCharts(document.querySelector("#chart-5-ads"), {
-                            series: [{
-                                name: "",
-                                data: [2, -1, 5, -3, 4, 0, 2],
-                            }],
-                            chart: {
-                                height: 120,
-                                width: '100%',
-                                type: 'line',
-                                zoom: {
-                                    enabled: false
-                                },
-                                toolbar: {
-                                    show: false
-                                }
-                            },
-                            yaxis: {
-                                show: false
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'straight',
-                                colors: ['#008000'],
-                                width: 2,
-                            },
-                            title: {
-                                text: '',
-                                align: 'left'
-                            },
-                            grid: {
-                                show: false,
-                                row: {
-                                    opacity: 0.5
-                                },
-                            },
-                            xaxis: {
-                                categories: ['20/1', '21/1', '22/1', '23/1', '24/1', '25/1', '26/1']
-                            },
-                            markers: {
-                                colors: ['#000']
-                            },
-                            tooltip: {
-                                fillSeriesColor: true,
-                                theme: true,
-                                style: {
-                                    fontSize: '15px'
-                                },
-                                onDatasetHover: {
-                                    highlightDataSeries: false,
-                                },
-                            }
-                        }).render();
-                    </script>
+                    <img [src]="member.statistics" style="width:70%">
                 </section>
             </section>
             <!-- End One Row  -->
@@ -198,91 +259,7 @@
    
 
             <!-- Start One Row    add ads class if ad  -->
-            <section class="table__row row__image">
-                <a class="cell__container" href="../companies/companies_details.html">
-                    <div class="cell__content__with__image">
-                        <img alt="logo"
-                             class="image"
-                             src="http://phpstack-597257-1931215.cloudwaysapps.com/public/uploads/company/images/24-05-211621860503318011700.png">
-                        <span class="name name__big">الحيانى</span>
-                    </div>
-                </a>
-                <div class="wall"></div>
-                <section class="cell__container">
-                    <span class="cell__content"> دواجن بادي تسمين سوبر 23%</span>
-                </section>
-                <div class="wall"></div>
-                <section class="cell__container">
-                    <span class="cell__content">0.00</span>
-                    <span class="cell__content">07:05</span>
-                    <span class="cell__content">2021-05-30</span>
-                </section>
-                <div class="wall"></div>
-                <section class="cell__container">
-                    <span class="data__content">0</span>
-                </section>
-                <div class="wall  d-lg-block d-none"></div>
-                <section class="cell__container data__charts d-lg-block d-none">
-                    <div id="chart-5-8"></div>
-                    <script>
-                        new ApexCharts(document.querySelector("#chart-5-8"), {
-                            series: [{
-                                name: "",
-                                data: [0, 1, -1, 2, -3, 3, 5],
-                            }],
-                            chart: {
-                                height: 120,
-                                width: '100%',
-                                type: 'line',
-                                zoom: {
-                                    enabled: false
-                                },
-                                toolbar: {
-                                    show: false
-                                }
-                            },
-                            yaxis: {
-                                show: false
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'straight',
-                                colors: ['#eca008'],
-                                width: 2,
-                            },
-                            title: {
-                                text: '',
-                                align: 'left'
-                            },
-                            grid: {
-                                show: false,
-                                row: {
-                                    opacity: 0.5
-                                },
-                            },
-                            xaxis: {
-                                categories: ['20/1', '21/1', '22/1', '23/1', '24/1', '25/1', '26/1']
-                            },
-                            markers: {
-                                colors: ['#000']
-                            },
-                            tooltip: {
-                                fillSeriesColor: true,
-                                theme: true,
-                                style: {
-                                    fontSize: '15px'
-                                },
-                                onDatasetHover: {
-                                    highlightDataSeries: false,
-                                },
-                            }
-                        }).render();
-                    </script>
-                </section>
-            </section>
-            <!-- End One Row  -->
+
         </div>
     </section>
     <!-- End Table -->
@@ -290,3 +267,22 @@
 
 </div>
 
+
+
+<!-- <form [formGroup]="form" (ngSubmit)="submit()">
+    <label formArrayName="orders" *ngFor="let order of ordersFormArray.controls; let i = index">
+      <input type="checkbox" [formControlName]="i">
+      {{ordersData[i].name}}
+    </label>
+    <button>submit</button>
+  </form>
+ -->
+
+
+  <form [formGroup]="form2" (ngSubmit)="submit2()">
+    <label style="display: block" formArrayName="orders" *ngFor="let order of ordersFormArray2.controls; let i = index">
+      <input type="checkbox" [formControlName]="i">
+      {{companiesList![i].name}}
+    </label>
+    <button>submit</button>
+  </form>

@@ -38,6 +38,35 @@ export interface ChangesSub {
   counts: number
 }
 
+
+
+
+export interface FilterListSubItems {
+  sections: Section[]
+  sub_sections: SubSection[]
+  fodder_sub_sections: FodderSubSection[]
+}
+
+export interface Section {
+  id: number
+  name: string
+  type: string
+  selected: string
+}
+
+export interface SubSection {
+  id: number
+  name: string
+  type: string
+}
+
+export interface FodderSubSection {
+  id: number
+  name: string
+  type: string
+  selected: string
+}
+
 //------------------------------- Stock Exchange ---------------------------------------//
 
   // export interface StockExchange {

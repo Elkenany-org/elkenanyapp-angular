@@ -19,7 +19,7 @@ import { Home_Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange
 })
 export class HomeStockExchangeComponent implements OnInit  {
 
-  public loading: boolean = true
+  public loading: boolean = false
 
   public h_search_form: JsonFormData | any 
   public stock_Ex_Data?: StockExchange 
