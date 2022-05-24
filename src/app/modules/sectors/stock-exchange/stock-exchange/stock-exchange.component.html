@@ -35,7 +35,15 @@
                             </div>
                             <div class="all__labels">
 
+                                <label    
                                 
+                                (click)="filter({id:'', name: '', type: 'com_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox" ></a>
+                                           الكل
+                                </label>
+
 
                                 <label    
                                 *ngFor="let order of companiesList; let i = index" 
@@ -81,6 +89,17 @@
                                 </label>
                             </div>
                             <div class="all__labels">
+
+                                <label    
+                                
+                                (click)="filter({id:'', name: '', type: 'feed_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox" ></a>
+                                           الكل
+                                </label>
+
+
                                 <label    
                                 *ngFor="let feed of feedsList; let i = index" 
                                 (click)="filter({id: feed.id, name: '', type: 'feed_id'} )" 
@@ -198,7 +217,7 @@
             <span  
                 *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
                 [ngClass]="{' title__chart  d-lg-flex d-none': isLast}"
-                class="title" >{{column?.title}}</span>
+                class="title" >{{column}}</span>
         </section>
         <!--  add row__shadow when rows length > = 3  -->
         <div class="table__body row__shadow">

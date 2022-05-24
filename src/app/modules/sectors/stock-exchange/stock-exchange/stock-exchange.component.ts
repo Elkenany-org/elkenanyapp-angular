@@ -71,15 +71,12 @@ feedsList?:CompaniesItems[] =[]
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder//////////
-   ) {
-
-
-
-    }
+   ) {}
 
     
 
   ngOnInit(): void {
+    this.h_search_form = Stock_Search_Form_Data
 
 
 
@@ -87,45 +84,30 @@ feedsList?:CompaniesItems[] =[]
 
 
         
-    this.h_search_form = Stock_Search_Form_Data
     this.route.params.subscribe((prm:Params) => {
         this.filterData['id']=prm['id'],
         this.filterData['stok']=prm['type_stock']
-
-      
-
+        this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
 
       if(prm['type_stock'] === 'fodder') {
-        console.log('fodder')
+        this.stockData(prm['id'],'','','')
+        this.stockExchange.feeds_items(prm['id']).subscribe( res => {
+        this.type_stock = prm['type_stock']
+        this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as any[] 
+        this.feedsList = this.feeds
+        this.loading = false;   
+      })
+
+      this.stockExchange.companies_items(prm['id']).subscribe( res => {
+        
+        this.companies= res.data
+        this.companiesList = this.companies
+        
+      })
 
 
 
-       this.stockExchange.fodder(prm['id'],'','','').subscribe( res => {
-          this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
-          this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
-          this.stock_Ex_Data = res.data           
-          this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
-
-          this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-            console.log(res);
-            
-            this.type_stock = prm['type_stock']
-            this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as any[] 
-            this.feedsList = this.feeds
-            console.log( res.data?.fodder_categories.concat(res.data.fodder_list) );
-            
-            this.loading = false;   
-          })
-
-          this.stockExchange.companies_items(prm['id']).subscribe( res => {
-            console.log(res.data);
-            
-            this.companies= res.data
-            this.companiesList = this.companies
-            console.log(this.companies);
-            
-          })
-       })
+      
      }else if(prm['type_stock'] === 'local')
       console.log('local')
       // .stockExchange.local(21,'local','2022-02-12').subscribe( res => {
@@ -148,7 +130,6 @@ feedsList?:CompaniesItems[] =[]
 
   }
   filter(value: any) {
-    console.log(value);
     
     // this.stockExchange.LocalStockandFodderSub(5, "", "").subscribe((res) => {
     //   this.stock_Ex_Data = res.data as LocalStockFodder 
@@ -185,7 +166,10 @@ feedsList?:CompaniesItems[] =[]
           break;
      }
     })
-  console.log(this.filterData);
+    let f= this.filterData
+    console.log(this.filterData);
+
+      this.stockData(f['id']+'',f['date'],f['feed_id'],f['com_id'])
 
     // this.stockExchange.fodder(prm['id'],'2022-02-12').subscribe( res => {
     //   this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
@@ -224,27 +208,36 @@ feedsList?:CompaniesItems[] =[]
 
 
   filter2(v:any) {
-    console.log(v);
     
       let temp:any = []
       this.companies?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
       this.companiesList=temp
       this.companiesList?.length ==0?this.companiesList=this.companies: this.companiesList
-      console.log(this.companiesList);
       
     
   }
 
   feedsFilter(v:any) {
-    console.log(v);
     
       let temp:any = []
       this.feeds?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
       this.feedsList=temp
       this.feedsList?.length ==0?this.feedsList=this.feeds: this.feedsList
-      console.log(this.feedsList);
-      
   }
 
+  stockData(id:string, data:string,fod_id?:string,comp_id?:string) {
+    console.log(+id,data,fod_id,comp_id);
+    
+    this.stockExchange.fodder(+id,'2022-01-26',fod_id,comp_id).subscribe( res => {
+      this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
+      this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
+      this.stock_Ex_Data = res.data    
+             
+        console.log(this.stock_Ex_Data);
+        this.toster.stopLoading()
+        
+
+   })
+  }
 
 }
