@@ -35,21 +35,21 @@
                             </div>
                             <div class="all__labels">
 
+                                
 
+                                <label    
+                                *ngFor="let order of companiesList; let i = index" 
+                                (click)="filter({id: order.id, name: '', type: 'com_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox" ></a>
+                                           
+                                           {{order.name}}
 
-                                <form [formGroup]="form2" (ngSubmit)="submit2()">
-                                    <label style="display: block" formArrayName="orders" *ngFor="let order of ordersFormArray2.controls; let i = index">
-                                      <input type="checkbox" [formControlName]="i">
-                                      {{companiesList![i].name}}
-                                    </label>
-                                  </form>
-
-
-                                <label class="company__filter__label" for="company-accordion-one">
-                                    <input class="checks checks-company-accordion" id="company-accordion-one"
-                                           name="companies-accordion" type="checkbox">شركة الكناني
                                     جروب
                                 </label>
+
+
                         
                             </div>
                         </div>
@@ -74,45 +74,24 @@
                             <div class="company__search">
                                 <label for="searchTypes">
                                     <input class="searchInput" id="searchTypes" name="search"
-                                    name="username" #feeds
-                                    (change)="filter2(feeds.value)"
+                                    name="username" #feeds1
+                                    (change)="feedsFilter(feeds1.value)"
                                            placeholder="ابحث عن"
                                            type="search">
                                 </label>
                             </div>
                             <div class="all__labels">
-                                <label class="type__filter__label" for="type-accordion-one">
-                                    <input class="checks checks-type-accordion" id="type-accordion-one"
-                                           name="companies-accordion" type="radio">شركة الكناني
-                                    جروب</label>
-                                <label class="type__filter__label" for="type-accordion-two">
-                                    <input class="checks checks-type-accordion" id="type-accordion-two"
-                                           name="companies-accordion" type="radio">شركة الكناني
-                                    جروب</label>
-                                <label class="type__filter__label" for="type-accordion-three">
-                                    <input class="checks checks-type-accordion" id="type-accordion-three"
-                                           name="companies-accordion" type="radio">شركة
-                                    الكناني
-                                    جروب</label>
-                                <label class="type__filter__label" for="type-accordion-four">
-                                    <input class="checks checks-type-accordion" id="type-accordion-four"
-                                           name="companies-accordion" type="radio">شركة
-                                    الكناني
-                                    جروب</label>
-                                <label class="type__filter__label" for="type-accordion-five">
-                                    <input class="checks checks-type-accordion" id="type-accordion-five"
-                                           name="companies-accordion" type="radio">شركة
-                                    الكناني
-                                    جروب</label>
-                                <label class="type__filter__label" for="type-accordion-six">
-                                    <input class="checks checks-type-accordion" id="type-accordion-six"
-                                           name="companies-accordion" type="radio">شركة الكناني
-                                    جروب</label>
-                                <label class="type__filter__label" for="type-accordion-seven">
-                                    <input class="checks checks-type-accordion" id="type-accordion-seven"
-                                           name="companies-accordion" type="radio">شركة
-                                    الكناني
-                                    جروب</label>
+                                <label    
+                                *ngFor="let feed of feedsList; let i = index" 
+                                (click)="filter({id: feed.id, name: '', type: 'feed_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox" ></a>
+                                           
+                                           {{feed.name}}
+
+                                    جروب
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -279,10 +258,10 @@
  -->
 
 
-  <form [formGroup]="form2" (ngSubmit)="submit2()">
+  <!-- <form [formGroup]="form2" (ngSubmit)="submit2()">
     <label style="display: block" formArrayName="orders" *ngFor="let order of ordersFormArray2.controls; let i = index">
       <input type="checkbox" [formControlName]="i">
       {{companiesList![i].name}}
     </label>
     <button>submit</button>
-  </form>
+  </form> -->

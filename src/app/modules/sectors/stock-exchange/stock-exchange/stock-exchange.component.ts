@@ -35,20 +35,14 @@ export class StockExchangeComponent implements OnInit {
   public h_search_form: JsonFormData | any;
   public stock_Ex_Data?:any;
 ///////////////////////////////////
-form!: FormGroup;
-form2!: FormGroup;
-ordersData = [
-  { id: 100, name: 'order 1' },
-  { id: 200, name: 'order 2' },
-  { id: 300, name: 'order 3' },
-  { id: 400, name: 'order 4' }
-];
 
 
 companiesList?:CompaniesItems[] =[]
+feedsList?:CompaniesItems[] =[]
+
 /////////////////////////////////
 
-  public feeds?: FodderCategory [];
+  public feeds?:CompaniesItems[] =[]
   public companies?:CompaniesItems [];
 
   temp: any
@@ -61,9 +55,12 @@ companiesList?:CompaniesItems[] =[]
   
 
   public filterData:{[key:string]:string}= {
-    type:"",
-    sort:"",
-    search:"",
+    id:'',
+    sector:"",
+    stock_id:"",
+    date:'',
+    com_id:"",
+    feed_id:''
   }
 
   constructor( 
@@ -85,36 +82,17 @@ companiesList?:CompaniesItems[] =[]
   ngOnInit(): void {
 
 
-        ////////////////////////
-        this.form = this.formBuilder.group({
-          orders: new FormArray([])
-        });
 
-        this.form2 = this.formBuilder.group({
-          orders: new FormArray([])
-        });
-    
-        this.addCheckboxes();
-        //////////////////////
+
+
 
         
     this.h_search_form = Stock_Search_Form_Data
     this.route.params.subscribe((prm:Params) => {
-      // console.log(prm)
-      // this.stockExchange.LocalStockandFodderSub(prm['id'],prm['type_stock'],'').subscribe(res => {
-      //   this.toster.stopLoading()
-      //   console.log(res);
-      //   this.stock_Ex_Data = res.data  
-      //   this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
-      //   this.BannerLogoService.setLogo(res.data?.logos as Logo[]);   
-        
-      //   this.stockExchange.FilterListItemSub(prm['type'],prm['type_stock'],prm['id']).subscribe(res => {
-      //     console.log(res);
-      //     this.h_search_form.controls.find((i:any) => i.role ==='sector').option = res.data?.sections
-      //     this.h_search_form.controls.find((i:any) => i.role ==='stock').option = res.data?.fodder_sub_sections
-          
-      //   })
-      // })
+        this.filterData['id']=prm['id'],
+        this.filterData['stok']=prm['type_stock']
+
+      
 
 
       if(prm['type_stock'] === 'fodder') {
@@ -122,20 +100,20 @@ companiesList?:CompaniesItems[] =[]
 
 
 
-       this.stockExchange.fodder(prm['id'],'').subscribe( res => {
-
+       this.stockExchange.fodder(prm['id'],'','','').subscribe( res => {
           this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
           this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
-          this.stock_Ex_Data = res.data  
-          console.log(res.data  );
-          
+          this.stock_Ex_Data = res.data           
           this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
 
           this.stockExchange.feeds_items(prm['id']).subscribe( res => {
             console.log(res);
             
             this.type_stock = prm['type_stock']
-            this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as FodderCategory[]
+            this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as any[] 
+            this.feedsList = this.feeds
+            console.log( res.data?.fodder_categories.concat(res.data.fodder_list) );
+            
             this.loading = false;   
           })
 
@@ -143,7 +121,9 @@ companiesList?:CompaniesItems[] =[]
             console.log(res.data);
             
             this.companies= res.data
-            this.addCheckboxes2()
+            this.companiesList = this.companies
+            console.log(this.companies);
+            
           })
        })
      }else if(prm['type_stock'] === 'local')
@@ -160,7 +140,6 @@ companiesList?:CompaniesItems[] =[]
 
   search_Filter(id:number, type:string, type_stock:string):void {
     this.stockExchange.Filter_list_sub(id, type, type_stock).subscribe((res:ApiResponse<FilterListSub>) => {
-      // console.log(res.data)
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   res.data?.fodder_sub_sections;
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/${id}`;
@@ -169,14 +148,15 @@ companiesList?:CompaniesItems[] =[]
 
   }
   filter(value: any) {
+    console.log(value);
+    
     // this.stockExchange.LocalStockandFodderSub(5, "", "").subscribe((res) => {
     //   this.stock_Ex_Data = res.data as LocalStockFodder 
     //   this.carousel_banner.banner = res.data?.banners
     //   this.carousel_logos.banner = res.data?.logos
     //   this.loading = false;
     // })
-    console.log( value)
-    console.log( value.type)
+
 
 
 
@@ -192,12 +172,20 @@ companiesList?:CompaniesItems[] =[]
           this.filterData['date'] = value.name
           break;
         case "stock":
-          this.filterData['stock'] = value.id 
+          this.filterData['stock_id'] = value.name
           break;
+        case "com_id":
+            this.filterData['com_id'] = value.id 
+            break;
+        case "feed_id":
+            this.filterData['feed_id'] = value.id 
+            break;
+
         default: 
           break;
      }
     })
+  console.log(this.filterData);
 
     // this.stockExchange.fodder(prm['id'],'2022-02-12').subscribe( res => {
     //   this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
@@ -231,64 +219,32 @@ companiesList?:CompaniesItems[] =[]
 
   //////////////////
 
-  get ordersFormArray() {
-    return this.form.controls['orders'] as FormArray;
-  }
-
-  get ordersFormArray2() {
-    return this.form2.controls['orders'] as FormArray;
-  }
 
 
-  private addCheckboxes() {
-    this.ordersData.forEach(() => this.ordersFormArray.push(new FormControl(false)));
-  }
-
-  private addCheckboxes2() {
-    // this.companies?.forEach(() => this.ordersFormArray2.push(new FormControl(false)))
-    this.companiesList = this.companies 
-    this.companiesList?.forEach(() => this.ordersFormArray2.push(new FormControl(false)))
-  }
-
-
-
-
-  submit() {
-    const selectedOrderIds = this.form.value.orders
-      .map((checked:any, i:any) => checked ? this.ordersData[i].id : null)
-      .filter((v:any) => v !== null);
-    console.log(selectedOrderIds);
-  }
-
-
-  submit2() {
-    const selectedOrderIds = this.form2.value.orders
-      .map((checked:any, i:any) => checked ? this.companies![i].id : null)
-      .filter((v:any) => v !== null);
-    console.log(selectedOrderIds);
-  }
 
 
   filter2(v:any) {
     console.log(v);
     
       let temp:any = []
-  //  this.form2.value.orders.map((checked:any, i:any) => console.log( i))
-
-  // .find(i => i.name.includes(v) ))
-      this.ordersFormArray2.controls=[]
-
       this.companies?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
       this.companiesList=temp
-
-      this.companiesList?.forEach(() => this.ordersFormArray2.push(new FormControl(false)))
-
       this.companiesList?.length ==0?this.companiesList=this.companies: this.companiesList
       console.log(this.companiesList);
       
     
   }
 
-  //////////////////
+  feedsFilter(v:any) {
+    console.log(v);
+    
+      let temp:any = []
+      this.feeds?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
+      this.feedsList=temp
+      this.feedsList?.length ==0?this.feedsList=this.feeds: this.feedsList
+      console.log(this.feedsList);
+      
+  }
+
 
 }
