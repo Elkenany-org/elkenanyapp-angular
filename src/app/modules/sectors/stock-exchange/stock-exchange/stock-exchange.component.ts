@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 // import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { Banner_test, logo_test } from '@app/modules/home/data';
 
@@ -68,9 +68,7 @@ feedsList?:CompaniesItems[] =[]
     private route: ActivatedRoute,
     private BannerLogoService:BannersLogoservice,
     private toster:ToasterService,
-    private location: Location,
-    private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder//////////
+    private router: Router
    ) {}
 
     
@@ -85,7 +83,7 @@ feedsList?:CompaniesItems[] =[]
 
         
     this.route.params.subscribe((prm:Params) => {
-        this.filterData['id']=prm['id'],
+        this.filterData['stock_id']=prm['id'],
         this.filterData['stok']=prm['type_stock']
         this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
 
@@ -138,6 +136,7 @@ feedsList?:CompaniesItems[] =[]
     //   this.loading = false;
     // })
 
+console.log(value);
 
 
 
@@ -147,13 +146,14 @@ feedsList?:CompaniesItems[] =[]
       this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
+          this.router.navigate(['/stock-exchange',value.name])
           this.filterData['sector'] = value.name
           break;
         case "date":
           this.filterData['date'] = value.name
           break;
         case "stock":
-          this.filterData['stock_id'] = value.name
+          this.filterData['stock_id'] = value.id
           break;
         case "com_id":
             this.filterData['com_id'] = value.id 
@@ -169,7 +169,7 @@ feedsList?:CompaniesItems[] =[]
     let f= this.filterData
     console.log(this.filterData);
 
-      this.stockData(f['id']+'',f['date'],f['feed_id'],f['com_id'])
+      this.stockData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'])
 
     // this.stockExchange.fodder(prm['id'],'2022-02-12').subscribe( res => {
     //   this.BannerLogoService.setBanner(res.data?.banners as Banner[]);

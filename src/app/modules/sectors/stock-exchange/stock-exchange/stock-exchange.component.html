@@ -223,7 +223,7 @@
         <div class="table__body row__shadow">
             <!-- Start One Row    add ads class if ad  -->
             <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart  d-lg-flex d-none': isLast}">
-                <a class="cell__container" [routerLink]="['/companies-guid/companies_details/5']">
+                <a class="cell__container" [routerLink]="['/companies-guid/companies_details','',member.mem_id]">
                     <div class="cell__content__with__image">
                         <img alt="logo"
                              class="image"
@@ -234,7 +234,7 @@
          
                 <div class="wall"></div>
                 <section class="cell__container">
-                    <span class="cell__content">{{member.price}}</span>
+                    <span class="cell__content">{{member.feed}}</span>
                 </section>
                 <div class="wall"></div>
                 <section class="cell__container">
@@ -242,6 +242,7 @@
                 </section>
                 <div class="wall"></div>
                 <section class="cell__container">
+                    <span class="cell__content">{{member.change}}</span>
                     <span class="cell__content">{{member.change_date}}</span>
                     <!-- <span class="cell__content">07:05</span>
                     <span class="cell__content">2021-05-30</span> -->
