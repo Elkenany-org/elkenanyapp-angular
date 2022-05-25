@@ -55,6 +55,7 @@ feedsList?:CompaniesItems[] =[]
   
 
   public filterData:{[key:string]:string}= {
+    type:'',
     id:'',
     sector:"",
     stock_id:"",
@@ -84,7 +85,8 @@ feedsList?:CompaniesItems[] =[]
         
     this.route.params.subscribe((prm:Params) => {
         this.filterData['stock_id']=prm['id'],
-        this.filterData['stok']=prm['type_stock']
+        this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
+        this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
         this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
 
       if(prm['type_stock'] === 'fodder') {
@@ -106,14 +108,26 @@ feedsList?:CompaniesItems[] =[]
 
 
       
-     }else if(prm['type_stock'] === 'local')
+     }else if(prm['type_stock'] === 'local'){
       console.log('local')
-      // .stockExchange.local(21,'local','2022-02-12').subscribe( res => {
-      //   this.stock_Ex_Data = res.data  as LocalStockFodder
-      //   this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
-      //     this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
-      //   })
-      // })
+
+     }
+      this.stockExchange.local(21,'local','2022-02-12').subscribe( res => {
+        let arr:any[] =[]
+        console.log(res.data);
+        
+        res.data?.columns.forEach(i => {
+      
+          arr.push( i )
+        }   )   
+        
+        console.log(arr.indexOf("العمر"));
+        
+        this.stock_Ex_Data = res.data  as LocalStockFodder
+        this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
+          this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
+        })
+      })
     })
   }
 
@@ -240,4 +254,17 @@ console.log(value);
    })
   }
 
+  nameofcolumn(i:string):number {
+    console.log(this.stock_Ex_Data?.columns.indexOf(i));
+
+    return this.stock_Ex_Data?.columns[this.stock_Ex_Data?.columns.indexOf(i)]
+    
+  }
+
+get N_C():any[] {
+  console.log(this.stock_Ex_Data?.columns);
+  
+  return this.stock_Ex_Data?.columns
+}
+  
 }

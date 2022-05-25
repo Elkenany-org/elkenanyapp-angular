@@ -10,7 +10,7 @@
 
 
 
- <article class="table__header__filter special__container">
+ <article class="table__header__filter special__container"   *ngIf="filterData['type'] == 'fodder'">
     <section class="head new__cards__header">
         <div class="card">
             <div class="card-header" id="itemsSelect2">
@@ -20,6 +20,7 @@
                 </button>
             </div>
             <div  class="collapse "   [ngClass]="{'show':collapse==1}"
+          
                  id="collapseItemsSelect2">
                 <div class="card-body">
                     <div class="multiselect multiselect-accordion" id="multiselect-companies-accordion">
@@ -213,11 +214,26 @@
 
     <!-- Start Table 5 cols with chart -->
     <section class="table__container table-chart-5 special__container">
-        <section class="table__head">
+        <!-- <section class="table__head">
             <span  
                 *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
                 [ngClass]="{' title__chart  d-lg-flex d-none': isLast}"
                 class="title" >{{column}}</span>
+        </section>
+        <section>
+            <span  
+                *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
+            ></span>
+        </section> -->
+        <section class="table__head" >
+            <!-- <span  class="title title__chart  d-lg-flex d-none'" *ngIf="this.stock_Ex_Data?.columns[this.stock_Ex_Data?.columns.indexOf('الأسم')] ==0" >         {{nameofcolumn('الأسم')}}</span> -->
+            <span  class="title title__chart  d-lg-flex d-none'" *ngIf="N_C.indexOf('الأسم')!=1" >         {{nameofcolumn('الأسم')}}</span>
+            <!-- <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('السعر') !=-1" >        {{nameofcolumn('السعر')}}</span>
+                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('مقدار التغير')!=-1" >{{nameofcolumn('مقدار التغير')}}</span>
+                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('العمر')!=-1">        {{nameofcolumn('العمر')}}</span>
+                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('النوع')!=-1">        {{nameofcolumn('النوع')}}</span>
+                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('حالة السعر')!=-1">   {{nameofcolumn('حالة السعر')}}</span>
+                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('إتجاه السعر')!=-1">  {{nameofcolumn('إتجاه السعر')}}</span> -->
         </section>
         <!--  add row__shadow when rows length > = 3  -->
         <div class="table__body row__shadow">

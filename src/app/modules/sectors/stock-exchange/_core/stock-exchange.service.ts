@@ -81,7 +81,6 @@ export class StockExchangeService {
   }
 
   Filter_list_sub(id: number, type:string, type_stock:string): Observable<ApiResponse<FilterListSub>> { //Home
-    console.log(id, type, type_stock)
     return this.http.get<ApiResponse<FilterListSub>>(`${env.ApiUrl}/localstock/filter-stock-show-sub-section?id=1&type=poultry&type_stock=fodder`);
     // return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/localstock/filter-stock-show-sub-section?id=${id}&type=${type}&type_stock=${type_stock}`);
   }
