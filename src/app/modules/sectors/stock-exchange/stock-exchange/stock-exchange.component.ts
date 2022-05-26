@@ -1,23 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-// import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
-import { Banner_test, logo_test } from '@app/modules/home/data';
-
 import { StockExchangeService } from '../_core/stock-exchange.service';
-import { CompaniesItems, FilterListSub, FodderCategory, LocalStockFodder} from '@core/interfaces/stock-exchanges/Stock-exchange';
+import { CompaniesItems, FilterListSub, LocalStockFodder} from '@core/interfaces/stock-exchanges/Stock-exchange';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { JsonFormControls } from '@app/@shared/components/app/horizontal-search/_core/data';
-import { Location } from '@angular/common';
 import { Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stock-exchange';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { ToasterService } from '@shared/services/toastr.service';
-import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { map } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import { Companies } from '@app/@core/interfaces/companies-guid/co-companies';
+import { FormatDate } from '@shared/classes/formatDate';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -30,25 +22,21 @@ import { Companies } from '@app/@core/interfaces/companies-guid/co-companies';
 export class StockExchangeComponent implements OnInit {
   
   public loading: boolean= false;
-  public carousel_banner?: any = Banner_test;
-  public carousel_logos:any = logo_test;
+
   public h_search_form: JsonFormData | any;
   public stock_Ex_Data?:any;
+
 ///////////////////////////////////
 
 
-companiesList?:CompaniesItems[] =[]
-feedsList?:CompaniesItems[] =[]
-
-/////////////////////////////////
-
+  public companiesList?:CompaniesItems[] =[]
+  public feedsList?:CompaniesItems[] =[]
   public feeds?:CompaniesItems[] =[]
   public companies?:CompaniesItems [];
+/////////////////////////////////
 
-  temp: any
-  company= ''
-  type_stock:string =''
-  open:boolean= false
+
+
   collapse:number= 0
 
 
@@ -75,6 +63,8 @@ feedsList?:CompaniesItems[] =[]
     
 
   ngOnInit(): void {
+    let today= new FormatDate().shortDate(Date())
+
     this.h_search_form = Stock_Search_Form_Data
 
 
@@ -87,12 +77,11 @@ feedsList?:CompaniesItems[] =[]
         this.filterData['stock_id']=prm['id'],
         this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
         this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
-        this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
+        // this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
 
       if(prm['type_stock'] === 'fodder') {
         this.stockData(prm['id'],'','','')
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-        this.type_stock = prm['type_stock']
         this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as any[] 
         this.feedsList = this.feeds
         this.loading = false;   
@@ -109,25 +98,24 @@ feedsList?:CompaniesItems[] =[]
 
       
      }else if(prm['type_stock'] === 'local'){
-      console.log('local')
-
-     }
-      this.stockExchange.local(21,'local','2022-02-12').subscribe( res => {
+        this.stockExchange.local(prm['id'],today).subscribe( res => {
         let arr:any[] =[]
         console.log(res.data);
-        
         res.data?.columns.forEach(i => {
       
           arr.push( i )
         }   )   
         
-        console.log(arr.indexOf("العمر"));
+        // console.log(arr.indexOf("العمر"));
         
         this.stock_Ex_Data = res.data  as LocalStockFodder
         this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
           this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
         })
       })
+
+     }
+
     })
   }
 
@@ -150,7 +138,7 @@ feedsList?:CompaniesItems[] =[]
     //   this.loading = false;
     // })
 
-console.log(value);
+// console.log(value);
 
 
 
@@ -181,7 +169,7 @@ console.log(value);
      }
     })
     let f= this.filterData
-    console.log(this.filterData);
+    // console.log(this.filterData);
 
       this.stockData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'])
 
@@ -222,13 +210,10 @@ console.log(value);
 
 
   filter2(v:any) {
-    
       let temp:any = []
       this.companies?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
       this.companiesList=temp
       this.companiesList?.length ==0?this.companiesList=this.companies: this.companiesList
-      
-    
   }
 
   feedsFilter(v:any) {
@@ -240,9 +225,8 @@ console.log(value);
   }
 
   stockData(id:string, data:string,fod_id?:string,comp_id?:string) {
-    console.log(+id,data,fod_id,comp_id);
     
-    this.stockExchange.fodder(+id,'2022-01-26',fod_id,comp_id).subscribe( res => {
+    this.stockExchange.fodder(+id,'2022-05-26',fod_id,comp_id).subscribe( res => {
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
@@ -255,16 +239,11 @@ console.log(value);
   }
 
   nameofcolumn(i:string):number {
-    console.log(this.stock_Ex_Data?.columns.indexOf(i));
+    // console.log(this.stock_Ex_Data?.columns.indexOf(i));
 
     return this.stock_Ex_Data?.columns[this.stock_Ex_Data?.columns.indexOf(i)]
     
   }
 
-get N_C():any[] {
-  console.log(this.stock_Ex_Data?.columns);
-  
-  return this.stock_Ex_Data?.columns
-}
-  
+
 }

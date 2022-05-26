@@ -50,14 +50,12 @@ export class HomeStockExchangeComponent implements OnInit  {
      //set initial data to horizontal component 
     this.activatedRoute.data.pipe(
       map((data) => {
-        console.log(data)
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
       this.toster.stopLoading()
 
       this.stock_Ex_Data = res['resolve']  as StockExchange
-      console.log(res['resolve'] )
       this.BannerLogoService.setBanner(res['resolve'].banners);
       this.BannerLogoService.setLogo(res['resolve'].logos);
       this.loading = false;      
@@ -96,7 +94,6 @@ export class HomeStockExchangeComponent implements OnInit  {
           break;
      }
     })
-    console.log(this.filterData)
 
       this.stockExchange.GetStockExchangeV2( this.filterData['sector'],  this.filterData['sort'],this.filterData['search']).subscribe( res => {
       this.toster.stopLoading()
@@ -115,7 +112,6 @@ export class HomeStockExchangeComponent implements OnInit  {
 
   navigate(id: string): void
   {
-    console.log(id)
     // this.router.navigate([`/stock-exchange/poultry/stock-exchange/${id}/${this.type}`]);
   }
 
@@ -123,9 +119,7 @@ export class HomeStockExchangeComponent implements OnInit  {
   
   navigateV2(data: {id: string, type:string}): void
   {
-    console.log('this.type',this.type)
-    console.log('data.type', data.type)
-    console.log(data)
+
      this.router.navigate([`/stock-exchange/poultry/stock-exchange/${this.type}/${data.type}/${data.id}`]);
   }
 

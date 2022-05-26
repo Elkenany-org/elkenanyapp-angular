@@ -76,8 +76,8 @@ export class StockExchangeService {
     return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/v2/fodder/tables?id=${id}&date=${data}&fod_id=${fod_id}&comp_id=${comp_id}`)
   }
 
-  local(id:number, type:string, data:string) : Observable<ApiResponse<Fodder>> {
-    return this.http.get<ApiResponse<Fodder>>(`${env.ApiUrl}/v2/local/tables?id=13&date=2022-01-26`)
+  local(id:number, data:string) : Observable<ApiResponse<Fodder>> {
+    return this.http.get<ApiResponse<Fodder>>(`${env.ApiUrl}/v2/local/tables?id=${id}&date=${data}`)
   }
 
   Filter_list_sub(id: number, type:string, type_stock:string): Observable<ApiResponse<FilterListSub>> { //Home

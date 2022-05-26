@@ -123,118 +123,15 @@
 
 
 <div class="global__container" >
-    <!-- <article class="table__header__filter special__container" *ngIf="type_stock === 'fodder'"> 
-        <section class="head new__cards__header ">
-            <div class="card">
-                <div class="card-header" id="itemsSelect">
-                    <button 
-                    aria-expanded="false" 
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    id="dropdownMenuButton"
-                    appDropdown
-                    #s="appDropDown" 
-                    class="card__button"
-                    data-target="#collapseItemsSelect">
-                        الشركة
-                    </button>
-                </div>
-                <div  [ngClass]="{'show':s.isOpen}" class="dropdown-menu" aria-labelledby="dropdownMenuButton"  aria-labelledby="itemsSelect" class="collapse" data-parent="#accordion"
-                     id="collapseItemsSelect">
-                    <div class="card-body">
-                        <div class="multiselect multiselect-accordion" id="multiselect-companies-accordion">
-                            <div class="checkboxes" id="checkboxes-companies-accordion">
-                                <div class="company__search">
-                                    <label for="searchCompany">
-                                        <input class="searchInput" id="searchCompany" name="search"
-                                               placeholder="ابحث عن"
-                                               type="search">
-                                    </label>
-                                </div>
-                                <div class="all__labels" >
-                                     <label class="company__filter__label" for="company-accordion-one" *ngFor="let company of companies">
-                                        <input class="checks checks-company-accordion" id="company-accordion-one"
-                                               name="companies-accordion" type="checkbox">{{company.name}} 
-                                   </label> 
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="head new__cards__header">
-            <div class="card">
-                <div class="card-header" id="itemsSelect2">
-                    <button aria-expanded="false" 
-                    aria-expanded="false" 
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    id="dropdownMenuButton"
-                    appDropdown
-                    #s1="appDropDown" 
-                    class="card__button"
-                    data-target="#collapseItemsSelect">
-                        الصنف
-                    </button>
-                </div>
-
-
-                <div  [ngClass]="{'show':s1.isOpen}" class="dropdown-menu" aria-labelledby="dropdownMenuButton"  aria-labelledby="itemsSelect" class="collapse" data-parent="#accordion"
-                id="collapseItemsSelect">
-                    <div class="card-body">
-                        <div class="multiselect multiselect-accordion" id="multiselect-types-accordion">
-                            <div class="checkboxes" id="checkboxes-types-accordion">
-                                <div class="company__search">
-                                    <label for="searchTypes">
-                                        <input class="searchInput" id="searchTypes" name="search"
-                                               placeholder="ابحث عن"
-                                               type="search">
-                                    </label>
-                                </div>
-                                <div class="all__labels">
-                                     <label class="type__filter__label" for="type-accordion-one"  *ngFor="let feed of feeds">
-                                        <input class="checks checks-type-accordion" id="type-accordion-one"
-                                               name="companies-accordion" type="radio"> {{feed.name}}
-                                        </label> 
-                           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </article> -->
-
-    <!-- Start Table 5 cols with chart -->
+   
     <section class="table__container table-chart-5 special__container">
-        <!-- <section class="table__head">
+        <section class="table__head">
             <span  
                 *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
                 [ngClass]="{' title__chart  d-lg-flex d-none': isLast}"
                 class="title" >{{column}}</span>
         </section>
-        <section>
-            <span  
-                *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
-            ></span>
-        </section> -->
-        <section class="table__head" >
-            <!-- <span  class="title title__chart  d-lg-flex d-none'" *ngIf="this.stock_Ex_Data?.columns[this.stock_Ex_Data?.columns.indexOf('الأسم')] ==0" >         {{nameofcolumn('الأسم')}}</span> -->
-            <span  class="title title__chart  d-lg-flex d-none'" *ngIf="N_C.indexOf('الأسم')!=1" >         {{nameofcolumn('الأسم')}}</span>
-            <!-- <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('السعر') !=-1" >        {{nameofcolumn('السعر')}}</span>
-                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('مقدار التغير')!=-1" >{{nameofcolumn('مقدار التغير')}}</span>
-                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('العمر')!=-1">        {{nameofcolumn('العمر')}}</span>
-                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('النوع')!=-1">        {{nameofcolumn('النوع')}}</span>
-                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('حالة السعر')!=-1">   {{nameofcolumn('حالة السعر')}}</span>
-                <span  class="title title__chart  d-lg-flex d-none'" *ngIf="nameofcolumn('إتجاه السعر')!=-1">  {{nameofcolumn('إتجاه السعر')}}</span> -->
-        </section>
+        
         <!--  add row__shadow when rows length > = 3  -->
         <div class="table__body row__shadow">
             <!-- Start One Row    add ads class if ad  -->
@@ -243,19 +140,23 @@
                     <div class="cell__content__with__image">
                         <img alt="logo"
                              class="image"
+                             *ngIf="member.image"
                              [src]="member.image">
-                             <span class="cell__content">  {{member.name}}</span>
+                             <p class="cell__content">  {{member.name}}</p>
                     </div>
                 </a>
-         
-                <div class="wall"></div>
-                <section class="cell__container">
-                    <span class="cell__content">{{member.feed}}</span>
-                </section>
                 <div class="wall"></div>
                 <section class="cell__container">
                     <span class="data__content">{{member.price}}</span>
                 </section>
+                <div *ngIf="stock_Ex_Data?.members['الأصناف']">
+                    <div class="wall"></div>
+                    <section class="cell__container" >
+                        <span class="cell__content">{{member.feed}}</span>
+                    </section>
+                </div>
+
+
                 <div class="wall"></div>
                 <section class="cell__container">
                     <span class="cell__content">{{member.change}}</span>
@@ -263,10 +164,14 @@
                     <!-- <span class="cell__content">07:05</span>
                     <span class="cell__content">2021-05-30</span> -->
                 </section>
+
+
+
+
                 <div class="wall  d-lg-block d-none"></div>
                 <section class="cell__container data__charts d-lg-block d-none">
                     <div id="chart-5-ads"></div>
-                    <img [src]="member.statistics" style="width:70%">
+                    <img [src]="member.statistics" style="width:50%">
                 </section>
             </section>
             <!-- End One Row  -->
@@ -284,20 +189,3 @@
 
 
 
-<!-- <form [formGroup]="form" (ngSubmit)="submit()">
-    <label formArrayName="orders" *ngFor="let order of ordersFormArray.controls; let i = index">
-      <input type="checkbox" [formControlName]="i">
-      {{ordersData[i].name}}
-    </label>
-    <button>submit</button>
-  </form>
- -->
-
-
-  <!-- <form [formGroup]="form2" (ngSubmit)="submit2()">
-    <label style="display: block" formArrayName="orders" *ngFor="let order of ordersFormArray2.controls; let i = index">
-      <input type="checkbox" [formControlName]="i">
-      {{companiesList![i].name}}
-    </label>
-    <button>submit</button>
-  </form> -->
