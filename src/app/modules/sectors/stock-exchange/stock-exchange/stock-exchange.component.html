@@ -29,7 +29,7 @@
                                 <label for="searchCompany">
                                     <input class="searchInput" id="searchCompany" name="search" 
                                              name="username" #company
-                                            (change)="filter2(company.value)"
+                                            (change)="companySearch(company.value)"
                                            placeholder="ابحث عن"
                                            type="search">
                                 </label>
@@ -47,13 +47,13 @@
 
 
                                 <label    
-                                *ngFor="let order of companiesList; let i = index" 
-                                (click)="filter({id: order.id, name: '', type: 'com_id'} )" 
+                                *ngFor="let company of companiesList; let i = index" 
+                                (click)="filter({id: company.id, name: '', type: 'com_id'} )" 
                                 class="company__filter__label" for="company-accordion-one">
                                     <a class="checks checks-company-accordion" id="company-accordion-one"
                                            name="companies-accordion" type="checkbox" ></a>
                                            
-                                           {{order.name}}
+                                           {{company.name}}
 
                                     جروب
                                 </label>
@@ -84,7 +84,7 @@
                                 <label for="searchTypes">
                                     <input class="searchInput" id="searchTypes" name="search"
                                     name="username" #feeds1
-                                    (change)="feedsFilter(feeds1.value)"
+                                    (change)="feedsSearch(feeds1.value)"
                                            placeholder="ابحث عن"
                                            type="search">
                                 </label>
@@ -126,10 +126,20 @@
    
     <section class="table__container table-chart-5 special__container">
         <section class="table__head">
-            <span  
+            <!-- <span  
                 *ngFor="let column of stock_Ex_Data?.columns; let isLast = last"
                 [ngClass]="{' title__chart  d-lg-flex d-none': isLast}"
-                class="title" >{{column}}</span>
+                class="title" >{{column}}</span> -->
+
+                <span *ngIf="stock_Ex_Data?.columns[0]" class="title" >{{stock_Ex_Data?.columns[0]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[1]" class="title" >{{stock_Ex_Data?.columns[1]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[2]" class="title" >{{stock_Ex_Data?.columns[2]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[3]" class="title" >{{stock_Ex_Data?.columns[3]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[4]" class="title" >{{stock_Ex_Data?.columns[4]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[5]" class="title" >{{stock_Ex_Data?.columns[5]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[6]" class="title" >{{stock_Ex_Data?.columns[6]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[7]" class="title" >{{stock_Ex_Data?.columns[7]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[8]" class="title" >{{stock_Ex_Data?.columns[8]}}</span>
         </section>
         
         <!--  add row__shadow when rows length > = 3  -->
@@ -145,28 +155,57 @@
                              <p class="cell__content">  {{member.name}}</p>
                     </div>
                 </a>
+
+
+                <div class="wall"*ngIf="stock_Ex_Data?.columns[1]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[1]">
+                    <span class="cell__content">{{member.feed}}</span>
+                    <span></span>
+                </section>
+
+                
                 <div class="wall"></div>
                 <section class="cell__container">
                     <span class="data__content">{{member.price}}</span>
                 </section>
-                <div *ngIf="stock_Ex_Data?.members['الأصناف']">
-                    <div class="wall"></div>
-                    <section class="cell__container" >
-                        <span class="cell__content">{{member.feed}}</span>
-                    </section>
-                </div>
 
 
-                <div class="wall"></div>
-                <section class="cell__container">
-                    <span class="cell__content">{{member.change}}</span>
-                    <span class="cell__content">{{member.change_date}}</span>
-                    <!-- <span class="cell__content">07:05</span>
-                    <span class="cell__content">2021-05-30</span> -->
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[3]" ></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[3]">
+                    <span class="data__content">{{member.charging_system}}</span>
                 </section>
 
 
 
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[4]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[4]">
+                    <span class="data__content">{{member.categorize_name}}</span>
+                </section>
+
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[5]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[5]">
+                    <span class="data__content">{{member.weight}}</span>
+                </section>
+
+
+
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[6]"></div>
+                <section class="cell__container"*ngIf="stock_Ex_Data?.columns[6]">
+                    <span class="cell__content" >{{member.change}}</span>
+                    <span class="cell__content">{{member.change_date}}</span>
+
+                </section>
+
+
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[7]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[7]">
+                    <span class="data__content">{{member.price_status}}</span>
+                </section>
+
+                
+
+                              
+        
 
                 <div class="wall  d-lg-block d-none"></div>
                 <section class="cell__container data__charts d-lg-block d-none">

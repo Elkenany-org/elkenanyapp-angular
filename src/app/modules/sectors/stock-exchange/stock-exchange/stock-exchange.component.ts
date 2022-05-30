@@ -10,6 +10,7 @@ import { Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stoc
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { ToasterService } from '@shared/services/toastr.service';
 import { FormatDate } from '@shared/classes/formatDate';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -22,26 +23,13 @@ import { FormatDate } from '@shared/classes/formatDate';
 export class StockExchangeComponent implements OnInit {
   
   public loading: boolean= false;
-
   public h_search_form: JsonFormData | any;
   public stock_Ex_Data?:any;
-
-///////////////////////////////////
-
-
   public companiesList?:CompaniesItems[] =[]
   public feedsList?:CompaniesItems[] =[]
   public feeds?:CompaniesItems[] =[]
   public companies?:CompaniesItems [];
-/////////////////////////////////
-
-
-
-  collapse:number= 0
-
-
-  
-
+  public collapse:number= 0
   public filterData:{[key:string]:string}= {
     type:'',
     id:'',
@@ -51,6 +39,14 @@ export class StockExchangeComponent implements OnInit {
     com_id:"",
     feed_id:''
   }
+
+
+
+
+
+
+  
+
 
   constructor( 
     private stockExchange: StockExchangeService,
@@ -77,6 +73,8 @@ export class StockExchangeComponent implements OnInit {
         this.filterData['stock_id']=prm['id'],
         this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
         this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
+        this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
+
         // this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
 
       if(prm['type_stock'] === 'fodder') {
@@ -101,17 +99,16 @@ export class StockExchangeComponent implements OnInit {
         this.stockExchange.local(prm['id'],today).subscribe( res => {
         let arr:any[] =[]
         console.log(res.data);
-        res.data?.columns.forEach(i => {
-      
-          arr.push( i )
-        }   )   
+        // res.data?.columns.forEach(i => {
+        //   console.log(i);
+          
+        //   // arr.push( i )
+        // }   )   
         
-        // console.log(arr.indexOf("العمر"));
         
-        this.stock_Ex_Data = res.data  as LocalStockFodder
-        this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
-          this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
-        })
+         this.stock_Ex_Data = res.data  as LocalStockFodder
+        // this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
+        // })
       })
 
      }
@@ -130,6 +127,7 @@ export class StockExchangeComponent implements OnInit {
 
   }
   filter(value: any) {
+    // console.log(value);
     
     // this.stockExchange.LocalStockandFodderSub(5, "", "").subscribe((res) => {
     //   this.stock_Ex_Data = res.data as LocalStockFodder 
@@ -173,25 +171,15 @@ export class StockExchangeComponent implements OnInit {
 
       this.stockData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'])
 
-    // this.stockExchange.fodder(prm['id'],'2022-02-12').subscribe( res => {
-    //   this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
-    //   this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
-    //   this.stock_Ex_Data = res.data  
-    // })
 
-      // this.stockExchange.GetStockExchangeV2( this.filterData['sector'],  this.filterData['sort']).subscribe( res => {
-      //   this.toster.stopLoading()
 
-      // // this.stock_Ex_Data = res.data
-      // // this.BannerLogoService.setBanner(this.stock_Ex_Data.banners);
-      // // this.BannerLogoService.setLogo(this.stock_Ex_Data.logos);
+      // this.stock_Ex_Data = res.data
+      // this.BannerLogoService.setBanner(this.stock_Ex_Data.banners);
+      // this.BannerLogoService.setLogo(this.stock_Ex_Data.logos);
 
-      // this.loading = false;
-      // // change url params without reloade with new state
-      // this.type = this.filterData['sector']
-      // this.location.go(`stock-exchange/${this.type }`);
 
-      // })
+      //this.location.go(`stock-exchange/${this.type }`);
+
   }
 
 
@@ -209,14 +197,15 @@ export class StockExchangeComponent implements OnInit {
 
 
 
-  filter2(v:any) {
+  companySearch(v:any) {
       let temp:any = []
       this.companies?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
       this.companiesList=temp
       this.companiesList?.length ==0?this.companiesList=this.companies: this.companiesList
   }
 
-  feedsFilter(v:any) {
+  feedsSearch(v:any) {
+    console.log(v);
     
       let temp:any = []
       this.feeds?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
@@ -230,8 +219,8 @@ export class StockExchangeComponent implements OnInit {
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
-             
-        console.log(this.stock_Ex_Data);
+      console.log(this.stock_Ex_Data);
+      
         this.toster.stopLoading()
         
 
@@ -244,6 +233,15 @@ export class StockExchangeComponent implements OnInit {
     return this.stock_Ex_Data?.columns[this.stock_Ex_Data?.columns.indexOf(i)]
     
   }
+  column(value:string): string {
+    
+    if( this.stock_Ex_Data.columns['value']) {
 
+    }else {
+
+    }
+    // this.stock_Ex_Data.columns.filter((i:any) => i == value)[0] 
+    return ''
+  }
 
 }
