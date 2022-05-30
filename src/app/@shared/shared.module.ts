@@ -12,6 +12,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -29,6 +30,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   declarations: [
     ...Shared.pipes,
     ...Shared.components,
+
 
 
 

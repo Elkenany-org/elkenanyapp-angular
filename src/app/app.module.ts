@@ -11,10 +11,14 @@ import { TokenInterceptor } from './@core/interceptors/token.interceptor';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
   ``
+
+
+
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
 @NgModule({
   declarations: [
     AppComponent,
+    
   
   ],
   imports: [
