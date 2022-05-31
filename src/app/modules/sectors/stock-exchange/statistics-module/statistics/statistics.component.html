@@ -125,63 +125,34 @@
         <div class="multi__selectContainer">
             <h4 class="multi__title">البورصات</h4>
             <form id="box" action="https://elkenany.com/get-local-sections" method="post" class="box-tabs">
-                <input type="hidden" name="_token" value="jVkHnGd53Mw4m0Nj4hbrf4rcS0pqhf7UMj2jgdyA">
-                <input type="hidden" name="section" value="1">
-                <select id="multiple-checkboxes" class="local" name="local[]" multiple="multiple" style="display: none;">
-                                                    <option value="1">بورصة لحم الدواجن بأنواعها</option>
-                                                    <option value="6">بورصة الحمام</option>
-                                                    <option value="12">بورصة بيض الدواجن المخصب</option>
-                                                    <option value="21">بورصة شركات  الكتاكيت</option>
-                                                    <option value="22">بورصة البط</option>
-                                                    <option value="25">بورصة خامات الأعلاف</option>
-                                                    <option value="26">بورصة إضافات الأعلاف</option>
-                                                    <option value="29">بورصة الرومي</option>
-                                                    <option value="33">بورصة بيض المائدة</option>
-                      
+  
 
-                </select><div class="btn-group"><button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها"><span class="multiselect-selected-text">بورصة لحم الدواجن بأنواعها</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu"><li class="multiselect-item multiselect-all"><a tabindex="0" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all"> اختيار الكل</label></a></li><li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="1"> بورصة لحم الدواجن بأنواعها</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="6"> بورصة الحمام</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="12"> بورصة بيض الدواجن المخصب</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="21"> بورصة شركات  الكتاكيت</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="22"> بورصة البط</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="25"> بورصة خامات الأعلاف</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="26"> بورصة إضافات الأعلاف</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="29"> بورصة الرومي</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="33"> بورصة بيض المائدة</label></a></li></ul></div>
+                <div class="btn-group">
+                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
+                        <span class="multiselect-selected-text">بورصة لحم الدواجن بأنواعها</span>
+                         <b class="caret"></b>
+                    </button><ul class="multiselect-container dropdown-menu">
+                    <li class="multiselect-item multiselect-all">
+                        <a tabindex="0" class="multiselect-all">
+                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)"> اختيار الكل</label>
+                        </a>
+                    </li>
+
+
+   
+                    <!-- class="active" -->
+                    <li class="active" *ngFor="let item of StatisticsMember?.list_subs"> 
+                        <a tabindex="0"><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
+                    </li>
+
+                </ul>
+            </div>
             </form>
         </div>
     </div>
 
 
-            <div class="col-12">
-                <div class="multi__selectContainer">
-                    <h4 class="multi__title">الشركات</h4>
-                    <select id="multiple-checkboxes" multiple="multiple">
-                        <option value="الكنانى">الكنانى</option>
-                        <option value="النور">النور</option>
-                        <option value="الكنانى و النور">الكنانى و النور</option>
-                        <option value="النور و البركة">النور و البركة</option>
-                        <option value="السلام">السلام</option>
-                        <option value="النور و السلام">النور و السلام</option>
-                        <option value="الكنانى">الكنانى</option>
-                        <option value="النور">النور</option>
-                        <option value="الكنانى و النور">الكنانى و النور</option>
-                        <option value="النور و البركة">النور و البركة</option>
-                        <option value="السلام">السلام</option>
-                        <option value="النور و السلام">النور و السلام</option>
-                        <option value="الكنانى">الكنانى</option>
-                        <option value="النور">النور</option>
-                        <option value="الكنانى و النور">الكنانى و النور</option>
-                        <option value="النور و البركة">النور و البركة</option>
-                        <option value="السلام">السلام</option>
-                        <option value="النور و السلام">النور و السلام</option>
-                        <option value="الكنانى">الكنانى</option>
-                        <option value="النور">النور</option>
-                        <option value="الكنانى و النور">الكنانى و النور</option>
-                        <option value="النور و البركة">النور و البركة</option>
-                        <option value="السلام">السلام</option>
-                        <option value="النور و السلام">النور و السلام</option>
-                        <option value="الكنانى">الكنانى</option>
-                        <option value="النور">النور</option>
-                        <option value="الكنانى و النور">الكنانى و النور</option>
-                        <option value="النور و البركة">النور و البركة</option>
-                        <option value="السلام">السلام</option>
-                        <option value="النور و السلام">النور و السلام</option>
-                    </select>
-                </div>
-            </div>
+
             <!--    Table    -->
             <section class="col-12">
                 <div class="table__main">
@@ -195,70 +166,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
+                        <tr *ngFor="let item of StatisticsMemberSlected; let i = index ">
+                            <th scope="row">i</th>
                             <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">الكنانى</a>
+                                <a class="company__link"[routerLink]="['/stock-exchange/poultry/statistics/statistics-detials',item.id]">{{item.name}}</a>
                             </td>
-                            <td class="border-right"><span class="negative__content"> - 10% </span></td>
-                            <td class="border-right"><span class="negative__content"> 3 </span></td>
+                            <td class="border-right"><span class="negative__content"> {{item.change}}% </span></td>
+                            <td class="border-right"><span class="negative__content"> {{item.counts}} </span></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">النور</a>
-                            </td>
-                            <td class="border-right"><span class="positive__content"> 10% </span></td>
-                            <td class="border-right"><span class="positive__content"> 5 </span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">الكنانى</a>
-                            </td>
-                            <td class="border-right"><span class="negative__content"> - 10% </span></td>
-                            <td class="border-right"><span class="negative__content"> 3 </span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">النور</a>
-                            </td>
-                            <td class="border-right"><span class="positive__content"> 10% </span></td>
-                            <td class="border-right"><span class="positive__content"> 5 </span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">الكنانى</a>
-                            </td>
-                            <td class="border-right"><span class="negative__content"> - 10% </span></td>
-                            <td class="border-right"><span class="negative__content"> 3 </span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">النور</a>
-                            </td>
-                            <td class="border-right"><span class="positive__content"> 10% </span></td>
-                            <td class="border-right"><span class="positive__content"> 5 </span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">الكنانى</a>
-                            </td>
-                            <td class="border-right"><span class="negative__content"> - 10% </span></td>
-                            <td class="border-right"><span class="negative__content"> 3 </span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link" href="statistics_details.html">النور</a>
-                            </td>
-                            <td class="border-right"><span class="positive__content"> 10% </span></td>
-                            <td class="border-right"><span class="positive__content"> 5 </span></td>
-                        </tr>
+            
+
                         </tbody>
                     </table>
                 </div>

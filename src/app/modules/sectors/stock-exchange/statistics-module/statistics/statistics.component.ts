@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StatisticsMember, StatisticsSubsSections } from '../_core/statistics';
 import { StatisticsService } from '../_core/statistics.service';
 import { sector } from './../../../../../@core/@data/app/filter-list';
+import { number } from 'echarts';
 
 @Component({
   selector: 'app-statistics',
@@ -19,10 +20,15 @@ export class StatisticsComponent implements OnInit {
 
   type!:string
   id!: string
-
+/////////////////////
 
 
    arr2:any=[]
+
+   StatisticsMemberSlected? :any
+   ///////////////////////
+
+
 
   constructor(private statistics: StatisticsService,
               private roure: ActivatedRoute,
@@ -62,39 +68,13 @@ export class StatisticsComponent implements OnInit {
 
 
       this.statistics.StatisicsSubSections(this.type,'','','').subscribe(res => {
-        this.StatisticsMember=res.data
+        console.log(res);
         
-        let changesData= res.data!.changes_subs
-        var Result:any = [];
-  
-        for(let i=0 ; i < changesData.length ; i++){
-          Result.push(changesData[i]?.changes);
+        this.StatisticsMember=res.data
+        this.StatisticsMemberSlected = res.data?.changes_subs
 
 
-
-          for(let k=0 ; k < Result.length ; k++){
-            this.arr2.push({
-              type: "line",
-              showInLegend: true,
-              name: changesData[k].name,
-              xValueFormatString: "MMM DD, YYYY",
-              dataPoints: []
-            })
-  
-  
-            for(let j=0 ; j < Result[k].length ; j++){
-              this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y: Result[k][j].change})
-          
-            }
-          }
-  
-
-
-
-        }
-
-
-
+        this.drowShart(res.data!.changes_subs)
 
 
 
@@ -116,37 +96,6 @@ export class StatisticsComponent implements OnInit {
 
 
 
-        this.chartOptions ={
-          animationEnabled: true,
-          theme: "light2",
-          title:{
-          // text: "Actual vs Projected Sales"
-          },
-          axisX:{
-          valueFormatString: "D MMM"
-          },
-          axisY: {
-          // title: "Number of Sales"
-          },
-          toolTip: {
-          shared: true
-          },
-          legend: {
-          cursor: "pointer",
-          itemclick: function (e: any) {
-            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-              e.dataSeries.visible = false;
-            } else {
-              e.dataSeries.visible = true;
-            } 
-            e.chart.render();
-          }
-          },
-          data: this.arr2
-      
-        
-        }	
-        
       })
     })
 
@@ -159,5 +108,96 @@ export class StatisticsComponent implements OnInit {
 
      
   }
+
+
+
+
+  selectStock(id:any) {
+    console.log(id);
+    this.StatisticsMemberSlected=[]
+    if(id!=0) {
+      this.StatisticsMemberSlected = [this.StatisticsMember?.changes_subs.find(i => i.id ==id)]
+      this.drowShart( [this.StatisticsMember?.changes_subs.find(i => i.id ==id)] )
+
+
+    }else {
+      this.StatisticsMemberSlected =this.StatisticsMember?.changes_subs
+      this.drowShart( this.StatisticsMember?.changes_subs )
+
+
+    }
+
+
+  }
+
+  drowShart(data:any) {
+    this.arr2=[]
+
+    let changesData= data
+    var Result:any = [];
+
+    for(let i=0 ; i < changesData.length ; i++){
+      Result.push(changesData[i]?.changes);
+
+
+
+      for(let k=0 ; k < Result.length ; k++){
+        this.arr2.push({
+          type: "line",
+          showInLegend: true,
+          name: changesData[k].name,
+          xValueFormatString: "MMM DD, YYYY",
+          dataPoints: []
+        })
+
+
+        for(let j=0 ; j < Result[k].length ; j++){
+          this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y: Result[k][j].change})
+      
+        }
+      }
+
+
+
+
+    }
+
+
+
+
+    
+    this.chartOptions ={
+      animationEnabled: true,
+      theme: "light2",
+      title:{
+      // text: "Actual vs Projected Sales"
+      },
+      axisX:{
+      valueFormatString: "D MMM"
+      },
+      axisY: {
+      // title: "Number of Sales"
+      },
+      toolTip: {
+      shared: true
+      },
+      legend: {
+      cursor: "pointer",
+      itemclick: function (e: any) {
+        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+          e.dataSeries.visible = false;
+        } else {
+          e.dataSeries.visible = true;
+        } 
+        e.chart.render();
+      }
+      },
+      data: this.arr2
+  
+    
+    }	
+    
+  }
+
 
 }
