@@ -41,7 +41,7 @@ export class CoGuideComponent implements OnInit {
     sub_id:"",
     sort:"",
     country_id:"1",
-    city_id:"1",
+    city_id:"",
     search: "",
     page:'1'
   }
@@ -63,10 +63,11 @@ export class CoGuideComponent implements OnInit {
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
       this.toster.stopLoading()
+      console.log(res['resolve'].data);
+      
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
        this.Companies = res['resolve'].data  as Companies
-       console.log( this.Companies)
        this.carousel_banner.banner = res['resolve'].banners
        this.carousel_logos.banner = res['resolve'].logos
        this.loading = false;    
@@ -185,7 +186,6 @@ export class CoGuideComponent implements OnInit {
       //  this.page.last_page =  res.data?.last_page  as number
       this.Companies = res.data  as Companies
       
-      console.log(res.data)
      })
   }
 

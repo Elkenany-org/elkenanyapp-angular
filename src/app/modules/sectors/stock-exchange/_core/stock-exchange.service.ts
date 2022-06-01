@@ -6,7 +6,7 @@ import {environment as env} from '../../../../../environments/environment';
 import { CompaniesItems, FeedsItems, Fodder,StockExchange, ComprisonFodderGetData ,LocalStockFodder, FilterListSub} from '@app/@core/interfaces/stock-exchanges/Stock-exchange';
 import { Comparison } from '@app/@core/interfaces/stock-exchanges/conversion';
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
-import { FilterListSubItems } from '../statistics-module/_core/statistics';
+import { FilterListSubItems } from '@app/@core/interfaces/stock-exchanges/statistics';
 
 
 @Injectable({

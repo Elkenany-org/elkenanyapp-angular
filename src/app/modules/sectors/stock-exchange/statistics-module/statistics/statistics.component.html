@@ -142,7 +142,9 @@
    
                     <!-- class="active" -->
                     <li class="active" *ngFor="let item of StatisticsMember?.list_subs"> 
-                        <a tabindex="0"><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
+                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
+
+                        
                     </li>
 
                 </ul>

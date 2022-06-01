@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse } from '@app/@core/@data/API/api';
+import { StatisticsMember, StatisticsSubsSections,StatisicsStocksDetials } from '@core/interfaces/stock-exchanges/statistics';
 import { Observable } from 'rxjs';
 // import { StatisicsMembers, StatisicsMembersDetials, StatisicsStocksDetials, StatisicsSubSections, StatisticsMember } from './statistics';
-import { StatisticsMember, StatisticsSubsSections } from './statistics';
+// import { StatisticsMember, StatisticsSubsSections } from './statistics';
 import {environment as env} from '../../../../../../environments/environment';
 import { FilterList } from './../../../../../@core/interfaces/_app/filter-list';
 
@@ -30,8 +31,8 @@ export class StatisticsService {
   }
 
 
-  // StatisicsStocksDetials(type:string, search:string):Observable<ApiResponse<StatisicsStocksDetials>> {
-  //   return this.http.get<ApiResponse<StatisicsStocksDetials>>(`${env.ApiUrl}/localstock/statistics-detials-local-stock?id=2`)
-  // }
+  StatisicsStocksDetials(id:string, from?:string, to?:string):Observable<ApiResponse<StatisicsStocksDetials>> {
+    return this.http.get<ApiResponse<StatisicsStocksDetials>>(`${env.ApiUrl}/localstock/statistics-detials-local-stock?from=${from}&to=${to}&id=${id}`)
+  }
   
 }

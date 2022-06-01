@@ -21,13 +21,18 @@ export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
     console.log("Companies Guide Resolver is work ",route.paramMap.get('id'))
     let  data = {
       section_id: sector.find(i => i.type ==  route.paramMap.get('type'))?.id+'' ||'',
-      sub_id:  route.paramMap.get('id')|| ' ',
+      sub_id: route.paramMap.get('id')|| ' ',
       sort:"1",
       country_id:"1",
-      city_id:"1",
+      city_id:"",
       search: "",
       page:'1'
+
+
+      
     }
+
+
 
     this.toster.loading('جاري التحميل')
 
