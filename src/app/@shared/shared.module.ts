@@ -10,6 +10,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
@@ -23,6 +24,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NgxSpinnerModule,
     NgxSkeletonLoaderModule,
     NgxChartsModule,
+    NgMultiSelectDropDownModule.forRoot()
     
 
 

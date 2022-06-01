@@ -8,6 +8,7 @@ import { HomeStockExchangeComponent } from './home-stock-exchange/home-stock-exc
 import { StockExchangeComponent } from './stock-exchange/stock-exchange.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ComparisonComponent } from './comparison/comparison.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
@@ -17,8 +18,14 @@ import { ComparisonComponent } from './comparison/comparison.component';
     ComparisonComponent
   ],
   imports: [
+
+    NgMultiSelectDropDownModule.forRoot(),
+
+
+
     StockExchangeRoutingModule,
     SharedModule,
+    
     NgxSkeletonLoaderModule.forRoot({ animation: 'pulse', loadingText: 'This item is actually loading...' }),
     NgxEchartsModule.forRoot({
       /**

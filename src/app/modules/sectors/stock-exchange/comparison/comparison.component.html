@@ -1,2 +1,444 @@
-<!-- <app-horizontal-search (newItemEvent)="select($event)"[data]="h_search_form" ></app-horizontal-search> -->
-heloooooooooooos
+<div class="main__content__body">
+
+    <div style="width:50%">
+        <form [formGroup]="dropDownForm">
+          <ng-multiselect-dropdown
+             [settings]="dropdownSettings"
+             [data]="dropdownList"
+             formControlName="myItems">
+          </ng-multiselect-dropdown>
+        </form>
+      </div>
+
+    <!-- Start breadcrumb -->
+    <div class="breadcrumb__container st-1 container">
+        <div class="custom__breadcrumb">
+            <h1 class="page__title">مقارنة بورصة العلف</h1>
+        </div>
+    </div>
+    <!-- End breadcrumb -->
+    <!-- Start Search Box -->
+    <article class="inner-search-box d-lg-block d-none d-sm-none d-md-none">
+        <div class="container">
+            <form class="box-tabs">
+                <div class="search-box-overlay"></div>
+                <section class="tabs tabs-3">
+                    <i class="far fa-building"></i>
+
+
+            
+
+
+                     <h4 class="title" >الشركات:</h4> 
+                    <!-- Start MultisSelect Box -->
+                    <div class="multiselect" id="multiselect-companies">
+                        <a (click)="togglecom = !togglecom"  >
+                       
+                        
+                        <div class="selectBox" >
+                   
+                            <select>
+                                <option >اختر الشركات = </option>
+                            </select>
+                            <span class="warning">حد أقصي 3 شركات</span>
+                            <span class="companies-error">اختر شركة واحد علي الاقل</span>
+                            <div class="overSelect"></div>
+                        </div>
+                    </a>
+                        <div class="checkboxes" id="checkboxes-companies"  [ngStyle]="{ 'display': togglecom? 'block':'' }"  >
+                            <div class="company__search">
+                                <label for="search">
+                                    <input class="" id="search" name="search" placeholder="ابحث عن"
+                                           type="search">
+                                </label>
+                            </div>
+                            <label class="company__filter__label" for="company-one">
+                                <input  #v (change)="select(v)" class="checks  checks-company" id="company-one" name="companies"
+                                       type="checkbox">شركة الكناني
+                                جروب</label>
+                            <label class="company__filter__label" for="company-two">
+                                <input class="checks  checks-company" id="company-two" name="companies"
+                                       type="checkbox">شركة الكناني
+                                جروب</label>
+                            <label class="company__filter__label" for="company-three">
+                                <input class="checks  checks-company" id="company-three" name="companies"
+                                       type="checkbox">شركة الكناني
+                                جروب</label>
+                            <label class="company__filter__label" for="company-four">
+                                <input class="checks  checks-company" id="company-four" name="companies"
+                                       type="checkbox">شركة الكناني
+                                جروب</label>
+                            <label class="company__filter__label" for="company-five">
+                                <input class="checks  checks-company" id="company-five" name="companies"
+                                       type="checkbox">شركة الكناني
+                                جروب</label>
+                            <label class="company__filter__label" for="company-six">
+                                <input class="checks  checks-company" id="company-six" name="companies"
+                                       type="checkbox">شركة الكناني
+                                جروب</label>
+                            <label class="company__filter__label" for="company-seven">
+                                <input class="checks  checks-company" id="company-seven" name="companies"
+                                       type="checkbox">شركة الكناني
+                                جروب</label>
+                        </div>
+                    </div>
+                    <!-- End MultisSelect Box -->
+                </section>
+                <section class="tabs tabs-3">
+                    <i class="fas fa-bars"></i>
+                    <h4 class="title">الأصناف:</h4>
+                    <!-- Start MultisSelect Box -->
+                    <div class="multiselect" id="multiselect-items">
+
+                        <a (click)="toggleCat = !toggleCat"  >
+                        <div class="selectBox" >
+                            <select>
+                                <option>اختر الأصناف</option>
+                            </select>
+
+                            
+                            <span class="items-counter" id="items-counter">عدد الأصناف: 0</span>
+                            <span class="items-error">اختر صنف واحد علي الاقل</span>
+                            <div class="overSelect"></div>
+
+                            
+                        </div>
+
+                    </a>
+                        <div class="checkboxes" id="checkboxes-items" [ngStyle]="{ 'display': toggleCat? 'block':'' }">
+                            <div class="type__search">
+                                <label for="search__type">
+                                    <input class="search__inputs" id="search__type" name="search" placeholder="ابحث عن"
+                                           type="search">
+                                </label>
+                            </div>
+                            <label class="type__filter__label" for="item-one">
+                                <input class="checks checks-item" id="item-one" name="items" type="checkbox"> اسماء
+                            </label>
+                            <label class="type__filter__label" for="item-two">
+                                <input class="checks checks-item" id="item-two" name="items" type="checkbox"> اسماء
+                                اصناف
+                            </label>
+                            <label class="type__filter__label" for="item-three">
+                                <input class="checks checks-item" id="item-three" name="items" type="checkbox">
+                                الشركات
+                            </label>
+                            <label class="type__filter__label" for="item-four">
+                                <input class="checks checks-item" id="item-four" name="items" type="checkbox">ضياء
+                            </label>
+                            <label class="type__filter__label" for="item-five">
+                                <input class="checks checks-item" id="item-five" name="items" type="checkbox">بادى نامى
+                            </label>
+                            <label class="type__filter__label" for="item-six">
+                                <input class="checks checks-item" id="item-six" name="items" type="checkbox"> بادى ناهى
+                            </label>
+                            <label class="type__filter__label" for="item-seven">
+                                <input class="checks checks-item" id="item-seven" name="items" type="checkbox"> بادى
+                            </label>
+                        </div>
+                    </div>
+                    <!-- End MultisSelect Box -->
+                </section>
+                <section class="tabs tabs-3 tabs-especial" onClick="submit()">
+                    <span class="submit" id="search-box-submit">تطبيق</span>
+                </section>
+            </form>
+        </div>
+    </article>
+    <!-- End Search Box -->
+
+    <!-- Start Accordion Section -->
+    <section class="special__accordion container d-lg-none d-block d-md-block" id="fodder__comparison">
+        <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
+                href="#accordion"
+                id="show-hide-accordion" role="button">
+            تحديد الشركات
+            <i class="icon-s fas fa-search"></i>
+        </button>
+        <div class="accordion collapse show" id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button aria-controls="collapseOne" aria-expanded="true" class="btn btn-link"
+                                data-target="#collapseOne" data-toggle="collapse">
+                            <i class="far fa-building"></i>
+                            الشركات
+                        </button>
+                        <span class="companies-error-accordion">اختر شركة واحد علي الاقل</span>
+                    </h5>
+                </div>
+                <div aria-labelledby="headingOne" class="collapse show" data-parent="#accordion" id="collapseOne">
+                    <div class="card-body">
+                        <!-- Start MultisSelect Box -->
+                        <div class="multiselect multiselect-accordion" id="multiselect-companies-accordion">
+                            <div class="selectBox" onclick="showCheckboxes('companies')">
+                                <span class="warning">حد أقصي 3 شركات</span>
+                                <div class="overSelect"></div>
+                            </div>
+                            <!--        ADD list__shadow IF list length >5                    -->
+                            <div class="checkboxes list__shadow" id="checkboxes-companies-accordion">
+                                <div class="company__search">
+                                    <label for="search">
+                                        <input class="" id="search__accordion" name="search" placeholder="ابحث عن"
+                                               type="search">
+                                    </label>
+                                </div>
+                                <label class="company__filter__label-accordion" for="company-accordion-one">
+                                    <input class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox">شركة الكناني
+                                    جروب</label>
+                                <label class="company__filter__label-accordion" for="company-accordion-two">
+                                    <input class="checks checks-company-accordion" id="company-accordion-two"
+                                           name="companies-accordion" type="checkbox">شركة الكناني
+                                    جروب</label>
+                                <label class="company__filter__label-accordion" for="company-accordion-three">
+                                    <input class="checks checks-company-accordion" id="company-accordion-three"
+                                           name="companies-accordion" type="checkbox">شركة
+                                    الكناني
+                                    جروب</label>
+                                <label class="company__filter__label-accordion" for="company-accordion-four">
+                                    <input class="checks checks-company-accordion" id="company-accordion-four"
+                                           name="companies-accordion" type="checkbox">شركة
+                                    الكناني
+                                    جروب</label>
+                                <label class="company__filter__label-accordion" for="company-accordion-five">
+                                    <input class="checks checks-company-accordion" id="company-accordion-five"
+                                           name="companies-accordion" type="checkbox">شركة
+                                    الكناني
+                                    جروب</label>
+                                <label class="company__filter__label-accordion" for="company-accordion-six">
+                                    <input class="checks checks-company-accordion" id="company-accordion-six"
+                                           name="companies-accordion" type="checkbox">شركة الكناني
+                                    جروب</label>
+                                <label class="company__filter__label-accordion" for="company-accordion-seven">
+                                    <input class="checks checks-company-accordion" id="company-accordion-seven"
+                                           name="companies-accordion" type="checkbox">شركة
+                                    الكناني
+                                    جروب</label>
+                            </div>
+                        </div>
+                        <!-- End MultisSelect Box -->
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button aria-controls="collapseTwo" aria-expanded="false" class="btn btn-link collapsed"
+                                data-target="#collapseTwo" data-toggle="collapse">
+                            <i class="fas fa-bars"></i>
+                            الأصناف
+                        </button>
+                        <span class="items-error-accordion">اختر صنف واحد علي الاقل</span>
+                    </h5>
+                </div>
+                <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordion" id="collapseTwo">
+                    <div class="card-body">
+                        <!-- Start MultisSelect Box -->
+                        <div class="multiselect multiselect-accordion" id="multiselect-items-accordion">
+                            <div class="selectBox" onclick="showCheckboxes('items')">
+                                <span class="items-counter" id="items-counter-accordion">عدد الأصناف: 0</span>
+                                <div class="overSelect"></div>
+                            </div>
+                            <!--        ADD list__shadow IF list length >5                    -->
+                            <div class="checkboxes list__shadow" id="checkboxes-items-accordion">
+                                <div class="type__search">
+                                    <label for="search__type">
+                                        <input class="search__inputs" id="search__type__accordion" name="search"
+                                               placeholder="ابحث عن"
+                                               type="search">
+                                    </label>
+                                </div>
+                                <label class="type__filter__label-accordion" for="item-accordion-one">
+                                    <input class="checks checks-item-accordion" id="item-accordion-one"
+                                           name="items-accordion"
+                                           type="checkbox"> اسماء
+                                    اصناف
+                                    الشركات
+                                </label>
+                                <label class="type__filter__label-accordion" for="item-accordion-two">
+                                    <input class="checks checks-item-accordion" id="item-accordion-two"
+                                           name="items-accordion"
+                                           type="checkbox"> اسماء
+                                    اصناف
+                                    الشركات
+                                </label>
+                                <label class="type__filter__label-accordion" for="item-accordion-three">
+                                    <input class="checks checks-item-accordion" id="item-accordion-three"
+                                           name="items-accordion"
+                                           type="checkbox">
+                                    اسماء
+                                    اصناف
+                                    الشركات
+                                </label>
+                                <label class="type__filter__label-accordion" for="item-accordion-four">
+                                    <input class="checks checks-item-accordion" id="item-accordion-four"
+                                           name="items-accordion"
+                                           type="checkbox"> اسماء
+                                    اصناف
+                                    الشركات
+                                </label>
+                                <label class="type__filter__label-accordion" for="item-accordion-five">
+                                    <input class="checks checks-item-accordion" id="item-accordion-five"
+                                           name="items-accordion"
+                                           type="checkbox"> اسماء
+                                    اصناف
+                                    الشركات
+                                </label>
+                                <label class="type__filter__label-accordion" for="item-accordion-six">
+                                    <input class="checks checks-item-accordion" id="item-accordion-six"
+                                           name="items-accordion"
+                                           type="checkbox"> اسماء
+                                    اصناف
+                                    الشركات
+                                </label>
+                                <label class="type__filter__label-accordion" for="item-accordion-seven">
+                                    <input class="checks checks-item-accordion" id="item-accordion-seven"
+                                           name="items-accordion"
+                                           type="checkbox">
+                                    اسماء
+                                    اصناف
+                                    الشركات
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End MultisSelect Box -->
+                    </div>
+                </div>
+            </div>
+            <a class="submit-accordion" onclick="submitAccordion()">تطبيق</a>
+        </div>
+    </section>
+    <!-- End Accordion Section -->
+
+    <!-- Start Comparison -->
+    <article class="comparison container">
+        <div class="comparison-holder" id="comparison-holder">
+        </div>
+         <div class="comparison-holder" id="comparison-holder">
+                <section class="company-card">
+                    <a class="company-head" href="../companies/companies_details.html">
+                        <img alt="logo" class="company-logo" src="../../images/card_img.png">
+                        <h3 class="company-title">ناسكو ايجيبت</h3>
+                    </a>
+                    <section class="item-box" data-item-box-id="0">
+                        <h4 class="item-name">بادى نامى</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="1">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="2">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="3">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="4">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="5">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="6">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                </section>
+                <section class="company-card center"><a class="company-head" href="../companies/companies_details.html">
+                    <img alt="logo" class="company-logo" src="../../images/card_img.png">
+                    <h3 class="company-title">ناسكو ايجيبت</h3>
+                </a>
+                    <section class="item-box" data-item-box-id="0">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5>
+                    </section>
+                    <section class="item-box" data-item-box-id="1">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="2">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="3">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="4">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="5">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="6">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>-
+                </section>
+                <section class="company-card"><a class="company-head" href="../companies/companies_details.html">
+                    <img alt="logo" class="company-logo" src="../../images/card_img.png">
+                    <h3 class="company-title">ناسكو ايجيبت</h3>
+                </a>
+                    <section class="item-box" data-item-box-id="0">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="1">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="2">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="3">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="4">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="5">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                    <section class="item-box" data-item-box-id="6">
+                        <h4 class="item-name">بادي نامي</h4>
+                        <h4 class="item-number">7500</h4>
+                        <h5 class="item-date">13-12-2020</h5>
+                        <h5 class="item-time">09:32:07 AM</h5></section>
+                </section> 
+            </div>
+    </article>
+    <!-- End Comparison -->
+</div>
