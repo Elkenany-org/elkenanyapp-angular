@@ -11,18 +11,35 @@ import { StatisicsStocksDetials } from '@core/interfaces/stock-exchanges/statist
 })
 export class StatisticsDetialsComponent implements OnInit {
   data?: StatisicsStocksDetials
+  id!:string
+  filterData={
+    from:'',
+    to: ''
+  }
   constructor(private statistics: StatisticsService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(prm => {
-      this.statistics.StatisicsStocksDetials(prm['id']).subscribe(res => {
-        console.log(res);
-
-        this.data= res.data
-      })      
+      this.id= prm['id']
+      this.getstatisicsDetailsData( this.id,'','')
     })
     
   }
 
+  filter(value:{date:string, type:string}):void {
+    let f= this.filterData
+    value.type=='from'? f.from = value.date:f.from = value.date
+    this.getstatisicsDetailsData(this.id,f.from,f.to)
+
+  }
+
+  getstatisicsDetailsData(id:string, from:string,to:string){
+    this.statistics.StatisicsStocksDetials(id,from,).subscribe(res => {
+      console.log(res);
+      
+      this.data= res.data
+    })  
+  }
+ 
 }
