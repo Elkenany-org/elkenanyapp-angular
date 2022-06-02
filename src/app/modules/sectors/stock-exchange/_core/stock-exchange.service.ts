@@ -4,7 +4,7 @@ import { ApiResponse } from '@app/@core/@data/API/api';
 import { map, Observable } from 'rxjs';
 import {environment as env} from '../../../../../environments/environment';
 import { CompaniesItems, FeedsItems, Fodder,StockExchange, ComprisonFodderGetData ,LocalStockFodder, FilterListSub} from '@app/@core/interfaces/stock-exchanges/Stock-exchange';
-import { Comparison } from '@app/@core/interfaces/stock-exchanges/conversion';
+import { Comparison, Compare, CompareBody } from '@app/@core/interfaces/stock-exchanges/conversion';
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { FilterListSubItems } from '@app/@core/interfaces/stock-exchanges/statistics';
 
@@ -94,6 +94,9 @@ export class StockExchangeService {
   ComprisonFodder(id:string):Observable<ApiResponse<Comparison>> {
     return this.http.get<ApiResponse<Comparison>>(`${env.ApiUrl}/localstock/comprison-fodder?id=${id}`)
   }
-
+  
+  compare(body:CompareBody):Observable<ApiResponse<Compare>> {
+    return this.http.post<ApiResponse<Compare>>(`${env.ApiUrl}/localstock/comprison-fodder-get`,body)
+  }
 
  }

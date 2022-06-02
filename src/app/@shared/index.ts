@@ -18,10 +18,11 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { NoDataComponent } from './pages/no-data/no-data.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { ShortDatePipe } from './pipes/short-date.pipe';
 
 
 export  const pipes: any[] = [
-
+    ShortDatePipe
 ];
 
 

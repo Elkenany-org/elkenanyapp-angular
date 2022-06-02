@@ -1,27 +1,24 @@
 <div class="main__content__body">
 
-    <div style="width:50%">
-        <form [formGroup]="dropDownForm">
-          <ng-multiselect-dropdown
-             [settings]="dropdownSettings"
-             [data]="dropdownList"
-             formControlName="myItems">
-          </ng-multiselect-dropdown>
-        </form>
-      </div>
 
-    <!-- Start breadcrumb -->
+
     <div class="breadcrumb__container st-1 container">
         <div class="custom__breadcrumb">
-            <h1 class="page__title">مقارنة بورصة العلف</h1>
+            <h1 class="page__title">مقارنة بورصة </h1>
         </div>
     </div>
-    <!-- End breadcrumb -->
+
     <!-- Start Search Box -->
     <article class="inner-search-box d-lg-block d-none d-sm-none d-md-none">
         <div class="container">
             <form class="box-tabs">
                 <div class="search-box-overlay"></div>
+
+
+
+
+
+
                 <section class="tabs tabs-3">
                     <i class="far fa-building"></i>
 
@@ -45,45 +42,45 @@
                             <div class="overSelect"></div>
                         </div>
                     </a>
+    
+
+
                         <div class="checkboxes" id="checkboxes-companies"  [ngStyle]="{ 'display': togglecom? 'block':'' }"  >
                             <div class="company__search">
                                 <label for="search">
                                     <input class="" id="search" name="search" placeholder="ابحث عن"
-                                           type="search">
+                                           type="search" >
                                 </label>
                             </div>
-                            <label class="company__filter__label" for="company-one">
-                                <input  #v (change)="select(v)" class="checks  checks-company" id="company-one" name="companies"
-                                       type="checkbox">شركة الكناني
-                                جروب</label>
-                            <label class="company__filter__label" for="company-two">
-                                <input class="checks  checks-company" id="company-two" name="companies"
-                                       type="checkbox">شركة الكناني
-                                جروب</label>
-                            <label class="company__filter__label" for="company-three">
-                                <input class="checks  checks-company" id="company-three" name="companies"
-                                       type="checkbox">شركة الكناني
-                                جروب</label>
-                            <label class="company__filter__label" for="company-four">
-                                <input class="checks  checks-company" id="company-four" name="companies"
-                                       type="checkbox">شركة الكناني
-                                جروب</label>
-                            <label class="company__filter__label" for="company-five">
-                                <input class="checks  checks-company" id="company-five" name="companies"
-                                       type="checkbox">شركة الكناني
-                                جروب</label>
-                            <label class="company__filter__label" for="company-six">
-                                <input class="checks  checks-company" id="company-six" name="companies"
-                                       type="checkbox">شركة الكناني
-                                جروب</label>
-                            <label class="company__filter__label" for="company-seven">
-                                <input class="checks  checks-company" id="company-seven" name="companies"
-                                       type="checkbox">شركة الكناني
-                                جروب</label>
+
+
+                            <form [formGroup]="formCommapny" (ngSubmit)="submitForm()" novalidate>
+                                <div *ngFor="let data of comparisonData?.companies; let i=index">
+                                  <label>
+                                    <input [disabled]="   formCommapny.value.checkArray.length>2 && !findCompanies(data.id)  " type="checkbox" [value]="data.id" (change)="onCheckComany($event)" />
+                                    {{data.name}}
+                                  </label>
+                                </div>
+                                <input type="submit" value="Submit">
+                              </form>
+
+
+
+
                         </div>
                     </div>
                     <!-- End MultisSelect Box -->
                 </section>
+
+
+
+
+
+
+
+
+
+
                 <section class="tabs tabs-3">
                     <i class="fas fa-bars"></i>
                     <h4 class="title">الأصناف:</h4>
@@ -97,7 +94,7 @@
                             </select>
 
                             
-                            <span class="items-counter" id="items-counter">عدد الأصناف: 0</span>
+                            <span class="items-counter" id="items-counter">عدد الأصناف: {{formFeeds.value.checkArray.length}}</span>
                             <span class="items-error">اختر صنف واحد علي الاقل</span>
                             <div class="overSelect"></div>
 
@@ -112,34 +109,20 @@
                                            type="search">
                                 </label>
                             </div>
-                            <label class="type__filter__label" for="item-one">
-                                <input class="checks checks-item" id="item-one" name="items" type="checkbox"> اسماء
-                            </label>
-                            <label class="type__filter__label" for="item-two">
-                                <input class="checks checks-item" id="item-two" name="items" type="checkbox"> اسماء
-                                اصناف
-                            </label>
-                            <label class="type__filter__label" for="item-three">
-                                <input class="checks checks-item" id="item-three" name="items" type="checkbox">
-                                الشركات
-                            </label>
-                            <label class="type__filter__label" for="item-four">
-                                <input class="checks checks-item" id="item-four" name="items" type="checkbox">ضياء
-                            </label>
-                            <label class="type__filter__label" for="item-five">
-                                <input class="checks checks-item" id="item-five" name="items" type="checkbox">بادى نامى
-                            </label>
-                            <label class="type__filter__label" for="item-six">
-                                <input class="checks checks-item" id="item-six" name="items" type="checkbox"> بادى ناهى
-                            </label>
-                            <label class="type__filter__label" for="item-seven">
-                                <input class="checks checks-item" id="item-seven" name="items" type="checkbox"> بادى
-                            </label>
+                            <form [formGroup]="formFeeds" (ngSubmit)="submitForm()" novalidate>
+                                <div *ngFor="let data of comparisonData?.feeds; let i=index">
+                                  <label>
+                                    <input  type="checkbox" [value]="data.id" (change)="onCheckFeeds($event)" />
+                                    {{data.name}}
+                                  </label>
+                                </div>
+                                <input type="submit" value="Submit">
+                              </form>
                         </div>
                     </div>
                     <!-- End MultisSelect Box -->
                 </section>
-                <section class="tabs tabs-3 tabs-especial" onClick="submit()">
+                <section class="tabs tabs-3 tabs-especial" (click)="submitForm()">
                     <span class="submit" id="search-box-submit">تطبيق</span>
                 </section>
             </form>
@@ -171,7 +154,7 @@
                     <div class="card-body">
                         <!-- Start MultisSelect Box -->
                         <div class="multiselect multiselect-accordion" id="multiselect-companies-accordion">
-                            <div class="selectBox" onclick="showCheckboxes('companies')">
+                            <div class="selectBox">
                                 <span class="warning">حد أقصي 3 شركات</span>
                                 <div class="overSelect"></div>
                             </div>
@@ -236,7 +219,7 @@
                     <div class="card-body">
                         <!-- Start MultisSelect Box -->
                         <div class="multiselect multiselect-accordion" id="multiselect-items-accordion">
-                            <div class="selectBox" onclick="showCheckboxes('items')">
+                            <div class="selectBox">
                                 <span class="items-counter" id="items-counter-accordion">عدد الأصناف: 0</span>
                                 <div class="overSelect"></div>
                             </div>
@@ -306,138 +289,35 @@
                     </div>
                 </div>
             </div>
-            <a class="submit-accordion" onclick="submitAccordion()">تطبيق</a>
+            <a class="submit-accordion" (click)="submitForm()">تطبيق</a>
         </div>
     </section>
     <!-- End Accordion Section -->
 
     <!-- Start Comparison -->
-    <article class="comparison container">
+    <article class="comparison container" >
         <div class="comparison-holder" id="comparison-holder">
         </div>
-         <div class="comparison-holder" id="comparison-holder">
-                <section class="company-card">
-                    <a class="company-head" href="../companies/companies_details.html">
-                        <img alt="logo" class="company-logo" src="../../images/card_img.png">
-                        <h3 class="company-title">ناسكو ايجيبت</h3>
+         <div class="comparison-holder" id="comparison-holder" *ngIf="comparedData?.companies">
+                <section class="company-card"  *ngFor="let i of comparedData?.companies">
+                    <a class="company-head" [routerLink]="['/companies-guide/poultry/companies_details/poultry',i.id]">
+                        <img alt="logo" class="company-logo" [src]="i.image">
+                        <h3 class="company-title">{{i.name}}</h3>
                     </a>
-                    <section class="item-box" data-item-box-id="0">
-                        <h4 class="item-name">بادى نامى</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="1">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="2">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="3">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="4">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="5">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="6">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                </section>
-                <section class="company-card center"><a class="company-head" href="../companies/companies_details.html">
-                    <img alt="logo" class="company-logo" src="../../images/card_img.png">
-                    <h3 class="company-title">ناسكو ايجيبت</h3>
-                </a>
-                    <section class="item-box" data-item-box-id="0">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5>
+                    <section class="item-box" data-item-box-id="0" *ngFor="let f of i.feed">
+                        <h4 class="item-name">{{f.name}}</h4>
+                        <h4 class="item-number">{{f.price}}</h4>
+                        <h5 class="item-date">{{f.created_at | shortDate}}</h5>
+                        <!-- <h5 class="item-time">09:32:07 AM</h5> -->
                     </section>
-                    <section class="item-box" data-item-box-id="1">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="2">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="3">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="4">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="5">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="6">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>-
+ 
                 </section>
-                <section class="company-card"><a class="company-head" href="../companies/companies_details.html">
-                    <img alt="logo" class="company-logo" src="../../images/card_img.png">
-                    <h3 class="company-title">ناسكو ايجيبت</h3>
-                </a>
-                    <section class="item-box" data-item-box-id="0">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="1">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="2">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="3">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="4">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="5">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                    <section class="item-box" data-item-box-id="6">
-                        <h4 class="item-name">بادي نامي</h4>
-                        <h4 class="item-number">7500</h4>
-                        <h5 class="item-date">13-12-2020</h5>
-                        <h5 class="item-time">09:32:07 AM</h5></section>
-                </section> 
+
+
+
+
+
+
             </div>
     </article>
     <!-- End Comparison -->

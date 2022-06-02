@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './@core/interceptors/token.interceptor';
 
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
   ``
 
@@ -17,9 +16,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
 @NgModule({
   declarations: [
-    AppComponent,
-    
-  
+    AppComponent,    
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,6 @@ import { HomeStockExchangeComponent } from './home-stock-exchange/home-stock-exc
 import { StockExchangeComponent } from './stock-exchange/stock-exchange.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ComparisonComponent } from './comparison/comparison.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
   ],
   imports: [
 
-    NgMultiSelectDropDownModule.forRoot(),
 
 
 
