@@ -106,18 +106,12 @@ onCheckFeeds(e:any) {
 }
 
 submitForm() {
-  // console.log(this.formCommapny.value.checkArray.length);
-  console.log(this.formCommapny.value.checkArray);
-  // console.log(this.formCommapny.value.checkArray.find((i:string) => i == 'pear') );
 
+  this.togglecom= false;
+  this.toggleCat= false;
 
-  // console.log(this.formFeeds.value.checkArray.length);
-  console.log(this.formFeeds.value.checkArray);
-  // console.log(this.formFeeds.value.checkArray.find((i:string) => i == 'pear') );
-  
+  let test= (l:any, ) => {}
   this.StockService.compare( {companies_id:this.formCommapny.value.checkArray, fodder_items_id: this.formFeeds.value.checkArray}).subscribe(res => {
-
-
     this.comparedData= res.data
     console.log(res);
     
