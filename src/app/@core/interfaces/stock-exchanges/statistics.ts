@@ -1,4 +1,5 @@
 
+import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
   
   export interface StatisticsSubSec {
     Section: string
@@ -111,3 +112,39 @@ export interface Member {
   week: string
   oldprice: string
 }
+
+
+
+  //--------------------------------------fILTER SEARCH -------------------------------//
+
+export const Statistics_Search_Form: JsonFormData  =
+{   
+  title: "إحصائيات بورصة",
+  class:"tabs tabs-2",
+    controls: [
+      {
+        name: "من",
+        type: "date",
+        role: "date-from",
+        class: "form-control",
+        value: "",
+        icon:"fas fa-calendar",
+        option: [],
+        validators: {
+          required: false,
+        }
+      },
+      {
+        name: "إلى",
+        type: "date",
+        role: "date-to",
+        class: "form-control",
+        value: "",
+        icon:"fas fa-calendar",
+        option: [],
+        validators: {
+          required: false,
+        }
+      },
+    ]
+  }

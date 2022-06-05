@@ -65,6 +65,8 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
   }
 
   filter(value:any,type:string):void { //type come from small screen
+
+    
     if(type){ //this  condation works only  at small view port screen
           let f = this.fromToForm.controls 
 

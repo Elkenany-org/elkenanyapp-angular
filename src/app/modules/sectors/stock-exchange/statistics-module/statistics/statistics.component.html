@@ -4,14 +4,91 @@
 
 <div class="main__content__body">
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <app-horizontal-search (newItemEvent)="filter($event,'')" [data]="h_search_form" ></app-horizontal-search>
+    <section class="special__accordion container d-lg-none d-block d-md-block">
+
+
+        <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
+                href="#accordion"
+                id="show-hide-accordion" role="button">
+            حدد بحثك
+            <i class="icon-s fas fa-search"></i>
+        </button>
+
+        
+        <div class="accordion collapse show" id="accordion">
+            
+            <form [formGroup]="fromToForm">
+                <div class="card">
+                    <div class="card-header" id="headingSearch">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseSearch" aria-expanded="false"
+                                    class="btn btn-link collapsed" data-target="#collapseSearch"
+                                    data-toggle="collapse">
+                                <i class="fas fa-search"></i>
+                                من
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
+                         id="collapseSearch">
+                        <div class="card-body">
+                            <input (change)="filter($any($event.target).value,'date-from')"class="search__input" type="date" formControlName="from">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSearch">
+                        <h5 class="mb-0">
+                            <button aria-controls="collapseSearch" aria-expanded="false"
+                                    class="btn btn-link collapsed" data-target="#collapseSearch"
+                                    data-toggle="collapse">
+                                <i class="fas fa-search"></i>
+                                إلى
+                            </button>
+                        </h5>
+                    </div>
+                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
+                         id="collapseSearch">
+                        <div class="card-body">
+                            <input (change)="filter($any($event.target).value , 'date-to')" formControlName="to"class="search__input" type="date">
+                        </div>
+                    </div>
+                </div>
+    
+            </form>
+     
+            
+
+        </div>
+    </section>
+
+
+
+
    
     <!-- End Header -->
     <!-- Start breadcrumb -->
-    <div class="breadcrumb__container st-1 container ">
+
+    <!-- <div class="breadcrumb__container st-1 container ">
         <div class="custom__breadcrumb">
             <h1 class="page__title">إحصائيات البورصة اليومية</h1>
         </div>
-    </div>
+    </div> -->
+
     <!-- End breadcrumb -->
     <!-- Start Search Box -->
 
@@ -33,7 +110,7 @@
 
 
 
-    <article class="inner-search-box d-none d-sm-none d-md-none d-lg-block">
+    <!-- <article class="inner-search-box d-none d-sm-none d-md-none d-lg-block">
         <div class="container">
             <form class="box-tabs">
                 <div class="search-box-overlay"></div>
@@ -49,11 +126,11 @@
                 </section>
             </form>
         </div>
-    </article>
+    </article> -->
     <!-- End Search Box -->
 
     <!-- Start accordion -->
-    <section class="special__accordion container d-lg-none d-block d-md-block">
+    <!-- <section class="special__accordion container d-lg-none d-block d-md-block">
         <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
                 href="#accordion"
                 id="show-hide-accordion" role="button">
@@ -96,7 +173,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Start accordion -->
 
     <!-- Start Global Content -->
@@ -134,7 +211,7 @@
                     </button><ul class="multiselect-container dropdown-menu">
                     <li class="multiselect-item multiselect-all">
                         <a tabindex="0" class="multiselect-all">
-                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)"> اختيار الكل</label>
+                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
                         </a>
                     </li>
 
