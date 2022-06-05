@@ -2,5 +2,9 @@
 @import "../../../assets/styles/abstract/varibales";
 @import "../../../assets/styles/abstract/mixins";
 
-@import "../../../assets/styles/pages/home"
+@import "../../../assets/styles/pages/home";
 
+.banner {
+    object-fit: cover;
+
+  }

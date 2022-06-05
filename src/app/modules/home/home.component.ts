@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 
 import {  logo_test, Banner_test } from './data'
@@ -6,7 +6,9 @@ import { HomeService } from './_core/home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None
+
 })
 
 
