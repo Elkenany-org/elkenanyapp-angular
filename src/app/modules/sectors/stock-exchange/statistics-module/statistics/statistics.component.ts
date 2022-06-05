@@ -35,6 +35,8 @@ export class StatisticsComponent implements OnInit {
     this.id = sector.find(i => i.type == this.type)?.id+''
     this.roure.params.subscribe((prm: Params) => {
       this.statistics.StatisicsSubSections(this.type,'','','').subscribe(res => {
+        console.log(res.data);
+        
         this.StatisticsMember=res.data
         this.StatisticsMemberSlected = res.data?.changes_subs
         this.drowShart(res.data!.changes_subs)
@@ -65,22 +67,27 @@ export class StatisticsComponent implements OnInit {
   }
 
   drowShart(data:any) {
+    console.log(data);
+    
       this.arr2=[]
 
     let Result= [];
     for(let i=0 ; i < data.length ; i++){
       Result.push(data[i]?.changes);
-      for(let k=0 ; k < Result.length ; k++){
-        this.arr2.push({
-          type: "line",
-          showInLegend: true,
-          name: data[k].name,
-          xValueFormatString: "MMM DD, YYYY",
-          dataPoints: []
-        })
-        for(let j=0 ; j < Result[k].length ; j++){
-          this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y: Result[k][j].change})
-        }
+
+    }
+
+
+    for(let k=0 ; k < Result.length ; k++){
+      this.arr2.push({
+        type: "line",
+        showInLegend: true,
+        name: data[k].name,
+        xValueFormatString: "MMM DD, YYYY",
+        dataPoints: []
+      })
+      for(let j=0 ; j < Result[k].length ; j++){
+        this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y: Result[k][j].change})
       }
     }
     this.chartOptions ={
@@ -104,14 +111,14 @@ export class StatisticsComponent implements OnInit {
         console.log("dds");
         
         if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-          console.log(e);
+          // console.log(e);
 
 
           e.dataSeries.visible = false;
-          console.log('d');
+          // console.log('d');
 
         } else {
-          console.log(e);
+          // console.log(e);
 
           e.dataSeries.visible = true;
         } 
@@ -121,6 +128,7 @@ export class StatisticsComponent implements OnInit {
       data: this.arr2
     }	
 
+// console.log(this.arr2);
 
   }
 
