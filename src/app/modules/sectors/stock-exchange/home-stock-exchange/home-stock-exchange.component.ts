@@ -7,7 +7,6 @@ import { map } from 'rxjs';
 import { StockExchangeService } from '../_core/stock-exchange.service';
 import { Location } from '@angular/common';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 import { StockExchange } from '@app/@core/interfaces/stock-exchanges/Stock-exchange';
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Home_Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stock-exchange';
@@ -36,7 +35,6 @@ export class HomeStockExchangeComponent implements OnInit  {
     private BannerLogoService:BannersLogoservice,
     private route: ActivatedRoute,  
     private activatedRoute: ActivatedRoute,
-    private toster:ToasterService,
     private location: Location,
     private router: Router ) { }
 
@@ -53,7 +51,6 @@ export class HomeStockExchangeComponent implements OnInit  {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-      this.toster.stopLoading()
 
       this.stock_Ex_Data = res['resolve']  as StockExchange
       this.BannerLogoService.setBanner(res['resolve'].banners);
@@ -76,7 +73,6 @@ export class HomeStockExchangeComponent implements OnInit  {
   }
 
   filter(value:any) {
-    this.toster.loading('حاري التحميل')
 
     this.route.params.subscribe( params => {
       this.filterData['sector'] = params['type']
@@ -96,7 +92,6 @@ export class HomeStockExchangeComponent implements OnInit  {
     })
 
       this.stockExchange.GetStockExchangeV2( this.filterData['sector'],  this.filterData['sort'],this.filterData['search']).subscribe( res => {
-      this.toster.stopLoading()
       this.stock_Ex_Data = res as StockExchange
       this.BannerLogoService.setBanner(this.stock_Ex_Data.banners);
       this.BannerLogoService.setLogo(this.stock_Ex_Data.logos);

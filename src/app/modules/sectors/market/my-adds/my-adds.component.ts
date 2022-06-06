@@ -27,7 +27,6 @@ export class MyAddsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.toasterService.loading("جاري التحميل");
     let url =  this.router.url.split('/') 
     this.type =  url[url.length-2] //get type from url 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
+import {delay} from 'rxjs/operators';
 
 import {  logo_test, Banner_test } from './data'
 import { HomeService } from './_core/home.service';
@@ -13,8 +14,7 @@ import { HomeService } from './_core/home.service';
 
 
 export class HomeComponent implements OnInit {
-  public loading: boolean= true
-
+  loading: boolean = false;
   
   public carousel_banner?: any = Banner_test  
   public carousel_logos:any = logo_test        
@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
 
     
 ngOnInit(): void {
+
  this.home.Home().subscribe( res => {
    console.log(res)
   //  this.carousel_banner.banner = res.banners
@@ -47,6 +48,9 @@ ngOnInit(): void {
     this.tabs= tab
     console.log(this.tabs)
   }
+
+
+
 
 
 }

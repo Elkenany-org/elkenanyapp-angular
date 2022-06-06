@@ -39,3 +39,11 @@
     margin: auto;
 }
 
+.preview-inner-container{
+   width: 10%;
+    img{
+        max-width:  150px !important;
+        // height: 150px !important;
+        // background-clip: 100% ;
+    }
+}

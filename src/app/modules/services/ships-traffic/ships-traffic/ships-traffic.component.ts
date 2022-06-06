@@ -4,7 +4,6 @@ import { Ships, ship_traffic_Search_Form } from '@app/@core/interfaces/ships-tra
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 import { map } from 'rxjs';
 import { ShipsTrafficService } from '../_core/services/ships-traffic.service';
 
@@ -23,7 +22,7 @@ export class ShipsTrafficComponent implements OnInit {
     cities:'1',
   }
   public h_search_form?:JsonFormData  
-  constructor( private toster:ToasterService,
+  constructor(
                 private route:ActivatedRoute,
                private BannerLogoService:BannersLogoservice,
                private ships: ShipsTrafficService) { }
@@ -37,7 +36,6 @@ export class ShipsTrafficComponent implements OnInit {
       this.data=res['resolve'].data
       this.BannerLogoService.setLogo(res['resolve'].data.logos as Logo[])
       this.BannerLogoService.setBanner(res['resolve'].data.banners as Banner[])
-      this.toster.stopLoading()
     })
     this.h_search_form = ship_traffic_Search_Form
 

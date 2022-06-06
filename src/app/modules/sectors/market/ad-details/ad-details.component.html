@@ -49,14 +49,26 @@
             <div class="col-12 col-md-9">
                 <h1 class="main__title">{{adDetails?.title}} </h1>
                 <p>{{adDetails?.address}}</p>
-                <div class="images__slider__top__single slider__for">
+                <!-- <div class="images__slider__top__single slider__for">
                     
                     <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
-                </div>
-                <div class="images__slider" id="slider__nav">
+                </div> -->
+                <!-- <div class="images__slider" id="slider__nav">
                     <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
     
+                </div> -->
+
+
+
+                <div class="basic-container" *ngIf="adDetails?.images">
+                    <!-- <gallery id="basic-test" fluid [items]="items"></gallery> -->
+                    <app-gallery-carouel [images]="adDetails?.images"></app-gallery-carouel>
                 </div>
+
+
+
+
+
                 <div class="add__details">
             
                     <p class="add__description">

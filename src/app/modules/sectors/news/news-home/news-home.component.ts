@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 import { map } from 'rxjs';
 // import { News, Search_Form_Data } from '../_core/data/News';
 import { NewsService } from '../_core/news.service';
@@ -31,7 +30,6 @@ export class NewsHomeComponent implements OnInit {
   public h_search_form: JsonFormData | any 
 
   constructor( private activatedRoute: ActivatedRoute,
-               private toster:ToasterService,
                private BannerLogoService:BannersLogoservice,
                private route: ActivatedRoute, 
                private news: NewsService,
@@ -48,7 +46,6 @@ export class NewsHomeComponent implements OnInit {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-      this.toster.stopLoading()
       console.log(res)
       this.News = res['resolve'].data.data  as News[]
       this.BannerLogoService.setBanner(res['resolve'].banners);
@@ -73,7 +70,6 @@ export class NewsHomeComponent implements OnInit {
   }
 
   filter(value:any) {
-    this.toster.loading('حاري التحميل')
 
     this.route.params.subscribe( params => {
       this.filterData['sector'] = params['type']
@@ -90,7 +86,6 @@ export class NewsHomeComponent implements OnInit {
     })
     this.news.all_news(this.filterData['sector'],+this.filterData['sort']).subscribe(res => {
       console.log(res)
-      this.toster.stopLoading()
       this.News= res.data?.data 
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);

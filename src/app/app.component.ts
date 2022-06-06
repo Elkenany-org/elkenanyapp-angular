@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToasterService } from '@app/@shared/services/toastr.service';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent  implements OnInit {
+  loading: boolean = false;
 
    toggleMenu = false;
 
-
+constructor(private _loading: ToasterService){}
 
 onToggleMenu(){
     if(this.toggleMenu === true){
@@ -18,56 +21,69 @@ onToggleMenu(){
       this.toggleMenu = true;
     }
   }
+  ngOnInit(): void {
+    this.listenToLoading();
+  }
+  // title = 'Elkenany';
+  
+  // slides = [
+  //   {img: "https://elkenany.com/uploads/full_images/26-09-2116326850971161395258.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/26-09-211632675724156772921.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/26-09-2116326934832024905896.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/26-09-2116326836751487169208.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/27-09-211632744833813085815.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/27-09-211632728667755791962.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/26-09-2116326827351203976322.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/27-09-211632724068153742742.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/27-09-2116327293451150692549.jpeg"},
+  //   {img: "https://elkenany.com/uploads/full_images/26-09-2116326874611403315176.jpeg"}
+  // ];
+  // slideConfig = {
+  //   "slidesToShow": 4,
+  //   "slidesToScroll": 4,
+  //   "dots": true,
+  //   "autoplay": true,
+  //   "autoplaySpeed": 3000,
+  // };
+  
+  // slideConfig_main = {
+  //   "slidesToShow": 1,
+  //   "slidesToScroll": 1,
+  //   "dots": true,
+  //   // "autoplay": true,
+  //   // "autoplaySpeed": 3000,
+  // };
+  
+  // addSlide() {
+  //   this.slides.push({img: "http://placehold.it/350x150/777777"})
+  // }
+  
+  // removeSlide() {
+  //   this.slides.length = this.slides.length - 1;
+  // }
+  
+  // slickInit(e:any) {
+  // }
+  
+  // breakpoint(e:any) {
+  // }
+  
+  // afterChange(e:any) {
+  // }
+  
+  // beforeChange(e:any) {
+  // }  
 
-  title = 'Elkenany';
-  
-  slides = [
-    {img: "https://elkenany.com/uploads/full_images/26-09-2116326850971161395258.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/26-09-211632675724156772921.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/26-09-2116326934832024905896.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/26-09-2116326836751487169208.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/27-09-211632744833813085815.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/27-09-211632728667755791962.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/26-09-2116326827351203976322.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/27-09-211632724068153742742.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/27-09-2116327293451150692549.jpeg"},
-    {img: "https://elkenany.com/uploads/full_images/26-09-2116326874611403315176.jpeg"}
-  ];
-  slideConfig = {
-    "slidesToShow": 4,
-    "slidesToScroll": 4,
-    "dots": true,
-    "autoplay": true,
-    "autoplaySpeed": 3000,
-  };
-  
-  slideConfig_main = {
-    "slidesToShow": 1,
-    "slidesToScroll": 1,
-    "dots": true,
-    // "autoplay": true,
-    // "autoplaySpeed": 3000,
-  };
-  
-  addSlide() {
-    this.slides.push({img: "http://placehold.it/350x150/777777"})
+
+
+  listenToLoading(): void {
+    this._loading.loadingSub
+      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
+      .subscribe((loading) => {
+        this.loading = loading;
+      });
   }
-  
-  removeSlide() {
-    this.slides.length = this.slides.length - 1;
-  }
-  
-  slickInit(e:any) {
-  }
-  
-  breakpoint(e:any) {
-  }
-  
-  afterChange(e:any) {
-  }
-  
-  beforeChange(e:any) {
-  }  
+
 
 
 }

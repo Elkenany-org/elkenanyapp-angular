@@ -3,11 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ship_traffic_Statistics_Search_Form, StatisticsShips } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 import { ShipsTrafficService } from '../_core/services/ships-traffic.service';
-import { single } from './../_core/services/data';
 import { Fillter } from '@shared/classes/filter';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-ships-traffic-statistics',
@@ -38,7 +36,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
    fillter =   new Fillter()
 
   public h_search_form?:JsonFormData  
-  constructor( private toster:ToasterService,
+  constructor( 
                private route:ActivatedRoute,
                private fb:FormBuilder,
                private BannerLogoService:BannersLogoservice,
@@ -54,7 +52,6 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
     // })
     this.h_search_form = ship_traffic_Statistics_Search_Form
     this.route.data.subscribe(data => {
-      this.toster.stopLoading()
       this.data= data['resolve'].data
       console.log(data['resolve'].data)
 
@@ -75,7 +72,6 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
       this.data = res.data
       console.log(res);
       
-      this.toster.stopLoading()
     })
     
   }

@@ -39,8 +39,8 @@ export class AdDetailsComponent implements OnInit {
         this.BannerConfig.banner= res.data?.images as any[]
         this.logoConfig.banner= res.data?.images as any[]
 
-        console.log(res.data?.banners as Banner[])
-        console.log(res.data?.logos as Logo[])
+        // console.log(res.data?.banners as Banner[])
+        // console.log(res.data?.logos as Logo[])
 
       })
     })

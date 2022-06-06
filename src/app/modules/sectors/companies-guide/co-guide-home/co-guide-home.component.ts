@@ -7,7 +7,6 @@ import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { map } from 'rxjs';
 import { Location } from '@angular/common';
 import { CompaniesGuideService } from '../_core/services/companies-guide.service';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 import { CompaniesHome, co_Search_Form_Data } from '@app/@core/interfaces/companies-guid/co-home-data';
 import { CompaniesFilterList } from '@app/@core/interfaces/companies-guid/co-filter-list-hom,e';
 @Component({
@@ -35,8 +34,7 @@ export class CoGuideHomeComponent implements OnInit {
     private route: ActivatedRoute, 
     private router: Router,  
     private activatedRoute: ActivatedRoute,
-    private location: Location,
-    private toster:ToasterService) { }
+    private location: Location) { }
 
   ngOnInit(): void {
 
@@ -49,7 +47,6 @@ export class CoGuideHomeComponent implements OnInit {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-      this.toster.stopLoading()
        this.Companies_Home_Data = res['resolve']  as CompaniesHome
        this.carousel_banner.banner = res['resolve'].banners
        this.carousel_logos.banner = res['resolve'].logos

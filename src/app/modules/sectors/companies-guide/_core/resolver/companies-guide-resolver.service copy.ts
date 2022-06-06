@@ -3,7 +3,6 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { sector } from '@app/@core/@data/app/filter-list';
 import { Companies } from '@app/@core/interfaces/companies-guid/co-companies';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 
 
 import { catchError, EMPTY, Observable } from 'rxjs';
@@ -15,7 +14,7 @@ import { CompaniesGuideService } from '../services/companies-guide.service';
 export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
    
 
-  constructor(private stock: CompaniesGuideService ,private router: Router,private toster:ToasterService) { }
+  constructor(private stock: CompaniesGuideService ,private router: Router ) { }
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):Observable<ApiResponse<Companies>>  {
     console.log("Companies Guide Resolver is work ",route.paramMap.get('id'))
@@ -34,7 +33,6 @@ export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
 
 
 
-    this.toster.loading('جاري التحميل')
 
    return this.stock.Companiesv2(data).pipe(
      catchError(() => {

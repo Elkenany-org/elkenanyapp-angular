@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
@@ -29,7 +28,6 @@ export class MagazineComponent implements OnInit {
 
   constructor( private activatedRoute: ActivatedRoute,
                private magazine: MagazineService,         
-               private toster:ToasterService,
                private BannerLogoService:BannersLogoservice,
                private router: Router,
   
@@ -93,7 +91,6 @@ export class MagazineComponent implements OnInit {
 
   filter(value:any) {
     console.log(value)
-    this.toster.loading('حاري التحميل')
 
       switch ( value.type ) {
         case "sector":

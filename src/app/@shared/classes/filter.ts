@@ -1,10 +1,8 @@
 
-import { ToasterService } from '@app/@shared/services/toastr.service';
 
 export class Fillter{
-    // constructor(private toster:ToasterService) {
 
-    // }
+
     public filterdata: {[key:string]:string} = {
         from:"",
         to:"",
@@ -49,7 +47,6 @@ export class Fillter{
           default:
             break
         }
-        // console.log(this.filterdata)
         return this.filterdata
 
         

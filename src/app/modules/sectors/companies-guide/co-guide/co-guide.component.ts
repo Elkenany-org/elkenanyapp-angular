@@ -9,7 +9,6 @@ import { map } from 'rxjs';
 
 import { Location } from '@angular/common';
 import { CompaniesGuideService } from '../_core/services/companies-guide.service';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 import { Companies, co_Search_Form_Data, FilterListCompanies } from '@app/@core/interfaces/companies-guid/co-companies';
 @Component({
   selector: 'app-co-guide',
@@ -52,7 +51,7 @@ export class CoGuideComponent implements OnInit {
     private router: Router,   
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private toster:ToasterService) { }
+  ) { }
 
   ngOnInit(): void {
 
@@ -62,7 +61,6 @@ export class CoGuideComponent implements OnInit {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-      this.toster.stopLoading()
       console.log(res['resolve'].data);
       
       this.page.current_page = res['resolve'].data.current_page
@@ -175,12 +173,10 @@ export class CoGuideComponent implements OnInit {
   }
 
   next_page(page:number):void{
-    this.toster.loading('جاري التحميل')
     this.filterData["page"] = page+''
     this.filterData["sub_id"]= this.id +''
     this.filterData["section_id"] =this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.type ===this.type).id  
      this.companiesGuideService.Companiesv2(this.filterData).subscribe(res => {
-      this.toster.stopLoading()
       this.page.current_page = res.data?.current_page as number
       this.page.last_page = res.data?.last_page as number
       //  this.page.last_page =  res.data?.last_page  as number

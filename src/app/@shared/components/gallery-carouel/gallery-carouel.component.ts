@@ -14,7 +14,7 @@ export class GalleryCarouelComponent implements OnInit,OnChanges {
   }
 
 
-  @Input() images?:{id:number, image:string}[] 
+  @Input() images?:{id?:number, image:string}[] 
   imageIndex = 1;
   galleryId = 1;
   autoPlay = true;

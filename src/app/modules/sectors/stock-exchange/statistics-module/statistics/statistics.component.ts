@@ -1,12 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { StatisticsService } from '../_core/statistics.service';
-import { sector } from './../../../../../@core/@data/app/filter-list';
-import { number } from 'echarts';
 import { StatisticsSubsSections, Statistics_Search_Form } from '@core/interfaces/stock-exchanges/statistics';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Fillter } from '@app/@shared/classes/filter';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 
 @Component({
   selector: 'app-statistics',
@@ -32,13 +29,22 @@ export class StatisticsComponent implements OnInit {
   constructor(private statistics: StatisticsService,
               private roure: ActivatedRoute,
               private fb:FormBuilder,
-              private router:Router,
-              private toster:ToasterService) {
+              private router:Router) {
                }
 
 
 
   ngOnInit(): void {
+/////////////test //////////////
+// this.StatisicsMembers()
+
+
+///////////////////////////////
+
+
+
+
+    
     this.h_search_form = Statistics_Search_Form
     this.fromToForm= this.fb.group({
       country: [],
@@ -136,7 +142,6 @@ export class StatisticsComponent implements OnInit {
       this.getStatisticsData(this.type,f['from'].value,f['to'].value,this.id)
     }else{
       let f = this.fillter.filterdata
-      this.toster.loading('حاري التحميل')
       this.fillter.filter(value)
       this.getStatisticsData(this.type,f['from'],f['to'],this.id)
 
@@ -152,7 +157,6 @@ export class StatisticsComponent implements OnInit {
     this.statistics.StatisicsSubSections(type,from,to,id).subscribe(res => {
       console.log(res);
       
-      this.toster.stopLoading()
       this.StatisticsMember=res.data
       this.StatisticsMemberSlected = res.data?.changes_subs
       this.drowShart(res.data!.changes_subs)

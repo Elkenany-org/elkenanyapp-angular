@@ -19,6 +19,7 @@ import { NoDataComponent } from './pages/no-data/no-data.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { ShortDatePipe } from './pipes/short-date.pipe';
+import { GalleryCarouelComponent } from './components/gallery-carouel/gallery-carouel.component';
 
 
 export  const pipes: any[] = [
@@ -47,5 +48,7 @@ export  const components: any[] = [
     NoDataComponent,
     PrivacyPolicyComponent,
     TermsAndConditionsComponent,
+    GalleryCarouelComponent
+
     
 ];

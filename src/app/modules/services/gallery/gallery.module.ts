@@ -9,9 +9,9 @@ import { SpeakersComponent } from './gallary/speakers/speakers.component';
 import { ReviewsComponent } from './gallary/reviews/reviews.component';
 import { ExhibitorsComponent } from './gallary/exhibitors/exhibitors.component';
 import { LightboxModule } from 'ng-gallery/lightbox';
-import { GalleryModule} from 'ng-gallery';
-import { GalleryCarouelComponent } from '@app/@shared/components/gallery-carouel/gallery-carouel.component';
-import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view'; // <----------------- angular-modal-gallery library import
+// import { GalleryModule} from 'ng-gallery';
+// import { GalleryCarouelComponent } from '@app/@shared/components/gallery-carouel/gallery-carouel.component';
+// import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view'; // <----------------- angular-modal-gallery library import
 import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
@@ -24,18 +24,18 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     SpeakersComponent,
     ReviewsComponent,
     ExhibitorsComponent,
-    GalleryCarouelComponent
+    // GalleryCarouelComponent
   ],
   imports: [
     CommonModule,
     GalleryRoutingModule,
     SharedModule,
-    GalleryModule.withConfig({
-      // thumbView: 'contain',
-    }),
+    // GalleryModule.withConfig({
+    //   // thumbView: 'contain',
+    // }),
     LightboxModule,
     NgxStarRatingModule,
-    GalleryModule3.forRoot() // <-------------------------------------------- @ks89/angular-modal-gallery module import
+    // GalleryModule3.forRoot() // <-------------------------------------------- @ks89/angular-modal-gallery module import
 
   ]
 })

@@ -8,9 +8,7 @@ import { ApiResponse } from '@app/@core/@data/API/api';
 import { JsonFormControls } from '@app/@shared/components/app/horizontal-search/_core/data';
 import { Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stock-exchange';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
-import { ToasterService } from '@shared/services/toastr.service';
 import { FormatDate } from '@shared/classes/formatDate';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -40,19 +38,10 @@ export class StockExchangeComponent implements OnInit {
     feed_id:''
   }
 
-
-
-
-
-
-  
-
-
   constructor( 
     private stockExchange: StockExchangeService,
     private route: ActivatedRoute,
     private BannerLogoService:BannersLogoservice,
-    private toster:ToasterService,
     private router: Router
    ) {}
 
@@ -221,7 +210,6 @@ export class StockExchangeComponent implements OnInit {
       this.stock_Ex_Data = res.data    
       console.log(this.stock_Ex_Data);
       
-        this.toster.stopLoading()
         
 
    })

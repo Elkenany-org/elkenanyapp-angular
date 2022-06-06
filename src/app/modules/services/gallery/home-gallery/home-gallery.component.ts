@@ -7,7 +7,6 @@ import { Banner, FilterList, Logo } from '@app/@core/interfaces/_app/app-respons
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import { ToasterService } from '@app/@shared/services/toastr.service';
 
 @Component({
   selector: 'app-home-gallery',
@@ -22,25 +21,22 @@ export class HomeGalleryComponent implements OnInit {
 
   public filterData:{[key:string]:string}= {
     sector:'poultry',
-    countries:'1',
-    cities:'1',
-    sort:"1",
+    countries:'',
+    cities:'',
+    sort:"0",
     search:"",
-    page:'1'
+    page:''
 
   }
   constructor(private galleryService: GallaryService,
               private bannrrsLogos: BannersLogoservice,
-              private toster:ToasterService,
               private location: Location,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.toster.loading('جاري التحميل')
     this.search_form = Gallries_Search_Form
     this.galleryService.galleries(this.filterData).subscribe(res => {
       console.log(res)
-      this.toster.stopLoading()
       this.page.current_page = res.data!.current_page
       this.page.last_page =res.data!.last_page
       this.galleryData= res.data?.data 
@@ -58,7 +54,6 @@ export class HomeGalleryComponent implements OnInit {
   }
 
   filter(value:any) {
-    this.toster.loading('جاري التحميل') 
     switch ( value.type ) {
       case "sector":
         this.filterData['sector'] = value.name
@@ -83,7 +78,6 @@ export class HomeGalleryComponent implements OnInit {
     console.log(this.filterData)
     console.log(res)
 
-    this.toster.stopLoading()
     this.galleryData= res.data?.data 
     this.bannrrsLogos.setBanner(res.data?.banners as Banner[])
     this.bannrrsLogos.setLogo(res.data?.logos as Logo[])
@@ -98,10 +92,8 @@ export class HomeGalleryComponent implements OnInit {
   }
 
   next_page(page:number):void{
-    this.toster.loading('جاري التحميل')
     this.filterData["page"] = page+''
     this.galleryService.galleries(this.filterData).subscribe(res => {
-      this.toster.stopLoading()
       this.page.current_page = res.data!.current_page
       this.page.last_page =res.data!.last_page
       this.galleryData= res.data?.data 

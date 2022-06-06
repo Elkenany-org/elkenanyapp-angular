@@ -11,6 +11,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view'; // <----------------- angular-modal-gallery library import
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NgxSpinnerModule,
     NgxSkeletonLoaderModule,
     NgxChartsModule,
-    
+    GalleryModule3.forRoot() // <-------------------------------------------- @ks89/angular-modal-gallery module import
+
 
 
   ],

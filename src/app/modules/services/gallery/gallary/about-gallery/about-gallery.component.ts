@@ -3,9 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gallery as Gallery2} from '@app/@core/interfaces/gallery/gallery';
 import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
-import { ToasterService } from '@app/@shared/services/toastr.service';
-import { Gallery, GalleryItem, ImageItem, ThumbnailsPosition, ImageSize } from 'ng-gallery';
-// import { Lightbox } from 'ng-gallery/lightbox';
 
 @Component({
   selector: 'app-about-gallery',
@@ -23,15 +20,12 @@ export class AboutGallery implements OnInit  {
 
   constructor(private router : Router,
               private galleryService: GallaryService,
-              private toster:ToasterService,
               private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    this.toster.loading('جاري التحميل')
     let url =  this.router.url.split('/') 
     this.id=  +url[url.length-2]
     this.galleryService.gallery(this.id).subscribe(res => {
-       this.toster.stopLoading()
        this.data = res.data
        console.log(this.data)
     })
@@ -61,14 +55,12 @@ export class AboutGallery implements OnInit  {
     formData.append('desc',   this.addPlaceForm.controls['desc'].value)
     formData.append('show_id', this.id+'')
     this.galleryService.add_place(formData).subscribe(res => {
-      console.log(res)
       this.galleryService.showers(this.id).subscribe(res => console.log(res))
     })
     formData.forEach(ite => console.log(ite))
   }
 
   sendRate() {
-    console.log(this.addRate.value)
     const formData:FormData= new FormData
     formData.append('name',  this.addRate.controls['name'].value)
     formData.append('email', this.addRate.controls['email'].value)
@@ -76,7 +68,6 @@ export class AboutGallery implements OnInit  {
     formData.append('rate',  this.addRate.controls['rate'].value)
     formData.append('show_id',this.id+'')
     this.galleryService.add_rate(formData).subscribe(res => {
-      console.log(res)
     })
     formData.forEach(ite => console.log(ite))
   }
