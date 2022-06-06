@@ -8,11 +8,13 @@ import { StatisticsDetialsComponent } from './statistics-detials/statistics-deti
 
 
 import * as CanvasJSAngularChart from '../../../../../assets/canvasjs.angular.component';
+import { StatisticsMembersComponent } from './statistics-members/statistics-members.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 @NgModule({
   declarations: [
     StatisticsComponent,
     StatisticsDetialsComponent,
+    StatisticsMembersComponent,
     CanvasJSChart
 
   ],

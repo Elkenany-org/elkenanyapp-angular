@@ -63,7 +63,7 @@ export let Stock_Search_Form_Data: JsonFormData =
         value: "",
         icon:"fas fa-poll",
         type: "a",
-        routerLink: "/stock-exchange/poultry/statistics",
+        routerLink: "",
         validators: {
           required: false,
         }

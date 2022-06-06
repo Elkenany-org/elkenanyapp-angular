@@ -59,6 +59,8 @@ export class StockExchangeComponent implements OnInit {
 
         
     this.route.params.subscribe((prm:Params) => {
+      console.log( this.filterData);
+      
         this.filterData['stock_id']=prm['id'],
         this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
         this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
@@ -110,7 +112,7 @@ export class StockExchangeComponent implements OnInit {
     this.stockExchange.Filter_list_sub(id, type, type_stock).subscribe((res:ApiResponse<FilterListSub>) => {
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   res.data?.fodder_sub_sections;
-      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/${id}`;
+      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/statistics-members/${this.filterData['type']}/${id}`;
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${id}`;
     })
 

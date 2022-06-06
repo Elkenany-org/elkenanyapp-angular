@@ -14,7 +14,7 @@ import { HomeService } from './_core/home.service';
 
 
 export class HomeComponent implements OnInit {
-  loading: boolean = false;
+  loading: boolean = true;
   
   public carousel_banner?: any = Banner_test  
   public carousel_logos:any = logo_test        

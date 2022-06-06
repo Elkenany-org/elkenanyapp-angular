@@ -86,26 +86,53 @@
             <div class="table__body row__shadow">
 
                 <!-- Start One Row    add ads class if ad  -->
-                <section class="table__row " *ngFor="let i of data?.members">
+                <div *ngIf="data?.members">
+                    <section class="table__row "  *ngFor="let i of data?.members">
+                        <section class="cell__container">
+                            <span class="cell__content">{{i.name}}</span>
+                        </section>
+                        <div class="wall"></div>
+                        <section class="cell__container">
+                            <span class="cell__content">{{i.counts}}</span>
+                        </section>
+                        <div class="wall"></div>
+                        <section class="cell__container">
+                            <span class="cell__content">{{i.days}}%</span>
+                   
+                        </section>
+                        <div class="wall"></div>
+                        <section class="cell__container">
+                            <span class="data__content">{{i.week}}%</span>
+                        </section>
+                        <div class="wall"></div>
+                        <section class="cell__container">
+                            <span class="cell__content">{{i.oldprice}}%</span>
+                        </section>
+                    </section>
+                </div>
+
+
+
+                <section class="table__row " *ngIf="dataLocalOrFodder" >
                     <section class="cell__container">
-                        <span class="cell__content">{{i.name}}</span>
+                        <span class="cell__content">{{dataLocalOrFodder?.name}}</span>
                     </section>
                     <div class="wall"></div>
                     <section class="cell__container">
-                        <span class="cell__content">{{i.counts}}</span>
+                        <span class="cell__content">{{dataLocalOrFodder?.counts}}</span>
                     </section>
                     <div class="wall"></div>
                     <section class="cell__container">
-                        <span class="cell__content">{{i.days}}%</span>
+                        <span class="cell__content">{{dataLocalOrFodder?.days}}%</span>
                
                     </section>
                     <div class="wall"></div>
                     <section class="cell__container">
-                        <span class="data__content">{{i.week}}%</span>
+                        <span class="data__content">{{dataLocalOrFodder?.week}}%</span>
                     </section>
                     <div class="wall"></div>
                     <section class="cell__container">
-                        <span class="cell__content">{{i.oldprice}}%</span>
+                        <span class="cell__content">{{dataLocalOrFodder?.oldprice}}%</span>
                     </section>
                 </section>
                 <!-- End One Row  -->

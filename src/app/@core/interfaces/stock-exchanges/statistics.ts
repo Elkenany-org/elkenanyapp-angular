@@ -148,3 +148,41 @@ export const Statistics_Search_Form: JsonFormData  =
       },
     ]
   }
+//----------------------------------------- StatisticsMembersLocal-------------------------------------///
+
+
+
+export interface StatisticsMembersLocal {
+  list_members: ListMember[]
+  changes_members: ChangesMember[]
+}
+
+export interface ListMember {
+  id: number
+  name: string
+}
+
+export interface ChangesMember {
+  id: number
+  name: string
+  change: string
+  counts: number
+  changes: Change[]
+}
+
+export interface Change {
+  date: string
+  change: number
+}
+
+
+//--------------------------------------- statisticsMembersDetials -----------------------------//
+
+export interface StatisticsMembersDetials {
+  id: number
+  name: string
+  counts: number
+  days: string
+  week: string
+  oldprice: string
+}
