@@ -103,7 +103,7 @@ const routes: Routes = [
       import('./modules/services/ships-traffic/ships-traffic.module').then( m => m.ShipsTrafficModule)
     },
     {
-      path:'search',
+      path:'search/:word',
       component:SearchComponent
     },
     {

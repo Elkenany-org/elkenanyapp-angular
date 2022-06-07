@@ -1,5 +1,6 @@
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '@app/@core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,8 @@ export class NavbarComponent implements OnInit {
   }
 
   constructor(
-    private auth: AuthService) { }
+    private auth: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -56,7 +58,9 @@ export class NavbarComponent implements OnInit {
   }
 
 
-
+  goToSearch(word:string) {
+    this.router.navigate(['search', word])
+  }
 
 
 

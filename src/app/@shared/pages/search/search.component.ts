@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Search } from '@app/@core/interfaces/_app/app-response';
 import { SearchService } from './../../../@core/services/app/gallery/search/search.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -12,10 +12,15 @@ export class SearchComponent implements OnInit {
   data?:any
   constructor(
     private searchService: SearchService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.route.params.subscribe(prm => {
+      console.log(prm['word']);
+      this.goSearch(prm['word'])
+      
+    })
   }
 
   selected(value:{id:number, type:string}) {
