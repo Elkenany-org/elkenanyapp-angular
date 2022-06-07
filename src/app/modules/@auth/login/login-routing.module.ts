@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
-    canDeactivate: [FormrGuard]
+    // canDeactivate: [FormrGuard]
   },
   {
     path: '**',

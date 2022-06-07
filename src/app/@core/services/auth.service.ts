@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { LocalstorageService } from './localstorage.service';
 import { Router } from '@angular/router';
 import { ApiResponse } from '../@data/API/api';
+import { ToasterService } from '@shared/services/toastr.service';
 
 
 @Injectable({
@@ -18,6 +19,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localStorageService: LocalstorageService,
+    private Toaster:ToasterService,
     private router: Router,
   ) { 
     // this.profileUser();
@@ -45,30 +47,25 @@ export class AuthService {
 
   Register(data: RegisterDataObject): Observable<ApiResponse<LoginDataResponse>> {
     return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/register`, data)
-    .pipe(
-      // tslint:disable-next-line:no-shadowed-variable
-      tap((data) => {
-        this.localStorageService.setState('token', data?.data?.api_token);
-        // this.profileUser();
-      })
-    );
+    // .pipe(
+    //   tap((data) => {
+    //     this.localStorageService.setState('token', data?.data?.api_token)
+    //     // this.profileUser();
+
+    //   })
+    // )
+ 
 
     
   }
-  profileUser():void {
-    const localItem = this.localStorageService.state$.getValue()?.['token'];
-    if(localItem) {
-      this.CheckAuth(localItem).subscribe((result)=> {
-        if(result?.data === 1) {
-          // this.userDataBehaviorSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-        }
-      })
-    }
-  }
+
 
   //not working now
-  CheckAuth(token: string): Observable<ApiResponse<number>> {
-    return this.http.post(`${env.ApiUrl}/check-login`, {api_token: token});
+  CheckAuth(token?: {token:string}): Observable<ApiResponse<number>> {
+
+
+
+    return this.http.post(`${env.ApiUrl}/customer/check-login`, {api_token: token});
   }
 
   //not working now
@@ -77,10 +74,36 @@ export class AuthService {
   }
 
   Logout(): void {
+    this.Toaster.showSuccess("تم تسجيل الخروج")
+    setTimeout(()=>{
+      location.reload();
+    }
+    ,1000)
     this.userDataBehaviorSubject.next(null);
     this.localStorageService.setState('token', null);
     this.localStorageService.ClearStorage();
-    location.reload();
+  }
+
+  isLogedIn():Boolean {
+
+    let token
+    if(localStorage.getItem('state')){
+      token =JSON.parse(localStorage.getItem('state')||"") ;;
+    }else {
+      token= null
+    }
+    // console.log(token);
+    
+    this.CheckAuth(token).subscribe(res => {
+      console.log(res)
+    },(err)=>{
+      console.log(err)
+    });
+    
+
+    return (token)?true:false;
+    
+    
   }
 }
 
@@ -91,3 +114,13 @@ export interface User {
   phone: string
   api_token: string
 }
+
+
+
+// let Token 
+// if(localStorage.getItem('state')){
+//   Token=JSON.parse( localStorage.getItem('state') ||'').token
+// }else {
+//   Token = 'dfe'
+// }
+// console.log(Token);

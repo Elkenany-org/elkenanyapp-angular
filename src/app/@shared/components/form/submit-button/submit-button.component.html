@@ -1,10 +1,15 @@
 <button
   [class.disabled__btn]="form.untouched || form.invalid || loading"
   [class.spinner]="loading"
-  [disabled]="form.untouched || form.invalid || loading"
-  [ngStyle]="{'cursor':form.untouched|| form.invalid || loading ? 'not-allowed':'pointer'  }"
+  [ngStyle]="{'cursor':form.untouched|| form.invalid  ? 'not-allowed':'pointer'  }"
   class="auth__btn--submit"
   mat-raised-button
   type="submit">
   {{title}}
 </button>
+
+
+<!-- [disabled]="form.untouched || form.invalid || loading" -->
+
+
+<!--  -->

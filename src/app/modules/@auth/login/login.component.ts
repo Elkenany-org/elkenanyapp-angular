@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { SaveData } from '@app/@core/@data/API/safe-data';
 import { LoginDataObject, LoginDataResponse } from '@app/@core/@data/userData';
@@ -18,11 +18,14 @@ export class LoginComponent implements OnInit, SaveData {
   loginForm!: FormGroup;
   hide = true;
   submitted = false;
+  returnUrl?: string;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     // private location: Location,
+    private route: ActivatedRoute,
+
     private authService: AuthService,
     private alertService: AlertService,
     private spinner: NgxSpinnerService
@@ -32,6 +35,8 @@ export class LoginComponent implements OnInit, SaveData {
   }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -55,6 +60,8 @@ export class LoginComponent implements OnInit, SaveData {
         this.spinner.hide();
         // location.reload();
         this.alertService.success(res.message!)
+        this.router.navigateByUrl(this.returnUrl||'');
+
       },
       (err) => {
         this.spinner.hide();

@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { AuthGuardService } from '@app/@core/guards/auth.guard';
 import { LayoutComponent } from '@app/@shared/components/layout/layout.component';
 import {NotFoundComponent} from '@app/@shared/pages/not-found/not-found.component';
 
@@ -11,7 +12,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 const routes: Routes = [
   {
     path: '',
-    component: StatisticsComponent
+    component: StatisticsComponent ,
   },
     {
     path: 'statistics-members/:type/:id',

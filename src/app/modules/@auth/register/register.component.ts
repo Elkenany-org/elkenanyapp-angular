@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { SaveData } from '@app/@core/@data/API/safe-data';
 import { LoginDataResponse, RegisterDataObject } from '@app/@core/@data/userData';
@@ -18,9 +18,11 @@ export class RegisterComponent implements OnInit, SaveData {
   loading = false;
   RegisterForm!: FormGroup;
   hide = true;
+  returnUrl?: string;
   
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private authService: AuthService,
     private spinner: NgxSpinnerService,
@@ -28,6 +30,8 @@ export class RegisterComponent implements OnInit, SaveData {
   ) { }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     this.RegisterForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -55,14 +59,21 @@ export class RegisterComponent implements OnInit, SaveData {
       password: this.RegisterForm.controls['password'].value,
       device_token: 'web'
     };
+    this.spinner.show()
+
     this.authService.Register(payload).subscribe(
       (res: ApiResponse<LoginDataResponse>) => {
+        console.log(res);
+        
         this.spinner.hide();
         this.alertService.success(res.message!);
+        this.router.navigateByUrl(this.returnUrl||'');
         // location.reload();
       },
       (err) => {
         this.spinner.hide();
+        console.log(err.error.error);
+        
         this.alertService.error(err.error.error);
       }
     );

@@ -1,4 +1,5 @@
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
+import { AuthService } from '@app/@core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -22,16 +23,29 @@ export class NavbarComponent implements OnInit {
     this.wasInside = false;
   }
 
-  constructor() { }
+  constructor(
+    private auth: AuthService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.auth.CheckAuth().subscribe(res => console.log(res))
+     console.log(this.isLogedIn());
+     
+  }
+
+
 
   toggleNavbar() { this.navbarOpen = !this.navbarOpen;}
 
 
 
 
+  logout() {
+   this.auth.Logout()
+  }
 
+  isLogedIn():Boolean{
+    return this.auth.isLogedIn()
+  }
 
 
 
