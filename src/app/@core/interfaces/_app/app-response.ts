@@ -135,3 +135,16 @@ export interface Sort {
   name: string
   value: number
 }
+
+
+//---------------------------- search --------------------------//
+
+export interface Search {
+  result: Result[]
+}
+
+export interface Result {
+  id: number
+  name: string
+  type: string
+}

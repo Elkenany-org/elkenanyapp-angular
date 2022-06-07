@@ -11,7 +11,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view'; // <----------------- angular-modal-gallery library import
+import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view';
+import { SearchComponent } from './pages/search/search.component'; // <----------------- angular-modal-gallery library import
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery
   declarations: [
     ...Shared.pipes,
     ...Shared.components,
+    SearchComponent,
 
 
 
