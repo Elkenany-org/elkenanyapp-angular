@@ -40,12 +40,7 @@ export class StatisticsComponent implements OnInit {
 
 
 
-    this.auth.CheckAuth().subscribe(res =>{
-      console.log(res)
-    },(err)=> {
-      console.log(err.error);
-      
-    })
+
 
     this.h_search_form = Statistics_Search_Form
     this.fromToForm= this.fb.group({

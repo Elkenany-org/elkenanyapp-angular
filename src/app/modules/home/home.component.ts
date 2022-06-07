@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
 ngOnInit(): void {
 
  this.home.Home().subscribe( res => {
-   console.log(res)
   //  this.carousel_banner.banner = res.banners
   this.carousel_logos.banner = res.logos
   this.carousel_banner.banner = res.banner

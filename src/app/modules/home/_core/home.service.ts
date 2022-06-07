@@ -16,8 +16,6 @@ export class HomeService {
   Home(): Observable<any> {
     return this.http.get<any>(`${env.ApiUrl}/home-sectors`).pipe(
       map((res) => {
-        console.log(res);
-        
         const data:any= {
           logos: res.data?.logos,
           sectors: res.data?.sectors,

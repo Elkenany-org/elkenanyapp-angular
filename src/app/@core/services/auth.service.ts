@@ -21,7 +21,7 @@ export class AuthService {
     private localStorageService: LocalstorageService,
     private Toaster:ToasterService,
     private router: Router,
-  ) { 
+  ) {
     // this.profileUser();
 
   }
@@ -42,29 +42,33 @@ export class AuthService {
       })
     );
 
-    
+
   }
 
   Register(data: RegisterDataObject): Observable<ApiResponse<LoginDataResponse>> {
     return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/register`, data)
-    // .pipe(
-    //   tap((data) => {
-    //     this.localStorageService.setState('token', data?.data?.api_token)
-    //     // this.profileUser();
+    .pipe(
+      tap((data) => {
+        this.localStorageService.setState('token', data?.data?.api_token)
+        // this.profileUser();
 
-    //   })
-    // )
- 
+      })
+    )
 
-    
+
+
   }
 
 
   //not working now
-  CheckAuth(token?: {token:string}): Observable<ApiResponse<number>> {
+  CheckAuth(): Observable<ApiResponse<number>> {
 
-
-
+    let token
+    if(localStorage.getItem('state')){
+      token =JSON.parse(localStorage.getItem('state')||"") ;;
+    }else {
+      token= {token: ''}
+    }
     return this.http.post(`${env.ApiUrl}/customer/check-login`, {api_token: token});
   }
 
@@ -84,27 +88,7 @@ export class AuthService {
     this.localStorageService.ClearStorage();
   }
 
-  isLogedIn():Boolean {
 
-    let token
-    if(localStorage.getItem('state')){
-      token =JSON.parse(localStorage.getItem('state')||"") ;;
-    }else {
-      token= null
-    }
-    // console.log(token);
-    
-    this.CheckAuth(token).subscribe(res => {
-      console.log(res)
-    },(err)=>{
-      console.log(err)
-    });
-    
-
-    return (token)?true:false;
-    
-    
-  }
 }
 
 
@@ -117,10 +101,3 @@ export interface User {
 
 
 
-// let Token 
-// if(localStorage.getItem('state')){
-//   Token=JSON.parse( localStorage.getItem('state') ||'').token
-// }else {
-//   Token = 'dfe'
-// }
-// console.log(Token);

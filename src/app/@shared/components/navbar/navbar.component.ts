@@ -27,8 +27,16 @@ export class NavbarComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.auth.CheckAuth().subscribe(res => console.log(res))
-     console.log(this.isLogedIn());
+
+    this.auth.CheckAuth().subscribe(res => {
+      console.log(res.data)
+    },(err)=> {
+      console.log(err.error.data);
+    })
+
+
+
+    //  console.log(this.isLogedIn());
      
   }
 
@@ -44,7 +52,10 @@ export class NavbarComponent implements OnInit {
   }
 
   isLogedIn():Boolean{
-    return this.auth.isLogedIn()
+    let is
+
+
+    return false
   }
 
 
