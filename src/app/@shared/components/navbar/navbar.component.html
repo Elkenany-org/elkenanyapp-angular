@@ -115,8 +115,8 @@
         </form>
 
         <section class="sign-box">
-            <a class="log-in"  *ngIf="!isLogedIn()" [routerLink]="['/user/login']">الدخول</a>
-            <a class="sign-up" *ngIf="!isLogedIn()"[routerLink]="['/user/register']">انضم الان</a>
+            <a class="log-in"  *ngIf="islogedIn==0" [routerLink]="['/user/login']">الدخول</a>
+            <a class="sign-up" *ngIf="islogedIn==0"[routerLink]="['/user/register']">انضم الان</a>
         </section>
 
     </div>
@@ -144,7 +144,7 @@
 
 
 
-    <section class="profile-box dropdown d-lg-block d-none">
+    <section class="profile-box dropdown d-lg-block d-none" *ngIf="islogedIn==1">
         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
            href="#"
            id="navbarDropdown" role="button">

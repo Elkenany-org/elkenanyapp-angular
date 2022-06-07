@@ -10,6 +10,7 @@ import { AuthService } from '@app/@core/services/auth.service';
 export class NavbarComponent implements OnInit {
   private wasInside = false;
   navbarOpen = false;
+  islogedIn?:number
 
   @HostBinding("class.show") isOpen = false;
   @HostListener("click") toggleOpen() {
@@ -29,8 +30,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
     this.auth.CheckAuth().subscribe(res => {
+      this.islogedIn= res.data
       console.log(res.data)
     },(err)=> {
+      this.islogedIn= err.error.data
+
       console.log(err.error.data);
     })
 
@@ -51,12 +55,7 @@ export class NavbarComponent implements OnInit {
    this.auth.Logout()
   }
 
-  isLogedIn():Boolean{
-    let is
 
-
-    return false
-  }
 
 
 
