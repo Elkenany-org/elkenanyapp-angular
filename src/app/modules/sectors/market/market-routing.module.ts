@@ -1,6 +1,8 @@
 import { NgModule} from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { AuthGuardService } from '@app/@core/guards/auth.guard';
+import { MarketwDetailsResolver } from '@app/@core/resolver/market/market-details-resolver.service';
+import { MarketHomeResolver } from '@app/@core/resolver/market/market-home-resolver.service';
 import { LayoutComponent } from '@app/@shared/components/layout/layout.component';
 import { NotFoundComponent} from '@app/@shared/pages/not-found/not-found.component';
 import { AdDetailsComponent } from './ad-details/ad-details.component';
@@ -19,6 +21,9 @@ const children: Routes = [
       {
         path: '',
         component: MarketHomeComponent,
+        resolve: {
+          resolve: MarketHomeResolver
+        },
       },
       {
         path: 'edit-ad',
@@ -43,7 +48,10 @@ const children: Routes = [
   },
   {
     path: 'ad_details/:id',
-    component: AdDetailsComponent
+    component: AdDetailsComponent,
+    resolve: {
+      resolve: MarketwDetailsResolver
+    }
     
   },
   {

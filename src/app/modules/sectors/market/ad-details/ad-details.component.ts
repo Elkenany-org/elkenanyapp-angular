@@ -29,22 +29,14 @@ export class AdDetailsComponent implements OnInit {
     BannerConfig = BannerConfig 
     logoConfig = logoConfig
   ngOnInit(): void {
-    
-    this.route.params.subscribe(param => {
-      this.marketService.ad_details(param['id']).subscribe(res => {
-        this.adDetails = res.data 
-        console.log(res.data)
-        this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
-        this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
-        this.BannerConfig.banner= res.data?.images as any[]
-        this.logoConfig.banner= res.data?.images as any[]
-
-        // console.log(res.data?.banners as Banner[])
-        // console.log(res.data?.logos as Logo[])
-
-      })
+    this.route.data.subscribe(data => {
+      data['resolve']
+      this.adDetails = data['resolve'].data 
+      this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
+      this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
+      this.BannerConfig.banner= data['resolve'].data?.images as any[]
+      this.logoConfig.banner= data['resolve'].data?.images as any[]
     })
-
   }
 
 

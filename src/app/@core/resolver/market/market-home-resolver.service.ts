@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { Market } from '@app/@core/interfaces/market/home';
+import { MarketService } from '@app/modules/sectors/market/_core/market.service';
 
 
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { MarketService } from '../market.service';
 
 
 @Injectable({
