@@ -2,25 +2,22 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { ShipsTrafficService } from '../../../modules/services/ships-traffic/_core/services/ships-traffic.service';
-import { Ships } from '@app/@core/interfaces/ships-traffic/ships-traffic';
-import {  Magazines } from '../../interfaces/magazine/magazine';
-import { MagazineService } from '../../../modules/services/magazine/_core/services/magazine.service';
+import { Gallery } from '@app/@core/interfaces/gallery/gallery';
+import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class MagazineResolver implements Resolve<ApiResponse<Magazines>>{
+export class GallaryResolver implements Resolve<ApiResponse<Gallery>>{
    
 
-  constructor(private magazine: MagazineService ,private router: Router) { }
+  constructor(private Gallary: GallaryService ,private router: Router) { }
 
-  resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<Magazines>>  {
-    console.log("resolver is work ")
-
-   return this.magazine.magazines("poultry",0,'','').pipe(
-     
+  resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<Gallery>>  {
+    console.log("resolver is work ",route.paramMap.get('id') )
+   let id:any = route.paramMap.get('id')
+   return this.Gallary.gallery(id).pipe(
      catchError(() => {
        this.router.navigate([""]);
        return EMPTY

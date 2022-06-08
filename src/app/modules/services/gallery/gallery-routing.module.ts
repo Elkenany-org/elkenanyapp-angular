@@ -7,7 +7,8 @@ import { AboutGallery } from './gallary/about-gallery/about-gallery.component';
 import { ReviewsComponent } from './gallary/reviews/reviews.component';
 import { ExhibitorsComponent } from './gallary/exhibitors/exhibitors.component';
 import { SpeakersComponent } from './gallary/speakers/speakers.component';
-import { GalleriesResolver } from '@app/@core/resolver/gallery/galleries-resolver.service copy';
+import { GalleriesResolver } from '@app/@core/resolver/gallery/galleries-resolver.service';
+import { GallaryResolver } from '@app/@core/resolver/gallery/gallery-resolver.service';
 
 
 const children:Routes = [
@@ -21,6 +22,9 @@ const children:Routes = [
   {
     path: ':id',
     component: GallaryComponent,
+    resolve: {
+      resolve: GallaryResolver
+    },
     children: [
       {
         path: '',
@@ -29,7 +33,8 @@ const children:Routes = [
       },
       {
         path: 'about',
-        component: AboutGallery
+        component: AboutGallery,
+  
       },
       {
         path: 'reviews',

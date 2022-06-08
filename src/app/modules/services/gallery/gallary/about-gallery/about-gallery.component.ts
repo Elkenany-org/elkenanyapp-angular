@@ -19,10 +19,16 @@ export class AboutGallery implements OnInit  {
 
 
   constructor(private router : Router,
+              private route:ActivatedRoute,
               private galleryService: GallaryService,
               private fb:FormBuilder) { }
 
   ngOnInit(): void {
+
+    this.route.data.subscribe(data => {
+      console.log(data);
+      
+    })
     let url =  this.router.url.split('/') 
     this.id=  +url[url.length-2]
     this.galleryService.gallery(this.id).subscribe(res => {
