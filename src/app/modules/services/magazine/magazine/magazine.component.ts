@@ -39,7 +39,7 @@ export class MagazineComponent implements OnInit {
     this.activatedRoute.params.subscribe(prm => {
       console.log(prm)
     })
-    this.magazine.magazines("poultry",2,1,'').subscribe(res => {
+    this.magazine.magazines("poultry",0,'','').subscribe(res => {
       this.magazines= res.data?.data
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
@@ -112,7 +112,7 @@ export class MagazineComponent implements OnInit {
 
      this.magazine.magazines(this.filterData['sector'],
                              +this.filterData['sort'],
-                             +this.filterData['cities'],'').subscribe(res => {
+                             this.filterData['cities'],'').subscribe(res => {
        this.magazines= res.data?.data
      })
 

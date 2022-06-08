@@ -146,9 +146,13 @@ export interface Search {
 export interface Result {
   id: number
   name: string
+  price:number
+  count:number
+  date:string[]
   image: string
   short_desc: string
   address: string
   type: string
+  created_at:string
 }
 

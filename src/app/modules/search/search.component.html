@@ -32,34 +32,24 @@
                                           
                         <div class="col-12">
                               
-                            <div *ngFor="let i of categories?.['guide_sub_sections']" class="product__card big__card regular__hover">
+                            <div *ngFor="let i of categories?.['guide_sub_sections']" class="product__card regular__hover">
                                 <div class="image__card">
                                     <img alt="product__image" [src]="i.image">
                                 </div>
                                 <div class="product__content">
                                     <header class="product__title">
-                                        <a href="https://elkenany.com/Guide-company/731">
+                                        <a  [routerLink]="['/companies-guide/animal/companies/no/',i.id]">
+
                                       {{i.name}}
-                                        </a>
+                                    </a>
+
                                     </header>
-                                    <div class="product__rating">
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                    <section *ngIf="i.short_desc" class="product__info">
-                                        <p class="note text-center">
-                                       {{i.short_desc}}
-                                        </p>
-                                    </section>
-                                    <section class="product__bottom">
-                                        <section *ngIf="i.address" class="address-box">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                            <span class="address">{{i.address}}</span>
-                                        </section>
-                                        <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
-                                    </section>
+                                <section  class="product__info">
+                                    <p class="note text-center">
+                                   {{i.count}} معمل
+                                    </p>
+                                </section>
+    
                                 </div>
                             
                             </div>
@@ -88,8 +78,8 @@
                                   </div>
                                   <div class="product__content">
                                       <header class="product__title">
-                                          <a href="https://elkenany.com/Guide-company/731">
-                                        {{i.name}}
+                                        <a  [routerLink]="['/companies-guide/poultry/companies_details/no/',i.id]">
+                                            {{i.name}}
                                           </a>
                                       </header>
                                       <div class="product__rating">
@@ -108,7 +98,7 @@
                                               <i class="fas fa-map-marker-alt"></i>
                                               <span class="address">{{i.address}}</span>
                                           </section>
-                                          <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                          <a class="more__details" [routerLink]="['/companies-guide/poultry/companies_details/no/',i.id]">اعرف أكتر</a>
                                       </section>
                                   </div>
                               
@@ -132,66 +122,30 @@
                     </section>
                     <div class="new__cards row">
                         <div class="col-12">
-                                
-                        <div *ngFor="let i of categories?.['fodder_stock_sub']" class="product__card big__card regular__hover">
+                             
+
+                        <div *ngFor="let i of categories?.['fodder_stock_sub']" class="product__card">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
                             </div>
+
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a href="https://elkenany.com/Guide-company/731">
-                                    {{i.name}}
-                                    </a>
+                                    <a  [routerLink]="['/stock-exchange/poultry/stock-exchange/no/fodder/',i.id]">{{i.name}}</a>
                                 </header>
-                                <div class="product__rating">
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                </div>
-                                <section *ngIf="i.short_desc" class="product__info">
-                                    <p class="note text-center">
-                                    {{i.short_desc}}
-                                    </p>
-                                </section>
-                                <section class="product__bottom">
-                                    <section *ngIf="i.address" class="address-box">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span class="address">{{i.address}}</span>
-                                    </section>
-                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
-                                </section>
                             </div>
                         
                         </div>
-                        <div *ngFor="let i of categories?.['local_stock_sub']" class="product__card big__card regular__hover">
+                        <div *ngFor="let i of categories?.['local_stock_sub']" class="product__card ">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a href="https://elkenany.com/Guide-company/731">
+                                    <a  [routerLink]="['/stock-exchange/poultry/stock-exchange/no/local/',i.id]">
                                     {{i.name}}
                                     </a>
                                 </header>
-                                <div class="product__rating">
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                </div>
-                                <section *ngIf="i.short_desc" class="product__info">
-                                    <p class="note text-center">
-                                    {{i.short_desc}}
-                                    </p>
-                                </section>
-                                <section class="product__bottom">
-                                    <section *ngIf="i.address" class="address-box">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span class="address">{{i.address}}</span>
-                                    </section>
-                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
-                                </section>
                             </div>
                         
                         </div>
@@ -201,13 +155,6 @@
             
 
                 </section>
-                      <!-- <section class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
-                          <section class="title-box">
-                              <h2 class="title sects"> البورصات</h2>
-                          </section>
-                          <div class="new__cards row">
-                                                                                                                                                                                                          </div>
-                      </section> -->
 
 
 
@@ -227,7 +174,7 @@
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a href="https://elkenany.com/Guide-company/731">
+                                    <a [routerLink]="['/magazine/details/',i.id]">
                                   {{i.name}}
                                     </a>
                                 </header>
@@ -247,7 +194,7 @@
                                         <i class="fas fa-map-marker-alt"></i>
                                         <span class="address">{{i.address}}</span>
                                     </section>
-                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                    <a class="more__details" [routerLink]="['/magazine/details/',i.id]">اعرف أكتر</a>
                                 </section>
                             </div>
                         
@@ -268,33 +215,28 @@
                   <div class="new__cards row">
                     <div class="col-12">
                               
-                        <div *ngFor="let i of categories?.['news']" class="product__card big__card regular__hover">
+                        <div *ngFor="let i of categories?.['news']" class="product__card regular__hover">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a href="https://elkenany.com/Guide-company/731">
+                                    <a [routerLink]="['/news/poultry/',i.id]">
                                   {{i.name}}
                                     </a>
                                 </header>
-                                <div class="product__rating">
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                </div>
+
                                 <section *ngIf="i.short_desc" class="product__info">
                                     <p class="note text-center">
                                    {{i.short_desc}}
                                     </p>
                                 </section>
+                                 
                                 <section class="product__bottom">
-                                    <section *ngIf="i.address" class="address-box">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span class="address">{{i.address}}</span>
+                                    <section *ngIf="i.created_at" class="address-box">
+                                        <i class="fas "></i>
+                                        <span class="address">{{i.created_at}}</span>
                                     </section>
-                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
                                 </section>
                             </div>
                         
@@ -322,7 +264,7 @@
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a href="https://elkenany.com/Guide-company/731">
+                                    <a [routerLink]="['/gallery/poultry/',i.id]">
                                   {{i.name}}
                                     </a>
                                 </header>
@@ -332,17 +274,36 @@
                                     <div class="star"></div>
                                     <div class="star"></div>
                                 </div>
+
                                 <section *ngIf="i.short_desc" class="product__info">
                                     <p class="note text-center">
                                    {{i.short_desc}}
                                     </p>
                                 </section>
+
+
+
                                 <section class="product__bottom">
+                                    <section class="content__box">
+                                        <i class="far fa-calendar-alt"></i>
+                                      
+                                        <span class="content" *ngFor="let j of i.date ; let d = index">
+                                            {{ i.date[d]}}
+                                         </span>
+                                    </section>
+                                    <section class="content__box">
+                                        <i class="fas fa-users"></i>
+                                        <span class="content"> {{i.count}} متابع</span>
+                                    </section>
+                                </section>
+                                <section class="product__bottom">
+                                    
                                     <section *ngIf="i.address" class="address-box">
                                         <i class="fas fa-map-marker-alt"></i>
                                         <span class="address">{{i.address}}</span>
                                     </section>
-                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+
+                                    <a class="more__details"[routerLink]="['/gallery/poultry/',i.id]">اعرف أكتر</a>
                                 </section>
                             </div>
                         
@@ -363,33 +324,24 @@
                       
                     <div class="col-12">
                               
-                        <div *ngFor="let i of categories?.['stores']" class="product__card big__card regular__hover">
+                        <div *ngFor="let i of categories?.['stores']" class="product__card regular__hover">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a href="https://elkenany.com/Guide-company/731">
+                                    <a [routerLink]="['/market/poultry/ad_details/',i.id]">
                                   {{i.name}}
                                     </a>
                                 </header>
-                                <div class="product__rating">
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                </div>
-                                <section *ngIf="i.short_desc" class="product__info">
+                                <section *ngIf="i.price" class="product__info">
                                     <p class="note text-center">
-                                   {{i.short_desc}}
+                                        {{i.price}} جنية 
                                     </p>
                                 </section>
                                 <section class="product__bottom">
-                                    <section *ngIf="i.address" class="address-box">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span class="address">{{i.address}}</span>
-                                    </section>
-                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+ 
+                                    <a class="more__details"[routerLink]="['/market/poultry/ad_details/',i.id]">اعرف أكتر</a>
                                 </section>
                             </div>
                         
