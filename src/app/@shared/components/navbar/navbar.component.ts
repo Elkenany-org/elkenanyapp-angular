@@ -59,7 +59,7 @@ export class NavbarComponent implements OnInit {
 
 
   goToSearch(word:string) {
-    this.router.navigate(['search', word])
+    this.router.navigate(['pages/search', word])
   }
 
 

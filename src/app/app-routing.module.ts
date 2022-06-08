@@ -6,7 +6,7 @@ import { AboutUsComponent } from './@shared/pages/about-us/about-us.component';
 import { ContactUsComponent } from './@shared/pages/contact-us/contact-us.component';
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
 import { PrivacyPolicyComponent } from './@shared/pages/privacy-policy/privacy-policy.component';
-import { SearchComponent } from './@shared/pages/search/search.component';
+import { SearchComponent } from './modules/pages/search/search.component';
 import { TermsAndConditionsComponent } from './@shared/pages/terms-and-conditions/terms-and-conditions.component';
 import { CompaniesGuideHomeResolver } from './modules/sectors/companies-guide/_core/resolver/companies-guide-home-resolver.service copy 2';
 import { MarketHomeResolver } from './modules/sectors/market/_core/resolver/market-home-resolver.service';
@@ -99,9 +99,17 @@ const routes: Routes = [
       resolve: {
         resolve: ShipsTrafficResolver
       },
+      
       loadChildren: () => 
       import('./modules/services/ships-traffic/ships-traffic.module').then( m => m.ShipsTrafficModule)
     },
+    {
+      path:'pages',
+      loadChildren: () => 
+      import('./modules/pages/pages.module').then(m => m.PagesModule)
+   
+    },
+
     {
       path:'search/:word',
       component:SearchComponent
