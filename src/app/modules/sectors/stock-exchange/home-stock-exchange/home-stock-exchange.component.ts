@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { map } from 'rxjs';
-import { StockExchangeService } from '../_core/stock-exchange.service';
+import { StockExchangeService } from '../../../../@core/services/modules/stock-exchange/stock-exchange.service';
 import { Location } from '@angular/common';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { StockExchange } from '@app/@core/interfaces/stock-exchanges/Stock-exchange';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { FeedsItems } from '@app/@core/interfaces/stock-exchanges/Stock-exchange';
-import { StockExchangeService } from '@app/modules/sectors/stock-exchange/_core/stock-exchange.service';
+import { StockExchangeService } from '@app/@core/services/modules/stock-exchange/stock-exchange.service';
 
 import { catchError, EMPTY, Observable } from 'rxjs';
 // import { FeedsItems } from '../data/local-stock-fodder-sub';

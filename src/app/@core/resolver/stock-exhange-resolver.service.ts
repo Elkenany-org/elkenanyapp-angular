@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { StockExchangeService } from '@app/modules/sectors/stock-exchange/_core/stock-exchange.service';
+import { StockExchangeService } from '@app/@core/services/modules/stock-exchange/stock-exchange.service';
 
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { ApiResponse } from '../@data/API/api';

@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { sector } from '@app/@core/@data/app/filter-list';
 import { Companies } from '@app/@core/interfaces/companies-guid/co-companies';
-import { CompaniesGuideService } from '@app/modules/sectors/companies-guide/_core/services/companies-guide.service';
+import { CompaniesGuideService } from '@app/@core/services/modules/companies-guide/companies-guide.service';
 
 
 import { catchError, EMPTY, Observable } from 'rxjs';

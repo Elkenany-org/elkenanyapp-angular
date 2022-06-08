@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { comparsion_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/comparison';
 import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
-import { StockExchangeService } from '../_core/stock-exchange.service';
+import { StockExchangeService } from '../../../../@core/services/modules/stock-exchange/stock-exchange.service';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Comparison, Compare } from '@app/@core/interfaces/stock-exchanges/conversion';
 

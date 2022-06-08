@@ -6,7 +6,7 @@ import { ApiResponse } from '@app/@core/@data/API/api';
 import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { map } from 'rxjs';
 import { Location } from '@angular/common';
-import { CompaniesGuideService } from '../_core/services/companies-guide.service';
+import { CompaniesGuideService } from '../../../../@core/services/modules/companies-guide/companies-guide.service';
 import { CompaniesHome, co_Search_Form_Data } from '@app/@core/interfaces/companies-guid/co-home-data';
 import { CompaniesFilterList } from '@app/@core/interfaces/companies-guid/co-filter-list-hom,e';
 @Component({

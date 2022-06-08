@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse } from '@app/@core/@data/API/api';
-import { StatisticsSubSec } from '../data/statisics-sub-sec';
-import {environment as env} from '../../../../../../environments/environment';
+import {environment as env} from '../../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { StatisticsSubSec } from '@app/@core/interfaces/stock-exchanges/statistics';
 
 @Injectable({
   providedIn: 'root'

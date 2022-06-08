@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 
 
 import { Location } from '@angular/common';
-import { CompaniesGuideService } from '../_core/services/companies-guide.service';
+import { CompaniesGuideService } from '../../../../@core/services/modules/companies-guide/companies-guide.service';
 import { Companies, co_Search_Form_Data, FilterListCompanies } from '@app/@core/interfaces/companies-guid/co-companies';
 @Component({
   selector: 'app-co-guide',

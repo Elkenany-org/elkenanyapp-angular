@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { company } from '@app/@core/interfaces/companies-guid/co-company';
-import { CompaniesGuideService } from '../_core/services/companies-guide.service';
+import { CompaniesGuideService } from '../../../../@core/services/modules/companies-guide/companies-guide.service';
 
 @Component({
   selector: 'app-companies-details',

@@ -5,7 +5,7 @@ import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { map } from 'rxjs';
 // import { News, Search_Form_Data } from '../_core/data/News';
-import { NewsService } from '../_core/news.service';
+import { NewsService } from '../../../../@core/services/modules/news/news.service';
 import { Location } from '@angular/common';
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';

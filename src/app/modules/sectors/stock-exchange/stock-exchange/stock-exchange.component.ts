@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { StockExchangeService } from '../_core/stock-exchange.service';
+import { StockExchangeService } from '../../../../@core/services/modules/stock-exchange/stock-exchange.service';
 import { CompaniesItems, FilterListSub, LocalStockFodder} from '@core/interfaces/stock-exchanges/Stock-exchange';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';

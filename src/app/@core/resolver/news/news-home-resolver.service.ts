@@ -6,7 +6,7 @@ import { AllNews } from '@app/@core/interfaces/news/news';
 
 import { catchError, EMPTY, Observable } from 'rxjs';
 
-import { NewsService } from '../news.service';
+import { NewsService } from '../../services/modules/news/news.service';
 
 
 @Injectable({
