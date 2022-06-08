@@ -53,11 +53,11 @@ export class SearchComponent implements OnInit {
         console.log("guide_sub_sections");
         break
       case "fodder_stock_sub": 
-      this.router.navigate(['/gallery/poultry/',value.id,'about'])
+      this.router.navigate(['/stock-exchange/poultry/stock-exchange/no/fodder/',value.id])
         console.log();
         break
       case "local_stock_sub": 
-      this.router.navigate(['/gallery/poultry/',value.id,'about'])
+      this.router.navigate(['/stock-exchange/poultry/stock-exchange/no/local/',value.id])
         console.log();
         break
         
@@ -66,7 +66,7 @@ export class SearchComponent implements OnInit {
        //fodder_stock_sub //بورصة أعلاف الشركات 
        // local_stock_sub //بورصة بيض المائدة
         //"guide_sub_sections
-      
+        // بورصة البقوليات
         default:
           break
         
@@ -85,7 +85,6 @@ export class SearchComponent implements OnInit {
 
 
 
-    console.log(word);
     
   }
 

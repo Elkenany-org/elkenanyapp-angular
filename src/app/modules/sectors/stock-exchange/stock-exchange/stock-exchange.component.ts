@@ -28,6 +28,8 @@ export class StockExchangeComponent implements OnInit {
   public feeds?:CompaniesItems[] =[]
   public companies?:CompaniesItems [];
   public collapse:number= 0
+  public today= new FormatDate().shortDate(Date())
+
   public filterData:{[key:string]:string}= {
     type:'',
     id:'',
@@ -48,7 +50,6 @@ export class StockExchangeComponent implements OnInit {
     
 
   ngOnInit(): void {
-    let today= new FormatDate().shortDate(Date())
 
     this.h_search_form = Stock_Search_Form_Data
 
@@ -87,7 +88,7 @@ export class StockExchangeComponent implements OnInit {
 
       
      }else if(prm['type_stock'] === 'local'){
-        this.stockExchange.local(prm['id'],today).subscribe( res => {
+        this.stockExchange.local(prm['id'],this.today).subscribe( res => {
         let arr:any[] =[]
         console.log(res.data);
         // res.data?.columns.forEach(i => {
@@ -206,7 +207,7 @@ export class StockExchangeComponent implements OnInit {
 
   stockData(id:string, data:string,fod_id?:string,comp_id?:string) {
     
-    this.stockExchange.fodder(+id,'2022-05-26',fod_id,comp_id).subscribe( res => {
+    this.stockExchange.fodder(+id,this.today,fod_id,comp_id).subscribe( res => {
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
