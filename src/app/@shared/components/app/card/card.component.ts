@@ -28,8 +28,7 @@ export class CardComponent implements OnChanges {
    }
 
    ngOnChanges(changes: SimpleChanges) {
-console.log(this.data)
-    console.log(!changes['data'])
+//     console.log(!changes['data'])
     
       
 

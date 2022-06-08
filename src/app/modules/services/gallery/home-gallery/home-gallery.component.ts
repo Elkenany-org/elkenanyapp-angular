@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { Gallries, Gallries_Search_Form } from '@app/@core/interfaces/gallery/gallery';
 import { Banner, FilterList, Logo } from '@app/@core/interfaces/_app/app-response';
@@ -28,20 +28,21 @@ export class HomeGalleryComponent implements OnInit {
     page:''
 
   }
-  constructor(private galleryService: GallaryService,
+  constructor(private route: ActivatedRoute,
+              private galleryService: GallaryService,
               private bannrrsLogos: BannersLogoservice,
               private location: Location,
               private router: Router) { }
 
   ngOnInit(): void {
     this.search_form = Gallries_Search_Form
-    this.galleryService.galleries(this.filterData).subscribe(res => {
-      console.log(res)
-      this.page.current_page = res.data!.current_page
-      this.page.last_page =res.data!.last_page
-      this.galleryData= res.data?.data 
-      this.bannrrsLogos.setBanner(res.data?.banners as Banner[])
-      this.bannrrsLogos.setLogo(res.data?.logos as Logo[])
+    this.route.data.subscribe(data => {
+      console.log(data['resolve']);
+      this.page.current_page = data['resolve'].data!.current_page
+      this.page.last_page =data['resolve'].data!.last_page
+      this.galleryData= data['resolve'].data?.data 
+      this.bannrrsLogos.setBanner(data['resolve'].data?.banners as Banner[])
+      this.bannrrsLogos.setLogo(data['resolve'].data?.logos as Logo[])
       this.galleryService.filter_list('poultry',1).subscribe((res:ApiResponse<FilterList>) => {
         // override data to match the data format of horizontal components
         this.search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
@@ -50,7 +51,10 @@ export class HomeGalleryComponent implements OnInit {
         this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
 
       }) 
+      
     })
+
+
   }
 
   filter(value:any) {

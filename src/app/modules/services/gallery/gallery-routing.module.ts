@@ -7,12 +7,16 @@ import { AboutGallery } from './gallary/about-gallery/about-gallery.component';
 import { ReviewsComponent } from './gallary/reviews/reviews.component';
 import { ExhibitorsComponent } from './gallary/exhibitors/exhibitors.component';
 import { SpeakersComponent } from './gallary/speakers/speakers.component';
+import { GalleriesResolver } from '@app/@core/resolver/gallery/galleries-resolver.service copy';
 
 
 const children:Routes = [
   {
     path: '',
-    component: HomeGalleryComponent
+    component: HomeGalleryComponent,
+    resolve: {
+      resolve: GalleriesResolver
+    }
   },
   {
     path: ':id',
