@@ -2,12 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShipsTrafficResolver } from './@core/resolver/ships-traffic/ships-traffic-resolver.service';
 import { StockExhangeResolver } from './@core/resolver/stock-exhange-resolver.service';
-import { AboutUsComponent } from './@shared/pages/about-us/about-us.component';
-import { ContactUsComponent } from './@shared/pages/contact-us/contact-us.component';
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
-import { PrivacyPolicyComponent } from './@shared/pages/privacy-policy/privacy-policy.component';
-import { SearchComponent } from './modules/pages/search/search.component';
-import { TermsAndConditionsComponent } from './@shared/pages/terms-and-conditions/terms-and-conditions.component';
 import { CompaniesGuideHomeResolver } from './modules/sectors/companies-guide/_core/resolver/companies-guide-home-resolver.service copy 2';
 import { MarketHomeResolver } from './modules/sectors/market/_core/resolver/market-home-resolver.service';
 import { NewsHomeResolver } from './modules/sectors/news/_core/resolver/news-home-resolver.service';
@@ -104,32 +99,17 @@ const routes: Routes = [
       import('./modules/services/ships-traffic/ships-traffic.module').then( m => m.ShipsTrafficModule)
     },
     {
-      path:'pages',
+      path:'search',
       loadChildren: () => 
-      import('./modules/pages/pages.module').then(m => m.PagesModule)
-   
+      import('./modules/search/search.module').then(m => m.PagesModule)
+    },
+    {
+      path:'static-pages',
+      loadChildren: () => 
+      import('./modules/static-pages/static-pages.module').then(m => m.StaticPagesModule)
     },
 
-    {
-      path:'search/:word',
-      component:SearchComponent
-    },
-    {
-      path: 'about-us',
-      component: AboutUsComponent,
-    },
-    {
-      path: 'contact-us',
-      component: ContactUsComponent,
-    },
-    {
-      path: 'privacy-policy',
-      component: PrivacyPolicyComponent,
-    },
-    {
-      path: 'terms-and-conditions',
-      component: TermsAndConditionsComponent,
-    },
+ 
     {
       path: '**',
       component: NotFoundComponent,

@@ -2,11 +2,11 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SearchResolver } from "@app/@core/resolver/search/search-resolver.service";
 import { LayoutComponent } from "@app/@shared/components/layout/layout.component";
-import { SearchComponent } from "./search/search.component";
+import { SearchComponent } from "./search.component";
 
 const children: Routes = [
     {
-      path: 'search/:word',
+      path: ':word',
       component: SearchComponent,
       resolve: {
         resolve: SearchResolver
@@ -28,6 +28,6 @@ const children: Routes = [
     imports: [RouterModule.forChild(routes)],
 exports: [RouterModule]
   })
-  export class PagesRoutingModule {
+  export class SearchRoutingModule {
   }
   

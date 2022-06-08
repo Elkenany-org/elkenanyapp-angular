@@ -13,11 +13,7 @@ import { CvaComponent } from './components/form/cva/cva.component';
 import { LoaderComponent } from "./components/loader/loader.component";
 import { BannerLogosComponent } from "./components/app/banner-logos/banner-logos.component";
 import { NavigationComponent } from "./components/app/navigation/navigation.component";
-import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { NoDataComponent } from './pages/no-data/no-data.component';
-import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
-import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { ShortDatePipe } from './pipes/short-date.pipe';
 import { GalleryCarouelComponent } from './components/gallery-carouel/gallery-carouel.component';
 
@@ -43,11 +39,9 @@ export  const components: any[] = [
     LoaderComponent,
     NavigationComponent,
     BannerLogosComponent,
-    AboutUsComponent,
-    ContactUsComponent,
+
     NoDataComponent,
-    PrivacyPolicyComponent,
-    TermsAndConditionsComponent,
+
     GalleryCarouelComponent
 
     
