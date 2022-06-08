@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse } from '@app/@core/@data/API/api';
+import { StockExchange } from '@app/@core/interfaces/stock-exchanges/Stock-exchange';
 import { Observable } from 'rxjs';
 import {environment as env} from '../../../../../environments/environment';
-import { StockExchange } from '../../stock-exchange/_core/data/stock-res-data';
-import { guide } from './data/guide';
 
 @Injectable({
   providedIn: 'root'

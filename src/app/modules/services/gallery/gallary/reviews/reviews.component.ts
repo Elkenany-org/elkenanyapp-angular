@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rate } from '@app/@core/interfaces/gallery/gallery';
-import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
+import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 
 @Component({
   selector: 'app-reviews',

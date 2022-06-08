@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router, } from '@angular/router';
 import { sector } from '@app/@core/@data/app/filter-list';
 import { AdDetials } from '@app/@core/interfaces/market/ad';
 import { Sector } from '@app/@core/interfaces/_app/app-response';
-import { ToasterService } from '@app/@shared/services/toastr.service';
-import { MarketService } from '../_core/market.service';
+import { MarketService } from '@app/@core/services/modules/market/market.service';
+import { ToasterService } from '@app/@core/services/toastr.service';
 
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToasterService } from '@app/@shared/services/toastr.service';
+import { ToasterService } from '@app/@core/services/toastr.service';
 import {delay} from 'rxjs/operators';
 
 @Component({

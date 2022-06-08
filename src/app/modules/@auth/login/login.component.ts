@@ -5,7 +5,7 @@ import { ApiResponse } from '@app/@core/@data/API/api';
 import { SaveData } from '@app/@core/@data/API/safe-data';
 import { LoginDataObject, LoginDataResponse } from '@app/@core/@data/userData';
 import { AlertService } from '@app/@core/services/alert.service';
-import { AuthService } from '@app/@core/services/auth.service';
+import { AuthService } from '@app/@core/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({

@@ -4,7 +4,7 @@ import { Form, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '@app/@core/@data/userData';
 import { chatMassages, Massage } from '@app/@core/interfaces/market/chat';
-import { MarketService } from '../_core/market.service';
+import { MarketService } from '@app/@core/services/modules/market/market.service';
 
 @Component({
   selector: 'app-market-chat',

@@ -5,8 +5,8 @@ import { StartChat } from '@app/@core/interfaces/market/chat';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { BannerConfig, logoConfig } from '@app/@core/interfaces/_app/banner-logo-config';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
+import { MarketService } from '@app/@core/services/modules/market/market.service';
 
-import { MarketService } from '../_core/market.service';
 
 @Component({
   selector: 'app-ad-details',
@@ -19,7 +19,6 @@ export class AdDetailsComponent implements OnInit {
   public startChat?: StartChat;
 
   constructor(
-    private marketService: MarketService,
     private route: ActivatedRoute,
     private Market: MarketService,
     private router: Router,
@@ -45,9 +44,6 @@ export class AdDetailsComponent implements OnInit {
     this.Market.start_chat(this.adDetails?.id ).subscribe( res => {
       this.startChat =res.data
       this.router.navigate([`/market/poultry/market-chat/${this.adDetails?.id}`] )
-
-      // this.router.navigate(['market-chat',{id: this.adDetails?.id}] )
-      console.log( this.startChat)
     })
   }
 

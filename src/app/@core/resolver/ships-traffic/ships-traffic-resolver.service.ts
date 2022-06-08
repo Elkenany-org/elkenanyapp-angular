@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { ShipsTrafficService } from './../../../modules/services/ships-traffic/_core/services/ships-traffic.service';
+import { ShipsTrafficService } from '../../services/modules/ships-trafic/ships-traffic.service';
 import { Ships } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 
 

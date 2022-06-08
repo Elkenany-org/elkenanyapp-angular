@@ -39,10 +39,6 @@ export  const components: any[] = [
     LoaderComponent,
     NavigationComponent,
     BannerLogosComponent,
-
     NoDataComponent,
-
     GalleryCarouelComponent
-
-    
 ];

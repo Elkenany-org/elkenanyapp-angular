@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {LocalstorageService} from '../services/localstorage.service';
+import {LocalstorageService} from '../services/auth/localstorage.service';
 
 import {
   HttpRequest,
@@ -9,7 +9,7 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Observable, catchError, finalize, } from 'rxjs';
-import { ToasterService } from '@app/@shared/services/toastr.service';
+import { ToasterService } from '@app/@core/services/toastr.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {

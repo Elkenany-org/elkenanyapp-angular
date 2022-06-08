@@ -6,7 +6,7 @@ import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
-import { MagazineService } from '../_core/services/magazine.service';
+import { MagazineService } from '../../../../@core/services/modules/magazine/magazine.service';
 import {  MagazinesData, Magazine_Search_Form } from '@app/@core/interfaces/magazine/magazine';
 
 @Component({

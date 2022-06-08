@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { MagazineService } from '@app/modules/services/magazine/_core/services/magazine.service';
+import { MagazineService } from '@app/@core/services/modules/magazine/magazine.service';
 import { Magazine } from '@app/@core/interfaces/magazine/magazine';
 
 

@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, DoCheck, OnInit, Renderer2,ViewEncapsulat
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gallery as Gallery2} from '@app/@core/interfaces/gallery/gallery';
-import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
+import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 
 @Component({
   selector: 'app-about-gallery',

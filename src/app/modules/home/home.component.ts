@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import {delay} from 'rxjs/operators';
+import { HomeService } from '@app/@core/services/modules/home/home.service';
 
 import {  logo_test, Banner_test } from './data'
-import { HomeService } from './_core/home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

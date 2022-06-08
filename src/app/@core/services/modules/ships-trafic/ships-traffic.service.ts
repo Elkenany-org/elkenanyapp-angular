@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { Ships, StatisticsShips } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 import { Observable } from 'rxjs';
-import { environment as env } from "../../../../../../environments/environment";
-import { StatisticsDetials } from './../../../../../@core/interfaces/ships-traffic/ships-traffic';
+import { environment as env } from "../../../../../environments/environment";
+import { StatisticsDetials } from '../../../interfaces/ships-traffic/ships-traffic';
 
 @Injectable({
   providedIn: 'root'

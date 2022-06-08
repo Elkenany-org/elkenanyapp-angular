@@ -5,7 +5,7 @@ import { CompaniesHome } from '@app/@core/interfaces/companies-guid/co-home-data
 
 
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { CompaniesGuideService } from '../services/companies-guide.service';
+import { CompaniesGuideService } from '../../../modules/sectors/companies-guide/_core/services/companies-guide.service';
 
 @Injectable({
   providedIn: 'root'

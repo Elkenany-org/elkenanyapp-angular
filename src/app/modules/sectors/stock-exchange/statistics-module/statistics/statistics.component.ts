@@ -5,8 +5,8 @@ import { StatisticsSubsSections, Statistics_Search_Form, ChangesMember } from '@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Fillter } from '@app/@shared/classes/filter';
 import { StatisticsChart } from '@shared/classes/drowShart.class';
-import { AuthService } from './../../../../../@core/services/auth.service';
 import { Token } from '@angular/compiler';
+import { AuthService } from '@app/@core/services/auth/auth.service';
 
 @Component({
   selector: 'app-statistics',

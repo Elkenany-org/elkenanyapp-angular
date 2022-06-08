@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { Gallery } from '@app/@core/interfaces/gallery/gallery';
-import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
+import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 
 
 @Injectable({

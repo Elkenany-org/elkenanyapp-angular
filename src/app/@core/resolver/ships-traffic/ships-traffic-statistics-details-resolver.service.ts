@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { ApiResponse } from '@app/@core/@data/API/api';
 
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { ShipsTrafficService } from '../../../modules/services/ships-traffic/_core/services/ships-traffic.service';
+import { ShipsTrafficService } from '../../services/modules/ships-trafic/ships-traffic.service';
 import { StatisticsDetials } from './../../interfaces/ships-traffic/ships-traffic';
 
 

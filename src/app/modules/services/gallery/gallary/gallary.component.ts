@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
+import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 
 @Component({
   selector: 'app-gallary',

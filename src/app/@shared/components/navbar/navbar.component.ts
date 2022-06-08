@@ -1,6 +1,6 @@
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
-import { AuthService } from '@app/@core/services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '@app/@core/services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',

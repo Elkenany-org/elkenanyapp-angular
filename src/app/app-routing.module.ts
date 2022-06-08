@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShipsTrafficResolver } from './@core/resolver/ships-traffic/ships-traffic-resolver.service';
 import { StockExhangeResolver } from './@core/resolver/stock-exhange-resolver.service';
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
-import { CompaniesGuideHomeResolver } from './modules/sectors/companies-guide/_core/resolver/companies-guide-home-resolver.service copy 2';
+import { CompaniesGuideHomeResolver } from './@core/resolver/companies-guide/companies-guide-home-resolver.service';
 import { NewsHomeResolver } from './modules/sectors/news/_core/resolver/news-home-resolver.service';
 
 const routes: Routes = [

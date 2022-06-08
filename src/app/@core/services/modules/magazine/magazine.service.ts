@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { Magazine, Magazines } from '@app/@core/interfaces/magazine/magazine';
 import { Observable } from 'rxjs';
-import { environment as env } from "../../../../../../environments/environment";
+import { environment as env } from "../../../../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })

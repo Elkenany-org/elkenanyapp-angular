@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LoginDataObject, LoginDataResponse, RegisterDataObject, UserProfile } from '../@data/userData';
-import {environment as env} from '../../../environments/environment';
+import { LoginDataObject, LoginDataResponse, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
+import {environment as env} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LocalstorageService } from './localstorage.service';
 import { Router } from '@angular/router';
-import { ApiResponse } from '../@data/API/api';
-import { ToasterService } from '@shared/services/toastr.service';
+import { ToasterService } from '@app/@core/services/toastr.service';
+import { ApiResponse } from '@app/@core/@data/API/api';
 
 
 @Injectable({

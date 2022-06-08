@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MarketService } from '../_core/market.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ToasterService } from '@app/@shared/services/toastr.service';
+import { ToasterService } from '@app/@core/services/toastr.service';
 import { Banner } from '@app/@core/interfaces/_app/app-response';
 import { Data, MyAd } from '@app/@core/interfaces/market/my-ads';
+import { MarketService } from '@app/@core/services/modules/market/market.service';
 @Component({
   selector: 'app-my-adds',
   templateUrl: './my-adds.component.html',

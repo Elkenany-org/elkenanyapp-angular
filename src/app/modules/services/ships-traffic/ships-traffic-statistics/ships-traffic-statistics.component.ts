@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ship_traffic_Statistics_Search_Form, StatisticsShips } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import { ShipsTrafficService } from '../_core/services/ships-traffic.service';
+import { ShipsTrafficService } from '../../../../@core/services/modules/ships-trafic/ships-traffic.service';
 import { Fillter } from '@shared/classes/filter';
 import { FormBuilder } from '@angular/forms';
 

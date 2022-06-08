@@ -5,7 +5,7 @@ import { ApiResponse } from '@app/@core/@data/API/api';
 import { Gallries, Gallries_Search_Form } from '@app/@core/interfaces/gallery/gallery';
 import { Banner, FilterList, Logo } from '@app/@core/interfaces/_app/app-response';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
-import { GallaryService } from '@app/@core/services/app/gallery/gallary.service';
+import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 
 @Component({

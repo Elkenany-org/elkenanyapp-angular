@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Magazine } from '@app/@core/interfaces/magazine/magazine';
-import { MagazineService } from '../_core/services/magazine.service';
+import { MagazineService } from '../../../../@core/services/modules/magazine/magazine.service';
 
 @Component({
   selector: 'app-magazine-details',

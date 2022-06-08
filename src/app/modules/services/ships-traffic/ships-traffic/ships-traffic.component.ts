@@ -5,7 +5,7 @@ import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { map } from 'rxjs';
-import { ShipsTrafficService } from '../_core/services/ships-traffic.service';
+import { ShipsTrafficService } from '../../../../@core/services/modules/ships-trafic/ships-traffic.service';
 
 @Component({
   selector: 'app-ships-traffic',
