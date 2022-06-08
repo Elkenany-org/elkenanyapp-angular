@@ -146,5 +146,9 @@ export interface Search {
 export interface Result {
   id: number
   name: string
+  image: string
+  short_desc: string
+  address: string
   type: string
 }
+

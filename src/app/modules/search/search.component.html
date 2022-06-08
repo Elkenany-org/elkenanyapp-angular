@@ -11,7 +11,7 @@
     <div class="breadcrumb__container container" style="margin-bottom: 60px;
   ">
           <div class="custom__breadcrumb">
-              <h1 class="page__title">البحث عن رجب</h1>
+              <h1 class="page__title">البحث عن {{word}}</h1>
           </div>
       </div>
       <!-- End breadcrumb -->
@@ -23,32 +23,68 @@
           <div class="row">
   
           <!-- Start Left Section -->
-          <section class="left col-lg-12 col-md-7 col-sm-12" style="margin-bottom: 60px;
-  ">
+          <section *ngIf="(categories?.['guide_sub_sections']?.length ||0)>0" class="left col-lg-12 col-md-7 col-sm-12" style="margin-bottom: 60px;">
                       <section class="title-box">
                           <h2 class="title sects">الاقسام للدليل</h2>
-                          <span class="sections-number">0 قسم</span>
+                          <span class="sections-number">{{categories?.['guide_sub_sections']?.length}} قسم</span>
                       </section>
                       <div class="new__cards row">
-                                              </div>
+                                          
+                        <div class="col-12">
+                              
+                            <div *ngFor="let i of categories?.['guide_sub_sections']" class="product__card big__card regular__hover">
+                                <div class="image__card">
+                                    <img alt="product__image" [src]="i.image">
+                                </div>
+                                <div class="product__content">
+                                    <header class="product__title">
+                                        <a href="https://elkenany.com/Guide-company/731">
+                                      {{i.name}}
+                                        </a>
+                                    </header>
+                                    <div class="product__rating">
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                    </div>
+                                    <section *ngIf="i.short_desc" class="product__info">
+                                        <p class="note text-center">
+                                       {{i.short_desc}}
+                                        </p>
+                                    </section>
+                                    <section class="product__bottom">
+                                        <section *ngIf="i.address" class="address-box">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <span class="address">{{i.address}}</span>
+                                        </section>
+                                        <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                    </section>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
                   </section>
                   <!-- End Left Section -->
   
                   <!-- Start Left Section -->
-                  <section class="left col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;
-  ">
+                  <section  *ngIf="(categories?.['companies']?.length ||0)>0"class="left col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
                       <section class="title-box">
                           <h2 class="title"> الشركات</h2>
-                          <span class="sections-number">2 شركة</span>
+                          <span class="sections-number">{{categories?.['companies']?.length}} شركة</span>
                       </section>
+
+
                       <div class="new__cards row">
   
                        
                           
                           <div class="col-12">
-                              <div *ngFor="let i of data?.result" class="product__card big__card regular__hover">
+                              
+                              <div *ngFor="let i of categories?.['companies']" class="product__card big__card regular__hover">
                                   <div class="image__card">
-                                      <img alt="product__image" src="https://elkenany.com/uploads/company/images/27-05-2116221128121028560979.png">
+                                      <img alt="product__image" [src]="i.image">
                                   </div>
                                   <div class="product__content">
                                       <header class="product__title">
@@ -62,15 +98,15 @@
                                           <div class="star"></div>
                                           <div class="star"></div>
                                       </div>
-                                      <section class="product__info">
+                                      <section *ngIf="i.short_desc" class="product__info">
                                           <p class="note text-center">
-                                          شركة النوبارية للتنمية الزراعية (مزارع رجب) هي إحد...
+                                         {{i.short_desc}}
                                           </p>
                                       </section>
                                       <section class="product__bottom">
-                                          <section class="address-box">
+                                          <section *ngIf="i.address" class="address-box">
                                               <i class="fas fa-map-marker-alt"></i>
-                                              <span class="address">الكيلو 71 طريق القاهرة - الاسكندرية الصحراوى - ابو المطامير - البحيرة</span>
+                                              <span class="address">{{i.address}}</span>
                                           </section>
                                           <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
                                       </section>
@@ -84,28 +120,139 @@
                                                   
                       </div>
                             <!-- End Left Section -->
-                  <input type="hidden" name="_token" value="u2STMMWWh3In7Dnk0omyJdnrSf91bB7kYGChsMc4">
                   </section>
   
                        <!-- Start Left Section -->
-                      <section class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;
-  ">
+
+
+                <section  *ngIf="((categories?.['fodder_stock_sub']?.length ||0)>0) ||((categories?.['local_stock_sub']?.length ||0)>0)"class="left col-lg-12 col-md-7 col-sm-12" style="margin-bottom: 60px;">
+                    <section class="title-box">
+                        <h2 class="title sects"> البورصات</h2>
+                        <span class="sections-number">{{(categories?.['fodder_stock_sub']?.length || 0)  + (categories?.['local_stock_sub']?.length || 0)}} بورصة</span>
+                    </section>
+                    <div class="new__cards row">
+                        <div class="col-12">
+                                
+                        <div *ngFor="let i of categories?.['fodder_stock_sub']" class="product__card big__card regular__hover">
+                            <div class="image__card">
+                                <img alt="product__image" [src]="i.image">
+                            </div>
+                            <div class="product__content">
+                                <header class="product__title">
+                                    <a href="https://elkenany.com/Guide-company/731">
+                                    {{i.name}}
+                                    </a>
+                                </header>
+                                <div class="product__rating">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <section *ngIf="i.short_desc" class="product__info">
+                                    <p class="note text-center">
+                                    {{i.short_desc}}
+                                    </p>
+                                </section>
+                                <section class="product__bottom">
+                                    <section *ngIf="i.address" class="address-box">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span class="address">{{i.address}}</span>
+                                    </section>
+                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                </section>
+                            </div>
+                        
+                        </div>
+                        <div *ngFor="let i of categories?.['local_stock_sub']" class="product__card big__card regular__hover">
+                            <div class="image__card">
+                                <img alt="product__image" [src]="i.image">
+                            </div>
+                            <div class="product__content">
+                                <header class="product__title">
+                                    <a href="https://elkenany.com/Guide-company/731">
+                                    {{i.name}}
+                                    </a>
+                                </header>
+                                <div class="product__rating">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <section *ngIf="i.short_desc" class="product__info">
+                                    <p class="note text-center">
+                                    {{i.short_desc}}
+                                    </p>
+                                </section>
+                                <section class="product__bottom">
+                                    <section *ngIf="i.address" class="address-box">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span class="address">{{i.address}}</span>
+                                    </section>
+                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                </section>
+                            </div>
+                        
+                        </div>
+                        </div>               
+                                            
+                    </div>
+            
+
+                </section>
+                      <!-- <section class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
                           <section class="title-box">
                               <h2 class="title sects"> البورصات</h2>
                           </section>
                           <div class="new__cards row">
                                                                                                                                                                                                           </div>
-                      </section>
+                      </section> -->
+
+
+
                   <!-- End Left Section -->
   
-                  <section class="left col-lg-12 col-md-7 col-sm-12" style="margin-bottom: 60px;
-  ">
+              <section *ngIf="(categories?.['magazines']?.length ||0)>0" class="left col-lg-12 col-md-7 col-sm-12" style="margin-bottom: 60px;">
                   <section class="title-box">
                       <h2 class="title sects"> المجلات</h2>
-                      <span class="sections-number">0 مجلة</span>
+                      <span class="sections-number">{{categories?.['magazines']?.length}} مجلة</span>
                   </section>
                   <div class="new__cards row">
-                                          
+                    <div class="col-12">
+                              
+                        <div *ngFor="let i of categories?.['magazines']" class="product__card big__card regular__hover">
+                            <div class="image__card">
+                                <img alt="product__image" [src]="i.image">
+                            </div>
+                            <div class="product__content">
+                                <header class="product__title">
+                                    <a href="https://elkenany.com/Guide-company/731">
+                                  {{i.name}}
+                                    </a>
+                                </header>
+                                <div class="product__rating">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <section *ngIf="i.short_desc" class="product__info">
+                                    <p class="note text-center">
+                                   {{i.short_desc}}
+                                    </p>
+                                </section>
+                                <section class="product__bottom">
+                                    <section *ngIf="i.address" class="address-box">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span class="address">{{i.address}}</span>
+                                    </section>
+                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                </section>
+                            </div>
+                        
+                        </div>
+                    </div>               
                                           
                   </div>
             
@@ -113,60 +260,148 @@
               </section>
   
                <!-- Start Left Section -->
-               <section class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;
-  ">
+               <section *ngIf="(categories?.['news']?.length ||0)>0" class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
                <section class="title-box">
                       <h2 class="title sects"> الاخبار</h2>
-                      <span class="sections-number">0 خبر</span>
+                      <span class="sections-number">{{ categories?.['news']?.length}} خبر</span>
                   </section>
                   <div class="new__cards row">
-                                          
+                    <div class="col-12">
+                              
+                        <div *ngFor="let i of categories?.['news']" class="product__card big__card regular__hover">
+                            <div class="image__card">
+                                <img alt="product__image" [src]="i.image">
+                            </div>
+                            <div class="product__content">
+                                <header class="product__title">
+                                    <a href="https://elkenany.com/Guide-company/731">
+                                  {{i.name}}
+                                    </a>
+                                </header>
+                                <div class="product__rating">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <section *ngIf="i.short_desc" class="product__info">
+                                    <p class="note text-center">
+                                   {{i.short_desc}}
+                                    </p>
+                                </section>
+                                <section class="product__bottom">
+                                    <section *ngIf="i.address" class="address-box">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span class="address">{{i.address}}</span>
+                                    </section>
+                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                </section>
+                            </div>
+                        
+                        </div>
+                    </div>
+          
                                           
                   </div>
                   
   
               </section>
   
-              <section class="left col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;
-  ">
+              <section  *ngIf="(categories?.['showes']?.length ||0)>0" class="left col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
               <section class="title-box">
                       <h2 class="title sects"> المعارض</h2>
-                      <span class="sections-number">0 معرض</span>
+                      <span class="sections-number">{{categories?.['showes']?.length}} معرض</span>
                   </section>
                   <div class="new__cards row">
                                           
-                                          
+                    <div class="col-12">
+                              
+                        <div *ngFor="let i of categories?.['showes']" class="product__card big__card regular__hover">
+                            <div class="image__card">
+                                <img alt="product__image" [src]="i.image">
+                            </div>
+                            <div class="product__content">
+                                <header class="product__title">
+                                    <a href="https://elkenany.com/Guide-company/731">
+                                  {{i.name}}
+                                    </a>
+                                </header>
+                                <div class="product__rating">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <section *ngIf="i.short_desc" class="product__info">
+                                    <p class="note text-center">
+                                   {{i.short_desc}}
+                                    </p>
+                                </section>
+                                <section class="product__bottom">
+                                    <section *ngIf="i.address" class="address-box">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span class="address">{{i.address}}</span>
+                                    </section>
+                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                </section>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
                   </div>
                  
   
               </section>
   
-              <section class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;
-  ">
+              <section *ngIf="(categories?.['stores']?.length ||0)>0" class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
               <section class="title-box">
                       <h2 class="title sects"> السوق</h2>
-                      <span class="sections-number">0 اعلان</span>
+                      <span class="sections-number">{{categories?.['stores']?.length}} اعلان</span>
                   </section>
                   <div class="new__cards row">
                       
-                       <!-- End One Card -->
+                    <div class="col-12">
+                              
+                        <div *ngFor="let i of categories?.['stores']" class="product__card big__card regular__hover">
+                            <div class="image__card">
+                                <img alt="product__image" [src]="i.image">
+                            </div>
+                            <div class="product__content">
+                                <header class="product__title">
+                                    <a href="https://elkenany.com/Guide-company/731">
+                                  {{i.name}}
+                                    </a>
+                                </header>
+                                <div class="product__rating">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <section *ngIf="i.short_desc" class="product__info">
+                                    <p class="note text-center">
+                                   {{i.short_desc}}
+                                    </p>
+                                </section>
+                                <section class="product__bottom">
+                                    <section *ngIf="i.address" class="address-box">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span class="address">{{i.address}}</span>
+                                    </section>
+                                    <a class="more__details"(click)="selected({id:i.id, type:i.type})">اعرف أكتر</a>
+                                </section>
+                            </div>
+                        
+                        </div>
+                    </div>
+
   
                   </div>
                
               </section>
   
-              <section class="left col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;
-  ">
-                  <section class="title-box">
-                      <h2 class="title sects"> الاستشاريون</h2>
-                      <span class="sections-number">0 إستشاري </span>
-                  </section>
-  
-                  <section class="all-cards">
-                  <!-- Start One Card -->
-                                                                     
-          </section>
-              </section>
+
   
             
   
