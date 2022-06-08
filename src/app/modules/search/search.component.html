@@ -1,11 +1,11 @@
 <div class="main__content__body">
     <!--Start Loading Screen-->
 
-  
 
-  
-      
-  
+
+
+
+
       <!-- End Partners -->
     <!-- Start breadcrumb -->
     <div class="breadcrumb__container container" style="margin-bottom: 60px;
@@ -15,13 +15,13 @@
           </div>
       </div>
       <!-- End breadcrumb -->
-  
-     
-   
+
+
+
       <!-- Start Global Content -->
       <article class="global__container container">
           <div class="row">
-  
+
           <!-- Start Left Section -->
           <section *ngIf="(categories?.['guide_sub_sections']?.length ||0)>0" class="left col-lg-12 col-md-7 col-sm-12" style="margin-bottom: 60px;">
                       <section class="title-box">
@@ -29,9 +29,9 @@
                           <span class="sections-number">{{categories?.['guide_sub_sections']?.length}} قسم</span>
                       </section>
                       <div class="new__cards row">
-                                          
+
                         <div class="col-12">
-                              
+
                             <div *ngFor="let i of categories?.['guide_sub_sections']" class="product__card regular__hover">
                                 <div class="image__card">
                                     <img alt="product__image" [src]="i.image">
@@ -49,15 +49,15 @@
                                    {{i.count}} معمل
                                     </p>
                                 </section>
-    
+
                                 </div>
-                            
+
                             </div>
                         </div>
                     </div>
                   </section>
                   <!-- End Left Section -->
-  
+
                   <!-- Start Left Section -->
                   <section  *ngIf="(categories?.['companies']?.length ||0)>0"class="left col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
                       <section class="title-box">
@@ -67,11 +67,11 @@
 
 
                       <div class="new__cards row">
-  
-                       
-                          
+
+
+
                           <div class="col-12">
-                              
+
                               <div *ngFor="let i of categories?.['companies']" class="product__card big__card regular__hover">
                                   <div class="image__card">
                                       <img alt="product__image" [src]="i.image">
@@ -82,12 +82,12 @@
                                             {{i.name}}
                                           </a>
                                       </header>
-                                      <div class="product__rating">
+                                      <!-- <div class="product__rating">
                                           <div class="star"></div>
                                           <div class="star"></div>
                                           <div class="star"></div>
                                           <div class="star"></div>
-                                      </div>
+                                      </div> -->
                                       <section *ngIf="i.short_desc" class="product__info">
                                           <p class="note text-center">
                                          {{i.short_desc}}
@@ -101,17 +101,17 @@
                                           <a class="more__details" [routerLink]="['/companies-guide/poultry/companies_details/no/',i.id]">اعرف أكتر</a>
                                       </section>
                                   </div>
-                              
+
                               </div>
                           </div>
-  
-                          
-                 
-                                                  
+
+
+
+
                       </div>
                             <!-- End Left Section -->
                   </section>
-  
+
                        <!-- Start Left Section -->
 
 
@@ -122,7 +122,7 @@
                     </section>
                     <div class="new__cards row">
                         <div class="col-12">
-                             
+
 
                         <div *ngFor="let i of categories?.['fodder_stock_sub']" class="product__card">
                             <div class="image__card">
@@ -134,7 +134,7 @@
                                     <a  [routerLink]="['/stock-exchange/poultry/stock-exchange/no/fodder/',i.id]">{{i.name}}</a>
                                 </header>
                             </div>
-                        
+
                         </div>
                         <div *ngFor="let i of categories?.['local_stock_sub']" class="product__card ">
                             <div class="image__card">
@@ -147,19 +147,19 @@
                                     </a>
                                 </header>
                             </div>
-                        
+
                         </div>
-                        </div>               
-                                            
+                        </div>
+
                     </div>
-            
+
 
                 </section>
 
 
 
                   <!-- End Left Section -->
-  
+
               <section *ngIf="(categories?.['magazines']?.length ||0)>0" class="left col-lg-12 col-md-7 col-sm-12" style="margin-bottom: 60px;">
                   <section class="title-box">
                       <h2 class="title sects"> المجلات</h2>
@@ -167,7 +167,7 @@
                   </section>
                   <div class="new__cards row">
                     <div class="col-12">
-                              
+
                         <div *ngFor="let i of categories?.['magazines']" class="product__card big__card regular__hover">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
@@ -178,12 +178,12 @@
                                   {{i.name}}
                                     </a>
                                 </header>
-                                <div class="product__rating">
+                                <!-- <div class="product__rating">
                                     <div class="star"></div>
                                     <div class="star"></div>
                                     <div class="star"></div>
                                     <div class="star"></div>
-                                </div>
+                                </div> -->
                                 <section *ngIf="i.short_desc" class="product__info">
                                     <p class="note text-center">
                                    {{i.short_desc}}
@@ -197,15 +197,15 @@
                                     <a class="more__details" [routerLink]="['/magazine/details/',i.id]">اعرف أكتر</a>
                                 </section>
                             </div>
-                        
+
                         </div>
-                    </div>               
-                                          
+                    </div>
+
                   </div>
-            
-  
+
+
               </section>
-  
+
                <!-- Start Left Section -->
                <section *ngIf="(categories?.['news']?.length ||0)>0" class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
                <section class="title-box">
@@ -214,7 +214,7 @@
                   </section>
                   <div class="new__cards row">
                     <div class="col-12">
-                              
+
                         <div *ngFor="let i of categories?.['news']" class="product__card regular__hover">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
@@ -231,7 +231,7 @@
                                    {{i.short_desc}}
                                     </p>
                                 </section>
-                                 
+
                                 <section class="product__bottom">
                                     <section *ngIf="i.created_at" class="address-box">
                                         <i class="fas "></i>
@@ -239,25 +239,25 @@
                                     </section>
                                 </section>
                             </div>
-                        
+
                         </div>
                     </div>
-          
-                                          
+
+
                   </div>
-                  
-  
+
+
               </section>
-  
+
               <section  *ngIf="(categories?.['showes']?.length ||0)>0" class="left col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
               <section class="title-box">
                       <h2 class="title sects"> المعارض</h2>
                       <span class="sections-number">{{categories?.['showes']?.length}} معرض</span>
                   </section>
                   <div class="new__cards row">
-                                          
+
                     <div class="col-12">
-                              
+
                         <div *ngFor="let i of categories?.['showes']" class="product__card big__card regular__hover">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
@@ -268,12 +268,12 @@
                                   {{i.name}}
                                     </a>
                                 </header>
-                                <div class="product__rating">
+                                <!-- <div class="product__rating">
                                     <div class="star"></div>
                                     <div class="star"></div>
                                     <div class="star"></div>
                                     <div class="star"></div>
-                                </div>
+                                </div> -->
 
                                 <section *ngIf="i.short_desc" class="product__info">
                                     <p class="note text-center">
@@ -281,12 +281,10 @@
                                     </p>
                                 </section>
 
-
-
                                 <section class="product__bottom">
                                     <section class="content__box">
                                         <i class="far fa-calendar-alt"></i>
-                                      
+
                                         <span class="content" *ngFor="let j of i.date ; let d = index">
                                             {{ i.date[d]}}
                                          </span>
@@ -297,7 +295,7 @@
                                     </section>
                                 </section>
                                 <section class="product__bottom">
-                                    
+
                                     <section *ngIf="i.address" class="address-box">
                                         <i class="fas fa-map-marker-alt"></i>
                                         <span class="address">{{i.address}}</span>
@@ -306,24 +304,18 @@
                                     <a class="more__details"[routerLink]="['/gallery/poultry/',i.id]">اعرف أكتر</a>
                                 </section>
                             </div>
-                        
                         </div>
                     </div>
-                    
                   </div>
-                 
-  
               </section>
-  
+
               <section *ngIf="(categories?.['stores']?.length ||0)>0" class="main__left__container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 60px;">
               <section class="title-box">
                       <h2 class="title sects"> السوق</h2>
                       <span class="sections-number">{{categories?.['stores']?.length}} اعلان</span>
                   </section>
                   <div class="new__cards row">
-                      
                     <div class="col-12">
-                              
                         <div *ngFor="let i of categories?.['stores']" class="product__card regular__hover">
                             <div class="image__card">
                                 <img alt="product__image" [src]="i.image">
@@ -335,35 +327,18 @@
                                     </a>
                                 </header>
                                 <section *ngIf="i.price" class="product__info">
-                                    <p class="note text-center">
-                                        {{i.price}} جنية 
-                                    </p>
+                                    <p class="note text-center">{{i.price}} جنية </p>
                                 </section>
                                 <section class="product__bottom">
- 
                                     <a class="more__details"[routerLink]="['/market/poultry/ad_details/',i.id]">اعرف أكتر</a>
                                 </section>
                             </div>
-                        
                         </div>
                     </div>
-
-  
                   </div>
-               
               </section>
-  
-
-  
-            
-  
-                     
-            
-            
           </div>
-      
-      
       </article>
       <!-- End Global Content -->
-  
+
   </div>

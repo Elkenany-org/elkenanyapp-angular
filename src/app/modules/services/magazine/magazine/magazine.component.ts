@@ -36,56 +36,21 @@ export class MagazineComponent implements OnInit {
   ngOnInit(): void {
     this.h_search_form = Magazine_Search_Form //set initial data to horizontal component 
 
-    this.activatedRoute.params.subscribe(prm => {
-      console.log(prm)
-    })
-    this.magazine.magazines("poultry",0,'','').subscribe(res => {
-      this.magazines= res.data?.data
-      this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
-      this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
-      this.loading = false;      
 
-      console.log(this.magazines)
-
-
-            this.magazine.filter_list('poultry',1).subscribe((res:ApiResponse<FilterList>) => {
+    this.activatedRoute.data.subscribe(data => {
+      this.magazines= data['resolve'].data?.data
+      this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
+      this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
+      this.loading = false;   
+      this.magazine.filter_list('poultry',1).subscribe((res:ApiResponse<FilterList>) => {
         // override data to match the data format of horizontal components
-        console.log(res)
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
-        console.log(this.h_search_form)
-
       }) 
 
-
     })
-    // this.activatedRoute.data.pipe(
-    //   map((data) => {
-    //    return data
-    //    })
-    // ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-    //   this.toster.stopLoading()
-    //   console.log(res)
-    //   this.News = res['resolve'].data.data  as News[]
-    //   this.BannerLogoService.setBanner(res['resolve'].banners);
-    //   this.BannerLogoService.setLogo(res['resolve'].logos);
-    //   this.loading = false;      
-    // })
 
-    // this.route.params.subscribe( params => {
-    //   this.type = params['type']
-
-    //   this.news.filter_list(params['type']).subscribe((res:ApiResponse<FilterList>) => {
-    //     // override data to match the data format of horizontal components
-    //     console.log(res)
-    //     this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
-    //     this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-    //     console.log(this.h_search_form)
-
-    //   }) 
-    // })   
-    
     
   }
 
@@ -105,10 +70,6 @@ export class MagazineComponent implements OnInit {
         default: 
           break;
      }
-     console.log(
-      this.filterData['sector'],
-     +this.filterData['sort'],
-     +this.filterData['cities'])
 
      this.magazine.magazines(this.filterData['sector'],
                              +this.filterData['sort'],

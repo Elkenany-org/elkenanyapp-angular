@@ -11,15 +11,19 @@ import { MagazineService } from '../_core/services/magazine.service';
 export class MagazineDetailsComponent implements OnInit {
 magazineData?: Magazine
   constructor(private magazine:MagazineService,
-              private route: ActivatedRoute  ) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((prm:Params) => {
-      this.magazine.magazine(prm['id']).subscribe(res => {
-        this.magazineData = res.data 
-        console.log(res)
+    this.route.data.subscribe(data => {
+      this.route.params.subscribe((prm:Params) => {
+        this.magazine.magazine(prm['id']).subscribe(res => {
+          this.magazineData =  data['resolve'].data 
+        })
       })
+     
     })
+
+
   }
 
 }
