@@ -33,11 +33,8 @@ export class NavbarComponent implements OnInit {
 
     this.auth.CheckAuth().subscribe(res => {
       this.islogedIn= res.data
-      console.log(res.data)
     },(err)=> {
       this.islogedIn= err.error.data
-
-      console.log(err.error.data);
     })
 
 

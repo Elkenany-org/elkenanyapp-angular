@@ -46,9 +46,6 @@ const routes: Routes = [
   },
   {
     path: 'stock-exchange/:type',
-    resolve: {
-      resolve: StockExhangeResolver
-    },
     loadChildren: () => 
       import('./modules/sectors/stock-exchange/stock-exchange.module').then((m) => m.StockExchangeModule),
       

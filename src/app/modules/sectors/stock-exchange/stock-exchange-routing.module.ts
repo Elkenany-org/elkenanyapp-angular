@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { LocalStockLocalAndFodder } from '@app/@core/resolver/stock-exchange/local-stock-fodder';
+import { StockExhangeResolver } from '@app/@core/resolver/stock-exhange-resolver.service';
 import { LayoutComponent } from '@app/@shared/components/layout/layout.component';
 import {NotFoundComponent} from '@app/@shared/pages/not-found/not-found.component';
 import { ComparisonComponent } from './comparison/comparison.component';
@@ -9,14 +11,17 @@ import { StockExchangeComponent } from './stock-exchange/stock-exchange.componen
 const children: Routes = [
   {
     path: '',
-    component: HomeStockExchangeComponent
+    component: HomeStockExchangeComponent,
+    resolve: {
+      resolve: StockExhangeResolver
+    },
   },
   {
     path: 'stock-exchange/:type/:type_stock/:id',
-    // resolve: {
-    //   resolve: LocalStockFodder
-    // },
     component: StockExchangeComponent,
+    resolve: {
+      resolve: LocalStockLocalAndFodder
+    }
   },
 
   {

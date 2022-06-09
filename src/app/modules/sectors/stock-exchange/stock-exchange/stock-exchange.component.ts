@@ -54,23 +54,23 @@ export class StockExchangeComponent implements OnInit {
     this.h_search_form = Stock_Search_Form_Data
 
 
-
+    this.getDataFromResolver()
 
 
 
         
     this.route.params.subscribe((prm:Params) => {
-      console.log( this.filterData);
       
         this.filterData['stock_id']=prm['id'],
         this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
         this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
+
         this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
 
         // this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
 
       if(prm['type_stock'] === 'fodder') {
-        this.stockData(prm['id'],'','','')
+        // this.stockData(prm['id'],'','','')
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
         this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as any[] 
         this.feedsList = this.feeds
@@ -90,7 +90,6 @@ export class StockExchangeComponent implements OnInit {
      }else if(prm['type_stock'] === 'local'){
         this.stockExchange.local(prm['id'],this.today).subscribe( res => {
         let arr:any[] =[]
-        console.log(res.data);
         // res.data?.columns.forEach(i => {
         //   console.log(i);
           
@@ -98,7 +97,7 @@ export class StockExchangeComponent implements OnInit {
         // }   )   
         
         
-         this.stock_Ex_Data = res.data  as LocalStockFodder
+        //  this.stock_Ex_Data = res.data  as LocalStockFodder
         // this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
         // })
       })
@@ -207,14 +206,10 @@ export class StockExchangeComponent implements OnInit {
 
   stockData(id:string, data:string,fod_id?:string,comp_id?:string) {
     
-    this.stockExchange.fodder(+id,this.today,fod_id,comp_id).subscribe( res => {
+    this.stockExchange.fodder(id,this.today,fod_id,comp_id).subscribe( res => {
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
-      console.log(this.stock_Ex_Data);
-      
-        
-
    })
   }
 
@@ -233,6 +228,19 @@ export class StockExchangeComponent implements OnInit {
     }
     // this.stock_Ex_Data.columns.filter((i:any) => i == value)[0] 
     return ''
+  }
+
+
+  getDataFromResolver(){
+    this.route.data.subscribe(data => {
+      console.log(data['resolve']);
+
+       this.stock_Ex_Data = data['resolve'].data  as LocalStockFodder
+
+       this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
+      this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
+      // this.stock_Ex_Data = res.data   
+    })
   }
 
 }
