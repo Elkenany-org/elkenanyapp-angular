@@ -60,11 +60,9 @@
                                 (click)="filter({id: company.id, name: '', type: 'com_id'} )" 
                                 class="company__filter__label" for="company-accordion-one">
                                     <a class="checks checks-company-accordion" id="company-accordion-one"
-                                           name="companies-accordion" type="checkbox" ></a>
+                                     name="companies-accordion" type="checkbox" ></a>
                                            
                                            {{company.name}}
-
-                                    جروب
                                 </label>
 
 
@@ -118,8 +116,6 @@
                                            name="companies-accordion" type="checkbox" ></a>
                                            
                                            {{feed.name}}
-
-                                    جروب
                                 </label>
                             </div>
                         </div>
@@ -155,7 +151,7 @@
         <div class="table__body row__shadow">
             <!-- Start One Row    add ads class if ad  -->
             <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart  d-lg-flex d-none': isLast}">
-                <a class="cell__container" [routerLink]="['/companies-guid/companies_details','',member.mem_id]">
+                <a class="cell__container" [routerLink]="['/companies-guid/companies_details','no',member.mem_id]">
                     <div class="cell__content__with__image">
                         <img alt="logo"
                              class="image"

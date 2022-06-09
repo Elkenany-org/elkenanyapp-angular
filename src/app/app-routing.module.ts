@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShipsTrafficResolver } from './@core/resolver/ships-traffic/ships-traffic-resolver.service';
-import { StockExhangeResolver } from './@core/resolver/stock-exhange-resolver.service';
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
-import { CompaniesGuideHomeResolver } from './@core/resolver/companies-guide/companies-guide-home-resolver.service';
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
 
 const routes: Routes = [
@@ -52,9 +50,6 @@ const routes: Routes = [
   },
   {
     path: 'companies-guide/:type',
-    resolve: {
-      resolve: CompaniesGuideHomeResolver
-    },
     loadChildren: () => 
       import('./modules/sectors/companies-guide/companies-guide.module').then((m) => m.CompaniesGuideModule),
       

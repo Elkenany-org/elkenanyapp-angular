@@ -11,22 +11,28 @@ import { CompaniesGuideService } from '../../../../@core/services/modules/compan
 export class CompaniesDetailsComponent implements OnInit {
 public company?:company
   constructor(
-    private companiesGuideService: CompaniesGuideService,
+   // private companiesGuideService: CompaniesGuideService,
     private route: ActivatedRoute,
-    private router: Router, 
+   // private router: Router, 
 
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe( params => {
+
+    this.route.data.subscribe(data => {
+      this.company = data['resolve'].data 
+    })
+
+
+    // this.route.params.subscribe( params => {
        
 
-      this.companiesGuideService.comapny(params['id']).subscribe(res => {
-        console.log(res)
-        this.company= res.data
+    //   this.companiesGuideService.comapny(params['id']).subscribe(res => {
+    //     console.log(res)
+    //     this.company= res.data
   
-      })
-    })
+    //   })
+    // })
 
 
   }
