@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StockExchangeService } from '../../../../@core/services/modules/stock-exchange/stock-exchange.service';
-import { CompaniesItems, FilterListSub, LocalStockFodder} from '@core/interfaces/stock-exchanges/Stock-exchange';
+import { CompaniesItems, FilterListSub, Fodder, LocalStockFodder} from '@core/interfaces/stock-exchanges/Stock-exchange';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { ApiResponse } from '@app/@core/@data/API/api';
@@ -22,7 +22,7 @@ export class StockExchangeComponent implements OnInit {
   
   public loading: boolean= false;
   public h_search_form: JsonFormData | any;
-  public stock_Ex_Data?:any;
+  public stock_Ex_Data?:Fodder |LocalStockFodder | any;
   public companiesList?:CompaniesItems[] =[]
   public feedsList?:CompaniesItems[] =[]
   public feeds?:CompaniesItems[] =[]
@@ -47,63 +47,28 @@ export class StockExchangeComponent implements OnInit {
     private router: Router
    ) {}
 
-    
 
   ngOnInit(): void {
 
     this.h_search_form = Stock_Search_Form_Data
-
-
     this.getDataFromResolver()
-
-
-
-        
     this.route.params.subscribe((prm:Params) => {
-      
-        this.filterData['stock_id']=prm['id'],
-        this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
-        this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
+    this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
+    this.filterData['stock_id']=prm['id'],
+    this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
+    this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
 
-        this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
-
-        // this.search_Filter( prm['id'], prm['type'], prm['type_stock'])
-
-      if(prm['type_stock'] === 'fodder') {
-        // this.stockData(prm['id'],'','','')
+    if(prm['type_stock'] === 'fodder') {
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
         this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as any[] 
         this.feedsList = this.feeds
         this.loading = false;   
       })
-
       this.stockExchange.companies_items(prm['id']).subscribe( res => {
-        
         this.companies= res.data
         this.companiesList = this.companies
-        
       })
-
-
-
-      
-     }else if(prm['type_stock'] === 'local'){
-        this.stockExchange.local(prm['id'],this.today).subscribe( res => {
-        let arr:any[] =[]
-        // res.data?.columns.forEach(i => {
-        //   console.log(i);
-          
-        //   // arr.push( i )
-        // }   )   
-        
-        
-        //  this.stock_Ex_Data = res.data  as LocalStockFodder
-        // this.stockExchange.Filter_list_sub(prm['id'],prm['type'],prm['type_stock']).subscribe((res:ApiResponse<FilterListSub>) => {
-        // })
-      })
-
-     }
-
+    }
     })
   }
 
@@ -118,22 +83,9 @@ export class StockExchangeComponent implements OnInit {
 
   }
   filter(value: any) {
-    // console.log(value);
-    
-    // this.stockExchange.LocalStockandFodderSub(5, "", "").subscribe((res) => {
-    //   this.stock_Ex_Data = res.data as LocalStockFodder 
-    //   this.carousel_banner.banner = res.data?.banners
-    //   this.carousel_logos.banner = res.data?.logos
-    //   this.loading = false;
-    // })
-
-// console.log(value);
-
-
+    console.log("filter")
 
     this.route.params.subscribe( params => {
-
-
       this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
@@ -152,15 +104,13 @@ export class StockExchangeComponent implements OnInit {
         case "feed_id":
             this.filterData['feed_id'] = value.id 
             break;
-
         default: 
           break;
      }
     })
     let f= this.filterData
-    // console.log(this.filterData);
-
-      this.stockData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'])
+    
+    this.stockData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'])
 
 
 
@@ -196,7 +146,6 @@ export class StockExchangeComponent implements OnInit {
   }
 
   feedsSearch(v:any) {
-    console.log(v);
     
       let temp:any = []
       this.feeds?.forEach(i =>  i.name.includes(v)?temp.push(i):console.log(false))
@@ -207,6 +156,8 @@ export class StockExchangeComponent implements OnInit {
   stockData(id:string, data:string,fod_id?:string,comp_id?:string) {
     
     this.stockExchange.fodder(id,this.today,fod_id,comp_id).subscribe( res => {
+      console.log(res);
+      
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
@@ -214,31 +165,19 @@ export class StockExchangeComponent implements OnInit {
   }
 
   nameofcolumn(i:string):number {
-    // console.log(this.stock_Ex_Data?.columns.indexOf(i));
 
     return this.stock_Ex_Data?.columns[this.stock_Ex_Data?.columns.indexOf(i)]
     
   }
-  column(value:string): string {
-    
-    if( this.stock_Ex_Data.columns['value']) {
 
-    }else {
-
-    }
-    // this.stock_Ex_Data.columns.filter((i:any) => i == value)[0] 
-    return ''
-  }
 
 
   getDataFromResolver(){
     this.route.data.subscribe(data => {
       console.log(data['resolve']);
-
        this.stock_Ex_Data = data['resolve'].data  as LocalStockFodder
-
        this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
-      this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
+       this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       // this.stock_Ex_Data = res.data   
     })
   }

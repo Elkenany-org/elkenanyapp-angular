@@ -72,7 +72,6 @@ export class StockExchangeService {
 
 
   fodder(id:string, data:string,fod_id?:string,comp_id?:string) : Observable<ApiResponse<LocalStockFodder>> {
-                                                                      
     return this.http.get<ApiResponse<LocalStockFodder>>(`${env.ApiUrl}/v2/fodder/tables?id=${id}&date=${data}&fod_id=${fod_id}&comp_id=${comp_id}`)
   }
 
