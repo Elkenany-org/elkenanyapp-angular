@@ -68,7 +68,7 @@
     
                         </ul>
                        
-                        <a *ngIf="control.type === 'a' " class="stats__btn" routerLink="control">{{control.name}}</a>
+                        <a *ngIf="control.type === 'a' " class="stats__btn" [routerLink]="control.routerLink">{{control.name}}</a>
                     
                     </div>
                 </div>

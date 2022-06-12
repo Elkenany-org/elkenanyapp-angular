@@ -7,8 +7,9 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
+import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 // import { JsonFormControls, JsonFormData } from '../horizontal-search/_core/data';
-import {  JsonFormData,  } from './_core/data';
+// import {  JsonFormData,  } from './_core/data';
 
 @Component({
   selector: 'app-vertical-search',
