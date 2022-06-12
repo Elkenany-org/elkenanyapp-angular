@@ -12,6 +12,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 
 @NgModule({
@@ -24,8 +25,8 @@ import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery
     NgxSpinnerModule,
     NgxSkeletonLoaderModule,
     NgxChartsModule,
-    GalleryModule3.forRoot() // <-------------------------------------------- @ks89/angular-modal-gallery module import
-
+    GalleryModule3.forRoot(), // <-------------------------------------------- @ks89/angular-modal-gallery module import
+    IvyCarouselModule
 
 
   ],

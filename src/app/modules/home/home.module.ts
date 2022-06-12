@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from '@app/@shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 
 @NgModule({
@@ -11,8 +12,9 @@ import { HomeRoutingModule } from './home-routing.module';
     HomeComponent
   ],
   imports: [
-    HomeRoutingModule,
-    SharedModule
+  HomeRoutingModule,
+    SharedModule,
+    IvyCarouselModule
   ]
 })
 export class HomeModule { }

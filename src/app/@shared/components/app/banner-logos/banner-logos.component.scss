@@ -6,15 +6,36 @@
 .slick-slider {
     width: 100%;
     direction: ltr;
-  
+
   }
-  
-  body .slick-prev, 
+
+  body .slick-prev,
   body .slick-next {
     height: 45px;
     width: 40px;
     z-index: 100;
   }
-  
 
-  
+
+// .home-banner{
+//   margin: auto  !important;
+
+// }
+  .img-cell {
+    border-radius: 52px !important;
+    margin-right: 170px !important;
+    // margin: auto  auto !important;
+    // margin-right: 200px !important;
+      width: 75%  !important;
+      // min-height: 125px  !important;
+  }
+
+
+  @media (max-width:760px) {
+     .img-cell {
+      margin-right: 0 !important;
+        height: 400px !important;
+      width: 100% !important;
+    }
+    
+  }

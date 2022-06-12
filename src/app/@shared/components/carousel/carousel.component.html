@@ -1,4 +1,4 @@
-<ngx-slick-carousel class="carousel"  *ngIf="!loading && config.banner.length >= 0 "
+  <!-- <ngx-slick-carousel class="carousel"  *ngIf="!loading && config.banner.length >= 0 "
     #slickModal="slick-carousel" 
     [config]="config.config" 
 >
@@ -8,7 +8,7 @@
       <a class="logo-holder" target="_blank">
         
         <img alt="partner logo" [class]="config.config.class"
-        src="{{ slide.image }}" style="max-height: 450px;">
+        src="{{ slide.image }}" >
         
 
       </a>
@@ -16,11 +16,17 @@
     </div>
   
   </div>
-</ngx-slick-carousel>
+</ngx-slick-carousel>  -->
+
+
+
+
+
+
 
 
 <!-- placeholder  -->
-<ngx-slick-carousel class="carousel"   *ngIf="loading || config.banner.length == 0"
+<!-- <ngx-slick-carousel class="carousel"   *ngIf="loading || config.banner.length == 0"
     #slickModal="slick-carousel" 
     [config]="config.config" 
 >
@@ -36,21 +42,12 @@
       </a>
 
       
-	<!-- <div class="item">
-		<ngx-skeleton-loader count="3" animation="pulse" [theme]="{
-    height: '50px',
-    'background-color': '#C64949'
-  }"></ngx-skeleton-loader>
-	</div> -->
+
       <div class="wall"></div>
     </div>
   
   </div>
 </ngx-slick-carousel>
-  
+   -->
   
  
-<!-- (init)="slickInit($event)"
-(breakpoint)="breakpoint($event)"
-(afterChange)="afterChange($event)"
-(beforeChange)="beforeChange($event)" -->

@@ -15,7 +15,8 @@ import {  logo_test, Banner_test } from './data'
 export class HomeComponent implements OnInit {
   loading: boolean = true;
   
-  public carousel_banner?: any = Banner_test  
+  // public carousel_banner?: any = Banner_test  
+  public carousel_banner?: any  
   public carousel_logos:any = logo_test        
 
   tabs = 'sector'
@@ -33,7 +34,11 @@ ngOnInit(): void {
  this.home.Home().subscribe( res => {
   //  this.carousel_banner.banner = res.banners
   this.carousel_logos.banner = res.logos
-  this.carousel_banner.banner = res.banner
+  // this.carousel_banner.banner = res.banner
+
+  this.carousel_banner = res.banner
+console.log(this.carousel_banner);
+
   this.BannerLogoService.setLogo(res.logos);
   this.BannerLogoService.setBanner(res.banner);
 

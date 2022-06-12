@@ -9,7 +9,27 @@
             <div class="splide" id="image-slider">
                 <div class="splide__track" >
                     <div class="splide" id="image-slider">
-                        <app-carousel [config]="carousel_banner" [loading]="loading"></app-carousel>
+
+                        <carousel 
+                            *ngIf="!loading && carousel_banner.length >= 0 "
+                            [autoplay]="true"
+                            [loop]="true" 
+                            [cellsToShow]="1" 
+                            [arrows]="true"
+                            [height]="500"
+                            [dots]="true"
+                            [autoplayInterval]="2000"
+                            [minSwipeDistance]="20"
+                            [transitionDuration]="500"
+                            [borderRadius]="10"
+                            class="home-banner">
+                            <div  class="carousel-cell" *ngFor="let i of carousel_banner">
+                                 <img [src]="i.image" >
+                            </div>
+                         </carousel>
+
+                        <!-- <app-carousel [config]="carousel_banner" [loading]="loading"></app-carousel> -->
+                        
                     </div>
                 </div>
             </div>
