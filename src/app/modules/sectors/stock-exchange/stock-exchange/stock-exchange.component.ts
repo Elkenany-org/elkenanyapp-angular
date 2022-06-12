@@ -5,10 +5,10 @@ import { CompaniesItems, FilterListSub, Fodder, LocalStockFodder} from '@core/in
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { ApiResponse } from '@app/@core/@data/API/api';
-import { JsonFormControls } from '@app/@shared/components/app/horizontal-search/_core/data';
 import { Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stock-exchange';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { FormatDate } from '@shared/classes/formatDate';
+import { JsonFormControls } from '@app/@core/interfaces/_app/horizontal-search';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -59,9 +59,9 @@ export class StockExchangeComponent implements OnInit {
 
     if(prm['type_stock'] === 'fodder') {
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-          console.log(res);
+          console.log(this.feeds );
           
-        this.feeds = res.data?.fodder_categories.concat(res.data.fodder_list) as any[] 
+        this.feeds = res.data?.fodder_list
         this.feedsList = this.feeds
         this.loading = false;   
       })

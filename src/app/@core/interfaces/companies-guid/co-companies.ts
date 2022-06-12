@@ -1,5 +1,5 @@
 import { City, Country, Logo, Sector, Sort } from "@app/@core/interfaces/_app/app-response";
-import { JsonFormData } from "@app/@shared/components/app/horizontal-search/_core/data";
+import { JsonFormData } from "../_app/horizontal-search";
 
   // ----------------------------------------- < Companies search data > -----------------------------------------------//
 export const co_Search_Form_Data: JsonFormData =

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
-import { JsonFormData } from '@app/@shared/components/app/horizontal-search/_core/data';
 import { map } from 'rxjs';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Location } from '@angular/common';
@@ -8,6 +7,7 @@ import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { MarktData } from '@app/@core/interfaces/market/home';
 import { market_Search_Form_Data } from '@app/@core/interfaces/market/market-home-data';
 import { MarketService } from '@app/@core/services/modules/market/market.service';
+import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 
 @Component({
   selector: 'app-market-home',

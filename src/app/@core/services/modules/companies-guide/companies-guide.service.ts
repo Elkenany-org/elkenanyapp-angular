@@ -4,12 +4,12 @@ import { ApiResponse } from '@app/@core/@data/API/api';
 import {environment as env} from '../../../../../environments/environment';
 import { map, Observable, of } from 'rxjs';
 
-import { optionBody, options } from '@app/@shared/components/app/horizontal-search/_core/data';
 import { CompaniesFilterList } from '@app/@core/interfaces/companies-guid/co-filter-list-hom,e';
 import { Companies, FilterListCompanies } from '@app/@core/interfaces/companies-guid/co-companies';
 import { company } from '@app/@core/interfaces/companies-guid/co-company';
 import { Rate } from '@app/@core/interfaces/companies-guid/rate';
 import { CompaniesHome } from '@app/@core/interfaces/companies-guid/co-home-data';
+import { optionBody } from '@app/@core/interfaces/_app/horizontal-search';
 
 
     // return this.http.get<ApiResponse<CompaniesHome>>(`${env.ApiUrl}/guide/section/?type=poultry`)  }  origin error

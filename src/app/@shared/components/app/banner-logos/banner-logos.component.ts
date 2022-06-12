@@ -21,7 +21,6 @@ export class BannerLogosComponent implements OnInit {
     this.BannerConfig.banner=[]
     this.logoBannerService.getBanner().subscribe( res => {
      this.BannerConfig.banner =res as Banner[]
-     console.log(BannerConfig.config.class);
      
     })
 

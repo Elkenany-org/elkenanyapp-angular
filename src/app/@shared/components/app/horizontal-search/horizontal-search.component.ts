@@ -8,7 +8,8 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
-import { JsonFormControls, JsonFormData, optionBody } from './_core/data';
+import { JsonFormControls, JsonFormData, optionBody } from '@app/@core/interfaces/_app/horizontal-search';
+// import { JsonFormControls, JsonFormData, optionBody } from './_core/data';
 
 
 
