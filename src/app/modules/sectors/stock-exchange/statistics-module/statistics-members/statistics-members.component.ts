@@ -12,7 +12,32 @@ import { StatisticsChart } from '@shared/classes/drowShart.class';
   styleUrls: ['./statistics-members.component.scss']
 })
 export class StatisticsMembersComponent implements OnInit {
-	
+  generateRandomData = () => {
+		var y  = 1000, dps = [];
+		for(var i = 0; i < 1000; i++) {
+			y += Math.ceil(Math.random() * 10 - 5);
+			dps.push({ y: y});
+		}
+    console.log(dps);
+
+		return dps;
+	}
+
+  generateRandomData2 = () => {
+		var y  = 1000, dps = [];
+		for(var i = 0; i < 1000; i++) {
+			y += Math.ceil(Math.random() * 15 - 4);
+			dps.push({ y: y});
+		}
+
+    console.log(dps);
+    
+		return dps;
+
+	}
+
+
+	chartOptions :any
   
   StatisticsMember?:StatisticsMembersLocal
   StatisticsMemberSlected? :ChangesMember[]
@@ -21,9 +46,12 @@ export class StatisticsMembersComponent implements OnInit {
   type!:string
   id: string = ''
 /////////////////////
-  chartOptions:any
+  // chartOptions:any
   fillter= new Fillter()
   chart  = new StatisticsChart()
+
+  arr2:any=[]
+
 ///////////////////////
   constructor(private statistics: StatisticsService,
               private roure: ActivatedRoute,
@@ -72,6 +100,10 @@ export class StatisticsMembersComponent implements OnInit {
     this.statistics.StatisicsMembersLocal(id, type, from, to, 'mem_id').subscribe(res => {
        this.StatisticsMember=res.data
        this.StatisticsMemberSlected = res.data?.changes_members
+
+
+
+       
        this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
     })
   }

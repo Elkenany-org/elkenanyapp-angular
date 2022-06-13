@@ -22,19 +22,26 @@
 
 // }
   .img-cell {
-    border-radius: 52px !important;
-    margin-right: 170px !important;
+    border-radius: 25px !important;
+    margin-right: 180px !important;
+    margin-left: -70 !important;
     // margin: auto  auto !important;
     // margin-right: 200px !important;
       width: 75%  !important;
+
+      height: 300px !important;
       // min-height: 125px  !important;
+  }
+
+  .carousel{
+    // height: 300px;
   }
 
 
   @media (max-width:760px) {
      .img-cell {
       margin-right: 0 !important;
-        height: 400px !important;
+        
       width: 100% !important;
     }
     

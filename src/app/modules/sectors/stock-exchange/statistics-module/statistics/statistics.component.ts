@@ -92,7 +92,8 @@ export class StatisticsComponent implements OnInit {
       this.StatisticsMember=res.data
       this.StatisticsMemberSlected = res.data?.changes_subs
       this.chartOptions=  this.chart.drowShart( res.data!.changes_subs)
-
+      console.log(this.chartOptions);
+      
    
     })
   }

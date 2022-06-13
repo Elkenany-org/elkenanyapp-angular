@@ -20,7 +20,7 @@ export class StatisticsService {
    // ----------------------------------------- < statistics > -----------------------------------------------//
 
    StatisicsMembersLocal(id:string,type:string, from:string, to:string, mem_id:string):Observable<ApiResponse<StatisticsMembersLocal>> {
-    return this.http.get<ApiResponse<StatisticsMembersLocal>>(`${env.ApiUrl}/localstock/statistics-Localstock-members?from=2021-06-1&to=2021-06-30&id=${id}&mem_id=`)//579
+    return this.http.get<ApiResponse<StatisticsMembersLocal>>(`${env.ApiUrl}/localstock/statistics-Localstock-members?from=${from}&to=${to}&id=${id}&mem_id=`)//579
   }
 
   StatisicsMembersDetials(type:string, from:string, to:string, id:string):Observable<ApiResponse<StatisticsMembersDetials>> {

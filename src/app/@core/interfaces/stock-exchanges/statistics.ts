@@ -172,7 +172,8 @@ export interface ChangesMember {
 
 export interface Change {
   date: string
-  change: number
+  change?: number
+  price?: number
 }
 
 

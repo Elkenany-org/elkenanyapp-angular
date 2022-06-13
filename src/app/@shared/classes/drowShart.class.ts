@@ -19,20 +19,32 @@ export class StatisticsChart {
             dataPoints: []
           })
           for(let j=0 ; j < Result[k].length ; j++){
-            this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y: Result[k][j].change})
+            if(Result[k][j].price != 0){
+              this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y:Result[k][j].change || Result[k][j].price}) // Result[k][j].change
+
+            }
           }
+          
         }
+        console.log(data[0].changes[0].price);
+        console.log(data[0].changes[0].change);
+
         this.chartOptions ={
+          zoomEnabled: true,
+          exportEnabled: true,
+
           animationEnabled: true,
           theme: "light2",
           title:{
           // text: "Actual vs Projected Sales"
           },
           axisX:{
-          valueFormatString: "D MMM"
+          valueFormatString: "D MMM YYYY"
           },
           axisY: {
-          // title: "Number of Sales"
+          title: (data[0].changes[0].price)?"price":  "Number of changes",
+          // includeZero: true,
+		      valueFormatString: "#,##0 LE"
           },
           toolTip: {
           shared: true

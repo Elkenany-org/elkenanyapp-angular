@@ -23,7 +23,7 @@
                     </div>
                     </ngx-slick-carousel>
 
-                    <!-- <carousel 
+                <carousel 
                     *ngIf="!loading && BannerConfig.banner.length >= 0 "
                     [autoplay]="true"
                     [loop]="true" 
@@ -33,12 +33,13 @@
                     [autoplayInterval]="2000"
                     [minSwipeDistance]="20"
                     [transitionDuration]="500"
-                    [borderRadius]="5"
+                    [borderRadius]="2"
+                    class=" "
                     >
-                    <div  class="carousel-cell" *ngFor="let i of BannerConfig.banner">
-                         <img [src]="i.image"  class="img-cell" >
+                    <div class="carousel-cell" *ngFor="let i of BannerConfig.banner">
+                         <img [src]="i.image"   class="img-cell" >
                     </div>
-                 </carousel> -->
+                 </carousel> 
 
 
                 </div>

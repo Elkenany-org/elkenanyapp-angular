@@ -37,7 +37,6 @@ ngOnInit(): void {
   // this.carousel_banner.banner = res.banner
 
   this.carousel_banner = res.banner
-console.log(this.carousel_banner);
 
   this.BannerLogoService.setLogo(res.logos);
   this.BannerLogoService.setBanner(res.banner);
