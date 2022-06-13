@@ -167,8 +167,20 @@ export interface ChangesMember {
   name: string
   change: string
   counts: number
+  categorize?: string
+
   changes: Change[]
 }
+
+
+//----------------------------------------- StatisticsMembersFodder-------------------------------------///
+
+
+export interface Data {
+  changes_members: ChangesMember[]
+}
+
+
 
 export interface Change {
   date: string

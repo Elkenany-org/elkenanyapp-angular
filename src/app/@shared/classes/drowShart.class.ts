@@ -26,9 +26,6 @@ export class StatisticsChart {
           }
           
         }
-        console.log(data[0].changes[0].price);
-        console.log(data[0].changes[0].change);
-
         this.chartOptions ={
           zoomEnabled: true,
           exportEnabled: true,
@@ -42,9 +39,9 @@ export class StatisticsChart {
           valueFormatString: "D MMM YYYY"
           },
           axisY: {
-          title: (data[0].changes[0].price)?"price":  "Number of changes",
+          title: (data[0].changes[0].price)?"price":  "change",
           // includeZero: true,
-		      valueFormatString: "#,##0 LE"
+		      valueFormatString: (data[0].changes[0].price)?"#,##0 LE":  "#,##0" 
           },
           toolTip: {
           shared: true

@@ -195,16 +195,16 @@
 
             <div *ngIf="chartOptions">
                 <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
-            </div>     
-              
+            </div>       
             
             
+
+
+                
     <div class="col-12">
         <div class="multi__selectContainer">
             <h4 class="multi__title">البورصات</h4>
             <form id="box" action="https://elkenany.com/get-local-sections" method="post" class="box-tabs">
-  
-
                 <div class="btn-group">
                     <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
                         <span class="multiselect-selected-text">بورصة لحم الدواجن بأنواعها</span>
@@ -215,31 +215,10 @@
                             <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
                         </a>
                     </li>
-
-
-   
                     <!-- class="active" -->
-
-
-
-
-
-
-
-
-
-                    <li class="active" *ngFor="let item of StatisticsMember?.list_members"> 
-                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
-
-                        
+                    <li class="active" *ngFor="let item of StatisticsMember?.changes_members"> 
+                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.categorize}}</label></a>
                     </li>
-
-
-
-
-
-
-
                 </ul>
             </div>
             </form>
@@ -250,30 +229,46 @@
 
             <!--    Table    -->
             <section class="col-12">
-                <div class="table__main">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th class="border-right border-left" scope="col">اسم الشركة</th>
-                            <th class="border-right" scope="col">مقدار التغير</th>
-                            <th class="border-right" scope="col">عدد التغير</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let item of StatisticsMemberSlected; let i = index ">
-                            <th scope="row">i</th>
-                            <td class="border-right border-left company__link__container">
-                                <a class="company__link"[routerLink]="['/stock-exchange/poultry/statistics/statistics-detials',type, item.id]">{{item.name}}</a>
-                            </td>
-                            <td class="border-right"><span class="negative__content"> {{item.change}}% </span></td>
-                            <td class="border-right"><span class="negative__content"> {{item.counts}} </span></td>
-                        </tr>
-            
+                  <section class="col-12">
+                    <div class="table__main">
+                        <div id="accordion" *ngFor="let i of StatisticsMemberFodder;let i1=index">
+                            <div class="card" >
+                                <div class="card-header" id="headingOne368" style="background-color: #fff;border-color: #1f6b00;margin: 0;padding: 10px;">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" style="color: #1f6b00" data-toggle="collapse" [attr.data-target]="'#collapseOne-'+i1" aria-expanded="false" aria-controls="collapseOne">
+                                            <strong>{{i[0].name}}</strong>
+                                        </button>
+                                    </h5>
+                                </div>
 
-                        </tbody>
-                    </table>
-                </div>
+                                <div [id]="'collapseOne-'+i1"  class="collapse" aria-labelledby="headingOne368" data-parent="#accordion" style="">
+                                    <div class="card-body">
+                                        <table class="table table-hover" style="margin: 0px">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" class="border-right">اسم الصنف</th>
+                                                <th scope="col" class="border-right">مقدار التغير</th>
+                                                <th scope="col" class="border-right">عدد التغير</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let i of i[0].categories">
+                                                    <td class="border-right border-left company__link__container">
+                                                        <a href="https://elkenany.com/fodder-stock-detials-member/1462" class="company__link">مركز تسمين حيواني 45% </a>
+                                                    </td>
+                                                    <td class="border-right">
+                                                        <span class="negative__content">{{i.change}}%</span>
+                                                    </td>
+                                                    <td class="border-right"><span class="negative__content"> {{i.counts}} </span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </section>
         </div>
     </article>
