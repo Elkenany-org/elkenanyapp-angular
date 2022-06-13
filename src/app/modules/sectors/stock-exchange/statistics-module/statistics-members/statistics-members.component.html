@@ -198,9 +198,6 @@
             </div>       
             
             
-
-
-                
     <div class="col-12">
         <div class="multi__selectContainer">
             <h4 class="multi__title">البورصات</h4>
@@ -216,8 +213,8 @@
                         </a>
                     </li>
                     <!-- class="active" -->
-                    <li class="active" *ngFor="let item of StatisticsMember?.changes_members"> 
-                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.categorize}}</label></a>
+                    <li class="active" *ngFor="let item of (StatisticsMember?.list_members || StatisticsMember?.changes_members)"> 
+                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
                     </li>
                 </ul>
             </div>
@@ -227,8 +224,11 @@
 
 
 
+
+
             <!--    Table    -->
             <section class="col-12">
+
                   <section class="col-12">
                     <div class="table__main">
                         <div id="accordion" *ngFor="let i of StatisticsMemberFodder;let i1=index">
@@ -266,9 +266,37 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            </div>
                     </div>
                 </section>
+            </section>
+
+
+            <section class="col-12" *ngIf="StatisticsMemberSlected">
+                <div class="table__main">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" class="border-right border-left">أسم الصنف</th>
+                            <th scope="col" class="border-right">مقدار التغير</th>
+                            <th scope="col" class="border-right">عدد التغير</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of StatisticsMemberSlected; let i = index">
+                                <th scope="row">{{i}}</th>
+                                <td class="border-right border-left company__link__container"> 
+                                  <a [routerLink]="['/stock-exchange/no/statistics/statistics-detials',type,item.id]" class="company__link"> {{item.name}}</a>                                
+                                </td>
+                                <td class="border-right"><span class="negative__content">
+                                {{item.change}} </span></td>
+                                <td class="border-right"><span class="negative__content"> {{item.counts}} </span></td>
+
+                          
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </div>
     </article>
