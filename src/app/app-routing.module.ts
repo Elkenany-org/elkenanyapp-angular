@@ -25,6 +25,13 @@ const routes: Routes = [
       
   },
   {
+    path: 'user/setting',
+
+    loadChildren: () => 
+      import('./modules/@auth/setting/setting.module').then((m) => m.SettingModule),
+      
+  },
+  {
     path: 'user/register',
     loadChildren: () => 
       import('./modules/@auth/register/register.module').then((m) => m.RegisterModule),

@@ -20,11 +20,11 @@ export class StatisticsService {
    // ----------------------------------------- < statistics > -----------------------------------------------//
 
    StatisicsMembersLocal(id:string,type:string, from:string, to:string, mem_id:string):Observable<ApiResponse<StatisticsMembersLocal>> {
-    return this.http.get<ApiResponse<StatisticsMembersLocal>>(`${env.ApiUrl}/localstock/statistics-Localstock-members?from=${from}&to=${to}&id=${id}&mem_id=`)//579
+    return this.http.get<ApiResponse<StatisticsMembersLocal>>(`${env.ApiUrl}/localstock/statistics-Localstock-members?from=${from}&to=${to}&id=${id}&mem_id=${mem_id}`)//579
   }
 
   StatisicsMembersFodder(id:string,type:string, from:string, to:string, mem_id:string):Observable<ApiResponse<StatisticsMembersLocal>> {
-    return this.http.get<ApiResponse<StatisticsMembersLocal>>(`${env.ApiUrl}/fodderstock/statistics-Fodderstock-members?from=${from}&to=${to}&id=${id}&mem_id=`)//579
+    return this.http.get<ApiResponse<StatisticsMembersLocal>>(`${env.ApiUrl}/fodderstock/statistics-Fodderstock-members?from=${from}&to=${to}&id=${id}&mem_id=${mem_id}`)//579
   }
 
   StatisicsMembersDetials(type:string, from:string, to:string, id:string):Observable<ApiResponse<StatisticsMembersDetials>> {

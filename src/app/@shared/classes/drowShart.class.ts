@@ -5,8 +5,10 @@ export class StatisticsChart {
 
 
     drowShart(data:any):any {
+      this.chartOptions= {}
         this.arr2=[]
         let Result= [];
+      if( data.length>0){
         for(let i=0 ; i < data.length ; i++){
           Result.push(data[i]?.changes);
         }
@@ -26,6 +28,7 @@ export class StatisticsChart {
           }
           
         }
+      }
         this.chartOptions ={
           zoomEnabled: true,
           exportEnabled: true,

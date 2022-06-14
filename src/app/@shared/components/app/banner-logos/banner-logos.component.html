@@ -10,20 +10,20 @@
 
                     <div ngxSlickItem *ngFor="let slide of BannerConfig.banner" class="slide">
                         <div class="item">
-                        <a class="logo-holder"  [routerLink]="['/companies-guide/poultry/companies_details','any',slide.id]">
+                        <i (dblclick)="onClick(slide.id)" class="logo-holder"  >
                             
                             <img alt="partner logo" [class]="BannerConfig.config.class"
                             src="{{ slide.image }}" style="max-height: 450px;">
                             
 
-                        </a>
+                        </i>
                         <div class="wall"></div>
                         </div>
                     
                     </div>
                     </ngx-slick-carousel>
 
-                <carousel 
+                <!-- <carousel 
                     *ngIf="!loading && BannerConfig.banner.length >= 0 "
                     [autoplay]="true"
                     [loop]="true" 
@@ -39,7 +39,7 @@
                     <div class="carousel-cell" *ngFor="let i of BannerConfig.banner">
                          <img [src]="i.image"   class="img-cell" >
                     </div>
-                 </carousel> 
+                 </carousel>  -->
 
 
                 </div>

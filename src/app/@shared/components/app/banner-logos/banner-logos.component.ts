@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { BannerConfig, logoConfig } from '@app/@core/interfaces/_app/banner-logo-config';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-banners-logo',
@@ -15,7 +16,9 @@ export class BannerLogosComponent implements OnInit {
 
   BannerConfig = BannerConfig 
   LogoConfig = logoConfig 
-  constructor(private logoBannerService: BannersLogoservice) { }
+  constructor(
+    private logoBannerService: BannersLogoservice,
+    private route: Router) { }
 
   ngOnInit(): void {
     this.BannerConfig.banner=[]
@@ -30,7 +33,9 @@ export class BannerLogosComponent implements OnInit {
       this.LogoConfig.banner =res as Logo[]
      })
 
-     
+    
   }
-
+  onClick(id:number) {
+    this.route.navigate(['/companies-guide/poultry/companies_details','any',id])
+  }
 }

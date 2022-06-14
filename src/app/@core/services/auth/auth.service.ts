@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LoginDataObject, LoginDataResponse, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
+import { LoginDataObject, LoginDataResponse, Profile, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
 import {environment as env} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LocalstorageService } from './localstorage.service';
@@ -24,6 +24,10 @@ export class AuthService {
   ) {
     // this.profileUser();
 
+  }
+
+  profile():Observable<ApiResponse<Profile>> {
+    return this.http.get<ApiResponse<Profile>>(`${env.ApiUrl}/profile`)
   }
   Login(data: LoginDataObject): Observable<ApiResponse<LoginDataResponse>> {
     return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/login`, data).pipe(

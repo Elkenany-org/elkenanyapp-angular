@@ -38,7 +38,7 @@ export class StatisticsMembersComponent implements OnInit {
   ngOnInit(): void {
     this.h_search_form = Statistics_Search_Form
     this.fromToForm= this.fb.group({
-      country: [],
+      // country: [],
       from: [],
       to:[]
     })
@@ -55,9 +55,6 @@ export class StatisticsMembersComponent implements OnInit {
     if(id!=0) {
       this.id = id
       this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
-
-      console.log();
-      
       this.chartOptions=  this.chart.drowShart( [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)])
     }else {
       this.id = ''
@@ -69,12 +66,18 @@ export class StatisticsMembersComponent implements OnInit {
 
 
   filter(value:any,type:string):void { //type come from small screen
+
     if(type){ //this  condation works only  at small view port screen
        let f = this.fromToForm.controls
-       this.getStatisticsMemberData(this.id,this.type,f['from'].value,f['to'].value)
+       console.log(this.id,this.type,f['from'].value,f['to'].value);
+
+      //  this.getStatisticsMemberData(this.id,this.type,f['from'].value,f['to'].value)
      }else{
        let f = this.fillter.filterdata
+        
        this.fillter.filter(value)
+       console.log(this.id,this.type,f['from'],f['to']);
+
        this.getStatisticsMemberData(this.id,this.type,f['from'],f['to'])
      }
   }
@@ -114,11 +117,17 @@ export class StatisticsMembersComponent implements OnInit {
       })
     }
     else {
-      console.log('local');
-      this.statistics.StatisicsMembersLocal(id, type, from, to, 'mem_id').subscribe(res => {
-        this.StatisticsMemberLocal=res.data
-        this.StatisticsMemberSlected = res.data?.changes_members
-        this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
+      this.statistics.StatisicsMembersLocal(id, type, from, to, '').subscribe(res => {
+         this.StatisticsMemberLocal=res.data
+         this.StatisticsMemberSlected = res.data?.changes_members
+         this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
+         setTimeout(()=> {
+          this.StatisticsMemberLocal=res.data
+          this.StatisticsMemberSlected = res.data?.changes_members
+          this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
+         },1500)
+          
+
      })
 
     }

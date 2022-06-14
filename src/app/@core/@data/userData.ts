@@ -29,4 +29,15 @@ id: number;
 
 export interface UserProfile {
 user: User;
+
 }
+//--------------------------- Profile ------------------------------//
+export interface Profile {
+  id: number
+  name: string
+  phone: string
+  email: string
+  image: string
+  state: string
+}
+

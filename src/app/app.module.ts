@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './@core/interceptors/token.interceptor';
+import { SettingComponent } from './modules/@auth/setting/setting.component';
 
 
   ``
@@ -16,7 +17,7 @@ import { TokenInterceptor } from './@core/interceptors/token.interceptor';
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent
   ],
   imports: [
     BrowserModule,

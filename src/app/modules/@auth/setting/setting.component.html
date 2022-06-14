@@ -1,0 +1,134 @@
+    <!-- Start Settings  -->
+    <article class="settings">
+        <div class="container-fluid holder">
+            <!-- Start Titles -->
+            <section class="titles row">
+                <section class="title-left col-lg-10 col-11">
+                    <h3>البيانات الأساسية</h3>
+                </section>
+                <section class="title-right col-lg-2 col-1">
+                    <h3 class="d-lg-block d-none">الإعدادات</h3>
+                    <i class="fas fa-cog d-lg-none d-block"></i>
+                </section>
+            </section>
+            <!-- End Titles -->
+            <!-- Start Content -->
+            <section class="content row">
+                <!-- Start Left Content -->
+                <section class="left-content col-10">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <!-- Start Basics Content -->
+                        <div aria-labelledby="v-pills-basics-tab" class="basics tab-pane fade show active"
+                             id="v-pills-basics"
+                             role="tabpanel">
+                            <input id="imgupload" style="display:none" type="file"/>
+                            <a class="change-img" id="OpenImgUpload">
+                                <div class="overlay">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </div>
+                                <img alt="profile photo" src="../../images/avatar.svg">
+                            </a>
+                            <h3>تعديل الصورة الشخصية</h3>
+
+                            <div class="basics tab-pane fade show active" id="v-pills-basics" role="tabpanel" aria-labelledby="v-pills-basics-tab">
+                                <form [formGroup]="profileForm" (ngSubmit)="submit(profileForm)">
+                                    <input type="hidden" name="_token" value="5HptsAb5Lz0YDRJmg878tokzwv3b7kaWDHR6lJRV">
+                                    <input type="hidden" name="id" value="11">
+                                    <input  type="file" name="avatar" id="imgupload" style="display:none">
+                                    <a id="OpenImgUpload" class="change-img">
+                                        <div class="overlay">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </div>
+                                        <img src="https://elkenany.com/uploads/customers/avatar/default.png" alt="profile photo">
+                                    </a>
+                                    <h3>تعديل الصورة الشخصية</h3>
+                                    
+                                        <h4>الاسم</h4>
+                                        <section id="name-box" class="name-box boxes" style="border-color: rgb(242, 211, 131);">
+                                            <a id="name-edit" style="display: none;">تغيير</a>
+                                            <input formControlName="name" id="username" name="name" type="text" value="m atallah2">
+                                        </section>
+                                        <h4>الايميل</h4>
+                                        <section id="email-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                            <a id="email-edit" style="display: none;">تغيير</a>
+                                            <input id="email"formControlName="email" class="email" type="email" value="mahmoud_mahmoud742@yahoo.com">
+                                        </section>
+                                         <input id="submit" class="submit" type="submit" value="استمرار" style="display: block;">
+                                </form>
+                            </div> 
+ 
+                        </div>
+                        <!-- End Basics Content -->
+                        <!-- Start privacy Content -->
+                        <div aria-labelledby="v-pills-privacy-tab" class="tab-pane fade" id="v-pills-privacy"
+                             role="tabpanel">الخصوصية
+                        </div>
+                        <!-- End privacy Content -->
+                        <!-- Start payments Content -->
+                        <div aria-labelledby="v-pills-payments-tab" class="tab-pane fade" id="v-pills-payments"
+                             role="tabpanel">بيانات الدفع
+                        </div>
+                        <!-- End payments Content -->
+                        <!-- Start bills Content -->
+                        <div aria-labelledby="v-pills-bills-tab" class="tab-pane fade" id="v-pills-bills"
+                             role="tabpanel">ايصالات الدفع
+                        </div>
+                        <!-- End bills Content -->
+                        <!-- Start subscriptions Content -->
+                        <div aria-labelledby="v-pills-subscriptions-tab" class="tab-pane fade"
+                             id="v-pills-subscriptions"
+                             role="tabpanel">بيانات الاشتراك
+                        </div>
+                        <!-- End subscriptions Content -->
+                    </div>
+                </section>
+                <!-- End Left Content -->
+                <!-- Start Right Content -->
+                <section class="right-content col-2">
+                    <div aria-orientation="vertical" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+                        <a aria-controls="v-pills-basics" aria-selected="true" class="nav-link active"
+                           data-toggle="pill"
+                           href="#v-pills-basics" id="v-pills-basics-tab" role="tab">
+                            <i class="fas fa-user"></i>
+                            <span class="d-lg-block d-none">
+                                البيانات الأساسية
+                            </span>
+                        </a>
+                        <a aria-controls="v-pills-privacy" aria-selected="false" class="nav-link" data-toggle="pill"
+                           href="#v-pills-privacy" id="v-pills-privacy-tab" role="tab">
+                            <i class="fas fa-user-shield"></i>
+                            <span class="d-lg-block d-none">
+                                الخصوصية
+                            </span>
+                        </a>
+                        <a aria-controls="v-pills-payments" aria-selected="false" class="nav-link" data-toggle="pill"
+                           href="#v-pills-payments" id="v-pills-payments-tab" role="tab">
+                            <i class="fab fa-cc-visa"></i>
+                            <span class="d-lg-block d-none">
+                                بيانات الدفع
+                            </span>
+                        </a>
+                        <a aria-controls="v-pills-bills" aria-selected="false" class="nav-link" data-toggle="pill"
+                           href="#v-pills-bills"
+                           id="v-pills-bills-tab" role="tab">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span class="d-lg-block d-none">
+                                ايصالات الدفع
+                            </span>
+                        </a>
+                        <a aria-controls="v-pills-subscriptions" aria-selected="false" class="nav-link"
+                           data-toggle="pill" href="#v-pills-subscriptions" id="v-pills-subscriptions-tab"
+                           role="tab">
+                            <i class="far fa-handshake"></i>
+                            <span class="d-lg-block d-none">
+                                بيانات الاشتراك
+                            </span>
+                        </a>
+                    </div>
+                </section>
+                <!-- End Right Content -->
+            </section>
+            <!-- End Content -->
+        </div>
+    </article>
+    <!-- End Settings  -->
