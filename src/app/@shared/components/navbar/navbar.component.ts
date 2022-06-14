@@ -1,6 +1,7 @@
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/@core/services/auth/auth.service';
+import { Profile } from '@app/@core/@data/userData';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit {
   private wasInside = false;
   navbarOpen = false;
   islogedIn?:number
-
+  Profile?:Profile
   @HostBinding("class.show") isOpen = false;
   @HostListener("click") toggleOpen() {
     this.isOpen = !this.isOpen;
@@ -32,9 +33,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
     this.auth.CheckAuth().subscribe(res => {
+      console.log(res);
+      
       this.islogedIn= res.data
     },(err)=> {
       this.islogedIn= err.error.data
+    })
+
+    this.auth.profile().subscribe(res => {
+      this.Profile = res.data
     })
 
 
