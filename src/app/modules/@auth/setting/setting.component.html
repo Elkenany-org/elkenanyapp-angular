@@ -18,46 +18,40 @@
                 <section class="left-content col-10">
                     <div class="tab-content" id="v-pills-tabContent">
                         <!-- Start Basics Content -->
-                        <div aria-labelledby="v-pills-basics-tab" class="basics tab-pane fade show active"
-                             id="v-pills-basics"
-                             role="tabpanel">
-                            <input id="imgupload" style="display:none" type="file"/>
-                            <a class="change-img" id="OpenImgUpload">
-                                <div class="overlay">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </div>
-                                <img alt="profile photo" src="../../images/avatar.svg">
-                            </a>
-                            <h3>تعديل الصورة الشخصية</h3>
-
-                            <div class="basics tab-pane fade show active" id="v-pills-basics" role="tabpanel" aria-labelledby="v-pills-basics-tab">
-                                <form [formGroup]="profileForm" (ngSubmit)="submit(profileForm)">
-                                    <input type="hidden" name="_token" value="5HptsAb5Lz0YDRJmg878tokzwv3b7kaWDHR6lJRV">
-                                    <input type="hidden" name="id" value="11">
-                                    <input  type="file" name="avatar" id="imgupload" style="display:none">
-                                    <a id="OpenImgUpload" class="change-img">
-                                        <div class="overlay">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </div>
-                                        <img src="https://elkenany.com/uploads/customers/avatar/default.png" alt="profile photo">
-                                    </a>
-                                    <h3>تعديل الصورة الشخصية</h3>
-                                    
-                                        <h4>الاسم</h4>
-                                        <section id="name-box" class="name-box boxes" style="border-color: rgb(242, 211, 131);">
-                                            <a id="name-edit" style="display: none;">تغيير</a>
-                                            <input formControlName="name" id="username" name="name" type="text" value="m atallah2">
-                                        </section>
-                                        <h4>الايميل</h4>
-                                        <section id="email-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
-                                            <a id="email-edit" style="display: none;">تغيير</a>
-                                            <input id="email"formControlName="email" class="email" type="email" value="mahmoud_mahmoud742@yahoo.com">
-                                        </section>
-                                         <input id="submit" class="submit" type="submit" value="استمرار" style="display: block;">
-                                </form>
-                            </div> 
+             
+                     
+                        <div class="basics tab-pane fade show active" id="v-pills-basics" role="tabpanel" aria-labelledby="v-pills-basics-tab">
+                            <form [formGroup]="profileForm" (ngSubmit)="submit(profileForm)">
+                                <input type="hidden" name="_token" value="5HptsAb5Lz0YDRJmg878tokzwv3b7kaWDHR6lJRV">
+                                <input type="hidden" name="id" value="11">
+                                <input  type="file" name="avatar" id="imgupload" style="display:none">
+                                <a id="OpenImgUpload" class="change-img">
+                                    <div class="overlay">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </div>
+                                    <img [src]="profile?.image" alt="profile photo">
+                                </a>
+                                <h3>تعديل الصورة الشخصية</h3>
+                                
+                                    <h4>الاسم</h4>
+                                    <section id="name-box" class="name-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <a id="name-edit" style="display: none;">تغيير</a>
+                                        <input formControlName="name" id="username" name="name" type="text" value="m atallah2">
+                                    </section>
+                                    <h4>الايميل</h4>
+                                    <section id="email-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <a id="email-edit" style="display: none;">تغيير</a>
+                                        <input id="email"formControlName="email" class="email" type="email" value="mahmoud_mahmoud742@yahoo.com">
+                                    </section>
+                                    <h4>الهاتف</h4>
+                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <a id="phone-edit" style="display: none;">تغيير</a>
+                                        <input id="phone"formControlName="phone" class="phone" type="number" >
+                                    </section>
+                                        <input id="submit" class="submit" type="submit" value="استمرار" style="display: block;">
+                            </form>
+                        </div> 
  
-                        </div>
                         <!-- End Basics Content -->
                         <!-- Start privacy Content -->
                         <div aria-labelledby="v-pills-privacy-tab" class="tab-pane fade" id="v-pills-privacy"

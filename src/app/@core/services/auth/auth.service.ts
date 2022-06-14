@@ -29,6 +29,10 @@ export class AuthService {
   profile():Observable<ApiResponse<Profile>> {
     return this.http.get<ApiResponse<Profile>>(`${env.ApiUrl}/profile`)
   }
+
+  updateProfile(body:Profile):Observable<ApiResponse<Profile>>{
+    return this.http.post<ApiResponse<Profile>>(`${env.ApiUrl}/profile-update`,body)
+  }
   Login(data: LoginDataObject): Observable<ApiResponse<LoginDataResponse>> {
     return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/login`, data).pipe(
       // tslint:disable-next-line:no-shadowed-variable
