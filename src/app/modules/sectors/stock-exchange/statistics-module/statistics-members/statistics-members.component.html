@@ -198,7 +198,7 @@
             </div>       
             
             
-    <div class="col-12">
+    <div class="col-12" *ngIf="type== 'local'">
         <div class="multi__selectContainer">
             <h4 class="multi__title">البورصات</h4>
             <form id="box" action="https://elkenany.com/get-local-sections" method="post" class="box-tabs">
@@ -213,7 +213,7 @@
                         </a>
                     </li>
                     <!-- class="active" -->
-                    <li class="active" *ngFor="let item of (StatisticsMember?.list_members || StatisticsMember?.changes_members)"> 
+                    <li class="active" *ngFor="let item of (StatisticsMemberLocal?.list_members)"> 
                         <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
                     </li>
                 </ul>
@@ -222,7 +222,30 @@
         </div>
     </div>
 
-
+                
+    <div class="col-12" *ngIf="type== 'fodder'">
+        <div class="multi__selectContainer">
+            <h4 class="multi__title">البورصات</h4>
+            <form id="box" action="https://elkenany.com/get-local-sections" method="post" class="box-tabs">
+                <div class="btn-group">
+                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
+                        <span class="multiselect-selected-text">بورصة لحم الدواجن بأنواعها</span>
+                         <b class="caret"></b>
+                    </button><ul class="multiselect-container dropdown-menu">
+                    <li class="multiselect-item multiselect-all">
+                        <a tabindex="0" class="multiselect-all">
+                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
+                        </a>
+                    </li>
+                    <!-- class="active" -->
+                    <li class="active" *ngFor="let item of StatisticsMemberLocal?.changes_members"> 
+                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.categorize}}</label></a>
+                    </li>
+                </ul>
+            </div>
+            </form>
+        </div>
+    </div>
 
 
 
@@ -254,7 +277,7 @@
                                             <tbody>
                                                 <tr *ngFor="let i of i[0].categories">
                                                     <td class="border-right border-left company__link__container">
-                                                        <a href="https://elkenany.com/fodder-stock-detials-member/1462" class="company__link">مركز تسمين حيواني 45% </a>
+                                                        <a [routerLink]="['/stock-exchange/no/statistics/statistics-detials',type,i.id]" class="company__link">مركز تسمين حيواني 45% </a>
                                                     </td>
                                                     <td class="border-right">
                                                         <span class="negative__content">{{i.change}}%</span>
@@ -272,7 +295,7 @@
             </section>
 
 
-            <section class="col-12" *ngIf="StatisticsMemberSlected">
+            <section class="col-12" *ngIf="type== 'local'">
                 <div class="table__main">
                     <table class="table table-hover">
                         <thead>

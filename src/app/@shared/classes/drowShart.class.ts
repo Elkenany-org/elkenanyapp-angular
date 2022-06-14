@@ -14,7 +14,7 @@ export class StatisticsChart {
           this.arr2.push({
             type: "line",
             showInLegend: true,
-            name: data[k].name,
+            name:  data[k].name,
             xValueFormatString: "MMM DD, YYYY",
             dataPoints: []
           })

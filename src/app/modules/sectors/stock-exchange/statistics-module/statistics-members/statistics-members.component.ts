@@ -16,7 +16,7 @@ export class StatisticsMembersComponent implements OnInit {
 
 
 
-  StatisticsMember?:StatisticsMembersLocal
+  StatisticsMemberLocal?:StatisticsMembersLocal
   StatisticsMemberSlected? :ChangesMember[]
   ///
   StatisticsMemberFodder:any
@@ -46,6 +46,7 @@ export class StatisticsMembersComponent implements OnInit {
     this.roure.params.subscribe((prm: Params) => {
     this.id=  prm['id']//get type from url
     this.type= prm['type']
+    
     this.getStatisticsMemberData(this.id,this.type,'','')
     })
   }
@@ -53,12 +54,15 @@ export class StatisticsMembersComponent implements OnInit {
   selectStock(id:any) {
     if(id!=0) {
       this.id = id
-      this.StatisticsMemberSlected = [this.StatisticsMember?.changes_members.find(i => i.id ==id)] as ChangesMember[]
-      this.chartOptions=  this.chart.drowShart( [this.StatisticsMember?.changes_members.find(i => i.id ==id)])
+      this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
+
+      console.log();
+      
+      this.chartOptions=  this.chart.drowShart( [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)])
     }else {
       this.id = ''
-      this.StatisticsMemberSlected =this.StatisticsMember?.changes_members
-      this.chartOptions=  this.chart.drowShart( this.StatisticsMember?.changes_members)
+      this.StatisticsMemberSlected =this.StatisticsMemberLocal?.changes_members
+      this.chartOptions=  this.chart.drowShart( this.StatisticsMemberLocal?.changes_members)
     }
   }
 
@@ -79,7 +83,8 @@ export class StatisticsMembersComponent implements OnInit {
     if(this.type == "fodder") {
       console.log("fodder");
       this.statistics.StatisicsMembersFodder(id,type,from,to,'').subscribe(res => {
-        this.StatisticsMember=res.data
+        
+        this.StatisticsMemberLocal=res.data
         this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
         let members= res.data!.changes_members
         let array:any = []
@@ -103,24 +108,16 @@ export class StatisticsMembersComponent implements OnInit {
               ])    
             }
           }
-      
         }
-
         this.StatisticsMemberFodder = array
-        console.log(this.StatisticsMemberFodder);
-        
 
       })
-
     }
     else {
       console.log('local');
       this.statistics.StatisicsMembersLocal(id, type, from, to, 'mem_id').subscribe(res => {
-        console.log(res);
-
-        this.StatisticsMember=res.data
+        this.StatisticsMemberLocal=res.data
         this.StatisticsMemberSlected = res.data?.changes_members
-
         this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
      })
 
