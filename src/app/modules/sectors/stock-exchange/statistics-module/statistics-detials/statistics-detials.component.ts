@@ -26,9 +26,9 @@ export class StatisticsDetialsComponent implements OnInit {
     this.route.params.subscribe(prm => {
       this.id= prm['id']
       this.filterData['type']=prm['type']
-      if(prm['type']== 'local' || 'fodder') {
+      if(prm['type'] === 'local' || prm['type'] ===   'fodder') {
         this.getStatisicsMembersDetials(prm['type'],'','',this.id= prm['id'])
-      }else{
+      }else {
         this.getstatisicsDetailsData( this.id,'','')
       }
       
