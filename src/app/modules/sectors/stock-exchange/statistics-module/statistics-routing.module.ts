@@ -21,7 +21,8 @@ const routes: Routes = [
 
   {
     path: 'statistics-detials/:type/:id',
-    component: StatisticsDetialsComponent
+    component: StatisticsDetialsComponent,
+    canActivate:[AuthGuardService]
   },
   {
     path: '**',
