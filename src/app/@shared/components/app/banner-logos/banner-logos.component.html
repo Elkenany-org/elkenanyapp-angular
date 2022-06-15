@@ -23,24 +23,7 @@
                     </div>
                     </ngx-slick-carousel>
 
-                <!-- <carousel 
-                    *ngIf="!loading && BannerConfig.banner.length >= 0 "
-                    [autoplay]="true"
-                    [loop]="true" 
-                    [cellsToShow]="1" 
-                    [arrows]="false"
-                    [dots]="false"
-                    [autoplayInterval]="2000"
-                    [minSwipeDistance]="20"
-                    [transitionDuration]="500"
-                    [borderRadius]="2"
-                    class=" "
-                    >
-                    <div class="carousel-cell" *ngFor="let i of BannerConfig.banner">
-                         <img [src]="i.image"   class="img-cell" >
-                    </div>
-                 </carousel>  -->
-
+         
 
                 </div>
             </div>
@@ -56,7 +39,7 @@
             <section class="splide" id="partnerCarousel">
                 
                                                   
-                <ngx-slick-carousel class="carousel"  *ngIf="!loading && LogoConfig.banner.length >= 0 "
+                <ngx-slick-carousel  class="ngx-slick"  *ngIf="!loading && LogoConfig.banner.length >= 0 "
                     #slickModal="slick-carousel" 
                     [config]="LogoConfig.config" 
                 >
@@ -80,3 +63,22 @@
         </section>
     </div>
 </article> 
+
+
+       <!-- <carousel 
+                    *ngIf="!loading && BannerConfig.banner.length >= 0 "
+                    [autoplay]="true"
+                    [loop]="true" 
+                    [cellsToShow]="1" 
+                    [arrows]="false"
+                    [dots]="false"
+                    [autoplayInterval]="2000"
+                    [minSwipeDistance]="20"
+                    [transitionDuration]="500"
+                    [borderRadius]="2"
+                    class=" "
+                    >
+                    <div class="carousel-cell" *ngFor="let i of BannerConfig.banner">
+                         <img [src]="i.image"   class="img-cell" >
+                    </div>
+                 </carousel>  -->

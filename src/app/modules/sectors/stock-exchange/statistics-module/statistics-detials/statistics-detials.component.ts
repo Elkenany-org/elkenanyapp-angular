@@ -27,26 +27,25 @@ export class StatisticsDetialsComponent implements OnInit {
       this.id= prm['id']
       this.filterData['type']=prm['type']
       if(prm['type'] === 'local' || prm['type'] ===   'fodder') {
-        this.getStatisicsMembersDetials(prm['type'],'','',this.id= prm['id'])
+        console.log(prm['type'], this.id);
+        
+        this.getStatisicsMembersDetials(prm['type'],'','',this.id)
       }else {
         this.getstatisicsDetailsData( this.id,'','')
       }
-      
-      
-    
     })
-    
   }
 
   filter(value:{date:string, type:string}):void {
+    console.log(value);
+    
     let f= this.filterData
     value.type=='from'? f.from = value.date:f.from = value.date
-    if(this.filterData['type'] == 'local' ||'fodder') {
+    if(this.filterData['type'] == 'local' || this.filterData['type']=='fodder') {
 
     }else
     this.filterData['type']
     this.getstatisicsDetailsData(this.id,f.from,f.to)
-
   }
 
   getStatisicsMembersDetials( type:string,from:string,to:string,id:string){
@@ -55,9 +54,9 @@ export class StatisticsDetialsComponent implements OnInit {
     })
   }
 
-
   getstatisicsDetailsData(id:string, from:string,to:string){
     this.statistics.StatisicsStocksDetials(id,from,).subscribe(res => {
+      
       this.data= res.data
     })  
   }

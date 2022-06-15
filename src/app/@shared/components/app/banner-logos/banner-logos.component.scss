@@ -33,16 +33,37 @@
       // min-height: 125px  !important;
   }
 
-  .carousel{
-    // height: 300px;
-  }
 
 
-  @media (max-width:760px) {
+
+  @media (max-width:770px) {
      .img-cell {
       margin-right: 0 !important;
-        
       width: 100% !important;
     }
+  .carousel{
+    width:80% !important;
+  }
+  .slick-initialized{
+    margin:  0 auto 0 auto  ;
+  }
+
     
   }
+
+
+//   @media (max-width:390) {
+  
+
+//     .img-cell {
+//       margin-right: 0 !important;
+//       width: 100% !important;
+//     }
+//   .carousel{
+//     width:320px !important;
+//   }
+//   .slick-initialized{
+//     margin:  0 auto 0 auto  ;
+//   }
+   
+//  }
