@@ -118,32 +118,34 @@
             <a class="log-in"  *ngIf="islogedIn==0" [routerLink]="['/user/login']">الدخول</a>
             <a class="sign-up" *ngIf="islogedIn==0"[routerLink]="['/user/register']">انضم الان</a>
         </section>
-
+        <section class="profile-box dropdown d-lg-block " *ngIf="islogedIn==1">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+               href="#"
+               id="navbarDropdown" role="button">
+                <img alt="profile pic" class="profile-photo" src="../../../../assets/images/avatar.svg">
+                <h6>{{Profile?.name}}</h6>
+                <div class="arrow">
+                    <img alt="arrow down" class="arrow-down" src="../../../../assets/images/down_arrow.svg">
+                </div>
+            </a>
+            <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+    
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" routerLink="/user/setting">الإعدادات</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item"(click)="logout()">تسجيل الخروج</a>
+            </div>
+        </section>
     </div>
+
+
+
+
+
+
+
+
 <!-- 
-    <div class="col">
-        <br/>
-        <div ngbDropdown>
-          <button class="btn btn-warning" id="gfg" 
-                  ngbDropdownToggle>Click Here!</button>
-          <div ngbDropdownMenu="gfg">
-            <button ngbDropdownItem>GeeksforGeeks</button>
-            <button ngbDropdownItem>Angular10</button>
-            <button ngbDropdownItem>ng bootstrap</button>
-          </div>
-        </div>
-      </div> -->
-
-
-
-
-
-
-
-
-
-
-
     <section class="profile-box dropdown d-lg-block d-none" *ngIf="islogedIn==1">
         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
            href="#"
@@ -161,7 +163,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"(click)="logout()">تسجيل الخروج</a>
         </div>
-    </section>
+    </section> -->
 </nav>
 
 

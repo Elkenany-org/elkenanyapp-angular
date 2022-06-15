@@ -6,6 +6,7 @@ import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { ShipsTrafficService } from '../../../../@core/services/modules/ships-trafic/ships-traffic.service';
 import { Fillter } from '@shared/classes/filter';
 import { FormBuilder } from '@angular/forms';
+import { Country } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 
 @Component({
   selector: 'app-ships-traffic-statistics',
@@ -20,6 +21,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
   single?: any[];
   view: any[] = [700, 400];
   chart:{name: string,value: number} [] =[]
+  countries?:Country[]
 
   // options
   gradient: boolean = true;
@@ -52,8 +54,8 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
     // })
     this.h_search_form = ship_traffic_Statistics_Search_Form
     this.route.data.subscribe(data => {
+      this.countries =data['resolve'].data.countries 
       this.data= data['resolve'].data
-      console.log(data['resolve'].data)
 
       this.data?.products.forEach(item => this.chart.push({name:item.name,value:item.load}))
       this.single =this.chart;
@@ -63,14 +65,11 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
   }
 
   filter(value:any):void {
-    console.log(value)
      this.fillter.filter(value)
      let f = this.fillter.filterdata
-     console.log(this.fillter.filterdata );
 
     this.ship.Statistics(f['sort'],f['from'],f['to'], f['country_id']).subscribe(res => {
       this.data = res.data
-      console.log(res);
       
     })
     

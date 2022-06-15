@@ -12,6 +12,12 @@
     // background: grey !important;
     z-index: 100;
   }
+
+    @media screen and (max-width:700px) {
+      .product__card .product__content .note{
+        font-size: 15px;
+      }
+    }
   
   
 

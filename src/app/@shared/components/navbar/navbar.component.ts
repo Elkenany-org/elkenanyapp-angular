@@ -33,7 +33,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
     this.auth.CheckAuth().subscribe(res => {
-      console.log(res);
       
       this.islogedIn= res.data
     },(err)=> {

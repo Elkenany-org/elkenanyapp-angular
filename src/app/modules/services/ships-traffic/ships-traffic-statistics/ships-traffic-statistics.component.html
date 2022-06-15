@@ -137,8 +137,9 @@
                             <div class="multi__selectContainer">
                                 <h4 class="multi__title">المنشأ</h4>
                                 <select (change)="filter({id: $any($event.target).value,type: 'countries'})"  class="select__categories selectCategories  form-control">
-                                    <option selected value="القاهرة">الكل</option>
-                                    <option *ngFor="let i of data?.countries" [value]=" i.country">{{i.country}}</option>
+                                    <!-- <option  value="0">الكل</option> -->
+                                    <option  value="0">الكل</option>
+                                    <option *ngFor="let i of countries" [value]=" i.country">{{i.country}}</option>
                                     
                                 </select>
                             </div>
