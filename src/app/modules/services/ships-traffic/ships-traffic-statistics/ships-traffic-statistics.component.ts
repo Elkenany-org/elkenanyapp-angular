@@ -5,7 +5,7 @@ import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { ShipsTrafficService } from '../../../../@core/services/modules/ships-trafic/ships-traffic.service';
 import { Fillter } from '@shared/classes/filter';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Country } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 
 @Component({
@@ -22,6 +22,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
   view: any[] = [700, 400];
   chart:{name: string,value: number} [] =[]
   countries?:Country[]
+  fromToForm!:FormGroup
 
   // options
   gradient: boolean = true;
@@ -47,7 +48,10 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
               }
 
   ngOnInit(): void {
-
+    this.fromToForm= this.fb.group({
+      from: [],
+      to:[]
+    })
     // this.originandSortsForm = this.fb.group({
     //   origin:'',
     //   sort: '',
@@ -59,19 +63,30 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
 
       this.data?.products.forEach(item => this.chart.push({name:item.name,value:item.load}))
       this.single =this.chart;
+      console.log(data['resolve'].data);
+      
 
     })
 
   }
 
-  filter(value:any):void {
-     this.fillter.filter(value)
+  filter(value:any,type?:string):void {//this type parameter come from only mobile view
      let f = this.fillter.filterdata
-
-    this.ship.Statistics(f['sort'],f['from'],f['to'], f['country_id']).subscribe(res => {
+       
+    if(type){ //this type come from only mobile view
+      if(type == "date-from"){
+        this.fillter.filter({ name: value, type: 'date-from'})
+      }else if(type == "date-to") {
+        this.fillter.filter({ name: value, type: 'date-to'})
+      }
+    }else{
+      this.fillter.filter(value)
+    }
+     this.ship.Statistics(f['sort'],f['from'],f['to'], f['country_id']).subscribe(res => {
       this.data = res.data
-      
-    })
+      this.data?.products.forEach(item => this.chart.push({name:item.name,value:item.load}))
+      this.single =this.chart;  
+      })
     
   }
 

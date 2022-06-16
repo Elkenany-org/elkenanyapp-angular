@@ -6,6 +6,7 @@ import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { map } from 'rxjs';
 import { ShipsTrafficService } from '../../../../@core/services/modules/ships-trafic/ships-traffic.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-ships-traffic',
@@ -22,12 +23,20 @@ export class ShipsTrafficComponent implements OnInit {
     cities:'1',
   }
   public h_search_form?:JsonFormData  
+  fromToForm!:FormGroup
+
   constructor(
                 private route:ActivatedRoute,
+                private fb:FormBuilder,
                private BannerLogoService:BannersLogoservice,
                private ships: ShipsTrafficService) { }
 
   ngOnInit(): void {
+    this.fromToForm= this.fb.group({
+      country: [],
+      from: [],
+      to:[]
+    })
     this.route.data.pipe(
       map((data) => {
        return data
@@ -42,11 +51,12 @@ export class ShipsTrafficComponent implements OnInit {
   }
 
   filter(value:any):void {
+
     console.log(value)
-    this.ships.ships(value.name).subscribe(res => {
-      this.data= res.data
-      console.log(res)
-    })
+    // this.ships.ships(value.name).subscribe(res => {
+    //   this.data= res.data
+    //   console.log(res)
+    // })
 
   }
 }
