@@ -53,10 +53,10 @@ export class ShipsTrafficComponent implements OnInit {
   filter(value:any):void {
 
     console.log(value)
-    // this.ships.ships(value.name).subscribe(res => {
-    //   this.data= res.data
-    //   console.log(res)
-    // })
+    this.ships.ships(value.name).subscribe(res => {
+      this.data= res.data
+      console.log(res)
+    })
 
   }
 }
