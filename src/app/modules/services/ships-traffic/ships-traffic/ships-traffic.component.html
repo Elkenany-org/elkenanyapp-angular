@@ -12,7 +12,6 @@
                 <i class="icon-s fas fa-search"></i>
             </button>
             <div class="accordion collapse show" id="accordion">
-                <form [formGroup]="fromToForm">
 
                 <div class="card">
                     <div class="card-header" id="headingSearch">
@@ -28,7 +27,7 @@
                     <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
                          id="collapseSearch">
                         <div class="card-body">
-                            <input (change)="filter({name: $any($event.target).value, type: 'dataOfArrival'})"  class="search__input" type="date" formControlName="from">
+                            <input (change)="filter({name: $any($event.target).value, type: 'dataOfArrival'})"  class="search__input" type="date" name="dataOfArrival">
                         </div>
                     </div>
                 </div>
@@ -50,7 +49,6 @@
                         </div>
                     </div>
                 </div>
-                </form>
             </div>
         </section>
         <!-- End Right Section -->

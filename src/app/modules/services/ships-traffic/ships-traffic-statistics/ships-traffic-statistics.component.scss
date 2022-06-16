@@ -49,26 +49,14 @@
 }
 
 
-// @media only screen and (min-width: 777px) and (max-width: 920px){
+@media only screen and  (max-width: 450px) {
+    .ngx {
+        height: 300px !important;
+        margin-left: 40px ;
+        padding:-50px !important
+    }
+   
 
-//     .table> :not(caption) > * > *{
-//         width: 750px !important;
-//         border: 5px solid black !important;        
-//     }
-//     .card{
-//         width: 100% !important;
+}
 
-//     }
-// }
 
-// @media only screen and (min-width: 390px)and (max-width: 777px) {
-
-//     .table> :not(caption) > * > *{
-//         width: 450px !important;
-//         border: 5px solid black !important;        
-//     }
-//     .card{
-//         width: 100% !important;
-
-//     }
-// }

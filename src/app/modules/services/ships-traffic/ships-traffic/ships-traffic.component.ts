@@ -33,9 +33,7 @@ export class ShipsTrafficComponent implements OnInit {
 
   ngOnInit(): void {
     this.fromToForm= this.fb.group({
-      country: [],
-      from: [],
-      to:[]
+      dataOfArrival: [],
     })
     this.route.data.pipe(
       map((data) => {
