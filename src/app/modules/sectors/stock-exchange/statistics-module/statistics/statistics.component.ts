@@ -38,10 +38,14 @@ export class StatisticsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
-
-
+    this.roure.data.subscribe( data => {
+      console.log(data['resolve']);
+      this.StatisticsMember=data['resolve'].data
+      this.StatisticsMemberSlected = data['resolve'].data?.changes_subs
+      this.chartOptions=  this.chart.drowShart( data['resolve'].data!.changes_subs)
+      
+      
+    })
     this.h_search_form = Statistics_Search_Form
     this.fromToForm= this.fb.group({
       country: [],
@@ -51,11 +55,6 @@ export class StatisticsComponent implements OnInit {
     let url =  this.router.url.split('/') 
     this.type =  url[url.length-2] //get type from url 
     // this.id = sector.find(i => i.type == this.type)?.id+''
-    this.roure.params.subscribe((prm: Params) => {
-      this.getStatisticsData(this.type,'','','')
-    })
-
-
   }
 
   selectStock(id:any) {

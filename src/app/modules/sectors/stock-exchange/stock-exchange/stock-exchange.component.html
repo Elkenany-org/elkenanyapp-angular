@@ -19,7 +19,112 @@
 
 
 
+ <article class="table__header__filter special__container"   *ngIf="filterData['type'] == 'fodder'">
+    <section class="head new__cards__header">
+        <div class="card">
+            <div class="card-header" id="itemsSelect2">
+                <button  class="card__button"
+                          (click)="toggle('company')">
+                    الشركة
+                </button>
+            </div>
+            <div  class="collapse "   [ngClass]="{'show':collapse==1}"
+          
+                 id="collapseItemsSelect2">
+                <div class="card-body">
+                    <div class="multiselect multiselect-accordion" id="multiselect-companies-accordion">
+                        <div class="checkboxes" id="checkboxes-companies-accordion">
+                            <div class="company__search">
+                                <label for="searchCompany">
+                                    <input class="searchInput" id="searchCompany" name="search" 
+                                             name="username" #company
+                                            (change)="companySearch(company.value)"
+                                           placeholder="ابحث عن"
+                                           type="search">
+                                </label>
+                            </div>
+                            <div class="all__labels">
 
+                                <label    
+                                
+                                (click)="filter({id:'', name: '', type: 'com_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox" ></a>
+                                           الكل
+                                </label>
+
+
+                                <label    
+                                *ngFor="let company of companiesList; let i = index" 
+                                (click)="filter({id: company.id, name: '', type: 'com_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                     name="companies-accordion" type="checkbox" ></a>
+                                           
+                                           {{company.name}}
+                                </label>
+
+
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="head new__cards__header">
+        <div class="card">
+            <div class="card-header" id="itemsSelect">
+                <button  class="card__button"
+                         (click)="toggle('feeds')">
+                    الصنف
+                </button>
+            </div>
+            <div  class="collapse" [ngClass]="{'show':collapse==2}" 
+                 id="collapseItemsSelect">
+                <div class="card-body">
+                    <div class="multiselect multiselect-accordion" id="multiselect-types-accordion">
+                        <div class="checkboxes" id="checkboxes-types-accordion">
+                            <div class="company__search">
+                                <label for="searchTypes">
+                                    <input class="searchInput" id="searchTypes" name="search"
+                                    name="username" #feeds1
+                                    (change)="feedsSearch(feeds1.value)"
+                                           placeholder="ابحث عن"
+                                           type="search">
+                                </label>
+                            </div>
+                            <div class="all__labels">
+
+                                <label    
+                                
+                                (click)="filter({id:'', name: '', type: 'feed_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox" ></a>
+                                           الكل
+                                </label>
+
+
+                                <label    
+                                *ngFor="let feed of feedsList; let i = index" 
+                                (click)="filter({id: feed.id, name: '', type: 'feed_id'} )" 
+                                class="company__filter__label" for="company-accordion-one">
+                                    <a class="checks checks-company-accordion" id="company-accordion-one"
+                                           name="companies-accordion" type="checkbox" ></a>
+                                           
+                                           {{feed.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+</article>
 
 
 <div class="global__container" >

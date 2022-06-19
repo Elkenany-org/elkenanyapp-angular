@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit, SaveData {
     });
 
     this.loginForm.controls['email'].valueChanges.subscribe((res) => {
-    this.loginForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
+    // this.loginForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
   });
   }
   get f() { return this.loginForm.controls; }

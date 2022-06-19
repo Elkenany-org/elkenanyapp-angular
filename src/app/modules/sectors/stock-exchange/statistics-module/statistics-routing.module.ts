@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { AuthGuardService } from '@app/@core/guards/auth.guard';
+import { StatisticsMembersResolver } from '@app/@core/resolver/stock-statistics/statistics-members-resolver.service copy';
+import { StatisticsResolver } from '@app/@core/resolver/stock-statistics/statistics-resolver.service';
 import { LayoutComponent } from '@app/@shared/components/layout/layout.component';
 import {NotFoundComponent} from '@app/@shared/pages/not-found/not-found.component';
 
@@ -13,10 +15,16 @@ const routes: Routes = [
   {
     path: '',
     component: StatisticsComponent ,
+    resolve: {
+      resolve: StatisticsResolver
+    }
   },
     {
     path: 'statistics-members/:type/:id',
-    component: StatisticsMembersComponent
+    component: StatisticsMembersComponent,
+    resolve: {
+      resolve: StatisticsMembersResolver
+    }
   },
 
   {

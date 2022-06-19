@@ -36,6 +36,8 @@ export class StatisticsMembersComponent implements OnInit {
               private fb:FormBuilder) {}
 
   ngOnInit(): void {
+
+
     this.h_search_form = Statistics_Search_Form
     this.fromToForm= this.fb.group({
       // country: [],
@@ -46,8 +48,32 @@ export class StatisticsMembersComponent implements OnInit {
     this.roure.params.subscribe((prm: Params) => {
     this.id=  prm['id']//get type from url
     this.type= prm['type']
+
+
+
+    this.roure.data.subscribe(data => {
+      
+      console.log(data['resolve']);
+      if(this.type == "fodder"){
+        console.log("fodder");
+        this.StatisticsMemberLocal=data['resolve'].data
+        this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
+     
+        
+        this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
+        
+      }else if (this.type == "local"){
+        this.StatisticsMemberLocal=data['resolve'].data
+        this.StatisticsMemberSlected = data['resolve'].data?.changes_members
+        this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
+        
+      }
+
+    })
+
+
     
-    this.getStatisticsMemberData(this.id,this.type,'','')
+    // this.getStatisticsMemberData(this.id,this.type,'','')
     })
   }
 
@@ -81,6 +107,34 @@ export class StatisticsMembersComponent implements OnInit {
        this.getStatisticsMemberData(this.id,this.type,f['from'],f['to'])
      }
   }
+  fodderTable(data: ChangesMember[]):any {
+    
+    let members= data
+    let array:any = []
+    for(let i = 0 ; i< members.length ; i++) {
+      let is_item_exist= 0
+
+      if(i+1 != members.length) {
+        for (let j = 0; j < array.length; j++) {
+          if(array[j].find((element:any) => members[i].name == element.name)){
+            is_item_exist=1
+          }else{
+            is_item_exist=0
+          }
+        }
+        if(is_item_exist==0) {
+          array.push([
+            {
+               name:  members[i].name,
+               categories: members.filter((element:any) => element.name == members[i].name)
+            }
+          ])    
+        }
+      }
+    }
+    return array
+
+  }
   getStatisticsMemberData(id:string,type:string,from:string, to:string){
 
     if(this.type == "fodder") {
@@ -89,6 +143,7 @@ export class StatisticsMembersComponent implements OnInit {
         
         this.StatisticsMemberLocal=res.data
         this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
+     
         let members= res.data!.changes_members
         let array:any = []
         for(let i = 0 ; i< members.length ; i++) {

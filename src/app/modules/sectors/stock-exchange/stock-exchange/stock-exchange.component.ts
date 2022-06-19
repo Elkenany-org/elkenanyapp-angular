@@ -59,13 +59,15 @@ export class StockExchangeComponent implements OnInit {
 
     if(prm['type_stock'] === 'fodder') {
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-          console.log(this.feeds );
+          console.log(res );
           
         this.feeds = res.data?.fodder_list
         this.feedsList = this.feeds
         this.loading = false;   
       })
       this.stockExchange.companies_items(prm['id']).subscribe( res => {
+        console.log(res);
+        
         this.companies= res.data
         this.companiesList = this.companies
       })
