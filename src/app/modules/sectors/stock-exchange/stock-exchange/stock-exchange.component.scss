@@ -5,7 +5,27 @@
 
 @media screen and (max-width: 650px) {
 
-    .price_direction{
-        width:70%
+    // .price_direction{
+    //     width:70%
+    // }
+    .company__filter__label {
+        direction: ltr;
+
+        // font-size: x-small !important;
+        // white-space: nowrap !important; 
+        // overflow: hidden;
+        // width:100px;
+        // display: -webkit-box;
+        // -webkit-line-clamp: 3;
+        // -webkit-box-orient: vertical;
+
+    }
+ 
+    .table__header__filter .head{
+        
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 5px;
     }
 }
+
