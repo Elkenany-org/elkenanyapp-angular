@@ -6,6 +6,8 @@ import { ShipsTrafficService } from '../../services/modules/ships-trafic/ships-t
 import { Ships } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 import { StatisticsMembersLocal, StatisticsSubsSections } from '@app/@core/interfaces/stock-exchanges/statistics';
 import { StatisticsService } from '@app/modules/sectors/stock-exchange/statistics-module/_core/statistics.service';
+import { ToasterService } from './../../services/toastr.service';
+import { AlertService } from './../../services/alert.service';
 
 
 @Injectable({
@@ -14,7 +16,11 @@ import { StatisticsService } from '@app/modules/sectors/stock-exchange/statistic
 export class StatisticsMembersResolver implements Resolve<ApiResponse<StatisticsMembersLocal>>{
    
 
-  constructor(private statistics: StatisticsService ,private router: Router) { }
+  constructor(private statistics: StatisticsService,
+              private router: Router,
+              private toster: ToasterService,
+              private alertService: AlertService
+              ) { }
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<StatisticsMembersLocal>>  {
     let type = route.paramMap.get('type')|| ''
@@ -23,8 +29,12 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
     if(type == "fodder") {
       return this.statistics.StatisicsMembersFodder(id,type,'','','').pipe(
      
-        catchError(() => {
-          this.router.navigate([""]);
+        catchError((e) => {
+          this.toster.showFail(e.error.error)
+          this.alertService.error(e.error.error)
+          console.log(e);
+          
+          // this.router.navigate([""]);
           return EMPTY
         })
       )
@@ -33,8 +43,10 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
 
       return this.statistics.StatisicsMembersLocal(id,type,'','','').pipe(
      
-        catchError(() => {
-          this.router.navigate([""]);
+        catchError((e) => {
+          // this.router.navigate([""]);
+          this.alertService.error(e.error.error)
+
           return EMPTY
         })
       )

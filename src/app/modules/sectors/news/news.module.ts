@@ -5,6 +5,7 @@ import { NewsRoutingModule } from './news-routing.module';
 import { NewsHomeComponent } from './news-home/news-home.component';
 import { NewsContentComponent } from './news-content/news-content.component';
 import { SharedModule } from '@app/@shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -19,6 +20,7 @@ import { SharedModule } from '@app/@shared/shared.module';
     
     NewsRoutingModule,
     SharedModule,
+    NgxPaginationModule
     
   ]
 })

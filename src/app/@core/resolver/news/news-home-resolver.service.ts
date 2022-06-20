@@ -19,7 +19,7 @@ export class NewsHomeResolver implements Resolve<ApiResponse<AllNews>>{
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):Observable<ApiResponse<AllNews>>  {
     console.log("News Resolver is work ",route.paramMap.get('type'))
-   return this.News.all_news(route.paramMap.get('type')||'').pipe(
+   return this.News.all_news(route.paramMap.get('type')||'',1,'',1).pipe(
      catchError(() => {
        this.router.navigate([""]);
        return EMPTY

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShipsTrafficResolver } from './@core/resolver/ships-traffic/ships-traffic-resolver.service';
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
+import { AuthGuardService } from './@core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
 
     loadChildren: () => 
       import('./modules/@auth/setting/setting.module').then((m) => m.SettingModule),
+      canActivate: [AuthGuardService]
       
   },
   {

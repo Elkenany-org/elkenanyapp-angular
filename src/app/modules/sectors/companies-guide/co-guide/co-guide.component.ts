@@ -181,6 +181,8 @@ export class CoGuideComponent implements OnInit {
       this.page.last_page = res.data?.last_page as number
       //  this.page.last_page =  res.data?.last_page  as number
       this.Companies = res.data  as Companies
+      window.scroll(0,0);
+
       
      })
   }

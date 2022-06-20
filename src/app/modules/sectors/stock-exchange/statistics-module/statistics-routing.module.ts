@@ -22,9 +22,11 @@ const routes: Routes = [
     {
     path: 'statistics-members/:type/:id',
     component: StatisticsMembersComponent,
+    canActivate:[AuthGuardService],
     resolve: {
       resolve: StatisticsMembersResolver
-    }
+    },
+
   },
 
   {

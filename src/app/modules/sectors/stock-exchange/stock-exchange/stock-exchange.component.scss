@@ -20,7 +20,9 @@
         // -webkit-box-orient: vertical;
 
     }
- 
+    .table__header__filter {
+        display: block;
+    }
     .table__header__filter .head{
         
         width: 90%;

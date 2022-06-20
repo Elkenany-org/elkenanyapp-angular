@@ -14,9 +14,9 @@ export class NewsService {
   constructor(private http: HttpClient) {
   }  
 
-  all_news(type:string, sort?:number, search?:string): Observable<ApiResponse<AllNews>> { //Home
+  all_news(type:string, sort?:number, search?:string,page?:number): Observable<ApiResponse<AllNews>> { //Home
     console.log(type)
-    return this.http.get<ApiResponse<AllNews>>(`${env.ApiUrl}/news/news?type=${type}&sort=${sort}&search=`);
+    return this.http.get<ApiResponse<AllNews>>(`${env.ApiUrl}/news/news?type=${type}&sort=${sort}&search=${search}&page=${page}`);
     // return this.http.get<ApiResponse<AllNews>>(`${env.ApiUrl}/news/news?type=poultry&sort=2&search=`);
   }
 
