@@ -16,10 +16,16 @@
             <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
                 <app-card (navigation)="navigate($event)" [data]="News" [loading] ="loading"></app-card>
                 <ul>
-                    <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> ... </li>
+                    <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
                 </ul>
                              
-                <pagination-controls (click)="next_page(page.current_page)" (pageChange)="page.current_page = $event"></pagination-controls>
+                <pagination-controls                       
+                [maxSize]="5"
+                previousLabel="السابق"
+                nextLabel="التالي"
+                (click)="next_page(page.current_page)"
+                 (pageChange)="page.current_page = $event
+                 "></pagination-controls>
 
                 <!-- <app-navigation></app-navigation> -->
 
