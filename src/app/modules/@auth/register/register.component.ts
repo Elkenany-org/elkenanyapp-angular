@@ -63,8 +63,6 @@ export class RegisterComponent implements OnInit, SaveData {
 
     this.authService.Register(payload).subscribe(
       (res: ApiResponse<LoginDataResponse>) => {
-        console.log(res);
-        
         this.spinner.hide();
         this.alertService.success(res.message!);
         this.router.navigateByUrl(this.returnUrl||'');
