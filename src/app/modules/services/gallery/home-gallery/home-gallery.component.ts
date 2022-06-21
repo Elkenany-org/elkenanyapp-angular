@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { Gallries, Gallries_Search_Form } from '@app/@core/interfaces/gallery/gallery';
@@ -11,7 +11,8 @@ import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 @Component({
   selector: 'app-home-gallery',
   templateUrl: './home-gallery.component.html',
-  styleUrls: ['./home-gallery.component.scss']
+  styleUrls: ['./home-gallery.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class HomeGalleryComponent implements OnInit {
   loading!:boolean

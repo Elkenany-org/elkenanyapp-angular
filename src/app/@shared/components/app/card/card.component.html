@@ -2,7 +2,7 @@
 <div *ngIf="!loading">
     <div class="new__cards row" *ngFor="let contact of data ">
             <a class="col-12"  style=" cursor: pointer;" (click)="output(contact.id,contact.type )">
-                <div class="product__card" [ngClass]="{'big__card':contact.desc}" style="height: auto; max-height: 270px">
+                <div class="product__card" [ngClass]="{'big__card':contact.desc,'super__ultra__card':true}" style="height: auto; max-height: 270px">
                     <div class="image__card">
                         <img alt='product-image'
                             src='{{contact.image}}'/>
@@ -94,12 +94,11 @@
  
  
  
- <div class="fb-item" *ngIf="loading">
+ <!-- <div class="fb-item" *ngIf="loading">
 
     <div class="col-12"  >
         <div class="product__card" >
             <div class="image__card">
-                <!-- <img alt='product-image' src='{{contact.image}}'/> -->
             	<div class="item">
                     <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
                         width: '140px',
@@ -132,14 +131,7 @@
                 #slickModal="slick-carousel" 
                 [config]="slideConfig" 
                >
-              <!-- <div ngxSlickItem *ngFor="let slide of contact.logo_in" class="slide">
-                <div class="item">
-                  <a class="logo-holder" target="_blank">
-                      <img alt="partner logo"
-                          src="{{slide.image}}">
-                  </a>
-                </div>
-              </div> -->
+  
                 </ngx-slick-carousel>
             </div>
           
@@ -149,7 +141,6 @@
         <div class="col-12" >
             <div class="product__card">
                 <div class="image__card">
-                    <!-- <img alt='product-image' src='{{contact.image}}'/> -->
                     <div class="item">
                         <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
                             width: '140px',
@@ -182,14 +173,7 @@
                     #slickModal="slick-carousel" 
                     [config]="slideConfig" 
                    >
-                  <!-- <div ngxSlickItem *ngFor="let slide of contact.logo_in" class="slide">
-                    <div class="item">
-                      <a class="logo-holder" target="_blank">
-                          <img alt="partner logo"
-                              src="{{slide.image}}">
-                      </a>
-                    </div>
-                  </div> -->
+   
                     </ngx-slick-carousel>
                 </div>
               
@@ -200,7 +184,6 @@
             <div class="col-12" >
                 <div class="product__card">
                     <div class="image__card">
-                        <!-- <img alt='product-image' src='{{contact.image}}'/> -->
                         <div class="item">
                             <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
                                 width: '140px',
@@ -233,18 +216,11 @@
                         #slickModal="slick-carousel" 
                         [config]="slideConfig" 
                        >
-                      <!-- <div ngxSlickItem *ngFor="let slide of contact.logo_in" class="slide">
-                        <div class="item">
-                          <a class="logo-holder" target="_blank">
-                              <img alt="partner logo"
-                                  src="{{slide.image}}">
-                          </a>
-                        </div>
-                      </div> -->
+         
                         </ngx-slick-carousel>
                     </div>
                   
                 </div>
-</div>
+</div> -->
 
 

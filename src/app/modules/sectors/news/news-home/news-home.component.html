@@ -20,7 +20,7 @@
                         <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
                     </ul>
                     <pagination-controls                       
-                    [maxSize]="7"
+                    [maxSize]="6"
                     previousLabel=""
                     nextLabel=""
                     (click)="next_page(page.current_page)"
