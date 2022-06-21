@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router,  } from '@angular/router';
 
 import { Banner_test, logo_test } from '@app/modules/home/data';
@@ -13,7 +13,9 @@ import { Companies, co_Search_Form_Data, FilterListCompanies } from '@app/@core/
 @Component({
   selector: 'app-co-guide',
   templateUrl: './co-guide.component.html',
-  styleUrls: ['./co-guide.component.scss']
+  styleUrls: ['./co-guide.component.scss'],
+  encapsulation:ViewEncapsulation.None
+
 })
 export class CoGuideComponent implements OnInit {
 
