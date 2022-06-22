@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit, SaveData {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     private spinner: NgxSpinnerService,
     private alertService: AlertService
   ) { }

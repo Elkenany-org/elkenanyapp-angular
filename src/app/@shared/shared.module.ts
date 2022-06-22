@@ -13,6 +13,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { environment as env} from '../../environments/environment'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     NgxSkeletonLoaderModule,
     NgxChartsModule,
     GalleryModule3.forRoot(), // <-------------------------------------------- @ks89/angular-modal-gallery module import
-    IvyCarouselModule
+    IvyCarouselModule,
+    AngularFireModule.initializeApp(env.firebase),
+    AngularFireAuthModule,
 
 
   ],

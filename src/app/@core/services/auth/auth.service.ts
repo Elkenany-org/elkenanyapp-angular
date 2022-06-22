@@ -7,6 +7,9 @@ import { LocalstorageService } from './localstorage.service';
 import { Router } from '@angular/router';
 import { ToasterService } from '@app/@core/services/toastr.service';
 import { ApiResponse } from '@app/@core/@data/API/api';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+import { FacebookAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 
 @Injectable({
@@ -21,11 +24,32 @@ export class AuthService {
     private localStorageService: LocalstorageService,
     private Toaster:ToasterService,
     private router: Router,
+    public afAuth: AngularFireAuth
+
   ) {
     // this.profileUser();
 
   }
+  FacebookAuth() {
+    return this.AuthLogin(new FacebookAuthProvider());
+  } 
 
+  GoogleAuth() {
+    return this.AuthLogin(new GoogleAuthProvider());
+  }
+  // Auth logic to run auth providers
+  AuthLogin(provider:any) {
+    return this.afAuth
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log(result);
+        
+        console.log('You have been successfully logged in!');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   profile():Observable<ApiResponse<Profile>> {
     return this.http.get<ApiResponse<Profile>>(`${env.ApiUrl}/profile`)
   }
