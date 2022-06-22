@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit, SaveData {
     // private location: Location,
     private route: ActivatedRoute,
 
-    private authService: AuthService,
+    public authService: AuthService,
     private alertService: AlertService,
     private spinner: NgxSpinnerService
   ) { }
