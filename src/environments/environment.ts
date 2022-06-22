@@ -8,12 +8,13 @@ export const environment: EnvConfig = {
   production: false,
   ApiUrl: 'https://elkenany.com/api',
   firebase: { //used account : ahmedbenmady@gmail.com 
-    apiKey: "AIzaSyDikm6-UFLYPIN5lPL0NC3Jo5oLOMO-Ijo",
-    authDomain: "elkenany-4961e.firebaseapp.com",
-    projectId: "elkenany-4961e",
-    storageBucket: "elkenany-4961e.appspot.com",
-    messagingSenderId: "22736259198",
-    appId: "1:22736259198:web:3c9a89c84baa68febfb02f",
+    apiKey: "AIzaSyCiDUgxLWo_ghSubmhpA02CxF6dCoW3Lpk",
+    authDomain: "oshop-7e416.firebaseapp.com",
+    databaseURL: "https://oshop-7e416.firebaseio.com",
+    projectId: "oshop-7e416",
+    storageBucket: "oshop-7e416.appspot.com",
+    messagingSenderId: "955401749290",
+    appId: "1:955401749290:web:a8c7f8c33160aaba5b5453"
   }
   // ApiUrl: 'https://test.elkenany.com/api',
 };

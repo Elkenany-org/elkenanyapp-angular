@@ -6,6 +6,7 @@ export interface EnvConfig {
   ENV?: string;
   VERSION?: string;
   firebase: {
+    databaseURL:string,
     apiKey: string,
     authDomain: string,
     projectId: string,
