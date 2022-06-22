@@ -4,12 +4,13 @@ import { LoginDataObject, LoginDataResponse, Profile, RegisterDataObject, UserPr
 import {environment as env} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LocalstorageService } from './localstorage.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@app/@core/services/toastr.service';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { FacebookAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { googleRegister } from './../../@data/userData';
 
 
 @Injectable({
@@ -24,6 +25,8 @@ export class AuthService {
     private localStorageService: LocalstorageService,
     private Toaster:ToasterService,
     private router: Router,
+    private route: ActivatedRoute,
+
     public afAuth: AngularFireAuth
 
   ) {
@@ -39,11 +42,34 @@ export class AuthService {
   }
   // Auth logic to run auth providers
   AuthLogin(provider:any) {
+    let returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     return this.afAuth
       .signInWithPopup(provider)
-      .then((result) => {
-        console.log(result);
-        
+      .then((result:any) => {
+
+        let r = result?.additionalUserInfo?.profile
+        console.log(r);
+
+        let data = {
+          email:r?.email,
+          name:`${r.given_name} ${r.family_name}`,
+          google_id:r?.id,
+          device_token:'52151',
+          password:r.id
+
+        }
+        this.RegisterLogin_google(data).subscribe((res:any) => {
+          console.log(res);
+          this.localStorageService.setState('token', res.data.api_token);
+          let user = {
+            name: res.data.name,
+            email:  res.data.email,
+            phone: ''
+          }
+          localStorage.setItem('user',JSON.stringify(user))
+          this.router.navigateByUrl(returnUrl||'');
+
+        })
         console.log('You have been successfully logged in!');
       })
       .catch((error) => {
@@ -54,9 +80,28 @@ export class AuthService {
     return this.http.get<ApiResponse<Profile>>(`${env.ApiUrl}/profile`)
   }
 
+  
+
   updateProfile(body:Profile):Observable<ApiResponse<Profile>>{
     return this.http.post<ApiResponse<Profile>>(`${env.ApiUrl}/profile-update`,body)
   }
+
+
+
+  RegisterLogin_google(data: any): Observable<ApiResponse<googleRegister>> {
+    return this.http.post<ApiResponse<googleRegister>>(`${this.Url}/reg-log-social`, data)
+    .pipe(
+      tap((data) => {
+        
+        // this.localStorageService.setState('token', data?.data?.api_token)
+        // this.profileUser();
+
+      })
+    )
+  }
+
+
+
   Login(data: LoginDataObject): Observable<ApiResponse<LoginDataResponse>> {
     return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/login`, data).pipe(
       // tslint:disable-next-line:no-shadowed-variable
@@ -86,9 +131,6 @@ export class AuthService {
 
       })
     )
-
-
-
   }
 
 

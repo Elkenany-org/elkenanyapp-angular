@@ -41,3 +41,10 @@ export interface Profile {
   state: string
 }
 
+//----------------------------- google gegister ------------------------------//
+
+export interface googleRegister {
+  name: string
+  email: string
+  api_token: string
+}
