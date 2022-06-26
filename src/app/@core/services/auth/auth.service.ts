@@ -9,8 +9,9 @@ import { ToasterService } from '@app/@core/services/toastr.service';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-import { FacebookAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { googleRegister } from './../../@data/userData';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 
 
 @Injectable({
@@ -19,23 +20,21 @@ import { googleRegister } from './../../@data/userData';
 export class AuthService {
   userDataBehaviorSubject = new BehaviorSubject<UserProfile | null>(null)
   Url = `${env.ApiUrl}`;
-
+  currentURL= this.route.snapshot.queryParams['returnUrl'] || '/'
   constructor(
     private http: HttpClient,
     private localStorageService: LocalstorageService,
     private Toaster:ToasterService,
     private router: Router,
     private route: ActivatedRoute,
-
+    private socialAuthService: SocialAuthService,
     public afAuth: AngularFireAuth
 
   ) {
     // this.profileUser();
 
   }
-  FacebookAuth() {
-    return this.AuthLogin(new FacebookAuthProvider());
-  } 
+
 
   GoogleAuth() {
     return this.AuthLogin(new GoogleAuthProvider());
@@ -73,7 +72,7 @@ export class AuthService {
         console.log('You have been successfully logged in!');
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.error);
       });
   }
   profile():Observable<ApiResponse<Profile>> {
@@ -162,6 +161,69 @@ export class AuthService {
     this.localStorageService.ClearStorage();
   }
 
+
+  //--------------------------- login with facebook--------------------------//
+  loginWithFacebook(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then((res:any)=> {
+      let data = {
+        email:res?.email,
+        name:`${res.firstName} ${res.lastName}`,
+        google_id:res?.id,
+        device_token:'52151',
+        password:res.id
+      }
+      this.RegisterLogin_google(data).subscribe((res:any) => {
+        this.storeLocalStorge(res)
+        this.router.navigateByUrl(this.currentURL||'');
+        console.log('You have been successfully logged in!');
+      })
+    }).catch((err)=> {
+      console.log(err);
+      
+    });
+  }
+
+
+ 
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res:any)=> {
+      console.log(res);
+      console.log("hello then");
+
+      let data = {
+        email:res?.email,
+        name:`${res.firstName} ${res.lastName}`,
+        google_id:res?.id,
+        device_token:'52151',
+        password:res.id
+      }
+      this.RegisterLogin_google(data).subscribe((res:any) => {
+        this.storeLocalStorge(res)
+        this.router.navigateByUrl(this.currentURL||'');
+        console.log('You have been successfully logged in!');
+      })
+    }).catch((err)=> {
+      console.log("hello err");
+      
+      console.log(err);
+      
+    });
+  }
+
+
+  signOut(): void {
+    this.socialAuthService.signOut();
+  }
+
+  storeLocalStorge(res:any){
+    this.localStorageService.setState('token', res.data.api_token);
+    let user = {
+      name: res.data.name,
+      email:  res.data.email,
+      phone: ''
+    }
+    localStorage.setItem('user',JSON.stringify(user))
+  }
 
 }
 

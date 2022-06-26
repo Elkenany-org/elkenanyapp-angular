@@ -1,4 +1,5 @@
 <button
+style="width:100%"
   [class.disabled__btn]="form.untouched || form.invalid || loading"
   [class.spinner]="loading"
   [ngStyle]="{'cursor':form.untouched|| form.invalid  ? 'not-allowed':'pointer'  }"

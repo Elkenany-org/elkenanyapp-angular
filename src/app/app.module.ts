@@ -7,9 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './@core/interceptors/token.interceptor';
-import { SettingComponent } from './modules/@auth/setting/setting.component';
 
 
+import {
+  FacebookLoginProvider,
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  SocialAuthService,
+  GoogleLoginProvider,
+} from 'angularx-social-login';
+import { TestComponent } from './test/test.component';
   ``
 
 
@@ -17,7 +24,8 @@ import { SettingComponent } from './modules/@auth/setting/setting.component';
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -25,12 +33,33 @@ import { SettingComponent } from './modules/@auth/setting/setting.component';
     BrowserAnimationsModule,
     // NgxSkeletonLoaderModule,
     CoreModule,
+    SocialLoginModule
 
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('385135266931682'),
+          },
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('183599233401-1va3epdfv0gfeesi5q2re14ro4fea4ah.apps.googleusercontent.com'),
+          },
+        ],onError:(err) => {
+          console.log(err)
+        }
+      } as SocialAuthServiceConfig,
+    },
+
+    SocialAuthService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]

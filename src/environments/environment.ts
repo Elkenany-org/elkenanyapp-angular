@@ -6,7 +6,8 @@ import { EnvConfig } from "./env-config.interface";
 
 export const environment: EnvConfig = {
   production: false,
-  ApiUrl: 'https://elkenany.com/api',
+  ApiUrl: 'https://test.elkenany.com/api',
+  // ApiUrl: 'https://elkenany.com/api',
   firebase: { //used account : ahmedbenmady@gmail.com 
     apiKey: "AIzaSyCiDUgxLWo_ghSubmhpA02CxF6dCoW3Lpk",
     authDomain: "oshop-7e416.firebaseapp.com",
@@ -16,7 +17,6 @@ export const environment: EnvConfig = {
     messagingSenderId: "955401749290",
     appId: "1:955401749290:web:a8c7f8c33160aaba5b5453"
   }
-  // ApiUrl: 'https://test.elkenany.com/api',
 };
 
 /*

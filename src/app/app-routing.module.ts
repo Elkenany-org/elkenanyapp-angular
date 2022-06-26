@@ -4,6 +4,7 @@ import { ShipsTrafficResolver } from './@core/resolver/ships-traffic/ships-traff
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
 import { AuthGuardService } from './@core/guards/auth.guard';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-
+{
+  path: "test",
+  component:TestComponent
+},
   {
     path: 'home',
     loadChildren: () => 
