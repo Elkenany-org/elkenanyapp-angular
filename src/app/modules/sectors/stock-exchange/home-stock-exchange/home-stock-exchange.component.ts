@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiResponse } from '@app/@core/@data/API/api';
-import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { map } from 'rxjs';
 import { StockExchangeService } from '../../../../@core/services/modules/stock-exchange/stock-exchange.service';
 import { Location } from '@angular/common';
@@ -10,6 +9,7 @@ import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { StockExchange } from '@app/@core/interfaces/stock-exchanges/Stock-exchange';
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Home_Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stock-exchange';
+import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 
 @Component({
   selector: 'app-stock-exchange',

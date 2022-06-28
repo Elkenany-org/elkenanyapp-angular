@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { map } from 'rxjs';
 // import { News, Search_Form_Data } from '../_core/data/News';
 import { NewsService } from '../../../../@core/services/modules/news/news.service';
@@ -11,6 +10,7 @@ import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import {  News_Search_Form_Data } from '@app/@core/@data/app/news/news';
 import { News } from '@app/@core/interfaces/news/news';
+import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 
 @Component({
   selector: 'app-news-home',

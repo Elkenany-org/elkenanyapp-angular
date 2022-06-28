@@ -1,5 +1,5 @@
 import { Banner, Logo, Sector } from "@app/@core/interfaces/_app/app-response";
-import { JsonFormData } from "@app/@shared/components/form/cva/cva.component";
+import { JsonFormData } from "../_app/horizontal-search";
 
 // ----------------------------------------- < Search & fillter  > -----------------------------------------------//
   

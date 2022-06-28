@@ -1,4 +1,4 @@
-import { JsonFormData } from "@app/@shared/components/form/cva/cva.component";
+import { JsonFormData } from "@app/@core/interfaces/_app/horizontal-search"
 
   
 export let Stock_Search_Form_Data: JsonFormData =

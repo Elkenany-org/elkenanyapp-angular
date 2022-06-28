@@ -1,7 +1,7 @@
+import { JsonFormData } from "@app/@core/interfaces/_app/horizontal-search";
 
 
 
-import { JsonFormData } from "@app/@shared/components/form/cva/cva.component";
 
 export const comparsion_Search_Form_Data: JsonFormData =
 {   

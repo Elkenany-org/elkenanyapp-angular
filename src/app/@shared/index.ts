@@ -9,7 +9,6 @@ import { VerticalSearchComponent } from "./components/app/vertical-search/vertic
 import { DropdownDirective } from "@app/dropdown.directive";
 import { LayoutComponent } from "./components/layout/layout.component";
 import { AlertComponent } from "./components/alert/alert.component";
-import { CvaComponent } from './components/form/cva/cva.component';
 import { LoaderComponent } from "./components/loader/loader.component";
 import { BannerLogosComponent } from "./components/app/banner-logos/banner-logos.component";
 import { NavigationComponent } from "./components/app/navigation/navigation.component";
@@ -35,7 +34,6 @@ export  const components: any[] = [
     VerticalSearchComponent,
     HorizontalSearchComponent,
     AlertComponent,
-    CvaComponent,
     LoaderComponent,
     NavigationComponent,
     BannerLogosComponent,

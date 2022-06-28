@@ -3,13 +3,13 @@ import { ActivatedRoute, Router,  } from '@angular/router';
 
 import { Banner_test, logo_test } from '@app/modules/home/data';
 import { ApiResponse } from '@app/@core/@data/API/api';
-import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 import { map } from 'rxjs';
 
 
 import { Location } from '@angular/common';
 import { CompaniesGuideService } from '../../../../@core/services/modules/companies-guide/companies-guide.service';
 import { Companies, co_Search_Form_Data, FilterListCompanies } from '@app/@core/interfaces/companies-guid/co-companies';
+import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 @Component({
   selector: 'app-co-guide',
   templateUrl: './co-guide.component.html',

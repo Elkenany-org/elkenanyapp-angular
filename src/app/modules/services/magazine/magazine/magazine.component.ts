@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
-import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
 
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { MagazineService } from '../../../../@core/services/modules/magazine/magazine.service';
 import {  MagazinesData, Magazine_Search_Form } from '@app/@core/interfaces/magazine/magazine';
+import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 
 @Component({
   selector: 'app-magazine',

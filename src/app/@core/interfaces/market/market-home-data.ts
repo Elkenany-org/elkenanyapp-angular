@@ -1,6 +1,8 @@
-import { JsonFormData } from "@app/@shared/components/form/cva/cva.component";
 
 // ----------------------------------------- < Search & fillter  > -----------------------------------------------//
+
+import { JsonFormData } from "../_app/horizontal-search"
+
   
 export const market_Search_Form_Data: JsonFormData =
 {   

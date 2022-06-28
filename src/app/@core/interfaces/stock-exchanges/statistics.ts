@@ -1,5 +1,5 @@
+import { JsonFormData } from "../_app/horizontal-search"
 
-import { JsonFormData } from '@app/@shared/components/form/cva/cva.component';
   
   export interface StatisticsSubSec {
     Section: string
