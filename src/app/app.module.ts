@@ -25,15 +25,14 @@ import { TestComponent } from './test/test.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent // for test only 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     // NgxSkeletonLoaderModule,
     CoreModule,
-    SocialLoginModule
+    
 
 
   ],
