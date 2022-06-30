@@ -28,6 +28,7 @@
     "@ngneat/hot-toast": "^4.1.0",
     "@swimlane/ngx-charts": "^20.1.0",
     "@types/gapi.auth2": "^0.0.56",
+    "@types/gapi.client.gmail": "^1.0.3",
     "angular-responsive-carousel": "^2.1.2",
     "angularx-social-login": "^4.1.0",
     "bootstrap": "^5.1.3",

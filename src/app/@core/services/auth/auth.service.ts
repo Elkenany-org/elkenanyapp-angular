@@ -21,8 +21,8 @@ export class AuthService {
   userDataBehaviorSubject = new BehaviorSubject<UserProfile | null>(null)
   Url = `${env.ApiUrl}`;
   currentURL= this.route.snapshot.queryParams['returnUrl'] || '/'
-  private auth2?:gapi.auth2.GoogleAuth
-  private subject = new ReplaySubject<gapi.auth2.GoogleUser| null>(1)
+  // private auth2?:gapi.auth2.GoogleAuth
+  // private subject = new ReplaySubject<gapi.auth2.GoogleUser|null>(1)
   constructor(
     private http: HttpClient,
     private localStorageService: LocalstorageService,
@@ -34,35 +34,38 @@ export class AuthService {
 
   ) {
     // this.profileUser();
-    gapi.load('auth2', () => {
-      this.auth2 = gapi.auth2.init({
-        client_id:'183599233401-1va3epdfv0gfeesi5q2re14ro4fea4ah.apps.googleusercontent.com'
-      })
-    })
+    // gapi.load('auth2', () => {
+    //   this.auth2 = gapi.auth2.init({
+    //     client_id:'804758451233-ar5o87feftpucm7mqpn1msf0go9haa3k.apps.googleusercontent.com'
+    //   })
+    // })
   }
 
 
-  public signIn() {
-    this.auth2?.signIn({
-      scope: 'https://www.googleapis.com/auth/gmail.readonly'
-    }).then( user => {
-      this.subject.next(user)
-    }).catch(() => {
-      this.subject.next(null)
+  // public signIn() {
+  //   this.auth2?.signIn({
+  //     scope: 'https://www.googleapis.com/auth/gmail.readonly'
+  //   }).then( user => {
+  //     console.log(user);
+      
+  //     this.subject.next(user)
+  //   }).catch(() => {
+  //     console.log('h');
+  //     this.subject.next(null)
 
-    })
-  }
+  //   })
+  // }
 
-  public signOut2 () {
-    this.auth2?.signOut()
-    .then( ()=> {
-      this.subject.next(null)
-    })
-  }
+  // public signOut2 () {
+  //   this.auth2?.signOut()
+  //   .then( ()=> {
+  //     this.subject.next(null)
+  //   })
+  // }
 
-  public observable() {
-    return this.subject.asObservable()
-  }
+  // public observable() {
+  //   return this.subject.asObservable()
+  // }
 
 
   GoogleAuth() {
