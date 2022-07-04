@@ -48,7 +48,9 @@
                     <h2 class="title">{{typeAr}}</h2>
                     <span class="sections-number">{{     (Companies?.data?.length || 1) *page.last_page}} شركة</span>
                 </section>
-                <app-card   (navigation)="navigate($event)" [data]="Companies?.data" [loading] ="loading"></app-card>
+                <app-card  (navigation)="navigate($event)" [data]="Companies?.compsort" [flag]=true [loading] ="loading"></app-card>
+        
+                <app-card   (navigation)="navigate($event)" [data]="Companies?.data" [flag]=false [loading] ="loading"></app-card>
         
                 <div class="row pagination__container">
                     <div class="col-12">

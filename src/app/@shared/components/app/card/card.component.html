@@ -2,7 +2,15 @@
 <div *ngIf="!loading">
     <div class="new__cards row" *ngFor="let contact of data ">
             <a class="col-12"  style=" cursor: pointer;" (click)="output(contact.id,contact.type )">
-                <div class="product__card" [ngClass]="{'big__card':contact.desc,'super__ultra__card':true}" style="height: auto; max-height: 270px">
+
+
+                 <div  [ngClass]="{'featured__card__container':flag}">
+                        <div class="product__card"  [ngClass]="{'big__card':contact.desc,'super__ultra__card':true,'paid__green__card':flag}" style="height: auto; max-height: 270px;">
+                        <div  [ngClass]="{'featured__container':flag,'green__card':flag}">
+                            <p *ngIf="flag" [ngClass]="{'featured__label':flag}">الراعى</p>
+                        </div> 
+
+
                     <div class="image__card">
                         <img alt='product-image'
                             src='{{contact.image}}'/>
@@ -11,7 +19,7 @@
                 
                     <div class="product__content with__ads">
                         <header class="product__title" style="height: 30px; overflow: hidden;">
-                            <a  >
+                            <a>
                                 <p >
                                     {{contact.name || contact.title}}
                                 </p>
@@ -61,7 +69,8 @@
                             <ng-template class="more__details"#intersted>  <a class="more__details"  (click)="output(contact.id,contact.type )">مهتم</a></ng-template>
                         </section>
 
-                
+    </div>
+   
                     </div>
                     <div class="logo__main__card one-full-slider">
                         <ngx-slick-carousel class="carousel" 
@@ -83,8 +92,7 @@
 
   
      
-    
-    
+
     </div> 
     
     

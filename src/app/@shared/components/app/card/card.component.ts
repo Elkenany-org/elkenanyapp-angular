@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class CardComponent implements OnChanges {
 
-
+  @Input()flag:boolean=true
   @Input() data:any 
   @Input() loading:boolean = true 
 
