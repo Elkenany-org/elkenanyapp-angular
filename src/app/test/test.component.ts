@@ -11,6 +11,8 @@ import { GoogleSigninService } from './google-signin.service';
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
+  isCollapsed = true;
+
   user?: gapi.auth2.GoogleUser
   messages?: gapi.client.gmail.Message[]
   message?: string
@@ -21,6 +23,7 @@ export class TestComponent implements OnInit {
     private signInService: GoogleSigninService
   ) {}
   ngOnInit() {
+    
     this.signInService.observable().subscribe((user) => {
       this.user = user!!
       console.log(user);

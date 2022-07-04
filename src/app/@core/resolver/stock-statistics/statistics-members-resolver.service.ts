@@ -6,8 +6,8 @@ import { ShipsTrafficService } from '../../services/modules/ships-trafic/ships-t
 import { Ships } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 import { StatisticsMembersLocal, StatisticsSubsSections } from '@app/@core/interfaces/stock-exchanges/statistics';
 import { StatisticsService } from '@app/modules/sectors/stock-exchange/statistics-module/_core/statistics.service';
-import { ToasterService } from './../../services/toastr.service';
-import { AlertService } from './../../services/alert.service';
+import { ToasterService } from '../../services/toastr.service';
+import { AlertService } from '../../services/alert.service';
 
 
 @Injectable({
@@ -25,7 +25,7 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<StatisticsMembersLocal>>  {
     let type = route.paramMap.get('type')|| ''
     let id = route.paramMap.get('id') || ''
-    console.log("resolver is work ",type)
+    console.log("resolver is work ",id,type)
     if(type == "fodder") {
       return this.statistics.StatisicsMembersFodder(id,type,'','','').pipe(
      
