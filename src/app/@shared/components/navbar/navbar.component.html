@@ -8,23 +8,147 @@
     </a>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"  (click)="toggleNavbar()"
             class="navbar-toggler"
-            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            data-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{ 'show': navbarOpen }">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a aria-expanded="false"  class="nav-link dropdown-toggle"
+                
+                <div class="container d-lg-none d-block d-md-block">
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header " id="headingOne">
+                                    <a class="nav-link fs-5" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                      القطاعات <i class="fa-solid fa-sort-down"></i>
+                                    </a>
+                            </div>
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body" id="child1">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneA">القطاع الداجني <i class="fa-solid fa-caret-down"></i></a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child1" id="collapseOneA">
+                                            <a class="nav-link" [routerLink]="['/stock-exchange/poultry']">البورصة اليومية</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child1" id="collapseOneA">
+                                            <a class="nav-link" [routerLink]="['/companies-guide/poultry']">دليل الشركات</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child1" id="collapseOneA">
+                                            <a class="nav-link" [routerLink]="['/news/poultry']">الاخبار</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child1" id="collapseOneA">
+                                            <a class="nav-link" [routerLink]="['/market/poultry']">سوق الكنانى</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body" id="child2">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneB">القطاع الحيواني <i class="fa-solid fa-caret-down"></i></a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child2" id="collapseOneB">
+                                            <a class="nav-link" [routerLink]="['/stock-exchange/animal']">البورصة اليومية</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child2" id="collapseOneB">
+                                            <a class="nav-link" [routerLink]="['/companies-guide/animal']">دليل الشركات</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child2" id="collapseOneB">
+                                            <a class="nav-link" [routerLink]="['/news/animal']">الاخبار</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child2" id="collapseOneB">
+                                            <a class="nav-link" [routerLink]="['/market/animal']">سوق الكنانى</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body" id="child3">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneC">القطاع الزراعي <i class="fa-solid fa-caret-down"></i></a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child3" id="collapseOneC">
+                                            <a class="nav-link" [routerLink]="['/stock-exchange/farm']">البورصة اليومية</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child3" id="collapseOneC">
+                                            <a class="nav-link" [routerLink]="['/companies-guide/farm']">دليل الشركات</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child3" id="collapseOneC">
+                                            <a class="nav-link" [routerLink]="['/news/farm']">الاخبار</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child3" id="collapseOneC">
+                                            <a class="nav-link" [routerLink]="['/market/farm']">سوق الكنانى</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingFourth" data-parent="#accordion">
+                                <div class="card-body" id="child4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneD">القطاع السمكي <i class="fa-solid fa-caret-down"></i></a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child4" id="collapseOneD">
+                                            <a class="nav-link" [routerLink]="['/stock-exchange/fish']">البورصة اليومية</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child4" id="collapseOneD">
+                                            <a class="nav-link" [routerLink]="['/companies-guide/fish']">دليل الشركات</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child4" id="collapseOneD">
+                                            <a class="nav-link" [routerLink]="['/news/fish']">الاخبار</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child4" id="collapseOneD">
+                                            <a class="nav-link" [routerLink]="['/market/fish']">سوق الكنانى</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingFive" data-parent="#accordion">
+                                <div class="card-body" id="child5">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneE">الخيول العربية <i class="fa-solid fa-caret-down"></i></a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child5" id="collapseOneE">
+                                            <a class="nav-link" [routerLink]="['/stock-exchange/horses']">البورصة اليومية</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child5" id="collapseOneE">
+                                            <a class="nav-link" [routerLink]="['/companies-guide/horses']">دليل الشركات</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child5" id="collapseOneE">
+                                            <a class="nav-link" [routerLink]="['/news/horses']">الاخبار</a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child5" id="collapseOneE">
+                                            <a class="nav-link" [routerLink]="['/market/horses']">سوق الكنانى</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+                <a aria-expanded="false"  class="nav-link dropdown-toggle d-none d-md-block fs-5"
                     role="button"
                     id="dropdownMenuButton"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
                     appDropdown
-                    #s="appDropDown">
+                    #s="appDropDown" >
                     القطاعات
                 </a>
+
                 <ul aria-labelledby="mainCategoriesDropdown" class="dropdown-menu"  [ngClass]="{'show':s.isOpen}"  aria-labelledby="dropdownMenuButton">
                     <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع الداجنى </a>
@@ -75,17 +199,17 @@
                
             </li>
 
-            <li class="nav-item dropdown" >
+            <li class="nav-item dropdown " >
                 <a aria-expanded="false"
                    aria-haspopup="true"
                    aria-haspopup="true"
                    aria-expanded="false"
-                   class="nav-link dropdown-toggle" 
+                   class="nav-link dropdown-toggle fs-5" 
                    data-toggle="dropdown"
                    role="button"
                    id="dropdownMenuButton"
                    appDropdown
-                   #r="appDropDown">
+                   #r="appDropDown" >
                     الخدمات
                 </a>
                 <div [ngClass]="{'show':r.isOpen}" class="dropdown-menu" aria-labelledby="dropdownMenuButton">

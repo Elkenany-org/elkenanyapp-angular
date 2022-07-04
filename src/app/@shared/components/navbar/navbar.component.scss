@@ -2,3 +2,11 @@
 @import '../../../../assets/styles/abstract/mixins';
 @import '../../../../assets/styles/components/layouts/main_navbar';
 
+.card-body {
+    flex: 1 1 auto;
+    padding: 0 !important; 
+}
+
+.card-header {
+     padding: 0 !important; 
+}
