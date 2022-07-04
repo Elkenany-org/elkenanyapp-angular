@@ -10,6 +10,8 @@ import { Profile } from '@app/@core/@data/userData';
 })
 
 export class NavbarComponent implements OnInit {
+  isCollapsed: boolean = false;
+
   private wasInside = false;
   navbarOpen = false;
   islogedIn?:number

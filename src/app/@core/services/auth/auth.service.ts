@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, tap } from 'rxjs';
 import { LoginDataObject, LoginDataResponse, Profile, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
 import {environment as env} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -21,6 +21,8 @@ export class AuthService {
   userDataBehaviorSubject = new BehaviorSubject<UserProfile | null>(null)
   Url = `${env.ApiUrl}`;
   currentURL= this.route.snapshot.queryParams['returnUrl'] || '/'
+  // private auth2?:gapi.auth2.GoogleAuth
+  // private subject = new ReplaySubject<gapi.auth2.GoogleUser|null>(1)
   constructor(
     private http: HttpClient,
     private localStorageService: LocalstorageService,
@@ -32,8 +34,38 @@ export class AuthService {
 
   ) {
     // this.profileUser();
-
+    // gapi.load('auth2', () => {
+    //   this.auth2 = gapi.auth2.init({
+    //     client_id:'804758451233-ar5o87feftpucm7mqpn1msf0go9haa3k.apps.googleusercontent.com'
+    //   })
+    // })
   }
+
+
+  // public signIn() {
+  //   this.auth2?.signIn({
+  //     scope: 'https://www.googleapis.com/auth/gmail.readonly'
+  //   }).then( user => {
+  //     console.log(user);
+      
+  //     this.subject.next(user)
+  //   }).catch(() => {
+  //     console.log('h');
+  //     this.subject.next(null)
+
+  //   })
+  // }
+
+  // public signOut2 () {
+  //   this.auth2?.signOut()
+  //   .then( ()=> {
+  //     this.subject.next(null)
+  //   })
+  // }
+
+  // public observable() {
+  //   return this.subject.asObservable()
+  // }
 
 
   GoogleAuth() {

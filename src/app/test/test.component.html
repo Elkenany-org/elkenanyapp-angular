@@ -1,25 +1,145 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" >Brand</a>
+    </div>
 
-<h1>payment</h1>
-<!-- <div class="container" style="max-width: 550px">
-  <h2 class="text-center mb-5">Angular Login with Google</h2>
-  <div >
-    <div>
-      <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button>
-    </div>
-  </div>
-  <div >
-    <div class="form-group">
-      <label>First Name</label>
-      <input type="text" class="form-control" [value]="socialUser?.firstName" id="firstname" readonly>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input type="text" class="form-control" [value]="socialUser?.lastName" id="lastname" readonly>
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" [value]="socialUser?.email" id="email" readonly>
-    </div>
-    <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
-  </div>
-</div> -->
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" [collapse]=isCollapsed>
+      <ul class="nav navbar-nav">
+        <li class="active"><a >Link <span class="sr-only">(current)</span></a></li>
+        <li><a >Link</a></li>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container">
+          <div id="accordion">
+              <div class="card">
+                  <div class="card-header" id="headingOne">
+                      <h5 class="mb-0 d-inline">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Collapsible #1
+                          </button>
+                       </h5>
+                       <a href="#" data-target="[data-parent='#child1']" data-toggle="collapse" class="my-2 float-right">close all</a>
+                  </div>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body" id="child1">
+                          <div class="card">
+                              <div class="card-header">
+                                  <a href="#" data-toggle="collapse" data-target="#collapseOneA">Child A</a>
+                              </div>
+                              <div class="card-body collapse" data-parent="#child1" id="collapseOneA">
+                                  Crunch wolf moon tempor, sunt aliqua put a bird.
+                              </div>
+                          </div>
+                          <div class="card">
+                              <div class="card-header">
+                                  <a href="#" data-toggle="collapse" data-target="#collapseOneB">Child B</a>
+                              </div>
+                              <div class="card-body collapse" data-parent="#child1" id="collapseOneB">
+                                  Another flipp runch wolf moon tempor, sunt aliqua put a bird.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Collapsible #2
+              </button>
+            </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                      <div class="card-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Collapsible #3
+              </button>
+            </h5>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      
+        <li class="dropdown" dropdown>
+        <a  dropdownToggle class="dropdown-toggle">Dropdown <span class="caret"></span></a>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem"><a class="dropdown-item" >Action</a></li>
+            <li role="menuitem"><a class="dropdown-item" >Another action</a></li>
+            <li role="menuitem"><a class="dropdown-item" >Something else here</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" >Separated link</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a >Link</a></li>
+        <li class="dropdown" dropdown>
+          <a dropdownToggle class="dropdown-toggle">Dropdown <span class="caret"></span></a>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem"><a class="dropdown-item" >Action</a></li>
+            <li role="menuitem"><a class="dropdown-item" >Another action</a></li>
+            <li role="menuitem"><a class="dropdown-item" >Something else here</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" >Separated link</a></li>
+
+
+            <li role="menuitem"><a class="dropdown-item" >Separated link</a></li>
+
+
+
+
+
+
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -18,6 +18,8 @@ import {
 } from 'angularx-social-login';
 import { TestComponent } from './test/test.component';
   ``
+  import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -28,11 +30,14 @@ import { TestComponent } from './test/test.component';
     TestComponent // for test only 
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     // NgxSkeletonLoaderModule,
+    BrowserAnimationsModule, 
+    CollapseModule.forRoot(), BsDropdownModule.forRoot(),
+
     CoreModule,
-    
+
 
 
   ],
