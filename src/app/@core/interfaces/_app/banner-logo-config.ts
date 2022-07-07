@@ -23,7 +23,8 @@
                 slidesToShow:number 
             }
         } []
-    }
+    };
+    
   }
   
   export const BannerConfig : Config = {
@@ -32,9 +33,10 @@
         "class":"banner",
         "slidesToShow": 1,
         "slidesToScroll": 1,
-        "dots": false,
+        "dots": true,
         "autoplay": true,
        "autoplaySpeed": 3000,
+
     }
   }
   

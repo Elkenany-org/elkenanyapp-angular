@@ -44,18 +44,21 @@
                     [config]="LogoConfig.config" 
                 >
 
-                <div ngxSlickItem *ngFor="let slide of LogoConfig.banner" class="slide">
+                <div ngxSlickItem *ngFor="let slide of LogoConfig.banner;let i=index;" class="slide">
+                    
                     <div class="item">
+                         <div class="wall ms-4" ></div>
+
                     <a class="logo-holder" target="_blank" href="{{ slide.link}}">
-                        
+
                         <img alt="partner logo" [class]="LogoConfig.config.class"
                         src="{{ slide.image }}" style="max-height: 450px;">
                         
 
                     </a>
-                    <div class="wall"></div>
+
                     </div>
-                
+
                 </div>
                 </ngx-slick-carousel>
                 

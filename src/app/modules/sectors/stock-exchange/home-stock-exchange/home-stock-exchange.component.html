@@ -14,7 +14,7 @@
             </section>
 
             <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
-                <app-card (navigation)="navigate($event)" (outpiutData)="navigateV2($event)" [data]="stock_Ex_Data?.sub_sections" [loading] ="loading"></app-card>
+                <app-card (navigation)="navigate($event)" (outpiutData)="navigateV2($event)" [flag]=false [data]="stock_Ex_Data?.sub_sections" [loading] ="loading"></app-card>
                 <!-- <app-navigation></app-navigation> -->
             </section>
 

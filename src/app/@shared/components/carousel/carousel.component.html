@@ -3,17 +3,17 @@
   [config]="config.config" 
 >
 
-<div ngxSlickItem *ngFor="let slide of config.banner" class="slide">
-  <div class="item">
+<div ngxSlickItem *ngFor="let slide of config.banner ; let i=index;"    class="slide">
+  <div class="item ">
     <a class="logo-holder" target="_blank">
       
       <img alt="partner logo" [class]="config.config.class"
-      src="{{ slide.image }}" style="max-height: 450px;">
+      src="{{ slide[i].image }}" style="max-height: 450px;">
       
-
     </a>
     <div class="wall"></div>
   </div>
+
 
 </div>
 </ngx-slick-carousel>

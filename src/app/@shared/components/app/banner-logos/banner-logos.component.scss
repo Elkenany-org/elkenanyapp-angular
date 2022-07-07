@@ -9,61 +9,61 @@
 
   }
 
-  body .slick-prev,
-  body .slick-next {
-    height: 45px;
-    width: 40px;
-    z-index: 100;
-  }
+//   body .slick-prev,
+//   body .slick-next {
+//     height: 45px;
+//     width: 40px;
+//     z-index: 100;
+//   }
 
 
-// .home-banner{
-//   margin: auto  !important;
+// // .home-banner{
+// //   margin: auto  !important;
 
-// }
-  .img-cell {
-    border-radius: 25px !important;
-    margin-right: 180px !important;
-    margin-left: -70 !important;
-    // margin: auto  auto !important;
-    // margin-right: 200px !important;
-      width: 75%  !important;
+// // }
+//   .img-cell {
+//     border-radius: 25px !important;
+//     margin-right: 180px !important;
+//     margin-left: -70 !important;
+//     // margin: auto  auto !important;
+//     // margin-right: 200px !important;
+//       width: 75%  !important;
 
-      height: 300px !important;
-      // min-height: 125px  !important;
-  }
-
-
+//       height: 300px !important;
+//       // min-height: 125px  !important;
+//   }
 
 
-  @media (max-width:770px) {
-     .img-cell {
-      margin-right: 0 !important;
-      width: 100% !important;
-    }
-  .carousel{
-    width:80% !important;
-  }
-  .slick-initialized{
-    margin:  0 auto 0 auto  ;
-  }
-
-    
-  }
 
 
-//   @media (max-width:390) {
-  
-
-//     .img-cell {
+//   @media (max-width:770px) {
+//      .img-cell {
 //       margin-right: 0 !important;
 //       width: 100% !important;
 //     }
 //   .carousel{
-//     width:320px !important;
+//     width:80% !important;
 //   }
 //   .slick-initialized{
 //     margin:  0 auto 0 auto  ;
 //   }
+
+    
+//   }
+
+
+// //   @media (max-width:390) {
+  
+
+// //     .img-cell {
+// //       margin-right: 0 !important;
+// //       width: 100% !important;
+// //     }
+// //   .carousel{
+// //     width:320px !important;
+// //   }
+// //   .slick-initialized{
+// //     margin:  0 auto 0 auto  ;
+// //   }
    
-//  }
+// //  }

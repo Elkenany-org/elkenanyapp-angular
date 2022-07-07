@@ -20,7 +20,7 @@ import { TestComponent } from './test/test.component';
   ``
   import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
@@ -65,6 +65,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
     SocialAuthService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]
 })

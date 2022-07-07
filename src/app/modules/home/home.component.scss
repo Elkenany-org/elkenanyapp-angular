@@ -4,14 +4,43 @@
 
 @import "../../../assets/styles/pages/home";
 
-.banner {
+.home__page__container {
+  top: -14px !important;
+}
+.home .banner {
+  clear: both;
     object-fit: cover;
-
+  }
+  .home header.banner__header .banner {
+        border-radius:0px;
   }
 
 
+  .home .slick-next{
+    right: 20px;
+    
+  }
+  .home .slick-prev{
+    left:20px;
+    z-index: 1000;
+  }
+  .home .slick-prev:before{
+    font-size:30px;
+    color: #1f6b00;
 
+  }
+  .home .slick-next:before{
+    font-size:30px;
+    color: #1f6b00;
 
+  }
+  .home .container-fluid{
+    top: -40px;
+  padding: 0px;
+ }
+//  .home .slick-dots {
+//   bottom: -10px;
+//  }
 
   //////////////////////////////////////test////////////////////////////////////////
   .carousel-cells .carousel-cell img,  .carousel-cells .carousel-cell video {
@@ -55,4 +84,8 @@ background-color: #FFAA00 !important;
   position: relative;
   z-index: 64000 !important;  
 }
+// .splide,#image-slider{
+//   margin-top: 0px !important;
+//   padding-top: 0px!important;
+// }
 //////////////////////////////////////test////////////////////////////////////////

@@ -2,37 +2,42 @@
 
 
 
-
 <div class="content">
     <header class="home__page__container">
         <div class="home__page__slider" >
-            <div class="splide" id="image-slider">
+            <section class="splide home" id="partnerCarousel">
+                <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
+                <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+        
+            </section>
+            <!-- <div class="splide" id="image-slider">
                 <div class="splide__track" >
                     <div class="splide" id="image-slider">
 
                         <carousel 
                             *ngIf="!loading && carousel_banner.length >= 0 "
                             [autoplay]="true"
-                            [loop]="true" 
-                            [cellsToShow]="1" 
+                            [cellsToShow]="1"                            
                             [arrows]="true"
                             [height]="500"
                             [dots]="true"
-                            [autoplayInterval]="2000"
+                            [autoplayInterval]="1500"
                             [minSwipeDistance]="20"
                             [transitionDuration]="500"
-                            [borderRadius]="10"
+                            [borderRadius]="10" 
+                            [loop]="true" 
                             class="home-banner">
                             <div  class="carousel-cell" *ngFor="let i of carousel_banner">
                                  <img [src]="i.image" >
                             </div>
                          </carousel>
 
-                        <!-- <app-carousel [config]="carousel_banner" [loading]="loading"></app-carousel> -->
                         
                     </div>
                 </div>
-            </div>
+            </div> -->    
+                         <!-- <app-carousel [config]="carousel_banner" [loading]="loading" ></app-carousel> -->
+
         </div>
         <div class="container home__page__search__console">
             <div class="content__holder">

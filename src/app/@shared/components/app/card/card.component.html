@@ -68,11 +68,10 @@
                             <a class="more__details" *ngIf="!contact.date && !contact.view_count else intersted" (click)="output(contact.id,contact.type )">اعرف أكتر</a>
                             <ng-template class="more__details"#intersted>  <a class="more__details"  (click)="output(contact.id,contact.type )">مهتم</a></ng-template>
                         </section>
-
-    </div>
-   
-                    </div>
-                    <div class="logo__main__card one-full-slider">
+   </div>
+                        <div style="clear: both;"></div>
+  
+                    <div class="logo__main__card one-full-slider"  >
                         <ngx-slick-carousel class="carousel" 
                         #slickModal="slick-carousel" 
                         [config]="slideConfig" 
@@ -85,12 +84,17 @@
                         </a>
                         </div>
                     </div>
+                    
                     </ngx-slick-carousel>
                     </div>
                 </div>
+
+                 
+   
+                    </div>
+
             </a>
 
-  
      
 
     </div> 

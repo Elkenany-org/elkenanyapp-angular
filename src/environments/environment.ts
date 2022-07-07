@@ -6,6 +6,8 @@ import { EnvConfig } from "./env-config.interface";
 
 export const environment: EnvConfig = {
   production: false,
+  // ApiUrl: 'http://localhost/kenany_3/api',
+
   // ApiUrl: 'https://test.elkenany.com/api',
   ApiUrl: 'https://elkenany.com/api',
   firebase: { //used account : ahmedbenmady@gmail.com 

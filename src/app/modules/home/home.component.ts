@@ -36,10 +36,9 @@ ngOnInit(): void {
   // this.carousel_banner.banner = res.banner
 
   this.carousel_banner = res.banner
-
+  this.BannerLogoService.setBanner(res.banner);
   this.BannerLogoService.setLogo(res.logos);
   // this.BannerLogoService.setBanner(res.banner);
-
    this.loading = false;
 
   })
@@ -52,6 +51,12 @@ ngOnInit(): void {
 
 
 
-
+ carosel(i:any){
+    if(i==this.carousel_banner.length-1){
+      i=0;
+    }
+    console.log(i);
+    
+}
 
 }
