@@ -12,7 +12,28 @@ export class StatisticsChart {
         for(let i=0 ; i < data.length ; i++){
           Result.push(data[i]?.changes);
         }
+        if(data[0].categorize != null){
+          for(let k=0 ; k < Result.length ; k++){
+
+            this.arr2.push({
+              type: "line",
+              showInLegend: true,
+              name:  data[k].categorize,
+              xValueFormatString: "MMM DD, YYYY",
+              dataPoints: []
+            })
+            for(let j=0 ; j < Result[k].length ; j++){
+              if(Result[k][j].price != 0){
+                this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y:Result[k][j].change || Result[k][j].price}) // Result[k][j].change
+  
+              }
+            }
+            
+          }
+          }
+        else{
         for(let k=0 ; k < Result.length ; k++){
+
           this.arr2.push({
             type: "line",
             showInLegend: true,
@@ -28,6 +49,8 @@ export class StatisticsChart {
           }
           
         }
+          }
+
       }
         this.chartOptions ={
           zoomEnabled: true,

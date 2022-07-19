@@ -15,6 +15,7 @@ import { filter } from 'rxjs/operators';
 export class StatisticsMembersComponent implements OnInit {
 
 
+  StatisticsMemberGlobal?:StatisticsMembersLocal
 
   StatisticsMemberLocal?:StatisticsMembersLocal
   StatisticsMemberSlected? :ChangesMember[]
@@ -30,7 +31,7 @@ export class StatisticsMembersComponent implements OnInit {
 	chartOptions :any
 
 
-
+  days:number=0
   constructor(private statistics: StatisticsService,
               private roure: ActivatedRoute,
               private fb:FormBuilder) {}
@@ -57,6 +58,7 @@ export class StatisticsMembersComponent implements OnInit {
       if(this.type == "fodder"){
         console.log("fodder");
         this.StatisticsMemberLocal=data['resolve'].data
+
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
      
         
@@ -64,6 +66,7 @@ export class StatisticsMembersComponent implements OnInit {
         
       }else if (this.type == "local"){
         this.StatisticsMemberLocal=data['resolve'].data
+
         this.StatisticsMemberSlected = data['resolve'].data?.changes_members
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
         
@@ -75,6 +78,8 @@ export class StatisticsMembersComponent implements OnInit {
     
     // this.getStatisticsMemberData(this.id,this.type,'','')
     })
+   
+
   }
 
   selectStock(id:any) {
@@ -102,9 +107,23 @@ export class StatisticsMembersComponent implements OnInit {
        let f = this.fillter.filterdata
         
        this.fillter.filter(value)
-       console.log(this.id,this.type,f['from'],f['to']);
+      console.log(this.id,this.type,f['from'],f['to']);
+       if(f['to']=='' && f['from']!=''){
+        let date = new Date();
+          if(date.getMonth() + 1 < 10){
+            f['to'] =date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
+      
+          }
+          else{
+            f['to'] =date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+          }
+               this.getStatisticsMemberData(this.id,this.type,f['from'],f['to'])
+       }
+       else{
+        this.getStatisticsMemberData(this.id,this.type,f['from'],f['to'])
+       }
 
-       this.getStatisticsMemberData(this.id,this.type,f['from'],f['to'])
+       
      }
   }
   fodderTable(data: ChangesMember[]):any {
@@ -135,57 +154,186 @@ export class StatisticsMembersComponent implements OnInit {
     return array
 
   }
+
+  
   getStatisticsMemberData(id:string,type:string,from:string, to:string){
-
-    if(this.type == "fodder") {
-      console.log("fodder");
-      this.statistics.StatisicsMembersFodder(id,type,from,to,'').subscribe(res => {
-        
-        this.StatisticsMemberLocal=res.data
-        this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
-     
-        let members= res.data!.changes_members
-        let array:any = []
-        for(let i = 0 ; i< members.length ; i++) {
-          let is_item_exist= 0
-
-          if(i+1 != members.length) {
-            for (let j = 0; j < array.length; j++) {
-              if(array[j].find((element:any) => members[i].name == element.name)){
-                is_item_exist=1
-              }else{
-                is_item_exist=0
+    console.log('from'+from);
+    console.log('to:'+to);
+    // this.StatisticsMemberGlobal=this.StatisticsMemberLocal;
+      // console.log("fodder");
+      console.log(this.StatisticsMemberLocal);
+      let arr=JSON.parse(JSON.stringify(this.StatisticsMemberLocal!.changes_members));
+    //  if(this.type == "fodder") {
+      if(from != '' || to != ''){
+        for(let i = 0 ; i< arr.length ; i++) {
+          let changes=[];
+          let count=0;
+          let oldPrice=0 ;
+          let newPrice=0 ;
+          let changeRate=0;
+            for(let j = 0 ; j<arr[i].changes.length  ; j++) {              
+              if(arr[i].changes[j].date >= from && arr[i].changes[j].date <= to){
+                changes[count]=arr[i].changes[j]
+                count++;
               }
+   
             }
-            if(is_item_exist==0) {
-              array.push([
-                {
-                   name:  members[i].name,
-                   categories: members.filter((element:any) => element.name == members[i].name)
-                }
-              ])    
+
+            arr[i].counts = changes.length;
+            arr[i].changes = changes
+            // if(arr[i].changes[0].price!==undefined){
+            //   oldPrice = arr[i].changes[0].price;
+            // }
+            // if(arr[i].changes[count-1].price!==undefined){
+            //   newPrice = arr[i].changes[count-1].price;
+            // }
+            // changeRate = ((newPrice - oldPrice)/newPrice)*100;
+
+            console.log(arr[i].changes[count-1]);
+            
+            // if(oldPrice==null || newPrice==null){
+            //   console.log('nuullllllllll');
+            // }
+            // changeRate = Math.floor(((newPrice - oldPrice)/newPrice)*100);
+
+            // console.log(changeRate);
+            // arr[i].change=changeRate;
+
+            changes=[];
+           }   
+      // }
+        
+      console.log('============');
+      
+      console.log(arr);
+
+      this.chartOptions=  this.chart.drowShart(arr)
+      
+      setTimeout(() => {
+        this.chartOptions=  this.chart.drowShart(arr)
+      }, 500);
+
+
+
+      // this.statistics.StatisicsMembersFodder(id,type,from,to,'').subscribe(res => {
+        
+      //   this.StatisticsMemberLocal=res.data
+      //   this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
+      //     console.log(this.StatisticsMemberLocal);
+        
+      //   let members= res.data!.changes_members
+      //   let array:any = []
+      //   for(let i = 0 ; i< members.length ; i++) {
+      //     let is_item_exist= 0
+
+      //     if(i+1 != members.length) {
+      //       for (let j = 0; j < array.length; j++) {
+      //         if(array[j].find((element:any) => members[i].name == element.name)){
+      //           is_item_exist=1
+      //         }else{
+      //           is_item_exist=0
+      //         }
+      //       }
+      //       if(is_item_exist==0) {
+      //         array.push([
+      //           {
+      //              name:  members[i].name,
+      //              categories: members.filter((element:any) => element.name == members[i].name)
+      //           }
+      //         ])    
+      //       }
+      //     }
+      //   }
+      //   this.StatisticsMemberFodder = array
+
+      // })
+
+    }
+    else{
+      //if choose all
+      this.chartOptions=  this.chart.drowShart(arr)
+      setTimeout(() => {
+        this.chartOptions=  this.chart.drowShart(arr)
+      }, 500);
+
+    }
+      let members= arr
+      let array:any = []
+      for(let i = 0 ; i< members.length ; i++) {
+        let is_item_exist= 0
+
+        if(i+1 != members.length) {
+          for (let j = 0; j < array.length; j++) {
+            if(array[j].find((element:any) => members[i].name == element.name)){
+              is_item_exist=1
+            }else{
+              is_item_exist=0
             }
           }
+          if(is_item_exist==0) {
+            array.push([
+              {
+                 name:  members[i].name,
+                 categories: members.filter((element:any) => element.name == members[i].name)
+              }
+            ])    
+          }
         }
-        this.StatisticsMemberFodder = array
+      }
+      this.StatisticsMemberFodder = array
 
-      })
-    }
-    else {
-      this.statistics.StatisicsMembersLocal(id, type, from, to, '').subscribe(res => {
-         this.StatisticsMemberLocal=res.data
-         this.StatisticsMemberSlected = res.data?.changes_members
-         this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
-         setTimeout(()=> {
-          this.StatisticsMemberLocal=res.data
-          this.StatisticsMemberSlected = res.data?.changes_members
-          this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
-         },1500)
+    // else {
+    //   this.statistics.StatisicsMembersLocal(id, type, from, to, '').subscribe(res => {
+    //      this.StatisticsMemberLocal=res.data
+    //      this.StatisticsMemberSlected = res.data?.changes_members
+    //      this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
+    //      setTimeout(()=> {
+    //       this.StatisticsMemberLocal=res.data
+    //       this.StatisticsMemberSlected = res.data?.changes_members
+    //       this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
+    //      },500)
           
 
-     })
+    //  })
+
+
+    // }
+
+  }
+
+  subtractDays(numOfDays: number, date = new Date()) {
+    date.setDate(date.getDate() - numOfDays);
+    let shortDate;
+    if(date.getMonth() + 1 < 10){
+      shortDate = date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
+    else{
+    shortDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
 
     }
+    return shortDate;
+  }
 
+  geTstatisticsByDate(days: number): void {
+    this.days= days
+    if (days == 0) {
+      this.getStatisticsMemberData(this.id,this.type, '', '');
+      return;
+    }
+    let date = new Date();
+    let today;
+
+    if(date.getMonth() + 1 < 10){
+      today =date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
+
+    }
+    else{
+      today =date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
+    let from = this.subtractDays(days);
+    this.getStatisticsMemberData(this.id,this.type ,from, today);
+    console.log(today);
+    
+    console.log(from);
   }
 }

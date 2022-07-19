@@ -81,7 +81,19 @@
     <!-- Start Global Content -->
     <article class="global__container container">
         <div class="row">
-
+            <!-- Start Chart Part -->
+            <section class="col-12 chart__container">
+                <div id="">
+                    <div class="toolbar">
+                        <button (click)="geTstatisticsByDate(30)" [ngClass]="{'active':days==30}" id="one_month">1M</button>
+                        <button (click)="geTstatisticsByDate(90)" [ngClass]="{'active':days==90}" id="six_months">3M</button>
+                        <button (click)="geTstatisticsByDate(180)" [ngClass]="{'active':days==180}"  id="one_year">6M</button>
+                        <button (click)="geTstatisticsByDate(0)"   [ngClass]="{'active':days==0}" id="all">ALL</button>
+                    </div>
+                    <div id="chart-timeline"></div>
+                </div>
+            </section> 
+            <!-- Multi Select menu -->
             <div *ngIf="chartOptions">
                 <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
             </div>       
