@@ -61,7 +61,6 @@ export class StatisticsMembersComponent implements OnInit {
 
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
      
-        
         this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
         
       }else if (this.type == "local"){
@@ -162,15 +161,16 @@ export class StatisticsMembersComponent implements OnInit {
     // this.StatisticsMemberGlobal=this.StatisticsMemberLocal;
       // console.log("fodder");
       console.log(this.StatisticsMemberLocal);
-      let arr=JSON.parse(JSON.stringify(this.StatisticsMemberLocal!.changes_members));
+      let arr=JSON.parse(JSON.stringify(this.StatisticsMemberLocal!.changes_members));  
+          let oldPrice=0 ;
+          let newPrice=0 ;
+          let changeRate='';
     //  if(this.type == "fodder") {
       if(from != '' || to != ''){
         for(let i = 0 ; i< arr.length ; i++) {
           let changes=[];
           let count=0;
-          let oldPrice=0 ;
-          let newPrice=0 ;
-          let changeRate=0;
+
             for(let j = 0 ; j<arr[i].changes.length  ; j++) {              
               if(arr[i].changes[j].date >= from && arr[i].changes[j].date <= to){
                 changes[count]=arr[i].changes[j]
@@ -179,25 +179,15 @@ export class StatisticsMembersComponent implements OnInit {
    
             }
 
-            arr[i].counts = changes.length;
+            if(changes.length != 0){//to not crash when no changes occured
+              oldPrice = changes[0].price;
+              newPrice = changes[count-1].price;
+            }
+            changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
+
+            arr[i].counts = (changes.length)-1;
             arr[i].changes = changes
-            // if(arr[i].changes[0].price!==undefined){
-            //   oldPrice = arr[i].changes[0].price;
-            // }
-            // if(arr[i].changes[count-1].price!==undefined){
-            //   newPrice = arr[i].changes[count-1].price;
-            // }
-            // changeRate = ((newPrice - oldPrice)/newPrice)*100;
-
-            console.log(arr[i].changes[count-1]);
-            
-            // if(oldPrice==null || newPrice==null){
-            //   console.log('nuullllllllll');
-            // }
-            // changeRate = Math.floor(((newPrice - oldPrice)/newPrice)*100);
-
-            // console.log(changeRate);
-            // arr[i].change=changeRate;
+            arr[i].change=changeRate;
 
             changes=[];
            }   
@@ -251,6 +241,20 @@ export class StatisticsMembersComponent implements OnInit {
     }
     else{
       //if choose all
+      for(let i = 0 ; i< arr.length ; i++) {
+ 
+        const last = arr[i].changes.at(-1);
+          if(arr[i].changes.length != 0){//to not crash when no changes occured
+            oldPrice = arr[i].changes[1].price;
+            newPrice = last.price;
+            console.log(newPrice);
+            
+          }
+          changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
+          arr[i].counts = (arr[i].changes.length)-1;
+          arr[i].change=changeRate;
+         }   
+
       this.chartOptions=  this.chart.drowShart(arr)
       setTimeout(() => {
         this.chartOptions=  this.chart.drowShart(arr)
