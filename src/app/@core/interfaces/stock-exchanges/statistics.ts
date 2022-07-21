@@ -60,6 +60,7 @@ export interface ChangesSub {
   name: string
   change: string
   counts: number
+  compId:number
   changes:any
 }
 
@@ -168,7 +169,7 @@ export interface ChangesMember {
   change: string
   counts: number
   categorize?: string
-
+  compId:number
   changes: Change[]
 }
 

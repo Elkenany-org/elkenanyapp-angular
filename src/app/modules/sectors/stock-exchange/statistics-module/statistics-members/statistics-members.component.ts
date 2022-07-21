@@ -30,7 +30,7 @@ export class StatisticsMembersComponent implements OnInit {
   chart  = new StatisticsChart()
 	chartOptions :any
 
-
+  products?:any;
   days:number=0
   constructor(private statistics: StatisticsService,
               private roure: ActivatedRoute,
@@ -90,10 +90,26 @@ export class StatisticsMembersComponent implements OnInit {
       this.id = ''
       this.StatisticsMemberSlected =this.StatisticsMemberLocal?.changes_members
       this.chartOptions=  this.chart.drowShart( this.StatisticsMemberLocal?.changes_members)
+      this.products=[]
     }
+    
+    
   }
 
+  selectCompany(id:any) {
 
+      this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
+      console.log(this.products);
+    
+  }
+
+  selectAllStock(){
+
+          if(this.products){
+            this.chartOptions=  this.chart.drowShart( this.products)
+          }
+
+  }
 
   filter(value:any,type:string):void { //type come from small screen
 
@@ -164,7 +180,7 @@ export class StatisticsMembersComponent implements OnInit {
       let arr=JSON.parse(JSON.stringify(this.StatisticsMemberLocal!.changes_members));  
           let oldPrice=0 ;
           let newPrice=0 ;
-          let changeRate='';
+          let changeRate='0';
     //  if(this.type == "fodder") {
       if(from != '' || to != ''){
         for(let i = 0 ; i< arr.length ; i++) {
@@ -182,10 +198,12 @@ export class StatisticsMembersComponent implements OnInit {
             if(changes.length != 0){//to not crash when no changes occured
               oldPrice = changes[0].price;
               newPrice = changes[count-1].price;
+              changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
+              arr[i].counts = (changes.length)-1;
+            }else{
+              arr[i].counts = 0;
             }
-            changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
-
-            arr[i].counts = (changes.length)-1;
+            
             arr[i].changes = changes
             arr[i].change=changeRate;
 
@@ -245,11 +263,13 @@ export class StatisticsMembersComponent implements OnInit {
  
         const last = arr[i].changes.at(-1);
           if(arr[i].changes.length != 0){//to not crash when no changes occured
-            oldPrice = arr[i].changes[1].price;
+            oldPrice = arr[i].changes[0].price;
             newPrice = last.price;
-            console.log(newPrice);
-            
+          
           }
+          console.log('new = '+newPrice);
+          console.log('old = '+oldPrice);
+
           changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
           arr[i].counts = (arr[i].changes.length)-1;
           arr[i].change=changeRate;

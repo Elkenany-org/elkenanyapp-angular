@@ -107,15 +107,15 @@
                     <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
                         <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
                          <b class="caret"></b>
-                    </button><ul class="multiselect-container dropdown-menu">
-                    <li class="multiselect-item multiselect-all">
+                    </button><ul class="multiselect-container dropdown-menu" style="text-align: right">
+                    <li class="multiselect-item multiselect-all px-2">
                         <a tabindex="0" class="multiselect-all">
-                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
+                           <label><input type="checkbox" class="mx-2" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
                         </a>
                     </li>
                     <!-- class="active" -->
-                    <li class="active" *ngFor="let item of (StatisticsMemberLocal?.list_members)"> 
-                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
+                    <li *ngFor="let item of (StatisticsMemberLocal?.list_members)"> 
+                        <a tabindex="0" ><label><input class="mx-2" type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
                     </li>
                 </ul>
             </div>
@@ -125,26 +125,59 @@
 
                 
     <div class="col-12" *ngIf="type== 'fodder'">
-        <div class="multi__selectContainer">
-            <h4 class="multi__title">الشركات</h4>
-            <form id="box" class="box-tabs">
-                <div class="btn-group">
-                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
-                        <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
-                         <b class="caret"></b>
-                    </button><ul class="multiselect-container dropdown-menu">
-                    <li class="multiselect-item multiselect-all">
-                        <a tabindex="0" class="multiselect-all">
-                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
-                        </a>
+        <div class="row">
+            <div class="multi__selectContainer col-6">
+                <h4 class="multi__title ">الشركات</h4>
+                <form id="box" class="box-tabs">
+            <div class="btn-group">
+                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
+                    <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
+                    <b class="caret"></b>
+                </button>
+                <ul class="multiselect-container dropdown-menu " style="text-align: right">
+                    
+                    <li class="multiselect-item multiselect-all px-2" >
+                        <label><a tabindex="0" >
+                            <input type="radio" class="mx-2" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)" name="companies"> اختيار الكل
+                        </a></label>
                     </li>
-                    <!-- class="active" -->
-                    <li class="active" *ngFor="let item of StatisticsMemberLocal?.changes_members"> 
-                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.categorize}}</label></a>
-                    </li>
-                </ul>
+
+                    <li  *ngFor="let comp of (StatisticsMemberLocal?.list_members) ; let i=index" class="px-2"> 
+                        <label><a tabindex="0" ><input class="mx-2" type="radio" #company (change)=" selectCompany(company.value)" (click)="selectCompany(company.value)" [value]="comp.id" name="companies"> {{comp.name}}</a>
+                    </label></li>
+            </ul>
             </div>
-            </form>
+    </form>
+            </div>
+
+
+            <div class="multi__selectContainer col-6 p-3">
+                <h4 class="multi__title">الاصناف</h4>
+                <form id="box" class="box-tabs">
+                    <div class="btn-group">
+                        <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
+                            <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
+                            <b class="caret"></b>
+                        </button>
+                        <ul class="multiselect-container dropdown-menu" style="text-align: right">
+
+                            <li class="multiselect-item multiselect-all px-2" >
+                                <label><a tabindex="0" >
+                                    <input type="radio" class="mx-2 multiselect-selected-text" value="multiselect-all" #v (change)=" selectAllStock()" (click)="selectAllStock()" name="products"> اختيار الكل
+                                </a></label>
+                            </li>
+
+                        <!-- class="active" -->
+                        <li  *ngFor="let item of products; let i=index" class="px-2"> 
+                            <label><a  tabindex="0" ><input class="mx-2"  type="radio" name="products" #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" >{{item.categorize}}</a>
+                        </label></li>
+
+                    </ul>
+                </div>
+
+                </form>
+            </div>
+
         </div>
     </div>
 
@@ -178,7 +211,7 @@
                                             <tbody>
                                                 <tr *ngFor="let i of i[0].categories">
                                                     <td class="border-right border-left company__link__container">
-                                                        <a [routerLink]="['/stock-exchange/no/statistics/statistics-detials',type,i.id]" class="company__link">مركز تسمين حيواني 45% </a>
+                                                        <a [routerLink]="['/stock-exchange/no/statistics/statistics-detials',type,i.id]" class="company__link">{{i.categorize}}</a>
                                                     </td>
                                                     <td class="border-right">
                                                         <span class="negative__content">{{i.change}}%</span>
