@@ -62,13 +62,14 @@ export class StatisticsMembersComponent implements OnInit {
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
      
         this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
-        
+        this.products=this.fodderTable(data['resolve'].data!.changes_members)
       }else if (this.type == "local"){
         this.StatisticsMemberLocal=data['resolve'].data
 
         this.StatisticsMemberSlected = data['resolve'].data?.changes_members
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
-        
+        this.products=data['resolve'].data!.changes_members
+
       }
 
     })
@@ -80,27 +81,87 @@ export class StatisticsMembersComponent implements OnInit {
    
 
   }
+flag:boolean=false;
+  selectFodderStock(id:any) {
 
-  selectStock(id:any) {
-    if(id!=0) {
+    if(id>0) {
       this.id = id
-      this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
+      // this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
       this.chartOptions=  this.chart.drowShart( [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)])
-    }else {
-      this.id = ''
-      this.StatisticsMemberSlected =this.StatisticsMemberLocal?.changes_members
-      this.chartOptions=  this.chart.drowShart( this.StatisticsMemberLocal?.changes_members)
-      this.products=[]
+      this.flag=true
+
+    }else if(id==-1){//all from الاصناف
+      this.id = id
+      let productAll=JSON.parse(JSON.stringify(this.products));  
+      productAll.shift();
+      this.chartOptions=  this.chart.drowShart( productAll)
+      this.flag=true
+
     }
+    else {
+      this.id = ''
+      // this.StatisticsMemberSlected =this.StatisticsMemberLocal?.changes_members as ChangesMember[]
+      this.chartOptions=  this.chart.drowShart( this.StatisticsMemberLocal?.changes_members)
+      // this.products=[]
+      this.flag=false
+    }
+    this.getStatisticsMemberData(this.id,this.type, '', '');
+    let name=this.StatisticsMemberLocal?.changes_members.find(i => i.id == id)?.categorize
+    console.log(name + id);
     
-    
+    if(name==undefined){
+      name='الكل'
+    }      
+    if(id == 0){
+        document.getElementById('company')!.innerText = name;
+    }
+      document.getElementById('product')!.innerText = ''+name;
+
   }
 
-  selectCompany(id:any) {
+  selectLocalStock(id:any) {
 
+
+    if(id>0) {
+     this.id = id
+    this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.id == id) as ChangesMember[]
+    console.log(this.products);
+      this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
+      this.chartOptions=  this.chart.drowShart( [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)])
+      this.products.unshift({id:-1,categorize:'الكل'});
+      this.flag=true
+    }else{//all from الاصناف
+      this.id = ''
+      this.StatisticsMemberSlected = this.StatisticsMemberLocal?.changes_members;
+      this.chartOptions=  this.chart.drowShart( this.StatisticsMemberLocal?.changes_members)
+      this.flag=false
+    }
+
+
+    let name=this.StatisticsMemberLocal?.changes_members.find(i => i.id == id)?.name
+    if(name==undefined){
+      name='الكل'
+    }
+      document.getElementById('local')!.innerText = ''+name;
+
+    }
+
+
+
+  selectCompany(id:any) {
       this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
+
+      this.products.unshift({id:-1,categorize:'الكل'});
       console.log(this.products);
-    
+      this.flag=true
+      this.getStatisticsMemberData(-1,this.type, '', '');
+
+
+      let name=this.products.find((i: { compId: any; }) => i.compId == id)?.name
+      
+      document.getElementById('company')!.innerText = ''+name;
+        console.log(name + id);
+ 
   }
 
   selectAllStock(){
@@ -171,18 +232,37 @@ export class StatisticsMembersComponent implements OnInit {
   }
 
   
-  getStatisticsMemberData(id:string,type:string,from:string, to:string){
+  getStatisticsMemberData(id:any,type:string,from:string, to:string){
     console.log('from'+from);
     console.log('to:'+to);
     // this.StatisticsMemberGlobal=this.StatisticsMemberLocal;
       // console.log("fodder");
       console.log(this.StatisticsMemberLocal);
-      let arr=JSON.parse(JSON.stringify(this.StatisticsMemberLocal!.changes_members));  
+      console.log('////////////////////');
+      console.log(this.products);
+      let arr:any=[];
+    
+
+      console.log(this.flag);
+      
+      if(id>0 && this.flag && this.products) {
+        arr[0]=JSON.parse(JSON.stringify(this.products.find((i: { id: any; }) => i.id ==id))) as ChangesMember[];  
+
+      }else if((id==-1 && this.flag) && this.products){//all from الاصناف
+        let productAll=JSON.parse(JSON.stringify(this.products));  
+        productAll.shift();
+        arr=productAll;  
+      }
+      else{
+        arr=JSON.parse(JSON.stringify(this.StatisticsMemberLocal!.changes_members)); 
+      }
+      
           let oldPrice=0 ;
           let newPrice=0 ;
           let changeRate='0';
     //  if(this.type == "fodder") {
-      if(from != '' || to != ''){
+    
+    if(from != '' || to != ''){
         for(let i = 0 ; i< arr.length ; i++) {
           let changes=[];
           let count=0;
@@ -267,8 +347,6 @@ export class StatisticsMembersComponent implements OnInit {
             newPrice = last.price;
           
           }
-          console.log('new = '+newPrice);
-          console.log('old = '+oldPrice);
 
           changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
           arr[i].counts = (arr[i].changes.length)-1;
@@ -286,7 +364,8 @@ export class StatisticsMembersComponent implements OnInit {
       for(let i = 0 ; i< members.length ; i++) {
         let is_item_exist= 0
 
-        if(i+1 != members.length) {
+        
+        if(this.type=='fodder'){
           for (let j = 0; j < array.length; j++) {
             if(array[j].find((element:any) => members[i].name == element.name)){
               is_item_exist=1
@@ -302,26 +381,23 @@ export class StatisticsMembersComponent implements OnInit {
               }
             ])    
           }
+                this.StatisticsMemberFodder = array
         }
-      }
-      this.StatisticsMemberFodder = array
+        else{
+          this.StatisticsMemberSlected=arr
+        }
+        // else if(i+1 == members.length){
 
-    // else {
-    //   this.statistics.StatisicsMembersLocal(id, type, from, to, '').subscribe(res => {
-    //      this.StatisticsMemberLocal=res.data
-    //      this.StatisticsMemberSlected = res.data?.changes_members
-    //      this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
-    //      setTimeout(()=> {
-    //       this.StatisticsMemberLocal=res.data
-    //       this.StatisticsMemberSlected = res.data?.changes_members
-    //       this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
-    //      },500)
+        //     array.push([
+        //       {
+        //          name:  members[i].name,
+        //          categories: members.filter((element:any) => element.name == members[i].name)
+        //       }
+        //     ])    
           
+        // }
+      }
 
-    //  })
-
-
-    // }
 
   }
 

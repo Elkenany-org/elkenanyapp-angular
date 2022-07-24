@@ -104,18 +104,21 @@
             <h4 class="multi__title">الأصناف</h4>
             <form id="box"  class="box-tabs">
                 <div class="btn-group">
-                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
-                        <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
-                         <b class="caret"></b>
-                    </button><ul class="multiselect-container dropdown-menu" style="text-align: right">
-                    <li class="multiselect-item multiselect-all px-2">
-                        <a tabindex="0" class="multiselect-all">
-                           <label><input type="checkbox" class="mx-2" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
-                        </a>
+                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="local">
+                        لا يوجد اي اختيار
+                   
+                    </button>
+                    <ul class="multiselect-container dropdown-menu" style="text-align: right">
+
+                    <li class="multiselect-item multiselect-all px-2" > 
+                        <label><a tabindex="0" >
+                           <input type="radio" class="mx-2" value='0' #v (change)=" selectLocalStock(0)" (click)="selectLocalStock(0)" name="local" id="0">  الكل
+                        </a></label>
                     </li>
+ 
                     <!-- class="active" -->
-                    <li *ngFor="let item of (StatisticsMemberLocal?.list_members)"> 
-                        <a tabindex="0" ><label><input class="mx-2" type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
+                    <li *ngFor="let item of (StatisticsMemberLocal?.list_members) ;" class="px-2"> 
+                        <label><a tabindex="0" ><input class="mx-2" type="radio"  #v (change)=" selectLocalStock(v.value)" (click)="selectLocalStock(v.value)" [value]="item.id" name="local" id={{item.id}}> {{item.name}}</a></label>
                     </li>
                 </ul>
             </div>
@@ -130,7 +133,7 @@
                 <h4 class="multi__title ">الشركات</h4>
                 <form id="box" class="box-tabs">
             <div class="btn-group">
-                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
+                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="company">
                     <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
                     <b class="caret"></b>
                 </button>
@@ -138,12 +141,12 @@
                     
                     <li class="multiselect-item multiselect-all px-2" >
                         <label><a tabindex="0" >
-                            <input type="radio" class="mx-2" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)" name="companies"> اختيار الكل
+                            <input type="radio" class="mx-2" value="multiselect-all" #v (change)=" selectFodderStock(0)" (click)="selectFodderStock(0)" name="companies" id="0">  الكل
                         </a></label>
                     </li>
 
                     <li  *ngFor="let comp of (StatisticsMemberLocal?.list_members) ; let i=index" class="px-2"> 
-                        <label><a tabindex="0" ><input class="mx-2" type="radio" #company (change)=" selectCompany(company.value)" (click)="selectCompany(company.value)" [value]="comp.id" name="companies"> {{comp.name}}</a>
+                        <label><a tabindex="0" ><input class="mx-2" type="radio" #company (change)=" selectCompany(company.value)" (click)="selectCompany(company.value)" [value]="comp.id" name="companies" id={{comp.id}}> {{comp.name}}</a>
                     </label></li>
             </ul>
             </div>
@@ -152,24 +155,24 @@
 
 
             <div class="multi__selectContainer col-6 p-3">
-                <h4 class="multi__title">الاصناف</h4>
+                <h4 class="multi__title">الأصناف</h4>
                 <form id="box" class="box-tabs">
                     <div class="btn-group">
-                        <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
+                        <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="product">
                             <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
                             <b class="caret"></b>
                         </button>
                         <ul class="multiselect-container dropdown-menu" style="text-align: right">
 
-                            <li class="multiselect-item multiselect-all px-2" >
+                            <!-- <li class="multiselect-item multiselect-all px-2" >
                                 <label><a tabindex="0" >
-                                    <input type="radio" class="mx-2 multiselect-selected-text" value="multiselect-all" #v (change)=" selectAllStock()" (click)="selectAllStock()" name="products"> اختيار الكل
+                                    <input type="radio" class="mx-2 " value="multiselect-all" #v (change)=" selectAllStock()" (click)="selectAllStock()" name="products">  الكل
                                 </a></label>
-                            </li>
+                            </li> -->
 
                         <!-- class="active" -->
                         <li  *ngFor="let item of products; let i=index" class="px-2"> 
-                            <label><a  tabindex="0" ><input class="mx-2"  type="radio" name="products" #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" >{{item.categorize}}</a>
+                            <label><a  tabindex="0" ><input class="mx-2"  type="radio" name="products" #v (change)=" selectFodderStock(v.value)" (click)="selectFodderStock(v.value)" [value]="item.id" id={{item.id}}>{{item.categorize}}</a>
                         </label></li>
 
                     </ul>
