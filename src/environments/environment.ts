@@ -6,10 +6,10 @@ import { EnvConfig } from "./env-config.interface";
 
 export const environment: EnvConfig = {
   production: false,
-  ApiUrl: 'http://localhost/kenany_3/api',
+  // ApiUrl: 'http://localhost/kenany_3/api',
 
   // ApiUrl: 'https://test.elkenany.com/api',
-  // ApiUrl: 'https://elkenany.com/api',
+  ApiUrl: 'https://elkenany.com/api',
   firebase: { //used account : ahmedbenmady@gmail.com 
     apiKey: "AIzaSyCiDUgxLWo_ghSubmhpA02CxF6dCoW3Lpk",
     authDomain: "oshop-7e416.firebaseapp.com",

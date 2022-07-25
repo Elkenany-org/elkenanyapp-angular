@@ -80,6 +80,13 @@ export class StatisticsComponent implements OnInit {
         this.StatisticsMember?.changes_subs
       );
     }
+
+    let name=this.StatisticsMemberSlected?.find(i => i.id == id)?.name
+    if(name==undefined){
+      name='الكل'
+    }
+      document.getElementById('stock')!.innerText = ''+name;
+
   }
 
   filter(value: any, type: string): void {

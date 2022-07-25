@@ -85,13 +85,13 @@
   
 
                 <div class="btn-group">
-                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها">
+                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="stock">
                         <span class="multiselect-selected-text">بورصة لحم الدواجن بأنواعها</span>
                          <b class="caret"></b>
                     </button><ul class="multiselect-container dropdown-menu">
                     <li class="multiselect-item multiselect-all">
                         <a tabindex="0" class="multiselect-all">
-                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)"> اختيار الكل</label>
+                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)" id="0"> اختيار الكل</label>
                         </a>
                     </li>
 
@@ -99,7 +99,7 @@
    
                     <!-- class="active" -->
                     <li class="active" *ngFor="let item of StatisticsMember?.list_subs"> 
-                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" > {{item.name}}</label></a>
+                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" id={{v.value}}> {{item.name}}</label></a>
 
                         
                     </li>

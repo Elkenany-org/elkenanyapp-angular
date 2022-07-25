@@ -62,14 +62,13 @@ export class StatisticsMembersComponent implements OnInit {
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
      
         this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
-        this.products=this.fodderTable(data['resolve'].data!.changes_members)
+        
       }else if (this.type == "local"){
         this.StatisticsMemberLocal=data['resolve'].data
 
         this.StatisticsMemberSlected = data['resolve'].data?.changes_members
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
-        this.products=data['resolve'].data!.changes_members
-
+        
       }
 
     })
@@ -102,7 +101,7 @@ flag:boolean=false;
       this.id = ''
       // this.StatisticsMemberSlected =this.StatisticsMemberLocal?.changes_members as ChangesMember[]
       this.chartOptions=  this.chart.drowShart( this.StatisticsMemberLocal?.changes_members)
-      // this.products=[]
+       this.products=[]
       this.flag=false
     }
     this.getStatisticsMemberData(this.id,this.type, '', '');
@@ -149,6 +148,7 @@ flag:boolean=false;
 
 
   selectCompany(id:any) {
+      this.id = '-1'
       this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
 
       this.products.unshift({id:-1,categorize:'الكل'});
@@ -161,7 +161,7 @@ flag:boolean=false;
       
       document.getElementById('company')!.innerText = ''+name;
         console.log(name + id);
- 
+      
   }
 
   selectAllStock(){
@@ -241,7 +241,7 @@ flag:boolean=false;
       console.log('////////////////////');
       console.log(this.products);
       let arr:any=[];
-    
+     let arr2=[{id: 77, name: 'عبد السلام حجازي', categorize: 'ابيض', compId: 131, changes: [{date: '2022-05-28', price: 15}],counts: 0}];
 
       console.log(this.flag);
       
@@ -268,7 +268,7 @@ flag:boolean=false;
           let count=0;
 
             for(let j = 0 ; j<arr[i].changes.length  ; j++) {              
-              if(arr[i].changes[j].date >= from && arr[i].changes[j].date <= to){
+              if((arr[i].changes[j].date >= from && arr[i].changes[j].date <= to) && arr[i].changes[j].price != 0){
                 changes[count]=arr[i].changes[j]
                 count++;
               }
@@ -288,17 +288,18 @@ flag:boolean=false;
             arr[i].change=changeRate;
 
             changes=[];
-           }   
+           } 
+           arr2=arr.filter((i: { changes: any[]; })=>i.changes.length != 0)  
       // }
         
       console.log('============');
       
-      console.log(arr);
+      console.log(arr2);
 
-      this.chartOptions=  this.chart.drowShart(arr)
+      this.chartOptions=  this.chart.drowShart(arr2)
       
       setTimeout(() => {
-        this.chartOptions=  this.chart.drowShart(arr)
+        this.chartOptions=  this.chart.drowShart(arr2)
       }, 500);
 
 
@@ -339,23 +340,34 @@ flag:boolean=false;
     }
     else{
       //if choose all
+
       for(let i = 0 ; i< arr.length ; i++) {
- 
+
+        let changes=[];
+        let count=0;
+        for(let j = 0 ; j<arr[i].changes.length ; j++) {              
+          if(arr[i].changes[j].price != 0){
+            changes[count]=arr[i].changes[j]
+            count++;
+          }
+        }
+        arr[i].changes = changes
+
         const last = arr[i].changes.at(-1);
+  
           if(arr[i].changes.length != 0){//to not crash when no changes occured
             oldPrice = arr[i].changes[0].price;
             newPrice = last.price;
-          
           }
-
           changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
           arr[i].counts = (arr[i].changes.length)-1;
           arr[i].change=changeRate;
          }   
 
-      this.chartOptions=  this.chart.drowShart(arr)
+        arr2=arr.filter((i: { changes: any[]; })=>i.changes.length != 0)  
+      this.chartOptions=  this.chart.drowShart(arr2)
       setTimeout(() => {
-        this.chartOptions=  this.chart.drowShart(arr)
+        this.chartOptions=  this.chart.drowShart(arr2)
       }, 500);
 
     }
