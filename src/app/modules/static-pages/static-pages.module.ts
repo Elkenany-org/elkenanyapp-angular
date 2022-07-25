@@ -20,4 +20,6 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     StaticRoutingModule
   ]
 })
-export class StaticPagesModule { }
+export class StaticPagesModule { 
+
+}
