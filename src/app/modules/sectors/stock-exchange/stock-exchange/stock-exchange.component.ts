@@ -57,6 +57,9 @@ export class StockExchangeComponent implements OnInit {
     this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
     this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
 
+    console.log(prm);
+    
+
     if(prm['type_stock'] === 'fodder') {
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
           console.log(res );
@@ -66,7 +69,7 @@ export class StockExchangeComponent implements OnInit {
         this.loading = false;   
       })
       this.stockExchange.companies_items(prm['id']).subscribe( res => {
-        console.log(res);
+        console.log(res.data);
         
         this.companies= res.data
         this.companiesList = this.companies
@@ -78,17 +81,26 @@ export class StockExchangeComponent implements OnInit {
 
   search_Filter(id:number, type:string, type_stock:string):void {
     this.stockExchange.Filter_list_sub(id, type, type_stock).subscribe((res:ApiResponse<FilterListSub>) => {
+      this.h_search_form.title = res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
+      // let localOther=res.data?.sub_sections.filter(i=>i.id!=id) 
+      // let localSelected=res.data?.sub_sections.find(i=>i.id==id)
+      // localOther?.unshift(localSelected);
+      // this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option[0] =   ( type_stock=='local')? res.data?.sub_sections.find(i=>i.id==id): res.data?.fodder_sub_sections.find(i=>i.id==id);
+      
+      
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   ( type_stock=='local')? res.data?.sub_sections: res.data?.fodder_sub_sections;
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/statistics-members/${this.filterData['type']}/${id}`;
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${id}`;
+    // console.log(res.data);
     })
+
 
   }
   filter(value: any) {
-    console.log(value);
-    
     this.route.params.subscribe( params => {
+       console.log(params);
+      
       this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
@@ -99,7 +111,10 @@ export class StockExchangeComponent implements OnInit {
           this.filterData['date'] = value.name
           break;
         case "stock":
+          // this.router.navigate(['/stock-exchange',params['type'],'stock-exchange',params['type'],params['type_stock'],value.id])
           this.filterData['stock_id'] = value.id
+          this.h_search_form.title = value.title;
+          
           break;
         case "com_id":
             this.filterData['com_id'] = value.id 
@@ -116,8 +131,6 @@ export class StockExchangeComponent implements OnInit {
     this.filterData['stok'] == 'fodder'
     ?this.fodderData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'])
     :this.localData(f['stock_id']+'',f['date'],)
-
-
   }
 
   toggle(type:string){
@@ -158,18 +171,38 @@ export class StockExchangeComponent implements OnInit {
        this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       // this.stock_Ex_Data = res.data   
     })
+
   }
 
-  fodderData(id:string, date:string,fod_id?:string,comp_id?:string) {
+  fodderData(id:any, date:string,fod_id?:string,comp_id?:string) {
     console.log(id, date,fod_id,comp_id);
     
     this.stockExchange.fodder(id,this.today,fod_id,comp_id).subscribe( res => {
+      console.log('========');
+      
       console.log(res);
       
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
+      // this.companies= 
+      // this.companiesList = this.companies
    })
+
+  //  this.stockExchange.feeds_items(id).subscribe( res => {
+  //   console.log(res );
+    
+  //   this.feeds = res.data?.fodder_list
+  //   this.feedsList = this.feeds
+  //   this.loading = false;   
+  // })
+  //  this.stockExchange.companies_items(id).subscribe( res => {
+  //   console.log(res.data);
+    
+  //   this.companies= res.data
+  //   this.companiesList = this.companies
+  // })
+
   }
 
   localData(id:string, data:string,fod_id?:string,comp_id?:string) {

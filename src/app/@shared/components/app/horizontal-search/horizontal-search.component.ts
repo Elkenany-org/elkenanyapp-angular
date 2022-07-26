@@ -101,15 +101,18 @@ export class HorizontalSearchComponent implements OnChanges {
   
   }
 
-  selectOption(value: any, type?:string, name?:string) { //ex: value = animal , type = sector, name = بورصه الاعلاف
+  selectOption(value: any, type?:string,name?:string) { //ex: value = animal , type = sector, name = بورصه الاعلاف
 
 
     //   Search for id that inside options that inside controls 
     const id =this.data?.controls?.find(control => control.role == type)?.option?.find(option => ( option.type || option.name ) == value)?.id 
+    const title =this.data?.controls?.find(control => control.role == type)?.option?.find(option => ( option.type || option.name ) == value)?.name 
+
     let option:any= {
       id: id,
       name: value,
-      type: type 
+      type: type ,
+      title:title
       }
       this.newItemEvent.emit(option);
     }

@@ -31,6 +31,12 @@ export class StatisticsComponent implements OnInit {
   fillter = new Fillter();
   chart = new StatisticsChart();
   days:number=0
+
+  // all?: ChangesMember[];
+  // sixmonth?:ChangesMember[];
+  // threemonth?:ChangesMember[];
+  // onemonth?:ChangesMember[];
+
   ///////////////////////
   constructor(
     private statistics: StatisticsService,
@@ -148,9 +154,7 @@ export class StatisticsComponent implements OnInit {
       return;
     }
     let date = new Date();
-    let today =
-      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-
+    let today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     let from = this.subtractDays(days);
     this.getStatisticsData(this.type, from, today, '');
     console.log(this.type);

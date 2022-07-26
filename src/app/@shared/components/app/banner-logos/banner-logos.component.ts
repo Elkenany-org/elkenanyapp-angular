@@ -33,7 +33,7 @@ export class BannerLogosComponent implements OnInit {
       this.LogoConfig.banner =res as Logo[]
      })
 
-    
+
   }
   onClick(id:number) {
     this.route.navigate(['/companies-guide/poultry/companies_details','any',id])
