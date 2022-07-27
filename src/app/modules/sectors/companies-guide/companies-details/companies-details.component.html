@@ -30,7 +30,36 @@
         </article>
         <!-- End About Company -->
 
-  
+        <article class="cards company-market" >
+            <h2 class="main-title">البورصات</h2>
+            <!-- Start Slider -->
+            <article class="market slider">
+                <div class="container-fluid logos__holder">
+                    <section class="market-slider" dir='rtl' >
+
+                        <div class="row">
+                            <div class="item col-6" *ngFor="let stock of company?.localstock" >
+                                <a (click)="navigateV2(stock.id,'local')" class="logo-holder">
+                                    <img [src]="stock.image" alt="partner logo">
+                                  
+                                </a>
+                                {{stock.name}}
+                            </div>
+
+                            <div class="item col-6" *ngFor="let stock of company?.fodderstock">
+                                <a (click)="navigateV2(stock.id,'fodder')" class="logo-holder">
+                                        <img [src]="stock.image" alt="partner logo">
+                                       
+                                </a>
+                                {{stock.name}}
+                            </div>
+</div>
+                    </section>
+                </div>
+            </article>
+            <!-- End Slider -->
+        </article>
+
 
   
 
@@ -147,11 +176,11 @@
                             </span>
                         </p>
                         <div class="body">
-                            <div class="social__bar mb-3  text-center ">
+                            <div class="social__bar mb-3  text-center " width="10px" height="50px" >
 
                                 <a class="slider__nav__item youtube" *ngFor="let link of company?.social"
                                  [href]="link.social_link"
-                                 [ngClass]="{'youtube':link.social_name== 'يوتيوب','facebook':link.social_name== 'فيس بوك'}">
+                                 [ngClass]="{'youtube':link.social_name== 'يوتيوب','facebook':link.social_name== 'فيس بوك'}" target="_blank" >
                                     <i 
                                     [ngClass]="{'fab fa-facebook':link.social_name== 'فيس بوك','fab fa-youtube':link.social_name== 'يوتيوب'}">
                                         <img [src]="link.social_icon" alt="" srcset="">

@@ -13,7 +13,7 @@ public company?:company
   constructor(
    // private companiesGuideService: CompaniesGuideService,
     private route: ActivatedRoute,
-   // private router: Router, 
+   private router: Router, 
 
   ) { }
 
@@ -23,18 +23,19 @@ public company?:company
       this.company = data['resolve'].data 
     })
 
-
-    // this.route.params.subscribe( params => {
-       
-
-    //   this.companiesGuideService.comapny(params['id']).subscribe(res => {
-    //     console.log(res)
-    //     this.company= res.data
-  
-    //   })
-    // })
-
+console.log(this.company);
 
   }
 
+    navigateV2(id: number, type:string): void
+    {
+      this.route.params.subscribe( params => 
+        this.router.navigate([`/stock-exchange/${params['type']}/stock-exchange/${params['type']}/${type}/${id}`])
+        )
+        
+       
+    }
+
 }
+
+

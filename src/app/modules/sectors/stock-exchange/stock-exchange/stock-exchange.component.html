@@ -144,20 +144,26 @@
                 <span *ngIf="stock_Ex_Data?.columns[5]" class="title" >{{stock_Ex_Data?.columns[5]}}</span>
                 <span *ngIf="stock_Ex_Data?.columns[6]" class="title" >{{stock_Ex_Data?.columns[6]}}</span>
                 <span *ngIf="stock_Ex_Data?.columns[7]" class="title" >{{stock_Ex_Data?.columns[7]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[9]" class="title" >{{stock_Ex_Data?.columns[9]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[10]" class="title" >{{stock_Ex_Data?.columns[10]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[11]" class="title" >{{stock_Ex_Data?.columns[11]}}</span>
+                <span *ngIf="stock_Ex_Data?.columns[12]" class="title" >{{stock_Ex_Data?.columns[12]}}</span>
                 <span *ngIf="stock_Ex_Data?.columns[8]" class="title" >{{stock_Ex_Data?.columns[8]}}</span>
+
         </section>
         
         <!--  add row__shadow when rows length > = 3  -->
         <div class="table__body row__shadow">
             <!-- Start One Row    add ads class if ad  -->
-            <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart  d-lg-flex d-none': isLast}">
-                <a class="cell__container" [routerLink]="['/companies-guid/companies_details','no',member.mem_id]">
+            <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart  d-lg-flex d-none': isLast , 'ads':member.type}">
+    
+                <a class="cell__container ads" [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.mem_id]">
                     <div class="cell__content__with__image">
                         <img alt="logo"
                              class="image"
                              *ngIf="member.image"
                              [src]="member.image">
-                             <p class="cell__content">  {{member.name}}</p>
+                             <p class="name">  {{member.name}}</p>
                     </div>
                 </a>
 
@@ -196,7 +202,7 @@
 
                 <div class="wall" *ngIf="stock_Ex_Data?.columns[6]"></div>
                 <section class="cell__container"*ngIf="stock_Ex_Data?.columns[6]">
-                    <span class="cell__content" >{{member.change}}</span>
+                    <span class="cell__content" style="color: red">{{member.change}}</span>
                     <span class="cell__content">{{member.change_date}}</span>
 
                 </section>
@@ -207,9 +213,26 @@
                     <span class="data__content">{{member.price_status}}</span>
                 </section>
 
-                
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[9]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[9]">
+                    <span class="data__content">{{member.age}}</span>
+                </section>
 
-                              
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[10]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[10]">
+                    <span class="data__content">{{member.product_type}}</span>
+                </section>
+
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[11]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[11]">
+                    <span class="data__content">{{member.chick_type}}</span>
+                </section>
+
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[12]"></div>
+                <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[12]">
+                    <span class="data__content">{{member.weight_container}}</span>
+                </section>
+      
         
 
                 <div class="wall  "></div>

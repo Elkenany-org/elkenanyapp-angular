@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Fillter } from '@app/@shared/classes/filter';
 import { StatisticsChart } from '@shared/classes/drowShart.class';
 import { filter } from 'rxjs/operators';
+import { StockExchangeComponent } from '../../stock-exchange/stock-exchange.component';
 
 @Component({
   selector: 'app-statistics',
@@ -34,12 +35,14 @@ export class StatisticsMembersComponent implements OnInit {
   days:number=0
   constructor(private statistics: StatisticsService,
               private roure: ActivatedRoute,
-              private fb:FormBuilder) {}
+              private fb:FormBuilder,
+              ) {}
 
   ngOnInit(): void {
 
 
     this.h_search_form = Statistics_Search_Form
+    this.h_search_form.title=localStorage.getItem('title')
     this.fromToForm= this.fb.group({
       // country: [],
       from: [],

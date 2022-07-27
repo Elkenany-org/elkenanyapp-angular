@@ -111,11 +111,14 @@ export class HomeStockExchangeComponent implements OnInit  {
   }
 
 
-  
+
   navigateV2(data: {id: string, type:string}): void
   {
 
-     this.router.navigate([`/stock-exchange/poultry/stock-exchange/${this.type}/${data.type}/${data.id}`]);
+    // console.log(params)
+         this.router.navigate([`/stock-exchange/${this.type}/stock-exchange/${this.type}/${data.type}/${data.id}`])
+
+
   }
 
 }
