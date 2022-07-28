@@ -55,6 +55,7 @@ export class CoGuideHomeComponent implements OnInit {
     })
     this.route.params.subscribe( params => {
       this.type = params['type']
+      this.filterData['sector'] = params['type']
 
       this.companiesGuideService.Filter_list(params['type']).subscribe((res:ApiResponse<CompaniesFilterList>) => {
         this.typeAr= res.data?.sectors.find((i:any) =>i.selected ==1)?.name
@@ -67,14 +68,20 @@ export class CoGuideHomeComponent implements OnInit {
   }
 
   filter(value:any) {
+    let sort='0';
     this.route.params.subscribe( params => {
-      this.filterData['sector'] = params['type']
+      // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
           this.filterData['sector'] = value.name
             break;
         case "sort":
           this.filterData['sort'] = value.id 
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).selected=1
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
+
+          sort = this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).value
+
           break;
         case "search":
           this.filterData['search'] = value.name 
@@ -83,7 +90,7 @@ export class CoGuideHomeComponent implements OnInit {
             // 
             break;
      }
-     this.companiesGuideService.CompaniesHome(this.filterData['sector'], this.filterData['sort'], this.filterData['search'] ).subscribe( res => {
+     this.companiesGuideService.CompaniesHome(this.filterData['sector'], sort, this.filterData['search'] ).subscribe( res => {
         this.Companies_Home_Data = res  as CompaniesHome
         this.carousel_banner.banner = this.Companies_Home_Data .banners
         this.carousel_logos.banner = this.Companies_Home_Data .logos

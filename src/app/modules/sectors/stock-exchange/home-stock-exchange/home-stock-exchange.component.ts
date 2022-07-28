@@ -59,6 +59,7 @@ export class HomeStockExchangeComponent implements OnInit  {
     })
     this.route.params.subscribe( params => {
       this.type = params['type']
+      this.filterData['sector'] = params['type']
 
       this.stockExchange.Filter_list(params['type']).subscribe((res:ApiResponse<FilterList>) => {
         //override data to match the data format of horizontal components
@@ -73,15 +74,28 @@ export class HomeStockExchangeComponent implements OnInit  {
   }
 
   filter(value:any) {
-
+let sort='0';
     this.route.params.subscribe( params => {
-      this.filterData['sector'] = params['type']
+      // console.log(params);
+      
+      // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
           this.filterData['sector'] = value.name
+          this.type = this.filterData['sector']
+          // this.location.go(`stock-exchange/${this.type }`);
+          this.location.replaceState(`stock-exchange/${this.type }`)
+          // this.router.navigate(['/stock-exchange',value.name])
           break;
         case "sort":
-          this.filterData['sort'] = value.id 
+            this.filterData['sort'] = value.id 
+            this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).selected=1
+            this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
+
+            sort = this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).value
+
+           console.log(this.h_search_form.controls.find((i:any) => i.role === "sort").option);
+
           break;
         case "search":
           this.filterData['search'] = value.name 
@@ -90,16 +104,17 @@ export class HomeStockExchangeComponent implements OnInit  {
           break;
      }
     })
+//  console.log( this.h_search_form.controls.find((i:any) => i.role === "sort").option);
 
-      this.stockExchange.GetStockExchangeV2( this.filterData['sector'],  this.filterData['sort'],this.filterData['search']).subscribe( res => {
+      this.stockExchange.GetStockExchangeV2( this.filterData['sector'],  sort ,this.filterData['search']).subscribe( res => {
       this.stock_Ex_Data = res as StockExchange
       this.BannerLogoService.setBanner(this.stock_Ex_Data.banners);
       this.BannerLogoService.setLogo(this.stock_Ex_Data.logos);
       this.h_search_form.controls.find((i:any) => i.role === "sector").option = this.stock_Ex_Data.sectors
+
       this.loading = false;
       // change url params without reloade with new state
-      this.type = this.filterData['sector']
-      this.location.go(`stock-exchange/${this.type }`);
+console.log(this.stock_Ex_Data);
 
       })
 

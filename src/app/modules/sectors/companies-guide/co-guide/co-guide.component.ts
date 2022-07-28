@@ -41,10 +41,10 @@ export class CoGuideComponent implements OnInit {
     section_id:"",
     sub_id:"",
     sort:"",
-    country_id:"1",
+    country_id:"",
     city_id:"",
     search: "",
-    page:'1'
+    page:''
   }
   
   constructor(
@@ -96,9 +96,15 @@ export class CoGuideComponent implements OnInit {
   filter(option:any) {
     let sectorId: any 
     let sectorType 
+    let sort='0'
     this.route.params.subscribe( params => {
+      console.log(params);
+      
       if(!this.filterData["sub_id"]) {
-        this.filterData["sub_id"]= this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.type === params['type']).id
+        this.filterData["sub_id"]= params['id']
+      }
+      if(!this.filterData["section_id"]) {
+        this.filterData["section_id"]= this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.type === params['type']).id
       }
       // 
       switch ( option.type ) {
@@ -107,9 +113,21 @@ export class CoGuideComponent implements OnInit {
             break;
         case "sector":
           this.filterData["sub_id"] = option.id 
+          // sectorType = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
+          // .option.find((i:any) => i.id === this.filterData['sub_id']).type
+          // sectorId = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
+          // .option.find((i:any) => i.id === this.filterData['sub_id']).id
+          // this.location.go(`companies-guide/${sectorType}/companies/${sectorType}/${sectorId}`);
+          // console.log(sectorType);
+          
           break;
         case "sort":
           this.filterData["sort"] = option.id
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === option.id).selected=1
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== option.id).selected=0
+
+          sort = this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === option.id).value
+          this.filterData["sort"]=sort
             break;
         case "countries":
           this.filterData["country_id"] = option.id 
@@ -125,32 +143,32 @@ export class CoGuideComponent implements OnInit {
             break;
      }
      
-    sectorType = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
-    .option.find((i:any) => i.id === this.filterData['sub_id']).type
-    sectorId = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
-    .option.find((i:any) => i.id === this.filterData['sub_id']).id
+    // sectorType = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
+    // .option.find((i:any) => i.id === this.filterData['sub_id']).type
+    // sectorId = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
+    // .option.find((i:any) => i.id === this.filterData['sub_id']).id
   if(option.type == 'sector') {
     this.router.navigate([`companies-guide/${option.name}`]);
 
   }
-  else{
-    this.companiesGuideService.co_Filter_listV2(
-      this.filterData["sub_id"],
-      this.filterData["country_id"] ,
-      this.filterData["city_id"],
-      +this.filterData["sort"]).subscribe((res:ApiResponse<FilterListCompanies>) => {
-      //override data to match the data format of horizontal components
+  // else{
+  //   this.companiesGuideService.co_Filter_listV2(
+  //     this.filterData["sub_id"],
+  //     this.filterData["country_id"] ,
+  //     this.filterData["city_id"],
+  //     +this.filterData["sort"]).subscribe((res:ApiResponse<FilterListCompanies>) => {
+  //     //override data to match the data format of horizontal components
 
-        this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
-        this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
-        this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
+  //       this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
+  //       this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
+  //       this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
+  //       this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         
-        // this.h_search_form.controls.find((i:any) => i.role === "section").option =   res.data?.sub_sections;
-    }) 
-  }
+  //       // this.h_search_form.controls.find((i:any) => i.role === "section").option =   res.data?.sub_sections;
+  //   }) 
+  // }
       this.companiesGuideService.Companiesv2(this.filterData).subscribe( res => {
-        this.typeAr= res.data?.sectors.find((i:any) =>i.selected ==1)?.name
+        // this.typeAr= option.title
 
         this.Companies = res.data  as Companies
         this.carousel_banner.banner = res.data?.banners  
@@ -160,12 +178,14 @@ export class CoGuideComponent implements OnInit {
         // change url params without reloade with new statep
     
         })
-        this.location.go(`companies-guide/${sectorType}/companies/${sectorType}/${sectorId}`);
+console.log(this.filterData);
+
+        // this.location.go(`companies-guide/${sectorType}/companies/${sectorType}/${sectorId}`);
     })
   }
   
   navigate(id: string): void{
-    this.router.navigate([`companies-guide/poultry/companies_details/poultry/${id}`]);
+    this.router.navigate([`companies-guide/poultry/companies_details/${this.type}/${id}`]);
   }
 
 

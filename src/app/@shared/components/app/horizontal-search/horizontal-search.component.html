@@ -14,8 +14,15 @@
             <section [class]="data?.class" *ngFor="let control of data?.controls">
                 <i [class]="control.icon"></i>
                 <h4 class="title">{{control.name}}:</h4>
+                <input  [class]="control.class"  *ngIf="control.type === 'search'"  id="search" [type]="control.type" placeholder="بحث"
+                        (input)="selectOption($any($event.target).value,control.role)" >
+
+                <!-- <i [class]="control.icon"></i>
+                <h4 class="title">{{control.name}}:</h4> -->
                 <input  [class]="control.class"  *ngIf="control.type === 'date' ||control.type === 'text'"  id="searchInput" [type]="control.type"
                         (change)="selectOption($any($event.target).value,control.role)" >
+
+
                 <select (change)="selectOption($any($event.target).value,control.role)"
                 [class]="control.class"  *ngIf="control.type === 'select'">
                   <option   

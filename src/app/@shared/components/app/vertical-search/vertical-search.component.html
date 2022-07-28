@@ -27,13 +27,15 @@
         <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
              id="collapseSearch">
             <div class="card-body">
-                <input class="search__input" placeholder="بحث" type="search">
+                <input class="search__input" placeholder="بحث" type="search" (input)="selectOption($any($event.target).value,'search')">
             </div>
         </div>
     </div>
      
+
+    
         <div *ngFor="let control of data?.controls" >
-            <div class="card" *ngIf="control.type !== 'text'">
+            <div class="card" *ngIf="control.type !== 'text' && control.type !== 'search' && control.type !== 'a'">
                 <div class="card-header" id="headingSearch">
                     <h5 class="mb-0">
                         <button  aria-controls="collapseSearch" aria-expanded="false"
@@ -52,7 +54,11 @@
                 <div  [ngClass]="{'show':s1.isOpen}" aria-labelledby="dropdownMenuButton"
                       class="collapse" data-parent="#accordion">
                     <div class="card-body">
-                        <ul *ngIf="control.type === 'select' && control.name !== 'text'">
+                        <!-- <h4 class="title">{{control.name}}:</h4> -->
+
+
+
+                        <ul *ngIf="control.type === 'select' && control.name !== 'text'&& control.role !== 'sort'">
                             <li *ngFor="let option of control.option">  
                                 <a>
                                     <input 
@@ -66,8 +72,25 @@
                                 </a>
                             </li>
     
-                        </ul>
+                        </ul> 
                        
+                        <ul *ngIf="control.type === 'select' && control.role === 'sort'">
+                            <li *ngFor="let option of control.option">  
+                                <a>
+                                    <input 
+                                        (change)="selectOption(option.type || option.name ||option.value,'sort')"
+                                        [value]="(option.type || option.name )"
+                                        [checked]="option.selected"
+                                        checked id="tab-2-val-1" name="tab-2-values"
+                                        type="radio"
+                                        value="">
+                                    <label for="tab-2-val-1">{{option.name}}</label>
+                                </a>
+                            </li>
+    
+                        </ul> 
+
+
                         <a *ngIf="control.type === 'a' " class="stats__btn" [routerLink]="control.routerLink">{{control.name}}</a>
                     
                     </div>

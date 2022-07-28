@@ -115,7 +115,10 @@ export class HorizontalSearchComponent implements OnChanges {
       title:title
       }
       this.newItemEvent.emit(option);
+          console.log(option);
+
     }
+    
   }
 
 

@@ -60,7 +60,7 @@ export class CompaniesGuideService {
     return this.http.get<ApiResponse<FilterListCompanies>>(`${env.ApiUrl}/guide/filter-guide-companies?sector_id=${sector_id}&country_id=1`);
   }
 
-  co_Filter_listV2(sector_id?: string ,country_id="1",city_id?:string,sort?:number): Observable<ApiResponse<FilterListCompanies>> { //Home
+  co_Filter_listV2(sector_id?: string ,country_id?:string,city_id?:string,sort?:number): Observable<ApiResponse<FilterListCompanies>> { //Home
     return this.http.get<ApiResponse<FilterListCompanies>>(`${env.ApiUrl}/guide/filter-guide-companies?sector_id=${sector_id}&country_id=${country_id}&city_id=${city_id}/&sort=${sort}`);
   }
   // ----------------------------------------- < Company > -----------------------------------------------//

@@ -9,7 +9,7 @@ export const co_Search_Form_Data: JsonFormData =
     controls: [
       {
         name: "بحث",
-        type: "text",
+        type: "search",
         role:"search",
         class: "form-control",
         value: "",
