@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router,  } from '@angular/router';
 
 import { Banner_test, logo_test } from '@app/modules/home/data';
@@ -16,6 +16,8 @@ import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 })
 export class CoGuideHomeComponent implements OnInit {
 
+    @Output() complenght = new EventEmitter<string>();
+    
   public loading: boolean = true
   public carousel_banner?: any = Banner_test  
   public carousel_logos:any = logo_test      
@@ -35,6 +37,7 @@ export class CoGuideHomeComponent implements OnInit {
     private router: Router,  
     private activatedRoute: ActivatedRoute,
     private location: Location) { }
+
 
   ngOnInit(): void {
 
@@ -64,7 +67,8 @@ export class CoGuideHomeComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
       }) 
-    })    
+    })
+
   }
 
   filter(value:any) {
@@ -106,6 +110,9 @@ export class CoGuideHomeComponent implements OnInit {
   }
   navigate(id: string): void
   {
+    console.log(this.Companies_Home_Data?.sub_sections?.find(i=>i.id == parseInt(id) )?.companies_count);
+    
+    // this.complenght.emit(this.Companies_Home_Data?.sub_sections.length );
     this.router.navigate([`companies-guide/${this.type}/companies/${this.type}/${id}`]);
   }
 }

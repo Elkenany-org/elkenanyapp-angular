@@ -13,8 +13,52 @@
                 <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
             </section>
 
+
             <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
+                
+                <section class="title-box">
+                    <h2 class="title">{{typeAr}}</h2>
+                    <span class="sections-number" >{{ magazines?.length}} مجلة</span>
+                </section>
+                
                 <app-card (navigation)="navigate($event)" [data]="magazines" [loading] ="loading" [flag]=false></app-card>
+            
+                <div class="row pagination__container">
+                    <div class="col-12">
+                        <!-- <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item" (click)="next_page(page.current_page-1)">
+                                    <a aria-label="Previous" class="page-link">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"
+                                
+                                *ngFor="let _ of [].constructor(page.last_page); let i = index"><a class="page-link" (click)="next_page(i+1)"
+                                [ngStyle]="{'background-color': page.current_page == i+1? '#FFAA00' : '' }">{{i+1}}</a></li>
+                                <li class="page-item" (click)="next_page(page.current_page+1)">
+                                    <a aria-label="Next" class="page-link">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav> -->
+                   
+                        <div class="pagination">
+                            <ul>
+                                <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
+                            </ul>
+                            <pagination-controls                       
+                            [maxSize]="7"
+                            previousLabel=""
+                            nextLabel=""
+                            (click)="next_page(page.current_page)"
+                             (pageChange)="page.current_page = $event
+                             "></pagination-controls>
+                        </div>
+                   
+                    </div>
+                </div> 
             </section>
 
         </div>

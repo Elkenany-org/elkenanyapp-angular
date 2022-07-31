@@ -12,8 +12,8 @@ export class MagazineService {
   constructor(private http: HttpClient) { }
 
 
-  magazines(type: string, sort: number, city_id: string, search: string):Observable<ApiResponse<Magazines>>{
-    return this.http.get<ApiResponse<Magazines>>(`${env.ApiUrl}/magazine/magazines?type=${type}&sort=${sort}&city_id=${city_id}&search=${search}`)
+  magazines(type: string, sort: number, city_id: string, search: string,page:string):Observable<ApiResponse<Magazines>>{
+    return this.http.get<ApiResponse<Magazines>>(`${env.ApiUrl}/magazine/magazines?type=${type}&sort=${sort}&city_id=${city_id}&search=${search}&page=${page}`)
   }
 
   magazine(id: number):Observable<ApiResponse<Magazine>>{

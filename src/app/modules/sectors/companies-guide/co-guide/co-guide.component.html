@@ -46,7 +46,10 @@
             <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
                 <section class="title-box">
                     <h2 class="title">{{typeAr}}</h2>
-                    <span class="sections-number">{{     (Companies?.data?.length || 1) *page.last_page}} شركة</span>
+                    <!-- <span class="sections-number">{{     (Companies?.data?.length || 1) *page.last_page}} شركة</span> -->
+                    <span class="sections-number" *ngIf="page.last_page > 1">{{     ((Companies?.data?.length || 1) * (page.last_page-1) ) + comLength}} شركة</span>
+                    <span class="sections-number" *ngIf="page.last_page == 1">{{Companies?.data?.length}} شركة</span>
+
                 </section>
                 <app-card  (navigation)="navigate($event)" [data]="Companies?.compsort" [flag]=true [loading] ="loading"></app-card>
         

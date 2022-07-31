@@ -35,7 +35,7 @@
 
     
         <div *ngFor="let control of data?.controls" >
-            <div class="card" *ngIf="control.type !== 'text' && control.type !== 'search' && control.type !== 'a'">
+            <div class="card" *ngIf="control.type !== 'text' && control.type !== 'search' && control.type !== 'a' && control.role !== 'countries' && control.role !== 'cities'">
                 <div class="card-header" id="headingSearch">
                     <h5 class="mb-0">
                         <button  aria-controls="collapseSearch" aria-expanded="false"
@@ -58,7 +58,7 @@
 
 
 
-                        <ul *ngIf="control.type === 'select' && control.name !== 'text'&& control.role !== 'sort'">
+                        <ul *ngIf="control.type === 'select' && control.name !== 'text'&& control.role !== 'sort' && control.role !== 'subsection' ">
                             <li *ngFor="let option of control.option">  
                                 <a>
                                     <input 
@@ -74,6 +74,25 @@
     
                         </ul> 
                        
+                        <!-- <div class="card-body"> -->
+                                                    <ul *ngIf="control.role === 'subsection'" class="long__list sub_sections">
+                            <li *ngFor="let option of control.option">  
+                                <a>
+                                    <input 
+                                        (change)="selectOption(option.type || option.value ||option.name,control.role)"
+                                        [value]="(option.type || option.name )"
+                                        [checked]="option.selected"
+                                        checked id="tab-3-val-1" name="tab-3-values"
+                                        type="radio"
+                                        value="">
+                                    <label for="tab-3-val-1">{{option.name}}</label>
+                                </a>
+                            </li>
+    
+                        </ul> 
+                        <!-- </div> -->
+
+
                         <ul *ngIf="control.type === 'select' && control.role === 'sort'">
                             <li *ngFor="let option of control.option">  
                                 <a>

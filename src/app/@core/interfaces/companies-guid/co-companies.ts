@@ -31,6 +31,18 @@ export const co_Search_Form_Data: JsonFormData =
         }
       },
       {
+        name: "الاقسام",
+        type: "select",
+        role: "subsection",
+        class: "form-control",
+        value: "",
+        icon:"fas fa-puzzle-piece",
+        option: [],
+        validators: {
+          required: false,
+        }
+      },
+      {
         name: "الدول",
         type: "select",
         role:"countries",

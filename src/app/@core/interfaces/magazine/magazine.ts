@@ -65,13 +65,13 @@ export interface Mobile {
 
 export const Magazine_Search_Form: JsonFormData  =
 {   
-  title: "دليل الشركات",
+  title: "الدلائل والمجلات",
   class:"tabs tabs-4",
     controls: [
       {
         name: "بحث",
-        type: "text",
-        role:"",
+        type: "search",
+        role:"search",
         class: "form-control",
         value: "",
         icon:"",
