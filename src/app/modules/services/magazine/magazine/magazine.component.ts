@@ -61,7 +61,18 @@ export class MagazineComponent implements OnInit {
 
     })
 
-    
+    if(this.page.last_page > 1){
+      this.magazine.magazines(this.filterData['sector'],0,'','',this.page.last_page+''
+      ).subscribe(res => {
+        // this.comLength = res.data?.data.length!
+          this.comLength = (res.data?.data.length!)
+        // else{
+        //   this.comLength =(this.Companies?.data.length!)
+        // }
+        console.log(this.comLength);
+       })
+     }
+
     
   }
 
@@ -116,12 +127,23 @@ export class MagazineComponent implements OnInit {
                               this.page.current_page = res.data?.current_page!
                               this.page.last_page =  res.data?.last_page!
        this.magazines= res.data?.data
+            console.log(this.page.last_page);
+            if(this.page.last_page > 1){
+              this.magazine.magazines(this.filterData['sector'],0,'','',this.page.last_page+''
+              ).subscribe(res => {
+                  this.comLength = (res.data?.data.length!)
+                console.log(this.comLength);
+              })
+            }
      })
+
+     
+
 
   }
   navigate(id: string): void
   {
-    this.router.navigate([`/magazine/details/${id}`]);
+    this.router.navigate([`magazine/details/${id}`]);
   }
 
   next_page(page:number):void{
@@ -129,8 +151,9 @@ export class MagazineComponent implements OnInit {
 
     this.magazine.magazines(this.filterData['sector'],
     +this.filterData['sort'],
-    this.filterData['cities'],this.filterData['search'],'2').subscribe(res => {
+    this.filterData['cities'],this.filterData['search'],this.filterData["page"]).subscribe(res => {
     this.magazines= res.data?.data
+
 })
 console.log(this.magazines);
 

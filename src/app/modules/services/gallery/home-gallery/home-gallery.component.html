@@ -8,11 +8,11 @@
     <article class="container global__container">
         <div class="row">
 
-            <section class="right main__right__container col-lg-4 col-md-12 col-sm-12">
+            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
                 <app-vertical-search  (newItemEvent)="filter($event)" [data]="search_form" ></app-vertical-search>
             </section>
 
-            <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
+            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
                 <app-card (navigation)="navigate($event)" [data]="galleryData" [loading] ="loading" [flag]=false></app-card>
                 <!-- <app-navigation></app-navigation> -->
                 <div class="row pagination__container">

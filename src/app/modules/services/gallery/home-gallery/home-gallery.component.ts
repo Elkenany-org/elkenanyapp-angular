@@ -44,7 +44,7 @@ export class HomeGalleryComponent implements OnInit {
       this.galleryData= data['resolve'].data?.data 
       this.bannrrsLogos.setBanner(data['resolve'].data?.banners as Banner[])
       this.bannrrsLogos.setLogo(data['resolve'].data?.logos as Logo[])
-      this.galleryService.filter_list('poultry',1).subscribe((res:ApiResponse<FilterList>) => {
+      this.galleryService.filter_list('poultry','1').subscribe((res:ApiResponse<FilterList>) => {
         // override data to match the data format of horizontal components
         this.search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
@@ -59,18 +59,42 @@ export class HomeGalleryComponent implements OnInit {
   }
 
   filter(value:any) {
+    let sort='0'
+
     switch ( value.type ) {
       case "sector":
+        console.log(this.filterData['sector']);
+        
+        this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id === value.id).selected=1
+        this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id !== value.id).selected=0
         this.filterData['sector'] = value.name
+
           break;
       case "countries":
         this.filterData['countries'] = value.id
+
+        this.galleryService.filter_list(this.filterData['sector'],this.filterData['countries']).subscribe((res:ApiResponse<FilterList>) => {
+          // override data to match the data format of horizontal components
+          this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
+        }) 
           break;
       case "cities":
         this.filterData['cities'] = value.id
           break;
       case "sort":
-        this.filterData['sort'] = value.id 
+        this.filterData["sort"] = value.id
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).selected=1
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
+        sort = this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).value
+        console.log(value.id);
+        
+        if(value.id=='1'){
+          sort='0'
+        }
+        else if(value.id=='2'){
+          sort='2'
+        }
+        this.filterData["sort"]=sort
         break;
       case "search":
         this.filterData['search'] = value.name 
@@ -86,6 +110,8 @@ export class HomeGalleryComponent implements OnInit {
     this.galleryData= res.data?.data 
     this.bannrrsLogos.setBanner(res.data?.banners as Banner[])
     this.bannrrsLogos.setLogo(res.data?.logos as Logo[])
+    console.log(res.data);
+
    })
    this.location.go(`gallery/${this.filterData['sector']}`);
 

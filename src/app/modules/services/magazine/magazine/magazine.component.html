@@ -9,16 +9,18 @@
     <article class="container global__container">
         <div class="row">
 
-            <section class="right main__right__container col-lg-4 col-md-12 col-sm-12">
+            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
                 <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
             </section>
 
 
-            <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
+            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
                 
                 <section class="title-box">
                     <h2 class="title">{{typeAr}}</h2>
-                    <span class="sections-number" >{{ magazines?.length}} مجلة</span>
+                    <span class="sections-number" *ngIf="page.last_page > 1">{{     ((10) * (page.last_page-1) ) + comLength}} مجلة</span>
+                    <span class="sections-number" *ngIf="page.last_page == 1">{{magazines?.length}} مجلة</span>
+
                 </section>
                 
                 <app-card (navigation)="navigate($event)" [data]="magazines" [loading] ="loading" [flag]=false></app-card>

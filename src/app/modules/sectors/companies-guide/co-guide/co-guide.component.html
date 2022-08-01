@@ -38,16 +38,16 @@
     <article class="container global__container">
         <div class="row">
              <!-- Start Right Section -->
-            <section class="right main__right__container col-lg-4 col-md-12 col-sm-12">
+            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
                 <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
             </section>
             <!-- End Right Section -->
             <!-- Start Left Section -->
-            <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
+            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
                 <section class="title-box">
                     <h2 class="title">{{typeAr}}</h2>
                     <!-- <span class="sections-number">{{     (Companies?.data?.length || 1) *page.last_page}} شركة</span> -->
-                    <span class="sections-number" *ngIf="page.last_page > 1">{{     ((Companies?.data?.length || 1) * (page.last_page-1) ) + comLength}} شركة</span>
+                    <span class="sections-number" *ngIf="page.last_page > 1">{{     ((10) * (page.last_page-1) ) + comLength}} شركة</span>
                     <span class="sections-number" *ngIf="page.last_page == 1">{{Companies?.data?.length}} شركة</span>
 
                 </section>
@@ -78,7 +78,8 @@
                    
                         <div class="pagination">
                             <ul>
-                                <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
+                                <li *ngFor="let item of [].constructor
+                                (page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
                             </ul>
                             <pagination-controls                       
                             [maxSize]="7"

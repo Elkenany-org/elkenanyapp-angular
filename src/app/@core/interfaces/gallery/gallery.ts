@@ -37,8 +37,8 @@ export interface GallriesData {
     controls: [
       {
         name: "بحث",
-        type: "text",
-        role:"",
+        type: "search",
+        role:"search",
         class: "form-control",
         value: "",
         icon:"fas fa-search",
@@ -58,18 +58,7 @@ export interface GallriesData {
           required: false,
         }
       },
-      {
-        name: "المدينة",
-        type: "select",
-        role: "cities",
-        class: "form-control",
-        value: "",
-        icon:"fas fa-map-marker-alt",
-        option: [],
-        validators: {
-          required: false,
-        }
-      },      {
+     {
         name: "الدول",
         type: "select",
         role: "countries",
@@ -80,7 +69,18 @@ export interface GallriesData {
         validators: {
           required: false,
         }
-      },
+      },      {
+        name: "المدينة",
+        type: "select",
+        role: "cities",
+        class: "form-control",
+        value: "",
+        icon:"fas fa-map-marker-alt",
+        option: [],
+        validators: {
+          required: false,
+        }
+      }, 
       {
         name: "الترتيب",
         type: "select",

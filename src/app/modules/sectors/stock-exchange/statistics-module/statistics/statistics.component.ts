@@ -54,7 +54,7 @@ export class StatisticsComponent implements OnInit {
       console.log(data['resolve']);
       this.StatisticsMember = data['resolve'].data;
       this.StatisticsMemberSlected = data['resolve'].data?.changes_subs;
-      this.chartOptions = this.chart.drowShart(
+        this.chartOptions = this.chart.drowShart(
         data['resolve'].data!.changes_subs
       );
     });

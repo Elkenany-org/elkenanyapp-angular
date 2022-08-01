@@ -5,7 +5,7 @@ import { JsonFormData } from "@app/@core/interfaces/_app/horizontal-search"
  
 export const News_Search_Form_Data: JsonFormData  =
 {   
-  title:"لأخبار",
+  title:"الأخبار",
   class:"tabs tabs-2",
     controls: [
       {

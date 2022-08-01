@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ToasterService } from '@app/@core/services/toastr.service';
 import {delay} from 'rxjs/operators';
 
@@ -11,9 +12,24 @@ export class AppComponent  implements OnInit {
   loading: boolean = false;
 
    toggleMenu = false;
+  pageYoffset: number | undefined;
+  offsetFlag = true;
 
-constructor(private _loading: ToasterService){}
+constructor(private _loading: ToasterService,private scroll: ViewportScroller){}
 
+@HostListener('window:scroll', ['$event']) onScroll(event:any){
+  this.pageYoffset = window.pageYOffset;
+  // console.log(this.pageYoffset);
+  if(window.pageYOffset < 100 )
+  this.offsetFlag = true;
+ else
+   this.offsetFlag = false;
+
+}
+
+scrollToTop(){
+  this.scroll.scrollToPosition([0,0]);
+}
 onToggleMenu(){
     if(this.toggleMenu === true){
        this.toggleMenu = false;
@@ -32,6 +48,28 @@ onToggleMenu(){
         this.loading = loading;
       });
   }
+
+
+  // scrollToTop(){
+  //   window.scroll(0,0);
+  //   }
+
+
+  //  scrollFunction() {
+  //     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  //       document.getElementById('myBtn')?.setAttribute("style","display:block");
+  //     } else {
+  //       document.getElementById('myBtn')?.setAttribute("style","display:none")
+  //           }
+  //   }
+    
+  //   window.onscroll = function() {      
+  //     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  //     document.getElementById('myBtn')?.setAttribute("style","display:block");
+  //   } else {
+  //     document.getElementById('myBtn')?.setAttribute("style","display:none")
+  //         }
+  // }
 
 
 

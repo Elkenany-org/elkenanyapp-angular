@@ -1,4 +1,5 @@
-<section class="sidebar__sticky">
+
+<section class="sidebar__sticky ">
     <h2 
     
     (click)="ShowHideContent()"
@@ -75,7 +76,7 @@
                         </ul> 
                        
                         <!-- <div class="card-body"> -->
-                                                    <ul *ngIf="control.role === 'subsection'" class="long__list sub_sections">
+                        <ul *ngIf="control.role === 'subsection'" class="long__list sub_sections">
                             <li *ngFor="let option of control.option">  
                                 <a>
                                     <input 
@@ -122,4 +123,3 @@
 
     </div> 
 </section>
-

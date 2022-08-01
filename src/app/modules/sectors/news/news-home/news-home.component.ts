@@ -75,7 +75,7 @@ export class NewsHomeComponent implements OnInit {
   }
 
   filter(value:any) {
-
+    this.filterData['search']=''
     this.route.params.subscribe( params => {
       this.filterData['sector'] = params['type']
       switch ( value.type ) {
@@ -84,17 +84,23 @@ export class NewsHomeComponent implements OnInit {
           break;
         case "sort":
           this.filterData['sort'] = value.id 
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).selected=1
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
           break;
+          case "search":
+            this.filterData['search'] = value.name 
+            break;
         default: 
           break;
      }
     })
-    this.news.all_news(this.filterData['sector'],+this.filterData['sort']).subscribe(res => {
+    this.news.all_news(this.filterData['sector'],+this.filterData['sort'],this.filterData['search'],1).subscribe(res => {
       console.log(res)
       this.News= res.data?.data 
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sections
+
       this.location.go(`news/${ this.filterData['sector'] }`);
 
 

@@ -120,7 +120,7 @@ export let Home_Stock_Search_Form_Data: JsonFormData =
         name: "احصائيات",
         label: "Size",
         class:"stats__btn",
-        role:"sort",
+        role:"statistics",
         value: "",
         icon:"fas fa-poll",
         type: "a",

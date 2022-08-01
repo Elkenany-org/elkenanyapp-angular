@@ -17,7 +17,7 @@ export class GallaryService {
     return this.http.get<ApiResponse<GallriesData>>(`${env.ApiUrl}/showes/all-showes?type=${Data['sector']}&city_id=${Data['cities']}&sort=${Data['sort']}&search=${Data['search']}&country_id=${Data['countries']}&page=${Data['page']}`)
   }
 
-  filter_list(type:string, country_id:number):Observable<ApiResponse<FilterList>> {
+  filter_list(type:string, country_id:string):Observable<ApiResponse<FilterList>> {
     return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/showes/filter-showes?type=${type}&country_id=${country_id}`)
   }
 
