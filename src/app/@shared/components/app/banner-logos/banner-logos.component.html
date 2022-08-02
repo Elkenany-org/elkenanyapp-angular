@@ -45,20 +45,19 @@
                 >
 
                 <div ngxSlickItem *ngFor="let slide of LogoConfig.banner;let i=index;" class="slide">
-                    
+                        
                     <div class="item">
-                         <div class="wall ms-4" ></div>
+
+                         <div *ngIf="LogoConfig.banner.length > 1 && i != LogoConfig.banner.length-1 && i != 3 && i != 7 && i != 11" class="wall ms-4" ></div>
 
                     <a class="logo-holder" target="_blank" href="{{ slide.link}}">
 
                         <img alt="partner logo" [class]="LogoConfig.config.class"
                         src="{{ slide.image }}" style="max-height: 450px;">
                         
-
                     </a>
-
                     </div>
-
+                    
                 </div>
                 </ngx-slick-carousel>
                 

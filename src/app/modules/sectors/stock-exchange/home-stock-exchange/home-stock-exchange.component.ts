@@ -55,6 +55,8 @@ export class HomeStockExchangeComponent implements OnInit  {
       this.stock_Ex_Data = res['resolve']  as StockExchange
       this.BannerLogoService.setBanner(res['resolve'].banners);
       this.BannerLogoService.setLogo(res['resolve'].logos);
+
+      
       this.loading = false;      
     })
     this.route.params.subscribe( params => {
@@ -65,6 +67,9 @@ export class HomeStockExchangeComponent implements OnInit  {
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+
       }) 
     })   
     

@@ -10,7 +10,8 @@ import { Location } from '@angular/common';
 import { CompaniesGuideService } from '../../../../@core/services/modules/companies-guide/companies-guide.service';
 import { Companies, co_Search_Form_Data, FilterListCompanies } from '@app/@core/interfaces/companies-guid/co-companies';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
-import { CoGuideHomeComponent } from '../co-guide-home/co-guide-home.component';
+import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
+
 @Component({
   selector: 'app-co-guide',
   templateUrl: './co-guide.component.html',
@@ -20,7 +21,7 @@ import { CoGuideHomeComponent } from '../co-guide-home/co-guide-home.component';
 })
 export class CoGuideComponent implements OnInit {
 
-  public loading: boolean = true
+  public loading: boolean = false
   public carousel_banner?: any = Banner_test  
   public carousel_logos:any = logo_test      
   public h_search_form: JsonFormData | any 
@@ -55,7 +56,7 @@ export class CoGuideComponent implements OnInit {
     private router: Router,   
     private activatedRoute: ActivatedRoute,
     private location: Location,
-  ) { }
+    private BannerLogoService:BannersLogoservice) { }
 
   ngOnInit(): void {
 
@@ -70,8 +71,13 @@ export class CoGuideComponent implements OnInit {
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
        this.Companies = res['resolve'].data  as Companies
-       this.carousel_banner.banner = res['resolve'].banners
-       this.carousel_logos.banner = res['resolve'].logos
+      //  this.carousel_banner.banner = res['resolve'].banners
+      //  this.carousel_logos.banner = res['resolve'].logos
+       this.BannerLogoService.setBanner(res['resolve'].data.banners);
+       this.BannerLogoService.setLogo(res['resolve'].data.logos);
+      //  console.log('???????');
+      
+      //  console.log(res['resolve'].banners);
        this.loading = false;    
       //  this.comLength=this.Companies.l     
       //  console.log(this.Companies.data);
@@ -104,6 +110,9 @@ export class CoGuideComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id != params['id']).selected=0
 
         this.filterData["section_id"]= this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.type === params['type']).id
+
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
 
       }) 
     })
@@ -145,7 +154,7 @@ export class CoGuideComponent implements OnInit {
   filter(option:any) {
     let sectorId: any 
     let sectorType 
-    let sort='0'
+    let sort='2'
     this.route.params.subscribe( params => {
       console.log(params);
       
@@ -253,6 +262,8 @@ export class CoGuideComponent implements OnInit {
         this.Companies = res.data  as Companies
         this.carousel_banner.banner = res.data?.banners  
         this.carousel_logos.banner = res.data?.logos
+        this.BannerLogoService.setBanner(res.data?.banners!);
+        this.BannerLogoService.setLogo(res.data?.logos!);
         this.loading = false;
         // this.comLength = this.Companies.data.length!
         // change url params without reloade with new statep
@@ -271,9 +282,6 @@ export class CoGuideComponent implements OnInit {
         }).subscribe(res => {
             this.comLength =(res.data?.data.length!)
           
-          // else{
-          //   this.comLength =(this.Companies?.data.length!)
-          // }
           console.log(this.comLength);
          })
          }

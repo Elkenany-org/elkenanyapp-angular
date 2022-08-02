@@ -1,7 +1,8 @@
 <!-- <app-loader *ngIf="loading"></app-loader> -->
 
 <div class="main__content__body">
-   
+    <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+    <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
     <!-- Start Header -->
     <header class="banner__header">
         <div class="container-fluid one-full-slider-banner">

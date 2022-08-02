@@ -22,7 +22,7 @@ export const ship_traffic_Search_Form: JsonFormData  =
         name: "احصائيات",
         label: "Size",
         class:"stats__btn",
-        role:"sort",
+        role:"statistics",
         value: "",
         icon:"fas fa-poll",
         type: "a",

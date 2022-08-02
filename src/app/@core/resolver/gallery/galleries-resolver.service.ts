@@ -14,7 +14,7 @@ export class GalleriesResolver implements Resolve<ApiResponse<GallriesData>>{
     sector:'poultry',
     countries:'',
     cities:'',
-    sort:"0",
+    sort:"2",
     search:"",
     page:''
 

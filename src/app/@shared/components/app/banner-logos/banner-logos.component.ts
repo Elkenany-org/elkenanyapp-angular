@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./banner-logos.component.scss']
 })
 export class BannerLogosComponent implements OnInit {
- 
+ x=0;
   @Input() loading:boolean = true 
   @Input() type:string = '' 
 

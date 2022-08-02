@@ -20,7 +20,7 @@ export class MagazineComponent implements OnInit {
   private type?:string
   public filterData:{[key:string]:string}= {
     type:"poultry",
-    sort:"1",
+    sort:"2",
     search:"",
     cities:'1',
     page:'1'
@@ -56,13 +56,16 @@ export class MagazineComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+
       }) 
     console.log(data['resolve'].data);
 
     })
 
     if(this.page.last_page > 1){
-      this.magazine.magazines(this.filterData['sector'],0,'','',this.page.last_page+''
+      this.magazine.magazines(this.filterData['sector'],2,'','',this.page.last_page+''
       ).subscribe(res => {
         // this.comLength = res.data?.data.length!
           this.comLength = (res.data?.data.length!)
@@ -79,11 +82,11 @@ export class MagazineComponent implements OnInit {
   filter(value:any) {
     console.log(value)
     // this.filterData['sector'] = 'poultry'
-    this.filterData['sort'] = '0'
+    this.filterData['sort'] = '2'
     this.filterData['cities'] = ''
     this.filterData['search']=''
-    let sort='0'
-    this.h_search_form.controls.find((i:any) => i.role === "sort").option[0].selected=1
+    let sort='2'
+    // this.h_search_form.controls.find((i:any) => i.role === "sort").option[0].selected=1
 
       switch ( value.type ) {
         case "sector":
@@ -123,7 +126,7 @@ export class MagazineComponent implements OnInit {
      
      this.magazine.magazines(this.filterData['sector'],
                              +this.filterData['sort'],
-                             this.filterData['cities'],this.filterData['search'],'1').subscribe(res => {
+                             this.filterData['cities'],this.filterData['search'],this.filterData["page"]).subscribe(res => {
                               this.page.current_page = res.data?.current_page!
                               this.page.last_page =  res.data?.last_page!
        this.magazines= res.data?.data

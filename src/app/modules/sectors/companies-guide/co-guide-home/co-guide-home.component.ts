@@ -9,6 +9,7 @@ import { CompaniesGuideService } from '../../../../@core/services/modules/compan
 import { CompaniesHome, co_Search_Form_Data } from '@app/@core/interfaces/companies-guid/co-home-data';
 import { CompaniesFilterList } from '@app/@core/interfaces/companies-guid/co-filter-list-hom,e';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
+import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 @Component({
   selector: 'app-co-guide-home',
   templateUrl: './co-guide-home.component.html',
@@ -36,7 +37,8 @@ export class CoGuideHomeComponent implements OnInit {
     private route: ActivatedRoute, 
     private router: Router,  
     private activatedRoute: ActivatedRoute,
-    private location: Location) { }
+    private location: Location,
+    private BannerLogoService:BannersLogoservice) { }
 
 
   ngOnInit(): void {
@@ -51,9 +53,10 @@ export class CoGuideHomeComponent implements OnInit {
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
        this.Companies_Home_Data = res['resolve']  as CompaniesHome
-       this.carousel_banner.banner = res['resolve'].banners
-       this.carousel_logos.banner = res['resolve'].logos
-
+      //  this.carousel_banner.banner = res['resolve'].banners
+      //  this.carousel_logos.banner = res['resolve'].logos
+       this.BannerLogoService.setBanner(res['resolve'].banners);
+       this.BannerLogoService.setLogo(res['resolve'].logos);
        this.loading = false;      
     })
     this.route.params.subscribe( params => {
@@ -66,6 +69,9 @@ export class CoGuideHomeComponent implements OnInit {
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+
       }) 
     })
 
@@ -98,6 +104,8 @@ export class CoGuideHomeComponent implements OnInit {
         this.Companies_Home_Data = res  as CompaniesHome
         this.carousel_banner.banner = this.Companies_Home_Data .banners
         this.carousel_logos.banner = this.Companies_Home_Data .logos
+        this.BannerLogoService.setBanner(this.Companies_Home_Data.banners);
+        this.BannerLogoService.setLogo(this.Companies_Home_Data.logos);
         this.loading = false;
         // change url params without reloade with new state
         this.type = this.filterData['sector']
@@ -110,9 +118,9 @@ export class CoGuideHomeComponent implements OnInit {
   }
   navigate(id: string): void
   {
-    console.log(this.Companies_Home_Data?.sub_sections?.find(i=>i.id == parseInt(id) )?.companies_count);
+   let len=this.Companies_Home_Data?.sub_sections?.find(i=>i.id == parseInt(id) )?.companies_count+'';
     
-    // this.complenght.emit(this.Companies_Home_Data?.sub_sections.length );
+    this.complenght.emit(len);
     this.router.navigate([`companies-guide/${this.type}/companies/${this.type}/${id}`]);
   }
 }

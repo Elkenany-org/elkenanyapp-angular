@@ -19,7 +19,7 @@ export class MagazineResolver implements Resolve<ApiResponse<Magazines>>{
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<Magazines>>  {
     console.log("resolver is work ")
 
-   return this.magazine.magazines("poultry",0,'','','1').pipe(
+   return this.magazine.magazines("poultry",2,'','','1').pipe(
      
      catchError(() => {
        this.router.navigate([""]);
