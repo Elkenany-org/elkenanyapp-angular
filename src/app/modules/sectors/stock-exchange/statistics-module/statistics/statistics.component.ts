@@ -30,7 +30,7 @@ export class StatisticsComponent implements OnInit {
   /////////////////////
   fillter = new Fillter();
   chart = new StatisticsChart();
-  days:number=0
+  days:number=30
 
   // all?: ChangesMember[];
   // sixmonth?:ChangesMember[];
@@ -49,7 +49,7 @@ export class StatisticsComponent implements OnInit {
   ngOnInit(): void {
     // const result = this.subtractDays(90);
     // console.log(this.subtractDays(2, new Date('2022-03-24')));
-
+    let tempOneMonth=[];
     this.roure.data.subscribe((data) => {
       console.log(data['resolve']);
       this.StatisticsMember = data['resolve'].data;
@@ -57,7 +57,12 @@ export class StatisticsComponent implements OnInit {
         this.chartOptions = this.chart.drowShart(
         data['resolve'].data!.changes_subs
       );
-    });
+      // setTimeout(() => {
+      //     this.geTstatisticsByDate(30);
+      // }, 100);   
+    
+    });   
+
     this.h_search_form = Statistics_Search_Form;
     this.fromToForm = this.fb.group({
       country: [],
@@ -71,6 +76,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   selectStock(id: any) {
+    this.days=30
     if (id != 0) {
       this.id = id;
       this.StatisticsMemberSlected = [
@@ -114,21 +120,32 @@ export class StatisticsComponent implements OnInit {
     }
   }
 
-  getStatisticsData(type: string, from: string, to: string, id: string) {
+  getStatisticsData(type: string, from: string, to: string, id: any) {
     this.statistics
       .StatisicsSubSections(type, from, to, id)
       .subscribe((res) => {
-        this.StatisticsMember = res.data;
+        // this.StatisticsMember = res.data;
         this.StatisticsMemberSlected = res.data?.changes_subs;
         this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
         console.log(this.chartOptions);
 
         setTimeout(() => {
-          this.StatisticsMember = res.data;
+          // this.StatisticsMember = res.data;
           this.StatisticsMemberSlected = res.data?.changes_subs;
           this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
-        }, 500);
+        }, 50);
       });
+
+      // if (id != 0) {
+      //   this.id = id;
+      //   this.StatisticsMemberSlected = [
+      //     this.StatisticsMember?.changes_subs.find((i) => i.id == id),
+      //   ] as ChangesMember[];
+
+      // } else {
+      //   this.id = ''
+      //   this.StatisticsMemberSlected = this.StatisticsMember?.changes_subs;
+      // }
   }
 
   // threemonth(){
@@ -150,14 +167,18 @@ export class StatisticsComponent implements OnInit {
   geTstatisticsByDate(days: number): void {
     this.days= days
     if (days == 0) {
-      this.getStatisticsData(this.type, '', '', '');
+      this.getStatisticsData(this.type, '', '', this.id);
       return;
     }
     let date = new Date();
     let today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     let from = this.subtractDays(days);
-    this.getStatisticsData(this.type, from, today, '');
+    this.getStatisticsData(this.type, from, today, this.id);
     console.log(this.type);
     console.log(from);
+  }
+
+  navigate(){
+    this.router.navigate([`/stock-exchange/poultry/statistics/statistics-detials/notype/${this.id}`])
   }
 }

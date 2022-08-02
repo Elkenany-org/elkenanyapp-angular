@@ -21,7 +21,11 @@ export class StatisticsResolver implements Resolve<ApiResponse<StatisticsSubsSec
     let type =  url[url.length-1] 
     console.log("resolver is work ",type)
 
-   return this.statistics.StatisicsSubSections(type,'','','').pipe(
+    let date = new Date();
+    let today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    let from = this.subtractDays(30);
+
+   return this.statistics.StatisicsSubSections(type || 'poultry',from,today,'').pipe(
      
      catchError(() => {
        this.router.navigate([""]);
@@ -30,5 +34,15 @@ export class StatisticsResolver implements Resolve<ApiResponse<StatisticsSubsSec
    )
   }
  
- 
+
+
+
+
+  subtractDays(numOfDays: number, date = new Date()) {
+    date.setDate(date.getDate() - numOfDays);
+    let shortDate =
+      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
+    return shortDate;
+  }
 }

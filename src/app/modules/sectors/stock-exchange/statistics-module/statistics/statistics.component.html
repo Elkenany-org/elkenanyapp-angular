@@ -66,7 +66,7 @@
                         <button (click)="geTstatisticsByDate(30)" [ngClass]="{'active':days==30}" id="one_month" class="active">1M</button>
                         <button (click)="geTstatisticsByDate(90)" [ngClass]="{'active':days==90}" id="six_months">3M</button>
                         <button (click)="geTstatisticsByDate(180)" [ngClass]="{'active':days==180}"  id="one_year">6M</button>
-                        <!-- <button (click)="geTstatisticsByDate(0)"   [ngClass]="{'active':days==0}" id="all">ALL</button> -->
+                        <button (click)="geTstatisticsByDate(0)"   [ngClass]="{'active':days==0}" id="all">ALL</button>
                     </div>
                     <div id="chart-timeline"></div>
                 </div>
@@ -86,21 +86,21 @@
 
                 <div class="btn-group">
                     <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="stock">
-                        <span class="multiselect-selected-text">بورصة لحم الدواجن بأنواعها</span>
-                         <b class="caret"></b>
-                    </button><ul class="multiselect-container dropdown-menu">
-                    <li class="multiselect-item multiselect-all">
-                        <a tabindex="0" class="multiselect-all">
-                            <label class="checkbox"><input type="checkbox" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)" id="0"> اختيار الكل</label>
-                        </a>
+                        <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
+                        <b class="caret"></b>
+                    </button>
+                    <ul class="multiselect-container dropdown-menu" style="text-align: right">
+                    <li class="px-2">
+                       <label ><a tabindex="0" >
+                            <input type="radio" name="products" value="multiselect-all" #v (change)=" selectStock(0)" (click)="selectStock(0)" id="0"> الكل
+                        </a></label>
                     </li>
 
 
    
                     <!-- class="active" -->
-                    <li class="active" *ngFor="let item of StatisticsMember?.list_subs"> 
-                        <a tabindex="0" ><label class="checkbox"><input type="checkbox"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" id={{v.value}}> {{item.name}}</label></a>
-
+                    <li  *ngFor="let item of StatisticsMember?.list_subs ; let i=index;"class="px-2" > 
+                        <label><a tabindex="0" ><input type="radio" name="products"  #v (change)=" selectStock(v.value)" (click)="selectStock(v.value)" [value]="item.id" id="{{item.id}}" > {{item.name}}</a></label>
                         
                     </li>
 
@@ -126,7 +126,7 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let item of StatisticsMemberSlected; let i = index ">
-                            <th scope="row">i</th>
+                            <th scope="row">{{i+1}}</th>
                             <td class="border-right border-left company__link__container">
                                 <a class="company__link"[routerLink]="['/stock-exchange/poultry/statistics/statistics-detials','notype',item.id]">{{item.name}}</a>
                             </td>

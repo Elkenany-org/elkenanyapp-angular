@@ -65,9 +65,12 @@ export class StatisticsChart {
           valueFormatString: "D MMM YYYY"
           },
           axisY: {
-          title: (data[0].changes[0].price)?"price":  "change",
+
+            title: (data[0].changes[0]?.price)?"price":  "change",
+
+            valueFormatString: (data[0].changes[0]?.price)?"#,##0 LE":  "#,##0" 
+
           // includeZero: true,
-		      valueFormatString: (data[0].changes[0].price)?"#,##0 LE":  "#,##0" 
           },
           toolTip: {
           shared: true
