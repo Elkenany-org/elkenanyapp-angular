@@ -69,16 +69,20 @@ export class HomeStockExchangeComponent implements OnInit  {
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
-
-      }) 
-    })   
     
+console.log(this.h_search_form.controls.find((i:any) => i.role === "sector").option);
 
+    let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
+    localStorage.setItem('stockTitle',' احصائيات القطاع '+title)
+      }) 
+      
+    })   
 
 
   }
 
   filter(value:any) {
+
 let sort='0';
     this.route.params.subscribe( params => {
       // console.log(params);
@@ -86,10 +90,14 @@ let sort='0';
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
+
+          
           this.filterData['sector'] = value.name
           this.type = this.filterData['sector']
           // this.location.go(`stock-exchange/${this.type }`);
-          this.location.replaceState(`stock-exchange/${this.type }`)
+          this.router.navigate(['stock-exchange/',this.type])
+          // this.h_search_form.controls[3].routerLink = `/stock-exchange/${this.filterData['sector']}/statistics`  
+
           // this.router.navigate(['/stock-exchange',value.name])
           break;
         case "sort":
@@ -119,9 +127,13 @@ let sort='0';
 
       this.loading = false;
       // change url params without reloade with new state
-console.log(this.stock_Ex_Data);
 
+console.log(this.stock_Ex_Data);
+let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
+localStorage.setItem('stockTitle',' احصائيات القطاع '+title)
+// console.log(title);
       })
+
 
   }
 

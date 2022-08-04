@@ -92,6 +92,18 @@ export const Magazine_Search_Form: JsonFormData  =
         }
       },
       {
+        name: "الدول:",
+        type: "select",
+        role: "countries",
+        class: "form-control",
+        value: "",
+        icon:"",
+        option: [],
+        validators: {
+          required: false,
+        }
+      },
+      {
         name: "المدينة:",
         type: "select",
         role: "cities",

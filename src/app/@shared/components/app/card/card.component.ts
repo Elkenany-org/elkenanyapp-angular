@@ -27,6 +27,7 @@ export class CardComponent implements OnChanges {
   constructor(private router: Router) {
    }
 
+  
    ngOnChanges(changes: SimpleChanges) {
 //     console.log(!changes['data'])
     
@@ -35,7 +36,12 @@ export class CardComponent implements OnChanges {
 
   }
 
-  
+      counter(i: number) {
+      return new Array(Math.floor(i));
+  }
+  counter1(i: number) {
+    return new Array(Math.ceil(i));
+}
   navigationTest(value: any , type?:string) {
   
     //getted from event

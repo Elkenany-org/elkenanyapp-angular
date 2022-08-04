@@ -31,7 +31,7 @@ const children: Routes = [
     resolve: {
       resolve: CompaniesDetailsResolver
     },
-    canActivate: [AuthGuardService]
+    // canActivate: [AuthGuardService]
   },
   {
     path: '**',

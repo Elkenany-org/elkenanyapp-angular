@@ -82,6 +82,7 @@ export class StockExchangeComponent implements OnInit {
       })
     }
     })
+
   }
 
 
@@ -116,6 +117,8 @@ export class StockExchangeComponent implements OnInit {
         case "sector":
           this.router.navigate(['/stock-exchange',value.name])
           this.filterData['sector'] = value.name
+          localStorage.setItem('title',' احصائيات '+value.title)
+
           break;
         case "date":
           this.filterData['date'] = value.name
@@ -149,7 +152,6 @@ export class StockExchangeComponent implements OnInit {
     :this.localData(f['stock_id']+'',f['date'],)
     
     // this.nameofstock.emit(value.title);
-    localStorage.setItem('title',' احصائيات '+value.title)
   }
 
   toggle(type:string){

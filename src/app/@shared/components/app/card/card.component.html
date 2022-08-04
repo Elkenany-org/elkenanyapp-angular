@@ -26,13 +26,17 @@
                             </a>
                         </header>
 
-                        <div class="product__rating mt-2" *ngIf="contact.desc">
-                            <div class='star'></div>
-                            <div class='star'></div>
-                            <div class='star'></div>
-                            <div class='star'></div>
-                        </div>
+                        <div class="product__rating mt-2" *ngIf="contact.rate && !flag">
+                                    
+                                <i *ngFor='let in of counter1((5-contact.rate)) ;let i = index' style="color: silver;"class="fa-solid fa-star"></i>
+                                <i *ngFor='let in of counter(contact.rate) ;let i = index'  style="color: #fac864;" class="fa-solid fa-star"></i>
 
+                        </div>
+                        <div class="product__rating mt-2" *ngIf="contact.rate==0 && !flag">
+                                    
+                            <i *ngFor='let in of counter1(5) ;let i = index' style="color: silver;"class="fa-solid fa-star"></i>
+
+                        </div>
 
                         <section class="product__info" *ngIf="contact.companies_count">
                             <p class="note">{{contact.companies_count}} مكتب</p>

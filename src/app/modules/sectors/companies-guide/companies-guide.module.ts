@@ -18,7 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CompaniesGuideRoutingModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
 
   ]
 })

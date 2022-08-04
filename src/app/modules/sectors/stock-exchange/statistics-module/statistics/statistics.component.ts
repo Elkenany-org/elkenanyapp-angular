@@ -30,8 +30,8 @@ export class StatisticsComponent implements OnInit {
   /////////////////////
   fillter = new Fillter();
   chart = new StatisticsChart();
-  days:number=30
-
+  days:number=0
+alert:boolean=false
   // all?: ChangesMember[];
   // sixmonth?:ChangesMember[];
   // threemonth?:ChangesMember[];
@@ -48,8 +48,9 @@ export class StatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     // const result = this.subtractDays(90);
-    // console.log(this.subtractDays(2, new Date('2022-03-24')));
+    // console.log(this.subtractDays(61, new Date()));
     let tempOneMonth=[];
+
     this.roure.data.subscribe((data) => {
       console.log(data['resolve']);
       this.StatisticsMember = data['resolve'].data;
@@ -57,7 +58,14 @@ export class StatisticsComponent implements OnInit {
         this.chartOptions = this.chart.drowShart(
         data['resolve'].data!.changes_subs
       );
-      // setTimeout(() => {
+      // console.log(data['resolve'].data.changes_subs[0].changes[data['resolve'].data.changes_subs[0].changes.length-1].date);
+      
+      // if(data['resolve'].data.changes_subs[0].changes[0].date < this.subtractDays(61, new Date()) ){
+      //     this.days=0
+      // }else if(data['resolve'].data.changes_subs[0].changes[data['resolve'].data.changes_subs[0].changes.length-1].date <= this.subtractDays(30, new Date()) ){
+      //     this.days=30
+      // }
+      // setTimeout(() => {data['resolve'].data.changes_subs[0].changes[data['resolve'].data.changes_subs[0].changes.length-1].date >= this.subtractDays(30, new Date())
       //     this.geTstatisticsByDate(30);
       // }, 100);   
     
@@ -73,6 +81,10 @@ export class StatisticsComponent implements OnInit {
     this.type = url[url.length - 2]; //get type from url
     // this.id = sector.find(i => i.type == this.type)?.id+''
     // this.geTstatisticsByDate(180)
+
+    this.h_search_form.title=localStorage.getItem('stockTitle')
+ 
+
   }
 
   selectStock(id: any) {
@@ -121,6 +133,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   getStatisticsData(type: string, from: string, to: string, id: any) {
+    this.alert=false
     this.statistics
       .StatisicsSubSections(type, from, to, id)
       .subscribe((res) => {
@@ -134,7 +147,8 @@ export class StatisticsComponent implements OnInit {
           this.StatisticsMemberSlected = res.data?.changes_subs;
           this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
         }, 50);
-      });
+      },
+      (err)=>{this.alert=true});
 
       // if (id != 0) {
       //   this.id = id;

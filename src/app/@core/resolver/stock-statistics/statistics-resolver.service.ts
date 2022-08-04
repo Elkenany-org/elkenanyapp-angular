@@ -17,32 +17,41 @@ export class StatisticsResolver implements Resolve<ApiResponse<StatisticsSubsSec
   constructor(private statistics: StatisticsService ,private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<StatisticsSubsSections>>  {
-    let url =  this.router.url.split('/') 
-    let type =  url[url.length-1] 
-    console.log("resolver is work ",type)
+    // let url =  this.router.url.split('/') 
+    let url =  state.url.split('/') 
 
-    let date = new Date();
-    let today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-    let from = this.subtractDays(30);
+    // let type =  url[url.length-1] 
+    let type =  url[url.length-2] 
+    // console.log(type);
+    
+    // // console.log("resolver is work ",route.paramMap)
+    // console.log(url);
+    
+    // let date = new Date();
+    // let today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    // let from = this.subtractDays(30);
 
-   return this.statistics.StatisicsSubSections(type || 'poultry',from,today,'').pipe(
+  //  return this.statistics.StatisicsSubSections(type ,from,today,'').pipe(
      
-     catchError(() => {
-       this.router.navigate([""]);
-       return EMPTY
-     })
-   )
-  }
+    //  catchError(() => {
+      return this.statistics.StatisicsSubSections(type ,'','','').pipe(
+        catchError(() => {
+          this.router.navigate([""]);
+          return EMPTY
+        })
+      )
+    //  })
+  //  )
+   }
  
 
 
 
+  // subtractDays(numOfDays: number, date = new Date()) {
+  //   date.setDate(date.getDate() - numOfDays);
+  //   let shortDate =
+  //     date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
 
-  subtractDays(numOfDays: number, date = new Date()) {
-    date.setDate(date.getDate() - numOfDays);
-    let shortDate =
-      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-
-    return shortDate;
-  }
+  //   return shortDate;
+  // }
 }

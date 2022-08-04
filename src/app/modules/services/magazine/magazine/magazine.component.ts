@@ -22,7 +22,8 @@ export class MagazineComponent implements OnInit {
     type:"poultry",
     sort:"2",
     search:"",
-    cities:'1',
+    countries:'',
+    cities:'',
     page:'1'
   }
   public page= {last_page: 0, current_page:0}
@@ -55,6 +56,8 @@ export class MagazineComponent implements OnInit {
         // override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
+        this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
+
         this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
@@ -65,7 +68,7 @@ export class MagazineComponent implements OnInit {
     })
 
     if(this.page.last_page > 1){
-      this.magazine.magazines(this.filterData['sector'],2,'','',this.page.last_page+''
+      this.magazine.magazines(this.filterData['sector'],2,'','','',this.page.last_page+''
       ).subscribe(res => {
         // this.comLength = res.data?.data.length!
           this.comLength = (res.data?.data.length!)
@@ -84,6 +87,7 @@ export class MagazineComponent implements OnInit {
     // this.filterData['sector'] = 'poultry'
     this.filterData['sort'] = '2'
     this.filterData['cities'] = ''
+    // this.filterData['countries']=''
     this.filterData['search']=''
     let sort='2'
     // this.h_search_form.controls.find((i:any) => i.role === "sort").option[0].selected=1
@@ -92,6 +96,14 @@ export class MagazineComponent implements OnInit {
         case "sector":
           this.filterData['sector'] = value.name
           this.typeAr=value.title
+          this.magazine.filter_list(this.filterData['sector'], 0).subscribe((res:ApiResponse<FilterList>) => {
+            // override data to match the data format of horizontal components
+            this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
+            this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
+            this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
+          }) 
+          console.log(this.filterData['countries']);
+          console.log(this.filterData['cities']);
 
           break;
         case "sort":
@@ -107,14 +119,34 @@ export class MagazineComponent implements OnInit {
           }
           this.filterData["sort"]=sort
             break;
-          break;
+        case "countries":
+          if(value.id == 0){
+            this.filterData['countries'] = '0'
+          }else{
+              this.filterData['countries'] = value.id 
+              this.filterData['cities']='0'
+          }
+            // this.filterData['countries'] = value.id 
+            this.magazine.filter_list(this.filterData['sector'], +this.filterData['countries']).subscribe((res:ApiResponse<FilterList>) => {
+              // override data to match the data format of horizontal components
+              this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
+              this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
+              this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
+            }) 
+            console.log(this.filterData['countries']);
+
+              break;
         case "cities":
           if(value.id == 0){
-            this.filterData['cities'] = ''
+            this.filterData['cities'] = '0'
           }else{
-              this.filterData['cities'] = value.id 
+            this.filterData['cities'] = value.id 
           }
+              // this.filterData['cities'] = value.id 
           
+         console.log(this.filterData['countries']);
+        //  this.filterData['countries']=''
+
           break;
           case "search":
             this.filterData['search'] = value.name 
@@ -125,17 +157,17 @@ export class MagazineComponent implements OnInit {
 
      
      this.magazine.magazines(this.filterData['sector'],
-                             +this.filterData['sort'],
+                             +this.filterData['sort'],this.filterData['countries'],
                              this.filterData['cities'],this.filterData['search'],this.filterData["page"]).subscribe(res => {
                               this.page.current_page = res.data?.current_page!
                               this.page.last_page =  res.data?.last_page!
        this.magazines= res.data?.data
-            console.log(this.page.last_page);
+            // console.log(this.page.last_page);
             if(this.page.last_page > 1){
-              this.magazine.magazines(this.filterData['sector'],0,'','',this.page.last_page+''
+              this.magazine.magazines(this.filterData['sector'],0,'','','',this.page.last_page+''
               ).subscribe(res => {
                   this.comLength = (res.data?.data.length!)
-                console.log(this.comLength);
+                // console.log(this.comLength);
               })
             }
      })
@@ -143,7 +175,10 @@ export class MagazineComponent implements OnInit {
      
 
 
+
   }
+
+
   navigate(id: string): void
   {
     this.router.navigate([`magazine/details/${id}`]);
@@ -153,7 +188,7 @@ export class MagazineComponent implements OnInit {
     this.filterData["page"] = page+''
 
     this.magazine.magazines(this.filterData['sector'],
-    +this.filterData['sort'],
+    +this.filterData['sort'],this.filterData['countries'],
     this.filterData['cities'],this.filterData['search'],this.filterData["page"]).subscribe(res => {
     this.magazines= res.data?.data
 

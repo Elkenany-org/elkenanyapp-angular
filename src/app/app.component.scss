@@ -29,3 +29,17 @@ nav i {
     display: none;
   }
 
+  .center {
+    display: block;
+    // margin-left: auto;
+    // margin-right: auto;
+    width: 1.875rem;
+    height: 1.875rem;
+//    position: sticky !important;
+    left: 50%;
+    position: fixed;
+    top: 15px;
+    z-index: 1000;
+    align-items: center;
+  }
+
