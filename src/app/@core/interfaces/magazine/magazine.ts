@@ -51,7 +51,7 @@ export interface Magazine {
   mobiles: Mobile[]
   faxs: any[]
   social: Social[]
-  addresses: any[]
+  // addresses: any[]
   gallary: any[]
   guides: any[]
 }

@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { Magazine, Magazines } from '@app/@core/interfaces/magazine/magazine';
+import { Rate } from '@app/@core/interfaces/magazine/rate';
 import { Observable } from 'rxjs';
 import { environment as env } from "../../../../../environments/environment";
 @Injectable({
@@ -25,5 +26,9 @@ export class MagazineService {
     return this.http.get<ApiResponse<any>>(`${env.ApiUrl}/magazine/filter-sections-magazines?type=${type}&country_id=${country_id}`)
   }
 
-
+  // ----------------------------------------- < Rate > -----------------------------------------------//
+  rate(body: {maga_id:string, reat:string}): Observable<ApiResponse<Rate>> { 
+    return this.http.post<ApiResponse<Rate>>(`${env.ApiUrl}/magazine/rating-magazine`,body)
+  }
+  
 }

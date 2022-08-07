@@ -5,6 +5,7 @@ import { MagazineRoutingModule } from './magazine-routing.module';
 import { SharedModule } from '@app/@shared/shared.module';
 import { MagazineComponent } from './magazine/magazine.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
 
@@ -16,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     MagazineRoutingModule,
     SharedModule,
-    NgxPaginationModule,  ]
+    NgxPaginationModule,
+    NgxStarRatingModule  ]
 })
 export class MagazineModule { }

@@ -1,3 +1,4 @@
+
 <div class="container global__container">
   <!-- Start Company Info  -->
   <article class="cards company-info">
@@ -7,18 +8,33 @@
       </section>
       <p> {{magazineData?.short_desc}}     </p>
       <!--        New Rating Component        -->
-      <div class="main__rating d-flex align-items-center justify-content-center">
-          <div class="global__rating">
-              <i class="rating__star far fa-star"></i>
-              <i class="rating__star far fa-star"></i>
-              <i class="rating__star far fa-star"></i>
-              <i class="rating__star far fa-star"></i>
-              <i class="rating__star far fa-star"></i>
-          </div>
-          <div class="mx-2">
-              <span class="rating__result"></span>
-          </div>
-      </div>
+            <!--        New Rating Component        -->
+
+            <div class="main__rating d-flex align-items-center justify-content-center">
+                <div class="rating" >
+
+                <form [formGroup]="addRate" (change)="sendRate()">
+                    <div class="stars">
+                    <ngx-star-rating
+                        formControlName="rate"
+                        [id]="'rating'" 
+                    ></ngx-star-rating>
+                </div>
+                </form>
+                </div>
+
+                <div class="mx-2">
+                    <span class="rating__result">{{rateValue}}/5</span>
+                </div>
+                </div>
+
+
+                <p class="raters-number" style="display: block;">
+                    <span id="msg-rate" style="display: none"><small>تم التقييم بنجاح</small><br></span>
+                    <span id="msg-auth" style="display: none"><small> برجاء<a [routerLink]="['/user/login']"> تسجيل الدخول</a> </small><br></span>
+
+                    <span class="customers_rate">  {{magazineData?.count_rate}}</span> عميل</p>
+                
   </article>
   <!-- End Company Info  -->
 
@@ -74,7 +90,7 @@
                       </ul>
                   </div>
               </div>
-              <div class="box__element"  *ngIf=" magazineData?.addresses && magazineData?.addresses!.length>0 ">
+              <!-- <div class="box__element"  *ngIf=" magazineData?.addresses && magazineData?.addresses!.length>0 ">
                   <p class="title">
                           <span class="span__icon">
                               <svg enable-background="new 0 0 24 24" fill="#000000" height="20px"
@@ -102,7 +118,7 @@
 
                       </ul>
                   </div>
-              </div>
+              </div> -->
           </div>
       </div>
       <div class="box__data">

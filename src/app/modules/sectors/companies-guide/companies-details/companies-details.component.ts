@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { company } from '@app/@core/interfaces/companies-guid/co-company';
 import { CompaniesGuideService } from '../../../../@core/services/modules/companies-guide/companies-guide.service';
@@ -10,10 +11,12 @@ import { CompaniesGuideService } from '../../../../@core/services/modules/compan
 })
 export class CompaniesDetailsComponent implements OnInit {
 public company?:company
+public addRate!: FormGroup
+public rateValue:number=0
   constructor(
-   // private companiesGuideService: CompaniesGuideService,
+    private companiesGuideService: CompaniesGuideService,
     private route: ActivatedRoute,
-   private router: Router, 
+   private router: Router, private fb:FormBuilder
 
   ) { }
 
@@ -24,7 +27,9 @@ public company?:company
     })
 
 console.log(this.company);
-
+this.addRate =this.fb.group({
+  rate: ['', [Validators.required]],
+})
   }
 
     navigateV2(id: number, type:string): void
@@ -32,10 +37,30 @@ console.log(this.company);
       this.route.params.subscribe( params => 
         this.router.navigate([`/stock-exchange/${params['type']}/stock-exchange/${params['type']}/${type}/${id}`])
         )
-        
+
        
     }
 
+
+    sendRate() {
+      this.rateValue=this.addRate.controls['rate'].value
+      let body ={company_id:this.company?.id+'' , reat:this.addRate.controls['rate'].value}
+      console.log(body);
+      this.companiesGuideService.rate(body).subscribe(
+      (res) => {
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
+        document.getElementById('msg-rate')!.style.display="block";
+
+      },
+      (err)=>{
+        document.getElementById('msg-auth')!.style.display="block";
+      }
+      )
+      // formData.forEach(ite => console.log(ite))
+    }
+  
 }
 
 

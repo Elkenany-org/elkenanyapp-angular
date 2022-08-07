@@ -5,6 +5,7 @@ import { CoGuideHomeComponent } from './co-guide-home/co-guide-home.component';
 import { SharedModule } from '@app/@shared/shared.module';
 import { CoGuideComponent } from './co-guide/co-guide.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
 
@@ -19,7 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CompaniesGuideRoutingModule,
     SharedModule,
     NgxPaginationModule,
-
+    NgxStarRatingModule
   ]
 })
 export class CompaniesGuideModule { }
