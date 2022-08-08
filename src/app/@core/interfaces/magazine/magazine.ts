@@ -35,31 +35,33 @@ export interface MagazinesData {
 
 
 export interface Magazine {
-  id: number
-  name: string
-  short_desc: string
-  about: string
-  address: string
-  latitude: any
-  longitude: any
-  rate: number
-  count_rate: number
-  image: string
-  created_at: string
-  phones: any[]
-  emails: any[]
-  mobiles: Mobile[]
-  faxs: any[]
-  social: Social[]
-  // addresses: any[]
-  gallary: any[]
-  guides: any[]
-}
-
-export interface Mobile {
-  mobile: string
-}
-
+    id: number
+    name: string
+    short_desc: string
+    about: string
+    address: string
+    latitude: string
+    longitude: string
+    rate: number
+    count_rate: number
+    image: string
+    created_at: string
+    phones: any[]
+    emails: Email[]
+    mobiles: Mobile[]
+    faxs: any[]
+    social: any[]
+    gallary: any[]
+    guides: any[]
+  }
+  
+  export interface Email {
+    email: string
+  }
+  
+  export interface Mobile {
+    mobile: string
+  }
 
 //////////////////////////////
 

@@ -85,7 +85,7 @@ export class StockExchangeComponent implements OnInit {
 
   }
 
-
+flag=false;
   search_Filter(id:number, type:string, type_stock:string):void {
     this.stockExchange.Filter_list_sub(id, type, type_stock).subscribe((res:ApiResponse<FilterListSub>) => {
       // this.h_search_form.title = res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
@@ -208,7 +208,9 @@ export class StockExchangeComponent implements OnInit {
       this.stock_Ex_Data = res.data    
       // this.companies= 
       // this.companiesList = this.companies
-   })
+      this.flag=false
+   },
+   err => this.flag=true)
 
   //  this.stockExchange.feeds_items(id).subscribe( res => {
   //   console.log(res );
@@ -231,7 +233,9 @@ export class StockExchangeComponent implements OnInit {
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
-   })
+      this.flag=false
+   },
+   err => this.flag=true)
   }
 
 

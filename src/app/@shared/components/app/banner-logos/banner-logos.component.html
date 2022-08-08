@@ -47,8 +47,8 @@
                 <div ngxSlickItem *ngFor="let slide of LogoConfig.banner;let i=index;" class="slide">
                         
                     <div class="item">
-
-                         <div *ngIf="LogoConfig.banner.length > 1 && i != LogoConfig.banner.length-1 && i != 3 && i != 7 && i != 11" class="wall ms-4" ></div>
+<!--*ngIf="LogoConfig.banner.length > 1 && i != LogoConfig.banner.length-1 && i != 3 && i != 7 && i != 11"-->
+                         <div  class="wall ms-4" ></div>
 
                     <a class="logo-holder" target="_blank" href="{{ slide.link}}">
 

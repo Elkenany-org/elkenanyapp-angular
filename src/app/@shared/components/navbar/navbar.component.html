@@ -234,12 +234,12 @@
         </ul>
 
      
-        <form class="form-inline my-2 my-lg-0">
-            <input class="search-area" id="searchNavBar" #v (change)="goToSearch(v.value)" placeholder="بحث" type="search">
-            <button class="submit" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
+        <!-- <form class="form-inline my-2 my-lg-0" (onsubmit)="goToSearch(v.value)"> -->
+            <input class="search-area" id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)"  placeholder="بحث" type="search">
+            <!-- <button class="submit" type="submit"> -->
+                <i class="fas fa-search me-2"></i>
+            <!-- </button>
+        </form> -->
 
 
 

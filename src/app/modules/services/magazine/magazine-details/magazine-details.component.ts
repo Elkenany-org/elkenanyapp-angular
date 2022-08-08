@@ -27,7 +27,11 @@ public addRate!: FormGroup
         // })
       // })
      
-    })
+
+
+      })
+
+
     this.addRate =this.fb.group({
       rate: ['', [Validators.required]],
     })
