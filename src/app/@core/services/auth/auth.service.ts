@@ -89,6 +89,9 @@ export class AuthService {
           password:r.id
 
         }
+        console.log('====================================');
+        console.log(data);
+        console.log('====================================');
         this.RegisterLogin_google(data).subscribe((res:any) => {
           console.log(res);
           this.localStorageService.setState('token', res.data.api_token);

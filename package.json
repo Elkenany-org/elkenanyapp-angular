@@ -26,6 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@ks89/angular-modal-gallery": "^9.0.1",
     "@ngneat/hot-toast": "^4.1.0",
+    "@ngneat/overview": "^3.0.4",
     "@swimlane/ngx-charts": "^20.1.0",
     "@types/gapi.auth2": "^0.0.56",
     "@types/gapi.client.gmail": "^1.0.3",

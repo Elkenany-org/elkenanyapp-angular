@@ -41,7 +41,7 @@ export class TokenInterceptor implements HttpInterceptor {
         request = request.clone({
       setHeaders: {
         device: 'web',
-        Authorization: `Bearer ${this.localStorageService.state$.getValue()?.['token']} ` ,
+        Authorization: `Bearer ${this.localStorageService.state$.getValue()?.['token'] || ''} ` ,
         Accept: 'application/json'
       },
     });
