@@ -12,10 +12,23 @@
                         <i class="fab fa-facebook-f"></i>
                         الدخول عن طريق فيسبوك
                     </a>
-                    <a class="sign-up-google"  (click)="authService.GoogleAuth()">
+                    <!-- <a class="sign-up-google"  (click)="authService.GoogleAuth()">
                         <i class="fab fa-google"></i>
                         الدخول عن طريق جوجل
-                    </a>
+                    </a> -->
+                    <div id="g_id_onload"
+                    data-client_id="552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com"
+                    data-callback="handleCredentialResponse"
+                    data-auto_prompt="false">
+                 </div>
+                 <div class="g_id_signin"
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="sign_in_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left">
+                 </div>
                 </section>
                 <h3 class="or font-weight-bold">أو</h3>
 
@@ -31,7 +44,7 @@
                             formControlName="email" 
                             placeholder="الأيميل" 
                             type="text">
-                           
+                            
                         <input
                             class="inputs"
                             formControlName="phone" 
@@ -73,7 +86,7 @@
                         <app-submit-button class="btn__submit" [form]="RegisterForm" [loading]="loading" [title]="'تسجيل الدخول'"></app-submit-button>
 
                         <div class="check__box">
-                            <input class="checkbox" type="checkbox" value="agreement">
+                            <input class="checkbox" type="checkbox" value="agreement" style="border: 1px #1f6b00 solid;">
                             <span class="font-weight-bold">أوافق علي استقبال الاخبار واخر التحديثات من الكناني</span>
                         </div>
                     </form>

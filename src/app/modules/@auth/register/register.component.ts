@@ -6,6 +6,7 @@ import { SaveData } from '@app/@core/@data/API/safe-data';
 import { LoginDataResponse, RegisterDataObject } from '@app/@core/@data/userData';
 import { AlertService } from '@app/@core/services/alert.service';
 import { AuthService } from '@app/@core/services/auth/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit, SaveData {
   RegisterForm!: FormGroup;
   hide = true;
   returnUrl?: string;
-  
+  errorMessage:any=''
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -43,6 +44,9 @@ export class RegisterComponent implements OnInit, SaveData {
       this.RegisterForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
     });
 
+    new Promise(resolve => {
+      this.loadScript();
+    });
   }
 
   isDataSaved(): boolean {
@@ -70,11 +74,30 @@ export class RegisterComponent implements OnInit, SaveData {
       },
       (err) => {
         this.spinner.hide();
-        console.log(err.error.error);
-        
+        console.log(err);
+        this.errorMessage=err.error.error
         this.alertService.error(err.error.error);
       }
     );
   }
 
+  handleCredentialResponse(response:any) {
+    const helper = new JwtHelperService();
+    const responsePayload = helper.decodeToken(response.credential);
+    console.log("ID: " + responsePayload.sub);
+    console.log('Full Name: ' + responsePayload.name);
+    console.log('Given Name: ' + responsePayload.given_name);
+    console.log('Family Name: ' + responsePayload.family_name);
+    console.log("Image URL: " + responsePayload.picture);
+    console.log("Email: " + responsePayload.email);    
+  }  
+  
+  loadScript() {
+    const node = document.createElement('script');
+    node.src = 'https://accounts.google.com/gsi/client'; // put there your js file location
+    node.type = 'text/javascript';
+    node.async = true;
+    node.charset = 'utf-8';
+   document.getElementsByTagName('head')[0].appendChild(node);
+  }
 }

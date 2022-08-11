@@ -68,10 +68,27 @@
                         <i class="fab fa-facebook-f"></i>
                         الدخول عن طريق فيسبوك
                     </a>
-                    <a class="login-google" (click)="authService.GoogleAuth()">
+                    <!-- <a class="login-google" (click)="authService.GoogleAuth()">
                         <i class="fab fa-google"></i>
                         الدخول عن طريق جوجل
-                    </a>
+                    </a>-->
+
+                  <!-- <div id="buttonDiv"></div>   -->
+                  
+                  <div id="g_id_onload"
+                  data-client_id="552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com"
+                  data-callback="handleCredentialResponse"
+                  data-auto_prompt="false">
+               </div>
+               <div class="g_id_signin"
+                  data-type="standard"
+                  data-size="large"
+                  data-theme="outline"
+                  data-text="sign_in_with"
+                  data-shape="rectangular"
+                  data-logo_alignment="left">
+               </div>
+
                     <span class="font-weight-bold">بتسجل حساب بأنك توافق علي <a class="terms links" href="#"> الشروط
                             والأحكام</a></span>
                 </section>

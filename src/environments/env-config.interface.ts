@@ -12,6 +12,7 @@ export interface EnvConfig {
     projectId: string,
     storageBucket:string,
     messagingSenderId:string,
-    appId:string
+    appId:string,
+    measurementId:string
   }
 }

@@ -46,5 +46,6 @@ export interface Profile {
 export interface googleRegister {
   name: string
   email: string
+  phone:string
   api_token: string
 }

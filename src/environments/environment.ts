@@ -6,18 +6,19 @@ import { EnvConfig } from "./env-config.interface";
 
 export const environment: EnvConfig = {
   production: false,
-  // ApiUrl: 'http://localhost/kenany_3/api',
+  ApiUrl: 'http://localhost/kenany_3/api',
 
   // ApiUrl: 'https://test.elkenany.com/api',
-  ApiUrl: 'https://elkenany.com/api',
+  // ApiUrl: 'https://elkenany.com/api',
   firebase: { //used account : ahmedbenmady@gmail.com 
-    apiKey: "AIzaSyCiDUgxLWo_ghSubmhpA02CxF6dCoW3Lpk",
-    authDomain: "oshop-7e416.firebaseapp.com",
     databaseURL: "https://oshop-7e416.firebaseio.com",
-    projectId: "oshop-7e416",
-    storageBucket: "oshop-7e416.appspot.com",
-    messagingSenderId: "955401749290",
-    appId: "1:955401749290:web:a8c7f8c33160aaba5b5453"
+    apiKey: "AIzaSyCuXH9l3JFLQvhItj62oghD7KeuLTwJdcs",
+    authDomain: "causal-producer-359007.firebaseapp.com",
+    projectId: "causal-producer-359007",
+    storageBucket: "causal-producer-359007.appspot.com",
+    messagingSenderId: "552649577410",
+    appId: "1:552649577410:web:183dddf39d06304300bc5b",
+    measurementId: "G-B1Y47W3VQM"
   }
 };
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
@@ -7,6 +7,7 @@ import { LoginDataObject, LoginDataResponse } from '@app/@core/@data/userData';
 import { AlertService } from '@app/@core/services/alert.service';
 import { AuthService } from '@app/@core/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit, SaveData {
   hide = true;
   submitted = false;
   returnUrl?: string;
-
+  count=0;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -28,7 +29,9 @@ export class LoginComponent implements OnInit, SaveData {
 
     public authService: AuthService,
     private alertService: AlertService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+
+
   ) { }
   isDataSaved(): boolean {
     return !this.loginForm.dirty
@@ -45,6 +48,19 @@ export class LoginComponent implements OnInit, SaveData {
     this.loginForm.controls['email'].valueChanges.subscribe((res) => {
     // this.loginForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
   });
+  new Promise(resolve => {
+    this.loadScript();
+  });
+
+  }   
+  
+  loadScript() {
+    const node = document.createElement('script');
+    node.src = 'https://accounts.google.com/gsi/client'; // put there your js file location
+    node.type = 'text/javascript';
+    node.async = true;
+    node.charset = 'utf-8';
+   document.getElementsByTagName('head')[0].appendChild(node);
   }
   get f() { return this.loginForm.controls; }
 
@@ -71,5 +87,16 @@ export class LoginComponent implements OnInit, SaveData {
     
       }
     );
+  }
+
+  handleCredentialResponse(response:any) {
+    const helper = new JwtHelperService();
+    const responsePayload = helper.decodeToken(response.credential);
+    console.log("ID: " + responsePayload.sub);
+    console.log('Full Name: ' + responsePayload.name);
+    console.log('Given Name: ' + responsePayload.given_name);
+    console.log('Family Name: ' + responsePayload.family_name);
+    console.log("Image URL: " + responsePayload.picture);
+    console.log("Email: " + responsePayload.email);    
   }
 }

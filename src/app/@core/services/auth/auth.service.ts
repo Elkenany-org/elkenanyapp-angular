@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Renderer2 } from '@angular/core';
 import { BehaviorSubject, Observable, ReplaySubject, tap } from 'rxjs';
 import { LoginDataObject, LoginDataResponse, Profile, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
 import {environment as env} from '../../../../environments/environment';
@@ -13,6 +13,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { googleRegister } from './../../@data/userData';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -78,20 +79,15 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result:any) => {
 
-        let r = result?.additionalUserInfo?.profile
-        console.log(r);
+        let res = result?.additionalUserInfo?.profile
+        console.log(res);
 
         let data = {
-          email:r?.email,
-          name:`${r.given_name} ${r.family_name}`,
-          google_id:r?.id,
+          email:res?.email,
+          name:`${res.given_name} ${res.family_name}`,
+          google_id:res?.id,
           device_token:'52151',
-          password:r.id
-
         }
-        console.log('====================================');
-        console.log(data);
-        console.log('====================================');
         this.RegisterLogin_google(data).subscribe((res:any) => {
           console.log(res);
           this.localStorageService.setState('token', res.data.api_token);
@@ -123,7 +119,19 @@ export class AuthService {
 
 
   RegisterLogin_google(data: any): Observable<ApiResponse<googleRegister>> {
-    return this.http.post<ApiResponse<googleRegister>>(`${this.Url}/reg-log-social`, data)
+    return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/reg-log-google`, data)
+    .pipe(
+      tap((data) => {
+        
+        // this.localStorageService.setState('token', data?.data?.api_token)
+        // this.profileUser();
+
+      })
+    )
+  }
+
+  RegisterLogin_facebook(data: any): Observable<ApiResponse<googleRegister>> {
+    return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/reg-log-facebook`, data)
     .pipe(
       tap((data) => {
         
@@ -203,11 +211,10 @@ export class AuthService {
       let data = {
         email:res?.email,
         name:`${res.firstName} ${res.lastName}`,
-        google_id:res?.id,
+        facebook_id:res?.id,
         device_token:'52151',
-        password:res.id
       }
-      this.RegisterLogin_google(data).subscribe((res:any) => {
+      this.RegisterLogin_facebook(data).subscribe((res:any) => {
         this.storeLocalStorge(res)
         this.router.navigateByUrl(this.currentURL||'');
         console.log('You have been successfully logged in!');
@@ -230,7 +237,6 @@ export class AuthService {
         name:`${res.firstName} ${res.lastName}`,
         google_id:res?.id,
         device_token:'52151',
-        password:res.id
       }
       this.RegisterLogin_google(data).subscribe((res:any) => {
         this.storeLocalStorge(res)
@@ -260,6 +266,44 @@ export class AuthService {
     localStorage.setItem('user',JSON.stringify(user))
   }
 
+
+
+//   loadJsScript(renderer: Renderer2, src: string) {
+//     const script = renderer.createElement('script');
+
+//     script.type = 'text/javascript';
+//     script.src = src;
+//     renderer.appendChild(document.body, script);
+    
+//     window.onload = function () {
+//       google.accounts.id.initialize({
+//         client_id: "552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com",
+//         callback : (response: any)=>{
+//           const helper = new JwtHelperService();
+
+//             const responsePayload = helper.decodeToken(response.credential);
+
+//             console.log("ID: " + responsePayload.sub);
+//             console.log('Full Name: ' + responsePayload.name);
+//             console.log('Given Name: ' + responsePayload.given_name);
+//             console.log('Family Name: ' + responsePayload.family_name);
+//             console.log("Image URL: " + responsePayload.picture);
+//             console.log("Email: " + responsePayload.email);    
+//     }
+//         }
+//       );
+//       google.accounts.id.renderButton(
+//         document.getElementById("buttonDiv"),
+//         { theme: "outline", size: "large" }  // customization attributes
+//       );
+//       google.accounts.id.prompt(); // also display the One Tap dialog
+//     }
+//   }
+//   }
+
+// //   handleCredentialResponse(response: any) {
+
+// // 
 }
 
 

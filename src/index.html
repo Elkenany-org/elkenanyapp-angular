@@ -11,14 +11,44 @@
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <script src="https://accounts.google.com/gsi/intermediate"></script>
     <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
+  <!-- <div id="buttonDiv"></div>  -->
+
   <app-root></app-root>
   <script src="./assets/js/vendors/jquery-3.5.1.slim.min.js"></script>
   <script src="./assets/js/vendors/popper.min.js"></script>
   <script src="./assets/js/vendors/bootstrap.min.js"></script>
 
   <script src="./assets/js/all.min.js"></script>
-  
+
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <script>
+    function handleCredentialResponse(response) {
+      const responsePayload = jwt_decode(response.credential);
+
+      console.log("ID: " + responsePayload.sub);
+      console.log('Full Name: ' + responsePayload.name);
+      console.log('Given Name: ' + responsePayload.given_name);
+      console.log('Family Name: ' + responsePayload.family_name);
+      console.log("Image URL: " + responsePayload.picture);
+      console.log("Email: " + responsePayload.email);    
+    }
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("buttonDiv"),
+        { theme: "outline", size: "large" }  // customization attributes
+      );
+      google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+</script>
 </body>
 </html>
