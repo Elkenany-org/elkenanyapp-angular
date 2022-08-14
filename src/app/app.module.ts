@@ -53,12 +53,12 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('385135266931682'),
           },
-          // {
-          //   id: GoogleLoginProvider.PROVIDER_ID,
-          //   provider: new GoogleLoginProvider('552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com'),
-          //   plugin_name:'google login project1'
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com'),
+            plugin_name:'google login project1'
 
-          // },
+          },
         ],onError:(err) => {
           console.log(err)
         }

@@ -8,27 +8,37 @@
         <div class="auth__holder">
             <section class="sign-up-box">
                 <section class="sign-up-extras">
-                    <a class="sign-up-facebook" (click)="authService.loginWithFacebook()">
+                    <a class="sign-up-facebook m-auto" (click)="authService.loginWithFacebook()">
                         <i class="fab fa-facebook-f"></i>
                         الدخول عن طريق فيسبوك
                     </a>
-                    <!-- <a class="sign-up-google"  (click)="authService.GoogleAuth()">
+                    <a class="sign-up-google m-auto"  (click)="authService.GoogleAuth()">
                         <i class="fab fa-google"></i>
                         الدخول عن طريق جوجل
-                    </a> -->
-                    <div id="g_id_onload"
+                    </a>
+                    <!-- <div id="g_id_onload"
                     data-client_id="552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com"
                     data-callback="handleCredentialResponse"
                     data-auto_prompt="false">
                  </div>
-                 <div class="g_id_signin"
-                    data-type="standard"
-                    data-size="large"
-                    data-theme="outline"
-                    data-text="sign_in_with"
-                    data-shape="rectangular"
-                    data-logo_alignment="left">
-                 </div>
+                 <div class="g_id_signin m-auto"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="outline"
+                 data-text="sign_in_with"
+                 data-shape="rectangular"
+                 data-logo_alignment="left"
+                 data-width="300"
+                 style="          
+                   width: 300px;
+                   display: flex;
+                   flex-flow: row nowrap;
+                   justify-content: center;
+                   padding: 10px 0;
+                   border-radius: 5px;
+                   margin-bottom: 10px;
+           ">
+              </div> -->
                 </section>
                 <h3 class="or font-weight-bold">أو</h3>
 

@@ -9,12 +9,18 @@ import { AuthService } from '@app/@core/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, SaveData {
+
+
+
+
   loading = false;
   loginForm!: FormGroup;
   hide = true;
@@ -38,6 +44,7 @@ export class LoginComponent implements OnInit, SaveData {
   }
 
   ngOnInit(): void {
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     
     this.loginForm = this.fb.group({
@@ -89,14 +96,23 @@ export class LoginComponent implements OnInit, SaveData {
     );
   }
 
-  handleCredentialResponse(response:any) {
-    const helper = new JwtHelperService();
-    const responsePayload = helper.decodeToken(response.credential);
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);    
+  public handleCredentialResponse1() {
+    // const helper = new JwtHelperService();
+    // const responsePayload = helper.decodeToken(response.credential);
+    // console.log("ID: " + responsePayload.sub);
+    // console.log('Full Name: ' + responsePayload.name);
+    // console.log('Given Name: ' + responsePayload.given_name);
+    // console.log('Family Name: ' + responsePayload.family_name);
+    // console.log("Image URL: " + responsePayload.picture);
+    // console.log("Email: " + responsePayload.email);    
+    console.log('====================================');
+    console.log();
+    console.log('====================================');
+    // this.authService.AuthLoginSocial()
+
+    
   }
+
+
+
 }

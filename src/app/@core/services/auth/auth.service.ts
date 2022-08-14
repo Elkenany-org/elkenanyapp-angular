@@ -106,6 +106,32 @@ export class AuthService {
         console.log(error.error);
       });
   }
+
+  AuthLoginSocial() {
+    //         console.log(response);
+    // let returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    //     let data = {
+    //       email:response?.email,
+    //       name:response?.name,
+    //       google_id:response?.sub,
+    //       device_token:'52151',
+    //     }
+    //     this.RegisterLogin_google(data).subscribe((res:any) => {
+    //       console.log(res);
+    //       this.localStorageService.setState('token', res.data.api_token);
+    //       let user = {
+    //         name: res.data.name,
+    //         email:  res.data.email,
+    //         phone: ''
+    //       }
+    //       localStorage.setItem('user',JSON.stringify(user))
+    //       this.router.navigateByUrl(returnUrl||'');
+
+    //     })
+        console.log('You have been successfully logged in!');
+
+  }
+
   profile():Observable<ApiResponse<Profile>> {
     return this.http.get<ApiResponse<Profile>>(`${env.ApiUrl}/profile`)
   }

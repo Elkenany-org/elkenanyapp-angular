@@ -50,16 +50,17 @@ onToggleMenu(){
       });
   }
 
-   handleCredentialResponse(response:any) {
-    const helper = new JwtHelperService();
-    const responsePayload = helper.decodeToken(response.credential);
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);    
-  }
+  //  handleCredentialResponse(response:any) {
+  //   const helper = new JwtHelperService();
+  //   const responsePayload = helper.decodeToken(response.credential);
+  //   console.log("ID: " + responsePayload.sub);
+  //   console.log('Full Name: ' + responsePayload.name);
+  //   console.log('Given Name: ' + responsePayload.given_name);
+  //   console.log('Family Name: ' + responsePayload.family_name);
+  //   console.log("Image URL: " + responsePayload.picture);
+  //   console.log("Email: " + responsePayload.email);    
+  // }
+
   // scrollToTop(){
   //   window.scroll(0,0);
   //   }
@@ -81,6 +82,7 @@ onToggleMenu(){
   //         }
   // }
 
+  
 
 
 }
