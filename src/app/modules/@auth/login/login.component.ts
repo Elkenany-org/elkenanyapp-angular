@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { SaveData } from '@app/@core/@data/API/safe-data';
 import { LoginDataObject, LoginDataResponse } from '@app/@core/@data/userData';
@@ -9,6 +9,7 @@ import { AuthService } from '@app/@core/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+declare const gtag: Function;
 
 
 @Component({
@@ -37,14 +38,13 @@ export class LoginComponent implements OnInit, SaveData {
     private alertService: AlertService,
     private spinner: NgxSpinnerService,
 
-
   ) { }
   isDataSaved(): boolean {
     return !this.loginForm.dirty
   }
 
   ngOnInit(): void {
-
+    // this.analytics.setUpAnalytics();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     
     this.loginForm = this.fb.group({
@@ -55,11 +55,23 @@ export class LoginComponent implements OnInit, SaveData {
     this.loginForm.controls['email'].valueChanges.subscribe((res) => {
     // this.loginForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
   });
-  new Promise(resolve => {
-    this.loadScript();
-  });
+  // new Promise(resolve => {
+  //   this.loadScript();
+  // });
 
-  }   
+    //  this.setUpAnalytics2();
+
+  }
+  // setUpAnalytics2(){
+  //   this.router.events.subscribe((event) => {
+  //     if (event instanceof NavigationEnd) {
+  //       gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
+  //       console.log('====================================');
+  //       console.log('google analytics is running login');
+  //       console.log('====================================');
+  //     }      
+  //   })
+  // }   
   
   loadScript() {
     const node = document.createElement('script');
@@ -113,6 +125,13 @@ export class LoginComponent implements OnInit, SaveData {
     
   }
 
+//   setUpAnalytics() {
+//     this.router.events.subscribe((event) => {
+//       if (event instanceof NavigationEnd) {
+//         gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
+//       }      
+//     })
+// }
 
 
 }

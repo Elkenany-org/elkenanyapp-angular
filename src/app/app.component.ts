@@ -1,8 +1,13 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { ToasterService } from '@app/@core/services/toastr.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import {delay} from 'rxjs/operators';
+import {delay, filter} from 'rxjs/operators';
+import { AnalyticsService } from './@core/services/analytics.service';
+
+// declare const gtag: Function;
+declare const gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -16,7 +21,8 @@ export class AppComponent  implements OnInit {
   pageYoffset: number | undefined;
   offsetFlag = true;
 
-constructor(private _loading: ToasterService,private scroll: ViewportScroller){}
+constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router
+  ){}
 
 @HostListener('window:scroll', ['$event']) onScroll(event:any){
   this.pageYoffset = window.pageYOffset;
@@ -40,6 +46,7 @@ onToggleMenu(){
   }
   ngOnInit(): void {
     this.listenToLoading();
+    this.setUpAnalytics();
   }
 
   listenToLoading(): void {
@@ -49,7 +56,29 @@ onToggleMenu(){
         this.loading = loading;
       });
   }
+  setUpAnalytics(){
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        gtag('js', new Date());
+        gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
+        console.log('====================================');
+        console.log('google analytics is running');
+        console.log(event.urlAfterRedirects);
+        console.log('====================================');
 
+      }      
+    })
+  }
+  // setUpAnalytics(){
+  //   this.router.events.subscribe((event) => {
+  //     if (event instanceof NavigationEnd) {
+  //       gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
+  //       console.log('====================================');
+  //       console.log('google analytics is running app');
+  //       console.log('====================================');
+  //     }      
+  //   })
+  // }
   //  handleCredentialResponse(response:any) {
   //   const helper = new JwtHelperService();
   //   const responsePayload = helper.decodeToken(response.credential);

@@ -51,7 +51,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
         providers: [
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('385135266931682'),
+            provider: new FacebookLoginProvider('1504415433364556'),
           },
           {
             id: GoogleLoginProvider.PROVIDER_ID,

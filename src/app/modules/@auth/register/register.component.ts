@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { SaveData } from '@app/@core/@data/API/safe-data';
 import { LoginDataResponse, RegisterDataObject } from '@app/@core/@data/userData';
 import { AlertService } from '@app/@core/services/alert.service';
+import { AnalyticsService } from '@app/@core/services/analytics.service';
 import { AuthService } from '@app/@core/services/auth/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgxSpinnerService } from 'ngx-spinner';
+
+declare const gtag: Function;
 
 @Component({
   selector: 'app-register',
@@ -27,10 +30,11 @@ export class RegisterComponent implements OnInit, SaveData {
     private fb: FormBuilder,
     public authService: AuthService,
     private spinner: NgxSpinnerService,
-    private alertService: AlertService
+    private alertService: AlertService,
   ) { }
 
   ngOnInit(): void {
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     this.RegisterForm = this.fb.group({
@@ -44,10 +48,25 @@ export class RegisterComponent implements OnInit, SaveData {
       this.RegisterForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
     });
 
-    new Promise(resolve => {
-      this.loadScript();
-    });
+    // new Promise(resolve => {
+    //   this.loadScript();
+    // });
+        
+    // this.setUpAnalytics1();
+
   }
+
+  // setUpAnalytics(){
+  //   this.router.events.subscribe((event) => {
+  //     if (event instanceof NavigationEnd) {
+  //       gtag('config', 'G-B1Y47W3VQM', { 'page_path': '/register' });
+
+  //       console.log('====================================');
+  //       console.log('google analytics is running register');
+  //       console.log(event.urlAfterRedirects);
+  //     }      
+  //   })
+  // }
 
   isDataSaved(): boolean {
     return !this.RegisterForm.dirty

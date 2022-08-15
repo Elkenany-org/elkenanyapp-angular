@@ -64,11 +64,12 @@
                 </section>
                 <h3 class="or font-weight-bold">أو</h3>
                 <section class="login-extras">
-                    <a class="login-facebook m-auto" (click)="authService.loginWithFacebook()">
+                    <!--add m-auto-->
+                    <a class="login-facebook " (click)="authService.loginWithFacebook()">
                         <i class="fab fa-facebook-f"></i>
                         الدخول عن طريق فيسبوك
                     </a>
-                    <a class="login-google m-auto" (click)="authService.GoogleAuth()">
+                    <a class="login-google " (click)="authService.GoogleAuth()">
                         <i class="fab fa-google"></i>
                         الدخول عن طريق جوجل
                     </a>
