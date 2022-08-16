@@ -10,6 +10,7 @@ import { StockExchange } from '@app/@core/interfaces/stock-exchanges/Stock-excha
 import { FilterList } from '@app/@core/interfaces/_app/filter-list';
 import { Home_Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stock-exchange';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -36,9 +37,11 @@ export class HomeStockExchangeComponent implements OnInit  {
     private route: ActivatedRoute,  
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private router: Router ) { }
+    private router: Router , private titleService:Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("البورصة اليومية");
+
     this.activatedRoute.params.subscribe(prm => {
       this.h_search_form = Home_Stock_Search_Form_Data
       this.h_search_form.controls[3].routerLink = `/stock-exchange/${prm['type']}/statistics`  
@@ -73,7 +76,7 @@ export class HomeStockExchangeComponent implements OnInit  {
 console.log(this.h_search_form.controls.find((i:any) => i.role === "sector").option);
 
     let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
-    localStorage.setItem('stockTitle',' احصائيات القطاع '+title)
+    localStorage.setItem('stockTitle',' القطاع '+title)
       }) 
       
     })   
@@ -130,7 +133,7 @@ let sort='0';
 
 console.log(this.stock_Ex_Data);
 let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
-localStorage.setItem('stockTitle',' احصائيات القطاع '+title)
+localStorage.setItem('stockTitle',' القطاع '+title)
 // console.log(title);
       })
 

@@ -8,8 +8,9 @@ import { AlertService } from '@app/@core/services/alert.service';
 import { AuthService } from '@app/@core/services/auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {Title} from "@angular/platform-browser";
 
-declare const gtag: Function;
+//  declare const gtag: Function;
 
 
 @Component({
@@ -37,13 +38,16 @@ export class LoginComponent implements OnInit, SaveData {
     public authService: AuthService,
     private alertService: AlertService,
     private spinner: NgxSpinnerService,
-
-  ) { }
+    private titleService:Title
+  ) { 
+  }
   isDataSaved(): boolean {
     return !this.loginForm.dirty
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle("تسجيل الدخول");
+
     // this.analytics.setUpAnalytics();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     
@@ -55,13 +59,30 @@ export class LoginComponent implements OnInit, SaveData {
     this.loginForm.controls['email'].valueChanges.subscribe((res) => {
     // this.loginForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
   });
-  // new Promise(resolve => {
-  //   this.loadScript();
-  // });
 
-    //  this.setUpAnalytics2();
+  // this.setUpAnalytics();
 
-  }
+  } 
+  
+  // setUpAnalytics(){
+  //   this.router.events.subscribe((event) => {
+  //     if (event instanceof NavigationEnd) {
+  //       gtag('js', new Date());
+  //       gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
+  //       console.log('====================================');
+  //       console.log('google analytics is running');
+  //       console.log(event.urlAfterRedirects);
+  //       console.log('====================================');
+
+  //     }      
+  //   })
+  // // new Promise(resolve => {
+  // //   this.loadScript();
+  // // });
+
+  //   //  this.setUpAnalytics2();
+
+  // }
   // setUpAnalytics2(){
   //   this.router.events.subscribe((event) => {
   //     if (event instanceof NavigationEnd) {

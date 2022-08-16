@@ -11,6 +11,7 @@ import { CompaniesGuideService } from '../../../../@core/services/modules/compan
 import { Companies, co_Search_Form_Data, FilterListCompanies } from '@app/@core/interfaces/companies-guid/co-companies';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-co-guide',
@@ -56,7 +57,8 @@ export class CoGuideComponent implements OnInit {
     private router: Router,   
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private BannerLogoService:BannersLogoservice) { }
+    private BannerLogoService:BannersLogoservice,
+    private titleService : Title) { }
 
   ngOnInit(): void {
 
@@ -79,6 +81,9 @@ export class CoGuideComponent implements OnInit {
       
       //  console.log(res['resolve'].banners);
        this.loading = false;    
+       this.h_search_form.title=' شركات الدليل '
+       this.titleService.setTitle(' شركات الدليل ');
+
       //  this.comLength=this.Companies.l     
       //  console.log(this.Companies.data);
     })
@@ -94,6 +99,7 @@ export class CoGuideComponent implements OnInit {
       
       this.companiesGuideService.co_Filter_listV2(this.Sector[params['type']].toString(),'').subscribe((res:ApiResponse<FilterListCompanies>) => {
         this.typeAr= res.data?.sectors.find((i:any) =>i.selected ==1)?.name
+        this.titleService.setTitle(' شركات الدليل قسم '+this.typeAr);
 
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors

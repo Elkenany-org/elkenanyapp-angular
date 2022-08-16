@@ -11,6 +11,7 @@ import { Fillter } from '@app/@shared/classes/filter';
 import { StatisticsChart } from '@shared/classes/drowShart.class';
 import { Token } from '@angular/compiler';
 import { AuthService } from '@app/@core/services/auth/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-statistics',
@@ -43,7 +44,8 @@ alert:boolean=false
     private roure: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private titleService:Title
   ) {}
 
   ngOnInit(): void {
@@ -82,8 +84,9 @@ alert:boolean=false
     // this.id = sector.find(i => i.type == this.type)?.id+''
     // this.geTstatisticsByDate(180)
 
-    this.h_search_form.title=localStorage.getItem('stockTitle')
- 
+    this.h_search_form.title=' احصائيات '+localStorage.getItem('stockTitle')
+    this.titleService.setTitle(this.h_search_form.title);
+
 
   }
 

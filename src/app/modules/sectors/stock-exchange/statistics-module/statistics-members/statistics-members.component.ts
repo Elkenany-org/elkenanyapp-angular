@@ -7,6 +7,7 @@ import { Fillter } from '@app/@shared/classes/filter';
 import { StatisticsChart } from '@shared/classes/drowShart.class';
 import { filter } from 'rxjs/operators';
 import { StockExchangeComponent } from '../../stock-exchange/stock-exchange.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-statistics',
@@ -36,13 +37,18 @@ export class StatisticsMembersComponent implements OnInit {
   constructor(private statistics: StatisticsService,
               private roure: ActivatedRoute,
               private fb:FormBuilder,
+              private titleService :Title,
+              private router: Router,
+
               ) {}
 
   ngOnInit(): void {
 
 
     this.h_search_form = Statistics_Search_Form
-    this.h_search_form.title=localStorage.getItem('title')
+    this.h_search_form.title=' احصائيات '+localStorage.getItem('title')
+    this.titleService.setTitle(this.h_search_form.title);
+
     this.fromToForm= this.fb.group({
       // country: [],
       from: [],
@@ -450,5 +456,10 @@ flag:boolean=false;
     console.log(today);
     
     console.log(from);
+  }
+
+  navigatetodetails(type:any,id:any,categorize:string){
+    this.router.navigate([`/stock-exchange/no/statistics/statistics-detials/${type}/${id}`])
+    localStorage.setItem('type',categorize);
   }
 }

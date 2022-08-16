@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { SaveData } from '@app/@core/@data/API/safe-data';
@@ -10,7 +11,7 @@ import { AuthService } from '@app/@core/services/auth/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-declare const gtag: Function;
+// declare const gtag: Function;
 
 @Component({
   selector: 'app-register',
@@ -31,10 +32,13 @@ export class RegisterComponent implements OnInit, SaveData {
     public authService: AuthService,
     private spinner: NgxSpinnerService,
     private alertService: AlertService,
-  ) { }
+    private titleService:Title
+  ) {
+
+   }
 
   ngOnInit(): void {
-
+    this.titleService.setTitle("حساب جدبد");
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     this.RegisterForm = this.fb.group({

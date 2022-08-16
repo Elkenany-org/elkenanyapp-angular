@@ -11,6 +11,7 @@ import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import {  News_Search_Form_Data } from '@app/@core/@data/app/news/news';
 import { News } from '@app/@core/interfaces/news/news';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news-home',
@@ -40,10 +41,12 @@ export class NewsHomeComponent implements OnInit {
                private news: NewsService,
                private router: Router,
                private location: Location,
-  
+              private titleService:Title
     ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle(' الأخبار ');
+
     this.h_search_form = News_Search_Form_Data //set initial data to horizontal component 
 
     this.activatedRoute.data.pipe(

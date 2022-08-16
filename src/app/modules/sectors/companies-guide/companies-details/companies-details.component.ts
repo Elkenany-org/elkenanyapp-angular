@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { company } from '@app/@core/interfaces/companies-guid/co-company';
 import { CompaniesGuideService } from '../../../../@core/services/modules/companies-guide/companies-guide.service';
@@ -16,8 +17,8 @@ public rateValue:number=0
   constructor(
     private companiesGuideService: CompaniesGuideService,
     private route: ActivatedRoute,
-   private router: Router, private fb:FormBuilder
-
+   private router: Router, private fb:FormBuilder,
+   private titleService:Title
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ public rateValue:number=0
     this.route.data.subscribe(data => {
       this.company = data['resolve'].data 
     })
+    this.titleService.setTitle(' تفاصيل '+this.company?.name);
 
 console.log(this.company);
 this.addRate =this.fb.group({

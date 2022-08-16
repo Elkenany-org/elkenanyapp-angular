@@ -10,6 +10,7 @@ import { CompaniesHome, co_Search_Form_Data } from '@app/@core/interfaces/compan
 import { CompaniesFilterList } from '@app/@core/interfaces/companies-guid/co-filter-list-hom,e';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-co-guide-home',
   templateUrl: './co-guide-home.component.html',
@@ -38,8 +39,9 @@ export class CoGuideHomeComponent implements OnInit {
     private router: Router,  
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private BannerLogoService:BannersLogoservice) { }
-
+    private BannerLogoService:BannersLogoservice,
+    private titleService:Title
+) { }
 
   ngOnInit(): void {
 
@@ -65,6 +67,7 @@ export class CoGuideHomeComponent implements OnInit {
 
       this.companiesGuideService.Filter_list(params['type']).subscribe((res:ApiResponse<CompaniesFilterList>) => {
         this.typeAr= res.data?.sectors.find((i:any) =>i.selected ==1)?.name
+        this.titleService.setTitle(' الدليل قسم '+this.typeAr);
 
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
@@ -78,12 +81,14 @@ export class CoGuideHomeComponent implements OnInit {
   }
 
   filter(value:any) {
+    let flag=false;
     let sort='0';
     this.route.params.subscribe( params => {
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
           this.filterData['sector'] = value.name
+          flag=true
             break;
         case "sort":
           this.filterData['sort'] = value.id 
@@ -100,6 +105,9 @@ export class CoGuideHomeComponent implements OnInit {
             // 
             break;
      }
+     console.log('====================================');
+     console.log(this.filterData);
+     console.log('====================================');
      this.companiesGuideService.CompaniesHome(this.filterData['sector'], sort, this.filterData['search'] ).subscribe( res => {
         this.Companies_Home_Data = res  as CompaniesHome
         this.carousel_banner.banner = this.Companies_Home_Data .banners
@@ -111,7 +119,10 @@ export class CoGuideHomeComponent implements OnInit {
         this.type = this.filterData['sector']
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = this.Companies_Home_Data.sectors
         this.typeAr= this.Companies_Home_Data.sectors.find((i:any) =>i.selected ==1)?.name
-        console.log(        this.Companies_Home_Data.sub_sections.length)
+        if(flag){
+          this.titleService.setTitle(' الدليل قسم '+this.typeAr);
+        }
+        console.log(this.Companies_Home_Data.sub_sections.length)
         this.location.go(`companies-guide/${this.type }`);
       })
     })

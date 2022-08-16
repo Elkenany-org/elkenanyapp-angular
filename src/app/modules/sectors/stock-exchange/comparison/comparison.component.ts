@@ -5,6 +5,7 @@ import { StockExchangeService } from '../../../../@core/services/modules/stock-e
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Comparison, Compare } from '@app/@core/interfaces/stock-exchanges/conversion';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-comparison',
@@ -35,7 +36,7 @@ export class ComparisonComponent implements OnInit {
   public h_search_form: JsonFormData | any 
 
   constructor(private StockService:StockExchangeService,private fb: FormBuilder,
-    private route: ActivatedRoute ) { 
+    private route: ActivatedRoute,private titleService:Title ) { 
 
       this.formCommapny = this.fb.group({
         checkArray: this.fb.array([])
@@ -59,6 +60,9 @@ export class ComparisonComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "companies").option = res.data?.companies
         this.h_search_form.controls.find((i:any) => i.role === "feeds").option =   res.data?.feeds;
         this.h_search_form.title =   res.data?.stock_name;
+
+        this.titleService.setTitle(' مقارنة '+this.h_search_form.title);
+
       })
     })
 

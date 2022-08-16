@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 // import { StatisicsStocksDetials } from './../_core/statistics';
 import { StatisicsStocksDetials } from '@core/interfaces/stock-exchanges/statistics';
 import { StatisticsMembersDetials } from './../../../../../@core/interfaces/stock-exchanges/statistics';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-statistics-detials',
@@ -19,10 +20,13 @@ export class StatisticsDetialsComponent implements OnInit {
     from:'',
     to: ''
   }
+  title:string='احصائيات';
   constructor(private statistics: StatisticsService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,private titleService:Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle(' احصائيات '+localStorage.getItem('title'));
+    this.title=' احصائيات '+localStorage.getItem('title')+' - '+localStorage.getItem('type')
     this.route.params.subscribe(prm => {
       this.id= prm['id']
       this.filterData['type']=prm['type']
@@ -51,6 +55,9 @@ export class StatisticsDetialsComponent implements OnInit {
   getStatisicsMembersDetials( type:string,from:string,to:string,id:string){
     this.statistics.StatisicsMembersDetials(type,from,to,id).subscribe(res => {
       this.dataLocalOrFodder= res.data
+      console.log('====================================');
+      console.log(this.dataLocalOrFodder);
+      console.log('====================================');
     })
   }
 
@@ -58,6 +65,9 @@ export class StatisticsDetialsComponent implements OnInit {
     this.statistics.StatisicsStocksDetials(id,from,).subscribe(res => {
       
       this.data= res.data
+      console.log('====================================');
+      console.log(this.data);
+      console.log('====================================');
     })  
   }
 

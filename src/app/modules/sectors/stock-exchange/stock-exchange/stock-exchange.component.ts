@@ -11,6 +11,7 @@ import { FormatDate } from '@shared/classes/formatDate';
 import { JsonFormControls } from '@app/@core/interfaces/_app/horizontal-search';
 
 import { Location } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -48,7 +49,8 @@ export class StockExchangeComponent implements OnInit {
     private route: ActivatedRoute,
     private BannerLogoService:BannersLogoservice,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private titleService:Title
    ) {}
 
   ngOnInit(): void {
@@ -91,7 +93,8 @@ flag=false;
       // this.h_search_form.title = res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
       this.h_search_form.title =   ( type_stock=='local')? res.data?.sub_sections.find(i=> i.id==id)?.name: res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
       // this.nameofstock.emit(this.h_search_form.title);
-      localStorage.setItem('title',' احصائيات '+this.h_search_form.title)
+      localStorage.setItem('title',this.h_search_form.title)
+      this.titleService.setTitle(this.h_search_form.title);
 
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
       // let localOther=res.data?.sub_sections.filter(i=>i.id!=id) 
@@ -117,13 +120,13 @@ flag=false;
         case "sector":
           this.router.navigate(['/stock-exchange',value.name])
           this.filterData['sector'] = value.name
-          localStorage.setItem('title',' احصائيات '+value.title)
+          localStorage.setItem('stockTitle',value.title)
 
           break;
         case "date":
           this.filterData['date'] = value.name
-          console.log('date'+value.name);
-          
+          console.log('date'+value.name);    
+      
           break;
         case "stock":
           let location='/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id
@@ -133,7 +136,9 @@ flag=false;
     
           this.h_search_form.title = value.title;
           this.filterData['stock_id'] = value.id
-          
+          localStorage.setItem('title',value.title)
+          this.titleService.setTitle(value.title);
+
           break;
         case "com_id":
             this.filterData['com_id'] = value.id 

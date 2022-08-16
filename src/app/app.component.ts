@@ -1,6 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, Event, ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@app/@core/services/toastr.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {delay, filter} from 'rxjs/operators';
@@ -21,8 +22,16 @@ export class AppComponent  implements OnInit {
   pageYoffset: number | undefined;
   offsetFlag = true;
 
-constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router
-  ){}
+constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router,private titleService: Title
+  ){
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationEnd)
+    // ).subscribe((event: NavigationEnd) => {
+    //    gtag('event', 'page_view', {
+    //       page_path: event.urlAfterRedirects
+    //    })
+    //   })
+  }
 
 @HostListener('window:scroll', ['$event']) onScroll(event:any){
   this.pageYoffset = window.pageYOffset;
@@ -59,8 +68,9 @@ onToggleMenu(){
   setUpAnalytics(){
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        gtag('js', new Date());
-        gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
+        gtag('event', 'page_view', {
+          page_path: event.urlAfterRedirects
+       })
         console.log('====================================');
         console.log('google analytics is running');
         console.log(event.urlAfterRedirects);

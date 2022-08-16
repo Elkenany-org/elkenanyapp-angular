@@ -1,22 +1,6 @@
 
-
-
-
 <div class="main__content__body">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
     <app-horizontal-search (newItemEvent)="filter($event,'')" [data]="h_search_form" ></app-horizontal-search>
     <section class="special__accordion container d-lg-none d-block d-md-block">
 
@@ -214,7 +198,7 @@
                                             <tbody>
                                                 <tr *ngFor="let i of i[0].categories">
                                                     <td class="border-right border-left company__link__container">
-                                                        <a [routerLink]="['/stock-exchange/no/statistics/statistics-detials',type,i.id]" class="company__link">{{i.categorize}}</a>
+                                                        <a  (click)="navigatetodetails(type,i.id,i.categorize)" class="company__link">{{i.categorize}}</a>
                                                     </td>
                                                     <td class="border-right">
                                                         <span class="negative__content">{{i.change}}%</span>

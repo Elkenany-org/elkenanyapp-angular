@@ -62,11 +62,11 @@ export class NavbarComponent implements OnInit {
   toggleNavbar() { this.navbarOpen = !this.navbarOpen;}
 
 
-login(){
-  this.router.navigate(['/user/login']).then(() => {
-    location.reload();
-  });
-}
+// login(){
+//   this.router.navigate(['/user/login']).then(() => {
+//     location.reload();
+//   });
+// }
 
   logout() {
    this.auth.Logout()

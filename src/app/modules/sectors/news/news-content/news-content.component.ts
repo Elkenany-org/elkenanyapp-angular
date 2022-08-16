@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsDetials } from '@app/@core/interfaces/news/news';
 import { NewsService } from '../../../../@core/services/modules/news/news.service';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, Title} from '@angular/platform-browser';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 
 @Component({
@@ -17,7 +17,7 @@ public news_content? : NewsDetials
               private news: NewsService,
               private sanitizer: DomSanitizer,
               private BannerLogoService:BannersLogoservice,
-
+              private titleService:Title
 ) { }
 new:any;
 video:any;
@@ -28,6 +28,7 @@ image:any=''
     this.route.params.subscribe(prm => {
       console.log(prm)
      this.news.news_details(prm['id']).subscribe(res => {
+      this.titleService.setTitle(res.data?.title!);
       this.news_content = res.data
       // this.image=res.data?.image
       // this.banner.push(this.image)

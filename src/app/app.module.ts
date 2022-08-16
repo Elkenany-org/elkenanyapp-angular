@@ -21,6 +21,7 @@ import { TestComponent } from './test/test.component';
   import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { environment } from 'environments/environment';
 
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
@@ -37,7 +38,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     CollapseModule.forRoot(), BsDropdownModule.forRoot(),
 
     CoreModule,
-
 
 
   ],
