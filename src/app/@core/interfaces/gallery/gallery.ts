@@ -116,21 +116,21 @@ export interface Gallery {
   image: string
   created_at: string
   times: Time[]
-  watches: Watch[]
-  teckits: Teckit[]
+  dates: Date[]
+  tickets: Ticket[]
   images: Image[]
   organisers: Organiser[]
 }
 
 export interface Time {
-  phone: string
+  time: string
 }
 
-export interface Watch {
-  watch: string
+export interface Date {
+  date: string
 }
 
-export interface Teckit {
+export interface Ticket {
   name: string
   price: number
 }

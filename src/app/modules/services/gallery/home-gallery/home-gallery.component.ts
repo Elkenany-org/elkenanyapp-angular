@@ -7,6 +7,7 @@ import { Banner, FilterList, Logo } from '@app/@core/interfaces/_app/app-respons
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-gallery',
@@ -33,12 +34,14 @@ export class HomeGalleryComponent implements OnInit {
               private galleryService: GallaryService,
               private bannrrsLogos: BannersLogoservice,
               private location: Location,
-              private router: Router) { }
+              private router: Router,
+              private titleService:Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("المعارض");
     this.search_form = Gallries_Search_Form
     this.route.data.subscribe(data => {
-      console.log(data['resolve']);
+      // console.log(data['resolve']);
       this.page.current_page = data['resolve'].data!.current_page
       this.page.last_page =data['resolve'].data!.last_page
       this.galleryData= data['resolve'].data?.data 
@@ -73,7 +76,7 @@ export class HomeGalleryComponent implements OnInit {
         this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id === value.id).selected=1
         this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id !== value.id).selected=0
         this.filterData['sector'] = value.name
-        console.log(this.filterData['sector']);
+        // console.log(this.filterData['sector']);
 
           break;
       case "countries":
@@ -92,7 +95,7 @@ export class HomeGalleryComponent implements OnInit {
         this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).selected=1
         this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
         sort = this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).value
-        console.log(value.id);
+        // console.log(value.id);
         
         if(value.id=='1'){
           sort='0'
@@ -110,13 +113,13 @@ export class HomeGalleryComponent implements OnInit {
           break;
    }
    this.galleryService.galleries(this.filterData).subscribe(res => {
-    console.log(this.filterData)
-    console.log(res)
+    // console.log(this.filterData)
+    // console.log(res)
 
     this.galleryData= res.data?.data 
     this.bannrrsLogos.setBanner(res.data?.banners as Banner[])
     this.bannrrsLogos.setLogo(res.data?.logos as Logo[])
-    console.log(res.data);
+    // console.log(res.data);
 
    })
    this.location.go(`gallery/${this.filterData['sector']}`);
@@ -124,7 +127,7 @@ export class HomeGalleryComponent implements OnInit {
   }
 
   navigate(id: string): void {
-    console.log(id)
+    // console.log(id)
     this.router.navigate([`gallery/${this.filterData['sector']}/${id}`])
   }
 

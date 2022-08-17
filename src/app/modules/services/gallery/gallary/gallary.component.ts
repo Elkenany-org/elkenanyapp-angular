@@ -14,11 +14,11 @@ export class GallaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(prm => {
-      console.log((prm['id']))
+      // console.log((prm['id']))
 
       this.galleryService.gallery(prm['id']).subscribe(res => {
 
-        console.log(res)
+        // console.log(res)
 
       })
 

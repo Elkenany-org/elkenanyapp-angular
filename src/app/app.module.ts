@@ -60,7 +60,7 @@ import { environment } from 'environments/environment';
 
           },
         ],onError:(err) => {
-          console.log(err)
+          // console.log(err)
         }
       } as SocialAuthServiceConfig,
     },

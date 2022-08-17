@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { HomeService } from '@app/@core/services/modules/home/home.service';
 
@@ -23,13 +24,14 @@ export class HomeComponent implements OnInit {
   constructor(
     private home:HomeService,
     private BannerLogoService:BannersLogoservice,
+    private titleService:Title
     ) {}
 
 
 
     
 ngOnInit(): void {
-
+this.titleService.setTitle('الكناني | الرئيسية');
  this.home.Home().subscribe( res => {
   //  this.carousel_banner.banner = res.banners
   this.carousel_logos.banner = res.logos
@@ -46,7 +48,7 @@ ngOnInit(): void {
 
   swapTab(tab:string) {
     this.tabs= tab
-    console.log(this.tabs)
+    // console.log(this.tabs)
   }
 
 
@@ -55,7 +57,7 @@ ngOnInit(): void {
     if(i==this.carousel_banner.length-1){
       i=0;
     }
-    console.log(i);
+    // console.log(i);
     
 }
 

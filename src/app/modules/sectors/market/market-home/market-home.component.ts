@@ -8,6 +8,7 @@ import { MarktData } from '@app/@core/interfaces/market/home';
 import { market_Search_Form_Data } from '@app/@core/interfaces/market/market-home-data';
 import { MarketService } from '@app/@core/services/modules/market/market.service';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-market-home',
@@ -34,12 +35,12 @@ export class MarketHomeComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private location: Location,
     private BannerLogoService:BannersLogoservice,
-
+    private titleService:Title
   ) { }
 
   ngOnInit(): void {
     this.h_search_form = market_Search_Form_Data //set initial data to horizontal component 
-
+    this.titleService.setTitle(' اعلانات السوق ');
     this.route.params.subscribe(params => {
       this.type =params['type']
       this.MarketService.Filter_list(this.type).subscribe( res => {
@@ -97,7 +98,8 @@ export class MarketHomeComponent implements OnInit {
 
   navigate(id: string): void
   {
-    console.log(id)
+    // console.log(id)
     this.router.navigate([`/market/${this.type}/ad_details/${id}`]);
+    
   }
 }

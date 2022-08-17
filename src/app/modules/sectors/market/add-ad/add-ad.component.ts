@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router, } from '@angular/router';
 import { sector } from '@app/@core/@data/app/filter-list';
 import { AdDetials } from '@app/@core/interfaces/market/ad';
@@ -36,15 +37,18 @@ export class AddAdComponent implements OnInit {
     private router: Router,
     private toasterService: ToasterService,
     private route: ActivatedRoute,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder,
+    private titleService:Title) { 
 
 
     }
 
   ngOnInit(): void {
+    this.titleService.setTitle(this.pageName);
+
     this.url =  this.router.url.split('/') 
     let secId = sector.find((i:Sector) => i.type ===   this.url[  this.url.length-3] )?.id ||0
-    console.log(  this.url)
+    // console.log(  this.url)
     this.AdForm({} as AdDetials, secId )
 
     this.route.params.subscribe( (param: Params) => {
@@ -53,7 +57,7 @@ export class AddAdComponent implements OnInit {
         if(this.id !== '0') { // if it = 0 its mean user want to add ad if > 0 means user wants to edite
           this.pageName = "تعديل إعلان"
           this.market.get_ad(this.id ).subscribe( res => {
-            console.log(res)
+            // console.log(res)
             res.data?.ad_detials.images.forEach(i => this.AllFiles.push( {
               name: '',
               file: {} as File,
@@ -68,7 +72,7 @@ export class AddAdComponent implements OnInit {
 
 
             // this.AllFiles = res.data?.ad_detials.images as any
-            console.log( this.AllFiles)
+            // console.log( this.AllFiles)
            this.AdForm(res.data?.ad_detials as AdDetials ,secId)
           })
         }
@@ -80,7 +84,7 @@ export class AddAdComponent implements OnInit {
     const fileList = event.target.files;
     if (fileList.length > 0) {
       for (const file of fileList) {
-        console.log(file);
+        // console.log(file);
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (e) => {
@@ -110,7 +114,7 @@ export class AddAdComponent implements OnInit {
 
 
     const formData: FormData = new FormData()
-    console.log(this.adForm.value)
+    // console.log(this.adForm.value)
     formData.append('title', this.adForm.controls['title'].value);
     formData.append('desc',  this.adForm.controls['desc'].value);
     formData.append('phone', this.adForm.controls['phone'].value);
@@ -148,7 +152,7 @@ export class AddAdComponent implements OnInit {
         this.toasterService.stopLoading();
         this.toasterService.showFail(err.error.error)
 
-        console.log(err)
+        // console.log(err)
       })
     }else{//createad
       
@@ -160,8 +164,8 @@ export class AddAdComponent implements OnInit {
       this.toasterService.loading('جارى التحميل...');
 
         this.market.add_ad(formData).subscribe( (res) => {
-          console.log(res)
-          console.log(`/market/${this.url[2]}/ad_details/${res.data?.ad_detials.id}`)
+          // console.log(res)
+          // console.log(`/market/${this.url[2]}/ad_details/${res.data?.ad_detials.id}`)
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')
           this.router.navigate([`/market/${this.url[2]}/ad_details/${res.data?.ad_detials.id}`])
@@ -170,7 +174,7 @@ export class AddAdComponent implements OnInit {
           this.toasterService.stopLoading();
           this.toasterService.showFail(err.error.error)
 
-          console.log(err)
+          // console.log(err)
         })
     }
 

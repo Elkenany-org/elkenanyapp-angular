@@ -43,7 +43,7 @@ export class VerticalSearchComponent implements OnChanges {
       type: type 
       }
 
-      console.log(option)
+      // console.log(option)
 
     this.newItemEvent.emit(option)
 

@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, DoCheck, OnInit, Renderer2,ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Gallery as Gallery2} from '@app/@core/interfaces/gallery/gallery';
+import { Gallery} from '@app/@core/interfaces/gallery/gallery';
 import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 
 @Component({
@@ -12,28 +13,31 @@ import { GallaryService } from '@app/@core/services/modules/gallery/gallary.serv
 })
 export class AboutGallery implements OnInit  {
   private id:number=  0
-  public data?:Gallery2
+  public data?:Gallery
   public addPlaceForm!: FormGroup
   public addRate!: FormGroup
   public rateValue:number=0
-
+  message=''
 
   constructor(private router : Router,
               private route:ActivatedRoute,
               private galleryService: GallaryService,
-              private fb:FormBuilder) { }
+              private fb:FormBuilder,
+              private titleService:Title) { }
 
   ngOnInit(): void {
 
-    this.route.data.subscribe(data => {
-      console.log(data);
-      
-    })
+    // this.route.data.subscribe(data => {
+    //   console.log(data);
+
+    // })
     let url =  this.router.url.split('/') 
     this.id=  +url[url.length-2]
     this.galleryService.gallery(this.id).subscribe(res => {
        this.data = res.data
-       console.log(this.data)
+      //  console.log(this.data)
+       this.titleService.setTitle(this.data?.name!);
+
     })
     this.addPlaceForm =this.fb.group({
       name: ['', [Validators.required]],
@@ -78,7 +82,30 @@ export class AboutGallery implements OnInit  {
     formData.forEach(ite => console.log(ite))
   }
 
+  going(){   
+    let element=document.getElementById("going")
+    if(element?.innerText=='الذهاب'){
+    this.galleryService.add_going({show_id:this.id}).subscribe(res => {
+      // console.log(res)
+      this.message=res.message!
 
+      element!.innerText="عدم الذهاب"
+   },
+    err=>{
+      this.router.navigate(['/user/login']);
+    }
+  )
+    }
+    else if(element?.innerText=="عدم الذهاب"){
+      this.galleryService.not_going({show_id:this.id}).subscribe(res => {
+        // console.log(res)
+        this.message=res.message!
+        element!.innerText="الذهاب"
+     }
+    )
+    }
+
+}
   
 }
 

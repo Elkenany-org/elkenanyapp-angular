@@ -8,6 +8,7 @@ import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { MagazineService } from '../../../../@core/services/modules/magazine/magazine.service';
 import {  MagazinesData, Magazine_Search_Form } from '@app/@core/interfaces/magazine/magazine';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-magazine',
@@ -36,11 +37,13 @@ export class MagazineComponent implements OnInit {
   constructor( private activatedRoute: ActivatedRoute,
                private magazine: MagazineService,         
                private BannerLogoService:BannersLogoservice,
-               private router: Router,
+               private router: Router,private titleService:Title
   
     ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('الدلائل و المجلات');
+
     this.h_search_form = Magazine_Search_Form //set initial data to horizontal component 
     this.filterData['sector'] = 'poultry'
 
@@ -63,7 +66,7 @@ export class MagazineComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
 
       }) 
-    console.log(data['resolve'].data);
+    // console.log(data['resolve'].data);
 
     })
 
@@ -75,7 +78,7 @@ export class MagazineComponent implements OnInit {
         // else{
         //   this.comLength =(this.Companies?.data.length!)
         // }
-        console.log(this.comLength);
+        // console.log(this.comLength);
        })
      }
 
@@ -83,7 +86,7 @@ export class MagazineComponent implements OnInit {
   }
 
   filter(value:any) {
-    console.log(value)
+    // console.log(value)
     // this.filterData['sector'] = 'poultry'
     this.filterData['sort'] = '2'
     this.filterData['cities'] = ''
@@ -102,8 +105,8 @@ export class MagazineComponent implements OnInit {
             this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
             this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
           }) 
-          console.log(this.filterData['countries']);
-          console.log(this.filterData['cities']);
+          // console.log(this.filterData['countries']);
+          // console.log(this.filterData['cities']);
 
           break;
         case "sort":
@@ -133,7 +136,7 @@ export class MagazineComponent implements OnInit {
               this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
               this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
             }) 
-            console.log(this.filterData['countries']);
+            // console.log(this.filterData['countries']);
 
               break;
         case "cities":
@@ -144,7 +147,7 @@ export class MagazineComponent implements OnInit {
           }
               // this.filterData['cities'] = value.id 
           
-         console.log(this.filterData['countries']);
+        //  console.log(this.filterData['countries']);
         //  this.filterData['countries']=''
 
           break;
@@ -193,7 +196,7 @@ export class MagazineComponent implements OnInit {
     this.magazines= res.data?.data
 
 })
-console.log(this.magazines);
+// console.log(this.magazines);
 
 window.scroll(0,0);
 

@@ -201,12 +201,12 @@ flag=false;
   }
 
   fodderData(id:any, date:string,fod_id?:string,comp_id?:string) {
-    console.log(id, date,fod_id,comp_id);
+    // console.log(id, date,fod_id,comp_id);
     
     this.stockExchange.fodder(id,date,fod_id,comp_id).subscribe( res => {
-      console.log('========');
+      // console.log('========');
       
-      console.log(res);
+      // console.log(res);
       
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);

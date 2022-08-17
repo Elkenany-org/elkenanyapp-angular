@@ -63,9 +63,9 @@ export class StatisticsMembersComponent implements OnInit {
 
     this.roure.data.subscribe(data => {
       
-      console.log(data['resolve']);
+      // console.log(data['resolve']);
       if(this.type == "fodder"){
-        console.log("fodder");
+        // console.log("fodder");
         this.StatisticsMemberLocal=data['resolve'].data
 
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
@@ -115,7 +115,7 @@ flag:boolean=false;
     }
     this.getStatisticsMemberData(this.id,this.type, '', '');
     let name=this.StatisticsMemberLocal?.changes_members.find(i => i.id == id)?.categorize
-    console.log(name + id);
+    // console.log(name + id);
     
     if(name==undefined){
       name='الكل'
@@ -133,7 +133,7 @@ flag:boolean=false;
     if(id>0) {
      this.id = id
     this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.id == id) as ChangesMember[]
-    console.log(this.products);
+    // console.log(this.products);
       this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
       this.chartOptions=  this.chart.drowShart( [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)])
       this.products.unshift({id:-1,categorize:'الكل'});
@@ -161,7 +161,7 @@ flag:boolean=false;
       this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
 
       this.products.unshift({id:-1,categorize:'الكل'});
-      console.log(this.products);
+      // console.log(this.products);
       this.flag=true
       this.getStatisticsMemberData(-1,this.type, '', '');
 
@@ -169,7 +169,7 @@ flag:boolean=false;
       let name=this.products.find((i: { compId: any; }) => i.compId == id)?.name
       
       document.getElementById('company')!.innerText = ''+name;
-        console.log(name + id);
+        // console.log(name + id);
       
   }
 
@@ -185,14 +185,14 @@ flag:boolean=false;
 
     if(type){ //this  condation works only  at small view port screen
        let f = this.fromToForm.controls
-       console.log(this.id,this.type,f['from'].value,f['to'].value);
+      //  console.log(this.id,this.type,f['from'].value,f['to'].value);
 
       //  this.getStatisticsMemberData(this.id,this.type,f['from'].value,f['to'].value)
      }else{
        let f = this.fillter.filterdata
         
        this.fillter.filter(value)
-      console.log(this.id,this.type,f['from'],f['to']);
+      // console.log(this.id,this.type,f['from'],f['to']);
        if(f['to']=='' && f['from']!=''){
         let date = new Date();
           if(date.getMonth() + 1 < 10){
@@ -242,17 +242,17 @@ flag:boolean=false;
 
   
   getStatisticsMemberData(id:any,type:string,from:string, to:string){
-    console.log('from'+from);
-    console.log('to:'+to);
+    // console.log('from'+from);
+    // console.log('to:'+to);
     // this.StatisticsMemberGlobal=this.StatisticsMemberLocal;
       // console.log("fodder");
-      console.log(this.StatisticsMemberLocal);
-      console.log('////////////////////');
-      console.log(this.products);
+      // console.log(this.StatisticsMemberLocal);
+      // console.log('////////////////////');
+      // console.log(this.products);
       let arr:any=[];
      let arr2=[{id: 77, name: 'عبد السلام حجازي', categorize: 'ابيض', compId: 131, changes: [{date: '2022-05-28', price: 15}],counts: 0}];
 
-      console.log(this.flag);
+      // console.log(this.flag);
       
       if(id>0 && this.flag && this.products) {
         arr[0]=JSON.parse(JSON.stringify(this.products.find((i: { id: any; }) => i.id ==id))) as ChangesMember[];  
@@ -301,9 +301,9 @@ flag:boolean=false;
            arr2=arr.filter((i: { changes: any[]; })=>i.changes.length != 0)  
       // }
         
-      console.log('============');
+      // console.log('============');
       
-      console.log(arr2);
+      // console.log(arr2);
 
       this.chartOptions=  this.chart.drowShart(arr2)
       
@@ -453,9 +453,9 @@ flag:boolean=false;
     }
     let from = this.subtractDays(days);
     this.getStatisticsMemberData(this.id,this.type ,from, today);
-    console.log(today);
+    // console.log(today);
     
-    console.log(from);
+    // console.log(from);
   }
 
   navigatetodetails(type:any,id:any,categorize:string){

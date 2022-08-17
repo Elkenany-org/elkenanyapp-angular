@@ -16,7 +16,7 @@ export class MarketComponent implements OnInit{
     this.route.params.subscribe(parm => {
       
       this.id = sector.find(i => i.type ==  parm['type'])?.id
-      console.log(this.id)
+      // console.log(this.id)
     })
   }
    

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
 
@@ -11,14 +12,16 @@ export class SpeakersComponent implements OnInit {
 
   public data?:any
   constructor(private router : Router,
-              private galleryService:GallaryService,) { }
+              private galleryService:GallaryService,
+              private titleService:Title) { }
 
   ngOnInit(): void {
     let url =  this.router.url.split('/') 
-    
+    this.titleService.setTitle("المتحدثون");
+
     this.galleryService.speakers(+url[url.length-2]).subscribe(res => {
        this.data = res.data
-       console.log(this.data)
+      //  console.log(this.data)
 
     })
   }

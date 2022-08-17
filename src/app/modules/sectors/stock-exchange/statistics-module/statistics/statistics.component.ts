@@ -54,7 +54,7 @@ alert:boolean=false
     let tempOneMonth=[];
 
     this.roure.data.subscribe((data) => {
-      console.log(data['resolve']);
+      // console.log(data['resolve']);
       this.StatisticsMember = data['resolve'].data;
       this.StatisticsMemberSlected = data['resolve'].data?.changes_subs;
         this.chartOptions = this.chart.drowShart(
@@ -143,7 +143,7 @@ alert:boolean=false
         // this.StatisticsMember = res.data;
         this.StatisticsMemberSlected = res.data?.changes_subs;
         this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
-        console.log(this.chartOptions);
+        // console.log(this.chartOptions);
 
         setTimeout(() => {
           // this.StatisticsMember = res.data;
@@ -191,8 +191,8 @@ alert:boolean=false
     let today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     let from = this.subtractDays(days);
     this.getStatisticsData(this.type, from, today, this.id);
-    console.log(this.type);
-    console.log(from);
+    // console.log(this.type);
+    // console.log(from);
   }
 
   navigate(){

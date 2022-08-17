@@ -105,9 +105,9 @@ export class CoGuideHomeComponent implements OnInit {
             // 
             break;
      }
-     console.log('====================================');
-     console.log(this.filterData);
-     console.log('====================================');
+    //  console.log('====================================');
+    //  console.log(this.filterData);
+    //  console.log('====================================');
      this.companiesGuideService.CompaniesHome(this.filterData['sector'], sort, this.filterData['search'] ).subscribe( res => {
         this.Companies_Home_Data = res  as CompaniesHome
         this.carousel_banner.banner = this.Companies_Home_Data .banners
@@ -122,7 +122,7 @@ export class CoGuideHomeComponent implements OnInit {
         if(flag){
           this.titleService.setTitle(' الدليل قسم '+this.typeAr);
         }
-        console.log(this.Companies_Home_Data.sub_sections.length)
+        // console.log(this.Companies_Home_Data.sub_sections.length)
         this.location.go(`companies-guide/${this.type }`);
       })
     })

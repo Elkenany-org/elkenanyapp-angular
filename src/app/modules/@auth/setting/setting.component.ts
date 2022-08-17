@@ -3,6 +3,7 @@ import { AuthService } from './../../../@core/services/auth/auth.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Profile } from '@app/@core/@data/userData';
 import { ToasterService } from './../../../@core/services/toastr.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-setting',
@@ -15,10 +16,13 @@ export class SettingComponent implements OnInit {
   constructor(
     private auth : AuthService,
      private fb:FormBuilder,
-     private toster: ToasterService
+     private toster: ToasterService,
+     private titleService:Title
      ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("الاعدادات");
+
     this.profileForm = this.fb.group({
       name: [''],
       email:[''],
@@ -30,7 +34,7 @@ export class SettingComponent implements OnInit {
     })
     this.auth.profile().subscribe(res => {
       this.profile =res.data
-      console.log(this.profile);
+      // console.log(this.profile);
       this.profileForm.patchValue({
         name: res.data?.name,
         email:res.data?.email, 
@@ -47,11 +51,11 @@ export class SettingComponent implements OnInit {
 
   submit(form:FormGroup) {
     let body = form.value
-    console.log(body);
+    // console.log(body);
     this.auth.updateProfile(body).subscribe(res => {
       this.toster.showSuccess(res.message as string)
 
-      console.log(res.message);
+      // console.log(res.message);
       
     })
   } 

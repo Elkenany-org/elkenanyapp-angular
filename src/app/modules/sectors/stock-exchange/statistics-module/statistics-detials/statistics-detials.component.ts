@@ -31,7 +31,7 @@ export class StatisticsDetialsComponent implements OnInit {
       this.id= prm['id']
       this.filterData['type']=prm['type']
       if(prm['type'] === 'local' || prm['type'] ===   'fodder') {
-        console.log(prm['type'], this.id);
+        // console.log(prm['type'], this.id);
         
         this.getStatisicsMembersDetials(prm['type'],'','',this.id)
       }else {
@@ -41,7 +41,7 @@ export class StatisticsDetialsComponent implements OnInit {
   }
 
   filter(value:{date:string, type:string}):void {
-    console.log(value);
+    // console.log(value);
     
     let f= this.filterData
     value.type=='from'? f.from = value.date:f.from = value.date
@@ -55,9 +55,9 @@ export class StatisticsDetialsComponent implements OnInit {
   getStatisicsMembersDetials( type:string,from:string,to:string,id:string){
     this.statistics.StatisicsMembersDetials(type,from,to,id).subscribe(res => {
       this.dataLocalOrFodder= res.data
-      console.log('====================================');
-      console.log(this.dataLocalOrFodder);
-      console.log('====================================');
+      // console.log('====================================');
+      // console.log(this.dataLocalOrFodder);
+      // console.log('====================================');
     })
   }
 
@@ -65,9 +65,9 @@ export class StatisticsDetialsComponent implements OnInit {
     this.statistics.StatisicsStocksDetials(id,from,).subscribe(res => {
       
       this.data= res.data
-      console.log('====================================');
-      console.log(this.data);
-      console.log('====================================');
+      // console.log('====================================');
+      // console.log(this.data);
+      // console.log('====================================');
     })  
   }
 

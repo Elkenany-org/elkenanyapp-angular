@@ -7,6 +7,7 @@ import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { map } from 'rxjs';
 import { ShipsTrafficService } from '../../../../@core/services/modules/ships-trafic/ships-traffic.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ships-traffic',
@@ -29,9 +30,12 @@ export class ShipsTrafficComponent implements OnInit {
                 private route:ActivatedRoute,
                 private fb:FormBuilder,
                private BannerLogoService:BannersLogoservice,
-               private ships: ShipsTrafficService) { }
+               private ships: ShipsTrafficService,
+               private titleService:Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('حركة السفن');
+
     this.fromToForm= this.fb.group({
       dataOfArrival: [],
     })
@@ -50,10 +54,10 @@ export class ShipsTrafficComponent implements OnInit {
 
   filter(value:any):void {
 
-    console.log(value)
+    // console.log(value)
     this.ships.ships(value.name).subscribe(res => {
       this.data= res.data
-      console.log(res)
+      // console.log(res)
     })
 
   }

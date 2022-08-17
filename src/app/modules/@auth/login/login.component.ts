@@ -138,9 +138,9 @@ export class LoginComponent implements OnInit, SaveData {
     // console.log('Family Name: ' + responsePayload.family_name);
     // console.log("Image URL: " + responsePayload.picture);
     // console.log("Email: " + responsePayload.email);    
-    console.log('====================================');
-    console.log();
-    console.log('====================================');
+    // console.log('====================================');
+    // console.log();
+    // console.log('====================================');
     // this.authService.AuthLoginSocial()
 
     

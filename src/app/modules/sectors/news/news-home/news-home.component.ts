@@ -54,7 +54,7 @@ export class NewsHomeComponent implements OnInit {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-      console.log(res['resolve']);
+      // console.log(res['resolve']);
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
       this.News = res['resolve'].data.data  as News[]
@@ -98,7 +98,7 @@ export class NewsHomeComponent implements OnInit {
      }
     })
     this.news.all_news(this.filterData['sector'],+this.filterData['sort'],this.filterData['search'],1).subscribe(res => {
-      console.log(res)
+      // console.log(res)
       this.News= res.data?.data 
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
@@ -117,14 +117,14 @@ export class NewsHomeComponent implements OnInit {
 
   next_page(page:number):void{
     this.filterData["page"] = page+''
-    console.log(page);
+    // console.log(page);
     
     this.news.all_news(this.type||'',+this.filterData['sort'],this.filterData['search'],+this.filterData['page']).subscribe(res => {
       this.page.current_page = res.data?.current_page as number
        this.page.last_page =  res.data?.last_page  as number
        this.News = res.data?.data
-       console.log(this.page.last_page );
-       console.log(res);
+      //  console.log(this.page.last_page );
+      //  console.log(res);
 
        window.scroll(0,0);
 

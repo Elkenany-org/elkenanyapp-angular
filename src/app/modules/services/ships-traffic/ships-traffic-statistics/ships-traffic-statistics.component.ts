@@ -7,6 +7,7 @@ import { ShipsTrafficService } from '../../../../@core/services/modules/ships-tr
 import { Fillter } from '@shared/classes/filter';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Country } from '@app/@core/interfaces/ships-traffic/ships-traffic';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ships-traffic-statistics',
@@ -43,11 +44,13 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
                private route:ActivatedRoute,
                private fb:FormBuilder,
                private BannerLogoService:BannersLogoservice,
-               private ship: ShipsTrafficService,) {   
+               private ship: ShipsTrafficService,private titleService:Title) {   
                   // Object.assign(this, { single });
               }
 
   ngOnInit(): void {
+    this.titleService.setTitle('احصائيات حركة السفن');
+
     this.fromToForm= this.fb.group({
       from: [],
       to:[]
@@ -63,7 +66,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
 
       this.data?.products.forEach(item => this.chart.push({name:item.name,value:item.load}))
       this.single =this.chart;
-      console.log(data['resolve'].data);
+      // console.log(data['resolve'].data);
       
 
     })

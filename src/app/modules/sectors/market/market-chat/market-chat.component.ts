@@ -1,6 +1,7 @@
 import { Component, OnInit,AfterViewChecked, ElementRef, ViewChild,  } from '@angular/core';
 
 import { Form, NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '@app/@core/@data/userData';
 import { chatMassages, Massage } from '@app/@core/interfaces/market/chat';
@@ -20,14 +21,16 @@ export class MarketChatComponent implements OnInit {
   constructor(
     private Market: MarketService,
     private route: ActivatedRoute,
+    private titleService:Title
     ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('الرسائل');
 
     this.user =  JSON.parse(localStorage.getItem('user') || '')
-    console.log( this.user  )
+    // console.log( this.user  )
     this.route.params.subscribe(parm => {
-      console.log(parm['id'])
+      // console.log(parm['id'])
     })
     this.get_chat()
     this.scrollToBottom();
@@ -40,7 +43,7 @@ export class MarketChatComponent implements OnInit {
   }
 
   send_massage(contactForm:NgForm):void {
-    console.log();
+    // console.log();
     let data: FormData= new FormData()
     data.append("massage", contactForm.value.massage)
     data.append("id", this.receiverId+'')
@@ -67,7 +70,7 @@ export class MarketChatComponent implements OnInit {
       this.chatMassages = res.data
       this.scrollToBottom();        
 
-      console.log( this.chatMassages?.chat.massages)
+      // console.log( this.chatMassages?.chat.massages)
 
 
     })

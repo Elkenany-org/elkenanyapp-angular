@@ -80,7 +80,7 @@ export class AuthService {
       .then((result:any) => {
 
         let res = result?.additionalUserInfo?.profile
-        console.log(res);
+        // console.log(res);
 
         let data = {
           email:res?.email,
@@ -89,7 +89,7 @@ export class AuthService {
           device_token:'52151',
         }
         this.RegisterLogin_google(data).subscribe((res:any) => {
-          console.log(res);
+          // console.log(res);
           this.localStorageService.setState('token', res.data.api_token);
           let user = {
             name: res.data.name,
@@ -255,8 +255,8 @@ export class AuthService {
  
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res:any)=> {
-      console.log(res);
-      console.log("hello then");
+      // console.log(res);
+      // console.log("hello then");
 
       let data = {
         email:res?.email,
@@ -270,7 +270,7 @@ export class AuthService {
         console.log('You have been successfully logged in!');
       })
     }).catch((err)=> {
-      console.log("hello err");
+      // console.log("hello err");
       
       console.log(err);
       

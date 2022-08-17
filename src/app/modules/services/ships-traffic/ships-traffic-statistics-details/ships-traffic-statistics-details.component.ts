@@ -7,6 +7,7 @@ import { ActivatedRoute  } from '@angular/router';
 import { StatisticsDetials } from '@core/interfaces/ships-traffic/ships-traffic';
 import { Fillter } from '@shared/classes/filter';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ships-traffic-statistics-details',
@@ -39,9 +40,12 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
     private BannerLogoService:BannersLogoservice,
     private fb:FormBuilder,
     private route:ActivatedRoute,
-    private ship: ShipsTrafficService) { }
+    private ship: ShipsTrafficService,
+    private titleService:Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('تفاصيل حركة السفن');
+
     this.fromToForm= this.fb.group({
       country: [],
       from: [],
@@ -68,8 +72,8 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
     if(type){ //this  condation works only  at small view port screen
           let f = this.fromToForm.controls 
 
-          console.log(f['from'].value)
-          console.log(this.country)
+          // console.log(f['from'].value)
+          // console.log(this.country)
 
       this.ship.StatisticsDetails(f['from'].value,f['to'].value,this.country,this.id).subscribe(res => {
         this.data = res.data
@@ -78,7 +82,7 @@ export class ShipsTrafficStatisticsDetailsComponent implements OnInit {
     }else{
       let f = this.fillter.filterdata
       this.fillter.filter(value)
-      console.log(f)
+      // console.log(f)
       this.country = f['country_id']
 
       this.ship.StatisticsDetails(f['from'],f['to'],f['country_id'],this.id).subscribe(res => {

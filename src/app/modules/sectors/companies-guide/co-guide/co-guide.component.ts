@@ -68,7 +68,7 @@ export class CoGuideComponent implements OnInit {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-      console.log(res['resolve'].data);
+      // console.log(res['resolve'].data);
       
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
@@ -109,8 +109,8 @@ export class CoGuideComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
 
-        console.log(params);
-        console.log(this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == params['id']));
+        // console.log(params);
+        // console.log(this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == params['id']));
 
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == params['id']).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id != params['id']).selected=0
@@ -126,7 +126,7 @@ export class CoGuideComponent implements OnInit {
 
     // this.filterData["page"] = this.page.last_page+''
     // this.filterData["sub_id"]= this.id +''
-    console.log(this.page.last_page);
+    // console.log(this.page.last_page);
     
  if(this.page.last_page > 1){
     this.companiesGuideService.Companiesv2({
@@ -143,7 +143,7 @@ export class CoGuideComponent implements OnInit {
       // else{
       //   this.comLength =(this.Companies?.data.length!)
       // }
-      console.log(this.comLength);
+      // console.log(this.comLength);
      })
    }
 
@@ -162,7 +162,7 @@ export class CoGuideComponent implements OnInit {
     let sectorType 
     let sort='2'
     this.route.params.subscribe( params => {
-      console.log(params);
+      // console.log(params);
       
 
       if(!this.filterData["section_id"]) {
@@ -172,7 +172,7 @@ export class CoGuideComponent implements OnInit {
         this.filterData["sub_id"]= params['id']
       }
       // 
-      console.log(this.filterData);
+      // console.log(this.filterData);
 
       switch ( option.type ) {
         case "subsection":
@@ -182,10 +182,10 @@ export class CoGuideComponent implements OnInit {
           this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id).selected=1
           this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id !== option.id).selected=0
 
-          console.log('/////');
+          // console.log('/////');
 
-          console.log(this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id));
-          console.log('/////');
+          // console.log(this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id));
+          // console.log('/////');
           
 
 
@@ -207,7 +207,7 @@ export class CoGuideComponent implements OnInit {
           this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === option.id).selected=1
           this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== option.id).selected=0
           sort = this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === option.id).value
-          console.log(option.id);
+          // console.log(option.id);
           
           if(option.id=='1'){
             sort='0'
@@ -273,8 +273,8 @@ export class CoGuideComponent implements OnInit {
         this.loading = false;
         // this.comLength = this.Companies.data.length!
         // change url params without reloade with new statep
-        console.log(this.page.last_page);
-        console.log('last2');
+        // console.log(this.page.last_page);
+        // console.log('last2');
        if(this.page.last_page > 1){
 
         this.companiesGuideService.Companiesv2({
@@ -288,16 +288,16 @@ export class CoGuideComponent implements OnInit {
         }).subscribe(res => {
             this.comLength =(res.data?.data.length!)
           
-          console.log(this.comLength);
+          // console.log(this.comLength);
          })
          }
         })
 
-    console.log(this.page.last_page);
-    console.log('last');
+//     console.log(this.page.last_page);
+//     console.log('last');
     
 
-console.log(this.filterData);
+// console.log(this.filterData);
 
         // this.location.go(`companies-guide/${sectorType}/companies/${sectorType}/${sectorId}`);
     })

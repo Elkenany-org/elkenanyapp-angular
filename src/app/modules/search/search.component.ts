@@ -80,7 +80,7 @@ export class SearchComponent implements OnInit {
   goSearch(word:any) {
     this.searchService.search(word).subscribe(res => {
       this.data= res.data
-      console.log(this.data);
+      // console.log(this.data);
       
     })
   } 

@@ -71,10 +71,10 @@ onToggleMenu(){
         gtag('event', 'page_view', {
           page_path: event.urlAfterRedirects
        })
-        console.log('====================================');
-        console.log('google analytics is running');
-        console.log(event.urlAfterRedirects);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log('google analytics is running');
+        // console.log(event.urlAfterRedirects);
+        // console.log('====================================');
 
       }      
     })

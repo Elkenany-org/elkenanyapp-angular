@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdDetails } from '@app/@core/interfaces/market/ad-detials';
 import { StartChat } from '@app/@core/interfaces/market/chat';
@@ -23,19 +24,21 @@ export class AdDetailsComponent implements OnInit {
     private Market: MarketService,
     private router: Router,
     private BannerLogoService:BannersLogoservice,
-
+    private titleService:Title
     ) { }
     BannerConfig = BannerConfig 
     logoConfig = logoConfig
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       data['resolve']
-      this.adDetails = data['resolve'].data 
+      this.adDetails = data['resolve'].data
+      this.titleService.setTitle(this.adDetails?.title!);
       this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
       this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       this.BannerConfig.banner= data['resolve'].data?.images as any[]
       this.logoConfig.banner= data['resolve'].data?.images as any[]
     })
+
   }
 
 

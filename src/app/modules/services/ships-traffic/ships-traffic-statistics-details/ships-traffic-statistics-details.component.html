@@ -174,7 +174,7 @@
                     </section>
                     <div class="">
                         <!-- Start One Row  -->
-                    <section class="row rows__container " >
+                    <section class="row rows__container "  >
                         <!-- <div class="" style="clear: both;">
 
                         </div> -->
@@ -182,12 +182,12 @@
                         <div id="accordion" *ngFor="let i of data?.companies;let i1=index">
                             <div></div>
                             <div class="card " >
-                              <div class="card-header flex " id="headingOne" style="background-color: #fff;border-color: #1f6b00;margin: 0;padding: 10px;">
-                                 <p style="float: right;" class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapseOne-'+i1"  aria-expanded="false" aria-controls="collapseOne">
-                                   {{i.name}}
-                                 </p>
-                                 <a  style="float: left;"class="btn btn-link" >
-                                     <a [routerLink]="['/companies-guide/poultry/companies_details/0/',2214]">عن الشركة</a>
+                              <div class="card-header flex " id="headingOne" >
+                                 <div style="float: right ; color:#1f6b00" class="btn" data-toggle="collapse" [attr.data-target]="'#collapseOne-'+i1"  aria-expanded="false" aria-controls="collapseOne">
+                                   <h5>{{i.name}}</h5>
+                                 </div>
+                                 <a  style="float: left;text-decoration: none;"class="btn btn-link" >
+                                     <a [routerLink]="['/companies-guide/poultry/companies_details/0/',2214]" style="color:#1f6b00">عن الشركة</a>
                                  </a>
                               </div>
                           
@@ -196,13 +196,13 @@
                                     <section class="rows" style="min-height: 25px" >
                                     <div class="wall"></div>
                                     <section class="data display__flex test" >
-                                        <h4 class="data__content" >{{i.country}}</h4>
+                                        <h5 class="data__content" >{{i.country}}</h5>
                                     </section>
                                     <section class="data display__flex">
-                                        <h4 class="data__content">{{i.load}}</h4>
+                                        <h5 class="data__content">{{i.load}}</h5>
                                     </section>
                                     <section class="data display__flex">
-                                        <h4 class="data__content">{{i.nums}}</h4>
+                                        <h5 class="data__content">{{i.nums}}</h5>
                                     </section>
                                 </section>
                                 </div>

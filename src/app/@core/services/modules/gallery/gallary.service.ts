@@ -50,4 +50,15 @@ export class GallaryService {
   return this.http.post<ApiResponse<any>>(`${env.ApiUrl}/showes/one-show-reat`,data)
 
 } 
+ //----------------------------------------add going ----------------------------------------------//
+
+add_going(data:{[show_id:string]:number}):Observable<ApiResponse<any>> {
+  return this.http.post<ApiResponse<any>>(`${env.ApiUrl}/showes/one-show-going`,data)
+}
+
+ //----------------------------------------not going ----------------------------------------------//
+
+ not_going(data:{[show_id:string]:number}):Observable<ApiResponse<any>> {
+  return this.http.post<ApiResponse<any>>(`${env.ApiUrl}/showes/one-show-notgoing`,data)
+}
 }

@@ -28,7 +28,7 @@ public rateValue:number=0
     })
     this.titleService.setTitle(' تفاصيل '+this.company?.name);
 
-console.log(this.company);
+// console.log(this.company);
 this.addRate =this.fb.group({
   rate: ['', [Validators.required]],
 })
@@ -47,12 +47,12 @@ this.addRate =this.fb.group({
     sendRate() {
       this.rateValue=this.addRate.controls['rate'].value
       let body ={company_id:this.company?.id+'' , reat:this.addRate.controls['rate'].value}
-      console.log(body);
+      // console.log(body);
       this.companiesGuideService.rate(body).subscribe(
       (res) => {
-        console.log('====================================');
-        console.log(res);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log(res);
+        // console.log('====================================');
         document.getElementById('msg-rate')!.style.display="block";
 
       },
