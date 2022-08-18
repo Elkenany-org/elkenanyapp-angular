@@ -195,7 +195,10 @@ alert:boolean=false
     // console.log(from);
   }
 
-  navigate(){
-    this.router.navigate([`/stock-exchange/poultry/statistics/statistics-detials/notype/${this.id}`])
+
+  navigatetodetails(id:any,categorize:string){
+    this.router.navigate([`/stock-exchange/no/statistics/statistics-detials/notype/${id}`])
+    localStorage.setItem('type',categorize);
+    localStorage.setItem('title','');
   }
 }

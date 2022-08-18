@@ -7,7 +7,7 @@
                  <div  [ngClass]="{'featured__card__container':flag}">
                         <div class="product__card"  [ngClass]="{'big__card':contact.desc,'super__ultra__card':true,'paid__green__card':flag}" style="height: auto; max-height: 270px;">
                         <div  [ngClass]="{'featured__container':flag,'green__card':flag}">
-                            <p *ngIf="flag" [ngClass]="{'featured__label':flag}">الراعى</p>
+                            <p *ngIf="flag" [ngClass]="{'featured__label':flag}" style="line-height: 2.2rem;">الراعى</p>
                         </div> 
 
 
@@ -26,7 +26,7 @@
                             </a>
                         </header>
 
-                        <div class="product__rating mt-2" *ngIf="contact.rate && !flag">
+                        <div class="product__rating mt-2" *ngIf="contact.rate ">
                                     
                                 <i *ngFor='let in of counter1((5-contact.rate)) ;let i = index' style="color: silver;"class="fa-solid fa-star"></i>
                                 <i *ngFor='let in of counter(contact.rate) ;let i = index'  style="color: #fac864;" class="fa-solid fa-star"></i>

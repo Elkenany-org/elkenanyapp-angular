@@ -231,7 +231,7 @@
                             <tr *ngFor="let item of StatisticsMemberSlected; let i = index">
                                 <th scope="row">{{i}}</th>
                                 <td class="border-right border-left company__link__container"> 
-                                  <a [routerLink]="['/stock-exchange/no/statistics/statistics-detials',type,item.id]" class="company__link"> {{item.name}}</a>                                
+                                  <a (click)="navigatetodetails(type,item.id,item.name)" class="company__link"> {{item.name}}</a>                                
                                 </td>
                                 <td class="border-right"><span class="negative__content">
                                 {{item.change}} </span></td>

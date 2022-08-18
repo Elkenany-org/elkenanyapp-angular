@@ -70,14 +70,14 @@ export class StockExchangeComponent implements OnInit {
     
     if(prm['type_stock'] === 'fodder') {
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-          console.log(res );
+          // console.log(res );
           
         this.feeds = res.data?.fodder_list
         this.feedsList = this.feeds
         this.loading = false;   
       })
       this.stockExchange.companies_items(prm['id']).subscribe( res => {
-        console.log(res.data);
+        // console.log(res.data);
         
         this.companies= res.data
         this.companiesList = this.companies
@@ -113,7 +113,7 @@ flag=false;
   }
   filter(value: any) {
     this.route.params.subscribe( params => {
-       console.log(params);
+      //  console.log(params);
       
       this.filterData['sector'] = params['type']
       switch ( value.type ) {
@@ -125,7 +125,7 @@ flag=false;
           break;
         case "date":
           this.filterData['date'] = value.name
-          console.log('date'+value.name);    
+          // console.log('date'+value.name);    
       
           break;
         case "stock":

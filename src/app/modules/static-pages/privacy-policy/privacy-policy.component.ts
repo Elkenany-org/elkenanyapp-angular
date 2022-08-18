@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 
@@ -10,8 +11,12 @@ import { Router } from '@angular/router';
 })
 export class PrivacyPolicyComponent  {
   
-  constructor(private scroller: ViewportScroller, private router: Router) {}
+  constructor(private scroller: ViewportScroller, private router: Router,private titleService:Title) {}
 
+  ngOnInit(): void {
+    this.titleService.setTitle('اتفاقية الخصوصية');
+
+  }
 
   goDown1(s:string) {
     this.scroller.scrollToAnchor(s);
