@@ -8,6 +8,7 @@ import { StatisticsChart } from '@shared/classes/drowShart.class';
 import { filter } from 'rxjs/operators';
 import { StockExchangeComponent } from '../../stock-exchange/stock-exchange.component';
 import { Title } from '@angular/platform-browser';
+import { data } from '@app/@core/interfaces/ships-traffic/ships-traffic';
 
 @Component({
   selector: 'app-statistics',
@@ -65,13 +66,15 @@ export class StatisticsMembersComponent implements OnInit {
       
       // console.log(data['resolve']);
       if(this.type == "fodder"){
-        // console.log("fodder");
+         console.log(data['resolve'].data);
         this.StatisticsMemberLocal=data['resolve'].data
 
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
      
         this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
         
+
+
       }else if (this.type == "local"){
         this.StatisticsMemberLocal=data['resolve'].data
 
@@ -79,14 +82,20 @@ export class StatisticsMembersComponent implements OnInit {
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
         
       }
+    if(this.type == "fodder"){
+        this.statistics.StatisicsMembersFodder(this.id,this.type,'','','').subscribe(res => {
+        
+             this.StatisticsMemberLocal=res.data
+             this.StatisticsMemberFodder =this.fodderTable(res.data!.changes_members)
 
+            })
+          }
     })
 
 
     
     // this.getStatisticsMemberData(this.id,this.type,'','')
     })
-   
 
   }
 flag:boolean=false;
@@ -242,13 +251,7 @@ flag:boolean=false;
 
   
   getStatisticsMemberData(id:any,type:string,from:string, to:string){
-    // console.log('from'+from);
-    // console.log('to:'+to);
-    // this.StatisticsMemberGlobal=this.StatisticsMemberLocal;
-      // console.log("fodder");
-      // console.log(this.StatisticsMemberLocal);
-      // console.log('////////////////////');
-      // console.log(this.products);
+
       let arr:any=[];
      let arr2=[{id: 77, name: 'عبد السلام حجازي', categorize: 'ابيض', compId: 131, changes: [{date: '2022-05-28', price: 15}],counts: 0}];
 
@@ -269,6 +272,7 @@ flag:boolean=false;
           let oldPrice=0 ;
           let newPrice=0 ;
           let changeRate='0';
+          let addone=0;
     //  if(this.type == "fodder") {
     
     if(from != '' || to != ''){
@@ -276,19 +280,40 @@ flag:boolean=false;
           let changes=[];
           let count=0;
 
-            for(let j = 0 ; j<arr[i].changes.length  ; j++) {              
+
+            let f= arr[i].changes.find((obj:any) => {
+                return obj.date === from;
+            });
+            let oldFrom=new Date(from)
+              
+
+            if(f == undefined){
+                while(f == undefined){
+                  let newFrom=this.subtractDays(1,oldFrom)
+                  f = arr[i].changes.find((obj:any) => {
+                    return obj.date === newFrom;
+                  });
+                }
+                f.date=from
+                addone=1
+            }
+            // console.log('====================================');
+            // console.log(arr[i].changes);
+            // console.log('====================================');
+            for(let j = 0 ; j<arr[i].changes.length  ; j++) {    
+
               if((arr[i].changes[j].date >= from && arr[i].changes[j].date <= to) && arr[i].changes[j].price != 0){
                 changes[count]=arr[i].changes[j]
                 count++;
               }
-   
+              
             }
 
             if(changes.length != 0){//to not crash when no changes occured
               oldPrice = changes[0].price;
               newPrice = changes[count-1].price;
               changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
-              arr[i].counts = (changes.length)-1;
+              arr[i].counts = (changes.length);
             }else{
               arr[i].counts = 0;
             }
@@ -301,9 +326,9 @@ flag:boolean=false;
            arr2=arr.filter((i: { changes: any[]; })=>i.changes.length != 0)  
       // }
         
-      // console.log('============');
+    //  console.log('============');
       
-      // console.log(arr2);
+    //  console.log(arr2);
 
       this.chartOptions=  this.chart.drowShart(arr2)
       

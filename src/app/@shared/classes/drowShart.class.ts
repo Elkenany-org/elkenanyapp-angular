@@ -18,15 +18,32 @@ export class StatisticsChart {
             this.arr2.push({
               type: "line",
               showInLegend: true,
-              name:  data[k].categorize,
+              name:  '('+data[k].name +'('+data[k].categorize,
               xValueFormatString: "MMM DD, YYYY",
               dataPoints: []
             })
             for(let j=0 ; j < Result[k].length ; j++){
-              if(Result[k][j].price != 0){
+              if(Result[k][j].price != 0 ){
                 this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y:Result[k][j].change || Result[k][j].price}) // Result[k][j].change
-  
+              if(j+1 < Result[k].length){
+                let old= new Date(Result[k][j].date);
+                let neew= new Date(Result[k][j+1].date);
+                let timeInMilisec = neew.getTime() - old.getTime();
+                let daysBetweenDates: number = Math.ceil(timeInMilisec / (1000 * 60 * 60 * 24));
+                  if(daysBetweenDates>1){
+                    for(let i = 0 ; i<daysBetweenDates-1;i++){
+                      old.setDate(old.getDate() + 1);
+                      this.arr2[k].dataPoints.push( { x:  old, y:Result[k][j].change || Result[k][j].price}) // Result[k][j].change
+                    }
+                }
               }
+
+              }
+              
+
+
+
+
             }
             
           }
@@ -44,7 +61,18 @@ export class StatisticsChart {
           for(let j=0 ; j < Result[k].length ; j++){
             if(Result[k][j].price != 0){
               this.arr2[k].dataPoints.push( { x:  new Date(Result[k][j].date), y:Result[k][j].change || Result[k][j].price}) // Result[k][j].change
-
+              if(j+1 < Result[k].length){
+                let old= new Date(Result[k][j].date);
+                let neew= new Date(Result[k][j+1].date);
+                let timeInMilisec = neew.getTime() - old.getTime();
+                let daysBetweenDates: number = Math.ceil(timeInMilisec / (1000 * 60 * 60 * 24));
+                  if(daysBetweenDates>1){
+                    for(let i = 0 ; i<daysBetweenDates-1;i++){
+                      old.setDate(old.getDate() + 1);
+                      this.arr2[k].dataPoints.push( { x:  old, y:Result[k][j].change || Result[k][j].price}) // Result[k][j].change
+                    }
+                }
+              }
             }
           }
           

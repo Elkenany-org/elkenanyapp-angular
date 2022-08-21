@@ -27,7 +27,12 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
     let id = route.paramMap.get('id') || ''
     console.log("resolver is work ",id,type)
     if(type == "fodder") {
-      return this.statistics.StatisicsMembersFodder(id,type,'','','').pipe(
+      let from =this.subtractDays(30)
+      let to = this.subtractDays(0)
+      console.log('====================================');
+      console.log(from , to);
+      console.log('====================================');
+      return this.statistics.StatisicsMembersFodder(id,type,from,to,'').pipe(
      
         catchError((e) => {
           this.toster.showFail(e.error.error)
@@ -54,5 +59,18 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
 
   }
  
+
+  subtractDays(numOfDays: number, date = new Date()) {
+    date.setDate(date.getDate() - numOfDays);
+    let shortDate;
+    if(date.getMonth() + 1 < 10){
+      shortDate = date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
+    else{
+    shortDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
+    }
+    return shortDate;
+  }
  
 }
