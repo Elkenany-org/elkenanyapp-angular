@@ -129,7 +129,7 @@
                         </a></label>
                     </li>
 
-                    <li  *ngFor="let comp of (StatisticsMemberLocal?.list_members) ; let i=index" class="px-2"> 
+                    <li  *ngFor="let comp of (StatisticsListLocal?.list_members) ; let i=index" class="px-2"> 
                         <label><a tabindex="0" ><input class="mx-2" type="radio" #company (change)=" selectCompany(company.value)" (click)="selectCompany(company.value)" [value]="comp.id" name="companies" id={{comp.id}}> {{comp.name}}</a>
                     </label></li>
             </ul>

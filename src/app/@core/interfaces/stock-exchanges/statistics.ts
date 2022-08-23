@@ -158,6 +158,10 @@ export interface StatisticsMembersLocal {
   changes_members: ChangesMember[]
 }
 
+export interface StatisticsListLocal {
+  list_members: ListMember[]
+}
+
 export interface ListMember {
   id: number
   name: string

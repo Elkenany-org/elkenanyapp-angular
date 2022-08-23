@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { catchError, EMPTY, Observable } from 'rxjs';
@@ -15,24 +15,39 @@ import { AlertService } from '../../services/alert.service';
 })
 export class StatisticsMembersResolver implements Resolve<ApiResponse<StatisticsMembersLocal>>{
    
-
   constructor(private statistics: StatisticsService,
               private router: Router,
               private toster: ToasterService,
-              private alertService: AlertService
+              private alertService: AlertService,
               ) { }
+
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<StatisticsMembersLocal>>  {
     let type = route.paramMap.get('type')|| ''
     let id = route.paramMap.get('id') || ''
+    let arr=''
+
     console.log("resolver is work ",id,type)
+    
     if(type == "fodder") {
-      let from =this.subtractDays(30)
-      let to = this.subtractDays(0)
-      console.log('====================================');
-      console.log(from , to);
-      console.log('====================================');
-      return this.statistics.StatisicsMembersFodder(id,type,from,to,'').pipe(
+      // let from =this.subtractDays(30)
+      // let to = this.subtractDays(0)
+      // console.log('====================================');
+      // console.log(from , to);
+      // console.log('====================================');
+      // this.statistics.StatisicsListFodder(id).subscribe(res => {
+
+      //   arr+=res.data?.list_members[0].id      
+      //   console.log('====================================');
+      //   console.log(arr);
+      //   console.log('====================================');
+      // })
+
+      arr=localStorage.getItem('stockId')!;
+
+      console.log(arr);
+
+      return this.statistics.StatisicsMembersFodder(id,type,'','',arr,'').pipe(
      
         catchError((e) => {
           this.toster.showFail(e.error.error)
@@ -59,6 +74,21 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
 
   }
  
+//   async resolve1(route: ActivatedRouteSnapshot){
+//     let type = route.paramMap.get('type')|| ''
+//     let id = route.paramMap.get('id') || ''
+//     console.log("resolver is work 1111",id,type)
+    
+//     if(type == "fodder") {
+//       await this.statistics.StatisicsListFodder(id).subscribe(res => {
+
+//         this.arr+=res.data?.list_members[0].id      
+//         console.log('====================================');
+//         console.log(this.arr);
+//         console.log('====================================');
+//     })
+//   }
+// }
 
   subtractDays(numOfDays: number, date = new Date()) {
     date.setDate(date.getDate() - numOfDays);

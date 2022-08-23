@@ -81,6 +81,11 @@ export class StockExchangeComponent implements OnInit {
         
         this.companies= res.data
         this.companiesList = this.companies
+        console.log('====================================');
+        console.log(this.companiesList);
+        console.log('====================================');
+        let temp=this.companiesList![0].id+''
+        localStorage.setItem('stockId',temp)
       })
     }
     })
