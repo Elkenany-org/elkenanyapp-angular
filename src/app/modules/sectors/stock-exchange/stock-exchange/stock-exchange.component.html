@@ -15,12 +15,17 @@
             <app-vertical-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
         </section>
     </div>
+
+
+
+
  </article>
 
+ <article class="global__container container">
 
+</article>
 
-
- <article class="table__header__filter special__container"   *ngIf="filterData['type'] == 'fodder'">
+ <!-- <article class="table__header__filter special__container"   *ngIf="filterData['type'] == 'fodder'">
     
     <section class="head new__cards__header">
         <div class="card" >
@@ -127,9 +132,99 @@
         </div>
     </section> 
 </article>
+ -->
 
 
 <div class="global__container" >
+   
+        <div class="row m-auto" >
+            <!-- Start Chart Part -->
+    <div class="col-12" *ngIf="filterData['type'] == 'local'">
+        <div class="multi__selectContainer">
+            <h4 class="multi__title">الأصناف</h4>
+            <form id="box"  class="box-tabs">
+                <div class="btn-group">
+                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="local">
+                        لا يوجد اي اختيار
+                
+                    </button>
+                    <ul class="multiselect-container dropdown-menu" style="text-align: right">
+
+                    <!-- <li class="multiselect-item multiselect-all px-2" > 
+                        <label><a tabindex="0" >
+                        <input type="radio" class="mx-2" value='0' #v (change)=" selectLocalStock(0)" (click)="selectLocalStock(0)" name="local" id="0">  الكل
+                        </a></label>
+                    </li> -->
+
+                    <!-- class="active" -->
+                    <!-- <li *ngFor="let item of (StatisticsMemberLocal?.list_members) ;" class="px-2"> 
+                        <label><a tabindex="0" ><input class="mx-2" type="radio"  #v (change)=" selectLocalStock(v.value)" (click)="selectLocalStock(v.value)" [value]="item.id" name="local" id={{item.id}}> {{item.name}}</a></label>
+                    </li> -->
+                </ul>
+            </div>
+            </form>
+        </div>
+    </div>
+
+                
+    <div class="col-12" *ngIf="filterData['type'] == 'fodder'">
+        <div class="row mx-md-5">
+            <div class="multi__selectContainer col-sm-12 col-md-6 p-3">
+                <h4 class="multi__title ">الشركات</h4>
+                <form id="box" class="box-tabs">
+            <div class="btn-group">
+                <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="company">
+                    <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
+                    <b class="caret"></b>
+                </button>
+                <ul class="multiselect-container dropdown-menu " style="text-align: right">
+                    
+                    <li class="multiselect-item multiselect-all px-2" >
+                        <label><a tabindex="0" >
+                            <input type="radio" class="mx-2" value="multiselect-all" #v (click)="filter({id:'', name: 'الكل', type: 'com_id'} )"  name="companies" id="0">  الكل
+                        </a></label>
+                    </li>
+
+                    <li  *ngFor="let comp of companiesList ; let i=index" class="px-2"> 
+                        <label><a tabindex="0" ><input class="mx-2" type="radio" #company (click)="filter({id: comp.id, name: comp.name, type: 'com_id'} )"  [value]="comp.id" name="companies" id={{comp.id}}> {{comp.name}}</a>
+                    </label></li>
+
+            </ul>
+            </div>
+    </form>
+            </div>
+
+
+            <div class="multi__selectContainer col-sm-12 col-md-6 p-3">
+                <h4 class="multi__title">الأصناف</h4>
+                <form id="box" class="box-tabs">
+                    <div class="btn-group">
+                        <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="product">
+                            <span class="multiselect-selected-text">لا يوجد اي اختيار</span>
+                            <b class="caret"></b>
+                        </button>
+                        <ul class="multiselect-container dropdown-menu" style="text-align: right">
+
+                            <li class="multiselect-item multiselect-all px-2" >
+                                <label><a tabindex="0" >
+                                    <input type="radio" class="mx-2 " value="multiselect-all" #v (click)="filter({id:'', name: 'الكل', type: 'feed_id'} )" name="products">  الكل
+                                </a></label>
+                            </li>
+
+                        <!-- class="active" -->
+                        <li  *ngFor="let feed of feedsList; let i=index" class="px-2"> 
+                            <label><a  tabindex="0" ><input class="mx-2"  type="radio" name="products" #v (click)="filter({id: feed.id, name: feed.name, type: 'feed_id'} )" [value]="feed.id" id={{feed.id}}>{{feed.name}}</a>
+                        </label></li>
+
+                    </ul>
+                </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+        </div>
 
  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">

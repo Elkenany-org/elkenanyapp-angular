@@ -123,11 +123,11 @@
                 </button>
                 <ul class="multiselect-container dropdown-menu " style="text-align: right">
                     
-                    <li class="multiselect-item multiselect-all px-2" >
+                    <!-- <li class="multiselect-item multiselect-all px-2" >
                         <label><a tabindex="0" >
                             <input type="radio" class="mx-2" value="multiselect-all" #v (change)=" selectFodderStock(0)" (click)="selectFodderStock(0)" name="companies" id="0">  الكل
                         </a></label>
-                    </li>
+                    </li> -->
 
                     <li  *ngFor="let comp of (StatisticsListLocal?.list_members) ; let i=index" class="px-2"> 
                         <label><a tabindex="0" ><input class="mx-2" type="radio" #company (change)=" selectCompany(company.value)" (click)="selectCompany(company.value)" [value]="comp.id" name="companies" id={{comp.id}}> {{comp.name}}</a>

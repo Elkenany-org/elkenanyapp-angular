@@ -125,6 +125,7 @@ export class StatisticsMembersComponent implements OnInit {
   }
 flag:boolean=false;
   selectFodderStock(id:any) {
+    this.days=0
 
     if(id>0) {
       this.id = id
@@ -164,6 +165,7 @@ flag:boolean=false;
 
   selectLocalStock(id:any) {
 
+    this.days=0
 
     if(id>0) {
      this.id = id
@@ -192,6 +194,7 @@ flag:boolean=false;
 
 
   selectCompany(id:any) {
+    this.days=0
      this.id = '-1'
       // this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
 
@@ -201,30 +204,17 @@ flag:boolean=false;
       // this.getStatisticsMemberData(-1,this.type, '', '');
 
 
-console.log('====================================');
-console.log(id);
-console.log(this.id);
-
-console.log('====================================');
-    this.statistics.StatisicsMembersFodder(this.stockId,this.type,'','',id,'').subscribe(res => {
+  this.statistics.StatisicsMembersFodder(this.stockId,this.type,'','',id,'').subscribe(res => {
 
 document.getElementById('product')!.innerText = 'الكل';
 
             this.StatisticsMemberLocal=res.data
-              console.log('////////////////////////////////////');
-              console.log(this.StatisticsMemberLocal);
-              console.log('====================================');
              this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
              this.StatisticsMemberFodder =this.fodderTable(res.data!.changes_members)
 
              this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
-             console.log('====================================');
-             console.log(this.products);
-             console.log('====================================');
             //  this.products.unshift({id:-1,categorize:'الكل'});
-
             let name=this.products.find((i: { compId: any; }) => i.compId == id)?.name
-              
               document.getElementById('company')!.innerText = ''+name;
 
             })
@@ -322,69 +312,57 @@ document.getElementById('product')!.innerText = 'الكل';
           let oldPrice=0 ;
           let newPrice=0 ;
           let changeRate='0';
-          let addone=0;
+          let subone=0;
     //  if(this.type == "fodder") {
     
     if(from != '' || to != ''){
         for(let i = 0 ; i< arr.length ; i++) {
           let changes=[];
           let count=0;
+          let countFrom=0;
+          let countTo=0;
 
-          let countFlag=0;
-            if(this.type == "fodder"){
-
+          //handle if from date is not exist it get the value of last date before this from date and set its price
             let f= arr[i].changes.find((obj:any) => {
                 return obj.date === from;
             });
-            if(f == undefined ){
             let oldFrom=new Date(from)
-                while(f == undefined ){
-                  let newFrom=this.subtractDays(1,oldFrom)
-                  f = arr[i].changes.find((obj:any) => {
-                    return obj.date === newFrom;
-                  });
-                }
-                  f.date=from    
-                  addone=1
+            while(f == undefined ){
+              let newFrom=this.subtractDays(1,oldFrom)
+              f = arr[i].changes.find((obj:any) => {
+                return obj.date === newFrom;
+             });
+             countFrom++;
+             if(countFrom == 100){
+                 break;}
+             else if(f != undefined){
+               f.date=from 
+              //  addone=1
+             }
+           }
 
-            }     
-                
+          //handle if to date is not exist it get the value of last date after this to date and set its price
+          let t= arr[i].changes.find((obj:any) => {
+              return obj.date === to;
+          });
 
-          }
-
-
-          if(this.type == "local"){
-
-            let f= arr[i].changes.find((obj:any) => {
-                return obj.date === from;
-            });
-
-            if(f == undefined ){
-            let oldFrom=new Date(from)      
-                while(f == undefined ){
-                   let newFrom=this.subtractDays(1,oldFrom)
-                   f = arr[i].changes.find((obj:any) => {
-                     return obj.date === newFrom;
-                  });
-                  countFlag++;
-                  if(countFlag == 200){
-                      break;
-                  }
-                  else if(f != undefined){
-                    f.date=from 
-                    
-                    addone=1
-                  }
-                }
-
-
-            }     
-                
-
-          }
-          console.log('====================================');
-          console.log(arr[i].changes);
-          console.log('====================================');
+          let oldTo=new Date(to)
+          while(t == undefined ){
+            let newTo=this.subtractDays(1,oldTo)
+            t = arr[i].changes.find((obj:any) => {
+              return obj.date === newTo;
+           });
+           countTo++;
+           if(countTo == 100){
+               break;}
+           else if(t != undefined){
+            //  t.date=to 
+             let newobj=JSON.parse(JSON.stringify(t));
+             newobj.date=to
+             arr[i].changes.push(newobj);
+             subone=1
+           }
+         }
 
             for(let j = 0 ; j<arr[i].changes.length  ; j++) {    
 
@@ -399,7 +377,7 @@ document.getElementById('product')!.innerText = 'الكل';
               oldPrice = changes[0].price;
               newPrice = changes[count-1].price;
               changeRate = (((newPrice - oldPrice)/newPrice)*100).toFixed(2);
-              arr[i].counts = (changes.length)-1;
+              arr[i].counts = (changes.length)-1-subone;
             }else{
               arr[i].counts = 0;
             }
@@ -420,7 +398,7 @@ document.getElementById('product')!.innerText = 'الكل';
       
       setTimeout(() => {
         this.chartOptions=  this.chart.drowShart(arr2)
-      }, 500);
+      }, 100);
 
 
 
@@ -488,7 +466,7 @@ document.getElementById('product')!.innerText = 'الكل';
       this.chartOptions=  this.chart.drowShart(arr2)
       setTimeout(() => {
         this.chartOptions=  this.chart.drowShart(arr2)
-      }, 500);
+      }, 100);
 
     }
       let members= arr
@@ -535,6 +513,19 @@ document.getElementById('product')!.innerText = 'الكل';
 
   subtractDays(numOfDays: number, date = new Date()) {
     date.setDate(date.getDate() - numOfDays);
+    let shortDate;
+    if(date.getMonth() + 1 < 10){
+      shortDate = date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
+    else{
+    shortDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
+    }
+    return shortDate;
+  }
+
+  incrementDays(numOfDays: number, date = new Date()) {
+    date.setDate(date.getDate() + numOfDays);
     let shortDate;
     if(date.getMonth() + 1 < 10){
       shortDate = date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
