@@ -5,7 +5,7 @@ import { CompaniesItems, FilterListSub, Fodder, LocalStockFodder} from '@core/in
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import { ApiResponse } from '@app/@core/@data/API/api';
-import { Stock_Search_Form_Data } from '@app/@core/@data/app/stock-exchange/stock-exchange';
+import { Stock_Search_Form_Data, Stock_Search_Form_Data_Local } from '@app/@core/@data/app/stock-exchange/stock-exchange';
 import { JsonFormData } from '@app/@core/interfaces/_app/filter-list';
 import { FormatDate } from '@shared/classes/formatDate';
 import { JsonFormControls } from '@app/@core/interfaces/_app/horizontal-search';
@@ -33,6 +33,7 @@ export class StockExchangeComponent implements OnInit {
   public companies?:CompaniesItems [];
   public collapse:number= 0
   public today= new FormatDate().shortDate(Date())
+  public flag=false;
 
   public filterData:{[key:string]:string}= {
     type:'',
@@ -43,6 +44,7 @@ export class StockExchangeComponent implements OnInit {
     com_id:"",
     feed_id:''
   }
+  public productList?:CompaniesItems[] =[]
 
   constructor( 
     private stockExchange: StockExchangeService,
@@ -55,7 +57,6 @@ export class StockExchangeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.h_search_form = Stock_Search_Form_Data
     this.getDataFromResolver()
     this.route.params.subscribe((prm:Params) => {
     this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
@@ -68,16 +69,19 @@ export class StockExchangeComponent implements OnInit {
 
 //     console.log(prm);
     
-    if(prm['type_stock'] === 'fodder') {
+    if(prm['type_stock'] === 'fodder') {  
+        this.h_search_form = Stock_Search_Form_Data
+
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-          // console.log(res );
-          
-        this.feeds = res.data?.fodder_list
-        this.feedsList = this.feeds
-        this.loading = false;   
         console.log('====================================');
+        console.log(prm['id']);
         console.log(res.data?.fodder_list);
         console.log('====================================');
+        this.feeds = res.data?.fodder_list
+        this.feedsList = this.feeds
+        this.productList=JSON.parse(JSON.stringify(this.feedsList));  
+
+         this.loading = false; 
       })
       this.stockExchange.companies_items(prm['id']).subscribe( res => {
         // console.log(res.data);
@@ -90,12 +94,13 @@ export class StockExchangeComponent implements OnInit {
         let temp=this.companiesList![0].id+''
         localStorage.setItem('stockId',temp)
       })
+    }else{
+      this.h_search_form = Stock_Search_Form_Data_Local
     }
     })
 
   }
 
-flag=false;
   search_Filter(id:number, type:string, type_stock:string):void {
     this.stockExchange.Filter_list_sub(id, type, type_stock).subscribe((res:ApiResponse<FilterListSub>) => {
       // this.h_search_form.title = res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
@@ -113,13 +118,16 @@ flag=false;
       
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   ( type_stock=='local')? res.data?.sub_sections: res.data?.fodder_sub_sections;
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/statistics-members/${this.filterData['type']}/${id}`;
-      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${id}`;
+      if(type_stock !='local'){
+              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${id}`;
+      }
     // console.log(res.data);
     })
 
 
   }
   filter(value: any) {
+  
     this.route.params.subscribe( params => {
       //  console.log(params);
       
@@ -137,26 +145,45 @@ flag=false;
       
           break;
         case "stock":
-          let location='/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id
-          this.location.replaceState(location);
-          this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/statistics-members/${this.filterData['type']}/${value.id}`;
-          this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${value.id}`;
+
+          if(this.filterData['stok'] == 'fodder'){
+          document.getElementById('company')!.innerText = 'لا يوجد اي اختيار';
+          document.getElementById('product')!.innerText = 'لا يوجد اي اختيار';
+          }
+  
+          // this.filterData['date']=''
+          // this.h_search_form.controls.find((control:JsonFormControls) => control.role === "date");
     
           this.h_search_form.title = value.title;
           this.filterData['stock_id'] = value.id
           localStorage.setItem('title',value.title)
           this.titleService.setTitle(value.title);
+          this.filterData['feed_id'] = '0'
+          this.filterData['com_id'] = '0' 
+          this.filterData['date'] = ''
+
+          this.router.navigate(['/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id]);
+          // let location='/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id
+          // this.location.replaceState(location);
+          // this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/statistics-members/${this.filterData['type']}/${value.id}`;
+          // this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${value.id}`;
+    
 
           break;
         case "com_id":
             this.filterData['com_id'] = value.id 
             console.log(value);
-            
+            this.filterData['feed_id'] = '0'
            document.getElementById('company')!.innerText = value.name;
+          //  document.getElementById('company')!.innerText = 'الكل';
+
             break;
         case "feed_id":
           console.log(value);
             this.filterData['feed_id'] = value.id 
+            this.filterData['com_id'] = '' 
+            document.getElementById('company')!.innerText = 'الكل';
+
             document.getElementById('product')!.innerText = value.name;
 
             break;
@@ -164,12 +191,14 @@ flag=false;
           break;
      }
     })
+    if(value.type != "stock"){
     let f= this.filterData
-    
     this.filterData['stok'] == 'fodder'
-    ?this.fodderData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'])
+    ?this.fodderData(f['stock_id']+'',f['date'],f['feed_id'],f['com_id'],value.type)
     :this.localData(f['stock_id']+'',f['date'],)
     
+    }
+
     // this.nameofstock.emit(value.title);
   }
 
@@ -210,43 +239,46 @@ flag=false;
        this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
        this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       // this.stock_Ex_Data = res.data   
+      console.log('====================================');
+      console.log(this.stock_Ex_Data);
+      console.log('====================================');
     })
 
   }
 
-  fodderData(id:any, date:string,fod_id?:string,comp_id?:string) {
+  fodderData(id:any, date:string,fod_id?:string,comp_id?:string,type?:string) {
     // console.log(id, date,fod_id,comp_id);
-    
+
     this.stockExchange.fodder(id,date,fod_id,comp_id).subscribe( res => {
        console.log('========');
-      
        console.log(res);
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
       // this.companies= 
-      // this.companiesList = this.companies
-
-      this.feedsList!= this.feeds!.filter((ele)=>{
-       console.log('====================================');
-       let temp=this.stock_Ex_Data.members.find((e: { feed: string; })=>{return e.feed==ele.name});
-       return ele.name==temp.feed
-       console.log('===================================='); 
-      })
-
-      this.flag=false
-   },
-   err => this.flag=true)
-
-  //  if(comp_id){
-  //   this.stockExchange.feeds_items(id,parseInt(comp_id)).subscribe( res => {
-  //   console.log(res );
-    
-  //   this.feeds = res.data?.fodder_list
-  //   this.feedsList = this.feeds
-  //   this.loading = false;   
-  // })
-  //  }
+      // this.companiesList = this.companies  
+        if(type=="com_id" && comp_id!= ""){
+          document.getElementById('product')!.innerText = 'الكل';
+        let productAll=JSON.parse(JSON.stringify(this.stock_Ex_Data.members));  
+        console.log(productAll);
+        this.productList=[]
+        productAll= productAll.filter((ele: { feed: string; })=>{
+        let temp=this.feedsList!.find((e)=>{return e.name==ele.feed});
+        this.productList!.push(temp!)
+        })}
+        this.flag=false
+          },
+          err =>{
+          this.flag=true;
+        })
+        
+      // else if(type=="feed_id"){
+      //   let temp=this.feedsList!.find((e)=>{return e.id+''==fod_id});
+      //   console.log('====================================');
+      //   console.log(temp);
+      //   console.log('====================================');
+      //   this.stock_Ex_Data.members=this.stock_Ex_Data.members.find((ele: { feed: string | undefined; })=>{return ele.feed==temp?.name})
+      // }
 
   //  this.stockExchange.companies_items(id).subscribe( res => {
   //   console.log(res.data);

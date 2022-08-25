@@ -60,8 +60,8 @@ export class StockExchangeService {
   }
 
 
-  feeds_items(stock_id:number |string, mini_id?:number) : Observable<ApiResponse<FeedsItems>> {
-    return this.http.get<ApiResponse<FeedsItems>>(`${env.ApiUrl}/localstock/feeds-items?stock_id=${stock_id}&mini_id=${mini_id}`)
+  feeds_items(stock_id:number |string) : Observable<ApiResponse<FeedsItems>> {
+    return this.http.get<ApiResponse<FeedsItems>>(`${env.ApiUrl}/localstock/feeds-items?stock_id=${stock_id}&device=web`)
   }
   companies_items(stock_id:number, company_id?:number) : Observable<ApiResponse<CompaniesItems[]>> {
     return this.http.get<ApiResponse<CompaniesItems[]>>(`${env.ApiUrl}/localstock/companies-items?stock_id=${stock_id}&company_id=${company_id}`)

@@ -103,7 +103,9 @@ export class HorizontalSearchComponent implements OnChanges {
 
   selectOption(value: any, type?:string,name?:string) { //ex: value = animal , type = sector, name = بورصه الاعلاف
 
-
+    // if(type=="date"){
+    //   console.log(value.substring(1,5)); 
+    // }
     //   Search for id that inside options that inside controls 
     const id =this.data?.controls?.find(control => control.role == type)?.option?.find(option => ( option.type || option.name ) == value)?.id 
     const title =this.data?.controls?.find(control => control.role == type)?.option?.find(option => ( option.type || option.name ) == value)?.name 
@@ -114,11 +116,24 @@ export class HorizontalSearchComponent implements OnChanges {
       type: type ,
       title:title
       }
-      this.newItemEvent.emit(option);
+      if(type=="date"){
+        if (parseInt(value.substring(1,5))<2000){
+          console.log(parseInt(value.substring(1,5)));
+        }
+        else if(parseInt(value.substring(1,5))>2000 ){
+          this.newItemEvent.emit(option);
+          console.log(parseInt(value.substring(1,5)));
+        }
+
+      }else{
+          this.newItemEvent.emit(option);
           console.log(option);
+      }
+
 
     }
     
+
   }
 
 

@@ -139,33 +139,6 @@
    
         <div class="row m-auto" >
             <!-- Start Chart Part -->
-    <div class="col-12" *ngIf="filterData['type'] == 'local'">
-        <div class="multi__selectContainer">
-            <h4 class="multi__title">الأصناف</h4>
-            <form id="box"  class="box-tabs">
-                <div class="btn-group">
-                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="بورصة لحم الدواجن بأنواعها" id="local">
-                        لا يوجد اي اختيار
-                
-                    </button>
-                    <ul class="multiselect-container dropdown-menu" style="text-align: right">
-
-                    <!-- <li class="multiselect-item multiselect-all px-2" > 
-                        <label><a tabindex="0" >
-                        <input type="radio" class="mx-2" value='0' #v (change)=" selectLocalStock(0)" (click)="selectLocalStock(0)" name="local" id="0">  الكل
-                        </a></label>
-                    </li> -->
-
-                    <!-- class="active" -->
-                    <!-- <li *ngFor="let item of (StatisticsMemberLocal?.list_members) ;" class="px-2"> 
-                        <label><a tabindex="0" ><input class="mx-2" type="radio"  #v (change)=" selectLocalStock(v.value)" (click)="selectLocalStock(v.value)" [value]="item.id" name="local" id={{item.id}}> {{item.name}}</a></label>
-                    </li> -->
-                </ul>
-            </div>
-            </form>
-        </div>
-    </div>
-
                 
     <div class="col-12" *ngIf="filterData['type'] == 'fodder'">
         <div class="row mx-md-5">
@@ -212,7 +185,7 @@
                             </li>
 
                         <!-- class="active" -->
-                        <li  *ngFor="let feed of feedsList; let i=index" class="px-2"> 
+                        <li  *ngFor="let feed of productList; let i=index" class="px-2"> 
                             <label><a  tabindex="0" ><input class="mx-2"  type="radio" name="products" #v (click)="filter({id: feed.id, name: feed.name, type: 'feed_id'} )" [value]="feed.id" id={{feed.id}}>{{feed.name}}</a>
                         </label></li>
 
@@ -292,7 +265,7 @@
                 
                 <div class="wall"></div>
                 <section class="cell__container">
-                    <span class="data__content">{{member.price}}</span>
+                    <span class="cell__content">{{member.price}}</span>
                 </section>
 
 
@@ -325,7 +298,7 @@
 
                 <div class="wall" *ngIf="stock_Ex_Data?.columns[7]"></div>
                 <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[7]">
-                    <span class="data__content">{{member.price_status}}</span>
+                    <span class="cell__content">{{member.price_status}}</span>
                 </section>
 
                 <div class="wall" *ngIf="stock_Ex_Data?.columns[9]"></div>
@@ -363,11 +336,24 @@
             <!-- Start One Row    add ads class if ad  -->
 
         </div>
+
+
     </section>
     <!-- End Table -->
-
+    <!-- Start Caution -->
+    <article class="caution container">
+        <svg fill="#FFAA00" height="50px" viewBox="0 0 24 24" width="50px" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                    <path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                </svg>
+            <p class="caution-description">هذه الاسعار استرشادية عن طريق المورد وتختلف حسب الجودة والكمية وطرق
+                السداد ووقت التنفيذ</p>
+        </article>
+        <!-- End Caution -->
 
 </div>
+
+
 
 
 

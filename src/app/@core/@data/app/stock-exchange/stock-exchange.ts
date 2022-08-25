@@ -43,7 +43,7 @@ export let Stock_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "مقارنة",
+        name: "قارن الان",
         label: "Size",
         class:"stats__btn",
         role:"comparison",
@@ -71,7 +71,63 @@ export let Stock_Search_Form_Data: JsonFormData =
 
     ]
   }
-
+  export let Stock_Search_Form_Data_Local: JsonFormData =
+  {   
+    title: "البورصة اليومية",
+    class:"tabs tabs-4",
+      controls: [
+        {
+          name: "القطاع",
+          type: "select",
+          role: "sector",
+          class: "form-control",
+          value: "",
+          icon:"fas fa-puzzle-piece",
+          option: [],
+          validators: {
+            required: false,
+          }
+        },
+        {
+          name: "البورصة",
+          type: "select",
+          role: "stock",
+          class: "form-control",
+          value: "",
+          icon:"fas fa-puzzle-piece",
+          option: [],
+          validators: {
+            required: false,
+          }
+        },
+        {
+          name: "التاريخ",
+          type: "date",
+          role: "date",
+          class: "form-control",
+          value: "",
+          icon:"fas fa-puzzle-piece",
+          option: [],
+          validators: {
+            required: false,
+          }
+        },
+        {
+          name: "احصائيات",
+          label: "Size",
+          class:"stats__btn",
+          role:"statistics",
+          value: "",
+          icon:"fas fa-poll",
+          type: "a",
+          routerLink: "",
+          validators: {
+            required: false,
+          }
+      },
+  
+      ]
+    }
 
 
   
