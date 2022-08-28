@@ -76,9 +76,9 @@ export class StatisticsMembersComponent implements OnInit {
          console.log(data['resolve'].data);
         this.StatisticsMemberLocal=data['resolve'].data
 
-        this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
+        // this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
      
-        this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
+        // this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
         
           this.statistics.StatisicsListFodder(this.stockId).subscribe(res => {
           console.log('====================================');

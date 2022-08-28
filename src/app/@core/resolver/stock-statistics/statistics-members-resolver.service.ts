@@ -47,7 +47,7 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
 
       console.log(arr);
 
-      return this.statistics.StatisicsMembersFodder(id,type,'','',arr,'').pipe(
+      return this.statistics.StatisicsMembersFodder(id,type,'','','222','').pipe(
      
         catchError((e) => {
           this.toster.showFail(e.error.error)

@@ -53,7 +53,7 @@
   <!-- Start Company Details -->
   <article class="cards new__company__details">
       <div class="new__title">
-          <h2 class="main-title">بيانات الشركة</h2>
+          <h2 class="main-title">بيانات المجلة</h2>
       </div>
       <div class="box__data">
           <div class="box__title">
@@ -90,7 +90,7 @@
                       </ul>
                   </div>
               </div>
-              <!-- <div class="box__element"  *ngIf=" magazineData?.addresses && magazineData?.addresses!.length>0 ">
+              <div class="box__element"  *ngIf=" magazineData?.addresses && magazineData?.addresses!.length>0 ">
                   <p class="title">
                           <span class="span__icon">
                               <svg enable-background="new 0 0 24 24" fill="#000000" height="20px"
@@ -104,21 +104,21 @@
                           </svg>
                           </span>
                       <span class="span__content">
-                              عناوين المصنع
+                              عناوين  إضافي
                           </span>
                   </p>
                   <div class="body">
                       <ul class="body__list" *ngIf=" magazineData?.addresses && magazineData?.addresses!.length>0 ">
                           <li class="single__element" *ngFor="let addresse of magazineData?.addresses">
                               <a class="element__content"
-                                 href="https://maps.google.com/?q={{addresse.addresse}}"
-                                 rel="noreferrer" target="_blank">{{addresse.addresse}}
+                                 href="https://maps.google.com/?q={{addresse.address}}"
+                                 rel="noreferrer" target="_blank">{{addresse.address}}
                               </a>
                           </li>
 
                       </ul>
                   </div>
-              </div> -->
+              </div>
           </div>
       </div>
       <div class="box__data">
@@ -203,12 +203,12 @@
                                xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0z" fill="none"/><path
                                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-.61.08-1.21.21-1.78L8.99 15v1c0 1.1.9 2 2 2v1.93C7.06 19.43 4 16.07 4 12zm13.89 5.4c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41C17.92 5.77 20 8.65 20 12c0 2.08-.81 3.98-2.11 5.4z"/></svg>   </span>
                       <span class="span__content">
-                              عناوين الشركة على الإنترنت
+                              بيانات المجلة علي السوشيال ميديا
                           </span>
                   </p>
                   <div class="body">
-                      <div class="social__bar mb-3  text-center" *ngFor="let so of magazineData?.social">
-                          <a class="slider__nav__item website" [href]="so.social_link"
+                      <div class="social__bar mb-3  text-center" >
+                          <a *ngFor="let so of magazineData?.social" class="slider__nav__item website" [href]="so.social_link"
                              target="_blank">
                              <img [src]="so.social_icon" alt="">
                           </a>

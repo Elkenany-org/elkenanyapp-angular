@@ -158,8 +158,8 @@ export class StockExchangeComponent implements OnInit {
           this.filterData['stock_id'] = value.id
           localStorage.setItem('title',value.title)
           this.titleService.setTitle(value.title);
-          this.filterData['feed_id'] = '0'
-          this.filterData['com_id'] = '0' 
+          this.filterData['feed_id'] = ''
+          this.filterData['com_id'] = '' 
           this.filterData['date'] = ''
 
           this.router.navigate(['/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id]);
@@ -173,7 +173,7 @@ export class StockExchangeComponent implements OnInit {
         case "com_id":
             this.filterData['com_id'] = value.id 
             console.log(value);
-            this.filterData['feed_id'] = '0'
+            this.filterData['feed_id'] = ''
            document.getElementById('company')!.innerText = value.name;
           //  document.getElementById('company')!.innerText = 'الكل';
 
@@ -239,9 +239,6 @@ export class StockExchangeComponent implements OnInit {
        this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
        this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       // this.stock_Ex_Data = res.data   
-      console.log('====================================');
-      console.log(this.stock_Ex_Data);
-      console.log('====================================');
     })
 
   }
@@ -257,15 +254,15 @@ export class StockExchangeComponent implements OnInit {
       this.stock_Ex_Data = res.data    
       // this.companies= 
       // this.companiesList = this.companies  
-        if(type=="com_id" && comp_id!= ""){
-          document.getElementById('product')!.innerText = 'الكل';
-        let productAll=JSON.parse(JSON.stringify(this.stock_Ex_Data.members));  
-        console.log(productAll);
-        this.productList=[]
-        productAll= productAll.filter((ele: { feed: string; })=>{
-        let temp=this.feedsList!.find((e)=>{return e.name==ele.feed});
-        this.productList!.push(temp!)
-        })}
+        // if(type=="com_id" && comp_id!= ""){
+        //   document.getElementById('product')!.innerText = 'الكل';
+        // let productAll=JSON.parse(JSON.stringify(this.stock_Ex_Data.members));  
+        // console.log(productAll);
+        // this.productList=[]
+        // productAll= productAll.filter((ele: { feed: string; })=>{
+        // let temp=this.feedsList!.find((e)=>{return e.name==ele.feed});
+        // this.productList!.push(temp!)
+        // })}
         this.flag=false
           },
           err =>{

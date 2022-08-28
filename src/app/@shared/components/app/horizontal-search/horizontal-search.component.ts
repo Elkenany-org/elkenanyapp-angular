@@ -116,14 +116,14 @@ export class HorizontalSearchComponent implements OnChanges {
       type: type ,
       title:title
       }
-      if(type=="date"){
-        if (parseInt(value.substring(1,5))<2000){
-          console.log(parseInt(value.substring(1,5)));
-        }
-        else if(parseInt(value.substring(1,5))>2000 ){
-          this.newItemEvent.emit(option);
-          console.log(parseInt(value.substring(1,5)));
-        }
+      if(type=="date" || type=="dataOfArrival"){
+          if (parseInt(value.substring(0,4))>=2021 && parseInt(value.substring(0,5))<20211 && parseInt(value.substring(0,5))<202111){
+             this.newItemEvent.emit(option);
+           console.log(parseInt(value.substring(0,4)));
+          }
+        // else if(parseInt(value.substring(1,5))<202  ){
+        //   console.log(parseInt(value.substring(1,5)));
+        // }
 
       }else{
           this.newItemEvent.emit(option);

@@ -49,6 +49,7 @@ export interface Magazine {
     phones: any[]
     emails: Email[]
     mobiles: Mobile[]
+    addresses: Address[]
     faxs: any[]
     social: any[]
     gallary: any[]
@@ -63,6 +64,10 @@ export interface Magazine {
     mobile: string
   }
 
+  export interface Address {
+    address: string,
+    latitude: string,
+    longitude:  string}
 //////////////////////////////
 
 export const Magazine_Search_Form: JsonFormData  =

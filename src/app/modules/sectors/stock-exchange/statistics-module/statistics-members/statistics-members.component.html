@@ -60,29 +60,16 @@
         </div>
     </section>
 
-
-
-    <!-- Start Global Content -->
     <article class="global__container container">
         <div class="row">
-            <!-- Start Chart Part -->
-            <section class="col-12 chart__container">
-                <div id="">
-                    <div class="toolbar">
-                        <button (click)="geTstatisticsByDate(30)" [ngClass]="{'active':days==30}" id="one_month">1M</button>
-                        <button (click)="geTstatisticsByDate(90)" [ngClass]="{'active':days==90}" id="six_months">3M</button>
-                        <button (click)="geTstatisticsByDate(180)" [ngClass]="{'active':days==180}"  id="one_year">6M</button>
-                        <button (click)="geTstatisticsByDate(0)"   [ngClass]="{'active':days==0}" id="all">ALL</button>
-                    </div>
-                    <div id="chart-timeline"></div>
-                </div>
-            </section> 
-            <!-- Multi Select menu -->
-            <div *ngIf="chartOptions">
-                <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
-            </div>       
-            
-            
+
+              <div class="alert alert-success d-flex align-items-center " role="alert">
+
+                <h5 class="alert-heading align-items-center m-auto"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>يرجي تحديد الشركة لرؤية الاحصائيات الخاصة بها </h5>
+              </div>
+              
     <div class="col-12" *ngIf="type== 'local'">
         <div class="multi__selectContainer">
             <h4 class="multi__title">الأصناف</h4>
@@ -113,7 +100,7 @@
                 
     <div class="col-12" *ngIf="type== 'fodder'">
         <div class="row">
-            <div class="multi__selectContainer col-6">
+            <div class="multi__selectContainer col-sm-12 col-md-6 p-3">
                 <h4 class="multi__title ">الشركات</h4>
                 <form id="box" class="box-tabs">
             <div class="btn-group">
@@ -138,7 +125,7 @@
             </div>
 
 
-            <div class="multi__selectContainer col-6 p-3">
+            <div class="multi__selectContainer col-sm-12 col-md-6 p-3">
                 <h4 class="multi__title">الأصناف</h4>
                 <form id="box" class="box-tabs">
                     <div class="btn-group">
@@ -167,7 +154,33 @@
 
         </div>
     </div>
+</div>
+</article>
 
+    <!-- Start Global Content -->
+    <article class="global__container container">
+    
+        <div class="row">
+        
+
+            <!-- Start Chart Part -->
+            <section class="col-12 chart__container">
+                <div id="">
+                    <div class="toolbar">
+                        <button (click)="geTstatisticsByDate(30)" [ngClass]="{'active':days==30}" id="one_month">1M</button>
+                        <button (click)="geTstatisticsByDate(90)" [ngClass]="{'active':days==90}" id="six_months">3M</button>
+                        <button (click)="geTstatisticsByDate(180)" [ngClass]="{'active':days==180}"  id="one_year">6M</button>
+                        <button (click)="geTstatisticsByDate(0)"   [ngClass]="{'active':days==0}" id="all">ALL</button>
+                    </div>
+                    <div id="chart-timeline"></div>
+                </div>
+            </section> 
+            <!-- Multi Select menu -->
+            <div *ngIf="chartOptions">
+                <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
+            </div>       
+            
+            
 
 
             <!--    Table    -->
@@ -185,7 +198,7 @@
                                     </h5>
                                 </div>
 
-                                <div [id]="'collapseOne-'+i1"  class="collapse" aria-labelledby="headingOne368" data-parent="#accordion" style="">
+                                <!-- <div [id]="'collapseOne-'+i1"  class="collapse" aria-labelledby="headingOne368" data-parent="#accordion" style=""> -->
                                     <div class="card-body">
                                         <table class="table table-hover" style="margin: 0px">
                                             <thead>
@@ -208,7 +221,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             </div>
                     </div>

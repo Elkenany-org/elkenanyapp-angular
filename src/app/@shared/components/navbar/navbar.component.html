@@ -40,7 +40,7 @@
                                             <a class="nav-link" [routerLink]="['/companies-guide/poultry']">دليل الشركات</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child1" id="collapseOneA">
-                                            <a class="nav-link" [routerLink]="['/news/poultry']">الاخبار</a>
+                                            <a class="nav-link" [routerLink]="['/news/poultry']">الأخبار</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child1" id="collapseOneA">
                                             <a class="nav-link" [routerLink]="['/market/poultry']">سوق الكنانى</a>
@@ -62,7 +62,7 @@
                                             <a class="nav-link" [routerLink]="['/companies-guide/animal']">دليل الشركات</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child2" id="collapseOneB">
-                                            <a class="nav-link" [routerLink]="['/news/animal']">الاخبار</a>
+                                            <a class="nav-link" [routerLink]="['/news/animal']">الأخبار</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child2" id="collapseOneB">
                                             <a class="nav-link" [routerLink]="['/market/animal']">سوق الكنانى</a>
@@ -84,7 +84,7 @@
                                             <a class="nav-link" [routerLink]="['/companies-guide/farm']">دليل الشركات</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child3" id="collapseOneC">
-                                            <a class="nav-link" [routerLink]="['/news/farm']">الاخبار</a>
+                                            <a class="nav-link" [routerLink]="['/news/farm']">الأخبار</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child3" id="collapseOneC">
                                             <a class="nav-link" [routerLink]="['/market/farm']">سوق الكنانى</a>
@@ -106,7 +106,7 @@
                                             <a class="nav-link" [routerLink]="['/companies-guide/fish']">دليل الشركات</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child4" id="collapseOneD">
-                                            <a class="nav-link" [routerLink]="['/news/fish']">الاخبار</a>
+                                            <a class="nav-link" [routerLink]="['/news/fish']">الأخبار</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child4" id="collapseOneD">
                                             <a class="nav-link" [routerLink]="['/market/fish']">سوق الكنانى</a>
@@ -128,7 +128,7 @@
                                             <a class="nav-link" [routerLink]="['/companies-guide/horses']">دليل الشركات</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child5" id="collapseOneE">
-                                            <a class="nav-link" [routerLink]="['/news/horses']">الاخبار</a>
+                                            <a class="nav-link" [routerLink]="['/news/horses']">الأخبار</a>
                                         </div>
                                         <div class="card-body collapse" data-parent="#child5" id="collapseOneE">
                                             <a class="nav-link" [routerLink]="['/market/horses']">سوق الكنانى</a>
@@ -155,46 +155,56 @@
                 <ul aria-labelledby="mainCategoriesDropdown" class="dropdown-menu"  [ngClass]="{'show':s.isOpen}"  aria-labelledby="dropdownMenuButton">
                     <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع الداجنى </a>
+                        <div class="dropdown-divider"></div>
+
                         <ul class="submenu dropdown-menu submenu-left">
                             <li><a class="dropdown-item" [routerLink]="['/stock-exchange/poultry']">البورصة اليومية</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/companies-guide/poultry']">دليل الشركات</a></li>
-                            <li><a class="dropdown-item" [routerLink]="['/news/poultry']">الاخبار</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/news/poultry']">الأخبار</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/market/poultry']">سوق الكنانى</a></li>
                         </ul>
                     </li>
                     <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع الحيوانى </a>
+                        <div class="dropdown-divider"></div>
+
                         <ul class="submenu dropdown-menu submenu-left">
                             <li><a class="dropdown-item" [routerLink]="['/stock-exchange/animal']">البورصة اليومية</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/companies-guide/animal']">دليل الشركات</a></li>
-                            <li><a class="dropdown-item" [routerLink]="['/news/animal']">الاخبار</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/news/animal']">الأخبار</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/market/animal']">سوق الكنانى</a></li>
                         </ul>
                     </li>
                     <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع الزراعى </a>
+                        <div class="dropdown-divider"></div>
+
                         <ul class="submenu dropdown-menu submenu-left">
-                            <li><a class="dropdown-item" [routerLink]="['/stock-exchange/farm']">البورصةاليومية</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/stock-exchange/farm']">البورصة اليومية</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/companies-guide/farm']">دليل الشركات</a></li>
-                            <li><a class="dropdown-item" [routerLink]="['/news/farm']">الاخبار</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/news/farm']">الأخبار</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/market//farm']">سوق الكنانى</a></li>
                         </ul>
                     </li>
                     <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع السمكى </a>
+                        <div class="dropdown-divider"></div>
+
                         <ul class="submenu dropdown-menu submenu-left">
                             <li><a class="dropdown-item" [routerLink]="['/stock-exchange/fish']">البورصة اليومية</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/companies-guide/fish']">دليل الشركات</a></li>
-                            <li><a class="dropdown-item" [routerLink]="['/news/fish']">الاخبار</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/news/fish']">الأخبار</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/market/fish']">سوق الكنانى</a></li>
                         </ul>
                     </li>
                     <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> الخيول العربية </a>
+                        <div class="dropdown-divider"></div>
+
                         <ul class="submenu dropdown-menu submenu-left">
                             <li><a class="dropdown-item" [routerLink]="['/stock-exchange/horses']">البورصة اليومية</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/companies-guide/horses']">دليل الشركات</a></li>
-                            <li><a class="dropdown-item" [routerLink]="['/news/horses']">الاخبار</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/news/horses']">الأخبار</a></li>
                             <li><a class="dropdown-item" [routerLink]="['/market/horses']">سوق الكنانى</a></li>
                         </ul>
                     </li>
