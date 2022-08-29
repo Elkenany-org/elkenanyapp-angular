@@ -14,6 +14,7 @@ import { LightboxModule } from 'ng-gallery/lightbox';
 // import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery-view'; // <----------------- angular-modal-gallery library import
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 
@@ -32,6 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     GalleryRoutingModule,
     SharedModule,
     NgxPaginationModule,
+    ClipboardModule,
     // GalleryModule.withConfig({
     //   // thumbView: 'contain',
     // }),

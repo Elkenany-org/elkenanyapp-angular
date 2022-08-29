@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gallery} from '@app/@core/interfaces/gallery/gallery';
 import { GallaryService } from '@app/@core/services/modules/gallery/gallary.service';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-about-gallery',
@@ -65,21 +66,33 @@ export class AboutGallery implements OnInit  {
     formData.append('desc',   this.addPlaceForm.controls['desc'].value)
     formData.append('show_id', this.id+'')
     this.galleryService.add_place(formData).subscribe(res => {
-      this.galleryService.showers(this.id).subscribe(res => console.log(res))
+      this.galleryService.showers(this.id).subscribe(res => {console.log(res)
+        this.message=res.message!
+        window.setTimeout(() => {
+          this.message=''
+  }, 5000);
+
+      })
     })
     formData.forEach(ite => console.log(ite))
   }
 
   sendRate() {
     const formData:FormData= new FormData
+
     formData.append('name',  this.addRate.controls['name'].value)
     formData.append('email', this.addRate.controls['email'].value)
     formData.append('desc',  this.addRate.controls['desc'].value)
     formData.append('rate',  this.addRate.controls['rate'].value)
     formData.append('show_id',this.id+'')
     this.galleryService.add_rate(formData).subscribe(res => {
+      this.message=res.message!
+      window.setTimeout(() => {
+        this.message=''
+}, 5000);
+
     })
-    formData.forEach(ite => console.log(ite))
+    // formData.forEach(ite => console.log(ite))
   }
 
   going(){   
@@ -87,9 +100,12 @@ export class AboutGallery implements OnInit  {
     if(element?.innerText=='الذهاب'){
     this.galleryService.add_going({show_id:this.id}).subscribe(res => {
       // console.log(res)
+      element!.innerText="عدم الذهاب"
       this.message=res.message!
 
-      element!.innerText="عدم الذهاب"
+      window.setTimeout(() => {
+              this.message=''
+      }, 5000);
    },
     err=>{
       this.router.navigate(['/user/login']);
@@ -101,11 +117,15 @@ export class AboutGallery implements OnInit  {
         // console.log(res)
         this.message=res.message!
         element!.innerText="الذهاب"
+        window.setTimeout(() => {
+          this.message=''
+  }, 5000);
      }
     )
     }
 
 }
+
   
 }
 

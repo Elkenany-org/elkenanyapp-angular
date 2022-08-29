@@ -80,7 +80,7 @@ const routes: Routes = [
       import('./modules/sectors/news/news.module').then((m) => m.NewsModule),
       
     },{
-      path: 'magazine',
+      path: 'magazine/:type',
       loadChildren: () => 
         import('./modules/services/magazine/magazine.module').then((m) => m.MagazineModule),
         

@@ -9,6 +9,7 @@ import { MagazineService } from '../../../../@core/services/modules/magazine/mag
 import {  MagazinesData, Magazine_Search_Form } from '@app/@core/interfaces/magazine/magazine';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
 import { Title } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-magazine',
@@ -37,7 +38,9 @@ export class MagazineComponent implements OnInit {
   constructor( private activatedRoute: ActivatedRoute,
                private magazine: MagazineService,         
                private BannerLogoService:BannersLogoservice,
-               private router: Router,private titleService:Title
+               private router: Router,private titleService:Title,
+               private location: Location,
+               private route:ActivatedRoute
   
     ) { }
 
@@ -45,9 +48,10 @@ export class MagazineComponent implements OnInit {
     this.titleService.setTitle('الدلائل و المجلات');
 
     this.h_search_form = Magazine_Search_Form //set initial data to horizontal component 
-    this.filterData['sector'] = 'poultry'
 
-    this.typeAr='الداجني'
+    this.route.params.subscribe(prm => {
+      this.filterData['sector'] = prm['type']
+
     this.activatedRoute.data.subscribe(data => {
       this.page.current_page = data['resolve'].data.current_page
       this.page.last_page =  data['resolve'].data.last_page
@@ -55,7 +59,7 @@ export class MagazineComponent implements OnInit {
       this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
       this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       this.loading = false;   
-      this.magazine.filter_list('poultry', 0).subscribe((res:ApiResponse<FilterList>) => {
+      this.magazine.filter_list(prm['type'], 0).subscribe((res:ApiResponse<FilterList>) => {
         // override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
@@ -64,12 +68,13 @@ export class MagazineComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+        this.typeAr=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
 
       }) 
     // console.log(data['resolve'].data);
 
     })
-
+  })
     if(this.page.last_page > 1){
       this.magazine.magazines(this.filterData['sector'],2,'','','',this.page.last_page+''
       ).subscribe(res => {
@@ -107,7 +112,7 @@ export class MagazineComponent implements OnInit {
           }) 
           // console.log(this.filterData['countries']);
           // console.log(this.filterData['cities']);
-
+          this.location.go(`magazine/${this.filterData['sector']}`);
           break;
         case "sort":
           this.filterData['sort'] = value.id 
@@ -141,7 +146,7 @@ export class MagazineComponent implements OnInit {
               break;
         case "cities":
           if(value.id == 0){
-            this.filterData['cities'] = '0'
+            this.filterData['cities'] = ''
           }else{
             this.filterData['cities'] = value.id 
           }
@@ -184,7 +189,7 @@ export class MagazineComponent implements OnInit {
 
   navigate(id: string): void
   {
-    this.router.navigate([`magazine/details/${id}`]);
+    this.router.navigate([`magazine/${this.filterData['sector']}/details/${id}`]);
   }
 
   next_page(page:number):void{

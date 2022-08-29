@@ -109,13 +109,13 @@ export class HomeGalleryComponent implements OnInit {
         this.filterData['search'] = value.name 
         break;
       default: 
-          // 
-          break;
+        break;
    }
    this.galleryService.galleries(this.filterData).subscribe(res => {
     // console.log(this.filterData)
     // console.log(res)
-
+    this.page.current_page = res.data?.current_page!
+    this.page.last_page =  res.data?.last_page!
     this.galleryData= res.data?.data 
     this.bannrrsLogos.setBanner(res.data?.banners as Banner[])
     this.bannrrsLogos.setLogo(res.data?.logos as Logo[])

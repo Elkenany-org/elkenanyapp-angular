@@ -54,6 +54,7 @@
                             </p>
                         </section>
 
+
                         <section class="product__bottom" *ngIf="contact.date && contact.view_count">
                             <section class="content__box">
                                 <i class="far fa-calendar-alt"></i>
@@ -72,6 +73,12 @@
                             <a class="more__details" *ngIf="!contact.date && !contact.view_count else intersted" (click)="output(contact.id,contact.type )">اعرف أكتر</a>
                             <ng-template class="more__details"#intersted>  <a class="more__details"  (click)="output(contact.id,contact.type )">مهتم</a></ng-template>
                         </section>
+                        
+                        <section class="product__bottom justify-content-end" *ngIf="contact.created_at && !contact.view_count">
+                            <section class="date__box">
+                                <span class="date">{{contact.created_at}} </span>
+                        </section>
+                    </section>
    </div>
                         <div style="clear: both;"></div>
   

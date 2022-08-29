@@ -31,7 +31,7 @@ export const co_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "الاقسام",
+        name: "القسم",
         type: "select",
         role: "subsection",
         class: "form-control",

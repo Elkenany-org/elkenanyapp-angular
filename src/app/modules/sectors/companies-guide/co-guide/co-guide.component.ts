@@ -49,7 +49,6 @@ export class CoGuideComponent implements OnInit {
     search: "",
     page:''
   }
-  
   comLength=0;
   constructor(
     private companiesGuideService: CompaniesGuideService,
@@ -161,6 +160,7 @@ export class CoGuideComponent implements OnInit {
     let sectorId: any 
     let sectorType 
     let sort='2'
+
     this.route.params.subscribe( params => {
       // console.log(params);
       
@@ -266,6 +266,9 @@ export class CoGuideComponent implements OnInit {
         this.page.current_page = res.data?.current_page!
         this.page.last_page =  res.data?.last_page!
         this.Companies = res.data  as Companies
+        if(option.type=="search" ){
+          this.Companies.compsort = [];
+        }
         this.carousel_banner.banner = res.data?.banners  
         this.carousel_logos.banner = res.data?.logos
         this.BannerLogoService.setBanner(res.data?.banners!);
@@ -323,6 +326,7 @@ export class CoGuideComponent implements OnInit {
       //  this.page.last_page =  res.data?.last_page  as number
       this.Companies = res.data  as Companies
       // this.comLength = this.Companies.data.length
+
       window.scroll(0,0);
 
       
