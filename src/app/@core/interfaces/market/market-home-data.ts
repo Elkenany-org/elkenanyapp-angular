@@ -11,8 +11,8 @@ export const market_Search_Form_Data: JsonFormData =
     controls: [
       {
         name: "بحث",
-        type: "text",
-        role:"",
+        type: "search",
+        role:"search",
         class: "form-control",
         value: "",
         icon:"fas fa-search",
@@ -47,7 +47,7 @@ export const market_Search_Form_Data: JsonFormData =
       {
         name: "التاريخ",
         type: "date",
-        role:"",
+        role:"date",
         class: "form-control",
         value: "",
         icon:"",

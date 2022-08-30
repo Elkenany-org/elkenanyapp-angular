@@ -72,8 +72,8 @@ export class CoGuideHomeComponent implements OnInit {
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+        // this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+        // this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
 
       }) 
     })
@@ -82,7 +82,7 @@ export class CoGuideHomeComponent implements OnInit {
 
   filter(value:any) {
     let flag=false;
-    let sort='0';
+    let sort='';
     this.route.params.subscribe( params => {
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {

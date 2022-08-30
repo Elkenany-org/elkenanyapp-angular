@@ -16,7 +16,7 @@ export class StockExhangeResolver implements Resolve<ApiResponse<StockExchange>>
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<StockExchange>>  {
     console.log("resolver is work ",route.paramMap.get('type'))
-   return this.stock.GetStockExchangeV2(route.paramMap.get('type')||'','2','').pipe(
+   return this.stock.GetStockExchangeV2(route.paramMap.get('type')||'','','').pipe(
      
      catchError(() => {
        this.router.navigate([""]);

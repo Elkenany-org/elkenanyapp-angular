@@ -18,6 +18,7 @@ export class AdDetailsComponent implements OnInit {
   public adDetails?: AdDetails;
   public loading: boolean=false
   public startChat?: StartChat;
+  message='';
 
   constructor(
     private route: ActivatedRoute,
@@ -42,11 +43,14 @@ export class AdDetailsComponent implements OnInit {
   }
 
 
-  
   start_chat(): void {
+
     this.Market.start_chat(this.adDetails?.id ).subscribe( res => {
-      this.startChat =res.data
       this.router.navigate([`/market/poultry/market-chat/${this.adDetails?.id}`] )
+      this.startChat =res.data
+
+    },err=>{
+      this.message='برجاء تسجيل الدخول للتمكن من ارسال رسالة'
     })
   }
 

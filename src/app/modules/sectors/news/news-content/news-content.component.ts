@@ -51,6 +51,12 @@ image:any=''
 this.video = this.sanitizer.bypassSecurityTrustHtml(text.slice(x,y));  
         }
 
+        if(text.match("<a")){
+          let x=text.match("href").index
+        let y=text.match("</a>").index+4
+        console.log(text.slice(x,y));
+        // this.video = this.sanitizer.bypassSecurityTrustHtml(text.slice(x,y));  
+        }
 
 
 

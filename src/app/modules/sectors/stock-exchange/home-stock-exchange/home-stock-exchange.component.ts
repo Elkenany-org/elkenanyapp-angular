@@ -70,10 +70,11 @@ export class HomeStockExchangeComponent implements OnInit  {
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
-    
-console.log(this.h_search_form.controls.find((i:any) => i.role === "sector").option);
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 0).selected=0
+        // this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=0
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.unshift({"id": 0,"name": "اختر الترتيب","value": ''})
+
+// console.log(this.h_search_form.controls.find((i:any) => i.role === "sector").option);
 
     let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
     localStorage.setItem('stockTitle',' القطاع '+title)
@@ -85,8 +86,7 @@ console.log(this.h_search_form.controls.find((i:any) => i.role === "sector").opt
   }
 
   filter(value:any) {
-
-let sort='0';
+let sort='';
     this.route.params.subscribe( params => {
       // console.log(params);
       

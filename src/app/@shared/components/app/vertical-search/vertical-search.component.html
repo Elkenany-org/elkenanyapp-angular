@@ -36,7 +36,7 @@
 
     
         <div *ngFor="let control of data?.controls" >
-            <div class="card" *ngIf="control.type !== 'text' && control.type !== 'search' && control.type !== 'a' && control.role !== 'countries' && control.role !== 'cities'">
+            <div class="card" *ngIf="control.type !== 'text' && control.type !== 'search' && control.type !== 'a' && control.role !== 'countries' && control.role !== 'cities' && control.role !== 'date'">
                 <div class="card-header" id="headingSearch">
                     <h5 class="mb-0">
                         <button  aria-controls="collapseSearch" aria-expanded="false"

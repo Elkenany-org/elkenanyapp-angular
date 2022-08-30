@@ -3,7 +3,11 @@
     <!-- <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
     <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo> -->
     <!-- End Header -->
-
+    <div class="alert alert-danger alert-styled-right alert-arrow-right alert-bordered text-center bounceIn" *ngIf="message" id="alert">
+        <button type="button" class="close pull-left" data-dismiss="alert" style="border: none;"><span style="font-size: 35px;line-height: 53px;color: red;border: 0px;background-color: #f8d7da;">×</span></button>
+        <strong style="line-height: 50px;"> {{message}} </strong>
+      </div>
+                
     <div class="container add__details__main">
         <div class="row" dir="ltr">
             <div class="col-12 col-md-3">
@@ -11,7 +15,7 @@
                     <div class="price__container">
                         <p class="price__content">{{adDetails?.salary}} ج.م</p>
                     </div>
-                    <a class="single__action"(click)="start_chat()">
+                    <a class="single__action" (click)="start_chat()" >
                         <i class="far fa-envelope icon"></i>
                         ارسال رسالة
                     </a>
@@ -41,14 +45,14 @@
                         </div>
                         <div class="user__data">
                             <p class="user__name">{{adDetails?.user}}</p>
-                            <p class="user__date">على الموقع منذ  {{adDetails?.created_at}}</p>
+                            <p class="user__date">على الموقع   {{adDetails?.created_at}}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-9">
                 <h1 class="main__title">{{adDetails?.title}} </h1>
-                <p>{{adDetails?.address}}</p>
+                <p>تم إضافة الإعلان في {{adDetails?.created_at}} , رقم الإعلان: {{adDetails?.id}} </p>
                 <!-- <div class="images__slider__top__single slider__for">
                     
                     <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>

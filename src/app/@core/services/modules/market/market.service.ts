@@ -18,8 +18,8 @@ export class MarketService {
 
   constructor(private http: HttpClient) { }
 
-  market(type:string, sort:string='',search:string='' ):Observable<ApiResponse<Market>> {
-    return this.http.get<ApiResponse<Market>>(`${env.ApiUrl}/store/ads-store?type=${type}&sort=${sort}&search=${search}`)
+  market(type:string, sort:string,search:string,page:string ):Observable<ApiResponse<Market>> {
+    return this.http.get<ApiResponse<Market>>(`${env.ApiUrl}/store/ads-store?type=${type}&sort=${sort}&search=${search}&page=${page}`)
   }
 
   Filter_list(type:string ):Observable<ApiResponse<FilterList>> {

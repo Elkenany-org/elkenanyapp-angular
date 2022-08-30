@@ -11,6 +11,7 @@ import { AdDetailsComponent } from './ad-details/ad-details.component';
 import { MarketComponent } from './market.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -28,7 +29,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MarketRoutingModule,
     SharedModule,
     NgxSpinnerModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxPaginationModule,
+
 
   ]
 })

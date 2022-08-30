@@ -48,9 +48,9 @@
                         </section>
 
 
-                        <section class='product__info' *ngIf="contact.salary">
+                        <section class='product__info m-4' *ngIf="contact.salary != null">
                             <p class="note text-center">
-                                {{contact.salary}}
+                                 {{contact.salary}} جنية 
                             </p>
                         </section>
 
@@ -66,17 +66,27 @@
                             </section>
                         </section>
                         <section class="product__bottom" *ngIf="contact.address">
+
                             <section class="address-box">
+                                <!-- <section class="product__bottom" *ngIf="contact.created_at && contact.salary!=null">
+
+                                </section> -->
+
+                                <i class="fas fa-calendar" *ngIf="contact.created_at && contact.salary!=null"></i>
+                                <span class="address" *ngIf="contact.created_at && contact.salary!=null"> {{contact.created_at}} </span><br>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span class="address"> {{contact.address}} </span>
+
                             </section>
                             <a class="more__details" *ngIf="!contact.date && !contact.view_count else intersted" (click)="output(contact.id,contact.type )">اعرف أكتر</a>
                             <ng-template class="more__details"#intersted>  <a class="more__details"  (click)="output(contact.id,contact.type )">مهتم</a></ng-template>
                         </section>
                         
-                        <section class="product__bottom justify-content-end" *ngIf="contact.created_at && !contact.view_count">
+
+
+                        <section class="product__bottom justify-content-end" *ngIf="contact.created_at && !contact.view_count && !contact.address">
                             <section class="date__box">
-                                <span class="date">{{contact.created_at}} </span>
+                                <span class="date"> {{contact.created_at}} </span>
                         </section>
                     </section>
    </div>
