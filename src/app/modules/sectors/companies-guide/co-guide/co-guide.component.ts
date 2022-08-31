@@ -266,7 +266,7 @@ export class CoGuideComponent implements OnInit {
         this.page.current_page = res.data?.current_page!
         this.page.last_page =  res.data?.last_page!
         this.Companies = res.data  as Companies
-        if(option.type=="search" ){
+        if(option.type=="search" && this.filterData["search"]!="" || option.type=="countries" || option.type=="cities" ){
           this.Companies.compsort = [];
         }
         this.carousel_banner.banner = res.data?.banners  

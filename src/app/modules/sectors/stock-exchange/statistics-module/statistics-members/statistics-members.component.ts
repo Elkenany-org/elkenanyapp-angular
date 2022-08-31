@@ -39,6 +39,7 @@ export class StatisticsMembersComponent implements OnInit {
   fillter= new Fillter()
   chart  = new StatisticsChart()
 	chartOptions :any
+  message:boolean=false;
 
   products?:any;
   days:number=0
@@ -73,6 +74,7 @@ export class StatisticsMembersComponent implements OnInit {
       
       // console.log(data['resolve']);
       if(this.type == "fodder"){
+        this.message=true;
          console.log(data['resolve'].data);
         this.StatisticsMemberLocal=data['resolve'].data
 
@@ -126,7 +128,6 @@ export class StatisticsMembersComponent implements OnInit {
 flag:boolean=false;
   selectFodderStock(id:any) {
     this.days=0
-
     if(id>0) {
       this.id = id
       // this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
@@ -194,6 +195,8 @@ flag:boolean=false;
 
 
   selectCompany(id:any) {
+    this.message=false
+
     this.days=0
      this.id = '-1'
       // this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
