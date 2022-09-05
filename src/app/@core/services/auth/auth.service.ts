@@ -1,6 +1,6 @@
 import { Injectable, Renderer2 } from '@angular/core';
 import { BehaviorSubject, Observable, ReplaySubject, tap } from 'rxjs';
-import { LoginDataObject, LoginDataResponse, Profile, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
+import { ForgetDataObject, ForgetDataResponse, LoginDataObject, LoginDataResponse, Profile, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
 import {environment as env} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LocalstorageService } from './localstorage.service';
@@ -192,6 +192,21 @@ export class AuthService {
 
   Register(data: RegisterDataObject): Observable<ApiResponse<LoginDataResponse>> {
     return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/register`, data)
+    .pipe(
+      tap((data) => {
+        this.localStorageService.setState('token', data?.data?.api_token)
+        // this.profileUser();
+
+      })
+    )
+  }
+
+  forget_password(data:{email: string}): Observable<ApiResponse<ForgetDataResponse>> {
+    return this.http.post<ApiResponse<ForgetDataResponse>>(`${this.Url}/forget-password`, data)
+  }
+
+  foget_code(data: ForgetDataObject): Observable<ApiResponse<LoginDataResponse>> {
+    return this.http.post<ApiResponse<LoginDataResponse>>(`${this.Url}/forget-password-code`, data)
     .pipe(
       tap((data) => {
         this.localStorageService.setState('token', data?.data?.api_token)

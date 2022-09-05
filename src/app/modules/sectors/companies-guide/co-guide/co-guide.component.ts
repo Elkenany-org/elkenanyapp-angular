@@ -326,7 +326,9 @@ export class CoGuideComponent implements OnInit {
       //  this.page.last_page =  res.data?.last_page  as number
       this.Companies = res.data  as Companies
       // this.comLength = this.Companies.data.length
-
+      if(page>1){
+        this.Companies.compsort = [];
+      }
       window.scroll(0,0);
 
       

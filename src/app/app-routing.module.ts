@@ -5,6 +5,7 @@ import { NotFoundComponent } from './@shared/pages/not-found/not-found.component
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
 import { AuthGuardService } from './@core/guards/auth.guard';
 import { TestComponent } from './test/test.component';
+import { PaymentComponent } from './modules/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
 {
   path: "test",
   component:TestComponent
+},{
+  path: "payment",
+  component:PaymentComponent
 },
   {
     path: 'home',

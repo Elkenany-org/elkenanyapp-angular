@@ -22,13 +22,15 @@ import { TestComponent } from './test/test.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
+import { PaymentComponent } from './modules/payment/payment.component';
 
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent // for test only 
+    TestComponent,
+    PaymentComponent // for test only 
   ],
   imports: [
   BrowserModule,

@@ -10,8 +10,11 @@ export class PaymentService {
 
   constructor(private http: HttpClient) { }
 
-  payment():Observable<any>{
+  credit():Observable<any>{
     return this.http.post<any>(`${env.ApiUrl}/credit`,{})
+  }
+  wallet():Observable<any>{
+    return this.http.post<any>(`${env.ApiUrl}/wallet`,{})
   }
 
   

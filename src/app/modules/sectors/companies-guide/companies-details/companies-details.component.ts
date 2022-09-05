@@ -25,6 +25,9 @@ public rateValue:number=0
 
     this.route.data.subscribe(data => {
       this.company = data['resolve'].data 
+      console.log('====================================');
+      console.log( this.company);
+      console.log('====================================');
     })
     this.titleService.setTitle(' تفاصيل '+this.company?.name);
 

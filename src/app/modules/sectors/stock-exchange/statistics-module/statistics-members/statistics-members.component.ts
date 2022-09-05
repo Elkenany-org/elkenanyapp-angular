@@ -77,27 +77,27 @@ export class StatisticsMembersComponent implements OnInit {
         this.message=true;
          console.log(data['resolve'].data);
         this.StatisticsMemberLocal=data['resolve'].data
-
+        this.StatisticsListLocal=data['resolve'].data
         // this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
      
         // this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
         
-          this.statistics.StatisicsListFodder(this.stockId).subscribe(res => {
-          console.log('====================================');
-          console.log(res.data?.list_members);
-          console.log('====================================');
-          // this.StatisticsMemberFodder=res.data
-          // this.StatisticsMemberLocal=res.data
-          this.StatisticsListLocal=res.data
-         console.log(this.StatisticsListLocal)
-         let temp= parseInt(localStorage.getItem('stockId')!)
-         this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == temp) as ChangesMember[]
+      //     this.statistics.StatisicsListFodder(this.stockId).subscribe(res => {
+      //     console.log('====================================');
+      //     console.log(res.data?.list_members);
+      //     console.log('====================================');
+      //     // this.StatisticsMemberFodder=res.data
+      //     // this.StatisticsMemberLocal=res.data
+      //     this.StatisticsListLocal=res.data
+      //    console.log(this.StatisticsListLocal)
+      //    let temp= parseInt(localStorage.getItem('stockId')!)
+      //    this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == temp) as ChangesMember[]
 
-         let name= this.StatisticsListLocal?.list_members.find((i: { id: any; }) => i.id == localStorage.getItem('stockId'))!.name
-         document.getElementById('company')!.innerText = ''+name;
+      //  let name= this.StatisticsListLocal?.list_members.find((i: { id: any; }) => i.id == localStorage.getItem('stockId'))!.name
+      //    document.getElementById('company')!.innerText = ''+name;
 
-      })
-
+      // })
+  
 
       }else if (this.type == "local"){
         this.StatisticsMemberLocal=data['resolve'].data
@@ -345,27 +345,27 @@ document.getElementById('product')!.innerText = 'الكل';
            }
 
           //handle if to date is not exist it get the value of last date after this to date and set its price
-          let t= arr[i].changes.find((obj:any) => {
-              return obj.date === to;
-          });
+        //   let t= arr[i].changes.find((obj:any) => {
+        //       return obj.date === to;
+        //   });
 
-          let oldTo=new Date(to)
-          while(t == undefined ){
-            let newTo=this.subtractDays(1,oldTo)
-            t = arr[i].changes.find((obj:any) => {
-              return obj.date === newTo;
-           });
-           countTo++;
-           if(countTo == 100){
-               break;}
-           else if(t != undefined){
-            //  t.date=to 
-             let newobj=JSON.parse(JSON.stringify(t));
-             newobj.date=to
-             arr[i].changes.push(newobj);
-             subone=1
-           }
-         }
+        //   let oldTo=new Date(to)
+        //   while(t == undefined ){
+        //     let newTo=this.subtractDays(1,oldTo)
+        //     t = arr[i].changes.find((obj:any) => {
+        //       return obj.date === newTo;
+        //    });
+        //    countTo++;
+        //    if(countTo == 100){
+        //        break;}
+        //    else if(t != undefined){
+        //     //  t.date=to 
+        //      let newobj=JSON.parse(JSON.stringify(t));
+        //      newobj.date=to
+        //      arr[i].changes.push(newobj);
+        //      subone=1
+        //    }
+        //  }
 
             for(let j = 0 ; j<arr[i].changes.length  ; j++) {    
 

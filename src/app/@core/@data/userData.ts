@@ -11,6 +11,12 @@ export interface RegisterDataObject {
   password: string,
   device_token: string
 }
+export interface ForgetDataObject {
+  email: string,
+  code: string,
+  password: string,
+}
+
 export interface LoginDataResponse {
 name: string;
 email: string;
@@ -18,7 +24,10 @@ phone: string;
 api_token: string;
 }
 
-
+export interface ForgetDataResponse {
+  name: string;
+  email: string;
+  }
 
 export interface User {
 name: string;

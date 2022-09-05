@@ -15,10 +15,10 @@
                     <div class="price__container">
                         <p class="price__content">{{adDetails?.salary}} ج.م</p>
                     </div>
-                    <a class="single__action" (click)="start_chat()" >
+                    <!-- <a class="single__action" (click)="start_chat()" >
                         <i class="far fa-envelope icon"></i>
                         ارسال رسالة
-                    </a>
+                    </a> -->
                     <a class="single__action" href="tel:+2012012012012">
                         <i class="fas fa-phone icon"></i>
                         {{adDetails?.phone}}
@@ -52,7 +52,7 @@
             </div>
             <div class="col-12 col-md-9">
                 <h1 class="main__title">{{adDetails?.title}} </h1>
-                <p>تم إضافة الإعلان في {{adDetails?.created_at}} , رقم الإعلان: {{adDetails?.id}} </p>
+                <p>تم إضافة الإعلان  {{adDetails?.created_at}} , رقم الإعلان: {{adDetails?.id}} </p>
                 <!-- <div class="images__slider__top__single slider__for">
                     
                     <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>

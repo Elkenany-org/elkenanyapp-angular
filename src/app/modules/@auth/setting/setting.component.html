@@ -71,7 +71,17 @@
                         <!-- Start subscriptions Content -->
                         <div aria-labelledby="v-pills-subscriptions-tab" class="tab-pane fade"
                              id="v-pills-subscriptions"
-                             role="tabpanel">بيانات الاشتراك
+                             role="tabpanel"> 
+                             <p *ngIf="profile?.state=='premium'">هذا الحساب مدفوع</p>
+                             <p *ngIf="profile?.state=='free'">هذا الحساب مجاني</p>
+
+                             <div class="small__bar__container " style="margin-left: 40%;margin-right: 40%;"  *ngIf="profile?.state=='free'">
+                                 <a class="single__action " style="padding-left: 10%;padding-right: 20%" routerLink='/payment'>
+                                       
+                                    الانتقال الي الباقة المدفوعة
+                             </a>
+
+                         </div>
                         </div>
                         <!-- End subscriptions Content -->
                     </div>

@@ -30,9 +30,10 @@ export class AdDetailsComponent implements OnInit {
     BannerConfig = BannerConfig 
     logoConfig = logoConfig
   ngOnInit(): void {
+
     this.route.data.subscribe(data => {
       data['resolve']
-      this.adDetails = data['resolve'].data
+      this.adDetails = data['resolve'].data    
       this.titleService.setTitle(this.adDetails?.title!);
       this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
       this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
