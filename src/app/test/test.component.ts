@@ -20,25 +20,28 @@ export class TestComponent implements OnInit {
     private paymeny: PaymentService,
     private ref: ChangeDetectorRef,
     private gmailService: GmailService,
-    private signInService: GoogleSigninService
+    private signInService: GoogleSigninService,
+    private payment:PaymentService
   ) {}
   ngOnInit() {
     
-    this.signInService.observable().subscribe((user) => {
-      this.user = user!!
-      console.log(user);
-      // this.messages = [];
-      // this.message = '';
-      this.ref.detectChanges();
-    });
+    // this.signInService.observable().subscribe((user) => {
+    //   this.user = user!!
+    //   console.log(user);
+    //   // this.messages = [];
+    //   // this.message = '';
+    //   this.ref.detectChanges();
+    // });
+// this.payment.callback()
+
   }
 
-  signIn() {
-    this.signInService.signin();
-  }
-  signOut() {
-    this.signInService.signOut();
-  }
+  // signIn() {
+  //   this.signInService.signin();
+  // }
+  // signOut() {
+  //   this.signInService.signOut();
+  // }
   // list() {
   //   this.gmailService.list(this.user!!).then((result) => {
   //     this, (this.messages = result.messages);

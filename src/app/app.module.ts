@@ -30,7 +30,7 @@ import { PaymentComponent } from './modules/payment/payment.component';
   declarations: [
     AppComponent,
     TestComponent,
-    PaymentComponent // for test only 
+    // PaymentComponent // for test only 
   ],
   imports: [
   BrowserModule,

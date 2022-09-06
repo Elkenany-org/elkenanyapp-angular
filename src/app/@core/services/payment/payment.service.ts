@@ -13,9 +13,8 @@ export class PaymentService {
   credit():Observable<any>{
     return this.http.post<any>(`${env.ApiUrl}/credit`,{})
   }
-  wallet():Observable<any>{
-    return this.http.post<any>(`${env.ApiUrl}/wallet`,{})
+  wallet(data:{phone:string}):Observable<any>{
+    return this.http.post<any>(`${env.ApiUrl}/wallet`,data)
   }
 
-  
 }

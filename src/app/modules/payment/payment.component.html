@@ -1,5 +1,5 @@
 
-
+<alert></alert>
 <div class="main__content__body mt-md-5">
     <!-- Start Login -->
     <article class="container login ">
@@ -10,20 +10,30 @@
                 <div class="form__container">
                    
 
-                            <div class="small__bar__container ">
+                            <div class="small__bar__container " *ngIf="!walletFlag">
                 
-                               <a class="single__action p-5 h5" href="https://elkenany.com/customer/login">
+                               <a class="single__action p-5 h5" (click)="credit()">
                                       
                                         الدفع عن طريق ال Credit Card
                                 </a>
 
-                                <a class="single__action p-5 h5" >
+                                <a class="single__action p-5 h5" (click)="wallet()">
                                       
                                     الدفع عن طريق المحافظ الكترونية
                             </a>
                            
-
                         </div>
+
+                        <form class="form__box" (ngSubmit)="onSubmit()" [formGroup]="phoneForm" dir="rtl" *ngIf="walletFlag">
+                        <input
+                            class="inputs"
+                            formControlName="phone" 
+                            placeholder=" ادخل رقم الهاتف"
+                            type="text">
+
+                            <app-submit-button class="btn__submit" [form]="phoneForm"  [title]="' ارسال'"></app-submit-button>
+                        </form>
+
                 </div>
 
 

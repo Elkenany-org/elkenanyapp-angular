@@ -5,7 +5,6 @@ import { NotFoundComponent } from './@shared/pages/not-found/not-found.component
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
 import { AuthGuardService } from './@core/guards/auth.guard';
 import { TestComponent } from './test/test.component';
-import { PaymentComponent } from './modules/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -14,11 +13,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 {
-  path: "test",
+  path: "callbak",
   component:TestComponent
 },{
-  path: "payment",
-  component:PaymentComponent
+  path: 'payment',
+  loadChildren: () => 
+  import('./modules/payment/payment.module').then((m)=>m.PaymentModule),
 },
   {
     path: 'home',
@@ -113,8 +113,6 @@ const routes: Routes = [
       loadChildren: () => 
       import('./modules/static-pages/static-pages.module').then(m => m.StaticPagesModule)
     },
-
- 
     {
       path: '**',
       component: NotFoundComponent,
