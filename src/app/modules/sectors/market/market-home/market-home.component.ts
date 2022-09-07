@@ -22,13 +22,13 @@ export class MarketHomeComponent implements OnInit {
   public h_search_form?: JsonFormData  |any // nay be will not work 
   public Market_Data?: MarktData []
   private type!:string
-  public page= {last_page: 0, current_page:0}
+  // public page= {last_page: 0, current_page:0}
 
   public filterData:{[key:string]:string}= {
     type:"",
     sort:"",
     search:"",
-    page:'',
+    // page:'',
     date:""
   }
   constructor(
@@ -59,8 +59,8 @@ export class MarketHomeComponent implements OnInit {
         })
       ).subscribe(res => {  
         this.Market_Data =res.data
-        this.page.current_page = res.current_page
-        this.page.last_page =  res.last_page
+        // this.page.current_page = res.current_page
+        // this.page.last_page =  res.last_page
         this.BannerLogoService.setBanner( res.banners);
         this.BannerLogoService.setLogo(res.logos);
         this.loading = false;
@@ -107,9 +107,9 @@ export class MarketHomeComponent implements OnInit {
 
     })
 
-    this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'],1, this.filterData['date']).subscribe(res => {
-      this.page.current_page = res.data?.current_page as number
-      this.page.last_page = res.data?.last_page as number
+    this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'], this.filterData['date']).subscribe(res => {
+      // this.page.current_page = res.data?.current_page as number
+      // this.page.last_page = res.data?.last_page as number
       this.Market_Data =res.data?.data 
       this.BannerLogoService.setBanner( res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
@@ -126,13 +126,13 @@ export class MarketHomeComponent implements OnInit {
     
   }
 
-  next_page(page:number):void{
-    this.filterData["page"] = page+''
-    this.filterData["sector"] =this.type
-     this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'],parseInt(this.filterData["page"]),this.filterData['date']).subscribe(res => {
-      this.page.current_page = res.data?.current_page as number
-      this.page.last_page = res.data?.last_page as number
-      this.Market_Data =res.data?.data 
-    })
-  }
+  // next_page(page:number):void{
+  //   this.filterData["page"] = page+''
+  //   this.filterData["sector"] =this.type
+  //    this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'],parseInt(this.filterData["page"]),this.filterData['date']).subscribe(res => {
+  //     // this.page.current_page = res.data?.current_page as number
+  //     // this.page.last_page = res.data?.last_page as number
+  //     this.Market_Data =res.data?.data 
+  //   })
+  // }
 }

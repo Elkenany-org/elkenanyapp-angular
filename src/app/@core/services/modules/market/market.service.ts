@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse } from '@app/@core/@data/API/api';
 import { BehaviorSubject, Observable, of } from 'rxjs';
@@ -18,8 +18,10 @@ export class MarketService {
 
   constructor(private http: HttpClient) { }
 
-  market(type:string, sort:string,search:string,page:number,date:string ):Observable<ApiResponse<Market>> {
-    return this.http.get<ApiResponse<Market>>(`${env.ApiUrl}/store/ads-store?type=${type}&sort=${sort}&search=${search}&page=${page}&date=${date}`)
+  market(type:string, sort:string,search:string,date:string ):Observable<ApiResponse<Market>> {
+  const headers= new HttpHeaders()
+  .set('android', '')
+    return this.http.get<ApiResponse<Market>>(`${env.ApiUrl}/store/ads-store?type=${type}&sort=${sort}&search=${search}&date=${date}`,{ 'headers': headers })
   }
 
   Filter_list(type:string ):Observable<ApiResponse<FilterList>> {
