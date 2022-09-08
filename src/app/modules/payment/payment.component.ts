@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { AlertService } from '@app/@core/services/alert.service';
 import { PaymentService } from '@app/@core/services/payment/payment.service';
 
@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
                   private sanitizer: DomSanitizer,
                   private fb: FormBuilder,    
                   private alertService: AlertService,
+                  private titleService:Title
 
 
     ) { }
@@ -23,6 +24,8 @@ phoneForm!: FormGroup;
 walletFlag=false;
 text:string | undefined;
   ngOnInit(): void {
+    this.titleService.setTitle(' بوابة الدفع الالكترونية ');
+
     this.phoneForm = this.fb.group({
       phone: ['', [Validators.required]],
     });

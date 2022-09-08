@@ -101,8 +101,8 @@ message=""
         this.message=res.message!
         setTimeout(() => {
           this.message=""
+          this.router.navigate(['/user/login']);
         }, 2000);
-        this.router.navigate(['/user/login']);
 
       },
       (err) => {

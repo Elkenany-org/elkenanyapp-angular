@@ -5,15 +5,15 @@
         <div class="row">
             <a class="action__yellow__green__button w-100"routerLink="/market/{{type}}/add-edit-ad/0">+ أضف إعلانك</a>
             <div class="new__cards p-0 my-2 row">
-                <div class="col-12" *ngFor="let ad of ads?.data">
-                    <div class="product__card ultra__card regular__hover">
+                <div class="col-12" *ngFor="let ad of ads?.data" routerLink="/market/poultry/ad_details/{{ad.id}}">
+                    <div class="product__card ultra__card regular__hover" >
                         <div class="image__card">
                             <img alt='product__image'
                                  [src]='ad.image'/>
                         </div>
                         <div class="product__content">
                             <header class="product__title">
-                                <a href="add_details.html">
+                                <a >
                                    {{ad.title}}
                                 </a>
                             </header>

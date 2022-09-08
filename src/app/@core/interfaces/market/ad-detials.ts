@@ -14,6 +14,7 @@ export interface AdDetails {
     type: string
     desc: string
     created_at: string
+    user_created_at:string
     images: {image:string}[]
   }
   

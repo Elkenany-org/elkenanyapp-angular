@@ -87,16 +87,12 @@ export class AddAdComponent implements OnInit {
         // console.log(file);
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        console.log('====================================');
-        console.log(file);
-        console.log('====================================');
+
         reader.onload = (e) => {
            this.toasterService.loading('جارى رفع الملفات...');
            this.new_Image.push({fileResult: reader.result, file, name: file.name});
            this.AllFiles.push({fileResult: reader.result, file, name: file.name});
-           console.log('====================================');
-           console.log(JSON.stringify(this.new_Image));
-           console.log('====================================');
+
         };
         reader.onloadend = (ee) => {
           this.toasterService.stopLoading();
