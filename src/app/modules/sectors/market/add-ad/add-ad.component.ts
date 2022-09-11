@@ -92,7 +92,9 @@ export class AddAdComponent implements OnInit {
            this.toasterService.loading('جارى رفع الملفات...');
            this.new_Image.push({fileResult: reader.result, file, name: file.name});
            this.AllFiles.push({fileResult: reader.result, file, name: file.name});
-
+console.log('====================================');
+console.log(reader.result);
+console.log('====================================');
         };
         reader.onloadend = (ee) => {
           this.toasterService.stopLoading();

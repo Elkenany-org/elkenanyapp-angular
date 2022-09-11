@@ -176,6 +176,7 @@ export class StockExchangeComponent implements OnInit {
             this.filterData['feed_id'] = ''
            document.getElementById('company')!.innerText = value.name;
           //  document.getElementById('company')!.innerText = 'الكل';
+          document.getElementById('product')!.innerText = 'لا يوجد اي اختيار';
 
             break;
         case "feed_id":

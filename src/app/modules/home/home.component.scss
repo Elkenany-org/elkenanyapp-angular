@@ -4,6 +4,10 @@
 
 @import "../../../assets/styles/pages/home";
 
+.slick-dots {
+  display: none!important;
+}
+
 .home__page__container {
   top: -14px !important;
 }

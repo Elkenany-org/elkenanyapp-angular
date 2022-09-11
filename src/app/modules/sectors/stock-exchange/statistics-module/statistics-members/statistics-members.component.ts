@@ -336,7 +336,7 @@ document.getElementById('product')!.innerText = 'الكل';
                 return obj.date === newFrom;
              });
              countFrom++;
-             if(countFrom == 100){
+             if(countFrom == 500){
                  break;}
              else if(f != undefined){
                f.date=from 
@@ -345,27 +345,27 @@ document.getElementById('product')!.innerText = 'الكل';
            }
 
           //handle if to date is not exist it get the value of last date after this to date and set its price
-        //   let t= arr[i].changes.find((obj:any) => {
-        //       return obj.date === to;
-        //   });
+          let t= arr[i].changes.find((obj:any) => {
+              return obj.date === to;
+          });
 
-        //   let oldTo=new Date(to)
-        //   while(t == undefined ){
-        //     let newTo=this.subtractDays(1,oldTo)
-        //     t = arr[i].changes.find((obj:any) => {
-        //       return obj.date === newTo;
-        //    });
-        //    countTo++;
-        //    if(countTo == 100){
-        //        break;}
-        //    else if(t != undefined){
-        //     //  t.date=to 
-        //      let newobj=JSON.parse(JSON.stringify(t));
-        //      newobj.date=to
-        //      arr[i].changes.push(newobj);
-        //      subone=1
-        //    }
-        //  }
+          let oldTo=new Date(to)
+          while(t == undefined ){
+            let newTo=this.subtractDays(1,oldTo)
+            t = arr[i].changes.find((obj:any) => {
+              return obj.date === newTo;
+           });
+           countTo++;
+           if(countTo == 100){
+               break;}
+           else if(t != undefined){
+              // t.date=to 
+             let newobj=JSON.parse(JSON.stringify(t));
+             newobj.date=to
+             arr[i].changes.push(newobj);
+              subone=1
+           }
+         }
 
             for(let j = 0 ; j<arr[i].changes.length  ; j++) {    
 

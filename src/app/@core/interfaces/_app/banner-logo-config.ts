@@ -47,7 +47,7 @@
     "class":"",
     "slidesToShow": 3,
     "slidesToScroll": 3,
-    "dots": true,
+    "dots": false,
     "autoplay": true,
     "autoplaySpeed": 5000,
     responsive: [

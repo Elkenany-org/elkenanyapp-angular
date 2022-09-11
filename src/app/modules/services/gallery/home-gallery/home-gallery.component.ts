@@ -55,8 +55,12 @@ export class HomeGalleryComponent implements OnInit {
         this.search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
+        this.search_form.controls.find((i:any) => i.role === "countries").option.unshift({id:0,name:'الكل'});
+        this.search_form.controls.find((i:any) => i.role === "countries").option.find((i:any) => i.id === 0).selected=1
+        this.search_form.controls.find((i:any) => i.role === "countries").option.find((i:any) => i.id === 1).selected=0
+
         this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
-        
+
     this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
     this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
 
@@ -80,15 +84,25 @@ export class HomeGalleryComponent implements OnInit {
 
           break;
       case "countries":
-        this.filterData['countries'] = value.id
-
+        if(value.id == 0){
+          this.filterData['countries'] = ''
+          this.filterData['cities'] = ''
+        }else{
+          this.filterData['countries'] = value.id
+          this.filterData['cities'] = ''
+        }
         this.galleryService.filter_list(this.filterData['sector'],this.filterData['countries']).subscribe((res:ApiResponse<FilterList>) => {
           // override data to match the data format of horizontal components
           this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
         }) 
           break;
       case "cities":
-        this.filterData['cities'] = value.id
+        
+        if(value.id == 0){
+          this.filterData['cities'] = ''
+        }else{
+          this.filterData['cities'] = value.id
+        }
           break;
       case "sort":
         this.filterData["sort"] = value.id
@@ -111,6 +125,9 @@ export class HomeGalleryComponent implements OnInit {
       default: 
         break;
    }
+   console.log('====================================');
+console.log(this.filterData);
+console.log('====================================');
    this.galleryService.galleries(this.filterData).subscribe(res => {
     // console.log(this.filterData)
     // console.log(res)

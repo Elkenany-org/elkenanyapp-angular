@@ -116,10 +116,14 @@ export class HorizontalSearchComponent implements OnChanges {
       type: type ,
       title:title
       }
+
       if(type=="date" || type=="dataOfArrival"){
           if (parseInt(value.substring(0,4))>=2021 && parseInt(value.substring(0,5))<20211 && parseInt(value.substring(0,5))<202111){
              this.newItemEvent.emit(option);
-           console.log(parseInt(value.substring(0,4)));
+          //  console.log(parseInt(value.substring(0,4)));
+          }
+          if(value == ''){
+            this.newItemEvent.emit(option);
           }
         // else if(parseInt(value.substring(1,5))<202  ){
         //   console.log(parseInt(value.substring(1,5)));
@@ -127,12 +131,49 @@ export class HorizontalSearchComponent implements OnChanges {
 
       }else{
           this.newItemEvent.emit(option);
-          console.log(option);
+          // console.log(option);
       }
 
 
     }
     
+    selectEmptydate(value: any, type?:string,name?:string,event? :KeyboardEvent) { //ex: value = animal , type = sector, name = بورصه الاعلاف
+console.log('====================================');
+console.log(event);
+console.log('====================================');
+
+      // if(type=="date"){
+      //   console.log(value.substring(1,5)); 
+      // }
+      //   Search for id that inside options that inside controls 
+      const id =this.data?.controls?.find(control => control.role == type)?.option?.find(option => ( option.type || option.name ) == value)?.id 
+      const title =this.data?.controls?.find(control => control.role == type)?.option?.find(option => ( option.type || option.name ) == value)?.name 
+  
+      let option:any= {
+        id: id,
+        name: value,
+        type: type ,
+        title:title
+        }     
+         console.log('====================================');
+      console.log(option);
+      console.log('====================================');
+        if(type=="date" || type=="dataOfArrival"){
+            if (parseInt(value.substring(0,4))>=2021 && parseInt(value.substring(0,5))<20211 && parseInt(value.substring(0,5))<202111){
+               this.newItemEvent.emit(option);
+             console.log(parseInt(value.substring(0,4)));
+            }
+          // else if(parseInt(value.substring(1,5))<202  ){
+          //   console.log(parseInt(value.substring(1,5)));
+          // }
+  
+        }else{
+            this.newItemEvent.emit(option);
+            console.log(option);
+        }
+  
+  
+      }
 
   }
 

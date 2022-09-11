@@ -97,8 +97,11 @@ export class CoGuideComponent implements OnInit {
       // console.log(this.Sector[params['type']].toString());
       
       this.companiesGuideService.co_Filter_listV2(this.Sector[params['type']].toString(),'').subscribe((res:ApiResponse<FilterListCompanies>) => {
-        this.typeAr= res.data?.sectors.find((i:any) =>i.selected ==1)?.name
-        this.titleService.setTitle(' شركات الدليل قسم '+this.typeAr);
+        console.log('====================================');
+        console.log(res.data?.sub_sections);
+        console.log('====================================');
+        this.typeAr= res.data?.sub_sections.find((i:any) =>i.id ==this.id)?.name
+        this.titleService.setTitle(' قسم '+this.typeAr);
 
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
@@ -182,6 +185,9 @@ export class CoGuideComponent implements OnInit {
           this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id).selected=1
           this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id !== option.id).selected=0
 
+          this.typeAr= this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id).name
+          this.titleService.setTitle(' قسم '+this.typeAr);
+  
           // console.log('/////');
 
           // console.log(this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id));

@@ -14,12 +14,13 @@ import { ClipboardService } from 'ngx-clipboard';
 })
 export class AboutGallery implements OnInit  {
   private id:number=  0
+  public type:string= "poultry"
   public data?:Gallery
   public addPlaceForm!: FormGroup
   public addRate!: FormGroup
   public rateValue:number=0
   message=''
-
+  IsmodelShow=false;
   constructor(private router : Router,
               private route:ActivatedRoute,
               private galleryService: GallaryService,
@@ -34,6 +35,8 @@ export class AboutGallery implements OnInit  {
     // })
     let url =  this.router.url.split('/') 
     this.id=  +url[url.length-2]
+    this.type=  url[url.length-3]
+ 
     this.galleryService.gallery(this.id).subscribe(res => {
        this.data = res.data
       //  console.log(this.data)
@@ -66,13 +69,16 @@ export class AboutGallery implements OnInit  {
     formData.append('desc',   this.addPlaceForm.controls['desc'].value)
     formData.append('show_id', this.id+'')
     this.galleryService.add_place(formData).subscribe(res => {
-      this.galleryService.showers(this.id).subscribe(res => {console.log(res)
-        this.message=res.message!
-        window.setTimeout(() => {
-          this.message=''
-  }, 5000);
+      let btn =document.getElementById('close1');
+      btn?.click();
+      this.message=res.message!
+      window.setTimeout(() => {
+        this.message=''
+      }, 5000);
+      // this.galleryService.showers(this.id).subscribe(res => 
+      //   {console.log(res)
 
-      })
+      // })
     })
     formData.forEach(ite => console.log(ite))
   }
@@ -86,13 +92,16 @@ export class AboutGallery implements OnInit  {
     formData.append('rate',  this.addRate.controls['rate'].value)
     formData.append('show_id',this.id+'')
     this.galleryService.add_rate(formData).subscribe(res => {
+      let btn =document.getElementById('close2');
+      btn?.click();
       this.message=res.message!
       window.setTimeout(() => {
         this.message=''
-}, 5000);
-
+      }, 5000);
+      
     })
     // formData.forEach(ite => console.log(ite))
+
   }
 
   going(){   
@@ -126,7 +135,7 @@ export class AboutGallery implements OnInit  {
 
 }
 
-  
+
 }
 
 
