@@ -80,7 +80,9 @@ export class StockExchangeComponent implements OnInit {
         this.feeds = res.data?.fodder_list
         this.feedsList = this.feeds
         this.productList=JSON.parse(JSON.stringify(this.feedsList));  
-
+        let temp= this.productList?.find(i=> i.selected==1);
+        document.getElementById('product')!.innerText =temp?.name!
+        // document.getElementById(temp?.id+'')?.innerHTML!="selected";
          this.loading = false; 
       })
       this.stockExchange.companies_items(prm['id']).subscribe( res => {
