@@ -18,6 +18,8 @@ export interface MyAd {
     salary: number
     address: string
     image: string
+    status:string
+    message:string
     created_at: string
   }
   

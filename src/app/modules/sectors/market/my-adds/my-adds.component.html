@@ -22,6 +22,14 @@
                                     {{ad?.desc}}
                                 </p>
                             </section>
+                            <section class='product__content'>
+                                <p class="note text-center text-warning" *ngIf="ad?.status=='2'">
+                                    الاعلان تحت المراجعة
+                                </p>
+                                <p class="note text-center text-danger" *ngIf="ad?.status=='0'">
+                                    الاعلان غير مقبول("{{ad?.message}}")
+                                </p>
+                            </section>
                             <section class="product__bottom">
                                 <section class="address-box">
                                     <i class="fas fa-map-marker-alt"></i>
