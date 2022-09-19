@@ -21,9 +21,6 @@
 
  </article>
 
- <article class="global__container container">
-
-</article>
 
  <!-- <article class="table__header__filter special__container"   *ngIf="filterData['type'] == 'fodder'">
     
@@ -217,6 +214,12 @@
         برجاء تسجيل الدخول و التحويل الي الباقة المدفوعة للحصول علي احصائيات قبل 7 ايام 
     </div>
   </div>
+
+<section class="col-md-12 text-center container st-1" style="margin-bottom: 10px;border-radius: 1px 1px 20px 20px;background-color: #FFAA00;height:55px; " *ngIf="stock_Ex_Data?.status == 'old'">
+    <div class="custom__breadcrumb" style="line-height: 55px">
+        <h6 class="page__title" style="line-height: 55px;"><strong>{{stock_Ex_Data?.message}}</strong></h6>
+    </div>
+</section>
     <section class="table__container table-chart-5 special__container">
         <section class="table__head">
             <!-- <span  

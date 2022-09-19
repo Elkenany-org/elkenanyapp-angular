@@ -61,9 +61,5 @@ export class ShipsTrafficComponent implements OnInit {
     })
 
   }
-  filter2(value:any):void {
 
-    console.log(value)
-
- }
 }

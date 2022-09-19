@@ -24,7 +24,23 @@
       </div> -->
 <img *ngIf="loading" src="assets\images\loading1 (1).gif" alt="" class="center" >
 
-        <router-outlet ></router-outlet>
+<section *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register'">
+  <!--notifications-->
+ <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle mr-sm-0 notification" data-toggle="dropdown"
+ href="#"
+ id="notification" role="button" (click)="check()">
+ <i class="fa-regular fa-bell"></i>
+ <span class="badge" *ngIf="totalLength != 0">{{totalLength}}</span>
+ </a>
+ <div aria-labelledby="notification" class="dropdown-menu" style="left: auto;" *ngIf="message != []">
+
+ <a class="dropdown-item"  style="margin: 0px;" *ngFor="let m of message">{{m.notification.title}}<br>{{m.notification.body}}</a>
+
+ </div>
+ <!--end notification-->
+</section>
+
+        <router-outlet></router-outlet>
 
 
 <button class="btn_top animated fadeIn" id="myBtn" style="right: 10px;" (click)="scrollToTop()" [ngClass]="{display: offsetFlag, none: offsetFlag}">

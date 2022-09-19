@@ -13,6 +13,8 @@ export interface EnvConfig {
     storageBucket:string,
     messagingSenderId:string,
     appId:string,
-    measurementId:string
+    measurementId:string,
+    vapidKey:string,
+    serverKey:string
   }
 }

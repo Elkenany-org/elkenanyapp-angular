@@ -1,13 +1,18 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router, } from '@angular/router';
 import { sector } from '@app/@core/@data/app/filter-list';
+import { notificationsRes } from '@app/@core/@data/userData';
 import { AdDetials } from '@app/@core/interfaces/market/ad';
 import { Sector } from '@app/@core/interfaces/_app/app-response';
+import { AuthService } from '@app/@core/services/auth/auth.service';
 import { MarketService } from '@app/@core/services/modules/market/market.service';
 import { ToasterService } from '@app/@core/services/toastr.service';
+import { NavbarComponent } from '@app/@shared/components/navbar/navbar.component';
 
+import { environment } from "environments/environment";
 
 
 interface ImageInterface {
@@ -24,6 +29,7 @@ export class AddAdComponent implements OnInit {
   adForm!: FormGroup
   pageName:string ="إضافة إعلان"
 
+  notifications!:notificationsRes
 
   previousUrl?:string
   AllFiles: ImageInterface[] = [];
@@ -32,18 +38,35 @@ export class AddAdComponent implements OnInit {
 
   id :string = ''
   url:string[]=[]
+
+  deviceToken:string=''
   constructor(
     private market: MarketService,
     private router: Router,
     private toasterService: ToasterService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private titleService:Title) { 
+    private titleService:Title,
+    private http: HttpClient,
+    private auth:AuthService
+) { 
 
 
     }
 
   ngOnInit(): void {
+    var notificationData = {
+      "to": "dR3179CIBdk...",
+      "data": {
+        "mrp": 5000,
+        "retailPrice": 3000
+      },
+      "notification": {
+        "color": "#FF0000",
+        "title": "Off Upto 70% yofunky.com"
+      }
+    }
+  
     this.titleService.setTitle(this.pageName);
 
     this.url =  this.router.url.split('/') 
@@ -77,6 +100,12 @@ export class AddAdComponent implements OnInit {
           })
         }
     })
+
+
+    this.auth.requestPermission();
+    this.auth.deviceToken.subscribe((item)=>{
+      this.deviceToken=item
+    });
   }
 
 
@@ -92,9 +121,6 @@ export class AddAdComponent implements OnInit {
            this.toasterService.loading('جارى رفع الملفات...');
            this.new_Image.push({fileResult: reader.result, file, name: file.name});
            this.AllFiles.push({fileResult: reader.result, file, name: file.name});
-console.log('====================================');
-console.log(reader.result);
-console.log('====================================');
         };
         reader.onloadend = (ee) => {
           this.toasterService.stopLoading();
@@ -114,10 +140,8 @@ console.log('====================================');
   onSubmit(): void {
 
 
-
-
-
-    const formData: FormData = new FormData()
+    const formData: FormData = new FormData()  
+    
     // console.log(this.adForm.value)
     formData.append('title', this.adForm.controls['title'].value);
     formData.append('desc',  this.adForm.controls['desc'].value);
@@ -126,10 +150,10 @@ console.log('====================================');
     formData.append('section_id', this.adForm.controls['section_id'].value);
     formData.append('address', this.adForm.controls['address'].value);
     formData.append('con_type', this.adForm.controls['con_type'].value);
+    formData.append('device_token', this.deviceToken);
 
 
-
-    // formData.forEach(ite => console.log(ite))
+     formData.forEach(ite => console.log(ite))
     // console.log(formData)
 
     if(this.id != '0'){ //edit ad
@@ -166,6 +190,8 @@ console.log('====================================');
       }
       formData.append('images', JSON.stringify(this.AllFiles));
       this.toasterService.loading('جارى التحميل...');
+
+
 
         this.market.add_ad(formData).subscribe( (res) => {
           // console.log(res)

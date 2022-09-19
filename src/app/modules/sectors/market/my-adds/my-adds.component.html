@@ -22,12 +22,15 @@
                                     {{ad?.desc}}
                                 </p>
                             </section>
-                            <section class='product__content'>
+                            <section class='product__content' >
                                 <p class="note text-center text-warning" *ngIf="ad?.status=='2'">
                                     الاعلان تحت المراجعة
                                 </p>
                                 <p class="note text-center text-danger" *ngIf="ad?.status=='0'">
                                     الاعلان غير مقبول("{{ad?.message}}")
+                                </p>
+                                <p class="note text-center text-danger" *ngIf="ad?.status=='1'">
+                                    الاعلان مقبول
                                 </p>
                             </section>
                             <section class="product__bottom">

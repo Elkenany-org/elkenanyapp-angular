@@ -38,6 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+     if(request.url != "https://fcm.googleapis.com/fcm/send"){
         request = request.clone({
       setHeaders: {
         device: 'web',
@@ -45,6 +46,7 @@ export class TokenInterceptor implements HttpInterceptor {
         Accept: 'application/json'
       },
     });
+  }
     this._loading.setLoading(true, request.url);
       return next.handle(request).pipe(
         finalize(() =>  this._loading.setLoading(false, request.url))

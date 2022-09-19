@@ -1,6 +1,6 @@
-import { Injectable, Renderer2 } from '@angular/core';
+import { EventEmitter, Injectable, Output, Renderer2 } from '@angular/core';
 import { BehaviorSubject, Observable, ReplaySubject, tap } from 'rxjs';
-import { ForgetDataObject, ForgetDataResponse, LoginDataObject, LoginDataResponse, Profile, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
+import { ForgetDataObject, ForgetDataResponse, LoginDataObject, LoginDataResponse, notificationsRes, Profile, RegisterDataObject, UserProfile,  } from '@app/@core/@data/userData';
 import {environment as env} from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LocalstorageService } from './localstorage.service';
@@ -14,11 +14,15 @@ import { googleRegister } from './../../@data/userData';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 
 import { JwtHelperService } from "@auth0/angular-jwt";
-
+import { environment } from "environments/environment";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  @Output() deviceToken = new EventEmitter<string>();
+
+  
   userDataBehaviorSubject = new BehaviorSubject<UserProfile | null>(null)
   Url = `${env.ApiUrl}`;
   currentURL= this.route.snapshot.queryParams['returnUrl'] || '/'
@@ -345,6 +349,50 @@ export class AuthService {
 // //   handleCredentialResponse(response: any) {
 
 // // 
+
+
+
+
+
+deviceTokenTemp:string="";
+message:any = null;
+requestPermission() {
+  const messaging = getMessaging();
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../firebase-messaging-sw.js')
+      .then(function(registration) {
+        console.log('Registration successful, scope is:', registration.scope);
+      }).catch(function(err) {
+        console.log('Service worker registration failed, error:', err);
+      });
+    }
+  getToken(messaging, 
+   { vapidKey: environment.firebase.vapidKey}).then(
+     (currentToken) => {
+       if (currentToken) {
+         console.log("Hurraaa!!! we got the token.....");
+         console.log(currentToken);  
+         this.deviceTokenTemp=currentToken
+         this.deviceToken.emit(this.deviceTokenTemp)
+       } else {
+         console.log('No registration token available. Request permission to generate one.');
+       }
+   }).catch((err) => {
+      console.log('An error occurred while retrieving token. ', err);
+  });
+
+}
+listen() {
+  const messaging = getMessaging();
+  onMessage(messaging, (payload) => {
+    console.log('Message received. ', payload);
+    this.message=payload;
+  });
+}
+
+getDeviceToken(){
+  this.deviceToken.emit(this.deviceTokenTemp)
+}
 }
 
 

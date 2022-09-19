@@ -58,3 +58,27 @@ export interface googleRegister {
   phone:string
   api_token: string
 }
+
+
+// notification
+export interface notificationsRes {
+  multicast_id: number
+  success: number
+  failure: number
+  canonical_ids: number
+  results: Result[]
+}
+
+export interface Result {
+  message_id: string
+}
+
+export interface notificationsBody {
+  notification: Notification
+  to: string
+}
+
+export interface Notification {
+  title: string
+  body: string
+}

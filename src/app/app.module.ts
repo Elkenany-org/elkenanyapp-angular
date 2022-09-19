@@ -24,6 +24,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
 import { PaymentComponent } from './modules/payment/payment.component';
 
+import { initializeApp } from "firebase/app";
+initializeApp(environment.firebase);
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
 @NgModule({

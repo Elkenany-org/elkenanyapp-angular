@@ -29,7 +29,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/logo.png"
+              "src/logo.png",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json"
             ],
             "styles": [
               "node_modules/slick-carousel/slick/slick.scss",
@@ -105,7 +107,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/logo.png"
+              "src/logo.png",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json"
 
             ],
             "styles": [

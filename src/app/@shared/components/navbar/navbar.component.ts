@@ -1,8 +1,9 @@
-import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/@core/services/auth/auth.service';
 import { Profile } from '@app/@core/@data/userData';
-
+import { environment } from "environments/environment";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,6 +11,8 @@ import { Profile } from '@app/@core/@data/userData';
 })
 
 export class NavbarComponent implements OnInit {
+  // @Output() deviceToken = new EventEmitter<string>();
+  message:any=[];
   isCollapsed: boolean = false;
 
   private wasInside = false;
@@ -34,6 +37,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.auth.CheckAuth().subscribe(res => {
       
       this.islogedIn= res.data
@@ -49,9 +53,16 @@ export class NavbarComponent implements OnInit {
       this.islogedIn= err.error.data
     })
 
- 
+    //  this.listen();
 
-
+    // this.auth.requestPermission();
+    // this.auth.listen();
+    // this.auth.deviceToken.subscribe((item)=>{
+    //   console.log('====================================');
+    //   console.log(item);
+    //   console.log('====================================');
+    // });
+    
 
     //  console.log(this.isLogedIn());
      
@@ -78,6 +89,42 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  // deviceTokenTemp="";
+  // message:any = null;
+  // requestPermission() {
+  //   const messaging = getMessaging();
+  //   if ('serviceWorker' in navigator) {
+  //     navigator.serviceWorker.register('../firebase-messaging-sw.js')
+  //       .then(function(registration) {
+  //         console.log('Registration successful, scope is:', registration.scope);
+  //       }).catch(function(err) {
+  //         console.log('Service worker registration failed, error:', err);
+  //       });
+  //     }
+  //   getToken(messaging, 
+  //    { vapidKey: environment.firebase.vapidKey}).then(
+  //      (currentToken) => {
+  //        if (currentToken) {
+  //          console.log("Hurraaa!!! we got the token.....");
+  //          console.log(currentToken);  
+  //          this.deviceTokenTemp=currentToken
+  //        } else {
+  //          console.log('No registration token available. Request permission to generate one.');
+  //        }
+  //    }).catch((err) => {
+  //       console.log('An error occurred while retrieving token. ', err);
+  //   });
+
+  // }
+  totalLength:number=0
+  listen() {
+    const messaging = getMessaging();
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
+      this.message.unshift(payload);
+      this.totalLength=this.message.length
+    });
+  }
 
 
 }

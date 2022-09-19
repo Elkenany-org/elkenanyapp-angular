@@ -7,6 +7,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import {delay, filter} from 'rxjs/operators';
 import { AnalyticsService } from './@core/services/analytics.service';
 
+import { environment } from "environments/environment";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 // declare const gtag: Function;
 declare const gtag: Function;
 
@@ -21,8 +23,9 @@ export class AppComponent  implements OnInit {
    toggleMenu = false;
   pageYoffset: number | undefined;
   offsetFlag = true;
+    routeurl1!:string
 
-constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router,private titleService: Title
+constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router,private titleService: Title,private route: ActivatedRoute
   ){
     // this.router.events.pipe(
     //   filter(event => event instanceof NavigationEnd)
@@ -53,9 +56,18 @@ onToggleMenu(){
       this.toggleMenu = true;
     }
   }
+
   ngOnInit(): void {
     this.listenToLoading();
     this.setUpAnalytics();
+    // this.requestPermission();
+    this.listen();
+
+    this.router.events.subscribe(events => {
+      if (events instanceof NavigationEnd) {
+        this.routeurl1 = this.router.url
+      }
+    });
   }
 
   listenToLoading(): void {
@@ -121,7 +133,50 @@ onToggleMenu(){
   //         }
   // }
 
-  
+  // message:any = null;
+  // requestPermission() {
+  //   const messaging = getMessaging();
+  //   if ('serviceWorker' in navigator) {
+  //     navigator.serviceWorker.register('../firebase-messaging-sw.js')
+  //       .then(function(registration) {
+  //         console.log('Registration successful, scope is:', registration.scope);
+  //       }).catch(function(err) {
+  //         console.log('Service worker registration failed, error:', err);
+  //       });
+  //     }
+  //   getToken(messaging, 
+  //    { vapidKey: environment.firebase.vapidKey}).then(
+  //      (currentToken) => {
+  //        if (currentToken) {
+  //          console.log("Hurraaa!!! we got the token.....");
+  //          console.log(currentToken);
+  //        } else {
+  //          console.log('No registration token available. Request permission to generate one.');
+  //        }
+  //    }).catch((err) => {
+  //       console.log('An error occurred while retrieving token. ', err);
+  //   });
+  // }
+  // listen() {
+  //   const messaging = getMessaging();
+  //   onMessage(messaging, (payload) => {
+  //     console.log('Message received. ', payload);
+  //     this.message=payload;
+  //   });
+  // }
+  message:any=[];
 
+  totalLength:number=0
+  listen() {
+    const messaging = getMessaging();
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
+      this.message.unshift(payload);
+      this.totalLength+=1
+    });
+  }
 
+  check(){
+    this.totalLength=0
+  }
 }
