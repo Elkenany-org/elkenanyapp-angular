@@ -41,4 +41,3 @@ export interface AddMassage {
     id?: number
     massages: Massage[]
   }
-  

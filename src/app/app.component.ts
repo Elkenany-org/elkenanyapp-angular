@@ -9,6 +9,8 @@ import { AnalyticsService } from './@core/services/analytics.service';
 
 import { environment } from "environments/environment";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { MarketService } from './@core/services/modules/market/market.service';
+import { AuthService } from './@core/services/auth/auth.service';
 // declare const gtag: Function;
 declare const gtag: Function;
 
@@ -25,7 +27,7 @@ export class AppComponent  implements OnInit {
   offsetFlag = true;
     routeurl1!:string
 
-constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router,private titleService: Title,private route: ActivatedRoute
+constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router,private route: ActivatedRoute,private auth:AuthService
   ){
     // this.router.events.pipe(
     //   filter(event => event instanceof NavigationEnd)
@@ -60,14 +62,27 @@ onToggleMenu(){
   ngOnInit(): void {
     this.listenToLoading();
     this.setUpAnalytics();
-    // this.requestPermission();
-    this.listen();
 
-    this.router.events.subscribe(events => {
-      if (events instanceof NavigationEnd) {
-        this.routeurl1 = this.router.url
-      }
-    });
+    this.auth.requestPermission();
+
+    // this.requestPermission();
+    // this.listen();
+
+    // this.router.events.subscribe(events => {
+    //   if (events instanceof NavigationEnd) {
+    //     this.routeurl1 = this.router.url
+    //   }
+    // });
+
+    // this.notifications.notifications().subscribe(
+    // (res)=>{
+    //   console.log('====================================');
+    //   console.log(res.data);
+    //   console.log('====================================');
+    // },
+    // (err)=>{console.log('====================================');
+    // console.log(err);
+    // console.log('====================================');})
   }
 
   listenToLoading(): void {
@@ -164,19 +179,19 @@ onToggleMenu(){
   //     this.message=payload;
   //   });
   // }
-  message:any=[];
+  // message:any=[];
 
-  totalLength:number=0
-  listen() {
-    const messaging = getMessaging();
-    onMessage(messaging, (payload) => {
-      console.log('Message received. ', payload);
-      this.message.unshift(payload);
-      this.totalLength+=1
-    });
-  }
+  // totalLength:number=0
+  // listen() {
+  //   const messaging = getMessaging();
+  //   onMessage(messaging, (payload) => {
+  //     console.log('Message received. ', payload);
+  //     this.message.unshift(payload);
+  //     this.totalLength+=1
+  //   });
+  // }
 
-  check(){
-    this.totalLength=0
-  }
+  // check(){
+  //   this.totalLength=0
+  // }
 }

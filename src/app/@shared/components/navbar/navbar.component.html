@@ -266,17 +266,20 @@
 
         <section class="sign-box" >    
             <!--notifications-->
-           <!-- <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle mr-sm-0 notification" data-toggle="dropdown"
-           href="#"
-           id="notification" role="button" >
-           <i class="fa-regular fa-bell"></i>
-           <span class="badge" *ngIf="totalLength != 0">{{totalLength}}</span>
-           </a>
-           <div aria-labelledby="notification" class="dropdown-menu" style="left: auto;" *ngIf="message != []">
-   
-           <a class="dropdown-item"  style="margin: 0px;" *ngFor="let m of message"><strong class="align-text-start">{{m.notification.title}}</strong><br>{{m.notification.body}}</a>
 
-           </div> -->
+
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle mr-sm-0 notification" data-toggle="dropdown"
+            href="#"
+            id="notification" role="button" (click)="check()">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge" *ngIf="totalLength != 0">{{totalLength}}</span>
+            </a>
+            <div aria-labelledby="notification" class="dropdown-menu scroll-menu" style="left: auto;" *ngIf="message != []">
+
+                <a class="dropdown-item"  style="margin: 0px;" *ngFor="let m of message"><strong class="align-text-start">{{m.notification.title}}</strong><br>{{m.notification.body}}<br>الان</a>
+                <a class="dropdown-item"  style="margin: 0px;" *ngFor="let n of notification"><strong class="align-text-start">{{n.ad_title}}</strong><br>{{n.noty}}<br>{{n.created_at}}</a>
+
+            </div>
            <!--end notification-->
 
             <a class="log-in"  *ngIf="islogedIn==0" [routerLink]="['/user/login']">الدخول</a>
@@ -284,8 +287,8 @@
         </section>
 
 
-        <section class="profile-box dropdown d-lg-block " *ngIf="islogedIn==1" style="margin: 0;">
-            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+        <section class="profile-box dropdown d-lg-block " *ngIf="islogedIn==1" style="margin: 0;display: inline-block;">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle " data-toggle="dropdown"
                href="#"
                id="navbarDropdown" role="button">
                 <img alt="profile pic" class="profile-photo" src="../../../../assets/images/avatar.svg">

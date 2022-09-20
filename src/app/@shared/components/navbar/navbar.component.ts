@@ -4,6 +4,7 @@ import { AuthService } from '@app/@core/services/auth/auth.service';
 import { Profile } from '@app/@core/@data/userData';
 import { environment } from "environments/environment";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { MarketService } from '@app/@core/services/modules/market/market.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,6 +14,7 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 export class NavbarComponent implements OnInit {
   // @Output() deviceToken = new EventEmitter<string>();
   message:any=[];
+  notification:any=[]
   isCollapsed: boolean = false;
 
   private wasInside = false;
@@ -33,7 +35,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private notifications:MarketService ) { }
 
   ngOnInit(): void {
 
@@ -53,7 +56,15 @@ export class NavbarComponent implements OnInit {
       this.islogedIn= err.error.data
     })
 
-    //  this.listen();
+    this.notifications.notifications().subscribe(
+      (res)=>{
+        this.notification=res.data?.data   
+        console.log('====================================');
+        console.log(this.notification);
+        console.log('====================================');
+      })
+
+      this.listen();
 
     // this.auth.requestPermission();
     // this.auth.listen();
@@ -120,11 +131,13 @@ export class NavbarComponent implements OnInit {
   listen() {
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
-      console.log('Message received. ', payload);
+      // console.log('Message received. ', payload);
       this.message.unshift(payload);
       this.totalLength=this.message.length
     });
   }
-
+  check(){
+    this.totalLength=0
+  }
 
 }

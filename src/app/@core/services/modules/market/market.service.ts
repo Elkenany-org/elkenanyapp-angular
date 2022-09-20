@@ -10,6 +10,7 @@ import { AdDetails } from '@app/@core/interfaces/market/ad-detials';
 import { Ad } from '@app/@core/interfaces/market/ad';
 import { MyAd } from '@app/@core/interfaces/market/my-ads';
 import { AddMassage, chatMassages, Chats, StartChat } from '@app/@core/interfaces/market/chat';
+import { notifications } from '@app/@core/interfaces/market/notification';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +77,9 @@ export class MarketService {
     return this.http.get<ApiResponse<Chats>>(`${env.ApiUrl}/store/chats`)
   }
 
+  notifications(){
+    return this.http.get<ApiResponse<notifications>>(`${env.ApiUrl}/store/notifications-ads`)
+  }
 
 
 

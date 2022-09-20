@@ -153,7 +153,7 @@ export class AddAdComponent implements OnInit {
     formData.append('device_token', this.deviceToken);
 
 
-     formData.forEach(ite => console.log(ite))
+    //  formData.forEach(ite => console.log(ite))
     // console.log(formData)
 
     if(this.id != '0'){ //edit ad
@@ -161,26 +161,24 @@ export class AddAdComponent implements OnInit {
 
   
 
-      if(!(this.currentImage.length >0  || this.new_Image.length>0 )){
+      if(this.currentImage.length == 0  && this.new_Image.length== 0 ){
         this.toasterService.showFail('يجب رفع صورة')
         return
       }
-  
+   formData.forEach(ite => console.log(ite))
       formData.append('id', this.id);
       formData.append('oldImages', JSON.stringify(this.currentImage));
       formData.append('NewImages', JSON.stringify(this.new_Image));
       this.toasterService.loading('جارى التعديل...');
-
-      
-      this.market.edit_ad(formData).subscribe( (res) => {
+     
+      this.market.edit_ad(formData).subscribe( (res) => 
+      {
         this.toasterService.stopLoading();
       this.toasterService.showSuccess(res.message+'')
       this.router.navigate([`/market/${this.url[2]}/ad_details/${res.data?.ad_detials.id}`])
     }, (err) => {
         this.toasterService.stopLoading();
         this.toasterService.showFail(err.error.error)
-
-        // console.log(err)
       })
     }else{//createad
       
@@ -191,10 +189,8 @@ export class AddAdComponent implements OnInit {
       formData.append('images', JSON.stringify(this.AllFiles));
       this.toasterService.loading('جارى التحميل...');
 
-
-
         this.market.add_ad(formData).subscribe( (res) => {
-          // console.log(res)
+          //  console.log(res)
           // console.log(`/market/${this.url[2]}/ad_details/${res.data?.ad_detials.id}`)
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')

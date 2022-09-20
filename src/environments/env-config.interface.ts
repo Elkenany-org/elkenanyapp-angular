@@ -15,6 +15,5 @@ export interface EnvConfig {
     appId:string,
     measurementId:string,
     vapidKey:string,
-    serverKey:string
   }
 }

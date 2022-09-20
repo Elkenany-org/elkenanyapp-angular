@@ -19,10 +19,7 @@
     position: relative;
     display: inline-block;
     border-radius: 2px;
-  }
-  
-  .notification:hover {
-    background: red;
+    text-align: end;
   }
   
   .notification .badge {
@@ -38,4 +35,7 @@
   .sign-box .notification:hover{
     background: none!important;
   }
- 
+  .scroll-menu {
+    max-height: 280px;
+    overflow-y: auto;
+}
