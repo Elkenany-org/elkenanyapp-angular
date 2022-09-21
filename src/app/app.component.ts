@@ -64,7 +64,7 @@ onToggleMenu(){
     this.setUpAnalytics();
 
     this.auth.requestPermission();
-
+    localStorage.setItem('total','0');
     // this.requestPermission();
     // this.listen();
 

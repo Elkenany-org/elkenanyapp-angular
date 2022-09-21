@@ -264,21 +264,28 @@
         </form> -->
 
 
+
         <section class="sign-box" >    
             <!--notifications-->
 
 
             <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle mr-sm-0 notification" data-toggle="dropdown"
-            href="#"
             id="notification" role="button" (click)="check()">
-            <i class="fa-regular fa-bell"></i>
-            <span class="badge" *ngIf="totalLength != 0">{{totalLength}}</span>
+            <i class="fa-regular fa-bell" ></i>
+            <span class="badge" *ngIf="totalLength != '0'">{{totalLength}}</span>
             </a>
-            <div aria-labelledby="notification" class="dropdown-menu scroll-menu" style="left: auto;" *ngIf="message != []">
+            <div aria-labelledby="notification" class="dropdown-menu scroll-menu"  *ngIf="message != []">
 
-                <a class="dropdown-item"  style="margin: 0px;" *ngFor="let m of message"><strong class="align-text-start">{{m.notification.title}}</strong><br>{{m.notification.body}}<br>الان</a>
-                <a class="dropdown-item"  style="margin: 0px;" *ngFor="let n of notification"><strong class="align-text-start">{{n.ad_title}}</strong><br>{{n.noty}}<br>{{n.created_at}}</a>
+                <a class="dropdown-item"  style="margin: 0px;" *ngFor="let m of message" [routerLink]="['/market/poultry/my-ads']"><span style="color: #FFAA00;">{{m.notification.title}}</span><br>{{m.notification.body}}<br><span style="padding-right: 60%;font-weight: lighter;">الان</span>
+                    <div class="dropdown-divider"></div></a>
+                
 
+                <a class="dropdown-item"  style="margin: 0px;text-align:start;" *ngFor="let n of notification" [routerLink]="['/market/poultry/my-ads']"><span style="color: #FFAA00; " >{{n.ad_title}}</span><br><span >{{n.noty}}</span><br><span style="padding-right: 50%;font-weight: lighter;">{{n.created_at}}</span> 
+                               <div class="dropdown-divider"></div></a>
+                
+                <a class="dropdown-item"  style="margin: 0px;" *ngFor="let nn of notification2"><span style="color: #FFAA00;" class="align-text-right">{{nn.title}}</span><br><span >{{nn.desc}}</span><br><span style="padding-right: 60%;font-weight: lighter;">{{nn.created_at}}</span> 
+                                <div class="dropdown-divider"></div></a>
+ 
             </div>
            <!--end notification-->
 

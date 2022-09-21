@@ -161,7 +161,7 @@ export class AddAdComponent implements OnInit {
 
   
 
-      if(this.currentImage.length == 0  && this.new_Image.length== 0 ){
+      if(this.currentImage.length == 0  && this.new_Image.length == 0 ){
         this.toasterService.showFail('يجب رفع صورة')
         return
       }

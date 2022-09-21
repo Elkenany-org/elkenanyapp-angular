@@ -25,6 +25,8 @@ import { environment } from 'environments/environment';
 import { PaymentComponent } from './modules/payment/payment.component';
 
 import { initializeApp } from "firebase/app";
+import { TendersComponent } from './modules/services/tenders/tenders/tenders.component';
+import { TendersDetailsComponent } from './modules/services/tenders/tenders-details/tenders-details.component';
 initializeApp(environment.firebase);
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
@@ -32,6 +34,8 @@ initializeApp(environment.firebase);
   declarations: [
     AppComponent,
     TestComponent,
+    TendersComponent,
+    TendersDetailsComponent,
     // PaymentComponent // for test only 
   ],
   imports: [

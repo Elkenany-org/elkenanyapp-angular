@@ -4,7 +4,7 @@ import { AuthService } from '@app/@core/services/auth/auth.service';
 import { Profile } from '@app/@core/@data/userData';
 import { environment } from "environments/environment";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { MarketService } from '@app/@core/services/modules/market/market.service';
+import { NotificationsService } from '@app/@core/services/modules/notifications/notifications.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -15,7 +15,10 @@ export class NavbarComponent implements OnInit {
   // @Output() deviceToken = new EventEmitter<string>();
   message:any=[];
   notification:any=[]
+  notification2:any=[]
+
   isCollapsed: boolean = false;
+  totalLength:string='0';
 
   private wasInside = false;
   navbarOpen = false;
@@ -36,11 +39,11 @@ export class NavbarComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private notifications:MarketService ) { }
+    private notifications:NotificationsService ) { }
 
   ngOnInit(): void {
 
-
+    this.totalLength=localStorage.getItem('total')!
     this.auth.CheckAuth().subscribe(res => {
       
       this.islogedIn= res.data
@@ -56,13 +59,21 @@ export class NavbarComponent implements OnInit {
       this.islogedIn= err.error.data
     })
 
-    this.notifications.notifications().subscribe(
+    this.notifications.notifications_market().subscribe(
       (res)=>{
         this.notification=res.data?.data   
         console.log('====================================');
         console.log(this.notification);
         console.log('====================================');
       })
+
+      this.notifications.notifications().subscribe(
+        (res)=>{
+          this.notification2=res.data?.nots   
+          console.log('====================================');
+          console.log(this.notification2);
+          console.log('====================================');
+        })
 
       this.listen();
 
@@ -127,17 +138,22 @@ export class NavbarComponent implements OnInit {
   //   });
 
   // }
-  totalLength:number=0
+  unread:boolean=false
   listen() {
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
       // console.log('Message received. ', payload);
       this.message.unshift(payload);
-      this.totalLength=this.message.length
+      
+      let temp=parseInt(localStorage.getItem('total')!)+this.message.length 
+      this.totalLength=temp
+      localStorage.setItem('total',this.totalLength)
     });
   }
   check(){
-    this.totalLength=0
+    localStorage.setItem('total','0')
+    this.totalLength='0'
+    this.unread=true;
   }
 
 }

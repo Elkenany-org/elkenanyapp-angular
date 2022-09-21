@@ -12,8 +12,8 @@
 }
 
 .notification {
-    background-color: #555;
-    color: white;
+
+    color: #1f6b00;
     text-decoration: none;
     padding: 15px 26px;
     position: relative;
@@ -38,4 +38,18 @@
   .scroll-menu {
     max-height: 280px;
     overflow-y: auto;
+    left: auto;
+}
+.scroll-menu :hover{
+  background: none!important;
+}
+.dropdown-item{
+  white-space: normal!important;
+}
+
+@media screen and (min-width:1000px) {
+  .scroll-menu {
+    right: 80%;
+    left: 2%;
+  }
 }
