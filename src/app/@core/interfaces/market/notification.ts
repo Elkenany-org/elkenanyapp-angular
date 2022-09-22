@@ -9,12 +9,13 @@
     noty: string
     ads: string
     created_at: string
+    time:string
   }
 
 
 
 export interface notifications {
-  nots: Not[]
+  result: Not[]
 }
 
 export interface Not {
@@ -22,8 +23,9 @@ export interface Not {
   title: string
   desc: string
   image: string
-  product_id: any
-  product_name: any
-  product_image: any
-  created_at:string
+  created_at: string
+  time: string
+  created_at1: string
+  key_name: string
+  key_id: number
 }

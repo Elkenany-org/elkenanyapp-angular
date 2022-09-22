@@ -15,6 +15,6 @@ export class NotificationsService {
   }
 
   notifications(){
-    return this.http.get<ApiResponse<notifications>>(`${env.ApiUrl}/notfications`)
+    return this.http.get<ApiResponse<notifications>>(`${env.ApiUrl}/v2/notifications`)
   }
 }

@@ -14,8 +14,8 @@ import { NotificationsService } from '@app/@core/services/modules/notifications/
 export class NavbarComponent implements OnInit {
   // @Output() deviceToken = new EventEmitter<string>();
   message:any=[];
-  notification:any=[]
-  notification2:any=[]
+  notification_ads:any=[]
+  notification_all:any=[]
 
   isCollapsed: boolean = false;
   totalLength:string='0';
@@ -61,19 +61,21 @@ export class NavbarComponent implements OnInit {
 
     this.notifications.notifications_market().subscribe(
       (res)=>{
-        this.notification=res.data?.data   
-        console.log('====================================');
-        console.log(this.notification);
-        console.log('====================================');
-      })
-
-      this.notifications.notifications().subscribe(
+        this.notification_ads=res.data?.data       
+        this.notifications.notifications().subscribe(
         (res)=>{
-          this.notification2=res.data?.nots   
-          console.log('====================================');
-          console.log(this.notification2);
-          console.log('====================================');
+          this.notification_all=res.data?.result       
+
+          this.notification_all.push(...this.notification_ads);   
+          this.notification_all.sort(function(a:any, b:any) {
+            var keyA = new Date(a.created_at), keyB = new Date(b.created_at);
+            if (keyA < keyB){return 1;}
+            if (keyA > keyB){return -1;}
+            return 0;
+          });   
         })
+
+      })
 
       this.listen();
 

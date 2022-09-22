@@ -36,7 +36,7 @@
     background: none!important;
   }
   .scroll-menu {
-    max-height: 280px;
+    max-height: 350px;
     overflow-y: auto;
     left: auto;
 }
@@ -53,3 +53,16 @@
     left: 2%;
   }
 }
+
+.small-button{
+ background-color: #1f6b00;
+ color: #FFAA00;
+ padding-left: 10px;
+ padding-right: 10px;
+  border-radius:10% ;
+  cursor: pointer;
+}
+
+.small-button:hover{
+  color: #1f6b00 ;
+ }
