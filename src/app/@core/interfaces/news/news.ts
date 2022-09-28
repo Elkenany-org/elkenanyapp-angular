@@ -1,6 +1,6 @@
 import { Banner, Logo, Section } from "../_app/app-response"
 
-export interface AllNews {
+export interface AllNews { //for news and tenders
     sections: Section[]
     banners: Banner[]
     logos: Logo[]
@@ -40,5 +40,15 @@ export interface AllNews {
     created_at: string
   }
   
-  
+  /////tenders
+  export interface TendersDetials {
+    banners: any[]
+    logos: any[]
+    id: number
+    title: string
+    image: string
+    desc: string
+    created_at: string
+    tenders: News[]
+  }
   
