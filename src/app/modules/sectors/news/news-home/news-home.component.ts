@@ -31,7 +31,6 @@ export class NewsHomeComponent implements OnInit {
     sort:"",
     search:"",
     page:'1'
-
   }
   public h_search_form: JsonFormData | any 
 
@@ -105,7 +104,7 @@ export class NewsHomeComponent implements OnInit {
       this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sections
 
       this.location.go(`news/${ this.filterData['sector'] }`);
-
+      this.type=this.filterData['sector']
 
     })
   }
