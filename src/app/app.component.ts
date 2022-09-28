@@ -1,18 +1,21 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, Event, ActivatedRoute } from '@angular/router';
 import { ToasterService } from '@app/@core/services/toastr.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {delay, filter} from 'rxjs/operators';
-import { AnalyticsService } from './@core/services/analytics.service';
-
-import { environment } from "environments/environment";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { MarketService } from './@core/services/modules/market/market.service';
+import { ApiResponse } from './@core/@data/API/api';
+import { LoginDataResponse } from './@core/@data/userData';
 import { AuthService } from './@core/services/auth/auth.service';
+import {environment as env} from '../environments/environment';
+import { LocalstorageService } from './@core/services/auth/localstorage.service';
+
+
 // declare const gtag: Function;
 declare const gtag: Function;
+declare var window: any;
 
 @Component({
   selector: 'app-root',
@@ -27,15 +30,17 @@ export class AppComponent  implements OnInit {
   offsetFlag = true;
     routeurl1!:string
 
-constructor(private _loading: ToasterService,private scroll: ViewportScroller ,private router:Router,private route: ActivatedRoute,private auth:AuthService
+    data:any;
+
+
+  constructor(private _loading: ToasterService,
+    private scroll: ViewportScroller ,
+    private router:Router,
+    private route: ActivatedRoute,
+    private auth:AuthService,
+    private localStorageService:LocalstorageService,
   ){
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe((event: NavigationEnd) => {
-    //    gtag('event', 'page_view', {
-    //       page_path: event.urlAfterRedirects
-    //    })
-    //   })
+
   }
 
 @HostListener('window:scroll', ['$event']) onScroll(event:any){
@@ -47,6 +52,52 @@ constructor(private _loading: ToasterService,private scroll: ViewportScroller ,p
    this.offsetFlag = false;
 
 }
+  ngOnInit(): void {
+    this.listenToLoading();
+    this.setUpAnalytics();
+    this.auth.requestPermission();
+    localStorage.setItem('total','0');
+
+    if(localStorage.getItem('state') == undefined){
+      window.google.accounts.id.initialize({
+        client_id: "552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com",
+        callback:  (response:any)=>{
+          const helper = new JwtHelperService();
+          const responsePayload = helper.decodeToken(response.credential);
+          console.log("ID: " + responsePayload.sub);
+          console.log('Full Name: ' + responsePayload.name);
+          console.log('Given Name: ' + responsePayload.given_name);
+          console.log('Family Name: ' + responsePayload.family_name);
+          console.log("Image URL: " + responsePayload.picture);
+          console.log("Email: " + responsePayload.email);    
+          this.data = {
+            email:responsePayload.email,
+            name:responsePayload.name,
+            google_id:responsePayload.sub,
+            device_token:'52151',
+          }
+          this.auth.RegisterLogin_google(this.data).subscribe((res:any) => {
+            // console.log(res);
+            this.localStorageService.setState('token', res.data.api_token);
+            let user = {
+              name: res.data.name,
+              email:  res.data.email,
+              phone: ''
+            }
+            localStorage.setItem('user',JSON.stringify(user))
+            this.auth.dataTonav.emit(true)
+            console.log('You have been successfully logged in!');
+          })
+
+        }
+      });
+      window.google.accounts.id.prompt(); // also display the One Tap dialog      
+    
+    }
+
+
+  
+  }
 
 scrollToTop(){
   this.scroll.scrollToPosition([0,0]);
@@ -57,32 +108,6 @@ onToggleMenu(){
     }else{
       this.toggleMenu = true;
     }
-  }
-
-  ngOnInit(): void {
-    this.listenToLoading();
-    this.setUpAnalytics();
-
-    this.auth.requestPermission();
-    localStorage.setItem('total','0');
-    // this.requestPermission();
-    // this.listen();
-
-    // this.router.events.subscribe(events => {
-    //   if (events instanceof NavigationEnd) {
-    //     this.routeurl1 = this.router.url
-    //   }
-    // });
-
-    // this.notifications.notifications().subscribe(
-    // (res)=>{
-    //   console.log('====================================');
-    //   console.log(res.data);
-    //   console.log('====================================');
-    // },
-    // (err)=>{console.log('====================================');
-    // console.log(err);
-    // console.log('====================================');})
   }
 
   listenToLoading(): void {
@@ -98,100 +123,56 @@ onToggleMenu(){
         gtag('event', 'page_view', {
           page_path: event.urlAfterRedirects
        })
-        // console.log('====================================');
-        // console.log('google analytics is running');
-        // console.log(event.urlAfterRedirects);
-        // console.log('====================================');
 
       }      
     })
   }
-  // setUpAnalytics(){
-  //   this.router.events.subscribe((event) => {
-  //     if (event instanceof NavigationEnd) {
-  //       gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
-  //       console.log('====================================');
-  //       console.log('google analytics is running app');
-  //       console.log('====================================');
-  //     }      
-  //   })
-  // }
-  //  handleCredentialResponse(response:any) {
-  //   const helper = new JwtHelperService();
-  //   const responsePayload = helper.decodeToken(response.credential);
-  //   console.log("ID: " + responsePayload.sub);
-  //   console.log('Full Name: ' + responsePayload.name);
-  //   console.log('Given Name: ' + responsePayload.given_name);
-  //   console.log('Family Name: ' + responsePayload.family_name);
-  //   console.log("Image URL: " + responsePayload.picture);
-  //   console.log("Email: " + responsePayload.email);    
-  // }
-
-  // scrollToTop(){
-  //   window.scroll(0,0);
-  //   }
-
-
-  //  scrollFunction() {
-  //     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-  //       document.getElementById('myBtn')?.setAttribute("style","display:block");
-  //     } else {
-  //       document.getElementById('myBtn')?.setAttribute("style","display:none")
-  //           }
-  //   }
+ 
+   handleCredentialResponse(response:any) {
+    const helper = new JwtHelperService();
+    const responsePayload = helper.decodeToken(response.credential);
+    console.log("ID: " + responsePayload.sub);
+    console.log('Full Name: ' + responsePayload.name);
+    console.log('Given Name: ' + responsePayload.given_name);
+    console.log('Family Name: ' + responsePayload.family_name);
+    console.log("Image URL: " + responsePayload.picture);
+    console.log("Email: " + responsePayload.email);    
     
-  //   window.onscroll = function() {      
-  //     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-  //     document.getElementById('myBtn')?.setAttribute("style","display:block");
-  //   } else {
-  //     document.getElementById('myBtn')?.setAttribute("style","display:none")
-  //         }
+  }
+  count = 0;
+
+  // loadScriptByUrl(url:any) {
+  //   let dynamicScript = document.createElement('script');
+  //   dynamicScript.type = 'text/javascript';
+  //   dynamicScript.async = true;
+  //   dynamicScript.src = url;
+  //   dynamicScript.id = 'dynamic_' + this.count;
+  //   document.body.appendChild(dynamicScript);
+  //   this.count++;
+
+  //   window.onload = function () {
+  //     google.accounts.id.initialize({
+  //       client_id: "552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com",
+  //       callback: (response:any)=>{
+  //         const helper = new JwtHelperService();
+  //         const responsePayload = helper.decodeToken(response.credential);
+  //         console.log("ID: " + responsePayload.sub);
+  //         console.log('Full Name: ' + responsePayload.name);
+  //         console.log('Given Name: ' + responsePayload.given_name);
+  //         console.log('Family Name: ' + responsePayload.family_name);
+  //         console.log("Image URL: " + responsePayload.picture);
+  //         console.log("Email: " + responsePayload.email);    
+  //       }
+  //     });
+  //     google.accounts.id.renderButton(
+  //       document.getElementById("buttonDiv")!,
+  //       {
+  //         theme: "outline", size: "large",
+  //         type: 'standard'
+  //       }  // customization attributes
+  //     );
+  //     google.accounts.id.prompt(); // also display the One Tap dialog
+  //   }
   // }
 
-  // message:any = null;
-  // requestPermission() {
-  //   const messaging = getMessaging();
-  //   if ('serviceWorker' in navigator) {
-  //     navigator.serviceWorker.register('../firebase-messaging-sw.js')
-  //       .then(function(registration) {
-  //         console.log('Registration successful, scope is:', registration.scope);
-  //       }).catch(function(err) {
-  //         console.log('Service worker registration failed, error:', err);
-  //       });
-  //     }
-  //   getToken(messaging, 
-  //    { vapidKey: environment.firebase.vapidKey}).then(
-  //      (currentToken) => {
-  //        if (currentToken) {
-  //          console.log("Hurraaa!!! we got the token.....");
-  //          console.log(currentToken);
-  //        } else {
-  //          console.log('No registration token available. Request permission to generate one.');
-  //        }
-  //    }).catch((err) => {
-  //       console.log('An error occurred while retrieving token. ', err);
-  //   });
-  // }
-  // listen() {
-  //   const messaging = getMessaging();
-  //   onMessage(messaging, (payload) => {
-  //     console.log('Message received. ', payload);
-  //     this.message=payload;
-  //   });
-  // }
-  // message:any=[];
-
-  // totalLength:number=0
-  // listen() {
-  //   const messaging = getMessaging();
-  //   onMessage(messaging, (payload) => {
-  //     console.log('Message received. ', payload);
-  //     this.message.unshift(payload);
-  //     this.totalLength+=1
-  //   });
-  // }
-
-  // check(){
-  //   this.totalLength=0
-  // }
 }

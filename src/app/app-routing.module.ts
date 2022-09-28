@@ -5,7 +5,7 @@ import { NotFoundComponent } from './@shared/pages/not-found/not-found.component
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
 import { AuthGuardService } from './@core/guards/auth.guard';
 import { TestComponent } from './test/test.component';
-
+import {TendersResolver} from './@core/resolver/tenders/tenders.resolver.service';
 const routes: Routes = [
   {
     path: '',
@@ -102,6 +102,14 @@ const routes: Routes = [
       
       loadChildren: () => 
       import('./modules/services/ships-traffic/ships-traffic.module').then( m => m.ShipsTrafficModule)
+    },
+    {
+      path:'tenders/:type',
+      resolve: {
+        resolve: TendersResolver
+      },
+      loadChildren:()=>
+      import('./modules/services/tenders/tenders.module').then(m=> m.TendersModule)
     },
     {
       path:'search',

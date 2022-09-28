@@ -20,6 +20,7 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 })
 export class AuthService {
   @Output() deviceToken = new EventEmitter<string>();
+  @Output() dataTonav = new EventEmitter<boolean>();
 
   
   userDataBehaviorSubject = new BehaviorSubject<UserProfile | null>(null)

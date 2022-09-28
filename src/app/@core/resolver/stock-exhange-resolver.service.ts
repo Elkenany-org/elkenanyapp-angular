@@ -15,7 +15,7 @@ export class StockExhangeResolver implements Resolve<ApiResponse<StockExchange>>
   constructor(private stock: StockExchangeService ,private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<StockExchange>>  {
-    console.log("resolver is work ",route.paramMap.get('type'))
+    // console.log("resolver is work ",route.paramMap.get('type'))
    return this.stock.GetStockExchangeV2(route.paramMap.get('type')||'','','').pipe(
      
      catchError(() => {

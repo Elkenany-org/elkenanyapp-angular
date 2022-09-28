@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, HostListener, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/@core/services/auth/auth.service';
 import { Profile } from '@app/@core/@data/userData';
@@ -13,6 +13,7 @@ import { NotificationsService } from '@app/@core/services/modules/notifications/
 
 export class NavbarComponent implements OnInit {
   // @Output() deviceToken = new EventEmitter<string>();
+
   message:any=[];
   notification_ads:any=[]
   notification_all:any=[]
@@ -42,10 +43,27 @@ export class NavbarComponent implements OnInit {
     private notifications:NotificationsService ) { }
 
   ngOnInit(): void {
-
+    ///////subscribe on login by google on home screen
+    this.auth.dataTonav.subscribe(
+      (res)=>{
+        this.auth.CheckAuth().subscribe(res => {
+          this.islogedIn= res.data
+          this.auth.profile().subscribe(res => {
+            this.Profile = res.data
+          },(err) => {
+            console.log(err)
+          })
+          
+        },(err)=> {
+          console.log(err);
+          
+          this.islogedIn= err.error.data
+        })
+      },
+    )
+    //////////////////
     this.totalLength=localStorage.getItem('total')!
     this.auth.CheckAuth().subscribe(res => {
-      
       this.islogedIn= res.data
       this.auth.profile().subscribe(res => {
         this.Profile = res.data

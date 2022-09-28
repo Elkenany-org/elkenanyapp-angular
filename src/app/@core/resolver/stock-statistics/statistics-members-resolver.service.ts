@@ -27,7 +27,7 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
     let id = route.paramMap.get('id') || ''
     let arr=''
 
-    console.log("resolver is work ",id,type)
+    // console.log("resolver is work ",id,type)
     
     if(type == "fodder") {
       // let from =this.subtractDays(30)

@@ -34,8 +34,8 @@ initializeApp(environment.firebase);
   declarations: [
     AppComponent,
     TestComponent,
-    TendersComponent,
-    TendersDetailsComponent,
+    // TendersComponent,
+    // TendersDetailsComponent,
     // PaymentComponent // for test only 
   ],
   imports: [
