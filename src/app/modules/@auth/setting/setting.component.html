@@ -75,13 +75,13 @@
                              <p *ngIf="profile?.state=='premium'">هذا الحساب مدفوع</p>
                              <p *ngIf="profile?.state=='free'">هذا الحساب مجاني</p>
 
-                             <div class="small__bar__container " style="margin-left: 40%;margin-right: 40%;"  *ngIf="profile?.state=='free'">
-                                 <a class="single__action " style="padding-left: 10%;padding-right: 20%" routerLink='/payment'>
-                                       
-                                    الانتقال الي الباقة المدفوعة
-                             </a>
 
-                         </div>
+                         <div class=" d-grid gap-2 col-4 mx-auto" *ngIf="profile?.state=='free'">
+                            <button class="btn p-3 payment " type="button" routerLink='/payment'>
+                                الانتقال الي الباقة المدفوعة
+                            </button>
+                          </div>
+
                         </div>
                         <!-- End subscriptions Content -->
                     </div>
