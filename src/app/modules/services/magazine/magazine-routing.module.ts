@@ -8,7 +8,7 @@ import { MagazineDetailsComponent } from './magazine-details/magazine-details.co
 import { MagazineComponent } from './magazine/magazine.component';
 
 
-const children: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: MagazineComponent,
@@ -29,13 +29,13 @@ const children: Routes = [
   }
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  },
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   },
+// ];
 
 
 @NgModule({

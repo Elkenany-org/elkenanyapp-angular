@@ -10,7 +10,7 @@ import { CoGuideHomeComponent } from './co-guide-home/co-guide-home.component';
 import { CoGuideComponent } from './co-guide/co-guide.component';
 import { CompaniesDetailsComponent } from './companies-details/companies-details.component';
 
-const children: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: CoGuideHomeComponent,
@@ -39,13 +39,13 @@ const children: Routes = [
   }
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  },
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   },
+// ];
 
 
 @NgModule({

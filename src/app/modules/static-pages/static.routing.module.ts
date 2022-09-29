@@ -8,7 +8,7 @@ import { ContactUsComponent } from "./contact-us/contact-us.component";
 import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
 import { TermsAndConditionsComponent } from "./terms-and-conditions/terms-and-conditions.component";
 
-const children: Routes = [
+const routes: Routes = [
 
   {
     path: 'about-us',
@@ -29,13 +29,13 @@ const children: Routes = [
     
   ];
   
-  const routes: Routes = [
-    {
-      path: '',
-      component: LayoutComponent,
-      children
-    },
-  ];
+  // const routes: Routes = [
+  //   {
+  //     path: '',
+  //     component: LayoutComponent,
+  //     children
+  //   },
+  // ];
   
   
   @NgModule({

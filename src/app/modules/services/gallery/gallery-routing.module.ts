@@ -11,7 +11,7 @@ import { GalleriesResolver } from '@app/@core/resolver/gallery/galleries-resolve
 import { GallaryResolver } from '@app/@core/resolver/gallery/gallery-resolver.service';
 
 
-const children:Routes = [
+const routes:Routes = [
   {
     path: '',
     component: HomeGalleryComponent,
@@ -54,13 +54,13 @@ const children:Routes = [
 ]
 
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  }
-]
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   }
+// ]
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports:[RouterModule]

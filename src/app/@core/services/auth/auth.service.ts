@@ -240,10 +240,11 @@ export class AuthService {
 
   Logout(): void {
     this.Toaster.showSuccess("تم تسجيل الخروج")
-    setTimeout(()=>{
-      location.reload();
-    }
-    ,1000)
+    // setTimeout(()=>{
+    //   location.reload();
+    // }
+    // ,1000)
+    this.dataTonav.emit(false)
     this.userDataBehaviorSubject.next(null);
     this.localStorageService.setState('token', null);
     this.localStorageService.ClearStorage();
@@ -370,8 +371,8 @@ requestPermission() {
    { vapidKey: environment.firebase.vapidKey}).then(
      (currentToken) => {
        if (currentToken) {
-        //  console.log("Hurraaa!!! we got the token.....");
-        //  console.log(currentToken);  
+         console.log("Hurraaa!!! we got the token.....");
+         console.log(currentToken);  
          this.deviceTokenTemp=currentToken
          this.deviceToken.emit(this.deviceTokenTemp)
        } else {

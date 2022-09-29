@@ -56,45 +56,17 @@ export class AppComponent  implements OnInit {
     this.listenToLoading();
     this.setUpAnalytics();
     this.auth.requestPermission();
-    localStorage.setItem('total','0');
+    // localStorage.setItem('total','0');
 
     if(localStorage.getItem('state') == undefined){
-      window.google.accounts.id.initialize({
-        client_id: "552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com",
-        callback:  (response:any)=>{
-          const helper = new JwtHelperService();
-          const responsePayload = helper.decodeToken(response.credential);
-          console.log("ID: " + responsePayload.sub);
-          console.log('Full Name: ' + responsePayload.name);
-          console.log('Given Name: ' + responsePayload.given_name);
-          console.log('Family Name: ' + responsePayload.family_name);
-          console.log("Image URL: " + responsePayload.picture);
-          console.log("Email: " + responsePayload.email);    
-          this.data = {
-            email:responsePayload.email,
-            name:responsePayload.name,
-            google_id:responsePayload.sub,
-            device_token:'52151',
-          }
-          this.auth.RegisterLogin_google(this.data).subscribe((res:any) => {
-            // console.log(res);
-            this.localStorageService.setState('token', res.data.api_token);
-            let user = {
-              name: res.data.name,
-              email:  res.data.email,
-              phone: ''
-            }
-            localStorage.setItem('user',JSON.stringify(user))
-            this.auth.dataTonav.emit(true)
-            console.log('You have been successfully logged in!');
-          })
-
-        }
-      });
-      window.google.accounts.id.prompt(); // also display the One Tap dialog      
-    
+        this.loginByGooglePopup();
     }
 
+    this.router.events.subscribe(events => {
+      if (events instanceof NavigationEnd) {
+        this.routeurl1 = this.router.url
+      }
+    });
 
   
   }
@@ -127,52 +99,35 @@ onToggleMenu(){
       }      
     })
   }
- 
-   handleCredentialResponse(response:any) {
-    const helper = new JwtHelperService();
-    const responsePayload = helper.decodeToken(response.credential);
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);    
-    
+  loginByGooglePopup(){
+    window.google.accounts.id.initialize({
+      client_id: "552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com",
+      callback:  (response:any)=>{
+        const helper = new JwtHelperService();
+        const responsePayload = helper.decodeToken(response.credential);
+        let data = {
+          email:responsePayload.email,
+          name:responsePayload.name,
+          google_id:responsePayload.sub,
+          device_token:'52151',
+        }
+        this.auth.RegisterLogin_google(data).subscribe((res:any) => {
+          // console.log(res);
+          this.localStorageService.setState('token', res.data.api_token);
+          let user = {
+            name: res.data.name,
+            email:  res.data.email,
+            phone: ''
+          }
+          localStorage.setItem('user',JSON.stringify(user))
+          this.auth.dataTonav.emit(true)
+          console.log('You have been successfully logged in!');
+        })
+
+      }
+    });
+    window.google.accounts.id.prompt(); // also display the One Tap dialog      
+  
   }
-  count = 0;
-
-  // loadScriptByUrl(url:any) {
-  //   let dynamicScript = document.createElement('script');
-  //   dynamicScript.type = 'text/javascript';
-  //   dynamicScript.async = true;
-  //   dynamicScript.src = url;
-  //   dynamicScript.id = 'dynamic_' + this.count;
-  //   document.body.appendChild(dynamicScript);
-  //   this.count++;
-
-  //   window.onload = function () {
-  //     google.accounts.id.initialize({
-  //       client_id: "552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com",
-  //       callback: (response:any)=>{
-  //         const helper = new JwtHelperService();
-  //         const responsePayload = helper.decodeToken(response.credential);
-  //         console.log("ID: " + responsePayload.sub);
-  //         console.log('Full Name: ' + responsePayload.name);
-  //         console.log('Given Name: ' + responsePayload.given_name);
-  //         console.log('Family Name: ' + responsePayload.family_name);
-  //         console.log("Image URL: " + responsePayload.picture);
-  //         console.log("Email: " + responsePayload.email);    
-  //       }
-  //     });
-  //     google.accounts.id.renderButton(
-  //       document.getElementById("buttonDiv")!,
-  //       {
-  //         theme: "outline", size: "large",
-  //         type: 'standard'
-  //       }  // customization attributes
-  //     );
-  //     google.accounts.id.prompt(); // also display the One Tap dialog
-  //   }
-  // }
 
 }

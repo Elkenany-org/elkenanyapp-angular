@@ -13,7 +13,7 @@ import { MarketHomeComponent } from './market-home/market-home.component';
 import { MarketComponent } from './market.component';
 import { MyAddsComponent } from './my-adds/my-adds.component';
 
-const children: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: MarketComponent,
@@ -65,13 +65,13 @@ const children: Routes = [
   }
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  },
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   },
+// ];
 
 
 @NgModule({

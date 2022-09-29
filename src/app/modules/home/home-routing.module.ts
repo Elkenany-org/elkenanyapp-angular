@@ -4,7 +4,7 @@ import { LayoutComponent } from '@app/@shared/components/layout/layout.component
 import {NotFoundComponent} from '@app/@shared/pages/not-found/not-found.component';
 import { HomeComponent } from './home.component';
 
-const children: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: HomeComponent
@@ -14,13 +14,13 @@ const children: Routes = [
     component: NotFoundComponent,
   }
 ];
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  },
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   },
+// ];
 
 
 @NgModule({

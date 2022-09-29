@@ -7,7 +7,7 @@ import { NewsContentComponent } from './news-content/news-content.component';
 import { NewsHomeComponent } from './news-home/news-home.component';
 
 
-const children: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: NewsHomeComponent
@@ -24,13 +24,13 @@ const children: Routes = [
   }
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  },
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   },
+// ];
 
 
 @NgModule({

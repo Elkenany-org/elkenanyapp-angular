@@ -5,7 +5,7 @@ import { NotFoundComponent } from '@app/@shared/pages/not-found/not-found.compon
 import { TendersDetailsComponent } from './tenders-details/tenders-details.component';
 import { TendersComponent } from './tenders/tenders.component';
 
-const children: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: TendersComponent
@@ -22,13 +22,13 @@ const children: Routes = [
   }
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  },
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   },
+// ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

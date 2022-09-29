@@ -9,7 +9,7 @@ import { ShipsTrafficComponent } from "./ships-traffic/ships-traffic.component";
 
 
 
-const children:Routes= [
+const routes:Routes= [
     {
         path: '',
         component: ShipsTrafficComponent
@@ -30,16 +30,16 @@ const children:Routes= [
     }
 ]
 
-const Routes: Routes = [
-    {
-        path: '',
-        component: LayoutComponent,
-        children
-    }
-]
+// const Routes: Routes = [
+//     {
+//         path: '',
+//         component: LayoutComponent,
+//         children
+//     }
+// ]
 
 @NgModule({
-    imports:[RouterModule.forChild(Routes)],
+    imports:[RouterModule.forChild(routes)],
 exports:[RouterModule]
 })
 

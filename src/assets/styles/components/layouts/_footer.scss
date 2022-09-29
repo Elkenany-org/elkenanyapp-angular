@@ -16,12 +16,12 @@ footer {
   background-color: $bg-color-main;
   margin-top: 2em;
   padding-top: 2em;
-  border-radius: 35px 0 0 0;
+  border-radius: 35px 35px 0 0;
   direction: rtl;
 
   .overlay {
     background-color: $bg-color-second;
-    border-radius: 0 35px 0 0;
+    border-radius: 0 0 0 0;
     padding: 2em 0 1em;
 
     ul {

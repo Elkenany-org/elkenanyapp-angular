@@ -8,7 +8,7 @@ import { ComparisonComponent } from './comparison/comparison.component';
 import { HomeStockExchangeComponent } from './home-stock-exchange/home-stock-exchange.component';
 import { StockExchangeComponent } from './stock-exchange/stock-exchange.component';
 
-const children: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: HomeStockExchangeComponent,
@@ -44,13 +44,13 @@ const children: Routes = [
   }
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children
-  },
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutComponent,
+//     children
+//   },
+// ];
 
 
 @NgModule({

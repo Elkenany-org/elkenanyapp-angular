@@ -1,5 +1,4 @@
-<!-- <app-navbar></app-navbar> -->
-
+<!-- <app-navbar></app-navbar>
 <img *ngIf="loading" src="assets\images\loading1 (1).gif" alt="" class="center" >
 
 <section *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register'">
@@ -11,5 +10,28 @@
 
 <button class="btn_top animated fadeIn" id="myBtn" style="right: 10px;" (click)="scrollToTop()" [ngClass]="{display: offsetFlag, none: offsetFlag}">
   <span class="arrow"></span>
+</button> -->
+
+
+<app-navbar *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register'"></app-navbar>
+<!-- <alert></alert> -->
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+</ngx-spinner>
+
+<img *ngIf="loading" src="assets\images\loading1 (1).gif" alt="" class="center" >
+
+<button class="btn_top animated fadeIn" id="myBtn" style="right: 10px;" (click)="scrollToTop()" [ngClass]="{display: offsetFlag, none: offsetFlag}">
+  <span class="arrow"></span>
 </button>
+
+
+<router-outlet></router-outlet>
+<app-footer *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register'"></app-footer>
+
 

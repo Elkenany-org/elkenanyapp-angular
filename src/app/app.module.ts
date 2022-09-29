@@ -27,6 +27,9 @@ import { PaymentComponent } from './modules/payment/payment.component';
 import { initializeApp } from "firebase/app";
 import { TendersComponent } from './modules/services/tenders/tenders/tenders.component';
 import { TendersDetailsComponent } from './modules/services/tenders/tenders-details/tenders-details.component';
+import { NavbarComponent } from './@shared/components/navbar/navbar.component';
+import { SharedModule } from './@shared/shared.module';
+import { LayoutComponent } from './@shared/components/layout/layout.component';
 initializeApp(environment.firebase);
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
@@ -37,6 +40,8 @@ initializeApp(environment.firebase);
     // TendersComponent,
     // TendersDetailsComponent,
     // PaymentComponent // for test only 
+      // LayoutComponent
+      
   ],
   imports: [
   BrowserModule,
@@ -46,6 +51,7 @@ initializeApp(environment.firebase);
     CollapseModule.forRoot(), BsDropdownModule.forRoot(),
 
     CoreModule,
+    SharedModule,
 
 
   ],

@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   notification_all:any=[]
 
   isCollapsed: boolean = false;
-  totalLength:string='0';
+  totalLength:number=0;
 
   private wasInside = false;
   navbarOpen = false;
@@ -46,23 +46,21 @@ export class NavbarComponent implements OnInit {
     ///////subscribe on login by google on home screen
     this.auth.dataTonav.subscribe(
       (res)=>{
-        this.auth.CheckAuth().subscribe(res => {
-          this.islogedIn= res.data
+        if(res==true){
           this.auth.profile().subscribe(res => {
             this.Profile = res.data
-          },(err) => {
-            console.log(err)
           })
-          
-        },(err)=> {
-          console.log(err);
-          
-          this.islogedIn= err.error.data
-        })
-      },
+        }else{//logout
+          this.islogedIn=0
+          this.totalLength=0
+          this.message=[]
+          this.notification_all=[]
+        }
+        }
     )
     //////////////////
-    this.totalLength=localStorage.getItem('total')!
+    // this.totalLength=localStorage.getItem('total')!
+
     this.auth.CheckAuth().subscribe(res => {
       this.islogedIn= res.data
       this.auth.profile().subscribe(res => {
@@ -83,8 +81,9 @@ export class NavbarComponent implements OnInit {
         this.notifications.notifications().subscribe(
         (res)=>{
           this.notification_all=res.data?.result       
-
+          if(this.notification_ads != undefined){
           this.notification_all.push(...this.notification_ads);   
+          }
           this.notification_all.sort(function(a:any, b:any) {
             var keyA = new Date(a.created_at), keyB = new Date(b.created_at);
             if (keyA < keyB){return 1;}
@@ -96,17 +95,6 @@ export class NavbarComponent implements OnInit {
       })
 
       this.listen();
-
-    // this.auth.requestPermission();
-    // this.auth.listen();
-    // this.auth.deviceToken.subscribe((item)=>{
-    //   console.log('====================================');
-    //   console.log(item);
-    //   console.log('====================================');
-    // });
-    
-
-    //  console.log(this.isLogedIn());
      
   }
 
@@ -165,15 +153,18 @@ export class NavbarComponent implements OnInit {
       // console.log('Message received. ', payload);
       this.message.unshift(payload);
       
-      let temp=parseInt(localStorage.getItem('total')!)+this.message.length 
-      this.totalLength=temp
-      localStorage.setItem('total',this.totalLength)
+      // let temp=parseInt(localStorage.getItem('total')!)+this.message.length 
+      this.totalLength+=1
+      // localStorage.setItem('total',this.totalLength)
     });
   }
   check(){
-    localStorage.setItem('total','0')
-    this.totalLength='0'
+    // localStorage.setItem('total','0')
+    this.totalLength=0
     this.unread=true;
   }
 
+  navigate(){
+    this.router.navigate(['/']);
+  }
 }
