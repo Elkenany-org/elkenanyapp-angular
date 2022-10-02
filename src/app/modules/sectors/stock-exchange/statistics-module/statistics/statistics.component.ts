@@ -181,20 +181,35 @@ alert:boolean=false
     return shortDate;
   }
 
+
   geTstatisticsByDate(days: number): void {
+    
     this.days= days
     if (days == 0) {
       this.getStatisticsData(this.type, '', '', this.id);
       return;
     }
     let date = new Date();
-    let today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    let today;
+
+    if(date.getMonth() + 1 < 10 && date.getDate() < 10){
+      today =date.getFullYear() + '-0' + (date.getMonth() + 1) + '-0' + date.getDate();
+
+    }
+    else if(date.getDate()  < 10){
+      today =date.getFullYear() + '-' + (date.getMonth() + 1) + '-0' + date.getDate();  
+    }else if(date.getMonth() + 1 < 10){
+      today =date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();  
+    }
+    else{
+      today =date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
     let from = this.subtractDays(days);
     this.getStatisticsData(this.type, from, today, this.id);
-    // console.log(this.type);
+    // console.log(this.id);
+    
     // console.log(from);
   }
-
 
   navigatetodetails(id:any,categorize:string){
     this.router.navigate([`/stock-exchange/no/statistics/statistics-detials/notype/${id}`])

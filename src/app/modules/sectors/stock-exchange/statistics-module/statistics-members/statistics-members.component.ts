@@ -344,6 +344,7 @@ document.getElementById('product')!.innerText = 'الكل';
              }
            }
 
+
           //handle if to date is not exist it get the value of last date after this to date and set its price
           let t= arr[i].changes.find((obj:any) => {
               return obj.date === to;
@@ -550,9 +551,14 @@ document.getElementById('product')!.innerText = 'الكل';
     let date = new Date();
     let today;
 
-    if(date.getMonth() + 1 < 10){
-      today =date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();
+    if(date.getMonth() + 1 < 10 && date.getDate() < 10){
+      today =date.getFullYear() + '-0' + (date.getMonth() + 1) + '-0' + date.getDate();
 
+    }
+    else if(date.getDate()  < 10){
+      today =date.getFullYear() + '-' + (date.getMonth() + 1) + '-0' + date.getDate();  
+    }else if(date.getMonth() + 1 < 10){
+      today =date.getFullYear() + '-0' + (date.getMonth() + 1) + '-' + date.getDate();  
     }
     else{
       today =date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();

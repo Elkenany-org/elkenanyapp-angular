@@ -30,22 +30,8 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
     // console.log("resolver is work ",id,type)
     
     if(type == "fodder") {
-      // let from =this.subtractDays(30)
-      // let to = this.subtractDays(0)
-      // console.log('====================================');
-      // console.log(from , to);
-      // console.log('====================================');
-      // this.statistics.StatisicsListFodder(id).subscribe(res => {
-
-      //   arr+=res.data?.list_members[0].id      
-      //   console.log('====================================');
-      //   console.log(arr);
-      //   console.log('====================================');
-      // })
 
       arr=localStorage.getItem('stockId')!;
-
-      console.log(arr);
 
       return this.statistics.StatisicsMembersFodder(id,type,'','','222','').pipe(
      
