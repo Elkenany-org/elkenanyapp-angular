@@ -17,12 +17,12 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
                 
-                <div class="container d-lg-none d-block d-md-block">
+                <div class="container d-lg-none   d-block">
                     <div id="accordion">
                         <div class="card">
                             <div class="card-header " id="headingOne">
                                     <a class="nav-link fs-5" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
-                                      القطاعات <i class="fa-solid fa-sort-down"></i>
+                                      القطاعات <i class="fa-solid fa-sort-down fs-6"></i>
                                     </a>
                             </div>
                             <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
@@ -139,7 +139,7 @@
                 
                     </div>
                 </div>
-                <a aria-expanded="false"  class="nav-link dropdown-toggle d-none d-md-block fs-5 "
+                <a aria-expanded="false"  class="nav-link dropdown-toggle d-none d-lg-block fs-6 "
                     role="button"
                     id="dropdownMenuButton"
                     data-toggle="dropdown"
@@ -229,7 +229,7 @@
                    aria-haspopup="true"
                    aria-haspopup="true"
                    aria-expanded="false"
-                   class="nav-link dropdown-toggle fs-5" 
+                   class="nav-link dropdown-toggle d-lg-none  d-block fs-5 " 
                    data-toggle="dropdown"
                    role="button"
                    id="dropdownMenuButton"
@@ -237,6 +237,18 @@
                    #r="appDropDown" >
                     الخدمات
                 </a>
+                <a aria-expanded="false"
+                aria-haspopup="true"
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="nav-link dropdown-toggle d-none d-lg-block fs-6" 
+                data-toggle="dropdown"
+                role="button"
+                id="dropdownMenuButton"
+                appDropdown
+                #r="appDropDown" >
+                 الخدمات
+             </a>
                 <div [ngClass]="{'show':r.isOpen}" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <!--                        <a class="dropdown-item" href="#">البورصة العالمية</a>-->
                     <!--                        <div class="dropdown-divider"></div>-->
