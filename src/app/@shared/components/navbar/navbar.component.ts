@@ -45,10 +45,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     ///////subscribe on login by google on home screen
     this.auth.dataTonav.subscribe(
-      (res)=>{
+      (res)=>{//login
         if(res==true){
           this.auth.profile().subscribe(res => {
             this.Profile = res.data
+            this.islogedIn=1
           })
         }else{//logout
           this.islogedIn=0

@@ -66,6 +66,16 @@
 .small-button:hover{
   color: #1f6b00 ;
  }
- img{
+ img,a{
   cursor: pointer;
  }
+
+ 
+ .search-area {
+  border: 0.5px solid rgb(219, 221, 218);
+  border-radius: 6px;
+  padding: 4px;
+}
+.search-area:focus{
+  box-shadow: 2px 5px 10px 0px rgba(24, 65, 5, 0.5)
+}

@@ -113,6 +113,19 @@
                 
                                 </div>
                             </div>
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingSix" data-parent="#accordion">
+                                <div class="card-body" id="child6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneF"> القطاع الصناعي <i class="fa-solid fa-caret-down"></i></a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child6" id="collapseOneF">
+                                            <a class="nav-link" [routerLink]="['/companies-guide/industrial']">دليل الشركات</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
                             <div id="collapseOne" class="collapse " aria-labelledby="headingFive" data-parent="#accordion">
                                 <div class="card-body" id="child5">
                                     <div class="card">
@@ -208,6 +221,14 @@
                         </ul>
                     </li>
                     <li>
+                        <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع الصناعي </a>
+                        <div class="dropdown-divider"></div>
+
+                        <ul class="submenu dropdown-menu submenu-left">
+                            <li><a class="dropdown-item" [routerLink]="['/companies-guide/industrial']">دليل الشركات</a></li>           
+                        </ul>
+                    </li>
+                    <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> الخيول العربية </a>
 
                         <ul class="submenu dropdown-menu submenu-left">
@@ -220,6 +241,8 @@
                             <li><a class="dropdown-item" [routerLink]="['/market/horses']">سوق الكنانى</a></li>
                         </ul>
                     </li>
+
+
                 </ul>
                
             </li>
@@ -269,7 +292,7 @@
 
      
         <!-- <form class="form-inline my-2 my-lg-0" (onsubmit)="goToSearch(v.value)"> -->
-            <input class="search-area" id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)"  placeholder="بحث" type="search">
+            <input class="search-area " id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)"  placeholder="بحث..." type="search">
             <!-- <button class="submit" type="submit"> -->
                 <i class="fas fa-search me-2"></i>
             <!-- </button>
