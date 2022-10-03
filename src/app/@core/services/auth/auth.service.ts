@@ -371,8 +371,8 @@ requestPermission() {
    { vapidKey: environment.firebase.vapidKey}).then(
      (currentToken) => {
        if (currentToken) {
-         console.log("Hurraaa!!! we got the token.....");
-         console.log(currentToken);  
+        //  console.log("Hurraaa!!! we got the token.....");
+        //  console.log(currentToken);  
          this.deviceTokenTemp=currentToken
          this.deviceToken.emit(this.deviceTokenTemp)
        } else {

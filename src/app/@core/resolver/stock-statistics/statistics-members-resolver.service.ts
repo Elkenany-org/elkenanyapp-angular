@@ -33,7 +33,7 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
 
       arr=localStorage.getItem('stockId')!;
 
-      return this.statistics.StatisicsMembersFodder(id,type,'','','222','').pipe(
+      return this.statistics.StatisicsMembersFodder(id,type,'','','0','').pipe(
      
         catchError((e) => {
           this.toster.showFail(e.error.error)
