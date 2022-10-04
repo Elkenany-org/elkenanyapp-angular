@@ -6,6 +6,7 @@ import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.servi
 import { AuthGuardService } from './@core/guards/auth.guard';
 import { TestComponent } from './test/test.component';
 import {TendersResolver} from './@core/resolver/tenders/tenders.resolver.service';
+import { EmploymentHomeResolver } from './@core/resolver/employment/employment-home.resolver';
 const routes: Routes = [
   {
     path: '',
@@ -110,6 +111,11 @@ const routes: Routes = [
       },
       loadChildren:()=>
       import('./modules/services/tenders/tenders.module').then(m=> m.TendersModule)
+    },
+    {
+      path:'employment',
+      loadChildren:()=>
+      import('./modules/services/employment/employment.module').then(m=> m.EmploymentModule)
     },
     {
       path:'search',
