@@ -34,11 +34,18 @@
         text-align: right;
         font-size: 1.4rem ; 
         font-weight: 500;
-
         p {
           line-height: 1.5;
         }
+
       }
     }
   }
+}
+
+table{
+  margin: auto;
+}
+td{
+  border: 1px solid !important;
 }
