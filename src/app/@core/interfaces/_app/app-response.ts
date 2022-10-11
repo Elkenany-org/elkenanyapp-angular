@@ -25,6 +25,8 @@ export interface FilterList {
   countries?: Country[]
   cities?: City[]
   sub_sections?: SubSection[]
+  categories?: Category[]
+
 }
 
 

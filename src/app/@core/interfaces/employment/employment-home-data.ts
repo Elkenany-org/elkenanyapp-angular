@@ -6,7 +6,7 @@ import { JsonFormData } from "../_app/horizontal-search"
   
 export const employment_Search_Form_Data: JsonFormData =
 {   
-  title: "سوق الكناني",
+  title: "الوظائف",
   class:"tabs tabs-3",
     controls: [
       {
@@ -33,6 +33,18 @@ export const employment_Search_Form_Data: JsonFormData =
         }
       },
       {
+        name: "القسم",
+        type: "select",
+        role: "category",
+        class: "form-control",
+        value: "",
+        icon:"fas fa-list",
+        option: [],
+        validators: {
+          required: false,
+        }
+      },
+      {
         name: "الترتيب",
         type: "select",
         role:"sort",
@@ -44,17 +56,17 @@ export const employment_Search_Form_Data: JsonFormData =
           required: false,
         }
       },
-      {
-        name: "التاريخ",
-        type: "date",
-        role:"date",
-        class: "form-control",
-        value: "",
-        icon:"",
-        validators: {
-          required: false,
-        }
-      },
+      // {
+      //   name: "التاريخ",
+      //   type: "date",
+      //   role:"date",
+      //   class: "form-control",
+      //   value: "",
+      //   icon:"",
+      //   validators: {
+      //     required: false,
+      //   }
+      // },
     ]
   }
 

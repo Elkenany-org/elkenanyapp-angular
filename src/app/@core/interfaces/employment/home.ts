@@ -1,7 +1,7 @@
 
   export interface Jobs {
     categories: category[]
-    data: JobsData[]
+    jobs: JobsData[]
     current_page: number
     last_page: number
     first_page_url: string

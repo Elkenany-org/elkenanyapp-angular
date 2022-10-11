@@ -113,7 +113,7 @@ const routes: Routes = [
       import('./modules/services/tenders/tenders.module').then(m=> m.TendersModule)
     },
     {
-      path:'employment',
+      path:'employment/:type',
       loadChildren:()=>
       import('./modules/services/employment/employment.module').then(m=> m.EmploymentModule)
     },

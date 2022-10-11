@@ -135,14 +135,15 @@
 
           .tabs {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             grid-template-rows: 1fr;
             grid-column-gap: 0;
             grid-row-gap: 0;
 
             &.tab3 {
-              grid-template-columns: repeat(3, 1fr);
+              grid-template-columns: repeat(5, 1fr);
             }
+
 
             @media (max-width: 767px) {
               display: block;
@@ -260,7 +261,7 @@
                 }
               }
 
-              &:not(:nth-of-type(5)):not(:nth-of-type(10)) {
+              &:not(:nth-of-type(6)):not(:nth-of-type(12)) {
                 border-left: 1px solid $bg-color-second;
 
                 @media (max-width: 991px) {
@@ -277,6 +278,7 @@
               }
             }
           }
+
         }
       }
     }

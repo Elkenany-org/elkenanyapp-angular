@@ -203,6 +203,28 @@
                             <!-- Start Dropdown Item -->
                             <section class="nav-item dropdown">
                                 <a aria-expanded="false" aria-haspopup="true"
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    href="#" id="navbarDropdown" role="button">
+                                    <div class="icon-holder mb-lg-2">
+                                        <img alt="icon" class="icon" src="../../../industrial.png">
+                                    </div>
+                                    <span class="title">القطاع الصناعي </span>
+                                </a>
+                                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+
+                                    <a class="dropdown-item"
+                                    [routerLink]="['/companies-guide/industrial']">
+                                        دليل الشركات
+                                    </a>
+
+                                </div>
+                            </section>
+                            <!-- End Dropdown Item -->
+
+                            <!-- Start Dropdown Item -->
+                            <section class="nav-item dropdown">
+                                <a aria-expanded="false" aria-haspopup="true"
                                    class="nav-link dropdown-toggle"
                                    data-toggle="dropdown"
                                    href="#" id="navbarDropdown" role="button">
@@ -236,6 +258,8 @@
                                 </div>
                             </section>
                             <!-- End Dropdown Item -->
+
+
                         </section>
                         <!---------- End first Tab ----------->
 
@@ -264,9 +288,19 @@
                             </section>
                             <!-- End Dropdown Item -->
 
+                            <!-- Start Dropdown Item -->
+                            <section class="nav-item-2 dropdown-2" >
+                                <a class="nav-link "[routerLink]="['/tenders/poultry']">
+                                    <div class="icon-holder mb-lg-2">
+                                        <img alt="icon" class="icon" src="assets/images/market_icon.svg">
+                                    </div>
+                                    <span class="title"> المناقصات </span>
+                                </a>
+                            </section>
+                            <!-- End Dropdown Item -->
 
                             <!-- Start Dropdown Item -->
-                            <section class="nav-item-2 dropdown-2" style="border: 0 !important;">
+                            <section class="nav-item-2 dropdown-2" >
                                 <a class="nav-link "[routerLink]="['/ships-traffic']">
                                     <div class="icon-holder mb-lg-2">
                                         <img alt="icon" class="icon" src="assets/images/market_icon.svg">
@@ -276,6 +310,16 @@
                             </section>
                             <!-- End Dropdown Item -->
 
+                        <!-- Start Dropdown Item -->
+                        <section class="nav-item-2 dropdown-2" style="border: 0 !important;">
+                            <a class="nav-link "[routerLink]="['/employment/poultry']">
+                                <div class="icon-holder mb-lg-2">
+                                    <img alt="icon" class="icon" src="assets/images/market_icon.svg">
+                                </div>
+                                <span class="title"> الوظائف </span>
+                            </a>
+                        </section>
+                        <!-- End Dropdown Item -->
 
                         </section>
                         <!---------- End Second Tab ----------->

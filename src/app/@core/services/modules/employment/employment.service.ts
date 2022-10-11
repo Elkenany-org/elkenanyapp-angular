@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ApiResponse } from "@app/@core/@data/API/api";
+import { searchCompanies } from "@app/@core/interfaces/employment/add-job";
 import { Jobs } from "@app/@core/interfaces/employment/home";
 import { Job } from "@app/@core/interfaces/employment/Job";
 import { JobDetails } from "@app/@core/interfaces/employment/job-details";
@@ -16,29 +17,33 @@ import {environment as env} from '../../../../../environments/environment';
 
     constructor(private http: HttpClient) { }
 
-    market(type:string, sort:string,search:string,date:string ):Observable<ApiResponse<Jobs>> {
+    AllJobs(sector:string, sort:string,search:string,cate:string , page?:string):Observable<ApiResponse<Jobs>> {
 
-      return this.http.get<ApiResponse<Jobs>>(`${env.ApiUrl}/store/ads-store?type=${type}&sort=${sort}&search=${search}&date=${date}`)
+      return this.http.get<ApiResponse<Jobs>>(`${env.ApiUrl}/recruitment/jobs-store?sector=${sector}&sort=${sort}&search=${search}&cate=${cate}&page=${page}`)
     }
   
-    Filter_list(type:string ):Observable<ApiResponse<FilterList>> {
-      return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/store/ads-store-sections?type=${type}`)
+    Filter_list(sector_id:string ):Observable<ApiResponse<FilterList>> {
+      return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/recruitment/jobs-store-categories?sector_id=${sector_id}`)
     }
   
     // ----------------------------------------- < AD endPoints > -----------------------------------------------//
   
-    ad_details(id:number ):Observable<ApiResponse<JobDetails>> {
-      return this.http.get<ApiResponse<JobDetails>>(`${env.ApiUrl}/store/ads-store-detials?id=${id}`)
+    job_details(id:string ):Observable<ApiResponse<JobDetails>> {
+      return this.http.get<ApiResponse<JobDetails>>(`${env.ApiUrl}/recruitment/job-detials?id=${id}`)
     }
   
+    searchCompany(search:string){
+      return this.http.get<ApiResponse<searchCompanies>>(`${env.ApiUrl}/search-companies?search=${search}`)
+    }
+
+    add_job( formData: FormData ):Observable<ApiResponse<Job>> {
+      return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/recruitment/add-job`, formData)
+    }
   
     get_ad(id:string ):Observable<ApiResponse<Job>> {
       return this.http.get<ApiResponse<Job>>(`${env.ApiUrl}/store/get-ads-store-to-edit?id=${id}`)
     } 
-    add_ad( formData: FormData ):Observable<ApiResponse<Job>> {
-      return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/store/add-ads-store`, formData)
-    }
-  
+
     edit_ad(formData: FormData ):Observable<ApiResponse<Job>> {
       return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/store/update-ads-store`, formData)
     }

@@ -48,7 +48,7 @@
                         </section>
 
 
-                        <section class='product__info m-4' *ngIf="contact.salary != null">
+                        <section class='product__info m-4' *ngIf="contact.salary != null && contact.type != 'job'">
                             <p class="note text-center">
                                  {{contact.salary}} جنية 
                             </p>
@@ -78,8 +78,13 @@
                                 <span class="address"> {{contact.address}} </span>
 
                             </section>
-                            <a class="more__details" *ngIf="!contact.date && !contact.view_count else intersted" (click)="output(contact.id,contact.type )">اعرف أكتر</a>
-                            <ng-template class="more__details"#intersted>  <a class="more__details"  (click)="output(contact.id,contact.type )">مهتم</a></ng-template>
+                            <a class="more__details" *ngIf="!contact.date && !contact.view_count && contact.type != 'job' else intersted" (click)="output(contact.id,contact.type )">اعرف أكتر</a>
+                            <ng-template class="more__details" #intersted >  
+                                <a class="more__details" *ngIf="contact.type != 'job'"  (click)="output(contact.id,contact.type )">مهتم</a>
+                                <a class="more__details" *ngIf="contact.type == 'job'"  [routerLink]="['/employment/',contact.sector_type,'apply',contact.id]">قدم الأن</a>
+
+                            </ng-template>
+
                         </section>
                         
 

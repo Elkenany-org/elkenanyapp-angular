@@ -3,6 +3,7 @@ export interface JobDetails {
     title: string
     salary: number
     phone: string
+    email:string
     view_count: number
     address: string
     paid: string
@@ -12,6 +13,10 @@ export interface JobDetails {
     created_at: string
     user_created_at:string
     images: {image:string}[]
+    experience:number
+    category_id:number
+    company_id:number
+    sector_type:string
   }
   
 

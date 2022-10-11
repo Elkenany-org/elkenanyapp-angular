@@ -7,12 +7,21 @@ export interface Job {
   export interface JobDetials {
     id: number
     title: string
-    desc: string
-    phone: string
-    address: string
-    con_type: string
     salary: number
-    images: Image[]
+    phone: string
+    view_count: number
+    address: string
+    paid: string
+    user: string
+    type: string
+    desc: string
+    created_at: string
+    user_created_at:string
+    images: {image:string}[]
+    email:string
+    experience:number
+    category_id:number
+    company_id:number
   }
   
   export interface Image {

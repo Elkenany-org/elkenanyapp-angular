@@ -1,1 +1,67 @@
-<p>add-job works!</p>
+
+    <article class="add__add__container">
+        <div class="ads__holder">
+            <h2 class="main-title"> {{pageName}}</h2>
+            <form [formGroup]="jobForm" class="form-box" style="justify-content: start;" >
+
+
+                <!-- <input formControlName="company_id"  type="text" hidden [value]="company_id">
+                <input formControlName="category_id"  type="text" hidden [value]="category_id"> -->
+
+                <!-- <h5 class="m-2">الشركات : </h5> -->
+                <div class="dropdown w-100" >
+                    <button 
+                    (click)="myFunction()" class="dropbtn inputs "  id="company"><label style="cursor: pointer;">حدد الشركة </label> <i class="fa-sharp fa-solid fa-caret-down"></i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <input type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()" >
+                      <a *ngFor="let value of tempCompanies" style="cursor: pointer;" (click)="selectCompany(value.id,value.name)">{{value.name}}</a>
+                    </div>
+                  </div>
+
+                  <!-- <h5 class="m-2">الأقسام : </h5> -->
+                  <div class="dropdown w-100" >
+                    <button 
+                    (click)="myFunction1()" class="dropbtn inputs " id="category"><label style="cursor: pointer;">اختر القسم </label> <i class="fa-sharp fa-solid fa-caret-down"></i></button>
+                    <div id="myDropdown1" class="dropdown-content">
+                      <a *ngFor="let value of categories" style="cursor: pointer;" (click)="selectCategory(value.id,value.name)">{{value.name}}</a>
+                    </div>
+                  </div>
+
+                  <h5 class="m-2">العنوان : </h5> <input formControlName="title" class="job-name inputs w-75" placeholder="الوظيفة المطلوبة" type="text">
+
+                  <h5 class="m-2">عنوان الوظيفة : </h5><input formControlName="address" class="job-address inputs w-75" placeholder="العنوان" type="text">
+                  <h5 class="m-2">رقم الموبايل : </h5><input formControlName="phone" class="job-phone inputs w-75" placeholder="الموبايل" type="number">
+                  <h5 class="m-2">المرتب : </h5><input formControlName="salary" class="job-salary inputs w-75" placeholder=" المرتب" type="number">
+
+                  <h5 class="m-2">البريد الالكتروني : </h5><input formControlName="email" class="job-email inputs w-75" placeholder="البريد الالكتروني" type="text">
+                  <h5 class="m-2">الخبرة المطلوبة : </h5><input formControlName="experience" class="job-experience inputs w-75" placeholder="الخبرة المطلوبة " type="number">
+                  <h5 class="m-2">التفاصيل : </h5><textarea formControlName="desc" class="job-address inputs w-75" name="description" placeholder="تفاصيل الاعلان" rows="10"></textarea>
+
+
+
+                <!-- <label >حدد الشركة:</label>    -->
+                
+                <!-- <input class="search-area " id="searchNavBar" #v (change)="selectCompany(v.value)" placeholder="ابحث عن الشركة" type="search"> -->
+                <!-- <button class="submit" type="submit"> -->
+                    <!-- <i class="fas fa-search me-2"></i>
+
+                <select (change)="selectCompany($any($event.target).value)">
+                    <option value="0">اختر الشركة --</option>
+                  <option *ngFor="let value of Companies"
+                  [value]="(value.id)"
+                  [selected]="value.selected == 1 ? true : null">
+                  {{value.name}}
+                </option>
+                </select> -->
+
+
+                <!-- <a class="submit" >إضافة الإعلان</a> -->
+                <button
+                class="submit"
+                mat-raised-button
+                type="submit" (click)="onSubmit()">
+                إضافة الوظيفة
+              </button>
+            </form>
+        </div>
+    </article>
