@@ -17,6 +17,7 @@ export interface JobDetails {
     category_id:number
     company_id:number
     sector_type:string
+    user_type?:string
   }
   
 

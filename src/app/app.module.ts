@@ -17,19 +17,12 @@ import {
   GoogleLoginProvider,
 } from 'angularx-social-login';
 import { TestComponent } from './test/test.component';
-  ``
-  import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
-import { PaymentComponent } from './modules/payment/payment.component';
-
 import { initializeApp } from "firebase/app";
-import { TendersComponent } from './modules/services/tenders/tenders/tenders.component';
-import { TendersDetailsComponent } from './modules/services/tenders/tenders-details/tenders-details.component';
-import { NavbarComponent } from './@shared/components/navbar/navbar.component';
 import { SharedModule } from './@shared/shared.module';
-import { LayoutComponent } from './@shared/components/layout/layout.component';
 initializeApp(environment.firebase);
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery

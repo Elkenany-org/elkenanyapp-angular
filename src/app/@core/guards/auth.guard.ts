@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import { CanActivate, Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { AuthService } from '../services/auth/auth.service';
 import {LocalstorageService} from '../services/auth/localstorage.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthGuardService implements CanActivate {
   constructor(private localstorageService: LocalstorageService,
-              public router: Router) {
+              public router: Router,private auth:AuthService) {
   }
 
   canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -24,9 +25,10 @@ export class AuthGuardService implements CanActivate {
         this.localstorageService.state$.value['token'] === ''
       ) {
         this.router.navigate(['/user/login'], { queryParams: { returnUrl: state.url }}).then();
+
         return false;
       }
-  
+          this.auth.dataTonav.emit(true)
 
     return true;
   }

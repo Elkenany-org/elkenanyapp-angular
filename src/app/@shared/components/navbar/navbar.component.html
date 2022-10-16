@@ -113,19 +113,7 @@
                 
                                 </div>
                             </div>
-                            <div id="collapseOne" class="collapse " aria-labelledby="headingSix" data-parent="#accordion">
-                                <div class="card-body" id="child6">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneF"> القطاع الصناعي <i class="fa-solid fa-caret-down"></i></a>
-                                        </div>
-                                        <div class="card-body collapse" data-parent="#child6" id="collapseOneF">
-                                            <a class="nav-link" [routerLink]="['/companies-guide/industrial']">دليل الشركات</a>
-                                        </div>
-                                    </div>
-                
-                                </div>
-                            </div>
+
                             <div id="collapseOne" class="collapse " aria-labelledby="headingFive" data-parent="#accordion">
                                 <div class="card-body" id="child5">
                                     <div class="card">
@@ -143,6 +131,21 @@
                                         </div>
                                         <div class="card-body collapse" data-parent="#child5" id="collapseOneE">
                                             <a class="nav-link" [routerLink]="['/market/horses']">سوق الكنانى</a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+
+
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingSix" data-parent="#accordion">
+                                <div class="card-body" id="child6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOneF"> القطاع الصناعي <i class="fa-solid fa-caret-down"></i></a>
+                                        </div>
+                                        <div class="card-body collapse" data-parent="#child6" id="collapseOneF">
+                                            <a class="nav-link" [routerLink]="['/companies-guide/industrial']">دليل الشركات</a>
                                         </div>
                                     </div>
                 
@@ -220,16 +223,10 @@
                             <li><a class="dropdown-item" [routerLink]="['/market/fish']">سوق الكنانى</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع الصناعي </a>
-                        <div class="dropdown-divider"></div>
 
-                        <ul class="submenu dropdown-menu submenu-left">
-                            <li><a class="dropdown-item" [routerLink]="['/companies-guide/industrial']">دليل الشركات</a></li>           
-                        </ul>
-                    </li>
                     <li>
                         <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> الخيول العربية </a>
+                        <div class="dropdown-divider"></div>
 
                         <ul class="submenu dropdown-menu submenu-left">
                             <li><a class="dropdown-item" [routerLink]="['/stock-exchange/horses']">البورصة اليومية</a></li>                        <div class="dropdown-divider"></div>
@@ -241,7 +238,13 @@
                             <li><a class="dropdown-item" [routerLink]="['/market/horses']">سوق الكنانى</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="nav-link dropdown-toggle text-center" data-bs-toggle="dropdown"> القطاع الصناعي </a>
 
+                        <ul class="submenu dropdown-menu submenu-left">
+                            <li><a class="dropdown-item" [routerLink]="['/companies-guide/industrial']">دليل الشركات</a></li>           
+                        </ul>
+                    </li>
 
                 </ul>
                

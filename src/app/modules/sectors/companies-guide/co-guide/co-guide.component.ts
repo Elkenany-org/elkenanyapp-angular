@@ -37,7 +37,8 @@ export class CoGuideComponent implements OnInit {
     animal: 2,
     farm: 3,
     fish: 4,
-    horses: 5
+    horses: 5,
+    industrial:6
    }
 
   public filterData:{[key:string]:string}= {
@@ -94,9 +95,8 @@ export class CoGuideComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.type = params['type']
       this.id= params['id']
-      // console.log(this.Sector[params['type']].toString());
       
-      this.companiesGuideService.co_Filter_listV2(this.Sector[params['type']].toString(),'').subscribe((res:ApiResponse<FilterListCompanies>) => {
+      this.companiesGuideService.co_Filter_listV2(this.Sector[params['type']]+'','').subscribe((res:ApiResponse<FilterListCompanies>) => {
         console.log('====================================');
         console.log(res.data?.sub_sections);
         console.log('====================================');

@@ -12,7 +12,7 @@
                                  [src]='ad.image'/>
                         </div>
                         <div class="product__content">
-                            <header class="product__title" routerLink="/market/poultry/ad_details/{{ad.id}}">
+                            <header class="product__title" routerLink="/market/{{type}}/ad_details/{{ad.id}}">
                                 <a >
                                    {{ad.title}}
                                 </a>
@@ -38,7 +38,7 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                     <span class="address">  {{ad.address}} </span>
                                 </section>
-                                <a class="more__details" routerLink="/market/poultry/ad_details/{{ad.id}}">اعرف أكتر</a>
+                                <a class="more__details" routerLink="/market/{{type}}/ad_details/{{ad.id}}">اعرف أكتر</a>
                             </section>
                         </div>
                         <div class="market__dropdown">

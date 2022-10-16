@@ -1,5 +1,5 @@
 export const environment = {
-  ApiUrl: 'https://elkenany.com/api',
+  ApiUrl: 'https://admin.elkenany.com/api',
   production: true,
   firebase: { //used account : ahmedbenmady@gmail.com 
     databaseURL: "https://oshop-7e416.firebaseio.com",

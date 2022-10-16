@@ -9,7 +9,7 @@ export const environment: EnvConfig = {
   ApiUrl: 'http://localhost/laravel/api',
 
   // ApiUrl: 'https://test.elkenany.com/api',
-  // ApiUrl: 'https://elkenany.com/api',
+  // ApiUrl: 'https://admin.elkenany.com/api',
   firebase: { //used account : ahmedbenmady@gmail.com 
     databaseURL: "https://oshop-7e416.firebaseio.com",
     apiKey: "AIzaSyCuXH9l3JFLQvhItj62oghD7KeuLTwJdcs",

@@ -1,5 +1,5 @@
 export interface MyJobs {
-    data: Data[]
+    jobs: Data[]
     current_page: number
     last_page: number
     first_page_url: string
@@ -18,4 +18,4 @@ export interface MyJobs {
     message:string
     created_at: string
   }
-  
+

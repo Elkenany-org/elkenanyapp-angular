@@ -1,1 +1,95 @@
-<p>your-jobs works!</p>
+
+
+    <!-- Start Global Content -->
+    <article class="global__container mt-0 container">
+        <div class="row">
+            <a class="action__yellow__green__button w-100"routerLink="/employment/{{type}}/add-job">+ أضف الوظيفة</a>
+            <div class="new__cards p-0 my-2 row">
+                <div class="col-12" *ngFor="let ad of data?.jobs" >
+                    <div class="product__card ultra__card regular__hover" >
+                        <div class="image__card">
+                            <img alt='product__image'
+                                 [src]='ad.image'/>
+                        </div>
+                        <div class="product__content">
+                            <header class="product__title" routerLink="/employment/{{type}}/job-details/{{ad.id}}">
+                                <a >
+                                   {{ad.title}}
+                                </a>
+                            </header>
+                            <section class='product__info'>
+                                <p class="note text-center">
+                                    {{ad?.desc}}
+                                </p>
+                            </section>
+                            <section class='product__content' >
+                                <p class="note text-center text-warning" *ngIf="ad?.status=='2'">
+                                    الاعلان تحت المراجعة
+                                </p>
+                                <p class="note text-center text-danger" *ngIf="ad?.status=='0'">
+                                    الاعلان غير مقبول
+                                </p>
+                                <p class="note text-center text-success" *ngIf="ad?.status=='1'">
+                                    الاعلان مقبول
+                                </p>
+                            </section>
+                            <section class="product__bottom">
+                                <section class="address-box">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span class="address">  {{ad.address}} </span>
+                                </section>
+                                <a class="more__details" routerLink="/employment/{{type}}/job-details/{{ad.id}}">اعرف أكتر</a>
+                            </section>
+                        </div>
+                        <div class="market__dropdown">
+                            <button aria-expanded="false" aria-haspopup="true"
+                                    class="dropdown-toggle menu" data-toggle="dropdown"
+                                    id="dropdownMenuButton" type="button">
+                            </button>
+                            <!-- <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+                                <a class="dropdown-item" (click)="editAd(ad.id)">تعديل الاعلان</a>
+                                <a class="dropdown-item" routerLink="/market/{{type}}/add-edit-ad/{{ad.id}}">اعلان
+                                    مدفوع</a>
+                                <a class="dropdown-item trigger" (click)="removeAd(ad.id)">حذف الاعلان</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+  
+                <!-- Start POPUP -->
+                <article class="popup-overlay" id="popup-overlay">
+                    <div class="popup-transport" id="popup">
+                        <div class="popup-close" id="close">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <section class="popup-content">
+                            <h3 class="popup-title danger__title">حذف الاعلان</h3>
+                            <p class="popup-description">
+                                سيتم حذف الاعلان، هل تريد الاستمرار
+                            </p>
+                        </section>
+                        <a class="action__yellow__green__button w-50" href="#">استمرار</a>
+                    </div>
+                </article>
+                <!-- End POPUP -->
+            </div>
+        </div>
+        <div class="row pagination__container">
+            <div class="col-12">
+                <div class="pagination">
+                    <ul>
+                        <li *ngFor="let item of [].constructor
+                        (page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
+                    </ul>
+                    <pagination-controls                       
+                    [maxSize]="10"
+                    previousLabel=""
+                    nextLabel=""
+                    (click)="next_page(page.current_page)"
+                     (pageChange)="page.current_page = $event
+                     "></pagination-controls>
+                </div>
+           
+            </div>
+        </div> 
+    </article>

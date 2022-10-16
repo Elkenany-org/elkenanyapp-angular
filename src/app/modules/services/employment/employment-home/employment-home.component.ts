@@ -28,7 +28,7 @@ export class EmploymentHomeComponent implements OnInit {
     sort:"",
     search:"",
     page:'',
-    date:""
+    category:""
   }
   public page= {last_page: 0, current_page:0}
 
@@ -61,9 +61,6 @@ export class EmploymentHomeComponent implements OnInit {
           return data['resolve'].data
         })
       ).subscribe(res => {  
-        console.log('====================================');
-        console.log(res.jobs);
-        console.log('====================================');
         this.Jobs_Data =res.jobs
         this.page.current_page = res.current_page
         this.page.last_page =  res.last_page
@@ -133,9 +130,9 @@ export class EmploymentHomeComponent implements OnInit {
   next_page(page:number):void{
     this.filterData["page"] = page+''
     this.filterData["sector"] =this.type
-     this.emplymentService.AllJobs(this.filterData['sector'], this.filterData['sort'],this.filterData['search'],'').subscribe(res => {
-      // this.page.current_page = res.data?.current_page as number
-      // this.page.last_page = res.data?.last_page as number
+     this.emplymentService.AllJobs(this.filterData['sector'], this.filterData['sort'],this.filterData['search'],this.filterData['category'],this.filterData["page"]).subscribe(res => {
+      this.page.current_page = res.data?.current_page as number
+      this.page.last_page = res.data?.last_page as number
       this.Jobs_Data =res.data?.jobs 
     })
   }

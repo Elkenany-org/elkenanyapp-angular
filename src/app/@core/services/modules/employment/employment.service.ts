@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ApiResponse } from "@app/@core/@data/API/api";
 import { searchCompanies } from "@app/@core/interfaces/employment/add-job";
+import { applicants, application, applicationRes } from "@app/@core/interfaces/employment/applicants";
 import { Jobs } from "@app/@core/interfaces/employment/home";
 import { Job } from "@app/@core/interfaces/employment/Job";
 import { JobDetails } from "@app/@core/interfaces/employment/job-details";
@@ -40,22 +41,17 @@ import {environment as env} from '../../../../../environments/environment';
       return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/recruitment/add-job`, formData)
     }
   
-    get_ad(id:string ):Observable<ApiResponse<Job>> {
-      return this.http.get<ApiResponse<Job>>(`${env.ApiUrl}/store/get-ads-store-to-edit?id=${id}`)
-    } 
-
-    edit_ad(formData: FormData ):Observable<ApiResponse<Job>> {
-      return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/store/update-ads-store`, formData)
-    }
-  
-    delete_ad(id: number ):Observable<ApiResponse<Job>> {
-      return this.http.get<ApiResponse<Job>>(`${env.ApiUrl}/store/delete-ads-store?id=${id}`)
-    }
-  
-    my_ads(type:string ):Observable<ApiResponse<MyJobs>> {
-      return this.http.get<ApiResponse<MyJobs>>(`${env.ApiUrl}/store/my-ads-store?type=${type}`)
+    my_jobs(type:number,page:string ):Observable<ApiResponse<MyJobs>> {
+      return this.http.get<ApiResponse<MyJobs>>(`${env.ApiUrl}/recruitment/my-jobs-store?sector=${type}&page=${page}`)
     }
 
+    applicants(job_id:string):Observable<ApiResponse<applicants>>{
+      return this.http.get<ApiResponse<applicants>>(`${env.ApiUrl}/recruitment/job-applicants?job_id=${job_id}`)
+    }
+
+    apply_job(formData: FormData ):Observable<ApiResponse<applicationRes>> {
+      return this.http.post<ApiResponse<applicationRes>>(`${env.ApiUrl}/recruitment/apply-job`, formData)
+    }
   
   
   }  

@@ -38,9 +38,11 @@
       font-size: 1.4rem;
       font-weight: 500;
       margin: 1.5rem auto;
+      // font-family:  "Arial Bold";
 
       p {
         line-height: 1.5;
+          text-align: justify;
 
         &::-moz-selection { /* Code for Firefox */
           color: $color-main;
@@ -51,6 +53,7 @@
           color: $color-main;
           background: $bg-color-main;
         }
+
       }
     }
   }
@@ -84,4 +87,18 @@
       }
     }
   }
+}
+
+.tenders{
+    p {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+      table{
+        width: 100%;
+        margin: auto;
+      }
+      td{
+        border: 1px solid !important;
+      }
 }

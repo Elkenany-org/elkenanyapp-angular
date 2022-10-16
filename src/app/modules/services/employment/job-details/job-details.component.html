@@ -20,7 +20,7 @@
                         ارسال رسالة
                     </a> -->
                     <a class="single__action" >
-                        <i class="fa-solid fa-envelope"></i>
+                        <i class="fa-solid fa-envelope pt-2"></i>
                                     {{jobDetails?.email}}
                     </a>
                     <div class="address__map">
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="user__info">
+                    <div class="user__info" *ngIf="jobDetails?.user_type != 'recruiter'">
                         <div class="user__icon">
                             <i class="fas fa-user-alt icon"></i>
                         </div>
@@ -42,6 +42,9 @@
                             <p class="user__date">على الموقع   {{jobDetails?.user_created_at}}</p>
                         </div>
                     </div>
+
+                    <a class="action__yellow__green__button w-100" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/employment/',jobDetails?.sector_type,'job-applicants',jobDetails?.id]" >المتقدمين للوظيفة</a>
+
                 </div>
             </div>
             <div class="col-12 col-md-9">
@@ -65,7 +68,8 @@
                        {{jobDetails?.desc}}
                     </p>
                 </div>
-                <a class="action__yellow__green__button w-50" [routerLink]="['/employment/',jobDetails?.sector_type,'apply',jobDetails?.id]" >قدم الأن</a>
+                <a class="action__yellow__green__button w-50" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/employment/',jobDetails?.sector_type,'apply',jobDetails?.id]" >قدم الأن</a>
+
             </div>
         </div>
     </div>

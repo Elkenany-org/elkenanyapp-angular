@@ -9,6 +9,7 @@ import { JobDetails } from '@app/@core/interfaces/employment/job-details';
 import { EmploymentService } from '@app/@core/services/modules/employment/employment.service';
 import { JobDetials } from '@app/@core/interfaces/employment/Job';
 import { CompaniesGuideService } from '@app/@core/services/modules/companies-guide/companies-guide.service';
+import { AuthService } from '@app/@core/services/auth/auth.service';
 
 interface ImageInterface {
   name?: string;
@@ -50,6 +51,7 @@ export class AddJobComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private titleService:Title,
+    private auth:AuthService
 ) { 
 
     }
@@ -60,28 +62,37 @@ export class AddJobComponent implements OnInit {
 
     this.url =  this.router.url.split('/') 
     this.secId= sector.find((i:Sector) => i.type ===   this.url[  this.url.length-2] )?.id ||1
-    console.log('====================================');
-    console.log(this.secId);
-    console.log('====================================');
+
     // console.log(  this.url)
     this.AdForm({} as JobDetials, this.secId )
+
 
     this.route.params.subscribe( (param: Params) => {
         this.id = '0'
             this.employment.Filter_list(param['type']).subscribe(
               (res)=>{
                 this.categories=res.data?.categories
-
               })
+                this.auth.profile().subscribe(res => {
+                  console.log('====================================');
+                  console.log(res.data);
+                  console.log('====================================');
+                    if(res.data?.company_id != null){
+                      this.company_id=parseInt(res.data?.company_id);
+                      document.getElementById('company')!.innerHTML = res.data?.company_name+'<i class="fa-sharp fa-solid fa-caret-down"></i>';
+                      document.getElementById('company')!.setAttribute('disabled', '');
+                    }else{
+                        this.employment.searchCompany('').subscribe(
+                        (res)=>{
+                          this.Companies=res.data?.result
 
-              this.employment.searchCompany('').subscribe(
-                (res)=>{
-                  this.Companies=res.data?.result
+                          this.tempCompanies=JSON.parse(JSON.stringify(this.Companies));  
 
-                  this.tempCompanies=JSON.parse(JSON.stringify(this.Companies));  
+                        }
+                      )
+                    }
+                })
 
-                }
-              )
     })
 
     }
@@ -134,7 +145,7 @@ export class AddJobComponent implements OnInit {
 
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')
-          // this.router.navigate([`/market/${this.url[2]}/ad_details/${res.data?.job_detials.id}`])
+          this.router.navigate([`/employment/${this.url[  this.url.length-2]}`])
 
         }, (err) => {
           this.toasterService.stopLoading();

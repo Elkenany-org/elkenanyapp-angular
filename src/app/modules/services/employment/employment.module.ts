@@ -9,6 +9,8 @@ import { SharedModule } from '@app/@shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { YourJobsComponent } from './your-jobs/your-jobs.component';
+import { EmploymentComponent } from './employment.component';
+import { JobApplicantsComponent } from './job-applicants/job-applicants.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { YourJobsComponent } from './your-jobs/your-jobs.component';
     AddJobComponent,
     ApplyJobComponent,
     JobDetailsComponent,
-    YourJobsComponent
+    YourJobsComponent,
+    EmploymentComponent,
+    JobApplicantsComponent
   ],
   imports: [
     CommonModule,

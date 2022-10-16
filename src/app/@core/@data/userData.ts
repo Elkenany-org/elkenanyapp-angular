@@ -48,6 +48,9 @@ export interface Profile {
   email: string
   image: string
   state: string
+  verified?:string
+  company_id?:string
+  company_name?:string
 }
 
 //----------------------------- google gegister ------------------------------//

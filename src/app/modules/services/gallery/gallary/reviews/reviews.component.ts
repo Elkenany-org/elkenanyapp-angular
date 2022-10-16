@@ -22,7 +22,7 @@ export class ReviewsComponent implements OnInit {
 
     this.galleryService.reviews(+url[url.length-2]).subscribe(res => {
        this.data = res.data
-      //  console.log(res.data)
+      console.log(res.data)
 
     })
   }

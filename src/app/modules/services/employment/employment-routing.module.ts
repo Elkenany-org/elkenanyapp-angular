@@ -1,30 +1,46 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from '@app/@core/guards/auth.guard';
 import { EmploymentHomeResolver } from '@app/@core/resolver/employment/employment-home.resolver';
 import { JobDetailsResolver } from '@app/@core/resolver/employment/job-details.resolver';
 import { NotFoundComponent } from '@app/@shared/pages/not-found/not-found.component';
 import { AddJobComponent } from './add-job/add-job.component';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { EmploymentHomeComponent } from './employment-home/employment-home.component';
+import { EmploymentComponent } from './employment.component';
+import { JobApplicantsComponent } from './job-applicants/job-applicants.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { YourJobsComponent } from './your-jobs/your-jobs.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: EmploymentHomeComponent,
-    resolve: {
-      resolve: EmploymentHomeResolver
-    },
+    component: EmploymentComponent,
+    children:[
+      {
+        path: '',
+        component: EmploymentHomeComponent,
+            resolve: {
+        resolve: EmploymentHomeResolver
+                },
+      },
+      {
+        path: 'your-jobs',
+        component: YourJobsComponent
+      },
+    ]
+
   },
 
   {
     path: 'apply/:id',
-    component: ApplyJobComponent
+    component: ApplyJobComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-job',
-    component: AddJobComponent
+    component: AddJobComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'job-details/:id',
@@ -33,10 +49,14 @@ const routes: Routes = [
       resolve: JobDetailsResolver
     },
   },
+
   {
-    path: 'your-jobs',
-    component: YourJobsComponent
+    path: 'job-applicants/:id',
+    component: JobApplicantsComponent,
+    canActivate: [AuthGuardService]
+
   },
+
   {
     path: '**',
     component: NotFoundComponent,
