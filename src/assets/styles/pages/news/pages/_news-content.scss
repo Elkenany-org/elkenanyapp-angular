@@ -36,10 +36,9 @@
     .content__description {
       text-align: right;
       font-size: 1.4rem;
-      font-weight: 500;
       margin: 1.5rem auto;
-      // font-family:  "Arial Bold";
-
+      font-family:  "Arial Black";
+      font-weight: 600 !important;
       p {
         line-height: 1.5;
           text-align: justify;
@@ -55,6 +54,7 @@
         }
 
       }
+
     }
   }
 
@@ -101,4 +101,8 @@
       td{
         border: 1px solid !important;
       }
+}
+
+.news{
+  font-size: 1.2rem !important;
 }

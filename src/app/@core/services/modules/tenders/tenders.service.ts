@@ -14,7 +14,7 @@ export class TendersService {
   constructor(private http: HttpClient) {
   }  
 
-  all_news(type:string, sort?:number, search?:string,page?:number): Observable<ApiResponse<AllNews>> { 
+  all_news(type:string, sort?:string, search?:string,page?:number): Observable<ApiResponse<AllNews>> { 
     return this.http.get<ApiResponse<AllNews>>(`${env.ApiUrl}/tenders/tenders?type=${type}&sort=${sort}&search=${search}&page=${page}`);
   }
 

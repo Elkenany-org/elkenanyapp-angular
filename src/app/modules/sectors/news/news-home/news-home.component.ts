@@ -78,8 +78,9 @@ export class NewsHomeComponent implements OnInit {
 
   filter(value:any) {
     this.filterData['search']=''
+    this.filterData['sector'] = this.type||'poultry'
     this.route.params.subscribe( params => {
-      this.filterData['sector'] = params['type']
+      // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
           this.filterData['sector'] = value.name
@@ -99,6 +100,8 @@ export class NewsHomeComponent implements OnInit {
     this.news.all_news(this.filterData['sector'],+this.filterData['sort'],this.filterData['search'],1).subscribe(res => {
       // console.log(res)
       this.News= res.data?.data 
+      this.page.current_page = res.data?.current_page as number
+      this.page.last_page =  res.data?.last_page  as number
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sections
