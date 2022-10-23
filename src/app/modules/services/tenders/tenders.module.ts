@@ -6,12 +6,14 @@ import { TendersComponent } from './tenders/tenders.component';
 import { TendersDetailsComponent } from './tenders-details/tenders-details.component';
 import { SharedModule } from '@app/@shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TendersHomeComponent } from './tenders-home/tenders-home.component';
 
 
 @NgModule({
   declarations: [
     TendersComponent,
-    TendersDetailsComponent
+    TendersDetailsComponent,
+    TendersHomeComponent
   ],
   imports: [
     CommonModule,

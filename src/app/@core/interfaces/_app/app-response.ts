@@ -29,8 +29,6 @@ export interface FilterList {
 
 }
 
-
-
 //----------------------------- Social  -----------------------------//
 export interface Social {
   social_id: number
@@ -158,3 +156,9 @@ export interface Result {
   created_at:string
 }
 
+///////filter tenders
+export interface TendersFilterList {
+  sections: Sector[]
+  sort: Sort[]
+  cities?: City[]
+}
