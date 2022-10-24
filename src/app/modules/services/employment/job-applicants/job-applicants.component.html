@@ -1,23 +1,61 @@
-<article class="global__container container">
-    <div class="row" >
-        <div class="col-6 col-md-4 col-lg-3" *ngFor=" let user of applicants?.data" >
-            <div class="person__card">
-                <div class="person__image">
-                    <img alt="" class="image" src="{{user.image}}">
-                </div>
-                <div class="person__card__body">
-                    <div class="name">{{user.name}}</div>
-                    <div class="role" >{{user.email}}</div>
 
-                    <div class="card__footer">
 
-                        <div class="date">
-                            <a class="action__yellow__green__button w-100" href="{{user.cv}}" target="_blank">Review CV</a>
+<!-- <app-loader *ngIf="loading"></app-loader> -->
+
+<div class="main__content__body">
+
+
+    <!-- Start Partners -->
+    <article class="partners slider">
+        <div class="container-fluid logos__holder">
+            <section class="partners-slider" dir="rtl">
+                <section class="splide" id="partnerCarousel">
+                    
+                    <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
+                    
+                </section>
+            </section>
+        </div>
+    </article>
+    <!-- End Partners -->
+
+    <!-- Start breadcrumb -->
+    <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
+    <!-- End Search Box -->
+
+    <!-- Start Global Content -->
+    <article class="container global__container">
+        <div class="row">
+            <!-- Start Left Section -->
+
+            <article class="global__container container">
+                <div class="row" >
+                    <div class="col-6 col-md-4 col-lg-3" *ngFor=" let user of applicants?.applicants" >
+                        <div class="person__card">
+                            <div class="person__image">
+                                <img alt="" class="image" src="{{user.image}}">
+                            </div>
+                            <div class="person__card__body">
+                                <div class="name">{{user.name}}</div>
+                                <div class="role" >{{user.email}}</div>
+            
+                                <div class="card__footer">
+            
+                                    <div class="date">
+                                        <a class="action__yellow__green__button w-100"  [routerLink]="['/employment/application-details',user?.id]">Review</a>
+
+                                        <!-- <a class="action__yellow__green__button w-100" href="{{user.cv}}" target="_blank">Review CV</a> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+            
                 </div>
-            </div>
+            </article>
+            
+            <!-- End Left Section -->
         </div>
-
-    </div>
-</article>
+    </article>
+    <!-- End Global Content -->
+</div>

@@ -73,10 +73,7 @@ export class StockExchangeComponent implements OnInit {
         this.h_search_form = Stock_Search_Form_Data
 
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
-        console.log('====================================');
-        console.log(prm['id']);
-        console.log(res.data?.fodder_list);
-        console.log('====================================');
+
         this.feeds = res.data?.fodder_list
         this.feedsList = this.feeds
         this.productList=JSON.parse(JSON.stringify(this.feedsList));  
@@ -90,9 +87,6 @@ export class StockExchangeComponent implements OnInit {
         
         this.companies= res.data
         this.companiesList = this.companies
-        console.log('====================================');
-        console.log(this.companiesList);
-        console.log('====================================');
         let temp=this.companiesList![0].id+''
         localStorage.setItem('stockId',temp)
       })

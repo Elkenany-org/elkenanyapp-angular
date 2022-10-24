@@ -26,10 +26,6 @@ export class JobDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.data.subscribe(data => {
-      data['resolve']
-      console.log('====================================');
-      console.log(data['resolve'].data);
-      console.log('====================================');
       this.jobDetails = data['resolve'].data    
       this.titleService.setTitle(this.jobDetails?.title!);
 

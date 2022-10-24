@@ -5,6 +5,7 @@ import { EmploymentHomeResolver } from '@app/@core/resolver/employment/employmen
 import { JobDetailsResolver } from '@app/@core/resolver/employment/job-details.resolver';
 import { NotFoundComponent } from '@app/@shared/pages/not-found/not-found.component';
 import { AddJobComponent } from './add-job/add-job.component';
+import { ApplicationDetailsComponent } from './application-details/application-details.component';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { EmploymentHomeComponent } from './employment-home/employment-home.component';
 import { EmploymentComponent } from './employment.component';
@@ -56,7 +57,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
 
   },
+  {
+    path: 'application-details/:id',
+    component: ApplicationDetailsComponent,
+    canActivate: [AuthGuardService]
 
+  },
   {
     path: '**',
     component: NotFoundComponent,

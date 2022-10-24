@@ -59,24 +59,16 @@ export class AddJobComponent implements OnInit {
   ngOnInit(): void {
   
     this.titleService.setTitle(this.pageName);
-
-    this.url =  this.router.url.split('/') 
-    this.secId= sector.find((i:Sector) => i.type ===   this.url[  this.url.length-2] )?.id ||1
-
-    // console.log(  this.url)
-    this.AdForm({} as JobDetials, this.secId )
+    this.AdForm({} as JobDetials)
 
 
     this.route.params.subscribe( (param: Params) => {
         this.id = '0'
-            this.employment.Filter_list(param['type']).subscribe(
+            this.employment.Filter_list().subscribe(
               (res)=>{
                 this.categories=res.data?.categories
               })
                 this.auth.profile().subscribe(res => {
-                  console.log('====================================');
-                  console.log(res.data);
-                  console.log('====================================');
                     if(res.data?.company_id != null){
                       this.company_id=parseInt(res.data?.company_id);
                       document.getElementById('company')!.innerHTML = res.data?.company_name+'<i class="fa-sharp fa-solid fa-caret-down"></i>';
@@ -99,7 +91,7 @@ export class AddJobComponent implements OnInit {
 
 
 
-  AdForm (data: JobDetials, secId: number) {
+  AdForm (data: JobDetials) {
      this.jobForm = this.fb.group({
        // if the purpose is to add an ad the value of control will be '' if  it is  edit get values from URL
        title:      [(data.id)?data.title: '', [Validators.required]],
@@ -111,7 +103,6 @@ export class AddJobComponent implements OnInit {
        company_id:    [this.company_id, [Validators.required]],
        experience:    [(data.id)?data.experience: '', [Validators.required]],
        category_id:    [this.category_id, [Validators.required]],
-       section_id:   [secId, [Validators.required]],
      })  
      
    }
@@ -126,7 +117,6 @@ export class AddJobComponent implements OnInit {
     formData.append('desc',  this.jobForm.controls['desc'].value);
     formData.append('phone', this.jobForm.controls['phone'].value);
     formData.append('salary', this.jobForm.controls['salary'].value);
-    formData.append('sector_id', this.jobForm.controls['section_id'].value);
     formData.append('address', this.jobForm.controls['address'].value);
     formData.append('email', this.jobForm.controls['email'].value);
     formData.append('category_id', this.category_id+'');

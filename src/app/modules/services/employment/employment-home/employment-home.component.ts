@@ -8,6 +8,7 @@ import { EmploymentService } from '@app/@core/services/modules/employment/employ
 import { map } from 'rxjs';
 import { Location } from '@angular/common';
 import { JobsData } from '@app/@core/interfaces/employment/home';
+import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 
 @Component({
   selector: 'app-employment-home',
@@ -37,17 +38,15 @@ export class EmploymentHomeComponent implements OnInit {
     private route: ActivatedRoute, 
     private router: Router,  
     private activatedRoute: ActivatedRoute,
-    private location: Location,
-    private titleService:Title
+    private titleService:Title,
+    private BannerLogoService:BannersLogoservice,
   ) { }
 
   ngOnInit(): void {
     this.h_search_form = employment_Search_Form_Data //set initial data to horizontal component 
     this.titleService.setTitle(' الوظائف ');
     this.route.params.subscribe(params => {
-      this.type =params['type']
-      this.emplymentService.Filter_list(this.type).subscribe( res => {
-        this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
+      this.emplymentService.Filter_list().subscribe( res => {
         this.h_search_form.controls.find((i:any) => i.role === "category").option = res.data?.categories
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 1).selected=1
@@ -64,6 +63,7 @@ export class EmploymentHomeComponent implements OnInit {
         this.Jobs_Data =res.jobs
         this.page.current_page = res.current_page
         this.page.last_page =  res.last_page
+        this.BannerLogoService.setBanner(res.banners);
         this.loading = false;
 
       })
@@ -75,13 +75,7 @@ export class EmploymentHomeComponent implements OnInit {
 
   filter(value:any) {
     this.route.params.subscribe( params => {
-      this.filterData['sector'] = params['type']
-      this.filterData['category']=''
       switch ( value.type ) {
-        case "sector":
-          this.filterData['sector'] = value.name
-          this.router.navigate(['employment/',this.filterData['sector']])
-            break;
         case "category":
               this.filterData['category'] = value.id
               this.h_search_form.controls.find((i:any) => i.role === "category").option.find((i:any) => i.id === value.id).selected=1
@@ -108,29 +102,25 @@ export class EmploymentHomeComponent implements OnInit {
 
     })
 
-    if(value.type != 'sector'){
-    this.emplymentService.AllJobs(this.filterData['sector'], this.filterData['sort'],this.filterData['search'], this.filterData['category'],'').subscribe(res => {
+ 
+    this.emplymentService.AllJobs(this.filterData['sort'],this.filterData['search'], this.filterData['category'],'').subscribe(res => {
       this.page.current_page = res.data?.current_page as number
       this.page.last_page = res.data?.last_page as number
       this.Jobs_Data =res.data?.jobs 
-      this.type = this.filterData['sector']
-      this.location.go(`employment/${this.type }`);
     })
-    }
 
   }
 
   navigate(id: string): void
   {
     // console.log(id)
-    this.router.navigate([`/employment/${this.type}/job-details/${id}`]);
+    this.router.navigate([`/employment/job-details/${id}`]);
     
   }
 
   next_page(page:number):void{
     this.filterData["page"] = page+''
-    this.filterData["sector"] =this.type
-     this.emplymentService.AllJobs(this.filterData['sector'], this.filterData['sort'],this.filterData['search'],this.filterData['category'],this.filterData["page"]).subscribe(res => {
+     this.emplymentService.AllJobs(this.filterData['sort'],this.filterData['search'],this.filterData['category'],this.filterData["page"]).subscribe(res => {
       this.page.current_page = res.data?.current_page as number
       this.page.last_page = res.data?.last_page as number
       this.Jobs_Data =res.data?.jobs 

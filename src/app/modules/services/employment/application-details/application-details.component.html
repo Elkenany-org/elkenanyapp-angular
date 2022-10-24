@@ -1,0 +1,71 @@
+    <!-- Start Settings  -->
+    <article class="settings">
+        <div class="container-fluid holder">
+            <!-- Start Titles -->
+            <!-- <section class="titles row">
+                <section class="title col-lg-12 col-12">
+                    <h3>البيانات </h3>
+                </section>
+            </section> -->
+            <!-- End Titles -->
+            <!-- Start Content -->
+            <section class="content row">
+                <!-- Start Left Content -->
+                <section class="left-content col-12">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <!-- Start Basics Content -->
+             
+                     
+                        <div class="basics tab-pane fade show active" id="v-pills-basics" role="tabpanel" aria-labelledby="v-pills-basics-tab">
+                            <form [formGroup]="profileForm" >
+                                <input type="hidden" name="id" value="11">
+                                <input  type="file" name="avatar" id="imgupload" style="display:none">
+                                <a id="OpenImgUpload" class="change-img">
+                                    <img [src]="applicaion?.application?.image" alt="profile photo">
+                                </a>        
+
+                                    <h5 >الاسم</h5 >
+                                    <section id="name-box" class="name-box boxes " style="border-color: rgb(242, 211, 131);">
+                                        <input formControlName="name" id="username" name="name" type="text" readonly >
+                                    </section>
+                                    <h5>الايميل</h5>
+                                    <section id="email-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <input id="email"formControlName="email" class="email" type="email" readonly >
+                                    </section>
+                                    <h5>الهاتف</h5>
+                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <input id="phone"formControlName="phone" class="phone" readonly type="number" >
+                                    </section>
+                                    <h5>التعليم</h5>
+                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <input id="education"formControlName="education" class="phone" readonly  >
+                                    </section>
+                                    <h5>الخبرة</h5>
+                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <input id="experience"formControlName="experience" class="phone" readonly>
+                                    </section>
+                                    <h5>فترة الاشعار</h5>
+                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <input id="notice_period"formControlName="notice_period" class="phone" readonly>
+                                    </section>
+                                    <h5>الراتب المتوقع</h5>
+                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
+                                        <input id="expected_salary"formControlName="expected_salary" class="phone" readonly>
+                                    </section>            
+                                    <div class="date">
+                                        <a class="action__yellow__green__button w-100"  href={{applicaion?.application?.cv}} target="_blank">Download CV</a>
+                                    </div>
+                            </form>
+                        </div> 
+ 
+                        <!-- End Basics Content -->
+
+                    </div>
+                </section>
+                <!-- End Left Content -->
+
+            </section>
+            <!-- End Content -->
+        </div>
+    </article>
+    <!-- End Settings  -->

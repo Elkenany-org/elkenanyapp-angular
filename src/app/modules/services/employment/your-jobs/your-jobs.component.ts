@@ -33,11 +33,7 @@ export class YourJobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('وظائفي');
-    let url =  this.router.url.split('/') 
-    this.type =  url[url.length-2] //get type from url 
-    this.secId= sector.find((i:Sector) => i.type ===   url[  url.length-2] )?.id ||1
-
-    this.employment.my_jobs(this.secId,'').subscribe(res => {
+    this.employment.my_jobs('').subscribe(res => {
       this.toasterService.stopLoading();
       this.data= res.data
       this.page.current_page = res.data?.current_page as number
@@ -50,7 +46,7 @@ export class YourJobsComponent implements OnInit {
   }
 
   next_page(page:number):void{
-    this.employment.my_jobs(this.secId || 1 ,page+'').subscribe(res => {
+    this.employment.my_jobs(page+'').subscribe(res => {
       this.data =res.data
       this.page.current_page = res.data?.current_page as number
       this.page.last_page = res.data?.last_page as number

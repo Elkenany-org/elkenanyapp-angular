@@ -16,6 +16,11 @@ export interface Sector {
 
 }
 
+export interface Qualified{
+  id: number
+  name: string
+  value: string
+}
 //----------------------------- FilterList  -----------------------------//
 
   
@@ -26,6 +31,7 @@ export interface FilterList {
   cities?: City[]
   sub_sections?: SubSection[]
   categories?: Category[]
+  qualified?: Qualified[]
 
 }
 

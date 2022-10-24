@@ -17,7 +17,7 @@ export class EmploymentHomeResolver implements Resolve<ApiResponse<Jobs>> {
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):Observable<ApiResponse<Jobs>>  {
     console.log("jobs Resolver is work ")
-   return this.Jobs.AllJobs(route.paramMap.get('type')||'poultry','','','','1').pipe(
+   return this.Jobs.AllJobs('','','','1').pipe(
      catchError(() => {
        this.router.navigate([""]);
        return EMPTY

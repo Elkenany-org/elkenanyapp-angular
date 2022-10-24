@@ -1,5 +1,5 @@
   export interface applicants{
-    data:Applicant[]
+    applicants:Applicant[]
   }
   
   export interface Applicant{
@@ -27,4 +27,21 @@
     experience:string
     expected_salary:string
     cv_link:string
+  }
+
+  export interface applicationDetails {
+    application: Applicantion
+  }
+  export interface Applicantion{
+    id: number
+    name: string
+    email: string
+    phone: string
+    notice_period: string
+    education: string
+    experience: number
+    expected_salary: number
+    created_at: string
+    cv: string
+    image: string
   }

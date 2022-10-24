@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ApiResponse } from "@app/@core/@data/API/api";
 import { searchCompanies } from "@app/@core/interfaces/employment/add-job";
-import { applicants, application, applicationRes } from "@app/@core/interfaces/employment/applicants";
+import { applicants, application, applicationDetails, applicationRes } from "@app/@core/interfaces/employment/applicants";
 import { Jobs } from "@app/@core/interfaces/employment/home";
 import { Job } from "@app/@core/interfaces/employment/Job";
 import { JobDetails } from "@app/@core/interfaces/employment/job-details";
@@ -18,13 +18,13 @@ import {environment as env} from '../../../../../environments/environment';
 
     constructor(private http: HttpClient) { }
 
-    AllJobs(sector:string, sort:string,search:string,cate:string , page?:string):Observable<ApiResponse<Jobs>> {
+    AllJobs( sort:string,search:string,cate:string , page?:string):Observable<ApiResponse<Jobs>> {
 
-      return this.http.get<ApiResponse<Jobs>>(`${env.ApiUrl}/recruitment/jobs-store?sector=${sector}&sort=${sort}&search=${search}&cate=${cate}&page=${page}`)
+      return this.http.get<ApiResponse<Jobs>>(`${env.ApiUrl}/recruitment/jobs-store?sort=${sort}&search=${search}&cate=${cate}&page=${page}`)
     }
   
-    Filter_list(sector_id:string ):Observable<ApiResponse<FilterList>> {
-      return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/recruitment/jobs-store-categories?sector_id=${sector_id}`)
+    Filter_list():Observable<ApiResponse<FilterList>> {
+      return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/recruitment/jobs-store-categories`)
     }
   
     // ----------------------------------------- < AD endPoints > -----------------------------------------------//
@@ -41,17 +41,23 @@ import {environment as env} from '../../../../../environments/environment';
       return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/recruitment/add-job`, formData)
     }
   
-    my_jobs(type:number,page:string ):Observable<ApiResponse<MyJobs>> {
-      return this.http.get<ApiResponse<MyJobs>>(`${env.ApiUrl}/recruitment/my-jobs-store?sector=${type}&page=${page}`)
+    my_jobs(page:string ):Observable<ApiResponse<MyJobs>> {
+      return this.http.get<ApiResponse<MyJobs>>(`${env.ApiUrl}/recruitment/my-jobs-store?page=${page}`)
     }
 
-    applicants(job_id:string):Observable<ApiResponse<applicants>>{
-      return this.http.get<ApiResponse<applicants>>(`${env.ApiUrl}/recruitment/job-applicants?job_id=${job_id}`)
+    applicants(job_id:string,select:string,search:string):Observable<ApiResponse<applicants>>{
+      return this.http.get<ApiResponse<applicants>>(`${env.ApiUrl}/recruitment/job-applicants?job_id=${job_id}&select=${select}&search=${search}`)
     }
 
     apply_job(formData: FormData ):Observable<ApiResponse<applicationRes>> {
       return this.http.post<ApiResponse<applicationRes>>(`${env.ApiUrl}/recruitment/apply-job`, formData)
     }
   
+    Filter_applicants():Observable<ApiResponse<FilterList>> {
+      return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/recruitment/filter-applicants`)
+    }
   
+    application_details(id:string):Observable<ApiResponse<applicationDetails>>{
+      return this.http.get<ApiResponse<applicationDetails>>(`${env.ApiUrl}/recruitment/application-details?app_id=${id}`)
+    }
   }  

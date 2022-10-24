@@ -11,6 +11,7 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 import { YourJobsComponent } from './your-jobs/your-jobs.component';
 import { EmploymentComponent } from './employment.component';
 import { JobApplicantsComponent } from './job-applicants/job-applicants.component';
+import { ApplicationDetailsComponent } from './application-details/application-details.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { JobApplicantsComponent } from './job-applicants/job-applicants.componen
     JobDetailsComponent,
     YourJobsComponent,
     EmploymentComponent,
-    JobApplicantsComponent
+    JobApplicantsComponent,
+    ApplicationDetailsComponent
   ],
   imports: [
     CommonModule,

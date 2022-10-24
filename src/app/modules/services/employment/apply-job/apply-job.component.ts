@@ -45,13 +45,13 @@ export class ApplyJobComponent implements OnInit {
     this.url =  this.router.url.split('/') 
     this.job_id= this.url[  this.url.length-1] 
     // console.log(  this.url)
-    this.AdForm({} as application, this.job_id)
+    this.AdForm({} as application)
 
     }
 
 
 
-  AdForm (data: application, secId: string) {
+  AdForm (data: application) {
      this.jobForm = this.fb.group({
        // if the purpose is to add an ad the value of control will be '' if  it is  edit get values from URL
        education:      [(data.id)?data.education: '', [Validators.required]],

@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <a class="action__yellow__green__button w-100" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/employment/',jobDetails?.sector_type,'job-applicants',jobDetails?.id]" >المتقدمين للوظيفة</a>
+                    <a class="action__yellow__green__button w-100" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/employment/job-applicants',jobDetails?.id]" >المتقدمين للوظيفة</a>
 
                 </div>
             </div>
@@ -68,7 +68,7 @@
                        {{jobDetails?.desc}}
                     </p>
                 </div>
-                <a class="action__yellow__green__button w-50" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/employment/',jobDetails?.sector_type,'apply',jobDetails?.id]" >قدم الأن</a>
+                <a class="action__yellow__green__button w-50" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/employment/apply',jobDetails?.id]" >قدم الأن</a>
 
             </div>
         </div>
