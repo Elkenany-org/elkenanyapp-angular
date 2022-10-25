@@ -60,4 +60,8 @@ import {environment as env} from '../../../../../environments/environment';
     application_details(id:string):Observable<ApiResponse<applicationDetails>>{
       return this.http.get<ApiResponse<applicationDetails>>(`${env.ApiUrl}/recruitment/application-details?app_id=${id}`)
     }
+
+    qualified_application(formData: FormData):Observable<ApiResponse<any>>{
+      return this.http.post<ApiResponse<any>>(`${env.ApiUrl}/recruitment/add-to-qualified-applicants`,formData)
+    }
   }  

@@ -3,4 +3,35 @@
 // }
 h5{
     text-align: right;
+    color: #af985d;
+    padding-left: 20px;
+}
+
+h3{
+    text-align: center;
+    color: #af985d;
+
+}
+.profile{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    border-radius: 8px;
+    border: 2px solid #1a5302;
+    padding: 0px 10px;
+    border-color: #dbd4c7;
+    text-align: right;
+}
+.mainframe{
+    border: 2px solid #c5c1b7;
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+.content{
+    margin-top: -35px;
+}
+
+input[name="qualified"]:checked{
+    background-color: #7a6b41;
 }

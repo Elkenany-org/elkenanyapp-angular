@@ -103,6 +103,8 @@ export class AddJobComponent implements OnInit {
        company_id:    [this.company_id, [Validators.required]],
        experience:    [(data.id)?data.experience: '', [Validators.required]],
        category_id:    [this.category_id, [Validators.required]],
+       work_hours:    [(data.id)?data.work_hours:'', [Validators.required]],
+
      })  
      
    }
@@ -122,6 +124,7 @@ export class AddJobComponent implements OnInit {
     formData.append('category_id', this.category_id+'');
     formData.append('experience', this.jobForm.controls['experience'].value);
     formData.append('company_id', this.company_id+'');
+    formData.append('work_hours', this.jobForm.controls['work_hours'].value);
 
 
      formData.forEach(ite => console.log(ite))
@@ -135,7 +138,7 @@ export class AddJobComponent implements OnInit {
 
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')
-          this.router.navigate([`/employment/${this.url[  this.url.length-2]}`])
+          this.router.navigate([`employment/job-details/${res.data?.job_detials.id}`])
 
         }, (err) => {
           this.toasterService.stopLoading();

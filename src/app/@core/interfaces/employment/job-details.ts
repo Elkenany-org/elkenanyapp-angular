@@ -17,6 +17,7 @@ export interface JobDetails {
     category_id:number
     company_id:number
     user_type?:string
+    work_hours:string
   }
   
 

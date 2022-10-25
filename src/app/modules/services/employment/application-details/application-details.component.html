@@ -2,11 +2,11 @@
     <article class="settings">
         <div class="container-fluid holder">
             <!-- Start Titles -->
-            <!-- <section class="titles row">
+            <section class="row">
                 <section class="title col-lg-12 col-12">
-                    <h3>البيانات </h3>
+                    <h3>بيانات المتقدم </h3>
                 </section>
-            </section> -->
+            </section>
             <!-- End Titles -->
             <!-- Start Content -->
             <section class="content row">
@@ -18,43 +18,47 @@
                      
                         <div class="basics tab-pane fade show active" id="v-pills-basics" role="tabpanel" aria-labelledby="v-pills-basics-tab">
                             <form [formGroup]="profileForm" >
+                                <div class="mainframe">
                                 <input type="hidden" name="id" value="11">
                                 <input  type="file" name="avatar" id="imgupload" style="display:none">
                                 <a id="OpenImgUpload" class="change-img">
                                     <img [src]="applicaion?.application?.image" alt="profile photo">
                                 </a>        
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="name" id="username" name="name" type="text" readonly ><h5 class="col-2 mt-2" > الاسم</h5 > 
+                                </div>
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="email" id="email" name="email" type="text" readonly ><h5 class="col-2 mt-2" > الايميل</h5 > 
+                                </div>
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="phone" id="phone" name="phone" type="text" readonly ><h5 class="col-2 mt-2" > الهاتف</h5 > 
+                                </div>
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="education" id="education" name="education" type="text" readonly ><h5 class="col-2 mt-2" > التعليم</h5 > 
+                                </div>
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="experience" id="experience" name="experience" type="text" readonly ><h5 class="col-2 mt-2" > الخبرة</h5 > 
+                                </div>
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="notice_period" id="notice_period" name="notice_period" type="text" readonly ><h5 class="col-2 mt-2" > فترة الاشعار</h5 > 
+                                </div>
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="expected_salary" id="expected_salary" name="expected_salary" type="text" readonly ><h5 class="col-2 mt-2" > الراتب المتوقع</h5 > 
+                                </div>
+                                <div class="row m-2">
+                                    <input class="profile col-10"formControlName="other_info" id="other_info" name="other_info" type="text" readonly ><h5 class="col-2 mt-2" > معلومات أخري</h5 > 
+                                </div>   
+                                <div class="row m-2" style="justify-content: center;">
+                                    <label class="col-2" for="qualified"><h5>مؤهل</h5></label><input (change)="submit(profileForm)" class="profile col-10" formControlName="qualified" id="qualified" name="qualified" type="radio" value="1">
+                                </div>
+                                <div class="row m-2" style="justify-content: center;">
+                                    <label class=" col-2" for="notqualified"><h5>غير مؤهل</h5></label><input (change)="submit(profileForm)" class="profile col-10" formControlName="qualified" id="notqualified" name="qualified" type="radio" value="0" >
+                                </div>   
 
-                                    <h5 >الاسم</h5 >
-                                    <section id="name-box" class="name-box boxes " style="border-color: rgb(242, 211, 131);">
-                                        <input formControlName="name" id="username" name="name" type="text" readonly >
-                                    </section>
-                                    <h5>الايميل</h5>
-                                    <section id="email-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
-                                        <input id="email"formControlName="email" class="email" type="email" readonly >
-                                    </section>
-                                    <h5>الهاتف</h5>
-                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
-                                        <input id="phone"formControlName="phone" class="phone" readonly type="number" >
-                                    </section>
-                                    <h5>التعليم</h5>
-                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
-                                        <input id="education"formControlName="education" class="phone" readonly  >
-                                    </section>
-                                    <h5>الخبرة</h5>
-                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
-                                        <input id="experience"formControlName="experience" class="phone" readonly>
-                                    </section>
-                                    <h5>فترة الاشعار</h5>
-                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
-                                        <input id="notice_period"formControlName="notice_period" class="phone" readonly>
-                                    </section>
-                                    <h5>الراتب المتوقع</h5>
-                                    <section id="phone-box" class="mail-box boxes" style="border-color: rgb(242, 211, 131);">
-                                        <input id="expected_salary"formControlName="expected_salary" class="phone" readonly>
-                                    </section>            
-                                    <div class="date">
-                                        <a class="action__yellow__green__button w-100"  href={{applicaion?.application?.cv}} target="_blank">Download CV</a>
-                                    </div>
+                             </div>
+                                <div class="date" >
+                                        <a class="action__yellow__green__button w-100" style="color: #7a6b41;"  href={{applicaion?.application?.cv}} target="_blank">Download CV</a>
+                                </div>
                             </form>
                         </div> 
  

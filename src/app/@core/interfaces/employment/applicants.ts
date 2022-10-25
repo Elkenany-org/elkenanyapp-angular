@@ -44,4 +44,6 @@
     created_at: string
     cv: string
     image: string
+    other_info:string
+    qualified:string
   }

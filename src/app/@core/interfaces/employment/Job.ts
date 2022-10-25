@@ -22,6 +22,7 @@ export interface Job {
     experience:number
     category_id:number
     company_id:number
+    work_hours:string
   }
   
   export interface Image {

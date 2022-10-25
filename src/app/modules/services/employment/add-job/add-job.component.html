@@ -27,16 +27,28 @@
                     </div>
                   </div>
 
-                  <h5 class="m-2">العنوان : </h5> <input formControlName="title" class="job-name inputs w-75" placeholder="الوظيفة المطلوبة" type="text">
+                  <h5 class="mt-2 w-25">العنوان : </h5> <input formControlName="title" class="job-name inputs w-75" placeholder="الوظيفة المطلوبة" type="text">
+             
+                  <h5 class="mt-2 w-25">عنوان الوظيفة : </h5><input formControlName="address" class="job-address inputs w-75" placeholder="العنوان" type="text">
+                
+                  <h5 class="mt-2 w-25">رقم الموبايل : </h5><input formControlName="phone" class="job-phone inputs w-75" placeholder="الموبايل" type="number">
+                  
+                  <h5 class="mt-2 w-25">المرتب : </h5><input formControlName="salary" class="job-salary inputs w-75" placeholder=" المرتب" type="number">
 
-                  <h5 class="m-2">عنوان الوظيفة : </h5><input formControlName="address" class="job-address inputs w-75" placeholder="العنوان" type="text">
-                  <h5 class="m-2">رقم الموبايل : </h5><input formControlName="phone" class="job-phone inputs w-75" placeholder="الموبايل" type="number">
-                  <h5 class="m-2">المرتب : </h5><input formControlName="salary" class="job-salary inputs w-75" placeholder=" المرتب" type="number">
+                  <h5 class="mt-2 w-25">البريد الالكتروني : </h5><input formControlName="email" class="job-email inputs w-75" placeholder="البريد الالكتروني" type="text">
+                  <h5 class="mt-2 w-25">الخبرة المطلوبة : </h5><input formControlName="experience" class="job-experience inputs w-75" placeholder="الخبرة المطلوبة " type="number">
 
-                  <h5 class="m-2">البريد الالكتروني : </h5><input formControlName="email" class="job-email inputs w-75" placeholder="البريد الالكتروني" type="text">
-                  <h5 class="m-2">الخبرة المطلوبة : </h5><input formControlName="experience" class="job-experience inputs w-75" placeholder="الخبرة المطلوبة " type="number">
-                  <h5 class="m-2">التفاصيل : </h5><textarea formControlName="desc" class="job-address inputs w-75" name="description" placeholder="تفاصيل الاعلان" rows="10"></textarea>
+                  <h5 class="mt-2 w-25">التفاصيل : </h5><textarea formControlName="desc" class="job-experience inputs w-75" name="description" placeholder="تفاصيل الاعلان" rows="10"></textarea>
+                  
+                  <h5 class="mt-2 w-25" style="text-align: right;"> الدوام:</h5>
+                  <div class="row w-75">
+                          <section class="col-3 mt-2"><input formControlName="work_hours" id="1" name="work_hours" type="radio" value="كلي" ><label for="1" class="px-2 fs-6"> كلي</label></section>
+                          <section class="col-3 mt-2"><input formControlName="work_hours" id="2" name="work_hours" type="radio" value="جزئي" ><label for="2" class="px-2 fs-6"> جزئي</label></section>
+                          <section class="col-3 mt-2"><input formControlName="work_hours" id="3" name="work_hours" type="radio" value="عن بعد" ><label for="3"class="px-2 fs-6" > عن بعد</label></section>
+                          <section class="col-3 mt-2"><input formControlName="work_hours" id="4" name="work_hours" type="radio" value="مرن" ><label for="4"class="px-2 fs-6" > مرن</label></section>
 
+                    </div>
+                  
 
 
                 <!-- <label >حدد الشركة:</label>    -->
