@@ -19,7 +19,7 @@ export interface Job {
     user_created_at:string
     images: {image:string}[]
     email:string
-    experience:number
+    experience:string
     category_id:number
     company_id:number
     work_hours:string

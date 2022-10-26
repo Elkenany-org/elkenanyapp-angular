@@ -127,8 +127,8 @@ export class AddJobComponent implements OnInit {
     formData.append('work_hours', this.jobForm.controls['work_hours'].value);
 
 
-     formData.forEach(ite => console.log(ite))
-    console.log(formData)
+    //  formData.forEach(ite => console.log(ite))
+    // console.log(formData)
 
  //createad
 

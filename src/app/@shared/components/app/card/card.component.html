@@ -81,7 +81,7 @@
                             <a class="more__details" *ngIf="!contact.date && !contact.view_count && contact.type != 'job' else intersted" (click)="output(contact.id,contact.type )">اعرف أكتر</a>
                             <ng-template class="more__details" #intersted >  
                                 <a class="more__details" *ngIf="contact.type != 'job'"  (click)="output(contact.id,contact.type )">مهتم</a>
-                                <a class="more__details" *ngIf="contact.type == 'job'"  [routerLink]="['/employment/',contact.sector_type,'apply',contact.id]">قدم الأن</a>
+                                <a class="more__details" *ngIf="contact.type == 'job'"  [routerLink]="['/employment/apply',contact.id]">قدم الأن</a>
 
                             </ng-template>
 

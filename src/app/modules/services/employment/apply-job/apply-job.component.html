@@ -9,16 +9,20 @@
                 <input formControlName="category_id"  type="text" hidden [value]="category_id"> -->
 
                 <!-- <h5 class="m-2">الشركات : </h5> -->
+                <h5 class="m-2 ">الاسم الرباعي  : </h5><input formControlName="full_name" class="job-name inputs " placeholder="ادخل  الاسم الرباعي .. " type="text">
 
-
-                  <h5 class="m-2">التعليم  : </h5><input formControlName="education" class="job-education inputs " placeholder="ادخل المؤهل الوظيفي .. " type="test">
-                  <h5 class="m-2">الخبرة  : </h5><input formControlName="experience" class="job-experience inputs " placeholder="عدد سنين الخبرة .. " type="number">
+                  <h5 class="m-2 ">رقم الهاتف  : </h5><input formControlName="phone" class="job-phone inputs " placeholder="ادخل رقم الهاتف .. " type="text">
+                  <h5 class="m-2">التعليم  : </h5><input formControlName="education" class="job-education inputs " placeholder="ادخل المؤهل الوظيفي .. " type="text">
+                  <h5 class="m-2">الخبرة  : </h5><input formControlName="experience" class="job-experience inputs " placeholder="عدد سنين الخبرة .. " type="text">
                   <h5 class="m-2"> المرتب المتوقع : </h5><input formControlName="expected_salary" class="job-salary inputs " placeholder="المرتب المتوقع .." type="number">
+                  
+                  <h5 class="m-2">فترة الاشعار  : </h5><input formControlName="notice_period" class="notice_period inputs " placeholder="ادخل فترة الاشعار .. " type="text">
+
                   <h5 class="m-2">معلومات اخري : </h5><input formControlName="other_info" class="job-info inputs " placeholder="معلومات اخري .. " type="text">
 
 
-
-                  <div class="custom-file my-5">
+<div class="row w-100">
+                    <div class="custom-file my-4 col-6">
 
   
                       <input
@@ -31,7 +35,7 @@
                         class="d-none"
                         type="file"/>
                       <button (click)="fileImage.click()"
-                              class="  btn btn-success m-auto"
+                              class="  btn btn-success m-auto w-100"
                               color="primary"
                               mat-stroked-button
                               type="button"
@@ -48,8 +52,11 @@
                           </g>
                         </svg>
                       </button>
-                      <div id="cv">HHHHHHH</div>
                     </div>
+                    <div id="cv" class="my-4 col-6"></div>
+
+</div>
+
                 <!-- <a class="submit" >إضافة الإعلان</a> -->
                 <button
                 class="submit"

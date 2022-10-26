@@ -54,10 +54,15 @@ export class ApplyJobComponent implements OnInit {
   AdForm (data: application) {
      this.jobForm = this.fb.group({
        // if the purpose is to add an ad the value of control will be '' if  it is  edit get values from URL
+       full_name:      [(data.id)?data.full_name: '', [Validators.required]],
+       phone:      [(data.id)?data.phone: '', [Validators.required]],
+
        education:      [(data.id)?data.education: '', [Validators.required]],
        expected_salary:      [(data.id)?data.expected_salary: '', [Validators.required]],
        experience:    [(data.id)?data.experience: '', [Validators.required]],   
        cv:      [(data.id)?data.cv: '', [Validators.required]],
+       notice_period:      [(data.id)?data.notice_period: '', [Validators.required]],
+
        other_info:      [(data.id)?data.other_info: '', [Validators.required]],
        job_id:   [this.job_id, [Validators.required]],
      })  
@@ -67,7 +72,8 @@ export class ApplyJobComponent implements OnInit {
    handleFileInput(event: any): void {
     const file = event.target.files;
     this.cv=event.target.files.item(0);
-    document.getElementById('cv')?.innerText!=this.cv.name+''
+    let element= document.getElementById("cv")!;
+    element.innerHTML=this.cv.name
   }
 
   removeImage(name: string | undefined): void {
@@ -82,16 +88,21 @@ export class ApplyJobComponent implements OnInit {
     const formData: FormData = new FormData()  
     
    console.log(this.jobForm.value)
+   formData.append('full_name', this.jobForm.controls['full_name'].value);
+   formData.append('phone', this.jobForm.controls['phone'].value);
+
     formData.append('expected_salary', this.jobForm.controls['expected_salary'].value);
     formData.append('cv_link', this.cv);
     formData.append('education', this.jobForm.controls['education'].value);
     formData.append('experience', this.jobForm.controls['experience'].value);
+    formData.append('notice_period', this.jobForm.controls['notice_period'].value);
+
     formData.append('other_info',  this.jobForm.controls['other_info'].value);
     formData.append('job_id',  this.jobForm.controls['job_id'].value);
 
 
-     formData.forEach(ite => console.log(ite))
-    console.log(formData)
+    //  formData.forEach(ite => console.log(ite))
+    // console.log(formData)
 
  //createad
 
@@ -101,7 +112,7 @@ export class ApplyJobComponent implements OnInit {
 
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')
-          // this.router.navigate([`/market/${this.url[2]}/ad_details/${res.data?.job_detials.id}`])
+          this.router.navigate([`/employment`])
 
         }, (err) => {
           this.toasterService.stopLoading();

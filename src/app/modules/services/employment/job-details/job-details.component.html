@@ -10,19 +10,27 @@
                 
     <div class="container add__details__main">
         <div class="row" dir="ltr">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-4">
                 <div class="small__bar__container">
                     <div class="price__container">
-                        <p class="price__content">المرتب: {{jobDetails?.salary}} ج.م</p>
+                        <p class="price__content">الراتب: {{jobDetails?.salary}} ج.م</p>
                     </div>
                     <!-- <a class="single__action" (click)="start_chat()" >
                         <i class="far fa-envelope icon"></i>
                         ارسال رسالة
                     </a> -->
-                    <a class="single__action" >
-                        <i class="fa-solid fa-envelope pt-2"></i>
-                                    {{jobDetails?.email}}
-                    </a>
+
+                    <div class="user__info justify-content-start" >
+                        <!-- <div class="user__icon"> -->
+                            <i class="fa-solid fa-envelope "></i>
+                        <!-- </div> -->
+                        <div class="user__data">
+                            <p class="user__name">{{jobDetails?.email}}</p>
+
+                        </div>
+                    </div>
+                    <!-- <a class="action__yellow__green__button w-100" > <i class="fa-solid fa-envelope"></i> {{jobDetails?.email}} </a> -->
+
                     <div class="address__map">
                         <div class="overlay">
                             <div class="map__icon">
@@ -33,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="user__info" *ngIf="jobDetails?.user_type != 'recruiter'">
+                    <!-- <div class="user__info" *ngIf="jobDetails?.user_type != 'recruiter'">
                         <div class="user__icon">
                             <i class="fas fa-user-alt icon"></i>
                         </div>
@@ -41,13 +49,14 @@
                             <p class="user__name">{{jobDetails?.user}}</p>
                             <p class="user__date">على الموقع   {{jobDetails?.user_created_at}}</p>
                         </div>
-                    </div>
+                    </div> -->
 
                     <a class="action__yellow__green__button w-100" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/employment/job-applicants',jobDetails?.id]" >المتقدمين للوظيفة</a>
+                    <a class="action__yellow__green__button w-100" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/employment/apply',jobDetails?.id]" >قدم الأن</a>
 
                 </div>
             </div>
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-md-8">
                 <h1 class="main__title">{{jobDetails?.title}} </h1>
                 <p>تم إضافة الوظيفة  {{jobDetails?.created_at}} , رقم الوظيفة: {{jobDetails?.id}} </p>
 
@@ -61,20 +70,19 @@
 
                 <ul >
                     <li> <h5>  الراتب :{{jobDetails?.salary}} جنية<i class="icon fa-solid fa-circle px-2 "></i></h5> </li>
-                    <li> <h5>  الخبرة المطلوبة :{{jobDetails?.experience}} سنة<i class="fa-solid fa-circle px-2 icon"></i></h5> </li>
+                    <li> <h5>  الخبرة المطلوبة :{{jobDetails?.experience}}<i class="fa-solid fa-circle px-2 icon"></i></h5> </li>
                     <li> <h5>  نوع الدوام :{{jobDetails?.work_hours}} <i class="fa-solid fa-circle px-2 icon"></i></h5> </li>
-                    <li> <h5>  التفاصيل :{{jobDetails?.desc}} .<i class="fa-solid fa-circle px-2 icon"></i></h5> </li>
+                    <!-- <li>  <i class="fa-solid fa-circle px-2 icon"></i>التفاصيل : {{jobDetails?.desc}} </li> -->
 
                 </ul>
 
-<!-- 
+
                 <div class="add__details">
-                    <h3>التفاصيل</h3>
-                    <p class="add__description">
-                       {{jobDetails?.desc}}
+                    <!-- <h5 style="text-align: right;">: التفاصيل  <i class="fa-solid fa-circle px-2 icon"></i></h5> -->
+                    <p class="add__description" style="text-align: justify; direction: rtl;">
+                       <i class="fa-solid fa-circle px-2 icon"></i>  التفاصيل : {{jobDetails?.desc}}
                     </p>
-                </div> -->
-                <a class="action__yellow__green__button w-50" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/employment/apply',jobDetails?.id]" >قدم الأن</a>
+                </div>
 
             </div>
         </div>

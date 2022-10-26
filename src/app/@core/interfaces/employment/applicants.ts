@@ -13,11 +13,14 @@
 
   export interface application{
     id:number
+    full_name:string
+    phone:string
     education:string
     experience:string
     job_id:string
     expected_salary:string
     cv:File
+    notice_period:string
     other_info:string
   }
 
