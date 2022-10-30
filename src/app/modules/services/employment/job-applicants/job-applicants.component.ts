@@ -42,11 +42,13 @@ export class JobApplicantsComponent implements OnInit {
     })
 
     this.h_search_form = applicants_Search_Form_Data //set initial data to horizontal component 
+
     this.route.params.subscribe(params => {
       this.employment.Filter_applicants().subscribe( res => {
         this.h_search_form.controls.find((i:any) => i.role === "qualified").option =   res.data?.qualified;
         this.h_search_form.controls.find((i:any) => i.role === "qualified").option.find((i:any) => i.id == 0).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "qualified").option.find((i:any) => i.id !== 0).selected=0
+            this.h_search_form.title='المتقدمين لوظيفة '+ this.applicants?.job_title
       })
 
 

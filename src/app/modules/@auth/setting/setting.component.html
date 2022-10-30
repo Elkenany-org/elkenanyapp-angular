@@ -24,12 +24,20 @@
                             <form [formGroup]="profileForm" (ngSubmit)="submit(profileForm)">
                                 <input type="hidden" name="_token" value="5HptsAb5Lz0YDRJmg878tokzwv3b7kaWDHR6lJRV">
                                 <input type="hidden" name="id" value="11">
-                                <input  type="file" name="avatar" id="imgupload" style="display:none">
-                                <a id="OpenImgUpload" class="change-img">
+                                <input  type="file" name="avatar" id="imgupload" style="display:none"  
+                            
+                                #fileImage
+                                (change)="handleFileInput($event)"
+                                accept="image/png,image/jpeg,image/jpg,image/gif*"
+                                aria-describedby="Upload Photo Or Video"
+                                class="d-none"
+                                type="file" >
+                                
+                                <a id="OpenImgUpload" class="change-img" (click)="fileImage.click()">
                                     <div class="overlay">
                                         <i class="fas fa-pencil-alt"></i>
                                     </div>
-                                    <img [src]="profile?.image" alt="profile photo">
+                                    <img [src]="profile?.image" alt="profile photo" id="image" >
                                 </a>
                                 <h3>تعديل الصورة الشخصية</h3>
                                 

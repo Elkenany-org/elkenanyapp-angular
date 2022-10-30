@@ -1,0 +1,15 @@
+.ngx-pagination .current {
+    background:  #FFAA00 !important;
+}
+.pagination {
+    margin: 15px 200px 0 50px;
+    padding-right: 25%;
+}
+
+@media screen and (max-width: 600px) {
+    .pagination {
+        margin: 15px 50px 0 50px;
+        padding-right: 25%;
+    }
+}
+

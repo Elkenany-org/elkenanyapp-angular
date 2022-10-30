@@ -30,11 +30,6 @@ initializeApp(environment.firebase);
   declarations: [
     AppComponent,
     TestComponent,
-    // TendersComponent,
-    // TendersDetailsComponent,
-    // PaymentComponent // for test only 
-      // LayoutComponent
-      
   ],
   imports: [
   BrowserModule,
@@ -42,11 +37,8 @@ initializeApp(environment.firebase);
     // NgxSkeletonLoaderModule,
     BrowserAnimationsModule, 
     CollapseModule.forRoot(), BsDropdownModule.forRoot(),
-
     CoreModule,
     SharedModule,
-
-
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 

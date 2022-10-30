@@ -25,6 +25,7 @@ export class TendersHomeComponent implements OnInit {
   type:"",
   sort:"",
   search:"",
+  page:''
 }
   constructor(
     private tenderService: TendersService,
@@ -86,8 +87,10 @@ export class TendersHomeComponent implements OnInit {
           break;
      }
 
-     this.tenderService.all_sections(this.filterData['sort'], this.filterData['search']).subscribe( res => {
+     this.tenderService.all_sections(this.filterData['sort'], this.filterData['search'],'1').subscribe( res => {
         this.tenders_Home_Data = res.data  as allSections
+        this.page.current_page = res.data?.current_page as number
+        this.page.last_page =  res.data?.last_page  as number
         this.loading = false;
 
       })
@@ -95,10 +98,18 @@ export class TendersHomeComponent implements OnInit {
   }
   navigate(id: string): void
   {
-  //  let len=this.tenders_Home_Data?.sections?.find(i=>i.id == parseInt(id) )?.companies_count+'';
-    
-    // this.complenght.emit(len);
     this.router.navigate([`tenders/${id}`]);
   }
 
+  next_page(page:number):void{
+    this.filterData["page"] = page+''
+    this.tenderService.all_sections(this.filterData['sort'],this.filterData['search'],this.filterData['page']).subscribe(res => {
+      this.page.current_page = res.data?.current_page as number
+       this.page.last_page =  res.data?.last_page  as number
+       this.tenders_Home_Data = res.data
+       window.scroll(0,0);
+
+    })
+
+}
 }

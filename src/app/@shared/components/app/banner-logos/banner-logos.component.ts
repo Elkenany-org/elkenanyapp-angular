@@ -36,6 +36,7 @@ export class BannerLogosComponent implements OnInit {
 
   }
   onClick(id:number) {
-    this.route.navigate(['/companies-guide/poultry/companies_details','any',id])
+    window.open(this.BannerConfig.banner.find(i => i.id == id)!.link, "_blank");
+
   }
 }

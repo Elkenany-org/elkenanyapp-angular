@@ -1,5 +1,6 @@
   export interface applicants{
     applicants:Applicant[]
+    job_title:string
   }
   
   export interface Applicant{

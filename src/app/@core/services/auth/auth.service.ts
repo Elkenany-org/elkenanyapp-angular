@@ -142,7 +142,7 @@ export class AuthService {
 
   
 
-  updateProfile(body:Profile):Observable<ApiResponse<Profile>>{
+  updateProfile(body:any):Observable<ApiResponse<Profile>>{
     return this.http.post<ApiResponse<Profile>>(`${env.ApiUrl}/profile-update`,body)
   }
 
@@ -260,6 +260,9 @@ export class AuthService {
         facebook_id:res?.id,
         device_token:'52151',
       }
+      console.log('====================================');
+      console.log(res);
+      console.log('====================================');
       this.RegisterLogin_facebook(data).subscribe((res:any) => {
         this.storeLocalStorge(res)
         this.router.navigateByUrl(this.currentURL||'');

@@ -26,8 +26,8 @@ export class TendersService {
     return this.http.get<ApiResponse<TendersFilterList>>(`${env.ApiUrl}/tenders/filter-sections-tenders?section_id=${section_id}`);
   }
 
-  all_sections(sort:string,search:string): Observable<ApiResponse<allSections>> { 
-    return this.http.get<ApiResponse<allSections>>(`${env.ApiUrl}/tenders/tenders-sections?sort=${sort}&search=${search}`);
+  all_sections(sort:string,search:string,page:string): Observable<ApiResponse<allSections>> { 
+    return this.http.get<ApiResponse<allSections>>(`${env.ApiUrl}/tenders/tenders-sections?sort=${sort}&search=${search}&page=${page}`);
   }
   filter_home(): Observable<ApiResponse<FilterList>> { 
     return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/tenders/filter-home`);

@@ -8,6 +8,8 @@ import { map } from 'rxjs';
 import { ShipsTrafficService } from '../../../../@core/services/modules/ships-trafic/ships-traffic.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { AlertService } from '@app/@core/services/alert.service';
+import { ToasterService } from '@app/@core/services/toastr.service';
 
 @Component({
   selector: 'app-ships-traffic',
@@ -31,6 +33,8 @@ export class ShipsTrafficComponent implements OnInit {
                 private fb:FormBuilder,
                private BannerLogoService:BannersLogoservice,
                private ships: ShipsTrafficService,
+               private alertService: AlertService,
+               private toster: ToasterService,
                private titleService:Title) { }
 
   ngOnInit(): void {
@@ -57,7 +61,11 @@ export class ShipsTrafficComponent implements OnInit {
      console.log(value)
     this.ships.ships(value.name).subscribe(res => {
       this.data= res.data
-      // console.log(res)
+    },
+    (err) => {
+      console.log(err);
+      // this.alertService.error(err.error.error);
+      this.toster.showFail(err.error.error);
     })
 
   }

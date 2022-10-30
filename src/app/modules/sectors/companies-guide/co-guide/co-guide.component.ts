@@ -73,8 +73,7 @@ export class CoGuideComponent implements OnInit {
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
        this.Companies = res['resolve'].data  as Companies
-      //  this.carousel_banner.banner = res['resolve'].banners
-      //  this.carousel_logos.banner = res['resolve'].logos
+
        this.BannerLogoService.setBanner(res['resolve'].data.banners);
        this.BannerLogoService.setLogo(res['resolve'].data.logos);
       //  console.log('???????');
@@ -84,8 +83,6 @@ export class CoGuideComponent implements OnInit {
        this.h_search_form.title=' شركات الدليل '
        this.titleService.setTitle(' شركات الدليل ');
 
-      //  this.comLength=this.Companies.l     
-      //  console.log(this.Companies.data);
     })
 
 
@@ -97,9 +94,7 @@ export class CoGuideComponent implements OnInit {
       this.id= params['id']
       
       this.companiesGuideService.co_Filter_listV2(this.Sector[params['type']]+'','').subscribe((res:ApiResponse<FilterListCompanies>) => {
-        console.log('====================================');
-        console.log(res.data?.sub_sections);
-        console.log('====================================');
+
         this.typeAr= res.data?.sub_sections.find((i:any) =>i.id ==this.id)?.name
         this.titleService.setTitle(' قسم '+this.typeAr);
 
@@ -111,8 +106,6 @@ export class CoGuideComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
 
-        // console.log(params);
-        // console.log(this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == params['id']));
 
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == params['id']).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id != params['id']).selected=0
@@ -126,9 +119,6 @@ export class CoGuideComponent implements OnInit {
     })
     
 
-    // this.filterData["page"] = this.page.last_page+''
-    // this.filterData["sub_id"]= this.id +''
-    // console.log(this.page.last_page);
     
  if(this.page.last_page > 1){
     this.companiesGuideService.Companiesv2({
@@ -142,18 +132,11 @@ export class CoGuideComponent implements OnInit {
     }).subscribe(res => {
       // this.comLength = res.data?.data.length!
         this.comLength = (res.data?.data.length!)
-      // else{
-      //   this.comLength =(this.Companies?.data.length!)
-      // }
-      // console.log(this.comLength);
+
      })
    }
 
-    //  this.len.complenght.subscribe(
-    //   res=>{this.comLength=res}
-    //  )
-     
-
+   
 
   }
 
@@ -187,12 +170,6 @@ export class CoGuideComponent implements OnInit {
 
           this.typeAr= this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id).name
           this.titleService.setTitle(' قسم '+this.typeAr);
-  
-          // console.log('/////');
-
-          // console.log(this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id));
-          // console.log('/////');
-          
 
 
             break;
@@ -200,13 +177,6 @@ export class CoGuideComponent implements OnInit {
           this.filterData["section_id"] = option.id 
           this.router.navigate([`companies-guide/${option.name}`]);
 
-          // sectorType = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
-          // .option.find((i:any) => i.id === this.filterData['sub_id']).type
-          // sectorId = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
-          // .option.find((i:any) => i.id === this.filterData['sub_id']).id
-          // this.location.go(`companies-guide/${sectorType}/companies/${sectorType}/${sectorId}`);
-          // console.log(sectorType);
-          
           break;
         case "sort":
           this.filterData["sort"] = option.id
@@ -237,15 +207,7 @@ export class CoGuideComponent implements OnInit {
             // 
             break;
      }
-     
-    // sectorType = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
-    // .option.find((i:any) => i.id === this.filterData['sub_id']).type
-    // sectorId = this.h_search_form.controls.find((i:any) => i.role === "sector") // error here 
-    // .option.find((i:any) => i.id === this.filterData['sub_id']).id
-  // if(option.type == 'sector') {
-  //   this.router.navigate([`companies-guide/${option.name}`]);
-  // }
-  // else{
+
 
 
 
@@ -261,9 +223,7 @@ export class CoGuideComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option =   res.data?.sub_sections;
-// console.log('============');
 
-//          console.log(res.data);
          
     }) }
   // }
@@ -271,6 +231,7 @@ export class CoGuideComponent implements OnInit {
         // this.typeAr= option.title
         this.page.current_page = res.data?.current_page!
         this.page.last_page =  res.data?.last_page!
+
         this.Companies = res.data  as Companies
         if(option.type=="search" && this.filterData["search"]!="" || option.type=="countries" || option.type=="cities" ){
           this.Companies.compsort = [];

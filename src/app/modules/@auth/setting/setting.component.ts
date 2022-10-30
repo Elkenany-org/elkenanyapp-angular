@@ -13,6 +13,9 @@ import { Title } from '@angular/platform-browser';
 export class SettingComponent implements OnInit {
   profileForm!:FormGroup
   profile?:Profile
+  image?:any
+  imagePath?:any
+
   constructor(
     private auth : AuthService,
      private fb:FormBuilder,
@@ -27,7 +30,7 @@ export class SettingComponent implements OnInit {
       name: [''],
       email:[''],
       id: [''],
-      image: [''],
+      avatar: [''],
       phone: [''],
       state: ['']
 
@@ -40,7 +43,7 @@ export class SettingComponent implements OnInit {
         email:res.data?.email, 
         phone:res.data?.phone, 
         id:res.data?.id, 
-        image:res.data?.image, 
+        // avatar:res.data?.image, 
         state:res.data?.state, 
       })
       
@@ -50,14 +53,36 @@ export class SettingComponent implements OnInit {
   }
 
   submit(form:FormGroup) {
-    let body = form.value
-    // console.log(body);
-    this.auth.updateProfile(body).subscribe(res => {
+    const formData: FormData = new FormData()  
+
+    formData.append('name',form.controls['name'].value)
+    formData.append('email',form.controls['email'].value)
+    formData.append('phone',form.controls['phone'].value)
+
+    // let body = form.value
+     if(this.image){
+        formData.append('avatar', this.image);
+    }
+
+    this.auth.updateProfile(formData).subscribe(res => {
       this.toster.showSuccess(res.message as string)
 
-      // console.log(res.message);
       
     })
   } 
 
+  url:any;
+  handleFileInput(event: any): void {
+    this.image=event.target.files.item(0);
+    
+    var element= document.getElementById("image") as HTMLImageElement;
+ 
+    const reader = new FileReader();
+    reader.readAsDataURL(this.image); 
+    reader.onload = (_event) => { 
+        this.url = reader.result; 
+        element.src=this.url
+    }
+
+  }
 }

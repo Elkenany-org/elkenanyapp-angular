@@ -56,6 +56,11 @@ export interface AllNews { //for news and tenders
 
   export interface allSections {
     sections: Section[]
+    current_page: number
+    last_page: number
+    first_page_url: string
+    next_page_url: string
+    last_page_url: string
   }
   
   export interface Section {

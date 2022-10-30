@@ -47,6 +47,7 @@ export interface Profile {
   phone: string
   email: string
   image: string
+  // avatar?:File
   state: string
   verified?:string
   company_id?:string

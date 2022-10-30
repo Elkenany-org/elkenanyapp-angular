@@ -61,8 +61,8 @@ export class HomeGalleryComponent implements OnInit {
 
         this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
 
-    this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
-    this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
 
       }) 
 
@@ -77,10 +77,26 @@ export class HomeGalleryComponent implements OnInit {
     switch ( value.type ) {
       case "sector":
         
-        this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id === value.id).selected=1
-        this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id !== value.id).selected=0
+        // this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id === value.id).selected=1
+        // this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id !== value.id).selected=0
         this.filterData['sector'] = value.name
-        // console.log(this.filterData['sector']);
+        this.filterData['countries'] = ''
+        this.filterData['cities'] = ''
+        this.galleryService.filter_list(this.filterData['sector'],'1').subscribe((res:ApiResponse<FilterList>) => {
+          // override data to match the data format of horizontal components
+          this.search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
+          this.search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
+          this.search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
+          this.search_form.controls.find((i:any) => i.role === "countries").option.unshift({id:0,name:'الكل'});
+          this.search_form.controls.find((i:any) => i.role === "countries").option.find((i:any) => i.id === 0).selected=1
+          this.search_form.controls.find((i:any) => i.role === "countries").option.find((i:any) => i.id === 1).selected=0
+
+          this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
+
+          this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+          this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+  
+        }) 
 
           break;
       case "countries":
@@ -109,7 +125,6 @@ export class HomeGalleryComponent implements OnInit {
         this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).selected=1
         this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
         sort = this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).value
-        // console.log(value.id);
         
         if(value.id=='1'){
           sort='0'
@@ -125,18 +140,14 @@ export class HomeGalleryComponent implements OnInit {
       default: 
         break;
    }
-   console.log('====================================');
-console.log(this.filterData);
-console.log('====================================');
+
    this.galleryService.galleries(this.filterData).subscribe(res => {
-    // console.log(this.filterData)
-    // console.log(res)
+
     this.page.current_page = res.data?.current_page!
     this.page.last_page =  res.data?.last_page!
     this.galleryData= res.data?.data 
     this.bannrrsLogos.setBanner(res.data?.banners as Banner[])
     this.bannrrsLogos.setLogo(res.data?.logos as Logo[])
-    // console.log(res.data);
 
    })
    this.location.go(`gallery/${this.filterData['sector']}`);
