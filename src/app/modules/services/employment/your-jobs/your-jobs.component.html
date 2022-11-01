@@ -13,7 +13,7 @@
     <!-- Start Global Content -->
     <article class="global__container mt-0 container">
         <div class="row">
-            <a class="action__yellow__green__button w-100"routerLink="/employment/{{type}}/add-job">+ أضف الوظيفة</a>
+            <a class="action__yellow__green__button w-100"routerLink="/employment/{{type}}/add-job"> أضف الوظيفة +</a>
             <div class="new__cards p-0 my-2 row">
                 <div class="col-12" *ngFor="let ad of data?.jobs" >
                     <div class="product__card ultra__card regular__hover" >
@@ -56,12 +56,10 @@
                                     class="dropdown-toggle menu" data-toggle="dropdown"
                                     id="dropdownMenuButton" type="button">
                             </button>
-                            <!-- <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
-                                <a class="dropdown-item" (click)="editAd(ad.id)">تعديل الاعلان</a>
-                                <a class="dropdown-item" routerLink="/market/{{type}}/add-edit-ad/{{ad.id}}">اعلان
-                                    مدفوع</a>
-                                <a class="dropdown-item trigger" (click)="removeAd(ad.id)">حذف الاعلان</a>
-                            </div> -->
+                            <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+                                <a class="dropdown-item" (click)="editJob(ad.id)">تعديل الوظيفة</a>
+                                <a class="dropdown-item trigger" (click)="removeJob(ad.id)">حذف الوظيفة</a>
+                            </div>
                         </div>
                     </div>
                 </div>

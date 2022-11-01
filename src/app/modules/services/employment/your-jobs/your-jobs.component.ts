@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { sector } from '@app/@core/@data/app/filter-list';
 import { Job } from '@app/@core/interfaces/employment/Job';
+import { JobDetails } from '@app/@core/interfaces/employment/job-details';
 import { MyJobs } from '@app/@core/interfaces/employment/my-jobs';
 import { Sector } from '@app/@core/interfaces/_app/app-response';
 import { EmploymentService } from '@app/@core/services/modules/employment/employment.service';
@@ -53,4 +54,30 @@ export class YourJobsComponent implements OnInit {
     })
   }
 
+  editJob(id:number){
+    this.router.navigate([`employment/edit-job/${id}`])
+  }
+  removeJob(id:number){
+    this.toasterService.loading('جارى التنفيذ...');
+
+    this.employment.delete_job(id).subscribe( 
+      
+      (res) => {
+        this.toasterService.stopLoading();
+        let key = this.data?.jobs.find(i => i.id == id)!
+
+        const index =  this.data?.jobs.indexOf(key);
+
+        if (index && index > -1) {
+          this.data?.jobs.splice(index, 1);
+        }
+        this.toasterService.showSuccess(res.message+'')
+
+      },(err) => {
+        this.toasterService.stopLoading();
+        this.toasterService.showFail(err.error.error)
+
+      }
+    )
+  }
 }

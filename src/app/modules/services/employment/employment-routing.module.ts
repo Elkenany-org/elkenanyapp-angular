@@ -44,6 +44,14 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'edit-job/:id',
+    component: AddJobComponent,
+    resolve: {
+      resolve: JobDetailsResolver
+    },
+    canActivate: [AuthGuardService]
+  },
+  {
     path: 'job-details/:id',
     component: JobDetailsComponent,
     resolve: {

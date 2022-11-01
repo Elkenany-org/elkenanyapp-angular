@@ -41,6 +41,14 @@ import {environment as env} from '../../../../../environments/environment';
       return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/recruitment/add-job`, formData)
     }
   
+    update_job( formData: FormData ):Observable<ApiResponse<Job>> {
+      return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/recruitment/update-job`, formData)
+    }
+
+    delete_job( id: number ):Observable<ApiResponse<Job>> {
+      return this.http.post<ApiResponse<Job>>(`${env.ApiUrl}/recruitment/delete-job?id=${id}`, {})
+    }
+
     my_jobs(page:string ):Observable<ApiResponse<MyJobs>> {
       return this.http.get<ApiResponse<MyJobs>>(`${env.ApiUrl}/recruitment/my-jobs-store?page=${page}`)
     }

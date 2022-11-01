@@ -41,9 +41,6 @@ export class ApplicationDetailsComponent implements OnInit {
         (res)=>{
 
           this.applicaion = res.data    
-                console.log('====================================');
-          console.log(this.applicaion);
-          console.log('====================================');
           this.profileForm.patchValue({
             name: res.data?.application.name,
             email:res.data?.application.email, 

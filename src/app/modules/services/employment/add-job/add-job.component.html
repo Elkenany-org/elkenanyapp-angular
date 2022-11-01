@@ -31,7 +31,7 @@
              
                   <h5 class="mt-2 w-25">عنوان الوظيفة : </h5><input formControlName="address" class="job-address inputs w-75" placeholder="العنوان" type="text">
                 
-                  <h5 class="mt-2 w-25">رقم الموبايل : </h5><input formControlName="phone" class="job-phone inputs w-75" placeholder="الموبايل" type="number">
+                  <h5 class="mt-2 w-25">رقم الموبايل : </h5><input formControlName="phone" class="job-phone inputs w-75" placeholder="الموبايل" type="text">
                   
                   <h5 class="mt-2 w-25">المرتب : </h5><input formControlName="salary" class="job-salary inputs w-75" placeholder=" المرتب" type="number">
 
@@ -72,7 +72,7 @@
                 class="submit"
                 mat-raised-button
                 type="submit" (click)="onSubmit()">
-                إضافة الوظيفة
+                {{pageName}}
               </button>
             </form>
         </div>

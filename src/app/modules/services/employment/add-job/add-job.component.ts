@@ -43,6 +43,7 @@ export class AddJobComponent implements OnInit {
   deviceToken:string=''
   company_id!:number
   category_id!:number
+  public jobDetails?: JobDetails;
 
   constructor(
     private employment:EmploymentService,
@@ -58,12 +59,13 @@ export class AddJobComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.titleService.setTitle(this.pageName);
     this.AdForm({} as JobDetials)
 
 
     this.route.params.subscribe( (param: Params) => {
-        this.id = '0'
+        // this.id = '0'
+        this.id = param['id']
+
             this.employment.Filter_list().subscribe(
               (res)=>{
                 this.categories=res.data?.categories
@@ -85,7 +87,18 @@ export class AddJobComponent implements OnInit {
                     }
                 })
 
+          if(this.id){
+            this.pageName = "تعديل الوظيفة"
+            this.route.data.subscribe(data => {
+              // this.jobDetails = data['resolve'].data
+              this.AdForm(data['resolve'].data)
+              this.category_id=data['resolve'].data.category_id
+              document.getElementById('category')!.innerHTML = data['resolve'].data.category+'<i class="fa-sharp fa-solid fa-caret-down"></i>';
+            })
+          }
     })
+
+    this.titleService.setTitle(this.pageName);
 
     }
 
@@ -102,9 +115,8 @@ export class AddJobComponent implements OnInit {
        address:    [(data.id)?data.address: '', [Validators.required]],
        company_id:    [this.company_id, [Validators.required]],
        experience:    [(data.id)?data.experience: '', [Validators.required]],
-       category_id:    [this.category_id, [Validators.required]],
+       category_id:    [(data.id)?data.category_id:'', [Validators.required]],
        work_hours:    [(data.id)?data.work_hours:'', [Validators.required]],
-
      })  
      
    }
@@ -114,7 +126,8 @@ export class AddJobComponent implements OnInit {
 
     const formData: FormData = new FormData()  
     
-   console.log(this.jobForm.value)
+  //  console.log(this.jobForm.value)
+
     formData.append('title', this.jobForm.controls['title'].value);
     formData.append('desc',  this.jobForm.controls['desc'].value);
     formData.append('phone', this.jobForm.controls['phone'].value);
@@ -127,15 +140,22 @@ export class AddJobComponent implements OnInit {
     formData.append('work_hours', this.jobForm.controls['work_hours'].value);
 
 
-    //  formData.forEach(ite => console.log(ite))
-    // console.log(formData)
-
- //createad
 
 
+        if(this.id){
+          formData.append('id', this.id);
+          this.employment.update_job(formData).subscribe( (res) => {
+           this.toasterService.stopLoading();
+           this.toasterService.showSuccess(res.message+'')
+           this.router.navigate([`employment/job-details/${res.data?.job_detials.id}`])
+ 
+         }, (err) => {
+           this.toasterService.stopLoading();
+           this.toasterService.showFail(err.error.error)
+         })
+         
+        }else{
         this.employment.add_job(formData).subscribe( (res) => {
-           console.log(res)
-
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')
           this.router.navigate([`employment/job-details/${res.data?.job_detials.id}`])
@@ -143,10 +163,9 @@ export class AddJobComponent implements OnInit {
         }, (err) => {
           this.toasterService.stopLoading();
           this.toasterService.showFail(err.error.error)
-
-          // console.log(err)
         })
 
+        }
 
   }
 

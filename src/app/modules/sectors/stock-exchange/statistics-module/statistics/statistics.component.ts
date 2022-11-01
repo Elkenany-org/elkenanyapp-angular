@@ -143,7 +143,7 @@ alert:boolean=false
         // this.StatisticsMember = res.data;
         this.StatisticsMemberSlected = res.data?.changes_subs;
         this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
-        // console.log(this.chartOptions);
+        console.log(this.chartOptions);
 
         setTimeout(() => {
           // this.StatisticsMember = res.data;
@@ -151,7 +151,11 @@ alert:boolean=false
           this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
         }, 50);
       },
-      (err)=>{this.alert=true});
+      (err)=>{this.alert=true
+      console.log('====================================');
+      console.log(err);
+      console.log('====================================');
+      });
 
       // if (id != 0) {
       //   this.id = id;
