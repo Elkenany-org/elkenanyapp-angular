@@ -92,8 +92,8 @@ export class CoGuideComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.type = params['type']
       this.id= params['id']
-      
-      this.companiesGuideService.co_Filter_listV2(this.Sector[params['type']]+'','').subscribe((res:ApiResponse<FilterListCompanies>) => {
+
+      this.companiesGuideService.co_Filter_listV2(params['type'],'').subscribe((res:ApiResponse<FilterListCompanies>) => {
 
         this.typeAr= res.data?.sub_sections.find((i:any) =>i.id ==this.id)?.name
         this.titleService.setTitle(' قسم '+this.typeAr);
@@ -110,7 +110,7 @@ export class CoGuideComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == params['id']).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id != params['id']).selected=0
 
-        this.filterData["section_id"]= this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.type === params['type']).id
+        this.filterData["section_id"]= params['type']
 
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
@@ -152,7 +152,7 @@ export class CoGuideComponent implements OnInit {
       
 
       if(!this.filterData["section_id"]) {
-        this.filterData["section_id"]= this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.type === params['type']).id
+        this.filterData["section_id"]= params['type']
       }    
       if(!this.filterData["sub_id"]) {
         this.filterData["sub_id"]= params['id']
@@ -175,7 +175,7 @@ export class CoGuideComponent implements OnInit {
             break;
         case "sector":
           this.filterData["section_id"] = option.id 
-          this.router.navigate([`companies-guide/${option.name}`]);
+          this.router.navigate([`companies-guide/${option.id}`]);
 
           break;
         case "sort":
@@ -274,7 +274,7 @@ export class CoGuideComponent implements OnInit {
   }
   
   navigate(id: string): void{
-    this.router.navigate([`companies-guide/poultry/companies_details/${this.type}/${id}`]);
+    this.router.navigate([`companies-guide/${this.type}/companies_details/${this.type}/${id}`]);
   }
 
 
@@ -286,7 +286,7 @@ export class CoGuideComponent implements OnInit {
   next_page(page:number):void{
     this.filterData["page"] = page+''
     this.filterData["sub_id"]= this.id +''
-    this.filterData["section_id"] =this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.type ==this.type).id  
+    this.filterData["section_id"] = this.type+''
      this.companiesGuideService.Companiesv2(this.filterData).subscribe(res => {
       this.page.current_page = res.data?.current_page as number
       this.page.last_page = res.data?.last_page as number

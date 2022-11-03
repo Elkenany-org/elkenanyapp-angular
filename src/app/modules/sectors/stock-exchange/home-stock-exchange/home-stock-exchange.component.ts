@@ -95,7 +95,7 @@ let sort='';
         case "sector":
 
           
-          this.filterData['sector'] = value.name
+          this.filterData['sector'] = value.id
           this.type = this.filterData['sector']
           // this.location.go(`stock-exchange/${this.type }`);
           this.router.navigate(['stock-exchange/',this.type])
@@ -131,7 +131,6 @@ let sort='';
       this.loading = false;
       // change url params without reloade with new state
 
-console.log(this.stock_Ex_Data);
 let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
 localStorage.setItem('stockTitle',' القطاع '+title)
 // console.log(title);

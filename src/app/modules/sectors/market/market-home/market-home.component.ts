@@ -79,10 +79,9 @@ export class MarketHomeComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.filterData['sector'] = params['type']
       this.filterData['date']=""
-
       switch ( value.type ) {
         case "sector":
-          this.filterData['sector'] = value.name
+          this.filterData['sector'] = value.id
           this.router.navigate(['market/',this.filterData['sector']])
 
             break;

@@ -78,12 +78,12 @@ export class NewsHomeComponent implements OnInit {
 
   filter(value:any) {
     this.filterData['search']=''
-    this.filterData['sector'] = this.type||'poultry'
+    this.filterData['sector'] = this.type||'1'
     this.route.params.subscribe( params => {
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
-          this.filterData['sector'] = value.name
+          this.filterData['sector'] = value.id
           break;
         case "sort":
           this.filterData['sort'] = value.id 

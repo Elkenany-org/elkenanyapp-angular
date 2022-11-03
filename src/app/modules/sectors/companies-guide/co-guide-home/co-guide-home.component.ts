@@ -89,7 +89,7 @@ export class CoGuideHomeComponent implements OnInit {
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
-          this.filterData['sector'] = value.name
+          this.filterData['sector'] = value.id
           flag=true
             break;
         case "sort":
@@ -107,9 +107,7 @@ export class CoGuideHomeComponent implements OnInit {
             // 
             break;
      }
-    //  console.log('====================================');
-    //  console.log(this.filterData);
-    //  console.log('====================================');
+
      this.companiesGuideService.CompaniesHome(this.filterData['sector'], sort, this.filterData['search'] ).subscribe( res => {
         this.Companies_Home_Data = res  as CompaniesHome
         this.carousel_banner.banner = this.Companies_Home_Data .banners
