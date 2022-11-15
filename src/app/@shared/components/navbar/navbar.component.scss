@@ -149,6 +149,11 @@ input{
 
 }
 
+a:hover{
+  background-color: #F0F0F0;
+  border-radius: 10px;
+}
+
 @media screen and (min-width:1629px) {
   .nav-2 .nav-link{
     padding-right: 7.5rem !important;
@@ -185,3 +190,4 @@ input{
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
+
