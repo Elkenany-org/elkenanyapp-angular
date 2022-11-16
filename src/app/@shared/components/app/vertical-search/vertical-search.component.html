@@ -59,7 +59,7 @@
 
 
 
-                        <ul *ngIf="control.type === 'select' && control.name !== 'text'&& control.role !== 'sort' && control.role !== 'subsection' ">
+                        <ul *ngIf="control.type === 'select' && control.name !== 'text'&& control.role !== 'sort' && control.role !== 'subsection' " class="long__list ">
                             <li *ngFor="let option of control.option">  
                                 <a>
                                     <input 

@@ -55,7 +55,7 @@ export class MarketService {
   my_ads(type:string ):Observable<ApiResponse<MyAd>> {
     const headers= new HttpHeaders()
     .set('android', '')
-    return this.http.get<ApiResponse<MyAd>>(`${env.ApiUrl}/store/my-ads-store?type=${type}`,{ 'headers': headers })
+    return this.http.get<ApiResponse<MyAd>>(`${env.ApiUrl}/store/my-ads-store?section_id=${type}`,{ 'headers': headers })
   }
 
 

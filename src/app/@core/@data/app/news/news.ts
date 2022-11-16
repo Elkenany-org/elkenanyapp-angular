@@ -9,7 +9,7 @@ export const News_Search_Form_Data: JsonFormData  =
   class:"tabs tabs-2",
     controls: [
       {
-        name: "القطاع",
+        name: "القسم",
         type: "select",
         role: "sector",
         class: "form-control",

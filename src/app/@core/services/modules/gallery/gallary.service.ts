@@ -14,11 +14,11 @@ export class GallaryService {
 //----------------------------------------gallery home page ----------------------------------------------//
 
   galleries(Data:{[key:string]:string}):Observable<ApiResponse<GallriesData>> {
-    return this.http.get<ApiResponse<GallriesData>>(`${env.ApiUrl}/showes/all-showes?type=${Data['sector']}&city_id=${Data['cities']}&sort=${Data['sort']}&search=${Data['search']}&country_id=${Data['countries']}&page=${Data['page']}`)
+    return this.http.get<ApiResponse<GallriesData>>(`${env.ApiUrl}/showes/all-showes?section_id=${Data['sector']}&city_id=${Data['cities']}&sort=${Data['sort']}&search=${Data['search']}&country_id=${Data['countries']}&page=${Data['page']}`)
   }
 
   filter_list(type:string, country_id:string):Observable<ApiResponse<FilterList>> {
-    return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/showes/filter-showes?type=${type}&country_id=${country_id}`)
+    return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/showes/filter-showes?section_id=${type}&country_id=${country_id}`)
   }
 
 //----------------------------------------gallery page ----------------------------------------------//

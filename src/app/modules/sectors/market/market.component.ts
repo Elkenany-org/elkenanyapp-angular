@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { sector } from '@app/@core/@data/app/filter-list';
+import { MarketService } from '@app/@core/services/modules/market/market.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-market',
@@ -9,15 +11,23 @@ import { sector } from '@app/@core/@data/app/filter-list';
 })
 export class MarketComponent implements OnInit{
   public loading: boolean = true
-  id?: number
+  id?: any
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,    private location: Location,    private MarketService: MarketService,
+
+    ) {}
   ngOnInit(): void {
     this.route.params.subscribe(parm => {
-      
-      this.id = sector.find(i => i.type ==  parm['type'])?.id
+
+      // this.MarketService.Filter_list(parm['type']).subscribe( res => {
+      //   this.id= res.data?.sectors.find((i:any) => i.selected == 1)!.id
+      //   this.location.go(`/market/${this.id}`);
+      // })
+      // this.id = parm['type']
       // console.log(this.id)
     })
+
+
   }
    
 

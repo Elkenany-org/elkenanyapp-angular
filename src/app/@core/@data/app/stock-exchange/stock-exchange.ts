@@ -7,7 +7,7 @@ export let Stock_Search_Form_Data: JsonFormData =
   class:"tabs tabs-4",
     controls: [
       {
-        name: "القطاع",
+        name: "القسم",
         type: "select",
         role: "sector",
         class: "form-control",
@@ -77,7 +77,7 @@ export let Stock_Search_Form_Data: JsonFormData =
     class:"tabs tabs-4",
       controls: [
         {
-          name: "القطاع",
+          name: "القسم",
           type: "select",
           role: "sector",
           class: "form-control",
@@ -148,7 +148,7 @@ export let Home_Stock_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "القطاع",
+        name: "القسم",
         type: "select",
         role: "sector",
         class: "form-control",

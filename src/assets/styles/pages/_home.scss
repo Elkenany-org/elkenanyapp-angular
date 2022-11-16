@@ -19,7 +19,7 @@
     min-height: calc(100vh - 70px);
   }
   @media (min-width: 768px) and (max-width: 990px) {
-    height: 300px;
+    height: 480px;
   }
   @media (max-width: 767px) {
     height: 480px;
@@ -388,7 +388,7 @@
     .logo-holder {
       width: 125px;
       height: 150px;
-      border: 1px solid $bg-color-main;
+      // border: 1px solid $bg-color-main;
       padding: 1.5rem 1rem;
       border-radius: 24px;
       margin: 0 auto;

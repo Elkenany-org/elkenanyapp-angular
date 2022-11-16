@@ -17,6 +17,10 @@ export class CompaniesGuideHomeResolver implements Resolve<ApiResponse<Companies
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):Observable<ApiResponse<CompaniesHome>>  {
     console.log("Companies Guide Resolver is work ",route.paramMap.get('type'))
+    // let section_id:any =route.paramMap.get('type')
+    // if(route.paramMap.get('type') == '0'){
+    //   section_id = ''
+    // }
 
    return this.stock.CompaniesHome(route.paramMap.get('type')||'','','').pipe(
      catchError(() => {

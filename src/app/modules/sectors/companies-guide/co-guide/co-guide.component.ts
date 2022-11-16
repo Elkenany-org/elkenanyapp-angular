@@ -76,9 +76,7 @@ export class CoGuideComponent implements OnInit {
 
        this.BannerLogoService.setBanner(res['resolve'].data.banners);
        this.BannerLogoService.setLogo(res['resolve'].data.logos);
-      //  console.log('???????');
-      
-      //  console.log(res['resolve'].banners);
+
        this.loading = false;    
        this.h_search_form.title=' شركات الدليل '
        this.titleService.setTitle(' شركات الدليل ');
@@ -148,8 +146,6 @@ export class CoGuideComponent implements OnInit {
     let sort='2'
 
     this.route.params.subscribe( params => {
-      // console.log(params);
-      
 
       if(!this.filterData["section_id"]) {
         this.filterData["section_id"]= params['type']
@@ -208,10 +204,6 @@ export class CoGuideComponent implements OnInit {
             break;
      }
 
-
-
-
-
     if(option.type== 'countries'){
     this.companiesGuideService.co_Filter_listV2(
       this.filterData["section_id"],
@@ -227,6 +219,7 @@ export class CoGuideComponent implements OnInit {
          
     }) }
   // }
+    if(option.type != 'sector'){
       this.companiesGuideService.Companiesv2(this.filterData).subscribe( res => {
         // this.typeAr= option.title
         this.page.current_page = res.data?.current_page!
@@ -236,15 +229,10 @@ export class CoGuideComponent implements OnInit {
         if(option.type=="search" && this.filterData["search"]!="" || option.type=="countries" || option.type=="cities" ){
           this.Companies.compsort = [];
         }
-        this.carousel_banner.banner = res.data?.banners  
-        this.carousel_logos.banner = res.data?.logos
         this.BannerLogoService.setBanner(res.data?.banners!);
         this.BannerLogoService.setLogo(res.data?.logos!);
         this.loading = false;
-        // this.comLength = this.Companies.data.length!
-        // change url params without reloade with new statep
-        // console.log(this.page.last_page);
-        // console.log('last2');
+
        if(this.page.last_page > 1){
 
         this.companiesGuideService.Companiesv2({
@@ -258,18 +246,10 @@ export class CoGuideComponent implements OnInit {
         }).subscribe(res => {
             this.comLength =(res.data?.data.length!)
           
-          // console.log(this.comLength);
          })
          }
         })
-
-//     console.log(this.page.last_page);
-//     console.log('last');
-    
-
-// console.log(this.filterData);
-
-        // this.location.go(`companies-guide/${sectorType}/companies/${sectorType}/${sectorId}`);
+        }
     })
   }
   

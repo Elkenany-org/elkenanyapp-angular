@@ -19,24 +19,24 @@ export const co_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "القطاع",
+        name: "القسم الرئيسي ",
         type: "select",
         role: "sector",
         class: "form-control",
         value: "",
-        icon:"fas fa-puzzle-piece",
+        // icon:"fas fa-puzzle-piece",
         option: [],
         validators: {
           required: false,
         }
       },
       {
-        name: "القسم",
+        name: "القسم الفرعي ",
         type: "select",
         role: "subsection",
         class: "form-control",
         value: "",
-        icon:"fas fa-puzzle-piece",
+        // icon:"fas fa-puzzle-piece",
         option: [],
         validators: {
           required: false,

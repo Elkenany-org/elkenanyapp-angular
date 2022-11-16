@@ -11,10 +11,10 @@ import { GallaryService } from '@app/@core/services/modules/gallery/gallary.serv
 })
 export class GalleriesResolver implements Resolve<ApiResponse<GallriesData>>{
   public filterData:{[key:string]:string}= {
-    sector:'poultry',
+    sector:'',
     countries:'',
     cities:'',
-    sort:"2",
+    sort:"0",
     search:"",
     page:''
 
@@ -25,7 +25,7 @@ export class GalleriesResolver implements Resolve<ApiResponse<GallriesData>>{
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<GallriesData>>  {
     console.log("resolver is work ")
-
+    this.filterData['sector'] = route.paramMap.get('type')||''
    return this.gallery.galleries(this.filterData).pipe(
      
      catchError(() => {

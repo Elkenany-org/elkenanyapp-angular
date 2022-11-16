@@ -44,10 +44,6 @@ export class CoGuideHomeComponent implements OnInit {
 ) { }
 
   ngOnInit(): void {
-
-
-
-
     this.h_search_form = co_Search_Form_Data //set initial data to horizontal component 
     this.activatedRoute.data.pipe(
       map((data) => {
@@ -55,25 +51,28 @@ export class CoGuideHomeComponent implements OnInit {
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
        this.Companies_Home_Data = res['resolve']  as CompaniesHome
-      //  this.carousel_banner.banner = res['resolve'].banners
-      //  this.carousel_logos.banner = res['resolve'].logos
-       this.BannerLogoService.setBanner(res['resolve'].banners);
-       this.BannerLogoService.setLogo(res['resolve'].logos);
+       this.BannerLogoService.setBanner(this.Companies_Home_Data.banners);
+       this.BannerLogoService.setLogo(this.Companies_Home_Data.logos);
        this.loading = false;      
     })
     this.route.params.subscribe( params => {
-      this.type = params['type']
-      this.filterData['sector'] = params['type']
 
-      this.companiesGuideService.Filter_list(params['type']).subscribe((res:ApiResponse<CompaniesFilterList>) => {
+      if(params['type'] == '0'){
+        this.type = ''
+      }else{
+        this.type = params['type']
+      }
+      
+
+      this.companiesGuideService.Filter_list(this.type+'').subscribe((res:ApiResponse<CompaniesFilterList>) => {
         this.typeAr= res.data?.sectors.find((i:any) =>i.selected ==1)?.name
+        this.filterData['sector'] = res.data?.sectors.find((i:any) =>i.selected ==1)?.id+''
+        this.type=this.filterData['sector']
         this.titleService.setTitle(' الدليل قسم '+this.typeAr);
 
         //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-        // this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
-        // this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 0).selected=0
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.unshift({"id": 0,"name": "اختر الترتيب","value": ''})
 
@@ -90,6 +89,7 @@ export class CoGuideHomeComponent implements OnInit {
       switch ( value.type ) {
         case "sector":
           this.filterData['sector'] = value.id
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id == 0).selected=1
           flag=true
             break;
         case "sort":
@@ -110,8 +110,6 @@ export class CoGuideHomeComponent implements OnInit {
 
      this.companiesGuideService.CompaniesHome(this.filterData['sector'], sort, this.filterData['search'] ).subscribe( res => {
         this.Companies_Home_Data = res  as CompaniesHome
-        this.carousel_banner.banner = this.Companies_Home_Data .banners
-        this.carousel_logos.banner = this.Companies_Home_Data .logos
         this.BannerLogoService.setBanner(this.Companies_Home_Data.banners);
         this.BannerLogoService.setLogo(this.Companies_Home_Data.logos);
         this.loading = false;

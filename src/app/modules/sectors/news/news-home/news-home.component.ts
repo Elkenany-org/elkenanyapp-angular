@@ -69,7 +69,8 @@ export class NewsHomeComponent implements OnInit {
         // override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-
+        this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
+        this.location.go(`/news/${this.type }`);
       }) 
     })   
     

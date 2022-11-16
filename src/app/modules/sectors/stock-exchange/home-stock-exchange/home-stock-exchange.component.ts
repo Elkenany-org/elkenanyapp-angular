@@ -42,10 +42,8 @@ export class HomeStockExchangeComponent implements OnInit  {
   ngOnInit(): void {
     this.titleService.setTitle("البورصة اليومية");
 
-    this.activatedRoute.params.subscribe(prm => {
       this.h_search_form = Home_Stock_Search_Form_Data
-      this.h_search_form.controls[3].routerLink = `/stock-exchange/${prm['type']}/statistics`  
-    })
+
 
 
      //set initial data to horizontal component 
@@ -78,6 +76,11 @@ export class HomeStockExchangeComponent implements OnInit  {
 
     let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
     localStorage.setItem('stockTitle',' القطاع '+title)
+    this.filterData['sector'] = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
+    this.location.go(`/stock-exchange/${this.filterData['sector'] }`); 
+    
+    this.h_search_form.controls[3].routerLink = `/stock-exchange/${this.filterData['sector']}/statistics`  
+
       }) 
       
     })   
@@ -88,20 +91,15 @@ export class HomeStockExchangeComponent implements OnInit  {
   filter(value:any) {
 let sort='';
     this.route.params.subscribe( params => {
-      // console.log(params);
       
-      // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
 
           
           this.filterData['sector'] = value.id
           this.type = this.filterData['sector']
-          // this.location.go(`stock-exchange/${this.type }`);
           this.router.navigate(['stock-exchange/',this.type])
-          // this.h_search_form.controls[3].routerLink = `/stock-exchange/${this.filterData['sector']}/statistics`  
-
-          // this.router.navigate(['/stock-exchange',value.name])
+  
           break;
         case "sort":
             this.filterData['sort'] = value.id 
@@ -109,8 +107,6 @@ let sort='';
             this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
 
             sort = this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).value
-
-           console.log(this.h_search_form.controls.find((i:any) => i.role === "sort").option);
 
           break;
         case "search":
@@ -122,21 +118,22 @@ let sort='';
     })
 //  console.log( this.h_search_form.controls.find((i:any) => i.role === "sort").option);
 
+if(value.type != 'sector'){
+
+
       this.stockExchange.GetStockExchangeV2( this.filterData['sector'],  sort ,this.filterData['search']).subscribe( res => {
+
       this.stock_Ex_Data = res as StockExchange
       this.BannerLogoService.setBanner(this.stock_Ex_Data.banners);
       this.BannerLogoService.setLogo(this.stock_Ex_Data.logos);
       this.h_search_form.controls.find((i:any) => i.role === "sector").option = this.stock_Ex_Data.sectors
 
       this.loading = false;
-      // change url params without reloade with new state
 
-let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
-localStorage.setItem('stockTitle',' القطاع '+title)
-// console.log(title);
       })
-
-
+      }
+      let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
+      localStorage.setItem('stockTitle',' القطاع '+title)
   }
 
   navigate(id: string): void
@@ -150,7 +147,7 @@ localStorage.setItem('stockTitle',' القطاع '+title)
   {
 
     // console.log(params)
-         this.router.navigate([`/stock-exchange/${this.type}/stock-exchange/${this.type}/${data.type}/${data.id}`])
+         this.router.navigate([`/stock-exchange/${this.type}/${data.type}/${data.id}`])
 
 
   }

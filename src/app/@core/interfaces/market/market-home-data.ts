@@ -21,7 +21,7 @@ export const market_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "القطاع",
+        name: "القسم ",
         type: "select",
         role: "sector",
         class: "form-control",

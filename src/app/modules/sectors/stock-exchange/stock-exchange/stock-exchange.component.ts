@@ -102,9 +102,9 @@ export class StockExchangeComponent implements OnInit {
 
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   ( type_stock=='local')? res.data?.sub_sections: res.data?.fodder_sub_sections;
-      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/1/statistics/statistics-members/${this.filterData['type']}/${id}`;
+      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/${this.filterData['sector']}/statistics/statistics-members/${this.filterData['type']}/${id}`;
       if(type_stock !='local'){
-              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/1/comparison/${id}`;
+              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/${this.filterData['sector']}/comparison/${id}`;
       }
     // console.log(res.data);
     })

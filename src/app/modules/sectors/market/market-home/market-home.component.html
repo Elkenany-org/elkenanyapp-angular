@@ -1,4 +1,18 @@
-
+<app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+<app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
+<div class="page__tabs nb-0 container">
+    <ul class="tabs__list">
+        <li class="list__item list__item-2" routerLink="./">
+            <a class="list__link "  [routerLinkActive]="['active']"  >السوق</a>
+        </li>
+        <li class="list__item list__item-2"routerLink="/market/{{type}}/my-ads">
+            <a class="list__link"  [routerLinkActive]="['active']">اعلاناتك</a>
+        </li>
+        <!-- <li class="list__item list__item-3" routerLink="/market/{{type}}/market-chat/{{type}}" >
+            <a class="list__link " [routerLinkActive]="['active']">الرسائل</a>
+        </li> -->
+    </ul>
+</div>
     <!-- page tabs -->
     <!-- Start breadcrumb -->
     <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
