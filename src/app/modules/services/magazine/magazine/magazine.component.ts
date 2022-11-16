@@ -21,7 +21,7 @@ export class MagazineComponent implements OnInit {
   public magazines?:MagazinesData[]
   private type?:string
   public filterData:{[key:string]:string}= {
-    type:"poultry",
+    type:"0",
     sort:"2",
     search:"",
     countries:'',
@@ -69,7 +69,8 @@ export class MagazineComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
         this.typeAr=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
-
+        this.filterData['sector'] = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
+        this.location.go(`/magazine/${this.filterData['sector'] }`);
       }) 
     // console.log(data['resolve'].data);
 
@@ -78,12 +79,8 @@ export class MagazineComponent implements OnInit {
     if(this.page.last_page > 1){
       this.magazine.magazines(this.filterData['sector'],2,'','','',this.page.last_page+''
       ).subscribe(res => {
-        // this.comLength = res.data?.data.length!
           this.comLength = (res.data?.data.length!)
-        // else{
-        //   this.comLength =(this.Companies?.data.length!)
-        // }
-        // console.log(this.comLength);
+
        })
      }
 
@@ -91,18 +88,15 @@ export class MagazineComponent implements OnInit {
   }
 
   filter(value:any) {
-    // console.log(value)
-    // this.filterData['sector'] = 'poultry'
+
     this.filterData['sort'] = '2'
     this.filterData['cities'] = ''
-    // this.filterData['countries']=''
     this.filterData['search']=''
     let sort='2'
-    // this.h_search_form.controls.find((i:any) => i.role === "sort").option[0].selected=1
 
       switch ( value.type ) {
         case "sector":
-          this.filterData['sector'] = value.name
+          this.filterData['sector'] = value.id
           this.typeAr=value.title
           this.magazine.filter_list(this.filterData['sector'], 0).subscribe((res:ApiResponse<FilterList>) => {
             // override data to match the data format of horizontal components

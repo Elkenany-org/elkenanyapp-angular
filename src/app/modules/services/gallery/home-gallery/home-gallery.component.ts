@@ -22,7 +22,7 @@ export class HomeGalleryComponent implements OnInit {
   public page= {last_page: 0, current_page:0}
 
   public filterData:{[key:string]:string}= {
-    sector:'poultry',
+    sector:'',
     countries:'',
     cities:'',
     sort:"0",
@@ -40,6 +40,9 @@ export class HomeGalleryComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle("المعارض");
     this.search_form = Gallries_Search_Form
+    this.route.params.subscribe( params => {
+      this.filterData['sector']=params['type']
+    })
     this.route.data.subscribe(data => {
       // console.log(data['resolve']);
       this.page.current_page = data['resolve'].data!.current_page
@@ -48,12 +51,13 @@ export class HomeGalleryComponent implements OnInit {
       this.bannrrsLogos.setBanner(data['resolve'].data?.banners as Banner[])
       this.bannrrsLogos.setLogo(data['resolve'].data?.logos as Logo[])
 
-      
-
-      this.galleryService.filter_list('poultry','1').subscribe((res:ApiResponse<FilterList>) => {
+      this.galleryService.filter_list(this.filterData['sector'],'1').subscribe((res:ApiResponse<FilterList>) => {
         // override data to match the data format of horizontal components
         this.search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 1).selected=1
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 1).selected=0
+
         this.search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
         this.search_form.controls.find((i:any) => i.role === "countries").option.unshift({id:0,name:'الكل'});
         this.search_form.controls.find((i:any) => i.role === "countries").option.find((i:any) => i.id === 0).selected=1
@@ -61,43 +65,25 @@ export class HomeGalleryComponent implements OnInit {
 
         this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
 
-        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
-        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
 
+        this.filterData['sector'] = this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
+        this.location.go(`/gallery/${this.filterData['sector'] }`);
       }) 
 
     })
- 
+  
 
   }
 
   filter(value:any) {
     let sort='0'
-
+    this.filterData["sort"]='0'
     switch ( value.type ) {
       case "sector":
-        
-        // this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id === value.id).selected=1
-        // this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.id !== value.id).selected=0
-        this.filterData['sector'] = value.name
+        this.filterData['sector'] = value.id
         this.filterData['countries'] = ''
         this.filterData['cities'] = ''
-        this.galleryService.filter_list(this.filterData['sector'],'1').subscribe((res:ApiResponse<FilterList>) => {
-          // override data to match the data format of horizontal components
-          this.search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
-          this.search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-          this.search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
-          this.search_form.controls.find((i:any) => i.role === "countries").option.unshift({id:0,name:'الكل'});
-          this.search_form.controls.find((i:any) => i.role === "countries").option.find((i:any) => i.id === 0).selected=1
-          this.search_form.controls.find((i:any) => i.role === "countries").option.find((i:any) => i.id === 1).selected=0
-
-          this.search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
-
-          this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
-          this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
-  
-        }) 
-
+          this.router.navigate([`/gallery/${this.filterData['sector']}`]);
           break;
       case "countries":
         if(value.id == 0){
@@ -141,8 +127,8 @@ export class HomeGalleryComponent implements OnInit {
         break;
    }
 
+   if(value.type != 'sector'){
    this.galleryService.galleries(this.filterData).subscribe(res => {
-
     this.page.current_page = res.data?.current_page!
     this.page.last_page =  res.data?.last_page!
     this.galleryData= res.data?.data 
@@ -150,8 +136,8 @@ export class HomeGalleryComponent implements OnInit {
     this.bannrrsLogos.setLogo(res.data?.logos as Logo[])
 
    })
-   this.location.go(`gallery/${this.filterData['sector']}`);
-
+  //  this.location.go(`/gallery/${this.filterData['sector']}`);
+}
   }
 
   navigate(id: string): void {
