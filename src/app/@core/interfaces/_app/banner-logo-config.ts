@@ -45,8 +45,8 @@
     banner: [],
     config:{
     "class":"",
-    "slidesToShow": 6,
-    "slidesToScroll": 6,
+    "slidesToShow": 5,
+    "slidesToScroll": 5,
     "dots": false,
     "autoplay": true,
     "autoplaySpeed": 5000,
