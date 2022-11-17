@@ -58,12 +58,10 @@ export class ShipsTrafficComponent implements OnInit {
 
   filter(value:any):void {
 
-     console.log(value)
     this.ships.ships(value.name).subscribe(res => {
       this.data= res.data
     },
     (err) => {
-      console.log(err);
       // this.alertService.error(err.error.error);
       this.toster.showFail(err.error.error);
     })

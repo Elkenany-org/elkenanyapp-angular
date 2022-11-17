@@ -35,8 +35,8 @@ export class StatisticsService {
     return this.http.get<ApiResponse<StatisticsMembersDetials>>(`${env.ApiUrl}/localstock/statistics-detials?type=${type}&from=${from}&to=${to}&id=${id}`)
   }
 
-  StatisicsSubSections(type:string, from:string, to:string, id:string):Observable<ApiResponse<StatisticsSubsSections>> {
-    return this.http.get<ApiResponse<StatisticsSubsSections>>(`${env.ApiUrl}/localstock/statistics-stock-sections?type=${type}&from=${from}&to=${to}&id=${id}`)
+  StatisicsSubSections(section_id:string, from:string, to:string, id:string):Observable<ApiResponse<StatisticsSubsSections>> {
+    return this.http.get<ApiResponse<StatisticsSubsSections>>(`${env.ApiUrl}/localstock/statistics-stock-sections?section_id=${section_id}&from=${from}&to=${to}&id=${id}`)
   }
 
 

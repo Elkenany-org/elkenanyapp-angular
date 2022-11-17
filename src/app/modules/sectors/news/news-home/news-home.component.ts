@@ -69,7 +69,8 @@ export class NewsHomeComponent implements OnInit {
         // override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-
+        this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
+        this.location.go(`/news/${this.type }`);
       }) 
     })   
     
@@ -78,12 +79,12 @@ export class NewsHomeComponent implements OnInit {
 
   filter(value:any) {
     this.filterData['search']=''
-    this.filterData['sector'] = this.type||'poultry'
+    this.filterData['sector'] = this.type||'1'
     this.route.params.subscribe( params => {
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
-          this.filterData['sector'] = value.name
+          this.filterData['sector'] = value.id
           break;
         case "sort":
           this.filterData['sort'] = value.id 

@@ -55,22 +55,10 @@ export class AddAdComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    var notificationData = {
-      "to": "dR3179CIBdk...",
-      "data": {
-        "mrp": 5000,
-        "retailPrice": 3000
-      },
-      "notification": {
-        "color": "#FF0000",
-        "title": "Off Upto 70% yofunky.com"
-      }
-    }
-  
     this.titleService.setTitle(this.pageName);
 
     this.url =  this.router.url.split('/') 
-    let secId = sector.find((i:Sector) => i.type ===   this.url[  this.url.length-3] )?.id ||0
+    let secId = this.url[this.url.length-3] ||0
     // console.log(  this.url)
     this.AdForm({} as AdDetials, secId )
 
@@ -209,7 +197,7 @@ export class AddAdComponent implements OnInit {
 
 
 
-  AdForm (data: AdDetials, secId: number) {
+  AdForm (data: AdDetials, secId: any) {
    if ( secId > 0) {
     this.adForm = this.fb.group({
       // if the purpose is to add an ad the value of control will be '' if  it is  edit get values from URL

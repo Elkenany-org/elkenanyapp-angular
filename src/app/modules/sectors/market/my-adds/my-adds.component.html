@@ -1,9 +1,25 @@
 
 
+<!-- Start Header -->
+
+<div class="page__tabs nb-0 container">
+    <ul class="tabs__list">
+        <li class="list__item list__item-2" routerLink="/market/{{type}}">
+            <a class="list__link "  [routerLinkActive]="['active']"  >السوق</a>
+        </li>
+        <li class="list__item list__item-2"routerLink="./">
+            <a class="list__link"  [routerLinkActive]="['active']">اعلاناتك</a>
+        </li>
+        <!-- <li class="list__item list__item-3" routerLink="/market/{{type}}/market-chat/{{type}}" >
+            <a class="list__link " [routerLinkActive]="['active']">الرسائل</a>
+        </li> -->
+    </ul>
+</div>
+
     <!-- Start Global Content -->
     <article class="global__container mt-0 container">
         <div class="row">
-            <a class="action__yellow__green__button w-100"routerLink="/market/{{type}}/add-edit-ad/0">+ أضف إعلانك</a>
+            <a class="action__yellow__green__button w-100" routerLink="/market/{{type}}/add-edit-ad/0">+ أضف إعلانك</a>
             <div class="new__cards p-0 my-2 row">
                 <div class="col-12" *ngFor="let ad of ads?.data" >
                     <div class="product__card ultra__card regular__hover" >

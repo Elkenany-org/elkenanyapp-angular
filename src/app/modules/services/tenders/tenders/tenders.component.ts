@@ -99,7 +99,6 @@ export class TendersComponent implements OnInit {
       })    
       
       this.TendersNews.all_news(this.filterData['sector'],this.filterData['sort'],this.filterData['search'],1).subscribe(res => {
-         console.log(res)
         this.News= res.data?.data 
         this.page.current_page = res.data?.current_page as number
         this.page.last_page =  res.data?.last_page  as number

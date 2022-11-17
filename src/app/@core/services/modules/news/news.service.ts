@@ -14,9 +14,9 @@ export class NewsService {
   constructor(private http: HttpClient) {
   }  
 
-  all_news(type:string, sort?:number, search?:string,page?:number): Observable<ApiResponse<AllNews>> { //Home
+  all_news(section_id:string, sort?:number, search?:string,page?:number): Observable<ApiResponse<AllNews>> { //Home
     // console.log(type)
-    return this.http.get<ApiResponse<AllNews>>(`${env.ApiUrl}/news/news?type=${type}&sort=${sort}&search=${search}&page=${page}`);
+    return this.http.get<ApiResponse<AllNews>>(`${env.ApiUrl}/news/news?section_id=${section_id}&sort=${sort}&search=${search}&page=${page}`);
     // return this.http.get<ApiResponse<AllNews>>(`${env.ApiUrl}/news/news?type=poultry&sort=2&search=`);
   }
 
@@ -24,8 +24,8 @@ export class NewsService {
     return this.http.get<ApiResponse<NewsDetials>>(`${env.ApiUrl}/news/news-detials?id=${id}`);
   }
 
-  filter_list(type:string): Observable<ApiResponse<FilterList>> { //Home
-    return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/news/filter-sections-news?type=${type}`);
+  filter_list(section_id:string): Observable<ApiResponse<FilterList>> { //Home
+    return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/news/filter-sections-news?section_id=${section_id}`);
   }
 
 }

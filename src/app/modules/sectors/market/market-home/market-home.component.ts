@@ -21,7 +21,7 @@ export class MarketHomeComponent implements OnInit {
 
   public h_search_form?: JsonFormData  |any // nay be will not work 
   public Market_Data?: MarktData []
-  private type!:string
+  public type!:string
   // public page= {last_page: 0, current_page:0}
 
   public filterData:{[key:string]:string}= {
@@ -50,7 +50,10 @@ export class MarketHomeComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 1).selected=0
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 1).selected=1
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 1).selected=1  
+        this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
+        this.location.go(`/market/${this.type }`);
+
       })
       
       this.activatedRoute.data.pipe(
@@ -79,11 +82,10 @@ export class MarketHomeComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.filterData['sector'] = params['type']
       this.filterData['date']=""
-
       switch ( value.type ) {
         case "sector":
-          this.filterData['sector'] = value.name
-          this.router.navigate(['market/',this.filterData['sector']])
+          this.filterData['sector'] = value.id
+          this.router.navigate(['/market/',this.filterData['sector']])
 
             break;
         case "sort":
@@ -107,7 +109,8 @@ export class MarketHomeComponent implements OnInit {
 
     })
 
-    this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'], this.filterData['date']).subscribe(res => {
+    if(value.type != 'sector'){
+          this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'], this.filterData['date']).subscribe(res => {
       // this.page.current_page = res.data?.current_page as number
       // this.page.last_page = res.data?.last_page as number
       this.Market_Data =res.data?.data 
@@ -115,8 +118,11 @@ export class MarketHomeComponent implements OnInit {
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.h_search_form.controls.find((i:any) => i.role === "sector").option =res.data?.sectors
       this.type = this.filterData['sector']
-      this.location.go(`market/${this.type }`);
+      // this.location.go(`market/${this.type }`);
     })
+    }
+
+
   }
 
   navigate(id: string): void

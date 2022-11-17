@@ -39,308 +39,74 @@
                          <!-- <app-carousel [config]="carousel_banner" [loading]="loading" ></app-carousel> -->
 
         </div>
-        <div class="container home__page__search__console">
-            <div class="content__holder">
-                <section class="two-way-search-box">
-                    <section class="head">
-                        <h2 (click)="swapTab('sector')" class="head__title title-right col-6 active">
-                            القطاعات
-                        </h2>
-                        <h2 (click)="swapTab('services')" class="head__title title-left col-6">
-                            الخدمات
-                        </h2>
-                    </section>
-                    <section class="body">
-                        <!---------- Start first Tab ----------->
-                        <section class="first-tab tabs" *ngIf="tabs== 'sector'">
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item dropdown">
-                                <a aria-expanded="false" aria-haspopup="true"
-                                   class="nav-link dropdown-toggle"
-                                   data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/chicken_icon.svg">
-                                    </div>
-                                    <span class="title">الداجني</span>
-                                </a>
-                                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/stock-exchange/poultry']">
-                                        البورصة اليومية
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/companies-guide/poultry']">
-                                        دليل الشركات
-                                    </a>
-                                    <!--                                        <div class="dropdown-divider"></div>-->
-                                    <!--                                        <a class="dropdown-item" href="pages/consultants/consultants.html">-->
-                                    <!--                                            الاستشاريون-->
-                                    <!--                                        </a>-->
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/market/poultry']">
-                                        سوق الكناني
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"  [routerLink]="['/news/poultry']">
-                                        الأخبار
-                                    </a>
-                                </div>
-                            </section>
-                            <!-- End Dropdown Item -->
 
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item dropdown">
-                                <a aria-expanded="false" aria-haspopup="true"
-                                   class="nav-link dropdown-toggle"
-                                   data-toggle="dropdown"
-                                   href="#" id="navbarDropdown" role="button">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/cow_icon.svg">
-                                    </div>
-                                    <span class="title">الحيواني</span>
-                                </a>
-                                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/stock-exchange/animal']">
-                                        البورصة اليومية
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/companies-guide/animal']">
-                                        دليل الشركات
-                                    </a>
-                                    <!--                                        <div class="dropdown-divider"></div>-->
-                                    <!--                                        <a class="dropdown-item" href="pages/consultants/consultants.html">-->
-                                    <!--                                            الاستشاريون-->
-                                    <!--                                        </a>-->
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/market/animal']">
-                                        سوق الكناني
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/news/animal']">
-                                        الأخبار
-                                    </a>
-                                </div>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item dropdown">
-                                <a aria-expanded="false" aria-haspopup="true"
-                                   class="nav-link dropdown-toggle"
-                                   data-toggle="dropdown"
-                                   href="#" id="navbarDropdown" role="button">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/plant_icon.svg">
-                                    </div>
-                                    <span class="title">الزراعي</span>
-                                </a>
-                                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/stock-exchange/farm']">
-                                        البورصة اليومية
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/companies-guide/farm']">
-                                        دليل الشركات
-                                    </a>
-                                    <!--                                        <div class="dropdown-divider"></div>-->
-                                    <!--                                        <a class="dropdown-item" href="pages/consultants/consultants.html">-->
-                                    <!--                                            الاستشاريون-->
-                                    <!--                                        </a>-->
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/market//farm']">
-                                        سوق الكناني
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/news/farm']">
-                                        الأخبار
-                                    </a>
-                                </div>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item dropdown">
-                                <a aria-expanded="false" aria-haspopup="true"
-                                   class="nav-link dropdown-toggle"
-                                   data-toggle="dropdown"
-                                   href="#" id="navbarDropdown" role="button">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/fish_icon.svg">
-                                    </div>
-                                    <span class="title">السمكي</span>
-                                </a>
-                                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/stock-exchange/fish']">
-                                        البورصة اليومية
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/companies-guide/fish']">
-                                        دليل الشركات
-                                    </a>
-                                    <!--                                        <div class="dropdown-divider"></div>-->
-                                    <!--                                        <a class="dropdown-item" href="pages/consultants/consultants.html">-->
-                                    <!--                                            الاستشاريون-->
-                                    <!--                                        </a>-->
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/market/fish']">
-                                        سوق الكناني
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/news/fish']">
-                                        الأخبار
-                                    </a>
-                                </div>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item dropdown">
-                                <a aria-expanded="false" aria-haspopup="true"
-                                   class="nav-link dropdown-toggle"
-                                   data-toggle="dropdown"
-                                   href="#" id="navbarDropdown" role="button">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/horse_icon.svg">
-                                    </div>
-                                    <span class="title">الخيول العربية</span>
-                                </a>
-                                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/stock-exchange/horses']">
-                                        البورصة اليومية
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/companies-guide/horses']">
-                                        دليل الشركات
-                                    </a>
-                                    <!--                                        <div class="dropdown-divider"></div>-->
-                                    <!--                                        <a class="dropdown-item" href="pages/consultants/consultants.html">-->
-                                    <!--                                            الاستشاريون-->
-                                    <!--                                        </a>-->
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/market/horses']">
-                                        سوق الكناني
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" [routerLink]="['/news/horses']">
-                                        الأخبار
-                                    </a>
-                                </div>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item dropdown">
-                                <a aria-expanded="false" aria-haspopup="true"
-                                    class="nav-link dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    href="#" id="navbarDropdown" role="button">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/industrial.svg">
-                                    </div>
-                                    <span class="title"> الصناعي </span>
-                                </a>
-                                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-
-                                    <a class="dropdown-item"
-                                    [routerLink]="['/companies-guide/industrial']">
-                                        دليل الشركات
-                                    </a>
-
-                                </div>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                        </section>
-                        <!---------- End first Tab ----------->
-
-                        <!---------- Start Second Tab ----------->
-                        <section class="second-tab tabs tab3"  *ngIf="tabs== 'services'">
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item-2 dropdown-2">
-                                <a class="nav-link " [routerLink]="['/gallery/poultry']">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/showroom.svg">
-                                    </div>
-                                    <span class="title">معارض</span>
-                                </a>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item-2 dropdown-2">
-                                <a class="nav-link " [routerLink]="['/magazine/poultry']">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/newspaper.svg">
-                                    </div>
-                                    <span class="title">دلائل ومجلات</span>
-                                </a>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item-2 dropdown-2" >
-                                <a class="nav-link "[routerLink]="['/tenders']">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/market_icon.svg">
-                                    </div>
-                                    <span class="title"> المناقصات </span>
-                                </a>
-                            </section>
-                            <!-- End Dropdown Item -->
-
-                            <!-- Start Dropdown Item -->
-                            <section class="nav-item-2 dropdown-2" >
-                                <a class="nav-link "[routerLink]="['/ships-traffic']">
-                                    <div class="icon-holder mb-lg-2">
-                                        <img alt="icon" class="icon" src="assets/images/market_icon.svg">
-                                    </div>
-                                    <span class="title">حركة السفن</span>
-                                </a>
-                            </section>
-                            <!-- End Dropdown Item -->
-<!-- [routerLink]="['/employment']" -->
-                        <!-- Start Dropdown Item -->
-                        <section class="nav-item-2 dropdown-2" style="border: 0 !important;">
-                            <a class="nav-link ">
-                                <div class="icon-holder mb-lg-2">
-                                    <img alt="icon" class="icon" src="assets/images/market_icon.svg">
-                                </div>
-                                <span class="title"> الوظائف </span>
-                            </a>
-                        </section>
-                        <!-- End Dropdown Item -->
-
-                        </section>
-                        <!---------- End Second Tab ----------->
-                    </section>
-                </section>
-            </div>
-        </div>
         <!-- End Header -->
     </header>
     <h1 class="elknany__title">أول واكبر منصة <br> خدمات الكرتونية متكاملة</h1>
     <!-- End Header -->
+
+                    <div class="row w-75 m-auto" >
+                    <div class="col-md-5 col-12 "  >
+                        <h1 class="pt-2">عن الكناني</h1>
+                        <div class="pt-3 fs-5"> 
+                            <p style="text-align: justify;line-height: 2.1rem;">
+                                أول وأكبر منصة متعددة الخدمات في مصر والشرق الأوسط تضم خدمات : 
+                                بورصة الكناني:
+                                بورصة يومية لتغطية أحدث وأدق أسعار منتجات وشركات السوق المحلي لحظة بلحظة.
+
+                                دليل الشركات :
+                                دليل الكناني دليل متكامل يضم جميع بيانات الشركات
+
+                                سوق الكناني : 
+                                خدمة بيعية لتبادل “ بيع وشراء “ المنتجات والخدمات
+
+                                الأخبار : 
+                                أخبار الكناني لتغطية أحدث الأخبار والأحداث اليومية
+
+                                المناقصات :
+                                عرض أجدد المناقصات المطروحة في السوق المصري 
+
+                                الوظائف : 
+                                خدمة تطرح الوظائف اليومية المتاحة في سوق العمل وتعطي للشركات فرصة عرض الوظائف المتاحة لديهم 
+
+                                المعارض :
+                                عرض أحدث المعارض المحلية والدولية الخاصة بكل المجالات والصناعات 
+
+                                دلائل ومجلات:
+                                تضم كل أحدث المجلات الخاصة بكل الشركات 
+
+                                حركة السفن :
+                                أسهل نظام لتتبع حركة السفن التي تدخل الميناء المصرية                            
+                                
+                            <div class="row pt-3 ">
+                                <div class="col-6">
+                                    <a href="https://play.google.com/store/apps/details?id=com.elkenany" target="_blank"><img src="../../../assets/images/andr.png" alt=""></a>
+                                </div>
+                                <div class="col-6">
+                                    <a class="app-store" href="https://apps.apple.com/eg/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820" target="_blank"><img src="../../../assets/images/ios.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    <div class=" col-lg-2 col-0 col-md-3" ></div>
+                    <div class="col-md-4 col-12  ">
+                        <img src="../../../assets/images/app.jpeg" class="video my-3 " >
+                    </div>
+                </div>
 </div>
 
 
+        <!-- <div class="container-fluid "> -->
+
+        <!-- </div> -->
 
 
-
-<article class="full__partner__slider container-fluid">
+<article class="full__partner__slider container-fluid ">
     <h2 class="section__title">شركاء النجاح</h2>
     <section class="splide" id="partnerCarousel">
         <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
-        <app-banners-logo  [loading]="loading" [type]="'logo'"></app-banners-logo>
+        <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo>
+        <!-- <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo> -->
 
     </section>
    </article>

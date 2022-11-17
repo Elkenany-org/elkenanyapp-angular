@@ -21,13 +21,13 @@ export class StockExchangeService {
 
   // ----------------------------------------- < Home Stock Exchanges > ----------------------------------------------- //
 
-  GetStockExchange(type:string): Observable<ApiResponse<StockExchange>> { //Home
-    return this.http.get<ApiResponse<StockExchange>>(`${env.ApiUrl}/localstock/local-stock-sections?type=${type}&search=`);
+  GetStockExchange(section_id:string): Observable<ApiResponse<StockExchange>> { //Home
+    return this.http.get<ApiResponse<StockExchange>>(`${env.ApiUrl}/localstock/local-stock-sections?section_id=${section_id}&search=`);
   }
 
 
-  GetStockExchangeV2(type:string, sort?:string, search?:string):Observable<ApiResponse<StockExchange>> { //Home
-   return this.http.get<ApiResponse<StockExchange>>(`${env.ApiUrl}/localstock/local-stock-sections?type=${type}&search=${search}&sort=${sort}`, 
+  GetStockExchangeV2(section_id:string, sort?:string, search?:string):Observable<ApiResponse<StockExchange>> { //Home
+   return this.http.get<ApiResponse<StockExchange>>(`${env.ApiUrl}/localstock/local-stock-sections?section_id=${section_id}&search=${search}&sort=${sort}`, 
    ).pipe(
      map( (res:ApiResponse<StockExchange>) => {
       const data = { 
@@ -40,8 +40,8 @@ export class StockExchangeService {
      }))
  }
 
-  Filter_list(type:string): Observable<ApiResponse<FilterList>> { //Home
-    return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/localstock/all-local-stock-sections?type=${type}`);
+  Filter_list(section_id:string): Observable<ApiResponse<FilterList>> { //Home
+    return this.http.get<ApiResponse<FilterList>>(`${env.ApiUrl}/localstock/all-local-stock-sections?section_id=${section_id}`);
   }
 
 
@@ -81,7 +81,7 @@ export class StockExchangeService {
 
   Filter_list_sub(id: number, type:string, type_stock:string): Observable<ApiResponse<FilterListSub>> { //Home
     // return this.http.get<ApiResponse<FilterListSub>>(`${env.ApiUrl}/localstock/filter-stock-show-sub-section?id=1&type=poultry&type_stock=fodder`);
-    return this.http.get<ApiResponse<FilterListSub>>(`${env.ApiUrl}/localstock/filter-stock-show-sub-section?id=${id}&type=${type}&type_stock=${type_stock}`);
+    return this.http.get<ApiResponse<FilterListSub>>(`${env.ApiUrl}/localstock/filter-stock-show-sub-section?id=${id}&section_id=${type}&type_stock=${type_stock}`);
   }
 
   // ----------------------------------------- < ComprisonFodder > -----------------------------------------------//

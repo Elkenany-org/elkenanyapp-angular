@@ -47,6 +47,7 @@ export class EmploymentHomeComponent implements OnInit {
     this.titleService.setTitle(' الوظائف ');
     this.route.params.subscribe(params => {
       this.emplymentService.Filter_list().subscribe( res => {
+
         this.h_search_form.controls.find((i:any) => i.role === "category").option = res.data?.categories
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 1).selected=1

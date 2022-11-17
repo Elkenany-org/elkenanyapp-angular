@@ -47,7 +47,7 @@ export interface GallriesData {
         }
       },
       {
-        name: "القطاع",
+        name: "القسم",
         type: "select",
         role: "sector",
         class: "form-control",

@@ -103,14 +103,14 @@ export class AddJobComponent implements OnInit {
     }
 
 
-
+    get f() {
+      return this.jobForm.controls;
+    }
   AdForm (data: JobDetials) {
      this.jobForm = this.fb.group({
        // if the purpose is to add an ad the value of control will be '' if  it is  edit get values from URL
        title:      [(data.id)?data.title: '', [Validators.required]],
        desc:       [(data.id)?data.desc: '', [Validators.required]], 
-       phone:      [(data.id)?data.phone: '', [Validators.required]],
-       email:      [(data.id)?data.email: '', [Validators.required]],
        salary:     [(data.id)?data.salary: '', [Validators.required]],
        address:    [(data.id)?data.address: '', [Validators.required]],
        company_id:    [this.company_id, [Validators.required]],
@@ -130,10 +130,10 @@ export class AddJobComponent implements OnInit {
 
     formData.append('title', this.jobForm.controls['title'].value);
     formData.append('desc',  this.jobForm.controls['desc'].value);
-    formData.append('phone', this.jobForm.controls['phone'].value);
+    // formData.append('phone', this.jobForm.controls['phone'].value);
     formData.append('salary', this.jobForm.controls['salary'].value);
     formData.append('address', this.jobForm.controls['address'].value);
-    formData.append('email', this.jobForm.controls['email'].value);
+    // formData.append('email', this.jobForm.controls['email'].value);
     formData.append('category_id', this.category_id+'');
     formData.append('experience', this.jobForm.controls['experience'].value);
     formData.append('company_id', this.company_id+'');

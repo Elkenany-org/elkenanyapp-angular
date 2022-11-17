@@ -17,7 +17,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'stock-exchange/:type/:type_stock/:id',
+    path: ':type_stock/:id',
     component: StockExchangeComponent,
     resolve: {
       resolve: LocalStockLocalAndFodder

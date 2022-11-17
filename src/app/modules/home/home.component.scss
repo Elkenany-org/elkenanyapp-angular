@@ -9,7 +9,8 @@
 }
 
 .home__page__container {
-  top: -14px !important;
+  top: -15px !important;
+  min-height: auto !important;
 }
 .home .banner {
   clear: both;
@@ -91,3 +92,9 @@ background-color: #FFAA00 !important;
 //   padding-top: 0px!important;
 // }
 //////////////////////////////////////test////////////////////////////////////////
+/// 
+.video{
+  // width: 90%;
+  height: 25rem;
+  border-radius: 10%;
+}

@@ -20,7 +20,7 @@ export const co_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "القطاع",
+        name: "القسم الرئيسي",
         type: "select",
         role: "sector",
         class: "form-control",

@@ -87,7 +87,7 @@ export const Magazine_Search_Form: JsonFormData  =
         }
       },
       {
-        name: "القطاع:",
+        name: "القسم:",
         type: "select",
         role: "sector",
         class: "form-control",

@@ -68,7 +68,9 @@ export class ApplyJobComponent implements OnInit {
      })  
      
    }
-
+   get f() {
+    return this.jobForm.controls;
+  }
    handleFileInput(event: any): void {
     const file = event.target.files;
     this.cv=event.target.files.item(0);

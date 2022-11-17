@@ -23,8 +23,8 @@ export class CompaniesGuideService {
 
 // ----------------------------------------- < Companies Home > -----------------------------------------------//
 
-  CompaniesHome(type: string, sort?: string, search?:string):Observable<ApiResponse<CompaniesHome>> {
-    return this.http.get<ApiResponse<CompaniesHome>>(`${env.ApiUrl}/guide/section?type=${type}&sort=${sort}&search=${search}`).pipe(
+  CompaniesHome(section_id: string, sort?: string, search?:string):Observable<ApiResponse<CompaniesHome>> {
+    return this.http.get<ApiResponse<CompaniesHome>>(`${env.ApiUrl}/guide/section?section_id=${section_id}&sort=${sort}&search=${search}`).pipe(
       map( (res:ApiResponse<CompaniesHome>) => {
        const data = { 
         banners: res.data?.banners,
@@ -38,8 +38,8 @@ export class CompaniesGuideService {
   
   }  
   
-  Filter_list(type:string): Observable<ApiResponse<CompaniesFilterList>> { //Home
-    return this.http.get<ApiResponse<CompaniesFilterList>>(`${env.ApiUrl}/guide/all-filter-guide-sub-sections?type=${type}`);
+  Filter_list(section_id:string): Observable<ApiResponse<CompaniesFilterList>> { //Home
+    return this.http.get<ApiResponse<CompaniesFilterList>>(`${env.ApiUrl}/guide/all-filter-guide-sub-sections?section_id=${section_id}`);
   }
 
 
@@ -60,8 +60,8 @@ export class CompaniesGuideService {
     return this.http.get<ApiResponse<FilterListCompanies>>(`${env.ApiUrl}/guide/filter-guide-companies?sector_id=${sector_id}&country_id=1`);
   }
 
-  co_Filter_listV2(sector_id?: string ,country_id?:string): Observable<ApiResponse<FilterListCompanies>> { //Home
-    return this.http.get<ApiResponse<FilterListCompanies>>(`${env.ApiUrl}/guide/filter-guide-companies?sector_id=${sector_id}&country_id=${country_id}`);
+  co_Filter_listV2(section_id?: string ,country_id?:string): Observable<ApiResponse<FilterListCompanies>> { //Home
+    return this.http.get<ApiResponse<FilterListCompanies>>(`${env.ApiUrl}/guide/filter-guide-companies?section_id=${section_id}&country_id=${country_id}`);
   }
   // ----------------------------------------- < Company > -----------------------------------------------//
   comapny(id:string): Observable<ApiResponse<company>> { //Home

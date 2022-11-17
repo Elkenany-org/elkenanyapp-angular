@@ -6,6 +6,8 @@ import { Banner } from '@app/@core/interfaces/_app/app-response';
 import { Data, MyAd } from '@app/@core/interfaces/market/my-ads';
 import { MarketService } from '@app/@core/services/modules/market/market.service';
 import { Title } from '@angular/platform-browser';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-my-adds',
   templateUrl: './my-adds.component.html',
@@ -14,6 +16,7 @@ import { Title } from '@angular/platform-browser';
 export class MyAddsComponent implements OnInit {
   public type!:string
   public ads?:MyAd;
+  public loading: boolean = true
 
   ////////////
 
@@ -25,14 +28,18 @@ export class MyAddsComponent implements OnInit {
     private route: ActivatedRoute,
     private toasterService: ToasterService,
     private router: Router,
-    private titleService:Title
+    private titleService:Title,
+    private location: Location,
     ) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('اعلاناتي');
     let url =  this.router.url.split('/') 
     this.type =  url[url.length-2] //get type from url 
-
+    // this.marketServices.Filter_list(this.type).subscribe( res => {
+    //   this.type= res.data?.sectors.find((i:any) => i.selected == 1)!.id+''
+    //   this.location.go(`/market/${this.type}/my-ads`);
+    // })
     this.marketServices.my_ads(this.type).subscribe(res => {
       this.toasterService.stopLoading();
       this.ads= res.data

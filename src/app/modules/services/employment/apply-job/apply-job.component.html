@@ -9,14 +9,14 @@
                 <input formControlName="category_id"  type="text" hidden [value]="category_id"> -->
 
                 <!-- <h5 class="m-2">الشركات : </h5> -->
-                <h5 class="m-2 ">الاسم الرباعي  : </h5><input formControlName="full_name" class="job-name inputs " placeholder="ادخل  الاسم الرباعي .. " type="text">
+                <h5 class="m-2 ">الاسم الرباعي  : <span *ngIf="f['full_name'].errors?.['required']&&f['full_name'].touched" [ngClass]="{'error':f['full_name'].errors?.['required']&&f['full_name'].touched}"> يرجي ادخال الاسم كامل </span></h5><input formControlName="full_name" class="job-name inputs " placeholder="ادخل  الاسم الرباعي .. " type="text" [ngClass]="{'invalid':f['full_name'].errors?.['required']&&f['full_name'].touched}">
 
-                  <h5 class="m-2 ">رقم الهاتف  : </h5><input formControlName="phone" class="job-phone inputs " placeholder="ادخل رقم الهاتف .. " type="text">
-                  <h5 class="m-2">التعليم  : </h5><input formControlName="education" class="job-education inputs " placeholder="ادخل المؤهل الوظيفي .. " type="text">
-                  <h5 class="m-2">الخبرة  : </h5><input formControlName="experience" class="job-experience inputs " placeholder="عدد سنين الخبرة .. " type="text">
-                  <h5 class="m-2"> المرتب المتوقع : </h5><input formControlName="expected_salary" class="job-salary inputs " placeholder="المرتب المتوقع .." type="number">
+                  <h5 class="m-2 ">رقم الهاتف  : <span *ngIf="f['phone'].errors?.['required']&&f['phone'].touched" [ngClass]="{'error':f['phone'].errors?.['required']&&f['phone'].touched}"> يرجي ادخال رقم الموبايل </span></h5><input formControlName="phone" class="job-phone inputs " placeholder="ادخل رقم الهاتف .. " type="number" [ngClass]="{'invalid':f['phone'].errors?.['required']&&f['phone'].touched}">
+                  <h5 class="m-2">التعليم  : <span *ngIf="f['education'].errors?.['required']&&f['education'].touched" [ngClass]="{'error':f['education'].errors?.['required']&&f['education'].touched}"> يرجي ادخل التعليم </span></h5><input formControlName="education" class="job-education inputs " placeholder="ادخل المؤهل الوظيفي .. " type="text" [ngClass]="{'invalid':f['education'].errors?.['required']&&f['education'].touched}">
+                  <h5 class="m-2">الخبرة  : <span *ngIf="f['experience'].errors?.['required']&&f['experience'].touched" [ngClass]="{'error':f['experience'].errors?.['required']&&f['experience'].touched}"> يرجي ادخال الخبرة </span></h5><input formControlName="experience" class="job-experience inputs " placeholder="عدد سنين الخبرة .. " type="text" [ngClass]="{'invalid':f['experience'].errors?.['required']&&f['experience'].touched}">
+                  <h5 class="m-2"> الراتب المتوقع : <span *ngIf="f['expected_salary'].errors?.['required']&&f['expected_salary'].touched" [ngClass]="{'error':f['expected_salary'].errors?.['required']&&f['expected_salary'].touched}"> يرجي ادخال الراتب المتوقع  </span></h5><input formControlName="expected_salary" class="job-salary inputs " placeholder="المرتب المتوقع .." type="number" [ngClass]="{'invalid':f['expected_salary'].errors?.['required']&&f['expected_salary'].touched}">
                   
-                  <h5 class="m-2">فترة الاشعار  : </h5><input formControlName="notice_period" class="notice_period inputs " placeholder="ادخل فترة الاشعار .. " type="text">
+                  <h5 class="m-2">فترة الاشعار  : <span *ngIf="f['notice_period'].errors?.['required']&&f['notice_period'].touched" [ngClass]="{'error':f['notice_period'].errors?.['required']&&f['notice_period'].touched}"> يرجي ادخال فترة الاشعار </span></h5><input formControlName="notice_period" class="notice_period inputs " placeholder="ادخل فترة الاشعار .. " type="text" [ngClass]="{'invalid':f['notice_period'].errors?.['required']&&f['notice_period'].touched}">
 
                   <h5 class="m-2">معلومات اخري : </h5><input formControlName="other_info" class="job-info inputs " placeholder="معلومات اخري .. " type="text">
 

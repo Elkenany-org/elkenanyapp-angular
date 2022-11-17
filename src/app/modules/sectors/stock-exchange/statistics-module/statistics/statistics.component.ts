@@ -151,31 +151,11 @@ alert:boolean=false
           this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
         }, 50);
       },
-      (err)=>{this.alert=true
-      console.log('====================================');
-      console.log(err);
-      console.log('====================================');
-      });
+      (err)=>{this.alert=true      });
 
-      // if (id != 0) {
-      //   this.id = id;
-      //   this.StatisticsMemberSlected = [
-      //     this.StatisticsMember?.changes_subs.find((i) => i.id == id),
-      //   ] as ChangesMember[];
 
-      // } else {
-      //   this.id = ''
-      //   this.StatisticsMemberSlected = this.StatisticsMember?.changes_subs;
-      // }
   }
 
-  // threemonth(){
-  //   let today =new Date();
-  //   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-  //   console.log(date);
-
-  // }
 
   subtractDays(numOfDays: number, date = new Date()) {
     date.setDate(date.getDate() - numOfDays);

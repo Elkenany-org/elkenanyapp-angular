@@ -65,10 +65,7 @@ export class StockExchangeComponent implements OnInit {
     this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
 
     this.filterData['sector']=prm['type']
-// console.log('TEEEEEEEEEEESTTT');
 
-//     console.log(prm);
-    
     if(prm['type_stock'] === 'fodder') {  
         this.h_search_form = Stock_Search_Form_Data
 
@@ -99,23 +96,15 @@ export class StockExchangeComponent implements OnInit {
 
   search_Filter(id:number, type:string, type_stock:string):void {
     this.stockExchange.Filter_list_sub(id, type, type_stock).subscribe((res:ApiResponse<FilterListSub>) => {
-      // this.h_search_form.title = res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
       this.h_search_form.title =   ( type_stock=='local')? res.data?.sub_sections.find(i=> i.id==id)?.name: res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
-      // this.nameofstock.emit(this.h_search_form.title);
       localStorage.setItem('title',this.h_search_form.title)
       this.titleService.setTitle(this.h_search_form.title);
 
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
-      // let localOther=res.data?.sub_sections.filter(i=>i.id!=id) 
-      // let localSelected=res.data?.sub_sections.find(i=>i.id==id)
-      // localOther?.unshift(localSelected);
-      // this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option[0] =   ( type_stock=='local')? res.data?.sub_sections.find(i=>i.id==id): res.data?.fodder_sub_sections.find(i=>i.id==id);
-      
-      
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   ( type_stock=='local')? res.data?.sub_sections: res.data?.fodder_sub_sections;
-      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/statistics-members/${this.filterData['type']}/${id}`;
+      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/${this.filterData['sector']}/statistics/statistics-members/${this.filterData['type']}/${id}`;
       if(type_stock !='local'){
-              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${id}`;
+              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/${this.filterData['sector']}/comparison/${id}`;
       }
     // console.log(res.data);
     })
@@ -130,8 +119,8 @@ export class StockExchangeComponent implements OnInit {
       this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
-          this.router.navigate(['/stock-exchange',value.name])
-          this.filterData['sector'] = value.name
+          this.router.navigate(['/stock-exchange',value.id])
+          this.filterData['sector'] = value.id
           localStorage.setItem('stockTitle',value.title)
 
           break;
@@ -159,11 +148,7 @@ export class StockExchangeComponent implements OnInit {
           this.filterData['date'] = ''
 
           this.router.navigate(['/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id]);
-          // let location='/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id
-          // this.location.replaceState(location);
-          // this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/poultry/statistics/statistics-members/${this.filterData['type']}/${value.id}`;
-          // this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/poultry/comparison/${value.id}`;
-    
+
 
           break;
         case "com_id":
@@ -241,46 +226,19 @@ export class StockExchangeComponent implements OnInit {
   }
 
   fodderData(id:any, date:string,fod_id?:string,comp_id?:string,type?:string) {
-    // console.log(id, date,fod_id,comp_id);
 
     this.stockExchange.fodder(id,date,fod_id,comp_id).subscribe( res => {
-       console.log('========');
-       console.log(res);
+
       this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.stock_Ex_Data = res.data    
-      // this.companies= 
-      // this.companiesList = this.companies  
-        // if(type=="com_id" && comp_id!= ""){
-        //   document.getElementById('product')!.innerText = 'الكل';
-        // let productAll=JSON.parse(JSON.stringify(this.stock_Ex_Data.members));  
-        // console.log(productAll);
-        // this.productList=[]
-        // productAll= productAll.filter((ele: { feed: string; })=>{
-        // let temp=this.feedsList!.find((e)=>{return e.name==ele.feed});
-        // this.productList!.push(temp!)
-        // })}
+
         this.flag=false
           },
           err =>{
           this.flag=true;
         })
         
-      // else if(type=="feed_id"){
-      //   let temp=this.feedsList!.find((e)=>{return e.id+''==fod_id});
-      //   console.log('====================================');
-      //   console.log(temp);
-      //   console.log('====================================');
-      //   this.stock_Ex_Data.members=this.stock_Ex_Data.members.find((ele: { feed: string | undefined; })=>{return ele.feed==temp?.name})
-      // }
-
-  //  this.stockExchange.companies_items(id).subscribe( res => {
-  //   console.log(res.data);
-    
-  //   this.companies= res.data
-  //   this.companiesList = this.companies
-  // })
-
   }
 
   localData(id:string, data:string,fod_id?:string,comp_id?:string) {
