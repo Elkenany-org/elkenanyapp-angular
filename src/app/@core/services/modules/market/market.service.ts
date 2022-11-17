@@ -18,10 +18,10 @@ export class MarketService {
 
   constructor(private http: HttpClient) { }
 
-  market(section_id:string, sort:string,search:string,date:string ):Observable<ApiResponse<Market>> {
-  const headers= new HttpHeaders()
-  .set('android', '')
-    return this.http.get<ApiResponse<Market>>(`${env.ApiUrl}/store/ads-store?section_id=${section_id}&sort=${sort}&search=${search}&date=${date}`,{ 'headers': headers })
+  market(section_id:string, sort:string,search:string,date:string ,page:string):Observable<ApiResponse<Market>> {
+  // const headers= new HttpHeaders()
+  // .set('android', '')
+    return this.http.get<ApiResponse<Market>>(`${env.ApiUrl}/store/ads-store?section_id=${section_id}&sort=${sort}&search=${search}&date=${date}&page=${page}`)
   }
 
   Filter_list(section_id:string ):Observable<ApiResponse<FilterList>> {

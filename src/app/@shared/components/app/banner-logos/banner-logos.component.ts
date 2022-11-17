@@ -17,7 +17,7 @@ export class BannerLogosComponent implements OnInit {
 
   BannerConfig = BannerConfig 
   LogoConfig = logoConfig 
-  LogoConfig1 = logoConfig1 
+  // LogoConfig1 = logoConfig1 
   myClonedArray!:Logo[]
   constructor(
     private logoBannerService: BannersLogoservice,
@@ -26,7 +26,7 @@ export class BannerLogosComponent implements OnInit {
   ngOnInit(): void {
     this.BannerConfig.banner=[]
     this.LogoConfig.banner=[]
-    this.LogoConfig1.banner=[]
+    // this.LogoConfig1.banner=[]
 
       this.logoBannerService.getBanner().subscribe( res => {
      this.BannerConfig.banner =res as Banner[]
@@ -36,9 +36,9 @@ export class BannerLogosComponent implements OnInit {
     if(this.type == 'logo'){
           this.logoBannerService.getLogo().subscribe( res => {
           this.LogoConfig.banner =res as Logo[]
-          if(this.num == '2'){    
-            this.LogoConfig1.banner = res?.slice().reverse() || [];
-          }
+          // if(this.num == '2'){    
+          //   this.LogoConfig1.banner = res?.slice().reverse() || [];
+          // }
 
      })
     }
