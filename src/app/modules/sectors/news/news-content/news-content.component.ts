@@ -18,7 +18,7 @@ public news_content? : NewsDetials
               private router: Router
 ) { }
 new:any;
-video:any;
+video:any[]=[];
 banner:any[]=[]
 loading=false
 image:any=''
@@ -26,14 +26,17 @@ type:string=''
 href: string = "";
 
   ngOnInit(): void {
+    
     this.route.params.subscribe(prm => {
       //get type
+      this.video=[]
       this.href = this.router.url;
       let start = this.getPosition(this.href, '/', 2)
       let end = this.getPosition(this.href, '/', 3)
       this.type = this.href.slice(start+1,end)
       //end getting type
      this.news.news_details(prm['id']).subscribe(res => {
+      
       this.titleService.setTitle(res.data?.title!);
       this.news_content = res.data
 
@@ -41,11 +44,17 @@ href: string = "";
 
         let text=this.new.changingThisBreaksApplicationSecurity;
 
-        if(text.match("<iframe")){
-        let x=text.match("<iframe").index
-        let y=text.match("</iframe>").index+9
-this.video = this.sanitizer.bypassSecurityTrustHtml(text.slice(x,y));  
+        for (let index = 0; index < 3; index++) {
+              if(text.match("<iframe")){
+                  let x=text.match("<iframe").index
+                  let y=text.match("</iframe>").index+9
+                  this.video.push(this.sanitizer.bypassSecurityTrustHtml(text.slice(x,y)));  
+                  text=text.replace(text.slice(x,y),'');
+
+                  }
         }
+
+        
 
         if(text.match("<a")){
           let x=text.match("href").index
@@ -53,7 +62,7 @@ this.video = this.sanitizer.bypassSecurityTrustHtml(text.slice(x,y));
 
         }
 
-
+        
 
      })
     })
@@ -62,5 +71,6 @@ this.video = this.sanitizer.bypassSecurityTrustHtml(text.slice(x,y));
    getPosition(x:string, substring:string, index:any) {
     return x.split(substring, index).join(substring).length;
   }
+
   
 }
