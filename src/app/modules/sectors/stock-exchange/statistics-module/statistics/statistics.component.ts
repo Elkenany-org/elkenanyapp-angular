@@ -143,7 +143,7 @@ alert:boolean=false
         // this.StatisticsMember = res.data;
         this.StatisticsMemberSlected = res.data?.changes_subs;
         this.chartOptions = this.chart.drowShart(res.data!.changes_subs);
-        console.log(this.chartOptions);
+        console.log(this.StatisticsMemberSlected);
 
         setTimeout(() => {
           // this.StatisticsMember = res.data;

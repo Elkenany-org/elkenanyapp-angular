@@ -39,7 +39,7 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
           this.toster.showFail(e.error.error)
           this.alertService.error(e.error.error)
           console.log(e);
-          
+
           // this.router.navigate([""]);
           return EMPTY
         })
@@ -51,8 +51,8 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
      
         catchError((e) => {
           // this.router.navigate([""]);
+          this.toster.showFail(e.error.error)
           this.alertService.error(e.error.error)
-
           return EMPTY
         })
       )

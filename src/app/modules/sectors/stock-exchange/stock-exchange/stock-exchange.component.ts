@@ -106,7 +106,6 @@ export class StockExchangeComponent implements OnInit {
       if(type_stock !='local'){
               this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/${this.filterData['sector']}/comparison/${id}`;
       }
-    // console.log(res.data);
     })
 
 
@@ -147,7 +146,7 @@ export class StockExchangeComponent implements OnInit {
           this.filterData['com_id'] = '' 
           this.filterData['date'] = ''
 
-          this.router.navigate(['/stock-exchange/'+params['type']+'/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id]);
+          this.router.navigate(['/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id]);
 
 
           break;

@@ -147,7 +147,7 @@ if(value.type != 'sector'){
   {
 
     // console.log(params)
-         this.router.navigate([`/stock-exchange/${this.type}/${data.type}/${data.id}`])
+         this.router.navigate([`/stock-exchange/${this.filterData['sector']}/${data.type}/${data.id}`])
 
 
   }
