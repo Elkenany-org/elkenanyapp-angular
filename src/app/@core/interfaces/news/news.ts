@@ -55,6 +55,8 @@ export interface AllNews { //for news and tenders
   ////////////////home tenders
 
   export interface allSections {
+    banners: any[]
+    logos: any[]
     sections: Section[]
     current_page: number
     last_page: number

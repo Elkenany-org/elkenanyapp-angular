@@ -30,6 +30,8 @@
     <!-- End Partners -->
 
     <!-- Start breadcrumb -->
+    <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+    <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
     <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
     <!-- End Search Box -->
 

@@ -8,6 +8,7 @@ import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { TendersService } from '@app/@core/services/modules/tenders/tenders.service';
 import { map } from 'rxjs';
 import { Location } from '@angular/common';
+import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 @Component({
   selector: 'app-tenders-home',
   templateUrl: './tenders-home.component.html',
@@ -52,6 +53,8 @@ export class TendersHomeComponent implements OnInit {
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
       this.tenders_Home_Data = res['resolve'].data  as allSections
+      this.BannerLogoService.setBanner(res['resolve'].data.banners);
+      this.BannerLogoService.setLogo(res['resolve'].data.logos);
       this.loading = false;      
     })
 
@@ -89,6 +92,8 @@ export class TendersHomeComponent implements OnInit {
 
      this.tenderService.all_sections(this.filterData['sort'], this.filterData['search'],'1').subscribe( res => {
         this.tenders_Home_Data = res.data  as allSections
+        this.BannerLogoService.setBanner(res.data?.banners as Banner[]);
+        this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
         this.page.current_page = res.data?.current_page as number
         this.page.last_page =  res.data?.last_page  as number
         this.loading = false;

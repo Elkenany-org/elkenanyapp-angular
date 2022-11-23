@@ -53,8 +53,8 @@ export class TendersComponent implements OnInit {
         this.page.current_page = res['resolve'].data.current_page
         this.page.last_page =  res['resolve'].data.last_page
         this.News = res['resolve'].data.data  as News[]
-        this.BannerLogoService.setBanner(res['resolve'].banners);
-        this.BannerLogoService.setLogo(res['resolve'].logos);
+        this.BannerLogoService.setBanner(res['resolve'].data.banners);
+        this.BannerLogoService.setLogo(res['resolve'].data.logos);
         this.loading = false;      
       })
   

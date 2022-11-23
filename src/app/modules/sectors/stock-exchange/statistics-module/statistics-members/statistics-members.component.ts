@@ -104,7 +104,6 @@ export class StatisticsMembersComponent implements OnInit {
 
         this.StatisticsMemberSlected = data['resolve'].data?.changes_members
         this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
-         console.log(this.StatisticsMemberSlected);
 
       }
 
