@@ -59,8 +59,9 @@
           margin-right: 10px;
 
           &:hover {
-            background-color: #F0F0F0;
-            border-radius: 10px;
+            // color: $font-color-main !important;
+            // background-color: #F0F0F0;
+            // border-radius: 10px;
           }
         }
       }
@@ -99,7 +100,8 @@
         margin-right: 10px;
 
         &:hover {
-          background-color: $bg-color-main;
+          // background-color: $bg-color-main;
+          color: $font-color-main !important;
         }
       }
     }
