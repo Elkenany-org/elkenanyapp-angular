@@ -159,6 +159,7 @@ export interface Result {
   short_desc: string
   address: string
   type: string
+  section_id:string
   created_at:string
 }
 

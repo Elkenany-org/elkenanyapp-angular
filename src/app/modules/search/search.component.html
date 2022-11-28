@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="product__content">
                                     <header class="product__title">
-                                        <a  [routerLink]="['/companies-guide/animal/companies/no/',i.id]">
+                                        <a  [routerLink]="['/companies-guide',i.section_id,'companies',i.section_id,i.id]">
 
                                       {{i.name}}
                                     </a>
@@ -78,7 +78,7 @@
                                   </div>
                                   <div class="product__content">
                                       <header class="product__title">
-                                        <a  [routerLink]="['/companies-guide/poultry/companies_details/no/',i.id]">
+                                        <a  [routerLink]="['/companies-guide/1/companies_details/1/',i.id]">
                                             {{i.name}}
                                           </a>
                                       </header>
@@ -131,7 +131,7 @@
 
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a  [routerLink]="['/stock-exchange/poultry/stock-exchange/no/fodder/',i.id]">{{i.name}}</a>
+                                    <a  [routerLink]="['/stock-exchange',i.section_id,'fodder',i.id]">{{i.name}}</a>
                                 </header>
                             </div>
 
@@ -142,7 +142,7 @@
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a  [routerLink]="['/stock-exchange/poultry/stock-exchange/no/local/',i.id]">
+                                    <a  [routerLink]="['/stock-exchange',i.section_id,'local',i.id]">
                                     {{i.name}}
                                     </a>
                                 </header>
@@ -221,7 +221,7 @@
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a [routerLink]="['/news/poultry/',i.id]">
+                                    <a [routerLink]="['/news/',i.section_id,i.id]">
                                   {{i.name}}
                                     </a>
                                 </header>
@@ -264,7 +264,7 @@
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a [routerLink]="['/gallery/poultry/',i.id]">
+                                    <a [routerLink]="['/gallery/0/',i.id]">
                                   {{i.name}}
                                     </a>
                                 </header>
@@ -322,7 +322,7 @@
                             </div>
                             <div class="product__content">
                                 <header class="product__title">
-                                    <a [routerLink]="['/market/poultry/ad_details/',i.id]">
+                                    <a [routerLink]="['/market',i.section_id,'ad_details',i.id]">
                                   {{i.name}}
                                     </a>
                                 </header>

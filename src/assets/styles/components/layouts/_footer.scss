@@ -3,35 +3,37 @@ footer {
 
   hr {
     width: 100%;
-    border-top-color: $color-white;
+    border-top-color: $font-color-second ;
     margin: 2rem auto;
+    height: 0.3rem;
+    opacity: 0.7 !important;
   }
 
   .copyright__text {
-    color: $color-white;
+    color: $font-color-second;
     margin-bottom: 0;
     text-align: center;
   }
 
-  background-color: $bg-color-main;
+  // background-color: $bg-color-main;
   margin-top: 2em;
   padding-top: 2em;
   border-radius: 35px 35px 0 0;
   direction: rtl;
 
   .overlay {
-    background-color: $bg-color-second;
+    // background-color: $bg-color-second;
+    background-image: url(../../../../assets/images/footer.png);
     border-radius: 0 0 0 0;
-    padding: 2em 0 1em;
+    padding: 2em 4rem;;
 
     ul {
       text-align: right;
 
       li {
         margin-bottom: 5px;
-
         a {
-          color: $font-color-main;
+          color: $font-color-second;
           border-bottom: 1px solid transparent;
           display: inline-block !important;
 
@@ -42,11 +44,20 @@ footer {
       }
 
       .title {
-        color: $font-color-third;
-        font-size: 20px;
+        color: $font-color-second;
+        font-size: 18px;
+        font-weight: bold;
+
+
       }
     }
-
+    .title {
+      color: $font-color-second;
+      font-size: 18px;
+      font-weight: bold;
+      padding-bottom:0.6rem;
+      padding-top:0.6rem;
+    }
     .media-box {
       margin-top: 15px;
       text-align: center;
