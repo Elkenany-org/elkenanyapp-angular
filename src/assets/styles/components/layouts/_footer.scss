@@ -90,8 +90,9 @@ footer {
 
   .social__bar {
     @include semi-flex(center, center, row, wrap);
-    padding: 12px 0;
+    padding: 0;
     width: 100%;
+    justify-content: normal;
     @keyframes focuse {
       0% {
         transform: scale(0.8);
@@ -240,7 +241,7 @@ footer {
       margin-bottom: 1em;
 
       li {
-        text-align: center;
+        text-align: right;
       }
     }
   }
