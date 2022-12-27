@@ -18,6 +18,7 @@ import { Location } from '@angular/common';
 })
 export class TendersComponent implements OnInit {
 
+  private flagFirsttime:boolean=false;
   public loading: boolean = false
   public News?:News[]
   private type?:string
@@ -31,7 +32,7 @@ export class TendersComponent implements OnInit {
   }
   public h_search_form: JsonFormData | any 
 
-  constructor( private activatedRoute: ActivatedRoute,
+  constructor( private Activatedroute: ActivatedRoute,
                private BannerLogoService:BannersLogoservice,
                private route: ActivatedRoute, 
                private TendersNews: TendersService,
@@ -45,7 +46,19 @@ export class TendersComponent implements OnInit {
   
       this.h_search_form = Tenders_Search_Form_Data //set initial data to horizontal component 
   
-      this.activatedRoute.data.pipe(
+
+        this.Activatedroute.queryParamMap.subscribe((params) => {
+        if(this.flagFirsttime){
+          this.page.current_page = +params.get('page')!;
+          this.TendersNews.all_news(this.section_id||'',this.filterData['sort'],this.filterData['search'],this.page.current_page+'').subscribe(res => {
+            this.page.current_page = res.data?.current_page as number
+             this.page.last_page =  res.data?.last_page  as number
+             this.News = res.data?.data
+          })
+        }}
+      );
+
+      this.Activatedroute.data.pipe(
         map((data) => {
          return data
          })
@@ -55,9 +68,12 @@ export class TendersComponent implements OnInit {
         this.News = res['resolve'].data.data  as News[]
         this.BannerLogoService.setBanner(res['resolve'].data.banners);
         this.BannerLogoService.setLogo(res['resolve'].data.logos);
-        this.loading = false;      
+        this.loading = false;     
+        this.flagFirsttime=true
       })
-  
+      
+
+
       this.route.params.subscribe( params => {  
         this.section_id=params['id']
         this.TendersNews.filter_list(params['id']).subscribe(
@@ -98,7 +114,7 @@ export class TendersComponent implements OnInit {
        }
       })    
       
-      this.TendersNews.all_news(this.filterData['sector'],this.filterData['sort'],this.filterData['search'],1).subscribe(res => {
+      this.TendersNews.all_news(this.filterData['sector'],this.filterData['sort'],this.filterData['search'],'1').subscribe(res => {
         this.News= res.data?.data 
         this.page.current_page = res.data?.current_page as number
         this.page.last_page =  res.data?.last_page  as number
@@ -106,7 +122,9 @@ export class TendersComponent implements OnInit {
         this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sections
   
-        this.location.go(`tenders/${ this.filterData['sector'] }`);
+        this.router.navigate([`tenders/${ this.filterData['sector'] }`], { queryParams: { page: 1 } });
+
+        // this.location.go(`tenders/${ this.filterData['sector'] }`);
         this.section_id=this.filterData['sector']
 
   
@@ -119,19 +137,19 @@ export class TendersComponent implements OnInit {
   
   
     next_page(page:number):void{
-      this.filterData["page"] = page+''
+      this.router.navigate([`tenders/${this.section_id}`], { queryParams: { page: page } });
+      window.scroll(0,0);
+
+      // this.filterData["page"] = page+''
+
       // console.log(page);
       
-      this.TendersNews.all_news(this.section_id||'',this.filterData['sort'],this.filterData['search'],+this.filterData['page']).subscribe(res => {
-        this.page.current_page = res.data?.current_page as number
-         this.page.last_page =  res.data?.last_page  as number
-         this.News = res.data?.data
-        //  console.log(this.page.last_page );
-        //  console.log(res);
-  
-         window.scroll(0,0);
-  
-      })
+      // this.TendersNews.all_news(this.section_id||'',this.filterData['sort'],this.filterData['search'],this.filterData['page']).subscribe(res => {
+      //   this.page.current_page = res.data?.current_page as number
+      //    this.page.last_page =  res.data?.last_page  as number
+      //    this.News = res.data?.data
+      //    window.scroll(0,0);
+      // })
   
 }
 

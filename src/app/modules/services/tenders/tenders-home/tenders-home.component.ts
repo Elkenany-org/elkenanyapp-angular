@@ -16,6 +16,7 @@ import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 })
 export class TendersHomeComponent implements OnInit {
 
+  private flagFirsttime:boolean=false;
   public loading: boolean = true   
   public h_search_form: JsonFormData | any 
  public tenders_Home_Data?: allSections 
@@ -29,23 +30,41 @@ export class TendersHomeComponent implements OnInit {
   page:''
 }
   constructor(
+    private Activatedroute: ActivatedRoute,
     private tenderService: TendersService,
-    private route: ActivatedRoute, 
     private router: Router,  
     private location: Location,
     private BannerLogoService:BannersLogoservice,
     private titleService:Title
-) { }
+) { 
 
+}
+ngOnChanges(){
+  console.log('====================================');
+  console.log('change');
+  console.log('====================================');
+}
   ngOnInit(): void {
-
-
 
     this.titleService.setTitle(' المناقصات ');
   
     this.h_search_form = Tenders_Home_Search_Form_Data //set initial data to horizontal component 
 
-    this.route.data.pipe(
+
+    
+      this.Activatedroute.queryParamMap.subscribe((params) => {
+        if(this.flagFirsttime){
+          this.page.current_page = +params.get('page')!;
+          this.tenderService.all_sections(this.filterData['sort'],this.filterData['search'],this.page.current_page+'').subscribe(res => {
+          this.page.current_page = res.data?.current_page as number
+          this.page.last_page =  res.data?.last_page  as number
+          this.tenders_Home_Data = res.data  
+      })
+        }}
+      );
+   
+
+    this.Activatedroute.data.pipe(
       map((data) => {
        return data
        })
@@ -56,7 +75,12 @@ export class TendersHomeComponent implements OnInit {
       this.BannerLogoService.setBanner(res['resolve'].data.banners);
       this.BannerLogoService.setLogo(res['resolve'].data.logos);
       this.loading = false;      
+      this.flagFirsttime=true
     })
+
+
+
+
 
       this.tenderService.filter_home().subscribe(
         (res) => {
@@ -71,7 +95,7 @@ export class TendersHomeComponent implements OnInit {
   filter(value:any) {
     let flag=false;
     let sort='';
-    this.route.params.subscribe( params => {
+    this.Activatedroute.params.subscribe( params => {
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sort":
@@ -103,18 +127,24 @@ export class TendersHomeComponent implements OnInit {
   }
   navigate(id: string): void
   {
-    this.router.navigate([`tenders/${id}`]);
+    this.router.navigate([`tenders/${id}`], { queryParams: { page: 0 } });
   }
 
   next_page(page:number):void{
-    this.filterData["page"] = page+''
-    this.tenderService.all_sections(this.filterData['sort'],this.filterData['search'],this.filterData['page']).subscribe(res => {
-      this.page.current_page = res.data?.current_page as number
-       this.page.last_page =  res.data?.last_page  as number
-       this.tenders_Home_Data = res.data
-       window.scroll(0,0);
+    this.router.navigate([`tenders`], { queryParams: { page: page } });
+    window.scroll(0,0);
 
-    })
+    // this.filterData["page"] = page+''
+    // this.tenderService.all_sections(this.filterData['sort'],this.filterData['search'],this.filterData['page']).subscribe(res => {
+    //   this.page.current_page = res.data?.current_page as number
+    //    this.page.last_page =  res.data?.last_page  as number
+       
+    //   // this.location.go(`/tenders/page/${page}`);
+    //   //  this.router.navigate([`tenders/page/${page}`]);
+    //    this.tenders_Home_Data = res.data
+
+    // })
 
 }
+
 }

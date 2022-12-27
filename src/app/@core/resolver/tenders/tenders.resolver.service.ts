@@ -18,7 +18,7 @@ export class TendersResolver implements Resolve<ApiResponse<AllNews>> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ApiResponse<AllNews>> {
     // console.log("Tenders Resolver is work ",route.paramMap.get('type'))
 
-    return this.tendersNews.all_news(route.paramMap.get('id')||'1','','',1).pipe(
+    return this.tendersNews.all_news(route.paramMap.get('id')||'1','','',route.queryParamMap.get('page')+'').pipe(
       catchError(() => {
         this.router.navigate([""]);
         return EMPTY

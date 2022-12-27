@@ -18,7 +18,7 @@ export class TendersHomeResolver implements Resolve<ApiResponse<allSections>> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ApiResponse<allSections>> {
    console.log("Tenders Resolver is work ")
 
-    return this.tendersSections.all_sections('','','').pipe(
+    return this.tendersSections.all_sections('','',route.queryParamMap.get('page')+'').pipe(
       catchError(() => {
         this.router.navigate([""]);
         return EMPTY
