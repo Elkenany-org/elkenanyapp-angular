@@ -20,6 +20,7 @@ import { Title } from '@angular/platform-browser';
   encapsulation:ViewEncapsulation.None
 })
 export class NewsHomeComponent implements OnInit {
+  private flagFirsttime:boolean=false;
 
   public loading: boolean = false
   public News?:News[]
@@ -48,6 +49,20 @@ export class NewsHomeComponent implements OnInit {
 
     this.h_search_form = News_Search_Form_Data //set initial data to horizontal component 
 
+
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      if(this.flagFirsttime){
+        this.page.current_page = +params.get('page')!;
+        this.news.all_news(this.type||'',+params.get('sort')!||1,this.filterData['search'], this.page.current_page).subscribe(res => {
+          this.page.current_page = res.data?.current_page as number
+           this.page.last_page =  res.data?.last_page  as number
+           this.News = res.data?.data
+        })
+      }}
+    );
+ 
+
+
     this.activatedRoute.data.pipe(
       map((data) => {
        return data
@@ -59,7 +74,9 @@ export class NewsHomeComponent implements OnInit {
       this.News = res['resolve'].data.data  as News[]
       this.BannerLogoService.setBanner(res['resolve'].data.banners);
       this.BannerLogoService.setLogo(res['resolve'].data.logos);
-      this.loading = false;      
+      this.loading = false;     
+      this.flagFirsttime=true
+ 
     })
 
     this.route.params.subscribe( params => {
@@ -70,7 +87,7 @@ export class NewsHomeComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
-        this.location.go(`/news/${this.type }`);
+        this.location.go(`/news/${this.type }`,'sort=1&page=0');
       }) 
     })   
     
@@ -107,7 +124,8 @@ export class NewsHomeComponent implements OnInit {
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sections
 
-      this.location.go(`news/${ this.filterData['sector'] }`);
+      this.location.go(`/news/${ this.filterData['sector'] }`,`sort=${this.filterData['sort']}&page=1`);
+
       this.type=this.filterData['sector']
 
     })
@@ -120,18 +138,18 @@ export class NewsHomeComponent implements OnInit {
 
   next_page(page:number):void{
     this.filterData["page"] = page+''
-    // console.log(page);
-    
-    this.news.all_news(this.type||'',+this.filterData['sort'],this.filterData['search'],+this.filterData['page']).subscribe(res => {
-      this.page.current_page = res.data?.current_page as number
-       this.page.last_page =  res.data?.last_page  as number
-       this.News = res.data?.data
-      //  console.log(this.page.last_page );
-      //  console.log(res);
+    this.router.navigate([`news/${this.type}`], { queryParams: { sort:this.filterData['sort'], page: page } });
+           window.scroll(0,0);
 
-       window.scroll(0,0);
+    // this.news.all_news(this.type||'',+this.filterData['sort'],this.filterData['search'],+this.filterData['page']).subscribe(res => {
+    //   this.page.current_page = res.data?.current_page as number
+    //    this.page.last_page =  res.data?.last_page  as number
+    //    this.News = res.data?.data
+    //   //  console.log(this.page.last_page );
+    //   //  console.log(res);
 
-    })
+
+    // })
 
 
       

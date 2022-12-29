@@ -23,14 +23,14 @@
                                     <li><a routerLink="/stock-exchange/0">البورصة اليومية</a></li>
                                     <li><a routerLink="/market/0">سوق الكناني</a></li>
                                     <li><a routerLink="/companies-guide/0">دليل الشركات</a></li>
-                                    <li><a routerLink="/news/0">الأخبار</a></li>
+                                    <li><a routerLink="/news/0" [queryParams]="{sort:1, page: 0 }" >الأخبار</a></li>
                                     <li><a routerLink="/employment">الوظائف</a></li>
 
                                 </ul>
                                 <ul class="col-6" style="list-style: disc ">   
                                     <li><a routerLink="/gallery/0">المعارض</a></li>
                                     <li><a routerLink="/magazine/0">الدلائل والمجلات</a></li>
-                                    <li><a routerLink="/tenders">المناقصات</a></li> 
+                                    <li><a routerLink="/tenders" [queryParams]="{sort:'', page: 1 }">المناقصات</a></li> 
                                     <li><a routerLink="/ships-traffic">حركة السفن</a></li>
                                 </ul>
 
