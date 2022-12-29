@@ -39,23 +39,17 @@ export class TendersHomeComponent implements OnInit {
 ) { 
 
 }
-ngOnChanges(){
-  console.log('====================================');
-  console.log('change');
-  console.log('====================================');
-}
+
   ngOnInit(): void {
 
     this.titleService.setTitle(' المناقصات ');
   
     this.h_search_form = Tenders_Home_Search_Form_Data //set initial data to horizontal component 
 
-
-    
       this.Activatedroute.queryParamMap.subscribe((params) => {
         if(this.flagFirsttime){
           this.page.current_page = +params.get('page')!;
-          this.tenderService.all_sections(this.filterData['sort'],this.filterData['search'],this.page.current_page+'').subscribe(res => {
+          this.tenderService.all_sections(params.get('sort')+'',this.filterData['search'],this.page.current_page+'').subscribe(res => {
           this.page.current_page = res.data?.current_page as number
           this.page.last_page =  res.data?.last_page  as number
           this.tenders_Home_Data = res.data  
@@ -85,8 +79,8 @@ ngOnChanges(){
       this.tenderService.filter_home().subscribe(
         (res) => {
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id != 2).selected=0
+        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id == 2).selected=1
       }) 
   
 
@@ -94,7 +88,7 @@ ngOnChanges(){
 
   filter(value:any) {
     let flag=false;
-    let sort='';
+    let sort='';   
     this.Activatedroute.params.subscribe( params => {
       // this.filterData['sector'] = params['type']
       switch ( value.type ) {
@@ -104,8 +98,10 @@ ngOnChanges(){
           }else{
             this.filterData['sort'] = value.id 
           }
-          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === value.id).selected=1
-          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== value.id).selected=0
+
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id == value.id).selected=1
+          this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id != value.id).selected=0   
+
           break;
           case "search":
             this.filterData['search'] = value.name 
@@ -121,17 +117,19 @@ ngOnChanges(){
         this.page.current_page = res.data?.current_page as number
         this.page.last_page =  res.data?.last_page  as number
         this.loading = false;
-
+        // this.location.go(`/tenders`,`page=1`);
+        this.router.navigate([`tenders`], { queryParams: {sort:this.filterData['sort'], page: this.page.current_page } });
       })
     })
   }
   navigate(id: string): void
   {
-    this.router.navigate([`tenders/${id}`], { queryParams: { page: 0 } });
+    this.router.navigate([`tenders/${id}`], { queryParams: { sort:'', page: 0 } });
   }
 
   next_page(page:number):void{
-    this.router.navigate([`tenders`], { queryParams: { page: page } });
+ 
+    this.router.navigate([`tenders`], { queryParams: { sort:this.filterData['sort'], page: page } });
     window.scroll(0,0);
 
     // this.filterData["page"] = page+''

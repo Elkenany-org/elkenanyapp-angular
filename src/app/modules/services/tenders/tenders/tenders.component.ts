@@ -50,7 +50,7 @@ export class TendersComponent implements OnInit {
         this.Activatedroute.queryParamMap.subscribe((params) => {
         if(this.flagFirsttime){
           this.page.current_page = +params.get('page')!;
-          this.TendersNews.all_news(this.section_id||'',this.filterData['sort'],this.filterData['search'],this.page.current_page+'').subscribe(res => {
+          this.TendersNews.all_news(this.section_id||'',params.get('sort')||'',this.filterData['search'],this.page.current_page+'').subscribe(res => {
             this.page.current_page = res.data?.current_page as number
              this.page.last_page =  res.data?.last_page  as number
              this.News = res.data?.data
@@ -122,7 +122,7 @@ export class TendersComponent implements OnInit {
         this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sections
   
-        this.router.navigate([`tenders/${ this.filterData['sector'] }`], { queryParams: { page: 1 } });
+        this.router.navigate([`tenders/${ this.filterData['sector'] }`], { queryParams: { sort:this.filterData['sort'] , page: 1 } });
 
         // this.location.go(`tenders/${ this.filterData['sector'] }`);
         this.section_id=this.filterData['sector']
@@ -137,7 +137,7 @@ export class TendersComponent implements OnInit {
   
   
     next_page(page:number):void{
-      this.router.navigate([`tenders/${this.section_id}`], { queryParams: { page: page } });
+      this.router.navigate([`tenders/${this.section_id}`], { queryParams: { sort:this.filterData['sort'] , page: page } });
       window.scroll(0,0);
 
       // this.filterData["page"] = page+''
