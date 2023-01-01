@@ -21,7 +21,7 @@
                             <div class="row " style="margin-right: 0.4rem;">
                             <ul class="col-6" style="list-style: disc ">
                                     <li><a routerLink="/stock-exchange/0">البورصة اليومية</a></li>
-                                    <li><a routerLink="/market/0">سوق الكناني</a></li>
+                                    <li><a routerLink="/market/0" [queryParams]="{ sort:'', page: 1 }">سوق الكناني</a></li>
                                     <li><a routerLink="/companies-guide/0">دليل الشركات</a></li>
                                     <li><a routerLink="/news/0" [queryParams]="{sort:1, page: 0 }" >الأخبار</a></li>
                                     <li><a routerLink="/employment">الوظائف</a></li>

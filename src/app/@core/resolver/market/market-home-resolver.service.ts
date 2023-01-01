@@ -18,7 +18,7 @@ export class MarketHomeResolver implements Resolve<ApiResponse<Market>>{
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):Observable<ApiResponse<Market>>  {
     console.log("Market Resolver is work ",route.paramMap.get('type'))
-   return this.Market.market(route.paramMap.get('type')||'','','','','').pipe(
+   return this.Market.market(route.paramMap.get('type')||'',route.queryParamMap.get('sort')||'','','',route.queryParamMap.get('page')||'').pipe(
      catchError(() => {
        this.router.navigate([""]);
        return EMPTY
