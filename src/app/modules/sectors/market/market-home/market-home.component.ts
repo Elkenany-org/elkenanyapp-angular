@@ -16,6 +16,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./market-home.component.scss']
 })
 export class MarketHomeComponent implements OnInit {
+  private flagFirsttime:boolean=false;
 
   public loading: boolean = true
 
@@ -33,7 +34,6 @@ export class MarketHomeComponent implements OnInit {
   }
   constructor(
     private MarketService: MarketService,
-    private route: ActivatedRoute, 
     private router: Router,  
     private activatedRoute: ActivatedRoute,
     private location: Location,
@@ -44,18 +44,40 @@ export class MarketHomeComponent implements OnInit {
   ngOnInit(): void {
     this.h_search_form = market_Search_Form_Data //set initial data to horizontal component 
     this.titleService.setTitle(' اعلانات السوق ');
-    this.route.params.subscribe(params => {
+
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      if(this.flagFirsttime){
+        this.page.current_page = +params.get('page')!;
+        this.MarketService.market(this.type, params.get('sort')+'',this.filterData['search'],this.filterData['date'],this.page.current_page+'').subscribe(res => {
+          this.page.current_page = res.data?.current_page as number
+          this.page.last_page = res.data?.last_page as number
+          this.Market_Data =res.data?.data 
+    console.log('====================================');
+    console.log('query');
+    console.log('====================================');
+        })
+      }}
+    );
+ 
+
+
+    this.activatedRoute.params.subscribe(params => {
       this.type =params['type']
       this.MarketService.Filter_list(this.type).subscribe( res => {
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1  
+        if(! this.flagFirsttime){
         this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
-        this.location.go(`/market/${this.type }`);
-
+        this.location.go(`/market/${this.type}`,`sort=&page=1`);
+        }
+        console.log('====================================');
+        console.log('params');
+        console.log('====================================');
       })
-      
+       })
+       
       this.activatedRoute.data.pipe(
         map((data) => {
           return data['resolve'].data
@@ -67,25 +89,27 @@ export class MarketHomeComponent implements OnInit {
         this.BannerLogoService.setBanner( res.banners);
         this.BannerLogoService.setLogo(res.logos);
         this.loading = false;
-
+        this.flagFirsttime=true
+console.log('====================================');
+console.log('resolve');
+console.log('====================================');
       })
 
       // this.MarketService.my_ads(this.type).subscribe(res => {
       //   console.log(res)
       // })
-    })
+   
 
 
   }
 
   filter(value:any) {
-    this.route.params.subscribe( params => {
+    this.activatedRoute.params.subscribe( params => {
       this.filterData['sector'] = params['type']
       this.filterData['date']=""
       switch ( value.type ) {
         case "sector":
           this.filterData['sector'] = value.id
-          this.router.navigate(['/market/',this.filterData['sector']])
             break;
         case "sort":
           this.filterData['sort'] = value.id 
@@ -108,7 +132,6 @@ export class MarketHomeComponent implements OnInit {
 
     })
 
-    if(value.type != 'sector'){
           this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'], this.filterData['date'],'').subscribe(res => {
       this.page.current_page = res.data?.current_page as number
       this.page.last_page = res.data?.last_page as number
@@ -117,10 +140,14 @@ export class MarketHomeComponent implements OnInit {
       this.BannerLogoService.setLogo(res.data?.logos as Logo[]);
       this.h_search_form.controls.find((i:any) => i.role === "sector").option =res.data?.sectors
       this.type = this.filterData['sector']
-      // this.location.go(`market/${this.type }`);
+      // this.location.go(`market/${this.type}`);
+      this.router.navigate(['/market/',this.filterData['sector']], { queryParams: {sort:this.filterData['sort'], page: this.page.current_page } })
+      // this.location.go(`/market/${ this.filterData['sector'] }`,`sort=${this.filterData['sort']}&page=1`);
 
+      console.log('====================================');
+      console.log('filter');
+      console.log('====================================');
     })
-    }
 
 
   }
@@ -133,13 +160,9 @@ export class MarketHomeComponent implements OnInit {
   }
 
   next_page(page:number):void{
-    this.filterData["page"] = page+''
-    this.filterData["sector"] =this.type
-     this.MarketService.market(this.filterData['sector'], this.filterData['sort'],this.filterData['search'],this.filterData['date'],this.filterData["page"]).subscribe(res => {
-      this.page.current_page = res.data?.current_page as number
-      this.page.last_page = res.data?.last_page as number
-      this.Market_Data =res.data?.data 
-
-    })
+    // this.filterData["page"] = page+''
+    // this.filterData["sector"] =this.type
+    this.router.navigate(['/market/',this.type], { queryParams: { sort:this.filterData['sort'], page: page } });
+    window.scroll(0,0);
   }
 }
