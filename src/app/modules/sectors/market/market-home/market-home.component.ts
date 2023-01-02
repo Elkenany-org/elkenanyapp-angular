@@ -52,9 +52,7 @@ export class MarketHomeComponent implements OnInit {
           this.page.current_page = res.data?.current_page as number
           this.page.last_page = res.data?.last_page as number
           this.Market_Data =res.data?.data 
-    console.log('====================================');
-    console.log('query');
-    console.log('====================================');
+
         })
       }}
     );
@@ -72,9 +70,6 @@ export class MarketHomeComponent implements OnInit {
         this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
         this.location.go(`/market/${this.type}`,`sort=&page=1`);
         }
-        console.log('====================================');
-        console.log('params');
-        console.log('====================================');
       })
        })
        
@@ -90,9 +85,7 @@ export class MarketHomeComponent implements OnInit {
         this.BannerLogoService.setLogo(res.logos);
         this.loading = false;
         this.flagFirsttime=true
-console.log('====================================');
-console.log('resolve');
-console.log('====================================');
+
       })
 
       // this.MarketService.my_ads(this.type).subscribe(res => {
@@ -144,9 +137,6 @@ console.log('====================================');
       this.router.navigate(['/market/',this.filterData['sector']], { queryParams: {sort:this.filterData['sort'], page: this.page.current_page } })
       // this.location.go(`/market/${ this.filterData['sector'] }`,`sort=${this.filterData['sort']}&page=1`);
 
-      console.log('====================================');
-      console.log('filter');
-      console.log('====================================');
     })
 
 
