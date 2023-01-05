@@ -25,10 +25,7 @@ export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
       country_id:"1",
       city_id:"",
       search: "",
-      page:'1'
-
-
-      
+      page:route.queryParamMap.get('page')||''
     }
 
 
