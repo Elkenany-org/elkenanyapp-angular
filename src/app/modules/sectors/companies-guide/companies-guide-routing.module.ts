@@ -19,7 +19,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'companies/:type/:id',
+    path: 'companies/:type',
     component: CoGuideComponent,
     resolve: {
       resolve: CompaniesGuideResolver

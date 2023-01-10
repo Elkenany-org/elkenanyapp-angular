@@ -62,7 +62,9 @@ export class CoGuideComponent implements OnInit {
     private location: Location,
 
     private BannerLogoService:BannersLogoservice,
-    private titleService : Title) { }
+    private titleService : Title) { 
+ 
+    }
 
   ngOnInit(): void {
 
@@ -72,8 +74,7 @@ export class CoGuideComponent implements OnInit {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-      // console.log(res['resolve'].data);
-      
+
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
        this.Companies = res['resolve'].data  as Companies
@@ -89,12 +90,14 @@ export class CoGuideComponent implements OnInit {
     })
 
 
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+          this.id= params.get('sub') || ''
+
+    })
 
 
-
-    this.route.params.subscribe( params => {
+    this.route.params.subscribe( params => {      
       this.type = params['type']
-      this.id= params['id']
       // this.sub.current_sub=params['id']
       this.companiesGuideService.co_Filter_listV2(params['type'],'').subscribe((res:ApiResponse<FilterListCompanies>) => {
 
@@ -110,11 +113,11 @@ export class CoGuideComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
 
 
-        this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == params['id']).selected=1
-        this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id != params['id']).selected=0
+        this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id == this.id).selected=1
+        this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id != this.id).selected=0
 
         this.filterData["section_id"]= params['type']
-        this.filterData["sub_id"]= params['id']
+        this.filterData["sub_id"]= this.id+''
 
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
@@ -141,57 +144,45 @@ export class CoGuideComponent implements OnInit {
    }
 
    window.addEventListener('popstate', this.onBackButtonEvent);
-  //  window.addEventListener('popstate', this.onBackButtonEvent1);
 
 
   }
 
   ngOnDestroy() {
     window.removeEventListener('popstate', this.onBackButtonEvent);
-    // window.removeEventListener('popstate', this.onBackButtonEvent1);
 
   }
 
   onBackButtonEvent = (event: any) => {
     const page = this.getPageNumberFromUrl();
     const sub = this.getSubIdFromUrl();
-    if (page !== this.page.current_page  && sub == +this.filterData['sub_id']) {
-      console.log(this.filterData + 'hhh');
+    if (page !== this.page.current_page || sub !== +this.filterData["sub_id"] ) {
       
+
       this.page.current_page = page;
       this.filterData["page"] = page+''
-      this.companiesGuideService.Companiesv2(this.filterData).subscribe(res => {
+      this.filterData["sub_id"] = sub+''
+
+      this.companiesGuideService.Companiesv2(this.filterData).subscribe(res => {  
+
         this.page.current_page = res.data?.current_page as number
         this.page.last_page = res.data?.last_page as number
         this.Companies = res.data  as Companies
         if(page>1){
           this.Companies.compsort = [];
         }
+
+        this.setSelectedSubSection(sub)
+
+        this.typeAr= this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === sub).name
+        this.titleService.setTitle(' قسم '+this.typeAr);
         window.scroll(0,0);
        })
-    }
+     }
     
 
   }
-  // onBackButtonEvent1 = (event: any) => {
-  //   const sub = this.getSubIdFromUrl();
-    
-  //   if (sub !== this.sub.current_sub) {
-  //     this.sub.current_sub = sub;
-  //     this.filterData["sub"] = sub+''
-  //     this.companiesGuideService.Companiesv2(this.filterData).subscribe(res => {
-  //       this.page.current_page = res.data?.current_page as number
-  //       this.page.last_page = res.data?.last_page as number
-  //       this.Companies = res.data  as Companies
-  //       // if(page>1){
-  //       //   this.Companies.compsort = [];
-  //       // }
-  //       window.scroll(0,0);
-  //      })
-  //   }
-    
 
-  // }
 
   filter(option:any) {
     let sectorId: any 
@@ -213,13 +204,9 @@ export class CoGuideComponent implements OnInit {
       switch ( option.type ) {
         case "subsection":
           this.filterData["sub_id"] = option.id
+          this.location.go(`/companies-guide/${this.type}/companies/${this.type}`,`page=${this.filterData['page']}&sub=${this.filterData["sub_id"]}`);
 
-          // let url=`/companies-guide/${params['type']}/companies/${params['type']}/${option.id}?page=${this.filterData['page']}&sub=${option.id}`
-          // this.location.replaceState(url);
-          this.router.navigate([`/companies-guide/${params['type']}/companies/${params['type']}/${this.filterData["sub_id"]}`], { queryParams: { page: '1' ,sub:this.filterData["sub_id"]} });
-          this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id).selected=1
-          this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id !== option.id).selected=0
-
+          this.setSelectedSubSection(option.id)
           this.typeAr= this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === option.id).name
           this.titleService.setTitle(' قسم '+this.typeAr);
 
@@ -246,7 +233,6 @@ export class CoGuideComponent implements OnInit {
             break;
         case "countries":
           this.filterData["country_id"] = option.id 
-          // this.filterData["city_id"] = ''
             break
         case "cities":
           this.filterData["city_id"] = option.id 
@@ -274,8 +260,8 @@ export class CoGuideComponent implements OnInit {
          
     }) }
   // }
-    if(option.type != 'sector' && option.type != 'subsection'){
-      console.log(this.filterData);
+    if(option.type != 'sector'){
+      
       this.companiesGuideService.Companiesv2(this.filterData).subscribe( res => {
         // this.typeAr= option.title
         this.page.current_page = res.data?.current_page!
@@ -323,8 +309,6 @@ export class CoGuideComponent implements OnInit {
     this.filterData["page"] = page+''
     // this.filterData["sub_id"]= this.id +''
     this.filterData["section_id"] = this.type+''
-    console.log(this.filterData);
-    
      this.companiesGuideService.Companiesv2(this.filterData).subscribe(res => {
       this.page.current_page = res.data?.current_page as number
       this.page.last_page = res.data?.last_page as number
@@ -335,7 +319,8 @@ export class CoGuideComponent implements OnInit {
       window.scroll(0,0);
      })
 
-     this.location.go(`/companies-guide/${this.type}/companies/${this.type}/${this.filterData["sub_id"]}`,`page=${page}&sub=${this.filterData["sub_id"]}`);
+     this.location.go(`/companies-guide/${this.type}/companies/${this.type}`,`page=${page}&sub=${this.filterData["sub_id"]}`);
+
   }
 
 
@@ -349,5 +334,13 @@ export class CoGuideComponent implements OnInit {
     const sub = this.location.path().match(/sub=(\d+)/);
 
     return sub ? +sub[1] : 1;
+  }
+
+  setSelectedSubSection(id : any){
+    for (let option of this.h_search_form.controls.find((i:any) => i.role === "subsection").option) {
+      option.selected = 0;
+  }
+  this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === id).selected=1
+  this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id !== id).selected=0
   }
 }

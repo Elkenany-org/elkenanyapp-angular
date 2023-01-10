@@ -130,6 +130,6 @@ export class CoGuideHomeComponent implements OnInit {
    let len=this.Companies_Home_Data?.sub_sections?.find(i=>i.id == parseInt(id) )?.companies_count+'';
     
     this.complenght.emit(len);
-    this.router.navigate([`companies-guide/${this.type}/companies/${this.type}/${id}`], { queryParams: { page: 0 } });
+    this.router.navigate([`companies-guide/${this.type}/companies/${this.type}`], { queryParams: { page: 1 ,sub:id} });
   }
 }

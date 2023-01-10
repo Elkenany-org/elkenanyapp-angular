@@ -17,10 +17,10 @@ export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
   constructor(private stock: CompaniesGuideService ,private router: Router ) { }
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):Observable<ApiResponse<Companies>>  {
-    console.log("Companies Guide Resolver is work ",route.paramMap.get('id'))
+    console.log("Companies Guide Resolver is work ",route.queryParamMap.get('sub'))
     let  data = {
       section_id: sector.find(i => i.type ==  route.paramMap.get('type'))?.id+'' ||'',
-      sub_id: route.paramMap.get('id')|| ' ',
+      sub_id: route.queryParamMap.get('sub')|| ' ',
       sort:"2",
       country_id:"1",
       city_id:"",
