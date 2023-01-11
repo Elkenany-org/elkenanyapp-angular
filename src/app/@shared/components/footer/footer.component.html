@@ -28,7 +28,7 @@
 
                                 </ul>
                                 <ul class="col-6" style="list-style: disc ">   
-                                    <li><a routerLink="/gallery/0">المعارض</a></li>
+                                    <li><a routerLink="/gallery/0" [queryParams]="{ sort:'0', page: 1 }">المعارض</a></li>
                                     <li><a routerLink="/magazine/0">الدلائل والمجلات</a></li>
                                     <li><a routerLink="/tenders" [queryParams]="{sort:'', page: 1 }">المناقصات</a></li> 
                                     <li><a routerLink="/ships-traffic">حركة السفن</a></li>

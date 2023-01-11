@@ -43,6 +43,13 @@ export class HomeGalleryComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.filterData['sector']=params['type']
     })
+
+    this.route.queryParamMap.subscribe((params) => {
+      this.filterData['page']= params.get('page') || '1'
+      this.filterData['sort']= params.get('sort') || '0'
+
+})
+
     this.route.data.subscribe(data => {
       // console.log(data['resolve']);
       this.page.current_page = data['resolve'].data!.current_page
@@ -55,8 +62,13 @@ export class HomeGalleryComponent implements OnInit {
         // override data to match the data format of horizontal components
         this.search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
-        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 1).selected=1
-        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 1).selected=0
+
+        let temp = this.filterData['sort']
+        if(temp == '0'){
+          temp='1'
+        }
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id == temp).selected=1
+        this.search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id != temp).selected=0
 
         this.search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
         this.search_form.controls.find((i:any) => i.role === "countries").option.unshift({id:0,name:'الكل'});
@@ -67,17 +79,45 @@ export class HomeGalleryComponent implements OnInit {
 
 
         this.filterData['sector'] = this.search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
-        this.location.go(`/gallery/${this.filterData['sector'] }`);
+        this.location.go(`/gallery/${this.filterData['sector'] }?sort=${this.filterData['sort'] }&page=${this.filterData['page'] }`);
       }) 
 
     })
   
+
+    window.addEventListener('popstate', this.onBackButtonEvent);
+
+
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('popstate', this.onBackButtonEvent);
+
+  }
+
+  onBackButtonEvent = (event: any) => {
+    const page = this.getPageNumberFromUrl();
+    const sort = this.getSortFromUrl();
+    if (page !== this.page.current_page || sort !== +this.filterData["sort"] ) {
+      
+
+      this.page.current_page = page;
+      this.filterData["page"] = page+''
+      this.filterData["sort"] = sort+''
+      this.galleryService.galleries(this.filterData).subscribe(res => {
+        this.page.current_page = res.data!.current_page
+        this.page.last_page =res.data!.last_page
+        this.galleryData= res.data?.data 
+      })
+     }
+     window.scroll(0,0);
 
   }
 
   filter(value:any) {
     let sort='0'
     this.filterData["sort"]='0'
+    this.filterData["page"]='1'
     switch ( value.type ) {
       case "sector":
         this.filterData['sector'] = value.id
@@ -136,7 +176,7 @@ export class HomeGalleryComponent implements OnInit {
     this.bannrrsLogos.setLogo(res.data?.logos as Logo[])
 
    })
-  //  this.location.go(`/gallery/${this.filterData['sector']}`);
+   this.location.go(`/gallery/${this.filterData['sector']}?sort=${this.filterData['sort']}&page=${this.filterData['page']}`);
 }
   }
 
@@ -152,6 +192,22 @@ export class HomeGalleryComponent implements OnInit {
       this.page.last_page =res.data!.last_page
       this.galleryData= res.data?.data 
     })
+    window.scroll(0,0);
 
+    this.location.go(`/gallery/${this.filterData['sector']}?sort=${this.filterData['sort']}&page=${this.filterData['page']}`);
+
+
+  }
+
+  getPageNumberFromUrl() {
+    const page = this.location.path().match(/page=(\d+)/);
+
+    return page ? +page[1] : 1;
+  }
+
+  getSortFromUrl() {
+    const sort = this.location.path().match(/sort=(\d+)/);
+
+    return sort ? +sort[1] : 1;
   }
 }

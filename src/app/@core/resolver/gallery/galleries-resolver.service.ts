@@ -26,6 +26,9 @@ export class GalleriesResolver implements Resolve<ApiResponse<GallriesData>>{
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<GallriesData>>  {
     console.log("resolver is work ")
     this.filterData['sector'] = route.paramMap.get('type')||''
+    this.filterData['sort'] = route.queryParamMap.get('sort')||'0'
+    this.filterData['page'] = route.queryParamMap.get('page')||'1'
+
    return this.gallery.galleries(this.filterData).pipe(
      
      catchError(() => {
