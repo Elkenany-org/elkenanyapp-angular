@@ -49,6 +49,13 @@ export class MagazineComponent implements OnInit {
 
     this.h_search_form = Magazine_Search_Form //set initial data to horizontal component 
 
+
+    this.route.queryParamMap.subscribe((params) => {
+      this.filterData['page']= params.get('page') || '1'
+      this.filterData['sort']= params.get('sort') || '0'
+
+})
+
     this.route.params.subscribe(prm => {
       this.filterData['sector'] = prm['type']
 
@@ -70,14 +77,14 @@ export class MagazineComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
         this.typeAr=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
         this.filterData['sector'] = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
-        this.location.go(`/magazine/${this.filterData['sector'] }`);
+        this.location.go(`/magazine/${this.filterData['sector'] }?sort=${this.filterData['sort'] }&page=${this.filterData['page'] }`);
       }) 
     // console.log(data['resolve'].data);
 
     })
   })
     if(this.page.last_page > 1){
-      this.magazine.magazines(this.filterData['sector'],2,'','','',this.page.last_page+''
+      this.magazine.magazines(this.filterData['sector'],'2','','','',this.page.last_page+''
       ).subscribe(res => {
           this.comLength = (res.data?.data.length!)
 
@@ -159,14 +166,14 @@ export class MagazineComponent implements OnInit {
 
      
      this.magazine.magazines(this.filterData['sector'],
-                             +this.filterData['sort'],this.filterData['countries'],
+                             this.filterData['sort'],this.filterData['countries'],
                              this.filterData['cities'],this.filterData['search'],this.filterData["page"]).subscribe(res => {
                               this.page.current_page = res.data?.current_page!
                               this.page.last_page =  res.data?.last_page!
        this.magazines= res.data?.data
             // console.log(this.page.last_page);
             if(this.page.last_page > 1){
-              this.magazine.magazines(this.filterData['sector'],0,'','','',this.page.last_page+''
+              this.magazine.magazines(this.filterData['sector'],'0','','','',this.page.last_page+''
               ).subscribe(res => {
                   this.comLength = (res.data?.data.length!)
                 // console.log(this.comLength);
@@ -190,16 +197,26 @@ export class MagazineComponent implements OnInit {
     this.filterData["page"] = page+''
 
     this.magazine.magazines(this.filterData['sector'],
-    +this.filterData['sort'],this.filterData['countries'],
+    this.filterData['sort'],this.filterData['countries'],
     this.filterData['cities'],this.filterData['search'],this.filterData["page"]).subscribe(res => {
     this.magazines= res.data?.data
 
 })
-// console.log(this.magazines);
 
 window.scroll(0,0);
+this.location.go(`/magazine/${this.filterData['sector']}?sort=${this.filterData['sort']}&page=${this.filterData['page']}`);
 
   }
 
+  getPageNumberFromUrl() {
+    const page = this.location.path().match(/page=(\d+)/);
 
+    return page ? +page[1] : 1;
+  }
+
+  getSortFromUrl() {
+    const sort = this.location.path().match(/sort=(\d+)/);
+
+    return sort ? +sort[1] : 1;
+  }
 }

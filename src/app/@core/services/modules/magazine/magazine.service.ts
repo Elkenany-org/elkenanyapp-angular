@@ -13,7 +13,7 @@ export class MagazineService {
   constructor(private http: HttpClient) {
   }
 
-  magazines(type: string, sort: number,country_id: string, city_id: string, search: string,page:string):Observable<ApiResponse<Magazines>>{
+  magazines(type: string, sort: string,country_id: string, city_id: string, search: string,page:string):Observable<ApiResponse<Magazines>>{
     return this.http.get<ApiResponse<Magazines>>(`${env.ApiUrl}/magazine/magazines?section_id=${type}&sort=${sort}&country_id=${country_id}&city_id=${city_id}&search=${search}&page=${page}`)
   }
 

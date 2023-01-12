@@ -20,7 +20,7 @@ export class MagazineResolver implements Resolve<ApiResponse<Magazines>>{
     console.log("resolver is work ")
     let type = route.paramMap.get('type')|| ''
 
-   return this.magazine.magazines(type,2,'','','','1').pipe(
+   return this.magazine.magazines(type,route.queryParamMap.get('sort')+'','','','',route.queryParamMap.get('page')+'').pipe(
      
      catchError(() => {
        this.router.navigate([""]);
