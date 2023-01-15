@@ -59,30 +59,33 @@ export class MagazineComponent implements OnInit {
     this.route.params.subscribe(prm => {
       this.filterData['sector'] = prm['type']
 
-    this.activatedRoute.data.subscribe(data => {
+
+  })    
+  
+  this.activatedRoute.data.subscribe(data => {
       this.page.current_page = data['resolve'].data.current_page
       this.page.last_page =  data['resolve'].data.last_page
       this.magazines= data['resolve'].data?.data
       this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
       this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       this.loading = false;   
-      this.magazine.filter_list(prm['type'], 0).subscribe((res:ApiResponse<FilterList>) => {
+      this.magazine.filter_list(this.filterData['sector'], 0).subscribe((res:ApiResponse<FilterList>) => {
         // override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
 
         this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
+
+        this.setSelectedSort(this.filterData['sort'])
         this.typeAr=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
         this.filterData['sector'] = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
         this.location.go(`/magazine/${this.filterData['sector'] }?sort=${this.filterData['sort'] }&page=${this.filterData['page'] }`);
+
       }) 
     // console.log(data['resolve'].data);
 
     })
-  })
     if(this.page.last_page > 1){
       this.magazine.magazines(this.filterData['sector'],'2','','','',this.page.last_page+''
       ).subscribe(res => {
@@ -91,16 +94,35 @@ export class MagazineComponent implements OnInit {
        })
      }
 
-    
+     window.addEventListener('popstate', this.onBackButtonEvent);
+
   }
 
+
+  onBackButtonEvent = (event: any) => {
+    const page = this.getPageNumberFromUrl();
+    const sort = this.getSortFromUrl();
+    if (page !== this.page.current_page || sort !== +this.filterData["sort"] ) {
+      this.page.current_page = page;
+      this.filterData["page"] = page+''
+      this.filterData["sort"] = sort+''
+      this.magazine.magazines(this.filterData['sector'],
+      this.filterData['sort'],this.filterData['countries'],
+      this.filterData['cities'],this.filterData['search'],this.filterData["page"]).subscribe(res => {
+      this.magazines= res.data?.data
+  
+  })
+     }
+     window.scroll(0,0);
+
+  }
   filter(value:any) {
 
     this.filterData['sort'] = '2'
     this.filterData['cities'] = ''
     this.filterData['search']=''
     let sort='2'
-
+    this.filterData['page']='1'
       switch ( value.type ) {
         case "sector":
           this.filterData['sector'] = value.id
@@ -111,9 +133,10 @@ export class MagazineComponent implements OnInit {
             this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
             this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
           }) 
-          // console.log(this.filterData['countries']);
-          // console.log(this.filterData['cities']);
-          this.location.go(`magazine/${this.filterData['sector']}`);
+
+          this.setSelectedSort(this.filterData['sort'])
+          // this.location.go(`/magazine/${this.filterData['sector']}?sort=${this.filterData['sort']}&page=${this.filterData['page']}`);
+          
           break;
         case "sort":
           this.filterData['sort'] = value.id 
@@ -180,6 +203,8 @@ export class MagazineComponent implements OnInit {
               })
             }
      })
+     this.location.go(`/magazine/${this.filterData['sector']}?sort=${this.filterData['sort']}&page=${this.filterData['page']}`);
+
 
      
 
@@ -218,5 +243,20 @@ this.location.go(`/magazine/${this.filterData['sector']}?sort=${this.filterData[
     const sort = this.location.path().match(/sort=(\d+)/);
 
     return sort ? +sort[1] : 1;
+  }
+
+  setSelectedSort(id : any){
+    let temp =1;
+    if(id=='0'){
+      temp=1
+    }
+    else if(id =='2'){
+      temp=2
+    }
+    for (let option of this.h_search_form.controls.find((i:any) => i.role === "sort").option) {
+      option.selected = 0;
+  }
+  this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === temp).selected=1
+  this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== temp).selected=0
   }
 }
