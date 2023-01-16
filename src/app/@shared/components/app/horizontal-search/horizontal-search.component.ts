@@ -138,9 +138,9 @@ export class HorizontalSearchComponent implements OnChanges {
     }
     
     selectEmptydate(value: any, type?:string,name?:string,event? :KeyboardEvent) { //ex: value = animal , type = sector, name = بورصه الاعلاف
-console.log('====================================');
-console.log(event);
-console.log('====================================');
+// console.log('====================================');
+// console.log(event);
+// console.log('====================================');
 
       // if(type=="date"){
       //   console.log(value.substring(1,5)); 
