@@ -246,7 +246,8 @@
         <!--  add row__shadow when rows length > = 3  -->
         <div class="table__body row__shadow">
             <!-- Start One Row    add ads class if ad  -->
-            <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart  d-lg-flex d-none': isLast , 'ads':member.type}">
+            <!-- [ngClass]="{' title__chart  d-lg-flex d-none': isLast , 'ads':member.type}" -->
+            <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart ': isLast , 'ads':member.type}">
     
                 <a class="cell__container ads" [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.mem_id]">
                     <div class="cell__content__with__image">
