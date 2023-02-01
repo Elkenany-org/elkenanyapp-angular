@@ -29,20 +29,20 @@ export class AboutGallery implements OnInit  {
 
   ngOnInit(): void {
 
-    // this.route.data.subscribe(data => {
-    //   console.log(data);
-
-    // })
+    this.route.data.subscribe(data => {
+      this.data = data['resolve'].data
+     this.titleService.setTitle(this.data?.name!);
+    })
     let url =  this.router.url.split('/') 
     this.id=  +url[url.length-2]
     this.type=  url[url.length-3]
  
-    this.galleryService.gallery(this.id).subscribe(res => {
-       this.data = res.data
-      //  console.log(this.data)
-       this.titleService.setTitle(this.data?.name!);
+    // this.galleryService.gallery(this.id).subscribe(res => {
+    //    this.data = res.data
+    //     console.log(this.data)
+    //    this.titleService.setTitle(this.data?.name!);
 
-    })
+    // })
     this.addPlaceForm =this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],

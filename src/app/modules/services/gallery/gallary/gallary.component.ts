@@ -11,16 +11,17 @@ export class GallaryComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private galleryService:GallaryService) { }
-
+id:string='';
   ngOnInit(): void {
     this.route.params.subscribe(prm => {
       // console.log((prm['id']))
+      this.id=prm['id']
 
-      this.galleryService.gallery(prm['id']).subscribe(res => {
+      // this.galleryService.gallery(prm['id']).subscribe(res => {
 
-        // console.log(res)
+      //    console.log(res)
 
-      })
+      // })
 
     })
   }

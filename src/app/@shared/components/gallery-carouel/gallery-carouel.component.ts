@@ -26,7 +26,7 @@ export class GalleryCarouelComponent implements OnInit,OnChanges {
 
   ];
   ngOnInit(): void {
-    for(let i=0; i<= this.images!.length; i++) {
+    for(let i=0; i< this.images!.length; i++) {
         this.imagesRect.push(    new Image(i, { img: this.images![i].image }, { img: this.images![i].image }),)
         // console.log(this.images![i].image)
     }

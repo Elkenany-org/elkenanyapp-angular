@@ -22,19 +22,21 @@ const routes:Routes = [
   {
     path: ':id',
     component: GallaryComponent,
-    resolve: {
-      resolve: GallaryResolver
-    },
+    // resolve: {
+    //   resolve: GallaryResolver
+    // },
     children: [
       {
         path: '',
-        redirectTo: 'about',
+        redirectTo: 'about/:id',
         pathMatch: 'full'
       },
       {
-        path: 'about',
+        path: 'about/:id',
         component: AboutGallery,
-  
+        resolve: {
+        resolve: GallaryResolver
+      }
       },
       {
         path: 'reviews',

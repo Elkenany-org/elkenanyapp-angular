@@ -55,7 +55,7 @@
                         </section>
 
 
-                        <section class="product__bottom" *ngIf="contact.date && contact.view_count">
+                        <section class="product__bottom" *ngIf="contact.date && contact.view_count != null">
                             <section class="content__box">
                                 <i class="far fa-calendar-alt"></i>
                                 <span class="content">{{contact.date}} </span>
