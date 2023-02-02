@@ -10,7 +10,7 @@ import { number } from 'echarts';
 })
 export class GalleryCarouelComponent implements OnInit,OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
-   console.log( changes['images'].currentValue)   
+  //  console.log( changes['images'].currentValue)   
   }
 
 

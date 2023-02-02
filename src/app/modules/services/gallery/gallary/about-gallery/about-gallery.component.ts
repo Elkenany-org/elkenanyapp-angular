@@ -34,9 +34,9 @@ export class AboutGallery implements OnInit  {
      this.titleService.setTitle(this.data?.name!);
     })
     let url =  this.router.url.split('/') 
-    this.id=  +url[url.length-2]
-    this.type=  url[url.length-3]
- 
+    this.id=  +url[url.length-3]
+    this.type=  url[url.length-4]
+
     // this.galleryService.gallery(this.id).subscribe(res => {
     //    this.data = res.data
     //     console.log(this.data)
@@ -80,7 +80,7 @@ export class AboutGallery implements OnInit  {
 
       // })
     })
-    formData.forEach(ite => console.log(ite))
+    // formData.forEach(ite => console.log(ite))
   }
 
   sendRate() {

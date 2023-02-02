@@ -51,7 +51,7 @@ export class HomeGalleryComponent implements OnInit {
 })
 
     this.route.data.subscribe(data => {
-       console.log(data['resolve']);
+      //  console.log(data['resolve']);
       this.page.current_page = data['resolve'].data!.current_page
       this.page.last_page =data['resolve'].data!.last_page
       this.galleryData= data['resolve'].data?.data 
