@@ -25,9 +25,6 @@ public rateValue:number=0
 
     this.route.data.subscribe(data => {
       this.company = data['resolve'].data 
-      console.log('====================================');
-      console.log( this.company?.emails);
-      console.log('====================================');
     })
     this.titleService.setTitle(' تفاصيل '+this.company?.name);
 
@@ -43,19 +40,15 @@ this.addRate =this.fb.group({
         this.router.navigate([`/stock-exchange/${params['type']}/stock-exchange/${params['type']}/${type}/${id}`])
         )
 
-       
     }
 
 
     sendRate() {
       this.rateValue=this.addRate.controls['rate'].value
       let body ={company_id:this.company?.id+'' , reat:this.addRate.controls['rate'].value}
-      // console.log(body);
       this.companiesGuideService.rate(body).subscribe(
       (res) => {
-        // console.log('====================================');
-        // console.log(res);
-        // console.log('====================================');
+
         document.getElementById('msg-rate')!.style.display="block";
 
       },
@@ -63,7 +56,6 @@ this.addRate =this.fb.group({
         document.getElementById('msg-auth')!.style.display="block";
       }
       )
-      // formData.forEach(ite => console.log(ite))
     }
   
 }

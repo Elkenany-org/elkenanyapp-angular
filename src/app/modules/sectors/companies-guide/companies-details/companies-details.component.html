@@ -69,7 +69,7 @@
         </article>
         <!-- End About Company -->
 
-        <article class="cards company-market" *ngIf="company?.localstock">
+        <article class="cards company-market"  *ngIf="company?.localstock != [] && company?.fodderstock != []" >
             <h2 class="main-title">البورصات</h2>
             <!-- Start Slider -->
             <article class="market slider">
@@ -103,6 +103,13 @@
   
 
  
+        <article class="cards company-market" *ngIf="company?.gallary != []">
+            <h2 class="main-title">الصور</h2>
+            <!-- Start Slider -->
+                <app-gallery-carouel [images]="company?.gallary" ></app-gallery-carouel>
+
+            <!-- End Slider -->
+        </article>
 
 
 

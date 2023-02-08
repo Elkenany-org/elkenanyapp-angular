@@ -19,6 +19,7 @@
     social: Social[]
     addresses: any[]
     gallary: any[]
+    gallary_alboum:any[]
     products: any[]
     localstock: Localstock[]
     fodderstock: Fodderstock[]
