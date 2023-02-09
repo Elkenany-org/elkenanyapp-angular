@@ -14,7 +14,8 @@ export class CompaniesDetailsComponent implements OnInit {
 public company?:company
 public addRate!: FormGroup
 public rateValue:number=0
-  constructor(
+
+constructor(
     private companiesGuideService: CompaniesGuideService,
     private route: ActivatedRoute,
    private router: Router, private fb:FormBuilder,
