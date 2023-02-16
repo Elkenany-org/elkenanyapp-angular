@@ -23,6 +23,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
 import { initializeApp } from "firebase/app";
 import { SharedModule } from './@shared/shared.module';
+import { LinktreeComponent } from './modules/linktree/linktree.component';
+// import { LinktreeComponent } from './src/app/modules/static-pages/linktree/linktree.component';
 initializeApp(environment.firebase);
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery
@@ -30,6 +32,8 @@ initializeApp(environment.firebase);
   declarations: [
     AppComponent,
     TestComponent,
+    LinktreeComponent,
+    // LinktreeComponent,
   ],
   imports: [
   BrowserModule,

@@ -8,6 +8,7 @@ import { TestComponent } from './test/test.component';
 import {TendersResolver} from './@core/resolver/tenders/tenders.resolver.service';
 import { EmploymentHomeResolver } from './@core/resolver/employment/employment-home.resolver';
 import { TendersHomeResolver } from './@core/resolver/tenders/tenders-home.resolver.service';
+import { LinktreeComponent } from './modules/linktree/linktree.component';
 const routes: Routes = [
   {
     path: '',
@@ -127,6 +128,10 @@ const routes: Routes = [
       path:'static-pages',
       loadChildren: () => 
       import('./modules/static-pages/static-pages.module').then(m => m.StaticPagesModule)
+    },
+    {
+      path: 'company-profile',
+      component: LinktreeComponent,
     },
     {
       path: '**',

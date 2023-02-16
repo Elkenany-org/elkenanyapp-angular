@@ -13,7 +13,7 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     AboutUsComponent,
     ContactUsComponent,
     PrivacyPolicyComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
   ],
   imports: [
     CommonModule,

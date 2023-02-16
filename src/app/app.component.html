@@ -1,8 +1,8 @@
 
-<app-navbar *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register'"></app-navbar>
+<app-navbar *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register' && routeurl1 !='/company-profile'"></app-navbar>
 <!-- <alert></alert> -->
 
-<ngx-spinner
+<ngx-spinner 
   bdColor="rgba(51,51,51,0.8)"
   size="medium"
   color="#fff"
@@ -10,14 +10,14 @@
 >
 </ngx-spinner>
 
-<img *ngIf="loading" src="assets\images\loading1 (1).gif" alt="" class="center" >
+<img *ngIf="loading && routeurl1 !='/company-profile'" src="assets\images\loading1 (1).gif" alt="" class="center" >
 
-<button class="btn_top animated fadeIn" id="myBtn" style="right: 10px;" (click)="scrollToTop()" [ngClass]="{display: offsetFlag, none: offsetFlag}">
+<button *ngIf="loading && routeurl1 !='/company-profile'" class="btn_top animated fadeIn" id="myBtn" style="right: 10px;" (click)="scrollToTop()" [ngClass]="{display: offsetFlag, none: offsetFlag}">
   <span class="arrow"></span>
 </button>
 
 
 <router-outlet></router-outlet>
-<app-footer *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register'"></app-footer>
+<app-footer *ngIf="routeurl1 !='/user/login' && routeurl1 !='/user/register' && routeurl1 !='/company-profile'"></app-footer>
 
 
