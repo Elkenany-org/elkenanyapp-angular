@@ -343,4 +343,5 @@ export class CoGuideComponent implements OnInit {
   this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id === id).selected=1
   this.h_search_form.controls.find((i:any) => i.role === "subsection").option.find((i:any) => i.id !== id).selected=0
   }
+
 }

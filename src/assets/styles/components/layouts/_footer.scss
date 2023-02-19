@@ -22,8 +22,6 @@ footer {
   direction: rtl;
 
   .overlay {
-    // background-color: $bg-color-second;
-    // background-image: url(../../../../assets/images/footer.png);
     background-image: linear-gradient(transparent 10%,$color-white 20% , #f7d185);
     border-radius: 0 0 0 282px;
     padding: 2em 4rem;;
@@ -253,6 +251,10 @@ footer {
       li {
         text-align: right;
       }
+    }
+    .overlay{
+      padding:0;
+      border-radius: 0;
     }
   }
   .media-box {

@@ -95,6 +95,18 @@ background-color: #FFAA00 !important;
 /// 
 .video{
   // width: 90%;
-  height: 25rem;
+  height: 23rem;
   border-radius: 10%;
+}
+
+
+@media only screen and (min-width: 500px) {
+  .text{
+     font-size: 1.5rem;
+     line-height: 2.1 rem;
+  }
+  .video{
+    height: 28rem;
+  }
+  
 }

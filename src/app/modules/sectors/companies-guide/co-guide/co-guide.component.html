@@ -52,10 +52,10 @@
                     <span class="sections-number" *ngIf="page.last_page == 1">{{Companies?.data?.length}} شركة</span>
 
                 </section>
+                
                 <app-card  (navigation)="navigate($event)" [data]="Companies?.compsort" [flag]=true [loading] ="loading"></app-card>
                 
-        
-                <app-card   (navigation)="navigate($event)" [data]="Companies?.data" [flag]=false [loading] ="loading"></app-card>
+                <app-card  (navigation)="navigate($event)" [data]="Companies?.data" [flag]=false [loading] ="loading"></app-card>
         
                 <div class="row pagination__container">
                     <div class="col-12">
