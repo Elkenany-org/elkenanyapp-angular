@@ -30,30 +30,31 @@
                     الخدمات
                 </a>
 
-                <div [ngClass]="{'show':r.isOpen}" class="dropdown-menu d-lg-none" aria-labelledby="dropdownMenuButton">
+                <div [ngClass]="{'show':r.isOpen}" class="dropdown-menu d-lg-none w-75 m-auto" aria-labelledby="dropdownMenuButton" >
 
-                    <a class="dropdown-item" [routerLink]="['/stock-exchange/0']">البورصة اليومية</a> 
+                    <a class="dropdown-item" [routerLink]="['/stock-exchange/0']" (click)="toggleNavbar()">البورصة اليومية</a> 
                                           <div class="dropdown-divider"></div>
 
 
-                    <a class="dropdown-item" [routerLink]="['/companies-guide/0']">دليل الشركات</a>
+                    <a class="dropdown-item" [routerLink]="['/companies-guide/0']" (click)="toggleNavbar()">دليل الشركات</a>
                                             <div class="dropdown-divider"></div>
-              
-                    <a class="dropdown-item" [routerLink]="['/news/0']">الأخبار</a>
-                                            <div class="dropdown-divider"></div>
-              
-                    <a class="dropdown-item" [routerLink]="['/market/0']">سوق الكنانى</a>
-                    <div class="dropdown-divider"></div>
 
-                    <a  class="dropdown-item" [routerLink]="['/gallery/0']" >المعارض</a>
+                    <a  class="dropdown-item" [routerLink]="['/employment']" (click)="toggleNavbar()">الوظائف</a>
+                     <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" [routerLink]="['/news/0']" (click)="toggleNavbar()">الأخبار</a>
                     <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/magazine/0']">دلائل ومجلات</a>
+              
+                    <a class="dropdown-item" [routerLink]="['/market/0']" (click)="toggleNavbar()">سوق الكنانى</a>
+                    <div class="dropdown-divider"></div>
+                    <a  class="dropdown-item" [routerLink]="['/ships-traffic']" (click)="toggleNavbar()">حركة السفن</a>
+                    <div class="dropdown-divider"></div>
+                    <a  class="dropdown-item" [routerLink]="['/gallery/0']" (click)="toggleNavbar()">المعارض</a>
+                    <div class="dropdown-divider"></div>
+                    <a  class="dropdown-item" [routerLink]="['/magazine/0']" (click)="toggleNavbar()">دلائل ومجلات</a>
                     <div  class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/tenders']">المناقصات</a>
-                    <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/ships-traffic']">حركة السفن</a>
-                    <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/employment']">الوظائف</a>
+                    <a  class="dropdown-item" [routerLink]="['/tenders']" (click)="toggleNavbar()">المناقصات</a>
+
                 </div>
             </li> 
 
