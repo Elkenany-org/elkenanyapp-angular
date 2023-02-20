@@ -12,8 +12,9 @@
 
 <img *ngIf="loading && routeurl1 !='/company-profile'" src="assets\images\loading1 (1).gif" alt="" class="center" >
 
-<button *ngIf="loading && routeurl1 !='/company-profile'" class="btn_top animated fadeIn" id="myBtn" style="right: 10px;" (click)="scrollToTop()" [ngClass]="{display: offsetFlag, none: offsetFlag}">
+<button *ngIf="routeurl1 !='/company-profile'"  class="btn_top animated fadeIn" id="myBtn" style="right: 10px;" (click)="scrollToTop()" [ngClass]="{display: offsetFlag, none: offsetFlag}">
   <span class="arrow"></span>
+  
 </button>
 
 

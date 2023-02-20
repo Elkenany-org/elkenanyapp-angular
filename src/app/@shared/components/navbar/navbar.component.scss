@@ -123,12 +123,20 @@ input{
 }
 .nav-2{
   padding: 5px!important;
-
 }
 .nav-2 .nav-link{
   font-size: 1.2rem !important;
   color: #1f6b00 !important;
 
+}
+
+@media screen and (max-width:991px) {
+  .nav-1{
+    position: sticky;
+    top: 0;
+    width: 100%; 
+    z-index: 1000;
+  }
 }
 
 
