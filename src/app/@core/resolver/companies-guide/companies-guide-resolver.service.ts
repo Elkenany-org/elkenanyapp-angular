@@ -22,7 +22,7 @@ export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
       section_id: sector.find(i => i.type ==  route.paramMap.get('type'))?.id+'' ||'',
       sub_id: route.queryParamMap.get('sub')|| ' ',
       sort:"2",
-      country_id:"1",
+      country_id:"",
       city_id:"",
       search: "",
       page:route.queryParamMap.get('page')||''

@@ -38,7 +38,7 @@ this.addRate =this.fb.group({
     navigateV2(id: number, type:string): void
     {
       this.route.params.subscribe( params => 
-        this.router.navigate([`/stock-exchange/${params['type']}/stock-exchange/${params['type']}/${type}/${id}`])
+        this.router.navigate([`/stock-exchange/${params['type']}/${type}/${id}`])
         )
 
     }
