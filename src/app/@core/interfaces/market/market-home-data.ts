@@ -6,7 +6,7 @@ import { JsonFormData } from "../_app/horizontal-search"
   
 export const market_Search_Form_Data: JsonFormData =
 {   
-  title: "سوق الكناني",
+  title: "السوق",
   class:"tabs tabs-3",
     controls: [
       {

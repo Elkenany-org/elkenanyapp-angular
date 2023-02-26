@@ -91,7 +91,60 @@ export const co_Search_Form_Data: JsonFormData =
       // }
     ]
   }
+  export const co_service_Search_Form_Data: JsonFormData =
+  {   
+    title: "القسم الخدمي",
+    class:"tabs tabs-5",
+      controls: [
+        {
+          name: "بحث",
+          type: "search",
+          role:"search",
+          class: "form-control",
+          value: "",
+          icon:"fas fa-search",
+          validators: {
+            required: false,
+          }
+        },
+        {
+          name: "الدول",
+          type: "select",
+          role:"countries",
+          class: "form-control",
+          value: "",
+          icon:"fas fa-map-marker-alt",
+          option: [],
+          validators: {
+            required: false,
+          }
+        },
+        {
+          name: "المدينة",
+          type: "select",
+          role:"cities",
+          class: "form-control",
+          value: "",
+          icon:"fas fa-map-marker-alt",
+          option: [],
+          validators: {
+            required: false,
+          }
+        },{
+          name: "الترتيب",
+          type: "select",
+          role:"sort",
+          class: "form-control",
+          value: "",
+          icon:"fas fa-sort-amount-down",
+          option: [],
+          validators: {
+            required: false,
+          }
+        },
 
+      ]
+    }
   // ----------------------------------------- < Companies > -----------------------------------------------//
 
   export interface Companies {

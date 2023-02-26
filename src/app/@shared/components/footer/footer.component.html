@@ -20,8 +20,8 @@
                             <div class="title">الخدمات</div>
                             <div class="row " style="margin-right: 0.4rem;">
                             <ul class="col-6" style="list-style: disc ">
-                                    <li><a routerLink="/stock-exchange/0">البورصة اليومية</a></li>
-                                    <li><a routerLink="/market/0" [queryParams]="{ sort:'', page: 1 }">سوق الكناني</a></li>
+                                    <li><a routerLink="/stock-exchange/0">الأسعار الاسترشادية</a></li>
+                                    <li><a routerLink="/market/0" [queryParams]="{ sort:'', page: 1 }">السوق</a></li>
                                     <li><a routerLink="/companies-guide/0">دليل الشركات</a></li>
                                     <li><a routerLink="/news/0" [queryParams]="{sort:1, page: 0 }" >الأخبار</a></li>
                                     <li><a routerLink="/employment">الوظائف</a></li>
@@ -32,6 +32,9 @@
                                     <li><a routerLink="/magazine/0" [queryParams]="{ sort:2, page: 1 }">الدلائل والمجلات</a></li>
                                     <li><a routerLink="/tenders" [queryParams]="{sort:'', page: 1 }">المناقصات</a></li> 
                                     <li><a routerLink="/ships-traffic">حركة السفن</a></li>
+                                    <li><a [routerLink]="['/companies-guide/6/companies/6']" [queryParams]="{page: 1,sub:180 }">القسم الخدمي</a></li>
+
+                                    
                                 </ul>
 
                             </div>

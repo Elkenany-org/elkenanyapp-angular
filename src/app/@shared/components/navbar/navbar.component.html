@@ -32,7 +32,7 @@
 
                 <div [ngClass]="{'show':r.isOpen}" class="dropdown-menu d-lg-none w-75 m-auto" aria-labelledby="dropdownMenuButton" >
 
-                    <a class="dropdown-item" [routerLink]="['/stock-exchange/0']" (click)="toggleNavbar()">البورصة اليومية</a> 
+                    <a class="dropdown-item" [routerLink]="['/stock-exchange/0']" (click)="toggleNavbar()">الأسعار الاسترشادية</a> 
                                           <div class="dropdown-divider"></div>
 
 
@@ -45,16 +45,17 @@
                     <a class="dropdown-item" [routerLink]="['/news/0']" (click)="toggleNavbar()">الأخبار</a>
                     <div class="dropdown-divider"></div>
               
-                    <a class="dropdown-item" [routerLink]="['/market/0']" (click)="toggleNavbar()">سوق الكنانى</a>
+                    <a class="dropdown-item" [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" (click)="toggleNavbar()">السوق</a>
                     <div class="dropdown-divider"></div>
                     <a  class="dropdown-item" [routerLink]="['/ships-traffic']" (click)="toggleNavbar()">حركة السفن</a>
                     <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/gallery/0']" (click)="toggleNavbar()">المعارض</a>
+                    <a  class="dropdown-item" [routerLink]="['/gallery/0']" [queryParams]="{ sort:'0', page: 1 }" (click)="toggleNavbar()">المعارض</a>
                     <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/magazine/0']" (click)="toggleNavbar()">دلائل ومجلات</a>
+                    <a  class="dropdown-item" [routerLink]="['/magazine/0']" [queryParams]="{ sort:2, page: 1 }" (click)="toggleNavbar()">دلائل ومجلات</a>
                     <div  class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/tenders']" (click)="toggleNavbar()">المناقصات</a>
-
+                    <a  class="dropdown-item" [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" (click)="toggleNavbar()">المناقصات</a>
+                    <div  class="dropdown-divider"></div>
+                    <a  class="dropdown-item" [routerLink]="['/companies-guide/6/companies/6']" [queryParams]="{page: 1,sub:180 }" (click)="toggleNavbar()">القسم الخدمي</a>
                 </div>
             </li> 
 
@@ -154,7 +155,7 @@
 
         <li class="nav-item  " >
             <a  class="nav-link "  [routerLink]="['/stock-exchange/0']">
-                <span>البورصة اليومية</span>
+                <span>الأسعار الاسترشادية</span>
             </a>
         </li>
 
@@ -194,8 +195,8 @@
 
             <div [ngClass]="{'show':more.isOpen}" class="dropdown-menu" style="min-width: 16rem; " aria-labelledby="dropdownMenuButton1">
 
-                <a class="dropdown-item service" [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }">
-                    <img src="../../../../assets/images/market.png" class="icons" > سوق الكنانى
+                <a class="dropdown-item service" [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" >
+                    <img src="../../../../assets/images/market.png" class="icons" > السوق
                 </a>
                 <div class="dropdown-divider"></div>
 
@@ -216,6 +217,11 @@
                      <img src="../../../../assets/images/tenders.png" class="icons"> المناقصات
                     </a>
 
+                    <div  class="dropdown-divider"></div>
+
+                    <a  class="dropdown-item service" [routerLink]="['/companies-guide/6/companies/6']" [queryParams]="{page: 1,sub:180 }">
+                         <img src="" class="icons"> القسم الخدمي
+                        </a>
             </div>
         </li> 
 

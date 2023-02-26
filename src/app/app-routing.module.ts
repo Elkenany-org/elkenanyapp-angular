@@ -9,6 +9,8 @@ import {TendersResolver} from './@core/resolver/tenders/tenders.resolver.service
 import { EmploymentHomeResolver } from './@core/resolver/employment/employment-home.resolver';
 import { TendersHomeResolver } from './@core/resolver/tenders/tenders-home.resolver.service';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
+import { ServiceSectionComponent } from './modules/services/service-section/service-section.component';
+import { CompaniesGuideResolver } from './@core/resolver/companies-guide/companies-guide-resolver.service';
 const routes: Routes = [
   {
     path: '',
@@ -132,6 +134,11 @@ const routes: Routes = [
     {
       path: 'company-profile',
       component: LinktreeComponent,
+    },
+    {
+      path: 'service-section',
+      loadChildren: () => 
+      import('./modules/services/service-section/service-section.module').then(m => m.ServiceSectionModule)
     },
     {
       path: '**',

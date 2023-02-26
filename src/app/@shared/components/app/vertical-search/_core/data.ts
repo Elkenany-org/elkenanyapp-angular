@@ -30,7 +30,7 @@
 
   // export const Search_Form_Data: JsonFormData =
   // {   
-  //   title: "البورصة اليومية",
+  //   title: "الأسعار الاسترشادية",
   //   class:"tabs tabs-4",
   //   div:[
   //     {

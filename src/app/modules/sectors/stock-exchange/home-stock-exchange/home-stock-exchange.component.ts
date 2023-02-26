@@ -40,7 +40,7 @@ export class HomeStockExchangeComponent implements OnInit  {
     private router: Router , private titleService:Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle("البورصة اليومية");
+    this.titleService.setTitle("الأسعار الاسترشادية");
 
       this.h_search_form = Home_Stock_Search_Form_Data
 
