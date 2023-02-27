@@ -19,7 +19,7 @@ export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):Observable<ApiResponse<Companies>>  {
     console.log("Companies Guide Resolver is work ",route.queryParamMap.get('sub'))
     let  data = {
-      section_id: sector.find(i => i.type ==  route.paramMap.get('type'))?.id+'' ||'',
+      section_id: route.paramMap.get('type')||'',
       sub_id: route.queryParamMap.get('sub')|| ' ',
       sort:"2",
       country_id:"",
@@ -27,8 +27,6 @@ export class CompaniesGuideResolver implements Resolve<ApiResponse<Companies>>{
       search: "",
       page:route.queryParamMap.get('page')||''
     }
-
-
 
 
    return this.stock.Companiesv2(data).pipe(

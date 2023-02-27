@@ -94,7 +94,7 @@ export class ServiceSectionComponent implements OnInit {
     this.route.params.subscribe( params => {      
       this.companiesGuideService.co_Filter_listV2(this.filterData["section_id"],'').subscribe((res:ApiResponse<FilterListCompanies>) => {
 
-        this.typeAr= res.data?.sub_sections.find((i:any) =>i.id ==this.id)?.name
+        this.typeAr= res.data?.sub_sections.find((i:any) =>i.id ==this.filterData["sub_id"])?.name
         this.titleService.setTitle(' القسم الخدمي ');
 
         this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
@@ -120,7 +120,6 @@ export class ServiceSectionComponent implements OnInit {
       page:this.page.last_page+''
     }).subscribe(res => {
         this.comLength = (res.data?.data.length!)
-
      })
    }
 
@@ -136,16 +135,13 @@ export class ServiceSectionComponent implements OnInit {
 
   onBackButtonEvent = (event: any) => {
     const page = this.getPageNumberFromUrl();
-    const sub = this.getSubIdFromUrl();
-    if (page !== this.page.current_page || sub !== +this.filterData["sub_id"] ) {
+    if (page !== this.page.current_page ) {
       
 
       this.page.current_page = page;
       this.filterData["page"] = page+''
-      this.filterData["sub_id"] = sub+''
 
       this.companiesGuideService.Companiesv2(this.filterData).subscribe(res => {  
-
         this.page.current_page = res.data?.current_page as number
         this.page.last_page = res.data?.last_page as number
         this.Companies = res.data  as Companies
@@ -205,7 +201,7 @@ export class ServiceSectionComponent implements OnInit {
       //override data to match the data format of horizontal components
         this.h_search_form.controls.find((i:any) => i.role === "cities").option =   res.data?.cities;
         this.h_search_form.controls.find((i:any) => i.role === "countries").option =   res.data?.countries;
-        this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
+        // this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
     }) }
   // }
     if(option.type != 'sector'){
@@ -267,7 +263,7 @@ export class ServiceSectionComponent implements OnInit {
       window.scroll(0,0);
      })
 
-     this.location.go(`/companies-guide/${this.filterData["section_id"]}/companies/${this.filterData["section_id"]}`,`page=${page}&sub=${this.filterData["sub_id"]}`);
+     this.location.go(`/service-section/${this.filterData["section_id"]}`,`page=${page}&sub=${this.filterData["sub_id"]}`);
 
   }
 
@@ -278,11 +274,7 @@ export class ServiceSectionComponent implements OnInit {
     return page ? +page[1] : 1;
   }
 
-  getSubIdFromUrl() {
-    const sub = this.location.path().match(/sub=(\d+)/);
 
-    return sub ? +sub[1] : 1;
-  }
 
 
 }

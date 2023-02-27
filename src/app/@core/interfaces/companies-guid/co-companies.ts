@@ -94,7 +94,7 @@ export const co_Search_Form_Data: JsonFormData =
   export const co_service_Search_Form_Data: JsonFormData =
   {   
     title: "القسم الخدمي",
-    class:"tabs tabs-5",
+    class:"tabs tabs-4",
       controls: [
         {
           name: "بحث",

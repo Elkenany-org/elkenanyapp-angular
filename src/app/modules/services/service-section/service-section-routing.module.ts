@@ -6,7 +6,7 @@ import { ServiceSectionComponent } from './service-section.component';
 
 const routes: Routes = [
   {
-    path:':type?page=1&sub=180',
+    path:':type',
     component: ServiceSectionComponent,
     resolve: {
       resolve: CompaniesGuideResolver
