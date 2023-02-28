@@ -38,7 +38,7 @@
       ]
       },
       {
-        "name": "البورصة:",
+        "name": "الأسعار الاسترشادية:",
         "type": "select",
         "option": [
           {
@@ -60,7 +60,7 @@
         "type": "text"
       },
       {
-        "name": "حصائيات",
+        "name": "احصائيات",
         "label": "Size",
         "class":"stats__btn",
         "value": "",

@@ -4,7 +4,7 @@ import { JsonFormData } from "@app/@core/interfaces/_app/horizontal-search"
 export let Stock_Search_Form_Data: JsonFormData =
 {   
   title: "الأسعار الاسترشادية",
-  class:"tabs tabs-4",
+  class:"tabs tabs-4 px-2",
     controls: [
       {
         name: "القسم",
@@ -19,7 +19,7 @@ export let Stock_Search_Form_Data: JsonFormData =
         }
       },
       {
-        name: "البورصة",
+        name: "الأسعار الاسترشادية",
         type: "select",
         role: "stock",
         class: "form-control",
@@ -89,7 +89,7 @@ export let Stock_Search_Form_Data: JsonFormData =
           }
         },
         {
-          name: "البورصة",
+          name: "الأسعار الاسترشادية",
           type: "select",
           role: "stock",
           class: "form-control",
