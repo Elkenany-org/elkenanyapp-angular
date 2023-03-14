@@ -40,7 +40,7 @@ export class HomeStockExchangeComponent implements OnInit  {
     private router: Router , private titleService:Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle("الأسعار الاسترشادية");
+    this.titleService.setTitle("البورصة اليومية");
 
       this.h_search_form = Home_Stock_Search_Form_Data
 
@@ -52,7 +52,6 @@ export class HomeStockExchangeComponent implements OnInit  {
        return data
        })
     ).subscribe(res =>{//featch tha data from StockExhangeResolver 
-
       this.stock_Ex_Data = res['resolve']  as StockExchange
       this.BannerLogoService.setBanner(res['resolve'].banners);
       this.BannerLogoService.setLogo(res['resolve'].logos);
@@ -75,7 +74,7 @@ export class HomeStockExchangeComponent implements OnInit  {
 // console.log(this.h_search_form.controls.find((i:any) => i.role === "sector").option);
 
     let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
-    localStorage.setItem('stockTitle',' القطاع '+title)
+    localStorage.setItem('stockTitle',' القسم '+title)
     this.filterData['sector'] = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
     this.location.go(`/stock-exchange/${this.filterData['sector'] }`); 
     
@@ -133,7 +132,7 @@ if(value.type != 'sector'){
       })
       }
       let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
-      localStorage.setItem('stockTitle',' القطاع '+title)
+      localStorage.setItem('stockTitle',' القسم '+title)
   }
 
   navigate(id: string): void

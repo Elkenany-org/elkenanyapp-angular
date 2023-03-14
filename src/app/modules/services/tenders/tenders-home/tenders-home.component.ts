@@ -47,14 +47,16 @@ export class TendersHomeComponent implements OnInit {
     this.h_search_form = Tenders_Home_Search_Form_Data //set initial data to horizontal component 
 
       this.Activatedroute.queryParamMap.subscribe((params) => {
-        if(this.flagFirsttime){
           this.page.current_page = +params.get('page')!;
+          this.filterData['sort']=params.get('sort')!
+        // if(this.flagFirsttime ){
           this.tenderService.all_sections(params.get('sort')+'',this.filterData['search'],this.page.current_page+'').subscribe(res => {
           this.page.current_page = res.data?.current_page as number
           this.page.last_page =  res.data?.last_page  as number
           this.tenders_Home_Data = res.data  
       })
-        }}
+        }
+    //  }
       );
    
 
@@ -62,15 +64,19 @@ export class TendersHomeComponent implements OnInit {
       map((data) => {
        return data
        })
-    ).subscribe(res =>{//featch tha data from StockExhangeResolver 
+    ).subscribe(res =>{
+
+     if(this.page.current_page == res['resolve'].data.current_page){  
       this.page.current_page = res['resolve'].data.current_page
       this.page.last_page =  res['resolve'].data.last_page
       this.tenders_Home_Data = res['resolve'].data  as allSections
       this.BannerLogoService.setBanner(res['resolve'].data.banners);
       this.BannerLogoService.setLogo(res['resolve'].data.logos);
-      this.loading = false;      
+     }     
+      this.loading = false;   
       this.flagFirsttime=true
-    })
+
+  })
 
 
 
@@ -131,17 +137,6 @@ export class TendersHomeComponent implements OnInit {
  
     this.router.navigate([`tenders`], { queryParams: { sort:this.filterData['sort'], page: page } });
     window.scroll(0,0);
-
-    // this.filterData["page"] = page+''
-    // this.tenderService.all_sections(this.filterData['sort'],this.filterData['search'],this.filterData['page']).subscribe(res => {
-    //   this.page.current_page = res.data?.current_page as number
-    //    this.page.last_page =  res.data?.last_page  as number
-       
-    //   // this.location.go(`/tenders/page/${page}`);
-    //   //  this.router.navigate([`tenders/page/${page}`]);
-    //    this.tenders_Home_Data = res.data
-
-    // })
 
 }
 
