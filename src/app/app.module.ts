@@ -24,6 +24,8 @@ import { environment } from 'environments/environment';
 import { initializeApp } from "firebase/app";
 import { SharedModule } from './@shared/shared.module';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
+
+
 initializeApp(environment.firebase);
 
 // ng g c modules/services/gallery/home-gallery --skipTests=true --module=gallery

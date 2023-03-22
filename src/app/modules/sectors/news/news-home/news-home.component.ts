@@ -11,7 +11,10 @@ import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
 import {  News_Search_Form_Data } from '@app/@core/@data/app/news/news';
 import { News } from '@app/@core/interfaces/news/news';
 import { JsonFormData } from '@app/@core/interfaces/_app/horizontal-search';
-import { Title } from '@angular/platform-browser';
+import { Title ,Meta} from '@angular/platform-browser';
+// import { SeoSocialShareService } from 'ngx-seo';
+import { SeoSocialShareData } from '@app/@core/interfaces/seo/seo';
+import { SeoSocialShareService } from 'ngx-seo';
 
 @Component({
   selector: 'app-news-home',
@@ -27,6 +30,7 @@ export class NewsHomeComponent implements OnInit {
   private type?:string
   public page= {last_page: 0, current_page:0}
 
+
   public filterData:{[key:string]:string}= {
     type:"",
     sort:"",
@@ -34,18 +38,27 @@ export class NewsHomeComponent implements OnInit {
     page:'1'
   }
   public h_search_form: JsonFormData | any 
-
+  
+  seoData: SeoSocialShareData = {
+    title: ' الأخبار ',
+    description: 'أخبار الكناني لتغطية أحدث الأخبار والأحداث اليومية ',
+    url:'https://elkenany.com/#/news/1'
+};
   constructor( private activatedRoute: ActivatedRoute,
                private BannerLogoService:BannersLogoservice,
                private route: ActivatedRoute, 
                private news: NewsService,
                private router: Router,
                private location: Location,
-              private titleService:Title
+              private titleService:Title,
+              private readonly seoSocialShareService: SeoSocialShareService
     ) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle(' الأخبار ');
+    this.seoSocialShareService.setData(this.seoData);
+
+    
+    // this.titleService.setTitle(' الأخبار ');
 
     this.h_search_form = News_Search_Form_Data //set initial data to horizontal component 
 

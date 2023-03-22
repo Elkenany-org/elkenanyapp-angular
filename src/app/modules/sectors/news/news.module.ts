@@ -8,7 +8,6 @@ import { SharedModule } from '@app/@shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
-
 @NgModule({
   declarations: [
     NewsComponent,
@@ -20,8 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     
     NewsRoutingModule,
     SharedModule,
-    NgxPaginationModule
-    
+    NgxPaginationModule,
   ]
 })
 export class NewsModule { }

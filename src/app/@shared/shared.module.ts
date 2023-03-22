@@ -25,7 +25,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     AngularFireModule.initializeApp(env.firebase),
     AngularFireAuthModule,
 
-
   ],
   declarations: [
     ...Shared.pipes,
