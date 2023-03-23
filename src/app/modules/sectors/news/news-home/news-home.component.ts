@@ -58,6 +58,8 @@ export class NewsHomeComponent implements OnInit {
     this.seoSocialShareService.setData(this.seoData);
 
     
+
+    
     // this.titleService.setTitle(' الأخبار ');
 
     this.h_search_form = News_Search_Form_Data //set initial data to horizontal component 

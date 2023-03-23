@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="product__content">
                                     <header class="product__title">
-                                        <a  [routerLink]="['/companies-guide',i.section_id,'companies',i.section_id,i.id]">
+                                        <a  [routerLink]="['/companies-guide',i.section_id,'companies',i.section_id]" [queryParams]="{page:1,sub: i.id}">
 
                                       {{i.name}}
                                     </a>
