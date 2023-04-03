@@ -121,7 +121,7 @@ export class CoGuideHomeComponent implements OnInit {
           this.titleService.setTitle(' الدليل قسم '+this.typeAr);
         }
         // console.log(this.Companies_Home_Data.sub_sections.length)
-        this.location.go(`companies-guide/${this.type }`);
+        this.location.go(`/companies-guide/${this.type }`);
       })
     })
   }

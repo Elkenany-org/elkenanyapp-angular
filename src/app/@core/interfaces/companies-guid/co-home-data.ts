@@ -66,6 +66,7 @@ export interface SubSection {
   name: string
   image: string
   companies_count: number
+  type:string
   logo_in: LogoIn[]
 }
 

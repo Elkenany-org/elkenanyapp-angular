@@ -31,7 +31,8 @@
               "src/assets",
               "src/logo.png",
               "src/firebase-messaging-sw.js",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/sitemap.xml"
             ],
             "styles": [
               "node_modules/slick-carousel/slick/slick.scss",

@@ -24,6 +24,7 @@ import { environment } from 'environments/environment';
 import { initializeApp } from "firebase/app";
 import { SharedModule } from './@shared/shared.module';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
 
 
 initializeApp(environment.firebase);
@@ -34,6 +35,7 @@ initializeApp(environment.firebase);
     AppComponent,
     TestComponent,
     LinktreeComponent,
+    SitemapComponent,
   ],
   imports: [
   BrowserModule,

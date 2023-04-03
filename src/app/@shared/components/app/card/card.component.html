@@ -39,7 +39,7 @@
                         </div>
 
                         <section class="product__info" *ngIf="contact.companies_count">
-                            <p class="note">{{contact.companies_count}} مكتب</p>
+                            <p class="note">{{contact.companies_count}} {{contact.type||'مكتب'}}</p>
                         </section>
 
                         <section class="product__info" *ngIf="contact.desc" 
