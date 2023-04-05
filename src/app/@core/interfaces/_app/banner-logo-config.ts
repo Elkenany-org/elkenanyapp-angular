@@ -14,6 +14,8 @@
         class:string;
         slidesToShow: number;
         slidesToScroll: number;
+        centerMode?: boolean;
+        centerPadding?:any;
         dots: boolean;
         autoplay: boolean;
         autoplaySpeed: number;
@@ -33,9 +35,11 @@
         "class":"banner",
         "slidesToShow": 1,
         "slidesToScroll": 1,
+        // "centerMode": true,
+        // "centerPadding": '20px',
         "dots": true,
         "autoplay": true,
-       "autoplaySpeed": 3000,
+       "autoplaySpeed": 2000,
 
     }
   }

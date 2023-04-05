@@ -142,7 +142,7 @@ const routes: Routes = [
       import('./modules/services/service-section/service-section.module').then(m => m.ServiceSectionModule)
     },
     {
-      path: 'sitemap.xml',
+      path: 'test',
       component: SitemapComponent
     },
     {

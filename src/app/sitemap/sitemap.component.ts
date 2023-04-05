@@ -12,13 +12,7 @@ export class SitemapComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.http.get('/assets/sitemap.xml', { responseType: 'text' })
-    .subscribe((data: string) => {
-      const xml = data;
-      const blob = new Blob([xml], { type: 'application/xml' });
-      const url = window.URL.createObjectURL(blob);
-      window.location.href = url;
-    });
+
   }
 
 }
