@@ -4,6 +4,7 @@ import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { HomeService } from '@app/@core/services/modules/home/home.service';
 
 import {  logo_test, Banner_test } from './data'
+import { SeoSocialShareData, SeoSocialShareService } from 'ngx-seo';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,18 +21,27 @@ export class HomeComponent implements OnInit {
   // public carousel_banner?: any = Banner_test  
 
   tabs = 'sector'
+    seoData: SeoSocialShareData = {
+      title: ' الكناني | الرئيسية ',
+      ogTitle: ' الكناني | منصة متعددة الخدمات ',
+      description: ' تضم:- البورصة اليومية للسلع، أحدث الأخبار، تتبع حركة السفن، دليل شركات متكامل، فرص المناقصات، سوق تجاري،وظائف، المعارض العالمية، دلائل ومجلات،شركات خدمية ',
+      // url:'https://www.elkenany.com/الرئيسية',
+      siteName: "elkenany.com",
+  };
 
   constructor(
     private home:HomeService,
     private BannerLogoService:BannersLogoservice,
-    private titleService:Title
+    private titleService:Title,
+    private readonly seoSocialShareService: SeoSocialShareService
     ) {}
-
 
 
     
 ngOnInit(): void {
-this.titleService.setTitle('الكناني | الرئيسية');
+// this.titleService.setTitle('الكناني | الرئيسية');
+this.seoSocialShareService.setData(this.seoData);
+
  this.home.Home().subscribe( res => {
   //  this.carousel_banner.banner = res.banners
   this.carousel_logos.banner = res.logos
