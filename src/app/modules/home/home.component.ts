@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
 
     
 ngOnInit(): void {
-// this.titleService.setTitle('الكناني | الرئيسية');
-this.seoSocialShareService.setData(this.seoData);
+this.titleService.setTitle('الكناني | الرئيسية');
+// this.seoSocialShareService.setData(this.seoData);
 
  this.home.Home().subscribe( res => {
   //  this.carousel_banner.banner = res.banners
