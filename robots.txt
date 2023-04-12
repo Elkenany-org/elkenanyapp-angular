@@ -1,2 +1,59 @@
+User-agent: Googlebot
+Crawl-delay: 5
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: Googlebot-Image
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: Yandex
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: baiduspider
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: Applebot
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: msnbot
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: Slurp
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: Bingbot
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: Screaming Frog SEO Spider
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: Discordbot
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
+User-agent: facebookexternalhit
+Crawl-delay: 20
+Disallow: /user/login/
+Disallow: /user/register/
+
 User-agent: *
-Allow: /
+Disallow: /
+
+Sitemap: https://elkenany.com/sitemap.xml

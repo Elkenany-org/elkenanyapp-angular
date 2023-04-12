@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/@core/services/auth/auth.service';
 import { Profile } from '@app/@core/@data/userData';
@@ -11,9 +11,27 @@ import { NotificationsService } from '@app/@core/services/modules/notifications/
   styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit  {
   // @Output() deviceToken = new EventEmitter<string>();
 
+  // ngAfterViewInit() {
+  //   let more = document.querySelector(".header-2 .more")
+  //   let sidebar = document.querySelector(".header-2 .sidebar")
+
+  //   more?.addEventListener("click",  () => {
+  //     this.classList.toggle("active")
+  //     sidebar?.classList.toggle("active")
+  //   })
+  // }
+
+  toggleSidebar() {
+    let more = document.querySelector(".header-2 .more")
+    let sidebar = document.querySelector(".header-2 .sidebar")
+
+    more?.classList.toggle("active")
+    sidebar?.classList.toggle("active")
+  }
+  
   message:any=[];
   notification_ads:any=[]
   notification_all:any=[]
@@ -26,6 +44,7 @@ export class NavbarComponent implements OnInit {
   islogedIn?:number
   Profile?:Profile
   @HostBinding("class.show") isOpen = false;
+  classList: any;
   @HostListener("click") toggleOpen() {
     this.isOpen = !this.isOpen;
     this.wasInside = true;
@@ -97,18 +116,33 @@ export class NavbarComponent implements OnInit {
 
       this.listen();
      
+
+let dpn = document.querySelector(".nav .dpn")
+let dpnList = document.querySelector(".nav .dpn-list")
+
+dpn?.addEventListener("click", function () {
+    dpnList?.classList.toggle("active")
+    dpn?.classList.toggle("active")
+})
+
+
+let sidebarDpn = document.querySelector(".sidebar-nav .dpn .dpn-list")
+let sidebarDpnList = document.querySelector(".sidebar-nav .dpn .list-container")
+
+sidebarDpn?.addEventListener("click",  () => {
+    this.classList.toggle("active")
+    sidebarDpnList?.classList.toggle("active")
+})
+
+
   }
 
+  
 
 
   toggleNavbar() { this.navbarOpen = !this.navbarOpen;}
 
 
-// login(){
-//   this.router.navigate(['/user/login']).then(() => {
-//     location.reload();
-//   });
-// }
 
   logout() {
    this.auth.Logout()

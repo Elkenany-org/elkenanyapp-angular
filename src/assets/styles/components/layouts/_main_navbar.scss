@@ -175,3 +175,214 @@
 /* ============ small devices .end// ============ */
 
 
+/// new design
+:root {
+  --green: #0C6A22;
+  --yellow: #FFBB33;
+}
+// body {
+//   font-family: 'beIN Black', sans-serif;
+//   height: 10000px;
+// }
+.header {
+  direction: initial;
+  background-color: var(--green);
+  font-size: 1.313rem;
+}
+.header .container .header-content .header-items a {
+  color: white;
+  transition: 0.3s;
+  height: fit-content;
+}
+.header .container .header-content .header-items a:hover {
+  color: var(--yellow);
+}
+.header .container .header-content .logo img {
+  width: 80px;
+}
+.nav {
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 5px #9e9e9e;
+  width: max-content;
+  // width: 65%;
+  margin-bottom: -57.5px;
+}
+.nav .nav-items .nav-item {
+  display: inline-block;
+  color: var(--green);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.nav .nav-items .nav-item:hover {
+  background-color: var(--yellow);
+}
+.nav .nav-items .nav-item:first-child {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.nav .nav-items .search-box button,
+.header-2 .sidebar .sidebar-nav .search-box button {
+  background-color: var(--yellow);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav .nav-items .search-box button:hover,
+.header-2 .sidebar .sidebar-nav .search-box button:hover {
+  background-color: var(--green);
+}
+.nav .nav-items .search-box .search-input,
+.header-2 .sidebar .sidebar-nav .search-box .search-input {
+  height: 31px;
+  border: 1px solid white;
+  box-shadow: 0 0 7px -2px #7e7e7e;
+  border-radius: 5px;
+  transition: 0.3s;
+  text-align: right;
+}
+.nav .nav-items .search-box .search-input:focus,
+.header-2 .sidebar .sidebar-nav .search-box .search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0;
+  border-color: var(--yellow);
+}
+.nav .dpn {
+  position: relative;
+}
+.nav .dpn.active {
+  background-color: var(--yellow);
+}
+.nav .dpn .arrow {
+  transition: 0.3s;
+}
+.nav .dpn.active .arrow {
+  transform: rotate(-90deg);
+  transition: 0.5s;
+}
+.nav .dpn-list {
+  position: absolute;
+  left: 0;
+  top: 105%;
+  width: 100%;
+  box-shadow: 0 0 5px #9e9e9e;
+  background-color: white;
+  border-radius: 10px;
+  transform: scaleY(0);
+  transform-origin: center top;
+  transition: 0.5s;
+  z-index: 20;
+}
+.nav .dpn-list.active {
+  transform: scaleY(1);
+}
+.nav .dpn-list .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--green);
+  transition: 0.3s;
+}
+.nav .dpn-list .list-item:hover {
+  background-color: var(--yellow);
+}
+.nav .dpn-list .list-item:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.nav .dpn-list .list-item:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.header-2 {
+  background-color: var(--green);
+  width: 100%;
+  direction: initial;
+}
+.header-2 .more {
+  color: white;
+  font-size: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.header-2 .more.active {
+  color: var(--yellow);
+}
+.header-2 .more:hover {
+  color: var(--yellow);
+}
+.header-2 .logo img {
+  width: 80px;
+}
+.header-2 .sidebar {
+  position: fixed;
+  top: auto;
+  left: -100%;
+  background-color: white;
+  border-right: 1px solid #9e9e9e;
+  height: 1000px;
+  z-index: 20;
+  transition: 0.5s;
+}
+.header-2 .sidebar.active {
+  left: 0;
+}
+.header-2 .sidebar .contact-item {
+  text-align: center;
+  color: var(--green);
+  transition: 0.3s;
+}
+.header-2 .sidebar .contact-item:hover {
+  color: var(--yellow);
+}
+.header-2 .sidebar .sidebar-nav .nav-item {
+  color: var(--green);
+  width: 100%;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  word-spacing: 3px;
+}
+.header-2 .sidebar .sidebar-nav .nav-item:hover {
+  background-color: var(--yellow);
+}
+.header-2 .sidebar .sidebar-nav .dpn {
+  position: relative;
+}
+.header-2 .sidebar .sidebar-nav .dpn .arrow {
+  transition: 0.5s;
+}
+.header-2 .sidebar .sidebar-nav .dpn .dpn-list.active .arrow {
+  transform: rotate(90deg);
+}
+.header-2 .sidebar .sidebar-nav .dpn .dpn-list.active {
+  background-color: var(--yellow);
+}
+.header-2 .sidebar .sidebar-nav .dpn .for-overflow {
+  overflow: hidden;
+}
+.header-2 .sidebar .sidebar-nav .dpn .list-container {
+  background-color: #f5f5f5;
+  margin-top: -500px;
+  transition: 0.5s;
+}
+.header-2 .sidebar .sidebar-nav .dpn .list-container.active {
+  margin-top: 0;
+}
+.header-2 .sidebar .sidebar-nav .dpn .list-container .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--green);
+  transition: 0.3s;
+}
+.header-2 .sidebar .sidebar-nav .dpn .list-container .list-item:hover {
+  color: var(--yellow);
+}
+.header-2 .sidebar .sidebar-nav .nav-item:not(:first-of-type) {
+  width: 100%;
+  display: block;
+}

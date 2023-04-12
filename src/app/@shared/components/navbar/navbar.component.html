@@ -144,7 +144,7 @@
     </div>
 
 
-</nav>
+    </nav>
 
 <!-- End Navigation Bar -->
 
@@ -231,3 +231,147 @@
 
 
 </nav>
+
+
+
+<div class="header pt-3 pb-4 d-none d-lg-block">
+    <div class="container">
+        <div class="header-content d-flex justify-content-between align-items-center">
+            <div class="header-items d-flex">
+                <a href="#" class="header-item me-4">
+                    <span class="me-4">تواصل معنا</span>
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+                <a href="#" class="header-item">
+                    <span class="me-4">تسجيل الدخول</span>
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/images/logo.png" alt=""></a>
+            </div>
+        </div>
+        <div class="nav mx-auto d-none d-lg-block">
+            <div class="nav-items">
+                <div href="#" class="dpn nav-item py-3 px-4 ms-2">
+                    <i class="fa-solid fa-chevron-left me-3 arrow"></i>المزيد من الخدمات
+                    <div class="dpn-list">
+                        <div class="list-container d-flex flex-column">
+                            <a href="#" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-newspaper"></i>
+                                الاخبار
+                            </a>
+                            <a href="#" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                السوق
+                            </a>
+                            <a href="#" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-ship"></i>
+                                حركة السفن
+                            </a>
+                            <a href="#" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-building-columns"></i>
+                                المعارض
+                            </a>
+                            <a href="#" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-book"></i>
+                                دلائل ومجلات
+                            </a>
+                            <a href="#" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-gavel"></i>
+                                المناقصات
+                            </a>
+                            <a href="#" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-gear"></i>
+                                قسم خدمى
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="nav-item py-3 px-4">الوظائف</a>
+                <a href="#" class="nav-item py-3 px-4">دليل الشركات</a>
+                <a href="#" class="nav-item py-3 px-4">البورصة اليومية</a>
+                <div class="search-box d-inline-block py-3 px-4">
+                    <button class="p-2 me-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" class="search-input p-2" placeholder="...ابحث">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header-2 py-3 d-block d-lg-none">
+    <div class="container">
+        <div class="header-content d-flex justify-content-between align-items-center">
+            <div class="more" (click)="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/images/logo.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar pt-3">
+        <div class="contact d-flex flex-column">
+            <a href="#" class="contact-item ms-3">
+                <span class="me-2">تواصل معنا</span>
+                <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="#" class="contact-item">
+                <span class="me-2">تسجيل الدخول</span>
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </div>
+        <hr class="my-3">
+        <div class="sidebar-nav">
+
+            <a href="#" class="nav-item px-3 py-2">البورصة اليومية</a>  
+            <a href="#" class="nav-item px-3 py-2">دليل الشركات</a>
+            <a href="#" class="nav-item px-3 py-2">الوظائف</a>
+
+            <div class="dpn">
+                <div class="dpn-list nav-item px-3 py-1" href="#">
+                    المزيد من الخدمات
+                    <i class="fa-solid fa-chevron-right arrow ms-4"></i>
+                </div>
+                <div class="for-overflow">
+                    <div class="list-container d-flex flex-column">
+                        <a href="#" class="list-item px-4 py-1">
+                            <i class="fa-solid fa-newspaper"></i>
+                            الاخبار
+                        </a>
+                        <a href="#" class="list-item px-4 py-1">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            السوق
+                        </a>
+                        <a href="#" class="list-item px-4 py-1">
+                            <i class="fa-solid fa-ship"></i>
+                            حركة السفن
+                        </a>
+                        <a href="#" class="list-item px-4 py-1">
+                            <i class="fa-solid fa-building-columns"></i>
+                            المعارض
+                        </a>
+                        <a href="#" class="list-item px-4 py-1">
+                            <i class="fa-solid fa-book"></i>
+                            دلائل ومجلات
+                        </a>
+                        <a href="#" class="list-item px-4 py-1">
+                            <i class="fa-solid fa-gavel"></i>
+                            المناقصات
+                        </a>
+                        <a href="#" class="list-item px-4 py-1">
+                            <i class="fa-solid fa-gear"></i>
+                            قسم خدمى
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="search-box d-inline-block p-3">
+                <button class="p-2 me-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" class="search-input p-2" placeholder="...ابحث">
+            </div>
+        </div>
+    </div>
+</div>
