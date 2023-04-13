@@ -1,238 +1,4 @@
 
-  <!-- Start Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light  bg-light nav-1">
-
-        <a class="navbar-brand" (click)="navigate()">
-        <img alt="main logo" src="assets/images/logo.png" >
-    </a>
-
-        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"  (click)="toggleNavbar()"
-            class="navbar-toggler"
-            data-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{ 'show': navbarOpen }">
-        <ul class="navbar-nav mr-auto">
-
-             <li class="nav-item dropdown " >
-                <a aria-expanded="false"
-                   aria-haspopup="true"
-                   aria-haspopup="true"
-                   aria-expanded="false"
-                   class="nav-link dropdown-toggle d-lg-none  d-block fs-5 " 
-                   data-toggle="dropdown"
-                   role="button"
-                   id="dropdownMenuButton"
-                   appDropdown
-                   #r="appDropDown" >
-                    الخدمات
-                </a>
-
-                <div [ngClass]="{'show':r.isOpen}" class="dropdown-menu d-lg-none w-75 m-auto" aria-labelledby="dropdownMenuButton" >
-
-                    <a class="dropdown-item" [routerLink]="['/stock-exchange/0']" (click)="toggleNavbar()">البورصة اليومية</a> 
-                                          <div class="dropdown-divider"></div>
-
-
-                    <a class="dropdown-item" [routerLink]="['/companies-guide/0']" (click)="toggleNavbar()">دليل الشركات</a>
-                                            <div class="dropdown-divider"></div>
-
-                    <a  class="dropdown-item" [routerLink]="['/employment']" (click)="toggleNavbar()">الوظائف</a>
-                     <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item" [routerLink]="['/news/0']" (click)="toggleNavbar()">الأخبار</a>
-                    <div class="dropdown-divider"></div>
-              
-                    <a class="dropdown-item" [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" (click)="toggleNavbar()">السوق</a>
-                    <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/ships-traffic']" (click)="toggleNavbar()">حركة السفن</a>
-                    <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/gallery/0']" [queryParams]="{ sort:'0', page: 1 }" (click)="toggleNavbar()">المعارض</a>
-                    <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/magazine/0']" [queryParams]="{ sort:2, page: 1 }" (click)="toggleNavbar()">دلائل ومجلات</a>
-                    <div  class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" (click)="toggleNavbar()">المناقصات</a>
-                    <div  class="dropdown-divider"></div>
-                    <a  class="dropdown-item" [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }" (click)="toggleNavbar()">القسم الخدمي</a>
-                </div>
-            </li> 
-
-            <li class="nav-item dropdown " >
-                <a  class="nav-link"  [routerLink]="['/static-pages/about-us']">
-                     عن الكناني
-                </a>
-            </li>
-
-            <li class="nav-item dropdown " >
-                <a class="nav-link"  [routerLink]="['/static-pages/contact-us']">
-                     تواصل معنا
-                </a>
-            </li>
-
-        </ul>
-
-     
-            <input class="search-area  px-4 " id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)"  placeholder="ابحث " type="search">
-                <i class="fas fa-search " style="position: relative;left: 2rem;opacity: 0.7;"></i>
-
-
-
-        <section class="sign-box" >    
-            <!--notifications-->
-
-
-            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle mr-sm-0 notification" data-toggle="dropdown" *ngIf="islogedIn==1"
-            id="notification" role="button" (click)="check()">
-            <i class="fa-regular fa-bell" ></i>
-            <span class="badge" *ngIf="totalLength != 0">{{totalLength}}</span>
-            </a>
-            <div aria-labelledby="notification" class="dropdown-menu scroll-menu"  *ngIf="message != []">
-
-                <!-- <a class="dropdown-item"  style="margin: 0px;" *ngFor="let m of message" [routerLink]="['/market/poultry/my-ads']"><span style="color: #FFAA00;">اضافة اعلان : {{m.notification.title}}</span><br>{{m.notification.body}}<br><span style="padding-right: 60%;font-weight: lighter;">الان</span>
-                    <div class="dropdown-divider mt-2"></div></a> -->
-                    <a class="dropdown-item"  style="margin: 0px;text-align: start;" *ngFor="let m of message" ><span style="color: #FFAA00;" class="align-text-right">{{m.notification.title}}</span><br><span>{{m.notification.body}}</span>
-                        <br>
-                        <br> 
-     
-                         <span [routerLink]="['/market/poultry/my-ads']" class="small-button"> رؤية اعلاناتك </span>
-                         <span style="font-weight: lighter; padding-right: 40%;">الان </span><br>
-                          <div class="dropdown-divider mt-2"></div>
-                     </a>
-
-                <!-- <a class="dropdown-item"  style="margin: 0px;" *ngFor="let n of notification_ads" [routerLink]="['/market/poultry/my-ads']"><span style="color: #FFAA00; ">اضافة اعلان : {{n.ad_title}}</span><br><span >{{n.noty}}</span><br><span style="padding-right: 50%;font-weight: lighter;">{{n.created_at}}</span> 
-                               <div class="dropdown-divider"></div></a>
-                 -->
-                <a class="dropdown-item"  style="margin: 0px;text-align: start;" *ngFor="let nn of notification_all" ><span style="color: #FFAA00;" class="align-text-right">{{nn.title}}</span><br *ngIf="nn.key_name =='market'"><span *ngIf="nn.key_name =='market'">{{nn.desc}}</span><br>
-                   <br> 
-
-                    <span *ngIf="nn.key_name =='market'" [routerLink]="['/market/1/my-ads']" class="small-button"> رؤية اعلاناتك </span>
-                    <span *ngIf="nn.key_name =='news'" class="small-button" [routerLink]="['/news/1/'+nn.key_id]"> رؤية الخبر </span>
-                    <span *ngIf="nn.key_name =='companies'" class="small-button" [routerLink]="['/companies-guide/1/companies_details/type/'+nn.key_id]"> رؤية الشركة </span>
-
-                    <span style="font-weight: lighter; padding-right: 40%;">{{nn.time}} </span><br>
-                                <div class="dropdown-divider mt-2"></div>
-                </a>
- 
-            </div>
-           <!--end notification-->
-
-            <a class="log-in nav-link"  *ngIf="islogedIn==0"  [routerLink]="['/user/login']"> الدخول</a>
-            <a class="sign-up nav-link" *ngIf="islogedIn==0" [routerLink]="['/user/register']">انضم الان</a>
-        </section>
-
-
-        <section class="profile-box dropdown d-lg-block " *ngIf="islogedIn==1" style="margin: 0;display: inline-block;">
-            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle " data-toggle="dropdown"
-               href="#"
-               id="navbarDropdown" role="button">
-                <img alt="profile pic" class="profile-photo" [src]="[Profile?.image]">
-                <h6>{{Profile?.name}}</h6>
-                <div class="arrow">
-                    <img alt="arrow down" class="arrow-down" src="../../../../assets/images/down_arrow.svg">
-                </div>
-            </a>
-            <div aria-labelledby="navbarDropdown" class="dropdown-menu" style="left: auto;">
-    
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" routerLink="/user/setting">الإعدادات</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item"(click)="logout()" style="cursor: pointer;">تسجيل الخروج</a>
-            </div>
-        </section>
-    </div>
-
-
-    </nav>
-
-<!-- End Navigation Bar -->
-
-<nav class="navbar navbar-expand-lg  d-none d-lg-block nav-2 ">
-
-
-    <ul class="navbar-nav  navbar-2">
-
-        <li class="nav-item  " >
-            <a  class="nav-link "  [routerLink]="['/stock-exchange/0']">
-                <span>البورصة اليومية</span>
-            </a>
-        </li>
-
-        <li class="nav-item  " >
-            <a class="nav-link "  [routerLink]="['/companies-guide/0']">
-                 دليل الشركات
-            </a>
-        </li>
-
-        <li class="nav-item  "  >
-            <a class="nav-link  "  [routerLink]="['/employment']">
-                الوظائف
-            </a>
-        </li>
-
-        <li class="nav-item  " >
-            <a class="nav-link  "  [routerLink]="['/news/0']" [queryParams]="{sort:1, page: 0 }">
-                 الأخبار
-            </a>
-        </li>
-
-        <i class="fa-thin fa-circle-chevron-down"></i>
-        
-        <li class="nav-item dropdown " >
-            <a aria-expanded="false"
-               aria-haspopup="true"
-               aria-haspopup="true"
-               aria-expanded="false"
-               class="nav-link  dropdown-toggle" 
-               data-toggle="dropdown"
-               role="button"
-               id="dropdownMenuButton1"
-               appDropdown
-               #more="appDropDown" >
-                المزيد من الخدمات
-                            </a>
-
-            <div [ngClass]="{'show':more.isOpen}" class="dropdown-menu" style="min-width: 16rem; " aria-labelledby="dropdownMenuButton1">
-
-                <a class="dropdown-item service" [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" >
-                    <img src="../../../../assets/images/market.png" class="icons" > السوق
-                </a>
-                <div class="dropdown-divider"></div>
-
-                <a  class="dropdown-item service" [routerLink]="['/ships-traffic']">
-                    <img src="../../../../assets/images/ships.png" class="icons"> حركة السفن
-                </a><div class="dropdown-divider"></div>
-
-                <a  class="dropdown-item service" [routerLink]="['/gallery/0']" [queryParams]="{ sort:'0', page: 1 }"> 
-                   <img src="../../../../assets/images/shows.png" class="icons"> المعارض
-                </a><div class="dropdown-divider"></div>
-
-                <a  class="dropdown-item service" [routerLink]="['/magazine/0']" [queryParams]="{ sort:2, page: 1 }">
-                    <img src="../../../../assets/images/magazine.png" class="icons"> دلائل ومجلات
-                </a>
-                <div  class="dropdown-divider"></div>
-
-                <a  class="dropdown-item service" [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }">
-                     <img src="../../../../assets/images/tenders.png" class="icons"> المناقصات
-                    </a>
-
-                    <div  class="dropdown-divider"></div>
-
-                    <a  class="dropdown-item service" [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }">
-                         <img src="../../../../assets/images/service.jpg"  class="icons" style="border-radius:50% ;" > القسم الخدمي
-                        </a>
-            </div>
-        </li> 
-
-    </ul>
-
-
-
-
-</nav>
-
-
 
 <div class="header pt-3 pb-4 d-none d-lg-block">
     <div class="container">
@@ -242,13 +8,35 @@
                     <span class="me-4">تواصل معنا</span>
                     <i class="fa-solid fa-phone"></i>
                 </a>
-                <a href="#" class="header-item">
+                <a *ngIf="islogedIn==0"  [routerLink]="['/user/login']" class="header-item">
                     <span class="me-4">تسجيل الدخول</span>
                     <i class="fa-solid fa-user"></i>
                 </a>
+
+
+                <a  class="header-item" *ngIf="islogedIn==1">
+                    <div class="dropdown" >  
+                      <i class="fa-solid fa-chevron-down me-3 arrow"></i> 
+
+                        <span class="dropbtn">{{Profile?.name}}<img alt="profile pic" class="profile-photo ms-1" [src]="[Profile?.image]"></span>
+                        <div class="dropdown-content">
+                            <a routerLink="/user/setting">الإعدادات</a>
+                            <div class="dropdown-divider"></div>
+                            <a (click)="logout()" style="cursor: pointer;">تسجيل الخروج</a>           
+                        
+                        </div>
+                      </div>                      
+        
+                </a>
+
+ 
+   
             </div>
+
+
+
             <div class="logo">
-                <a href="#"><img src="assets/images/logo.png" alt=""></a>
+                <a href="#"><img src="assets/images/new-logo1.png" alt=""></a>
             </div>
         </div>
         <div class="nav mx-auto d-none d-lg-block">
@@ -299,67 +87,83 @@
         </div>
     </div>
 </div>
-<div class="header-2 py-3 d-block d-lg-none">
+    <div class="header-2 py-3 d-block d-lg-none">
     <div class="container">
         <div class="header-content d-flex justify-content-between align-items-center">
             <div class="more" (click)="toggleSidebar()">
                 <i class="fa-solid fa-bars"></i>
             </div>
             <div class="logo">
-                <a href="#"><img src="assets/images/logo.png" alt=""></a>
+                <a href="#"><img src="assets/images/new-logo1.png" alt=""></a>
             </div>
         </div>
     </div>
     <div class="sidebar pt-3">
         <div class="contact d-flex flex-column">
-            <a href="#" class="contact-item ms-3">
-                <span class="me-2">تواصل معنا</span>
-                <i class="fa-solid fa-phone"></i>
-            </a>
-            <a href="#" class="contact-item">
-                <span class="me-2">تسجيل الدخول</span>
+           
+            <a class="contact-item" *ngIf="islogedIn==1">
+                <span class="dropbtn">{{Profile?.name}}
+                    <img alt="profile pic" class="profile-photo ms-1" [src]="[Profile?.image]">
+                </span>
+            </a> 
+
+            <a *ngIf="islogedIn==0" href="#" class="contact-item" >
+                <span class="me-3 ">تسجيل الدخول</span>
                 <i class="fa-solid fa-user"></i>
             </a>
+            <a href="#" class="contact-item ms-3">
+                <span class="me-3 ">تواصل معنا</span>
+                <i class="fa-solid fa-phone"></i>
+            </a>
+  
+
+
+
+            <a *ngIf="islogedIn==0" routerLink="/user/setting" class="contact-item">
+                <span class="me-3 "> الإعدادات</span>
+                <i class="fa-solid fa-user"></i>
+            </a>
+
         </div>
         <hr class="my-3">
-        <div class="sidebar-nav">
+        <div class="sidebar-nav" >
 
             <a href="#" class="nav-item px-3 py-2">البورصة اليومية</a>  
             <a href="#" class="nav-item px-3 py-2">دليل الشركات</a>
             <a href="#" class="nav-item px-3 py-2">الوظائف</a>
 
-            <div class="dpn">
-                <div class="dpn-list nav-item px-3 py-1" href="#">
+            <div class="dpn" >
+                <div class="dpn-list nav-item px-3 py-1" (click)="toggledropinsidebar()" href="#" >
                     المزيد من الخدمات
                     <i class="fa-solid fa-chevron-right arrow ms-4"></i>
                 </div>
                 <div class="for-overflow">
                     <div class="list-container d-flex flex-column">
-                        <a href="#" class="list-item px-4 py-1">
+                        <a href="#" class="list-item px-4 py-2">
                             <i class="fa-solid fa-newspaper"></i>
                             الاخبار
                         </a>
-                        <a href="#" class="list-item px-4 py-1">
+                        <a href="#" class="list-item px-4 py-2">
                             <i class="fa-solid fa-cart-shopping"></i>
                             السوق
                         </a>
-                        <a href="#" class="list-item px-4 py-1">
+                        <a href="#" class="list-item px-4 py-2">
                             <i class="fa-solid fa-ship"></i>
                             حركة السفن
                         </a>
-                        <a href="#" class="list-item px-4 py-1">
+                        <a href="#" class="list-item px-4 py-2">
                             <i class="fa-solid fa-building-columns"></i>
                             المعارض
                         </a>
-                        <a href="#" class="list-item px-4 py-1">
+                        <a href="#" class="list-item px-4 py-2">
                             <i class="fa-solid fa-book"></i>
                             دلائل ومجلات
                         </a>
-                        <a href="#" class="list-item px-4 py-1">
+                        <a href="#" class="list-item px-4 py-2">
                             <i class="fa-solid fa-gavel"></i>
                             المناقصات
                         </a>
-                        <a href="#" class="list-item px-4 py-1">
+                        <a href="#" class="list-item px-4 py-2">
                             <i class="fa-solid fa-gear"></i>
                             قسم خدمى
                         </a>
@@ -371,7 +175,14 @@
             <div class="search-box d-inline-block p-3">
                 <button class="p-2 me-2"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <input type="text" class="search-input p-2" placeholder="...ابحث">
+
             </div>
+
+            <div class=" p-3 contact-item" *ngIf="islogedIn==1">
+            <a (click)="logout()" style="cursor: pointer;" >تسجيل الخروج</a>           
+            </div>
+
+
         </div>
     </div>
 </div>

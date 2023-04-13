@@ -14,24 +14,7 @@ import { NotificationsService } from '@app/@core/services/modules/notifications/
 export class NavbarComponent implements OnInit  {
   // @Output() deviceToken = new EventEmitter<string>();
 
-  // ngAfterViewInit() {
-  //   let more = document.querySelector(".header-2 .more")
-  //   let sidebar = document.querySelector(".header-2 .sidebar")
 
-  //   more?.addEventListener("click",  () => {
-  //     this.classList.toggle("active")
-  //     sidebar?.classList.toggle("active")
-  //   })
-  // }
-
-  toggleSidebar() {
-    let more = document.querySelector(".header-2 .more")
-    let sidebar = document.querySelector(".header-2 .sidebar")
-
-    more?.classList.toggle("active")
-    sidebar?.classList.toggle("active")
-  }
-  
   message:any=[];
   notification_ads:any=[]
   notification_all:any=[]
@@ -117,27 +100,43 @@ export class NavbarComponent implements OnInit  {
       this.listen();
      
 
-let dpn = document.querySelector(".nav .dpn")
-let dpnList = document.querySelector(".nav .dpn-list")
-
-dpn?.addEventListener("click", function () {
-    dpnList?.classList.toggle("active")
-    dpn?.classList.toggle("active")
-})
 
 
-let sidebarDpn = document.querySelector(".sidebar-nav .dpn .dpn-list")
-let sidebarDpnList = document.querySelector(".sidebar-nav .dpn .list-container")
+      let dpn = document.querySelector(".nav .dpn")
+      let dpnList = document.querySelector(".nav .dpn-list")
 
-sidebarDpn?.addEventListener("click",  () => {
-    this.classList.toggle("active")
-    sidebarDpnList?.classList.toggle("active")
-})
+      dpn?.addEventListener("click", function () {
+          dpnList?.classList.toggle("active")
+          dpn?.classList.toggle("active")
+      })
+
 
 
   }
 
+  togglesignin(){
+          let sign_in = document.querySelector(".dpn")
+          let sign_in_list = document.querySelector(".dpn .dpn-list")
+
+        sign_in_list?.classList.toggle("active")
+        sign_in?.classList.toggle("active")
+  }
+
+  toggleSidebar() {
+    let more = document.querySelector(".header-2 .more")
+    let sidebar = document.querySelector(".header-2 .sidebar")
+
+    more?.classList.toggle("active")
+    sidebar?.classList.toggle("active")
+  }
   
+  toggledropinsidebar(){
+    let sidebarDpn = document.querySelector(".sidebar-nav .dpn .dpn-list")
+    let sidebarDpnList = document.querySelector(".sidebar-nav .dpn .list-container")
+        sidebarDpn?.classList.toggle("active")
+        sidebarDpnList?.classList.toggle("active")
+
+  }
 
 
   toggleNavbar() { this.navbarOpen = !this.navbarOpen;}
@@ -154,47 +153,17 @@ sidebarDpn?.addEventListener("click",  () => {
   }
 
 
-  // deviceTokenTemp="";
-  // message:any = null;
-  // requestPermission() {
-  //   const messaging = getMessaging();
-  //   if ('serviceWorker' in navigator) {
-  //     navigator.serviceWorker.register('../firebase-messaging-sw.js')
-  //       .then(function(registration) {
-  //         console.log('Registration successful, scope is:', registration.scope);
-  //       }).catch(function(err) {
-  //         console.log('Service worker registration failed, error:', err);
-  //       });
-  //     }
-  //   getToken(messaging, 
-  //    { vapidKey: environment.firebase.vapidKey}).then(
-  //      (currentToken) => {
-  //        if (currentToken) {
-  //          console.log("Hurraaa!!! we got the token.....");
-  //          console.log(currentToken);  
-  //          this.deviceTokenTemp=currentToken
-  //        } else {
-  //          console.log('No registration token available. Request permission to generate one.');
-  //        }
-  //    }).catch((err) => {
-  //       console.log('An error occurred while retrieving token. ', err);
-  //   });
-
-  // }
+  
   unread:boolean=false
   listen() {
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
-      // console.log('Message received. ', payload);
       this.message.unshift(payload);
       
-      // let temp=parseInt(localStorage.getItem('total')!)+this.message.length 
       this.totalLength+=1
-      // localStorage.setItem('total',this.totalLength)
     });
   }
   check(){
-    // localStorage.setItem('total','0')
     this.totalLength=0
     this.unread=true;
   }

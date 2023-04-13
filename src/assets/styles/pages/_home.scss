@@ -472,4 +472,58 @@
 
 ///////////////////   GLOBAL Stying for Splide Carousel      ////////////////
 
-
+//////////////////////new design
+.landing .bg {
+  // height: 250px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: auto;
+}
+.landing .bg img {
+  width: 100%;
+  height: 22rem;;
+  border-radius: 10px;
+}
+.landing .bg .content {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  right: 5%;
+  max-width: 30rem;
+  font-weight: bold;
+}
+.landing .bg .content h3 {
+  word-spacing: 5px;
+  color: #000;
+}
+.landing .bg .content p {
+  padding-top: 0.5rem;
+  color: var(--green);
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+}
+// @media screen and (max-width: 768px) {
+//   .landing .bg img {
+//       width: 150%;
+//   }
+//   .landing .bg .content p {
+//       color: black;
+//   }
+// }
+.landing .bg .link {
+  position: absolute;
+  right: 5%;
+  bottom: 6%;
+  padding: 0.75rem 5.625rem;
+  border-radius: 10px;
+  background-color: white;
+  color: var(--green);
+  transition: 0.3s;
+  font-weight: bold;
+  font-size: 1.188rem;
+}
+.landing .bg .link:hover {
+  background-color: var(--green);
+  color: var(--yellow);
+}

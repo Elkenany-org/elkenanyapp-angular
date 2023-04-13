@@ -95,7 +95,9 @@ input{
   box-shadow: 2px 5px 10px 0px rgba(24, 65, 5, 0.5)
 }
 .profile-photo{
-  height: 40px;
+  height: 37px;
+  width: 2rem;
+  border-radius: 50%;
 }
 @media screen and (min-width:1490px) {
 
@@ -185,3 +187,11 @@ input{
 .container{
   max-width: 90% !important;
 }
+
+
+
+
+
+
+
+
