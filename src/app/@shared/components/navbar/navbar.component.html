@@ -4,7 +4,7 @@
     <div class="container">
         <div class="header-content d-flex justify-content-between align-items-center">
             <div class="header-items d-flex">
-                <a href="#" class="header-item me-4">
+                <a [routerLink]="['/static-pages/contact-us']" class="header-item me-4">
                     <span class="me-4">تواصل معنا</span>
                     <i class="fa-solid fa-phone"></i>
                 </a>
@@ -13,10 +13,23 @@
                     <i class="fa-solid fa-user"></i>
                 </a>
 
+                <!-- <div  class="dropdown header-item" >
+                    <a class="btn dropdown-toggle" id="dropdownMenuButton1" aria-haspopup="true" aria-expanded="false" >
+                      <span class="me-2" *ngIf="islogedIn==1">{{Profile?.name}} <img alt="profile pic" class="profile-photo ms-1" [src]="[Profile?.image]"></span>
+                      <i class="fa-solid fa-bars" *ngIf="islogedIn==1"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" routerLink="/user/setting">الإعدادات</a></li>
+                      <div class="dropdown-divider"></div>
+                      <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;">تسجيل الخروج</a></li>
+                    </ul>
+                  </div>
+    -->
 
-                <a  class="header-item" *ngIf="islogedIn==1">
+               <a  class="header-item " *ngIf="islogedIn==1">
+                    
                     <div class="dropdown" >  
-                      <i class="fa-solid fa-chevron-down me-3 arrow"></i> 
+                      <i class="fa-solid fa-chevron-down me-2 arrow"></i> 
 
                         <span class="dropbtn">{{Profile?.name}}<img alt="profile pic" class="profile-photo ms-1" [src]="[Profile?.image]"></span>
                         <div class="dropdown-content">
@@ -29,56 +42,100 @@
         
                 </a>
 
+                           
+                
+                <!--notifications-->
+            <a aria-expanded="false" aria-haspopup="true" class="header-item dropdown-toggle notification" data-toggle="dropdown" *ngIf="islogedIn==1"
+            id="notification" role="button" (click)="check()">  
+            
+            <i class="fa-solid fa-chevron-down me-2 ms-3 arrow"></i> 
+
+            <i class="fa-regular fa-bell" ></i>
+            <span class="badge" *ngIf="totalLength != 0">{{totalLength}}</span>
+            </a>
+            <div aria-labelledby="notification" class="dropdown-menu scroll-menu"  *ngIf="message != []">
+
+                    <a class="dropdown-item"  style="margin: 0px;text-align: start;" *ngFor="let m of message" ><span style="color: #FFAA00;" class="align-text-right">{{m.notification.title}}</span><br><span>{{m.notification.body}}</span>
+                        <br>
+                        <br> 
+     
+                         <span [routerLink]="['/market/poultry/my-ads']" class="small-button"> رؤية اعلاناتك </span>
+                         <span style="font-weight: lighter; padding-right: 40%;">الان </span><br>
+                          <div class="dropdown-divider mt-2"></div>
+                     </a>
+
+                <a class="dropdown-item"  style="margin: 0px;" *ngFor="let nn of notification_all" ><span style="color: #FFAA00;" class="align-text-right">{{nn.title}}</span><br *ngIf="nn.key_name =='market'"><span *ngIf="nn.key_name =='market'">{{nn.desc}}</span><br>
+                   <br> 
+
+                    <span *ngIf="nn.key_name =='market'" [routerLink]="['/market/1/my-ads']" class="small-button"> رؤية اعلاناتك </span>
+                    <span *ngIf="nn.key_name =='news'" class="small-button" [routerLink]="['/news/1/'+nn.key_id]"> رؤية الخبر </span>
+                    <span *ngIf="nn.key_name =='companies'" class="small-button" [routerLink]="['/companies-guide/1/companies_details/type/'+nn.key_id]"> رؤية الشركة </span>
+                    <span *ngIf="nn.key_name =='showes'" class="small-button" [routerLink]="['/gallery/1/'+nn.key_id+'/about/'+nn.key_id]"> رؤية المعرض </span>
+
+                    <span style="font-weight: lighter; padding-right: 40%; color: #1f6b00;">{{nn.time}} </span><br>
+                                <div class="dropdown-divider mt-2"></div>
+                </a>
  
-   
             </div>
+                <!--end of notifications-->
+
+
+
+            </div>
+
+
+
+
+
 
 
 
             <div class="logo">
-                <a href="#"><img src="assets/images/new-logo1.png" alt=""></a>
+                <a (click)="navigate()"><img src="assets/images/new-logo1.png" alt=""></a>
             </div>
         </div>
+
+
         <div class="nav mx-auto d-none d-lg-block">
             <div class="nav-items">
                 <div href="#" class="dpn nav-item py-3 px-4 ms-2">
                     <i class="fa-solid fa-chevron-left me-3 arrow"></i>المزيد من الخدمات
                     <div class="dpn-list">
                         <div class="list-container d-flex flex-column">
-                            <a href="#" class="list-item px-4 py-2">
+                            <a [routerLink]="['/news/0']" [queryParams]="{sort:1, page: 0 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-newspaper"></i>
                                 الاخبار
                             </a>
-                            <a href="#" class="list-item px-4 py-2">
+                            <a [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 السوق
                             </a>
-                            <a href="#" class="list-item px-4 py-2">
+                            <a [routerLink]="['/ships-traffic']" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-ship"></i>
                                 حركة السفن
                             </a>
-                            <a href="#" class="list-item px-4 py-2">
+                            <a [routerLink]="['/gallery/0']" [queryParams]="{ sort:'0', page: 1 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-building-columns"></i>
                                 المعارض
                             </a>
-                            <a href="#" class="list-item px-4 py-2">
+                            <a [routerLink]="['/magazine/0']" [queryParams]="{ sort:2, page: 1 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-book"></i>
                                 دلائل ومجلات
                             </a>
-                            <a href="#" class="list-item px-4 py-2">
+                            <a [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-gavel"></i>
                                 المناقصات
                             </a>
-                            <a href="#" class="list-item px-4 py-2">
+                            <a [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-gear"></i>
                                 قسم خدمى
                             </a>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="nav-item py-3 px-4">الوظائف</a>
-                <a href="#" class="nav-item py-3 px-4">دليل الشركات</a>
-                <a href="#" class="nav-item py-3 px-4">البورصة اليومية</a>
+                <a [routerLink]="['/employment']" class="nav-item py-3 px-4">الوظائف</a>
+                <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-4">دليل الشركات</a>
+                <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-4">البورصة اليومية</a>
                 <div class="search-box d-inline-block py-3 px-4">
                     <button class="p-2 me-2"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <input type="text" class="search-input p-2" placeholder="...ابحث">
@@ -94,7 +151,7 @@
                 <i class="fa-solid fa-bars"></i>
             </div>
             <div class="logo">
-                <a href="#"><img src="assets/images/new-logo1.png" alt=""></a>
+                <a (click)="navigate()"><img src="assets/images/new-logo1.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -107,11 +164,13 @@
                 </span>
             </a> 
 
-            <a *ngIf="islogedIn==0" href="#" class="contact-item" >
+
+
+            <a *ngIf="islogedIn==0" [routerLink]="['/user/login']" class="contact-item" >
                 <span class="me-3 ">تسجيل الدخول</span>
                 <i class="fa-solid fa-user"></i>
             </a>
-            <a href="#" class="contact-item ms-3">
+            <a [routerLink]="['/static-pages/contact-us']" class="contact-item ms-3">
                 <span class="me-3 ">تواصل معنا</span>
                 <i class="fa-solid fa-phone"></i>
             </a>
@@ -119,7 +178,7 @@
 
 
 
-            <a *ngIf="islogedIn==0" routerLink="/user/setting" class="contact-item">
+            <a *ngIf="islogedIn==1" routerLink="/user/setting" class="contact-item">
                 <span class="me-3 "> الإعدادات</span>
                 <i class="fa-solid fa-user"></i>
             </a>
@@ -128,9 +187,9 @@
         <hr class="my-3">
         <div class="sidebar-nav" >
 
-            <a href="#" class="nav-item px-3 py-2">البورصة اليومية</a>  
-            <a href="#" class="nav-item px-3 py-2">دليل الشركات</a>
-            <a href="#" class="nav-item px-3 py-2">الوظائف</a>
+            <a [routerLink]="['/stock-exchange/0']" class="nav-item px-3 py-2">البورصة اليومية</a>  
+            <a [routerLink]="['/companies-guide/0']" class="nav-item px-3 py-2">دليل الشركات</a>
+            <a [routerLink]="['/employment']" class="nav-item px-3 py-2">الوظائف</a>
 
             <div class="dpn" >
                 <div class="dpn-list nav-item px-3 py-1" (click)="toggledropinsidebar()" href="#" >
@@ -139,31 +198,31 @@
                 </div>
                 <div class="for-overflow">
                     <div class="list-container d-flex flex-column">
-                        <a href="#" class="list-item px-4 py-2">
+                        <a [routerLink]="['/news/0']" [queryParams]="{sort:1, page: 0 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-newspaper"></i>
                             الاخبار
                         </a>
-                        <a href="#" class="list-item px-4 py-2">
+                        <a [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-cart-shopping"></i>
                             السوق
                         </a>
-                        <a href="#" class="list-item px-4 py-2">
+                        <a [routerLink]="['/ships-traffic']" class="list-item px-4 py-2">
                             <i class="fa-solid fa-ship"></i>
                             حركة السفن
                         </a>
-                        <a href="#" class="list-item px-4 py-2">
+                        <a [routerLink]="['/gallery/0']" [queryParams]="{ sort:'0', page: 1 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-building-columns"></i>
                             المعارض
                         </a>
-                        <a href="#" class="list-item px-4 py-2">
+                        <a [routerLink]="['/magazine/0']" [queryParams]="{ sort:2, page: 1 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-book"></i>
                             دلائل ومجلات
                         </a>
-                        <a href="#" class="list-item px-4 py-2">
+                        <a [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-gavel"></i>
                             المناقصات
                         </a>
-                        <a href="#" class="list-item px-4 py-2">
+                        <a [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-gear"></i>
                             قسم خدمى
                         </a>

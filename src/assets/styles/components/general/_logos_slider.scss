@@ -24,6 +24,10 @@
         outline: none;
         position: relative;
 
+        .mostvisited{
+          width: 17.5rem !important;
+          height: 13.75rem !important;
+        }
         .logo-holder {
           width: 9.5rem;
           height: 9.75rem;
@@ -86,6 +90,7 @@
         // left: 2%;
       }
     }
+ 
   }
 }
 

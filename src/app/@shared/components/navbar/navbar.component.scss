@@ -15,14 +15,21 @@
 
     color: #1f6b00;
     text-decoration: none;
-    padding: 15px 26px;
+    // padding: 15px 26px;
     position: relative;
     
     display: inline-block;
     border-radius: 2px;
-    text-align: end;
+    text-align: end; 
+    
+    font-size: 1.2rem !important;
+
   }
   
+  .notification.dropdown-toggle::after {
+    display: none;
+  }
+
   .notification .badge {
     position: absolute;
     top: -8px;
@@ -33,15 +40,12 @@
     color: #1f6b00;
   }
 
-  .sign-box .notification:hover{
+  .notification:hover{
     background: none!important;
     
   }
 
-  .sign-box{
-    // margin-left: 2rem !important;
-    font-size: 1.2rem !important;
-  }
+
   .scroll-menu {
     max-height: 350px;
     overflow-y: auto;
@@ -56,7 +60,7 @@
 
 @media screen and (min-width:1000px) {
   .scroll-menu {
-    right: 80%;
+    right: 70%;
     left: 2%;
   }
 }
@@ -95,7 +99,6 @@ input{
   box-shadow: 2px 5px 10px 0px rgba(24, 65, 5, 0.5)
 }
 .profile-photo{
-  height: 37px;
   width: 2rem;
   border-radius: 50%;
 }
@@ -187,7 +190,6 @@ input{
 .container{
   max-width: 90% !important;
 }
-
 
 
 

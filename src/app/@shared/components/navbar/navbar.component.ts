@@ -81,9 +81,11 @@ export class NavbarComponent implements OnInit  {
     this.notifications.notifications_market().subscribe(
       (res)=>{
         this.notification_ads=res.data?.data       
+       
         this.notifications.notifications().subscribe(
         (res)=>{
-          this.notification_all=res.data?.result       
+          this.notification_all=res.data?.result    
+              console.log(this.notification_all);
           if(this.notification_ads != undefined){
           this.notification_all.push(...this.notification_ads);   
           }
@@ -110,8 +112,11 @@ export class NavbarComponent implements OnInit  {
           dpn?.classList.toggle("active")
       })
 
-
-
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+      const dropdownToggle = document.querySelector('.dropdown-toggle');
+      dropdownToggle?.addEventListener('click', () => {
+          dropdownMenu?.classList.toggle('show');
+      });
   }
 
   togglesignin(){
@@ -138,6 +143,13 @@ export class NavbarComponent implements OnInit  {
 
   }
 
+  toggleNotification() {
+    let notify = document.querySelector(".notify")
+    let notifyList = document.querySelector(".notify .notifyList")
+
+    notify?.classList.toggle("active")
+    notifyList?.classList.toggle("active")
+  }
 
   toggleNavbar() { this.navbarOpen = !this.navbarOpen;}
 

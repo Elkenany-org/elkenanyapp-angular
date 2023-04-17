@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
-import { BannerConfig, logoConfig, logoConfig1 } from '@app/@core/interfaces/_app/banner-logo-config';
+import { BannerConfig, MainBannerConfig, logoConfig, logoConfig1, mostvisitedConfig } from '@app/@core/interfaces/_app/banner-logo-config';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,9 @@ export class BannerLogosComponent implements OnInit {
   @Input() num:string = '' 
 
   BannerConfig = BannerConfig 
-  LogoConfig = logoConfig 
+  LogoConfig = logoConfig
+  mainbannerConfig= MainBannerConfig //done
+  mostvisitedConfig = mostvisitedConfig
   // LogoConfig1 = logoConfig1 
   myClonedArray!:Logo[]
   constructor(
@@ -26,12 +28,20 @@ export class BannerLogosComponent implements OnInit {
   ngOnInit(): void {
     this.BannerConfig.banner=[]
     this.LogoConfig.banner=[]
-    // this.LogoConfig1.banner=[]
+    this.mainbannerConfig.banner=[]
+    this.mostvisitedConfig.banner=[]
 
       this.logoBannerService.getBanner().subscribe( res => {
      this.BannerConfig.banner =res as Banner[]
     })
 
+    this.logoBannerService.getBanner().subscribe( res => {
+      this.mainbannerConfig.banner =res as Banner[]
+     })
+
+     this.logoBannerService.getBanner().subscribe( res => {
+      this.mostvisitedConfig.banner =res as Banner[]
+     })
 
     if(this.type == 'logo'){
           this.logoBannerService.getLogo().subscribe( res => {
@@ -49,6 +59,7 @@ export class BannerLogosComponent implements OnInit {
   }
   onClick(id:number) {
     window.open(this.BannerConfig.banner.find(i => i.id == id)!.link, "_blank");
+    window.open(this.mainbannerConfig.banner.find(i => i.id == id)!.link, "_blank");
 
   }
 }

@@ -13,7 +13,7 @@
                         <i (dblclick)="onClick(slide.id)" class="logo-holder"  >
                             
                             <img alt="partner logo" [class]="BannerConfig.config.class"
-                            src="{{ slide.image }}" style="max-height: 450px; ">
+                            src="{{ slide.image }}" style="max-height: 450px;width: 70%; ">
                             <!-- <img alt="partner logo" [class]="BannerConfig.config.class"
                             src="{{ slide.image }}" style="max-height: 450px; border-radius: 40px;"> -->
 
@@ -69,24 +69,62 @@
     </div>
 </article> 
 
-<!-- <article class="partners slider mt-5" *ngIf="LogoConfig1.banner && LogoConfig1.banner.length !=0 && type=='logo' && num=='2'">
+
+
+<header class="banner__header mainbanner"  *ngIf="mainbannerConfig.banner && mainbannerConfig.banner.length !=0 && type=='mainbanner'" >
+    <div class="container-fluid one-full-slider-banner">
+        <div class="splide" id="image-slider">
+            <div class="splide__track" >
+                <div class="splide" id="image-slider">
+                                    
+                    <ngx-slick-carousel class="carousel"  *ngIf="!loading && mainbannerConfig.banner.length >= 0 "
+                        #slickModal="slick-carousel" 
+                        [config]="mainbannerConfig.config">
+
+                    <div ngxSlickItem *ngFor="let slide of mainbannerConfig.banner" class="slide">
+                        <div class="item">
+                        <i (dblclick)="onClick(slide.id)" class="logo-holder "  >
+                            
+          
+                            <img alt="partner logo" [class]="mainbannerConfig.config.class"
+                            src="{{ slide.image }}" style="max-height: 223px; border-radius: 15px;">
+
+                        </i>
+                        <div class="wall"></div>
+                        </div>
+                    
+                    </div>
+                    </ngx-slick-carousel>
+
+         
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<article class="partners slider mt-5 " *ngIf="mostvisitedConfig.banner && mostvisitedConfig.banner.length !=0 && type=='mostvisited'">
     <div class="container-fluid logos__holder">
         <section class="partners-slider" dir="rtl">
             <section class="splide" id="partnerCarousel">
                 
                                                   
-                <ngx-slick-carousel  class="ngx-slick"  *ngIf="!loading && LogoConfig1.banner.length >= 0 "
+                <ngx-slick-carousel  class="ngx-slick"  *ngIf="!loading && LogoConfig.banner.length >= 0 "
                     #slickModal="slick-carousel" 
-                    [config]="LogoConfig1.config" 
+                    [config]="mostvisitedConfig.config" 
                 >
 
-                <div ngxSlickItem *ngFor="let slide of LogoConfig1.banner;let i=index;" class="slide">
+                <div ngxSlickItem *ngFor="let slide of mostvisitedConfig.banner;let i=index;" class="slide">
                         
                     <div class="item">
 
-                    <a class="logo-holder" target="_blank" href="{{ slide.link}}">
+                         <!-- <div  class="wall ms-4" ></div> -->
 
-                        <img alt="partner logo" [class]="LogoConfig.config.class"
+                    <a class="logo-holder mostvisited" target="_blank" href="{{ slide.link}}">
+
+                        <img alt="partner logo" [class]="mostvisitedConfig.config.class"
                         src="{{ slide.image }}" style="max-height: 450px;">
                         
                     </a>
@@ -100,21 +138,4 @@
             </section>
         </section>
     </div>
-</article>  -->
-       <!-- <carousel 
-                    *ngIf="!loading && BannerConfig.banner.length >= 0 "
-                    [autoplay]="true"
-                    [loop]="true" 
-                    [cellsToShow]="1" 
-                    [arrows]="false"
-                    [dots]="false"
-                    [autoplayInterval]="2000"
-                    [minSwipeDistance]="20"
-                    [transitionDuration]="500"
-                    [borderRadius]="2"
-                    class=" "
-                    >
-                    <div class="carousel-cell" *ngFor="let i of BannerConfig.banner">
-                         <img [src]="i.image"   class="img-cell" >
-                    </div>
-                 </carousel>  -->
+</article> 

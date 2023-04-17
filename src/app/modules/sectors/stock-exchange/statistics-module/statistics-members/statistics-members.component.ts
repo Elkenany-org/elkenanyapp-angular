@@ -78,25 +78,6 @@ export class StatisticsMembersComponent implements OnInit {
          console.log(data['resolve'].data);
         this.StatisticsMemberLocal=data['resolve'].data
         this.StatisticsListLocal=data['resolve'].data
-        // this.chartOptions=  this.chart.drowShart(data['resolve'].data!.changes_members)
-     
-        // this.StatisticsMemberFodder =this.fodderTable(data['resolve'].data!.changes_members)
-        
-      //     this.statistics.StatisicsListFodder(this.stockId).subscribe(res => {
-      //     console.log('====================================');
-      //     console.log(res.data?.list_members);
-      //     console.log('====================================');
-      //     // this.StatisticsMemberFodder=res.data
-      //     // this.StatisticsMemberLocal=res.data
-      //     this.StatisticsListLocal=res.data
-      //    console.log(this.StatisticsListLocal)
-      //    let temp= parseInt(localStorage.getItem('stockId')!)
-      //    this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == temp) as ChangesMember[]
-
-      //  let name= this.StatisticsListLocal?.list_members.find((i: { id: any; }) => i.id == localStorage.getItem('stockId'))!.name
-      //    document.getElementById('company')!.innerText = ''+name;
-
-      // })
   
 
       }else if (this.type == "local"){
@@ -112,27 +93,16 @@ export class StatisticsMembersComponent implements OnInit {
 
 
     
-    // this.getStatisticsMemberData(this.id,this.type,'','')
     })
 
-    // if(this.type == "fodder"){
-    //     this.statistics.StatisicsMembersFodder(this.id,this.type,'','','').subscribe(res => {
-        
-    //          this.StatisticsMemberLocal=res.data
-    //          this.StatisticsMemberFodder =this.fodderTable(res.data!.changes_members)
-
-    //         })
-    //       }
   }
 flag:boolean=false;
   selectFodderStock(id:any) {
     this.days=0
     if(id>0) {
       this.id = id
-      // this.StatisticsMemberSlected = [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)] as ChangesMember[]
       this.chartOptions=  this.chart.drowShart( [this.StatisticsMemberLocal?.changes_members.find(i => i.id ==id)])
       this.flag=true
-      // this.products=this.StatisticsMemberLocal?.changes_members
 
     }else if(id==-1){//all from الاصناف
       this.id = id
@@ -198,13 +168,6 @@ flag:boolean=false;
 
     this.days=0
      this.id = '-1'
-      // this.products = this.StatisticsMemberLocal?.changes_members.filter(i => i.compId == id) as ChangesMember[]
-
-      // this.products.unshift({id:-1,categorize:'الكل'});
-      // console.log(this.products);
-    //  this.flag=true
-      // this.getStatisticsMemberData(-1,this.type, '', '');
-
 
   this.statistics.StatisicsMembersFodder(this.stockId,this.type,'','',id,'').subscribe(res => {
 
@@ -234,14 +197,11 @@ document.getElementById('product')!.innerText = 'الكل';
 
     if(type){ //this  condation works only  at small view port screen
        let f = this.fromToForm.controls
-      //  console.log(this.id,this.type,f['from'].value,f['to'].value);
-
-      //  this.getStatisticsMemberData(this.id,this.type,f['from'].value,f['to'].value)
+  
      }else{
        let f = this.fillter.filterdata
         
        this.fillter.filter(value)
-      // console.log(this.id,this.type,f['from'],f['to']);
        if(f['to']=='' && f['from']!=''){
         let date = new Date();
           if(date.getMonth() + 1 < 10){

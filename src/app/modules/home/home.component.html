@@ -17,46 +17,105 @@
 
 
 
+<div class="about py-4">
+    <div class="container">
+        <ul class="list-unstyled opt-list d-flex flex-row-reverse justify-content-end gap-4 mb-4">
+                       <li class="">الأسئلة الشائعة</li>
+
+            <li class="active">اخترنا لك</li>  
+        </ul>
+        <ul class="list-unstyled opt-sublist d-flex flex-row-reverse justify-content-end gap-3 mb-5">
+                        <li class="">أجدد الخدمات</li>
+
+            <li class="active">الخدمات الأكثر زيارة</li>  
+        </ul>
+        <div class="mv-carousel">
+                <app-banners-logo  [loading]="loading" [type]="'mostvisited'" [num]="'2'"></app-banners-logo>
+        </div>
+        <div class="mr-carousel">
+            اجدد الخدمات
+            <button>mr</button>
+        </div>
+        <div class="cq-carousel">
+            الاسئلة الشائعة
+            <button>cq</button>
+        </div>
+    </div>
+</div>
+<div class="image-carousel py-4">   
+     <app-banners-logo  [loading]="loading" [type]="'banner'" ></app-banners-logo>
+
+</div>
+
+
+
+        <!-- <div class="container-fluid "> -->
+
+        <!-- </div> -->
+
+
+
+
+
 <div class="content">
+
+    <!--main carosel for banner of services-->
     <header class="home__page__container">
         <div class="home__page__slider" >
             <section class="splide home" id="partnerCarousel">
                 <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
-                <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
-        
+                <app-banners-logo  [loading]="loading" [type]="'mainbanner'"></app-banners-logo>
+                <!-- <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo> -->
+
             </section>
-            <!-- <div class="splide" id="image-slider">
-                <div class="splide__track" >
-                    <div class="splide" id="image-slider">
-
-                        <carousel 
-                            *ngIf="!loading && carousel_banner.length >= 0 "
-                            [autoplay]="true"
-                            [cellsToShow]="1"                            
-                            [arrows]="true"
-                            [height]="500"
-                            [dots]="true"
-                            [autoplayInterval]="1500"
-                            [minSwipeDistance]="20"
-                            [transitionDuration]="500"
-                            [borderRadius]="10" 
-                            [loop]="true" 
-                            class="home-banner">
-                            <div  class="carousel-cell" *ngFor="let i of carousel_banner">
-                                 <img [src]="i.image" >
-                            </div>
-                         </carousel>
-
-                        
-                    </div>
-                </div>
-            </div> -->    
-                         <!-- <app-carousel [config]="carousel_banner" [loading]="loading" ></app-carousel> -->
 
         </div>
 
         <!-- End Header -->
-    </header>
+    </header>       
+
+</div>
+
+<div class="about-kenany py-4">
+    
+</div>
+
+<!--app download-->
+
+<div class="app-download py-5">
+    <div class="container">
+        <div class="row">
+
+            <div class="download col-md-6 d-flex  flex-column  justify-content-center align-items-center">
+                <h1 class="mb-4">قم بتنزيل التطبيق الأن</h1>
+                <div class="links d-lg-flex justify-content-center">
+                    <a class="link py-1 mb-lg-0 mb-2 me-lg-2 d-inline-block" href="#"><i class="fa-brands fa-google-play"></i> google play تنزيل من</a>
+                    <a class="link py-1 d-inline-block" href="#"><i class="fa-brands fa-apple"></i> app store تنزيل من</a>
+                </div>
+            </div>   
+            
+            <div class="iphone-img col-md-6">
+                <img class="" src="assets\images\home\app.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--sponsers-->
+    <article class="full__partner__slider container-fluid ">
+        <h2 class="section__title">شركاء النجاح</h2>
+        <section class="splide" id="partnerCarousel">
+            <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
+            <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo>
+            <!-- <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo> -->
+    
+        </section>
+       </article>
+    
+
+
+       <!--about-->
     <h1 class="elknany__title">أول واكبر منصة <br> خدمات الكرتونية متكاملة</h1>
     <!-- End Header -->
 
@@ -82,23 +141,3 @@
                         <img src="../../../assets/images/app.jpeg" class="video my-5 my-xs-1" >
                     </div>
                 </div>
-</div>
-
-
-        <!-- <div class="container-fluid "> -->
-
-        <!-- </div> -->
-
-
-<article class="full__partner__slider container-fluid ">
-    <h2 class="section__title">شركاء النجاح</h2>
-    <section class="splide" id="partnerCarousel">
-        <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
-        <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo>
-        <!-- <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo> -->
-
-    </section>
-   </article>
-
-
-   

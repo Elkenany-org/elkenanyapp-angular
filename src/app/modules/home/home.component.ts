@@ -49,11 +49,18 @@ this.titleService.setTitle('الكناني | الرئيسية');
 
   this.carousel_banner = res.banner
   this.BannerLogoService.setBanner(res.banner);
-  this.BannerLogoService.setLogo(res.logos);
+  // this.BannerLogoService.setLogo(res.logos);
+
+  this.BannerLogoService.setLogo(res.banner);
   // this.BannerLogoService.setBanner(res.banner);
    this.loading = false;
 
   })
+
+
+  this.toggleTabs();
+
+
   }
 
   swapTab(tab:string) {
@@ -71,4 +78,71 @@ this.titleService.setTitle('الكناني | الرئيسية');
     
 }
 
+
+toggleTabs(){
+  const optListLis = document.querySelectorAll(".about .opt-list li");
+  const optSubList = document.querySelector(".about .opt-sublist");
+  const optSubListLis = document.querySelectorAll(".about .opt-sublist li");
+  const mvCarousel = document.querySelector(".about .mv-carousel");
+  const mrCarousel = document.querySelector(".about .mr-carousel");
+  const cqCarousel = document.querySelector(".about .cq-carousel");
+
+  for (let index = 0; index < optListLis.length; index++) {
+    const element = optListLis[index];
+    if (optListLis[1].classList.contains("active")) {
+      optSubList?.classList.add("active")
+    }
+    element.addEventListener("click", () => {
+      optListLis.forEach((li) => {
+        li.classList.remove("active")
+        element.classList.add("active")
+      })
+      if (optListLis[1].classList.contains("active")) {
+        optSubList?.classList.add("active")
+      } else {
+        optSubList?.classList.remove("active")
+      }
+      if (optListLis[0].classList.contains("active")) {
+        cqCarousel?.classList.add("active")
+      } else {
+        cqCarousel?.classList.remove("active")
+      }
+
+      if (optSubListLis[1].classList.contains("active")) {
+        mvCarousel?.classList.add("active")
+      }
+      if (optListLis[0].classList.contains("active")) {
+        mvCarousel?.classList.remove("active")
+      }
+      if (optSubListLis[0].classList.contains("active")) {
+        mrCarousel?.classList.add("active")
+      } else {
+        mrCarousel?.classList.remove("active")
+      }
+    });
+
+    const element2 = optSubListLis[index];
+    if (optSubListLis[1].classList.contains("active")) {
+      mvCarousel?.classList.add("active")
+    }
+    element2.addEventListener("click", () => {
+      optSubListLis.forEach((li) => {
+        li.classList.remove("active")
+        element2.classList.add("active")
+      })
+      if (optSubListLis[1].classList.contains("active")) {
+        mvCarousel?.classList.add("active")
+      } else {
+        mvCarousel?.classList.remove("active")
+      }
+
+      if (optSubListLis[0].classList.contains("active")) {
+        mrCarousel?.classList.add("active")
+      } else {
+        mrCarousel?.classList.remove("active")
+      }
+    });
+  }
+
+}
 }

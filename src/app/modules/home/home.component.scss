@@ -113,3 +113,143 @@ background-color: #FFAA00 !important;
 }
 
 
+////////////////////////////////////new
+/// 
+.about {
+  text-align: right;
+  font-weight: bold;
+}
+.about .opt-list {
+  gap: 3rem;
+  color: var(--green);
+}
+.about .opt-list li {
+  cursor: pointer;
+  position: relative;
+}
+.about .opt-list li::before,
+.about .opt-sublist li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: var(--green);
+  transform: scaleX(0);
+  transform-origin: center center;
+  transition: 0.3s;
+}
+.about .opt-list li:hover::before,
+.about .opt-sublist li:hover::after {
+  transform: scaleX(1);
+}
+.about .opt-list li.active::before,
+.about .opt-sublist li.active::after {
+  transform: scaleX(1);
+}
+.about .opt-sublist {
+  color: #7e7e7e;
+  display: none !important;
+}
+.about .opt-sublist.active {
+  display: flex !important;
+}
+.about .opt-sublist li {
+  cursor: pointer;
+  position: relative;
+}
+.about .opt-sublist li:last-child {
+  margin-left: 50px;
+}
+.about .opt-sublist li:last-child::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: #9e9e9e;
+  cursor: default;
+}
+.about .mv-carousel {
+  display: none;
+}
+.about .mv-carousel.active {
+  display: block;
+}
+.about .mr-carousel {
+  display: none;
+}
+.about .mr-carousel.active {
+  display: block;
+}
+.about .cq-carousel {
+  display: none;
+}
+.about .cq-carousel.active {
+  display: block;
+}
+.about .container{
+  max-width: 90% !important;
+}
+
+
+/////////////
+/// 
+.app-download {
+  background-color: var(--yellow);
+}
+.app-download .iphone-img img {
+  width: 100%;
+  height: auto;
+  margin-bottom: -318px;
+  margin-left: -115px;
+}
+.app-download .download h1 {
+  text-align: center;
+  color: var(--green);
+}
+.app-download .download .links .link {
+  font-size: 18px;
+}
+.app-download .download .links .link {
+  background-color: white;
+  color: var(--green);
+  border-radius: 10px;
+  width: 210px;
+  text-align: center;
+  box-shadow: 0 0 4px #7e7e7e;
+  word-spacing: 2px;
+  transition: 0.3s;
+}
+.app-download .download .links .link:hover {
+  background-color: var(--green);
+  color: var(--yellow);
+}
+.app-download .download .links {
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .app-download .download .links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .app-download .iphone-img img {
+      margin-bottom: 0;
+  }
+  .app-download .download {
+      margin-top: -100px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .app-download .iphone-img img {
+      margin-left: -70px;
+  }
+  
+}
