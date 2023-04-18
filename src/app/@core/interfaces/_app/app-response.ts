@@ -7,7 +7,15 @@ export interface Banner {
 export interface Logo extends Banner {
 
 }
+export interface MostVisited extends Banner {
 
+}
+export interface NewestServices extends Banner {
+
+}
+export interface Questions extends Banner {
+
+}
 export interface Sector {
   id: number
   name: string

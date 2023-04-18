@@ -35,7 +35,7 @@
 
 
 <article class="partners slider mt-5" *ngIf="LogoConfig.banner && LogoConfig.banner.length !=0 && type=='logo'">
-    <div class="container-fluid logos__holder">
+    <div class="container logos__holder">
         <section class="partners-slider" dir="rtl">
             <section class="splide" id="partnerCarousel">
                 
@@ -111,7 +111,7 @@
             <section class="splide" id="partnerCarousel">
                 
                                                   
-                <ngx-slick-carousel  class="ngx-slick"  *ngIf="!loading && LogoConfig.banner.length >= 0 "
+                <ngx-slick-carousel  class="ngx-slick"  *ngIf="!loading && mostvisitedConfig.banner.length >= 0 "
                     #slickModal="slick-carousel" 
                     [config]="mostvisitedConfig.config" 
                 >
@@ -125,6 +125,78 @@
                     <a class="logo-holder mostvisited" target="_blank" href="{{ slide.link}}">
 
                         <img alt="partner logo" [class]="mostvisitedConfig.config.class"
+                        src="{{ slide.image }}" style="max-height: 450px;">
+                        
+                    </a>
+                    </div>
+                    
+                </div>
+
+                
+                </ngx-slick-carousel>
+                
+            </section>
+        </section>
+    </div>
+</article> 
+
+
+<article class="partners slider mt-5 " *ngIf="newestservicesConfig.banner && newestservicesConfig.banner.length !=0 && type=='newestservices'">
+    <div class="container-fluid logos__holder">
+        <section class="partners-slider" dir="rtl">
+            <section class="splide" id="partnerCarousel">
+                
+                                                  
+                <ngx-slick-carousel  class="ngx-slick"  *ngIf="!loading && newestservicesConfig.banner.length >= 0 "
+                    #slickModal="slick-carousel" 
+                    [config]="newestservicesConfig.config" 
+                >
+
+                <div ngxSlickItem *ngFor="let slide of newestservicesConfig.banner;let i=index;" class="slide">
+                        
+                    <div class="item">
+
+                         <!-- <div  class="wall ms-4" ></div> -->
+
+                    <a class="logo-holder mostvisited" target="_blank" href="{{ slide.link}}">
+
+                        <img alt="partner logo" [class]="newestservicesConfig.config.class"
+                        src="{{ slide.image }}" style="max-height: 450px;">
+                        
+                    </a>
+                    </div>
+                    
+                </div>
+
+                
+                </ngx-slick-carousel>
+                
+            </section>
+        </section>
+    </div>
+</article> 
+
+
+<article class="partners slider mt-5 " *ngIf="questionsConfig.banner && questionsConfig.banner.length !=0 && type=='questions'">
+    <div class="container-fluid logos__holder">
+        <section class="partners-slider" dir="rtl">
+            <section class="splide" id="partnerCarousel">
+                
+                                                  
+                <ngx-slick-carousel  class="ngx-slick"  *ngIf="!loading && questionsConfig.banner.length >= 0 "
+                    #slickModal="slick-carousel" 
+                    [config]="questionsConfig.config" 
+                >
+
+                <div ngxSlickItem *ngFor="let slide of questionsConfig.banner;let i=index;" class="slide">
+                        
+                    <div class="item">
+
+                         <!-- <div  class="wall ms-4" ></div> -->
+
+                    <a class="logo-holder mostvisited" target="_blank" href="{{ slide.link}}">
+
+                        <img alt="partner logo" [class]="questionsConfig.config.class"
                         src="{{ slide.image }}" style="max-height: 450px;">
                         
                     </a>

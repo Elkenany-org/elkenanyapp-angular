@@ -103,8 +103,8 @@ background-color: #FFAA00 !important;
 
 @media only screen and (min-width: 500px) {
   .text{
-     font-size: 1.5rem;
-     line-height: 2.1 rem;
+     font-size: 1.25rem;
+     line-height: 1.1 rem;
   }
   .video{
     height: 28rem;
@@ -199,57 +199,63 @@ background-color: #FFAA00 !important;
 /// 
 .app-download {
   background-color: var(--yellow);
+  height: 20rem;
+}
+.small-img{
+  // background-color: var(--yellow);
+  margin-top: -3px;
 }
 .app-download .iphone-img img {
   width: 100%;
   height: auto;
-  margin-bottom: -318px;
-  margin-left: -115px;
+  // margin-bottom: -318px;
+  // margin-left: -115px;
 }
 .app-download .download h1 {
   text-align: center;
   color: var(--green);
 }
-.app-download .download .links .link {
-  font-size: 18px;
-}
-.app-download .download .links .link {
+
+.app-download .download .links1 .link { 
+   font-size: 18px;
   background-color: white;
   color: var(--green);
   border-radius: 10px;
-  width: 210px;
+  width: 15.125rem;
   text-align: center;
   box-shadow: 0 0 4px #7e7e7e;
   word-spacing: 2px;
   transition: 0.3s;
+  font-weight: bold;
 }
-.app-download .download .links .link:hover {
+.app-download .download .links1 .link:hover {
   background-color: var(--green);
   color: var(--yellow);
 }
-.app-download .download .links {
+.app-download .download .links1 {
+  border-bottom: 0px;
+}
+
+
+.partners .heading {
+  color: var(--green);
+}
+
+
+.kenany-desc .video {
+  height: 400px;
+}
+.kenany-desc .video iframe {
+  border: 44px var(--yellow) solid;
   width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
-@media screen and (max-width: 991px) {
-  .app-download .download .links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-  }
-  
+.kenany-desc .desc .heading {
+  color: var(--green);
 }
-@media screen and (max-width: 768px) {
-  .app-download .iphone-img img {
-      margin-bottom: 0;
-  }
-  .app-download .download {
-      margin-top: -100px;
-  }
-}
-@media screen and (max-width: 500px) {
-  .app-download .iphone-img img {
-      margin-left: -70px;
-  }
-  
+.kenany-desc .desc p {
+  text-align: right;
+  color: var(--green);
+  line-height: 27px;
 }

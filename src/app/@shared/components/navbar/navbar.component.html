@@ -138,7 +138,8 @@
                 <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-4">البورصة اليومية</a>
                 <div class="search-box d-inline-block py-3 px-4">
                     <button class="p-2 me-2"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" class="search-input p-2" placeholder="...ابحث">
+                    <input type="text" class="search-input p-2" placeholder="...ابحث" id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)" >
+                   
                 </div>
             </div>
         </div>

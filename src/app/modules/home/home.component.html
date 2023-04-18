@@ -19,27 +19,27 @@
 
 <div class="about py-4">
     <div class="container">
-        <ul class="list-unstyled opt-list d-flex flex-row-reverse justify-content-end gap-4 mb-4">
-                       <li class="">الأسئلة الشائعة</li>
-
-            <li class="active">اخترنا لك</li>  
+        <ul class="list-unstyled opt-list d-flex flex-row-reverse justify-content-end gap-3 mb-4">
+            <li class="cq">الأسألة الشائعة</li>
+            <li class="active choose">اخترنا لك</li>
         </ul>
-        <ul class="list-unstyled opt-sublist d-flex flex-row-reverse justify-content-end gap-3 mb-5">
-                        <li class="">أجدد الخدمات</li>
-
-            <li class="active">الخدمات الأكثر زيارة</li>  
+        <ul class="list-unstyled opt-sublist d-flex flex-row-reverse justify-content-end gap-3 mb-5 active">
+            <li class="mr">أجدد الخدمات</li>
+            <li class="active mv">الخدمات الأكثر زيارة</li>
         </ul>
-        <div class="mv-carousel">
-                <app-banners-logo  [loading]="loading" [type]="'mostvisited'" [num]="'2'"></app-banners-logo>
+        <div class="mv-carousel active">
+            <app-banners-logo  [loading]="loading" [type]="'mostvisited'" ></app-banners-logo>
+
         </div>
         <div class="mr-carousel">
-            اجدد الخدمات
-            <button>mr</button>
+            <app-banners-logo  [loading]="loading" [type]="'newestservices'" ></app-banners-logo>
+
         </div>
         <div class="cq-carousel">
-            الاسئلة الشائعة
-            <button>cq</button>
+            <app-banners-logo  [loading]="loading" [type]="'questions'"></app-banners-logo>
+
         </div>
+
     </div>
 </div>
 <div class="image-carousel py-4">   
@@ -80,64 +80,64 @@
     
 </div>
 
-<!--app download-->
 
-<div class="app-download py-5">
-    <div class="container">
-        <div class="row">
+<div class="app-download ">
+    <div class="container-fluid justify-content-between">
+        <div class="row ">
 
-            <div class="download col-md-6 d-flex  flex-column  justify-content-center align-items-center">
-                <h1 class="mb-4">قم بتنزيل التطبيق الأن</h1>
-                <div class="links d-lg-flex justify-content-center">
-                    <a class="link py-1 mb-lg-0 mb-2 me-lg-2 d-inline-block" href="#"><i class="fa-brands fa-google-play"></i> google play تنزيل من</a>
-                    <a class="link py-1 d-inline-block" href="#"><i class="fa-brands fa-apple"></i> app store تنزيل من</a>
+            <div class="download col-md-6  d-flex flex-column align-items-center pt-5 mt-5">
+                <h1 class=" mb-4 ">قم بتنزيل التطبيق الأن</h1>
+                <div class="links1 d-lg-inline-block row justify-content-center ">
+                    <a class="link p-2 m-2 px-lg-3 col-sm-6" href="https://play.google.com/store/apps/details?id=com.elkenany"> تنزيل من google play<i class="fa-brands fa-google-play px-2"></i></a>
+                    <a class="link p-2 m-2 px-lg-3 col-sm-6" href="https://apps.apple.com/eg/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820"> تنزيل من app store<i class="fa-brands fa-apple px-2"></i></a>
                 </div>
-            </div>   
+            </div>  
             
-            <div class="iphone-img col-md-6">
+            <div class="iphone-img col-md-6 d-none d-md-block  ">
                 <img class="" src="assets\images\home\app.png" alt="">
             </div>
         </div>
     </div>
 </div>
 
+<div class="d-block d-md-none small-img">
+    <img class="" src="assets\images\home\app.png"  alt="">
+</div>
+
 
 <!--sponsers-->
-    <article class="full__partner__slider container-fluid ">
-        <h2 class="section__title">شركاء النجاح</h2>
-        <section class="splide" id="partnerCarousel">
-            <!-- <app-carousel [config]="carousel_logos" [loading]="loading"></app-carousel> -->
-            <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo>
-            <!-- <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo> -->
-    
-        </section>
-       </article>
-    
+<div class="partners py-lg-5 mt-lg-5">
+    <div class="container my-md-5">
+        <div class="heading d-flex justify-content-start align-items-center">
+            <h2>شركاء النجاح</h2>
+            <i class="fa-solid fa-handshake fa-2xl ms-3"></i>
+        </div>
+            <section class="splide" id="partnerCarousel">
+                <app-banners-logo  [loading]="loading" [type]="'logo'" [num]="'2'"></app-banners-logo>
+        
+            </section>
+    </div>
+</div>
 
 
        <!--about-->
     <h1 class="elknany__title">أول واكبر منصة <br> خدمات الكرتونية متكاملة</h1>
-    <!-- End Header -->
 
-                    <div class="row m-auto justify-content-center " >
-                    <div class=" col-12 col-md-6 col-lg-5 col-xl-4 px-5 p-md-0"  >
-                        <h1 >عن الكناني</h1>
+        <div class="row m-auto justify-content-center kenany-desc" >
+                    <div class=" col-12 col-md-6 col-lg-5 col-xl-4 px-5 p-md-0 mt-md-5"  >
+                        <h1 >عن الكناني <i class="fa-solid fa-mobile-screen-button ms-3"></i></h1>
+                       
+
                         <div class="pt-3 text"> 
                             <p style="text-align: justify;">
                                 أول وأكبر منصة متعددة الخدمات في مصر والشرق الأوسط تضم خدمات : بورصة الكناني اليومية لتغطية أحدث وأدق أسعار منتجات وشركات السوق المحلي لحظة بلحظة ، دليل شركات متكامل يضم جميع بيانات الشركات ، السوق خدمة بيعية لتبادل “ بيع وشراء “ المنتجات والخدمات ، أخبار الكناني لتغطية أحدث الأخبار والأحداث اليومية ، المناقصات خدمة عرض أجدد المناقصات المطروحة في السوق المصري ، الوظائف خدمة طرح الوظائف اليومية المتاحة في سوق العمل وتعطي للشركات فرصة عرض الوظائف المتاحة لديهم ، المعارض خدمة عرض أحدث المعارض المحلية والدولية الخاصة بكل المجالات والصناعات ، دلائل ومجلات: تضم أحدث المجلات الخاصة بكل الشركات ، حركة السفن : أسهل نظام لتتبع حركة السفن التي تدخل الميناء المصرية
                             </p>
-                            <div class="row pt-3 ">
-                                <div class="col-6">
-                                    <a href="https://play.google.com/store/apps/details?id=com.elkenany" target="_blank"><img src="../../../assets/images/andr.png" alt=""></a>
-                                </div>
-                                <div class="col-6">
-                                    <a class="app-store" href="https://apps.apple.com/eg/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820" target="_blank"><img src="../../../assets/images/ios.png" alt=""></a>
-                                </div>
-                            </div>
                         </div>
                      </div>
-                    <div class=" col-0 col-md-1 col-lg-1 col-xl-2" ></div>
-                    <div class=" col-10 col-md-4 col-lg-4 col-xl-3 px-5 p-md-0">
-                        <img src="../../../assets/images/app.jpeg" class="video my-5 my-xs-1" >
+                    <div class=" col-0 col-md-1 col-lg-1 col-xl-1" ></div>
+                    <div class=" col-10 col-md-4 col-lg-4 col-xl-4 px-5 p-md-0">
+                        <div class="video my-5 my-xs-1 ">
+                            <iframe src="https://www.youtube.com/embed/-n9fo7jUMa0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
-                </div>
+        </div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
-import { BannerConfig, MainBannerConfig, logoConfig, logoConfig1, mostvisitedConfig } from '@app/@core/interfaces/_app/banner-logo-config';
+import { BannerConfig, MainBannerConfig, logoConfig, logoConfig1, mostvisitedConfig, newestservicesConfig, questionsConfig } from '@app/@core/interfaces/_app/banner-logo-config';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,9 @@ export class BannerLogosComponent implements OnInit {
   LogoConfig = logoConfig
   mainbannerConfig= MainBannerConfig //done
   mostvisitedConfig = mostvisitedConfig
-  // LogoConfig1 = logoConfig1 
+  newestservicesConfig = newestservicesConfig 
+  questionsConfig = questionsConfig 
+
   myClonedArray!:Logo[]
   constructor(
     private logoBannerService: BannersLogoservice,
@@ -30,26 +32,32 @@ export class BannerLogosComponent implements OnInit {
     this.LogoConfig.banner=[]
     this.mainbannerConfig.banner=[]
     this.mostvisitedConfig.banner=[]
+    this.newestservicesConfig.banner=[]
+    this.questionsConfig.banner=[]
 
-      this.logoBannerService.getBanner().subscribe( res => {
+    this.logoBannerService.getBanner().subscribe( res => {
      this.BannerConfig.banner =res as Banner[]
     })
 
     this.logoBannerService.getBanner().subscribe( res => {
       this.mainbannerConfig.banner =res as Banner[]
-     })
+    })
 
-     this.logoBannerService.getBanner().subscribe( res => {
+     this.logoBannerService.getMostVisited().subscribe( res => {
       this.mostvisitedConfig.banner =res as Banner[]
-     })
+    })
+
+    this.logoBannerService.getNewestServices().subscribe( res => {
+      this.newestservicesConfig.banner =res as Banner[]
+    })
+
+    this.logoBannerService.getQuestions().subscribe( res => {
+      this.questionsConfig.banner =res as Banner[]
+    })
 
     if(this.type == 'logo'){
           this.logoBannerService.getLogo().subscribe( res => {
           this.LogoConfig.banner =res as Logo[]
-          // if(this.num == '2'){    
-          //   this.LogoConfig1.banner = res?.slice().reverse() || [];
-          // }
-
      })
     }
 

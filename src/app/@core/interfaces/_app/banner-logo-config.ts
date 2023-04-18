@@ -62,7 +62,7 @@
         }
         },
         {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
             slidesToShow: 3
         }
@@ -71,6 +71,12 @@
         breakpoint: 480,
         settings: {
             slidesToShow: 2
+        }
+        },
+        {
+        breakpoint:320,
+        settings: {
+            slidesToShow: 1
         }
         }
     ]
@@ -128,6 +134,82 @@
 
   
   export const mostvisitedConfig : Config = {
+    banner: [],
+    config:{
+        "class":"banner",
+        "slidesToShow": 4,
+        "slidesToScroll": 1,
+        "dots": true,
+        "autoplay": true,
+       "autoplaySpeed": 2000,
+    responsive: [
+        {
+        breakpoint: 1324,
+        settings: {
+            slidesToShow: 3
+        }
+        },
+        {
+        breakpoint: 900,
+        settings: {
+            slidesToShow: 2
+        }
+        },
+        {
+        breakpoint: 700,
+        settings: {
+            slidesToShow: 1
+        }
+        },
+        {
+        breakpoint: 480,
+        settings: {
+            slidesToShow: 1
+        }
+        }
+    ]
+    }, 
+  }
+
+  export const newestservicesConfig : Config = {
+    banner: [],
+    config:{
+        "class":"banner",
+        "slidesToShow": 4,
+        "slidesToScroll": 1,
+        "dots": true,
+        "autoplay": true,
+       "autoplaySpeed": 2000,
+    responsive: [
+        {
+        breakpoint: 1324,
+        settings: {
+            slidesToShow: 3
+        }
+        },
+        {
+        breakpoint: 900,
+        settings: {
+            slidesToShow: 2
+        }
+        },
+        {
+        breakpoint: 700,
+        settings: {
+            slidesToShow: 1
+        }
+        },
+        {
+        breakpoint: 480,
+        settings: {
+            slidesToShow: 1
+        }
+        }
+    ]
+    }, 
+  }
+
+  export const questionsConfig : Config = {
     banner: [],
     config:{
         "class":"banner",
