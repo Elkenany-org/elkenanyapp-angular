@@ -57,6 +57,7 @@ export interface Social {
 export interface Member {
   name: string
   image?: string
+  comp_id: number
   mem_id: number
   price: number
   feed: string

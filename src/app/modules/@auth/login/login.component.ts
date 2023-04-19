@@ -57,43 +57,12 @@ export class LoginComponent implements OnInit, SaveData {
     });
 
     this.loginForm.controls['email'].valueChanges.subscribe((res) => {
-    // this.loginForm.get('email')?.setValue(res?.trim(), {emitEvent: false});
   });
 
-  // this.setUpAnalytics();
 
   } 
   
-  // setUpAnalytics(){
-  //   this.router.events.subscribe((event) => {
-  //     if (event instanceof NavigationEnd) {
-  //       gtag('js', new Date());
-  //       gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
-  //       console.log('====================================');
-  //       console.log('google analytics is running');
-  //       console.log(event.urlAfterRedirects);
-  //       console.log('====================================');
-
-  //     }      
-  //   })
-  // // new Promise(resolve => {
-  // //   this.loadScript();
-  // // });
-
-  //   //  this.setUpAnalytics2();
-
-  // }
-  // setUpAnalytics2(){
-  //   this.router.events.subscribe((event) => {
-  //     if (event instanceof NavigationEnd) {
-  //       gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
-  //       console.log('====================================');
-  //       console.log('google analytics is running login');
-  //       console.log('====================================');
-  //     }      
-  //   })
-  // }   
-  
+ 
   loadScript() {
     const node = document.createElement('script');
     node.src = 'https://accounts.google.com/gsi/client'; // put there your js file location

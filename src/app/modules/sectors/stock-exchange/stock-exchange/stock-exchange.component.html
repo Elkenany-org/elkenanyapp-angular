@@ -141,7 +141,7 @@
             <!-- [ngClass]="{' title__chart  d-lg-flex d-none': isLast , 'ads':member.type}" -->
             <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart ': isLast , 'ads':member.type}">
     
-                <a class="cell__container ads" [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.mem_id]">
+                <a class="cell__container ads" *ngIf="member.comp_id " [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.comp_id]">
                     <div class="cell__content__with__image">
                         <img alt="logo"
                              class="image"
@@ -151,6 +151,15 @@
                     </div>
                 </a>
 
+                <a class="cell__container ads" *ngIf="member.mem_id && member.comp_id=='' " >
+                    <div class="cell__content__with__image">
+                        <img alt="logo"
+                             class="image"
+                             *ngIf="member.image"
+                             [src]="member.image">
+                             <p class="name">  {{member.name}}</p>
+                    </div>
+                </a>
 
                 <div class="wall"*ngIf="stock_Ex_Data?.columns[1]"></div>
                 <section class="cell__container"  *ngIf="stock_Ex_Data?.columns[1]">

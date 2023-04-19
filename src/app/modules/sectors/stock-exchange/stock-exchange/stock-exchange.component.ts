@@ -152,7 +152,6 @@ export class StockExchangeComponent implements OnInit {
           break;
         case "com_id":
             this.filterData['com_id'] = value.id 
-            console.log(value);
             this.filterData['feed_id'] = ''
            document.getElementById('company')!.innerText = value.name;
           //  document.getElementById('company')!.innerText = 'الكل';
@@ -160,7 +159,6 @@ export class StockExchangeComponent implements OnInit {
 
             break;
         case "feed_id":
-          console.log(value);
             this.filterData['feed_id'] = value.id 
             this.filterData['com_id'] = '' 
             document.getElementById('company')!.innerText = 'الكل';
@@ -220,6 +218,7 @@ export class StockExchangeComponent implements OnInit {
        this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
        this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
       // this.stock_Ex_Data = res.data   
+
     })
 
   }

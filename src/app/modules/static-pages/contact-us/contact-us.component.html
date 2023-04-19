@@ -1,3 +1,4 @@
+<!-- <alert></alert> -->
 
     <div class="container">
       <div class="row">
@@ -24,15 +25,16 @@
                       <div class="col-12 col-md-6 margin__top">
                           <div class="small__box">
                               <div class="form__container">
-                                  <form class="form__box row justify-content-center">
-                                      <input class="inputs" placeholder="الأسم" type="text">
-                                      <input class="inputs" placeholder="الإيميل" type="text">
-                                      <input class="inputs" placeholder="رقم الموبيل" type="text">
-                                      <input class="inputs" placeholder="الصفة الوظيفية" type="text">
-                                      <input class="inputs" placeholder="أسم الشركة" type="text">
-                                      <textarea class="inputs" placeholder="المشكلة" rows="5"></textarea>
-                                      <button class="btn__submit" type="submit">إرسال</button>
+                                <form class="form__box row justify-content-center" (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+                                    <input class="inputs" placeholder="الأسم" type="text" formControlName="name">
+                                    <input class="inputs" placeholder="الإيميل" type="text" formControlName="email">
+                                    <input class="inputs" placeholder="رقم الموبيل" type="text" formControlName="phone">
+                                    <input class="inputs" placeholder="الصفة الوظيفية" type="text" formControlName="job">
+                                    <input class="inputs" placeholder="أسم الشركة" type="text" formControlName="company">
+                                    <textarea class="inputs" placeholder="المشكلة" rows="5" formControlName="desc"></textarea>
+                                    <button class="btn__submit">إرسال</button>
                                   </form>
+         
                               </div>
                           </div>
                       </div>

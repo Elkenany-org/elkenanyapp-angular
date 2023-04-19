@@ -5,6 +5,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,10 +15,12 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     ContactUsComponent,
     PrivacyPolicyComponent,
     TermsAndConditionsComponent,
+    
   ],
   imports: [
     CommonModule,
-    StaticRoutingModule
+    StaticRoutingModule,
+    ReactiveFormsModule 
   ]
 })
 export class StaticPagesModule { 
