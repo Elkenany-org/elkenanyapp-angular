@@ -19,10 +19,6 @@ import {Title} from "@angular/platform-browser";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, SaveData {
-
-
-
-
   loading = false;
   loginForm!: FormGroup;
   hide = true;
@@ -32,9 +28,7 @@ export class LoginComponent implements OnInit, SaveData {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    // private location: Location,
     private route: ActivatedRoute,
-
     public authService: AuthService,
     private alertService: AlertService,
     private spinner: NgxSpinnerService,
@@ -47,10 +41,7 @@ export class LoginComponent implements OnInit, SaveData {
 
   ngOnInit(): void {
     this.titleService.setTitle("تسجيل الدخول");
-
-    // this.analytics.setUpAnalytics();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -62,7 +53,6 @@ export class LoginComponent implements OnInit, SaveData {
 
   } 
   
- 
   loadScript() {
     const node = document.createElement('script');
     node.src = 'https://accounts.google.com/gsi/client'; // put there your js file location
@@ -91,37 +81,11 @@ export class LoginComponent implements OnInit, SaveData {
       (err) => {
         this.spinner.hide();
         console.log(err);
-        // this.loading = false;
         this.alertService.error(err.error.error);
     
       }
     );
   }
-
-  public handleCredentialResponse1() {
-    // const helper = new JwtHelperService();
-    // const responsePayload = helper.decodeToken(response.credential);
-    // console.log("ID: " + responsePayload.sub);
-    // console.log('Full Name: ' + responsePayload.name);
-    // console.log('Given Name: ' + responsePayload.given_name);
-    // console.log('Family Name: ' + responsePayload.family_name);
-    // console.log("Image URL: " + responsePayload.picture);
-    // console.log("Email: " + responsePayload.email);    
-    // console.log('====================================');
-    // console.log();
-    // console.log('====================================');
-    // this.authService.AuthLoginSocial()
-
-    
-  }
-
-//   setUpAnalytics() {
-//     this.router.events.subscribe((event) => {
-//       if (event instanceof NavigationEnd) {
-//         gtag('config', 'G-B1Y47W3VQM', { 'page_path': event.urlAfterRedirects });
-//       }      
-//     })
-// }
 
 
 }

@@ -85,7 +85,7 @@ export class NavbarComponent implements OnInit  {
         this.notifications.notifications().subscribe(
         (res)=>{
           this.notification_all=res.data?.result    
-              console.log(this.notification_all);
+              // console.log(this.notification_all);
           if(this.notification_ads != undefined){
           this.notification_all.push(...this.notification_ads);   
           }

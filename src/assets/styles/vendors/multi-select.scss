@@ -1,6 +1,6 @@
 $black: #000 !default;
 $white: #fff !default;
-$primary: #FFAA00;
+$primary: #FFBB33;
 li {
   a {
     outline: none;
@@ -42,13 +42,13 @@ li {
 
   &:hover {
     background: #1a5302 !important;
-    color: #FFAA00 !important;
+    color: #FFBB33 !important;
 
     a {
-      color: #FFAA00 !important;
+      color: #FFBB33 !important;
 
       label {
-        color: #FFAA00 !important;
+        color: #FFBB33 !important;
       }
     }
   }
@@ -187,11 +187,11 @@ li {
   }
 
   button:hover {
-    color: #FFAA00;
+    color: #FFBB33;
     background: #1a5302;
 
     &:after {
-      color: #FFAA00;
+      color: #FFBB33;
     }
   }
 }

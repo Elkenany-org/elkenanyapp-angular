@@ -1,9 +1,9 @@
 :root {
-  --select-border: #1f6b00;
+  --select-border: #0C6A22;
   --select-focus: #d48f04;
   --select-arrow: var(--select-border);
-  --green: #1f6b00;
-  --yellow: #FFAA00;
+  --green: #0C6A22;
+  --yellow: #FFBB33;
 }
 
 select {
@@ -35,7 +35,7 @@ select {
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
-  color: #1f6b00;
+  color: #0C6A22;
 
   // Stack above custom arrow
   z-index: 1;
@@ -90,14 +90,14 @@ select {
 
   &:hover {
     background-color: green;
-    background-image: linear-gradient(to top, #1f6b00, #1f6b00 33%);
+    background-image: linear-gradient(to top, #0C6A22, #0C6A22 33%);
 
     select {
-      color: #FFAA00;
+      color: #FFBB33;
     }
 
     &:not(.select--multiple)::after {
-      background-color: #FFAA00;
+      background-color: #FFBB33;
     }
 
   }
@@ -168,11 +168,11 @@ label {
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
   input[type='checkbox'],
   input[type='radio'] {
-    --active: #1f6b00;
+    --active: #0C6A22;
     --active-inner: #fff;
     --focus: 2px rgba(35, 98, 7, 0.3);
     --border: #BBC1E1;
-    --border-hover: #FFAA00;
+    --border-hover: #FFBB33;
     --background: #fff;
     --disabled: #F6F8FF;
     --disabled-inner: #E1E6F9;

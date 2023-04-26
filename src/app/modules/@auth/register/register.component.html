@@ -1,79 +1,66 @@
 
 <alert></alert>
 
-<div class="main__content__body">
+<div class="row main__content__body mt-md-5 m-auto">
     <!-- Start Sign Up  -->
-    <article class="container sign-up ">
+    <article class="container sign-up col-md-6">
         <h2 class="main-title font-weight-bold">سجل حساب جديد !</h2>
         <div class="auth__holder">
             <section class="sign-up-box">
-                <section class="sign-up-extras">
-                    <a class="sign-up-facebook " (click)="authService.loginWithFacebook()">
-                        <i class="fab fa-facebook-f"></i>
-                        الدخول عن طريق فيسبوك
-                    </a>
-                    <a class="sign-up-google "  (click)="authService.GoogleAuth()">
-                        <i class="fab fa-google"></i>
-                        الدخول عن طريق جوجل
-                    </a>
-                    <!-- <div id="g_id_onload"
-                    data-client_id="552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com"
-                    data-callback="handleCredentialResponse"
-                    data-auto_prompt="false">
-                 </div>
-                 <div class="g_id_signin m-auto"
-                 data-type="standard"
-                 data-size="large"
-                 data-theme="outline"
-                 data-text="sign_in_with"
-                 data-shape="rectangular"
-                 data-logo_alignment="left"
-                 data-width="300"
-                 style="          
-                   width: 300px;
-                   display: flex;
-                   flex-flow: row nowrap;
-                   justify-content: center;
-                   padding: 10px 0;
-                   border-radius: 5px;
-                   margin-bottom: 10px;
-           ">
-              </div> -->
-                </section>
-                <h3 class="or font-weight-bold">أو</h3>
+
 
                 <div class="form__container">
                     <form class="form__box" (ngSubmit)="onSubmit()" [formGroup]="RegisterForm" dir="rtl">
-                        <input
-                            class="inputs form- is-valid is-invalid"
-                            formControlName="name" 
-                            placeholder="الاسم" 
-                            type="text">
-                        <input
-                            class="inputs"
-                            formControlName="email" 
-                            placeholder="الأيميل" 
-                            type="text">
-                            
-                        <input
-                            class="inputs"
-                            formControlName="phone" 
-                            placeholder="رقم الموبايل" 
-                            type="number">
+                        <span class="d-inline-block text-end float-end span">الإسم</span>
+
+                            <div class="input-container">
+                                <input
+                                class="inputs form- is-valid is-invalid"
+                                formControlName="name" 
+                                placeholder="ادخل الإسم الرباعي" 
+                                type="text">
+                                
+                                <i class="fa-regular fa-user icon-class"></i> 
+                              </div>
+                              
+                            <span class="d-inline-block text-end  float-end span">الإيميل</span>
+ 
+                            <div class="input-container">
+                                <input class="inputs" formControlName="email" placeholder="ادخل الإيميل" type="text">
+                                    <i class="fa-regular fa-envelope icon-class"></i> 
+                              </div>
+                              
+                            <span class="d-inline-block text-end  float-end span"> الموبايل</span>
+
+                            <div class="input-container">
+                                <input
+                                class="inputs"
+                                formControlName="phone" 
+                                placeholder="ادخل رقم الموبايل" 
+                                type="number">
+                                <i class="fa-solid fa-mobile-screen-button icon-class"></i> 
+                                
+                              </div>
+
+                            <span class="d-inline-block text-end  float-end span">الرقم السري</span>
                             <div class="buttonIn">
+                                <div class="input-container">
                                 <input
                                 class="inputs"
                                 formControlName="password" 
                                 [type]="hide ? 'password' : 'text'"
-                                placeholder="الرقم السري" 
+                                placeholder="ادخل الرقم السري" 
                                 type="password">
+                                <!-- <i class="fa-solid fa-lock icon-class"></i> -->
+                            </div>
                             <button
                             (click)="hide = !hide"
                             [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide"
                             class="our-font-color w-auto"
                             mat-icon-button
-                            matSuffix type="button">
+                            matSuffix type="button"
+                            style="transform: translateY(80%);">
                             <svg *ngIf="!hide" class="vertical-baseline" fill="#9B9B9B" height="24" viewBox="0 0 24 24"
                                     width="24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -92,20 +79,39 @@
                             </div>
 
             
-                        <!-- <input class="btn__submit" formControlName="" type="submit" value="سجل الان"> -->
-                        <app-submit-button class="btn__submit" [form]="RegisterForm" [loading]="loading" [title]="'تسجيل الدخول'"></app-submit-button>
+                        <app-submit-button class="btn__submit mb-3" [form]="RegisterForm" [loading]="loading" [title]="'تسجيل الدخول'"></app-submit-button>
+
+                        <h3 class="or font-weight-bold ">أو</h3>
+
+                        <section class="sign-up-extras">
+                            <a class="sign-up-facebook py-3 my-3" (click)="authService.loginWithFacebook()">
+                                <i class="fab fa-facebook-f"></i>
+                                الدخول عن طريق فيسبوك
+                            </a>
+                            <a class="sign-up-google py-3 my-3"  (click)="authService.GoogleAuth()">
+                                <i class="fab fa-google"></i>
+                                الدخول عن طريق جوجل
+                            </a>
+        
+                        </section>
 
                         <div class="check__box">
-                            <input class="checkbox" type="checkbox" value="agreement" style="border: 1px #1f6b00 solid;">
+                            <input class="checkbox" type="checkbox" value="agreement" style="border: 1px #0C6A22 solid;">
                             <span class="font-weight-bold">أوافق علي استقبال الأخبار واخر التحديثات من الكناني</span>
                         </div>
                     </form>
                 </div>
+
+
             </section>
             <span class="font-weight-bold d-block">بتسجيل حساب بأنك توافق علي <a class="terms links"
                 routerLink="/static-pages/terms-and-conditions"> الشروط
                     والأحكام</a></span>
         </div>
     </article>
+
+    <div class=" col-md-6 d-none d-md-block ">
+        <img class="mt-5 pt-5" src="assets/images/signup.png" alt="" >
+    </div>
     <!-- End Sign Up  -->
 </div>

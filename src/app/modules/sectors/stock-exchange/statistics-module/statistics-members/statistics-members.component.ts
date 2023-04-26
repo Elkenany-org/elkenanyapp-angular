@@ -75,7 +75,7 @@ export class StatisticsMembersComponent implements OnInit {
       // console.log(data['resolve']);
       if(this.type == "fodder"){
         this.message=true;
-         console.log(data['resolve'].data);
+        //  console.log(data['resolve'].data);
         this.StatisticsMemberLocal=data['resolve'].data
         this.StatisticsListLocal=data['resolve'].data
   
@@ -353,9 +353,9 @@ document.getElementById('product')!.innerText = 'الكل';
            arr2=arr.filter((i: { changes: any[]; })=>i.changes.length != 0)  
       // }
         
-      console.log('============');
+      // console.log('============');
       
-     console.log(arr2);
+    //  console.log(arr2);
 
       this.chartOptions=  this.chart.drowShart(arr2)
       

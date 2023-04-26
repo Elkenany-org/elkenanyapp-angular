@@ -27,7 +27,7 @@
                                 <li class="page-item"
                                 
                                 *ngFor="let _ of [].constructor(page.last_page); let i = index"><a class="page-link" (click)="next_page(i+1)"
-                                [ngStyle]="{'background-color': page.current_page == i+1? '#FFAA00' : '' }">{{i+1}}</a></li>
+                                [ngStyle]="{'background-color': page.current_page == i+1? '#FFBB33' : '' }">{{i+1}}</a></li>
                                 <li class="page-item" (click)="next_page(page.current_page+1)">
                                     <a aria-label="Next" class="page-link">
                                         <span aria-hidden="true">&raquo;</span>

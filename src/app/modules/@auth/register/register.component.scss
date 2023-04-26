@@ -6,3 +6,28 @@
 a{
     cursor: pointer;
 }
+
+.main-title{
+    background-color: transparent !important;
+}
+
+@media screen and (max-width: 1199px) {
+    .main__content__body {
+        width: 90% ;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .main__content__body {
+        width: 70% ;
+    }
+}
+.input-container {
+    position: relative;
+  }
+  
+  .icon-class {
+    position: absolute;
+    // top: 40%;
+    left: 10px; /* Adjust the value to position the icon as desired */
+    transform: translateY(-120%);
+  }

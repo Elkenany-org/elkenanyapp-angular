@@ -40,6 +40,9 @@ export class ContactUsComponent implements OnInit {
     this.contactService.contactUs(payload).subscribe(
       (res) => {
         this.alertService.success('تم الارسال ')
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
       },
       (err) => {
         console.log(err);
