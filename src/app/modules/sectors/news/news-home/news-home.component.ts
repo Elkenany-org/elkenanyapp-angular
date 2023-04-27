@@ -39,11 +39,11 @@ export class NewsHomeComponent implements OnInit {
   }
   public h_search_form: JsonFormData | any 
   
-  seoData: SeoSocialShareData = {
-    title: ' الأخبار ',
-    description: 'أخبار الكناني لتغطية أحدث الأخبار والأحداث اليومية ',
-    url:'https://elkenany.com/#/news/1'
-};
+//   seoData: SeoSocialShareData = {
+//     title: ' الأخبار ',
+//     description: 'أخبار الكناني لتغطية أحدث الأخبار والأحداث اليومية ',
+//     url:'https://elkenany.com/#/news/1'
+// };
   constructor( private activatedRoute: ActivatedRoute,
                private BannerLogoService:BannersLogoservice,
                private route: ActivatedRoute, 
@@ -55,9 +55,11 @@ export class NewsHomeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.seoSocialShareService.setData(this.seoData);
+    // this.seoSocialShareService.setData(this.seoData);
+this.seoSocialShareService.setTitle(' الأخبار ');
+this.seoSocialShareService.setDescription('أخبار الكناني لتغطية أحدث الأخبار والأحداث اليومية ')
 
-    
+
 
     
     // this.titleService.setTitle(' الأخبار ');
