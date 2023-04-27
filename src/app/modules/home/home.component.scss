@@ -199,14 +199,14 @@ background-color: #FFBB33 !important;
 /// 
 .app-download {
   background-color: var(--yellow);
-  height: 20rem;
+  height: 26rem;
 }
 .small-img{
   // background-color: var(--yellow);
   margin-top: -3px;
 }
 .app-download .iphone-img img {
-  width: 100%;
+  width: 90%;
   height: auto;
   // margin-bottom: -318px;
   // margin-left: -115px;
@@ -217,7 +217,7 @@ background-color: #FFBB33 !important;
 }
 
 .app-download .download .links1 .link { 
-   font-size: 18px;
+  font-size: 1.2rem;
   background-color: white;
   color: var(--green);
   border-radius: 10px;
@@ -228,6 +228,14 @@ background-color: #FFBB33 !important;
   transition: 0.3s;
   font-weight: bold;
 }
+
+@media only screen and (min-width: 1129px) {
+  .app-download .download .links1 .link { 
+    font-size: 1.5rem;
+
+  }
+}
+
 .app-download .download .links1 .link:hover {
   background-color: var(--green);
   color: var(--yellow);
