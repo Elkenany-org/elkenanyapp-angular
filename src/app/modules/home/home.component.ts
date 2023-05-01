@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   //   seoData: SeoSocialShareData = {
   //     title: ' الكناني | الرئيسية ',
   //     ogTitle: ' الكناني | منصة متعددة الخدمات ',
-  //     description: ' تضم:- البورصة اليومية للسلع، أحدث الأخبار، تتبع حركة السفن، دليل شركات متكامل، فرص المناقصات، سوق تجاري،وظائف، المعارض العالمية، دلائل ومجلات،شركات خدمية ',
+  //     // description: ' تضم:- البورصة اليومية للسلع، أحدث الأخبار، تتبع حركة السفن، دليل شركات متكامل، فرص المناقصات، سوق تجاري،وظائف، المعارض العالمية، دلائل ومجلات،شركات خدمية ',
   //     // url:'https://www.elkenany.com/الرئيسية',
   //     siteName: "elkenany.com",
   // };
@@ -40,9 +40,12 @@ export class HomeComponent implements OnInit {
     
 ngOnInit(): void {
 // this.titleService.setTitle('الكناني | الرئيسية');
-// this.seoSocialShareService.setData(this.seoData);
+this.seoSocialShareService.setTitle('الكناني | منصة متعددة الخدمات');
+this.seoSocialShareService.setDescription(' تضم:- البورصة اليومية للسلع، أحدث الأخبار، تتبع حركة السفن، دليل شركات متكامل، فرص المناقصات، سوق تجاري،وظائف، المعارض العالمية، دلائل ومجلات،شركات خدمية ')
 
- this.home.Home().subscribe( res => {
+
+this.home.Home().subscribe( res => {
+  //  this.carousel_banner.banner = res.banners
   this.carousel_logos.banner = res.logos
   this.carousel_banner = res.banner
 
