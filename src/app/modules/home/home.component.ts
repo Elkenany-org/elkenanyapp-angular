@@ -87,98 +87,34 @@ this.home.Home().subscribe( res => {
 
 
 toggleTabs(){
-  // const optListLis = document.querySelectorAll(".about .opt-list li");
-  // const optSubList = document.querySelector(".about .opt-sublist");
-  // const optSubListLis = document.querySelectorAll(".about .opt-sublist li");
-  // const mvCarousel = document.querySelector(".about .mv-carousel");
-  // const mrCarousel = document.querySelector(".about .mr-carousel");
-  // const cqCarousel = document.querySelector(".about .cq-carousel");
-
-  // for (let index = 0; index < optListLis.length; index++) {
-  //   const element = optListLis[index];
-  //   if (optListLis[1].classList.contains("active")) {
-  //     optSubList?.classList.add("active")
-  //   }
-  //   element.addEventListener("click", () => {
-  //     optListLis.forEach((li) => {
-  //       li.classList.remove("active")
-  //       element.classList.add("active")
-  //     })
-  //     if (optListLis[1].classList.contains("active")) {
-  //       optSubList?.classList.add("active")
-  //     } else {
-  //       optSubList?.classList.remove("active")
-  //     }
-  //     if (optListLis[0].classList.contains("active")) {
-  //       cqCarousel?.classList.add("active")
-
-  //     } else {
-  //       cqCarousel?.classList.remove("active")
-  //     }
-
-  //     if (optSubListLis[1].classList.contains("active")) {
-  //       mvCarousel?.classList.add("active")
-  //     }
-  //     if (optListLis[0].classList.contains("active")) {
-  //       mvCarousel?.classList.remove("active")
-  //     }
-  //     if (optSubListLis[0].classList.contains("active")) {
-  //       mrCarousel?.classList.add("active")
-  //     } else {
-  //       mrCarousel?.classList.remove("active")
-  //     }
-  //   });
-
-  //   const element2 = optSubListLis[index];
-  //   if (optSubListLis[1].classList.contains("active")) {
-  //     mvCarousel?.classList.add("active")
-  //   }
-  //   element2.addEventListener("click", () => {
-  //     optSubListLis.forEach((li) => {
-  //       li.classList.remove("active")
-  //       element2.classList.add("active")
-  //     })
-  //     if (optSubListLis[1].classList.contains("active")) {
-  //       mvCarousel?.classList.add("active")
-  //     } else {
-  //       mvCarousel?.classList.remove("active")
-  //     }
-
-  //     if (optSubListLis[0].classList.contains("active")) {
-  //       mrCarousel?.classList.add("active")
-  //     } else {
-  //       mrCarousel?.classList.remove("active")
-  //     }
-  //   });
-  // }
 
   const chooseLi = document.querySelector(".about .opt-list .choose")
-const cqLi = document.querySelector(".about .opt-list .cq")
-const mvLi = document.querySelector(".about .opt-sublist .mv")
-const mrLi = document.querySelector(".about .opt-sublist .mr")
-const optSubList = document.querySelector(".about .opt-sublist")
-let mvCarousel = document.querySelector(".about .mv-carousel")
-let mrCarousel = document.querySelector(".about .mr-carousel")
-let cqCarousel = document.querySelector(".about .cq-carousel")
+  // const cqLi = document.querySelector(".about .opt-list .cq")
+  const mvLi = document.querySelector(".about .opt-sublist .mv")
+  const mrLi = document.querySelector(".about .opt-sublist .mr")
+  const optSubList = document.querySelector(".about .opt-sublist")
+  let mvCarousel = document.querySelector(".about .mv-carousel")
+  let mrCarousel = document.querySelector(".about .mr-carousel")
+  // let cqCarousel = document.querySelector(".about .cq-carousel")
 
 chooseLi?.addEventListener("click",()=> {
     chooseLi.classList.add("active")
     mrLi?.classList.remove("active")
     mrCarousel?.classList.remove("active")
-    cqLi?.classList.remove("active")
-    cqCarousel?.classList.remove("active")
+    // cqLi?.classList.remove("active")
+    // cqCarousel?.classList.remove("active")
     optSubList?.classList.add("active")
     mvLi?.classList.add("active")
     mvCarousel?.classList.add("active")
 })
-cqLi?.addEventListener("click",()=> {
-    cqLi.classList.add("active")
-    cqCarousel?.classList.add("active")
-    chooseLi?.classList.remove("active")
-    optSubList?.classList.remove("active")
-    mvCarousel?.classList.remove("active")
-    mrCarousel?.classList.remove("active")
-})
+// cqLi?.addEventListener("click",()=> {
+//     cqLi.classList.add("active")
+//     cqCarousel?.classList.add("active")
+//     chooseLi?.classList.remove("active")
+//     optSubList?.classList.remove("active")
+//     mvCarousel?.classList.remove("active")
+//     mrCarousel?.classList.remove("active")
+// })
 mvLi?.addEventListener("click",()=> {
     mvLi.classList.add("active")
     mvCarousel?.classList.add("active")
