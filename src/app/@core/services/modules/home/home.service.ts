@@ -13,13 +13,19 @@ export class HomeService {
   }
 
   Home(): Observable<any> {
-    return this.http.get<any>(`${env.ApiUrl}/home-sectors`).pipe(
+    return this.http.get<any>(`${env.ApiUrl}/home-services`).pipe(
       map((res) => {
         const data:any= {
           logos: res.data?.logos,
-          sectors: res.data?.sectors,
-          banner:res.data?.banners
-
+          banner:res.data?.banners,
+          services:res.data?.services,
+          app:res.data?.app,
+          cta:res.data?.cta,
+          questions:res.data?.questions,
+          howtouse:res.data?.howtouse,
+          claim:res.data?.claim,
+          most_visited:res.data?.most_visited,
+          newest:res.data?.newest,
         }
         return data
       })

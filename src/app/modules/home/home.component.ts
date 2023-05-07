@@ -49,14 +49,11 @@ this.home.Home().subscribe( res => {
   this.carousel_logos.banner = res.logos
   this.carousel_banner = res.banner
 
-  this.BannerLogoService.setBanner(res.banner);
-  // this.BannerLogoService.setLogo(res.logos);
-
+  this.BannerLogoService.setBanner(res.services);
   this.BannerLogoService.setLogo(res.banner);
-
-  this.BannerLogoService.setMostVisited(res.banner);//attribute will replaces with another response when
-  this.BannerLogoService.setNewestServices(res.banner);
-  this.BannerLogoService.setQuestions(res.banner);
+  this.BannerLogoService.setMostVisited(res.most_visited);//attribute will replaces with another response when
+  this.BannerLogoService.setNewestServices(res.newest);
+  this.BannerLogoService.setHowtouse(res.howtouse);
 
 
   // this.BannerLogoService.setBanner(res.banner);

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Banner, Logo } from '@app/@core/interfaces/_app/app-response';
-import { BannerConfig, MainBannerConfig, logoConfig, logoConfig1, mostvisitedConfig, newestservicesConfig, questionsConfig } from '@app/@core/interfaces/_app/banner-logo-config';
+import { BannerConfig, HowtouseConfig, MainBannerConfig, logoConfig, logoConfig1, mostvisitedConfig, newestservicesConfig, questionsConfig } from '@app/@core/interfaces/_app/banner-logo-config';
 import { BannersLogoservice } from '@app/@core/services/Banners-logos.service';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class BannerLogosComponent implements OnInit {
   mainbannerConfig= MainBannerConfig //done
   mostvisitedConfig = mostvisitedConfig
   newestservicesConfig = newestservicesConfig 
-  questionsConfig = questionsConfig 
+  howtouseConfig = HowtouseConfig
 
   myClonedArray!:Logo[]
   constructor(
@@ -33,7 +33,7 @@ export class BannerLogosComponent implements OnInit {
     this.mainbannerConfig.banner=[]
     this.mostvisitedConfig.banner=[]
     this.newestservicesConfig.banner=[]
-    this.questionsConfig.banner=[]
+    this.howtouseConfig.banner=[]
 
     this.logoBannerService.getBanner().subscribe( res => {
      this.BannerConfig.banner =res as Banner[]
@@ -48,11 +48,15 @@ export class BannerLogosComponent implements OnInit {
     })
 
     this.logoBannerService.getNewestServices().subscribe( res => {
-      this.newestservicesConfig.banner =res as Banner[]
+      this.newestservicesConfig.banner =res as Banner[]  
+          console.log('====================================');
+      console.log(res);
+      console.log('====================================');
     })
 
-    this.logoBannerService.getQuestions().subscribe( res => {
-      this.questionsConfig.banner =res as Banner[]
+    this.logoBannerService.getHowtouse().subscribe( res => {
+      this.howtouseConfig.banner =res as Banner[]
+
     })
 
     if(this.type == 'logo'){

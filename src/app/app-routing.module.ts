@@ -5,13 +5,9 @@ import { NotFoundComponent } from './@shared/pages/not-found/not-found.component
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
 import { AuthGuardService } from './@core/guards/auth.guard';
 import { TestComponent } from './test/test.component';
-import {TendersResolver} from './@core/resolver/tenders/tenders.resolver.service';
-import { EmploymentHomeResolver } from './@core/resolver/employment/employment-home.resolver';
 import { TendersHomeResolver } from './@core/resolver/tenders/tenders-home.resolver.service';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
-import { ServiceSectionComponent } from './modules/services/service-section/service-section.component';
-import { CompaniesGuideResolver } from './@core/resolver/companies-guide/companies-guide-resolver.service';
-import { SitemapComponent } from './sitemap/sitemap.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -140,10 +136,6 @@ const routes: Routes = [
       path: 'service-section',
       loadChildren: () => 
       import('./modules/services/service-section/service-section.module').then(m => m.ServiceSectionModule)
-    },
-    {
-      path: 'test',
-      component: SitemapComponent
     },
     {
       path: '**',

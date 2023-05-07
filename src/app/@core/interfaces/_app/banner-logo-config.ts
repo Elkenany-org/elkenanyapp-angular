@@ -9,6 +9,7 @@
         id: number
         image : string
         link: string
+        desc:string
     }[];
     config: {
         class:string;
@@ -246,3 +247,18 @@
     ]
     }, 
   }
+
+  
+  export const HowtouseConfig : Config = {
+    banner: [],
+    config:{
+        "class":"banner",
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "dots": true,
+        "autoplay": false,
+       "autoplaySpeed": 2000,
+
+    }
+  }
+  

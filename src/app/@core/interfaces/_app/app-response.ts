@@ -2,6 +2,11 @@ export interface Banner {
     id: number
     link: string
     image: string
+    service_id:number
+    service_name:string
+    newest:string
+    desc:string
+  
   }
   
 export interface Logo extends Banner {
@@ -14,6 +19,9 @@ export interface NewestServices extends Banner {
 
 }
 export interface Questions extends Banner {
+
+}
+export interface Howtouse extends Banner {
 
 }
 export interface Sector {

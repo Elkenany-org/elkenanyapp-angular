@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './@core/interceptors/token.interceptor';
 
-
 import {
   FacebookLoginProvider,
   SocialLoginModule,
@@ -24,7 +23,6 @@ import { environment } from 'environments/environment';
 import { initializeApp } from "firebase/app";
 import { SharedModule } from './@shared/shared.module';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
-import { SitemapComponent } from './sitemap/sitemap.component';
 
 
 initializeApp(environment.firebase);
@@ -35,13 +33,10 @@ initializeApp(environment.firebase);
     AppComponent,
     TestComponent,
     LinktreeComponent,
-    SitemapComponent,
   ],
   imports: [
   BrowserModule,
     AppRoutingModule,
-    // NgxSkeletonLoaderModule,
-    BrowserAnimationsModule, 
     CollapseModule.forRoot(), BsDropdownModule.forRoot(),
     CoreModule,
     SharedModule,
