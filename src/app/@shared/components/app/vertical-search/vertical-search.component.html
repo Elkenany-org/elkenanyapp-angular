@@ -1,5 +1,5 @@
 
-<section class="sidebar__sticky ">
+<section class="sidebar__sticky d-lg-none d-block">
     <h2 
     
     (click)="ShowHideContent()"
@@ -10,11 +10,9 @@
         <i class="icon-s fas fa-search"></i>
     </h2>
 
- <div 
-    [ngStyle]="{'display': showContent ? 'block' : ( showContent? 'none' : null) }
-    "class=" accordion ">
+ <div [ngStyle]="{'display': showContent ? 'block' : ( showContent? 'none' : null) }"class=" accordion ">
 
-    <div class="card">
+    <div class="card"style="border:none" >
         <div class="card-header" id="headingSearch">
             <h5 class="mb-0">
                 <button aria-controls="collapseSearch" aria-expanded="false"
@@ -36,7 +34,7 @@
 
     
         <div *ngFor="let control of data?.controls" >
-            <div class="card" *ngIf="control.type !== 'text' && control.type !== 'search' && control.type !== 'a' && control.role !== 'countries' && control.role !== 'cities' && control.role !== 'date'">
+            <div class="card" style="border:none" *ngIf="control.type !== 'text' && control.type !== 'search' && control.type !== 'a' && control.role !== 'countries' && control.role !== 'cities' && control.role !== 'date'">
                 <div class="card-header" id="headingSearch">
                     <h5 class="mb-0">
                         <button  aria-controls="collapseSearch" aria-expanded="false"

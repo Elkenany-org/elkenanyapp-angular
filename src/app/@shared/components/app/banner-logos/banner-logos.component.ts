@@ -15,6 +15,7 @@ export class BannerLogosComponent implements OnInit {
   @Input() type:string = '' 
   @Input() num:string = '' 
 
+  pageTitle :string | undefined 
   BannerConfig = BannerConfig 
   LogoConfig = logoConfig
   mainbannerConfig= MainBannerConfig //done
@@ -25,9 +26,12 @@ export class BannerLogosComponent implements OnInit {
   myClonedArray!:Logo[]
   constructor(
     private logoBannerService: BannersLogoservice,
-    private route: Router) { }
+    private route: Router,
+) { }
 
   ngOnInit(): void {
+ 
+
     this.BannerConfig.banner=[]
     this.LogoConfig.banner=[]
     this.mainbannerConfig.banner=[]
@@ -49,9 +53,6 @@ export class BannerLogosComponent implements OnInit {
 
     this.logoBannerService.getNewestServices().subscribe( res => {
       this.newestservicesConfig.banner =res as Banner[]  
-          console.log('====================================');
-      console.log(res);
-      console.log('====================================');
     })
 
     this.logoBannerService.getHowtouse().subscribe( res => {

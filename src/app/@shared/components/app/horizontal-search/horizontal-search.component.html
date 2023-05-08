@@ -1,12 +1,123 @@
+<div class="sorting">
+    <div class="container">
+        <div class="sorting-cont px-4 py-3">
+                <form class="box-tabs">
+                    <div class="search mb-3">
+                      
+                        <div class="input-container">  
+                            <button class="px-5" style="border-radius: 16px;">بحث...</button>
+                            <input id="search" type="search" style="border-radius: 16px;"
+                                   (input)="selectOption($any($event.target).value,'search')">
+                            <i class="fa-solid fa-search search-icon"></i>
+                        </div>
+                    </div>
+                    <!-- <div class="open d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-filter ms-2"></i>
+                        تصفية
+                    </div> -->
+                <div class="cont">
+                    <section class="d-flex flex-lg-row flex-column justify-content-start align-items-lg-center align-items-start" [class]="data?.class">
+                        <h5 class="m-0 ms-2 text ">
+                            تصفية حسب
+                        </h5>
+                        <section *ngFor="let control of data?.controls">
+  
+                        <div class="sort-item mb-lg-0 mb-4" *ngIf="control.type === 'date' ||control.type === 'text'">
+
+                            <input  [class]="control.class"    id="searchInput" [type]="control.type"
+                                    (change)="selectOption($any($event.target).value,control.role)" style="border-radius: 16px;" >
+
+                        </div>
+
+                        
+                        <div class="sort-item mb-lg-0 mb-4" *ngIf="control.type === 'select' && control.role !== 'sort' && control.role !== 'subsection' && control.role !== 'countries' && control.role !== 'cities'">
+                            <select (change)="selectOption($any($event.target).value,control.role)" [class]="control.class"
+                                class="select-box"
+                                >
+                                <option *ngFor="let value of control.option" [value]="(value.type || value.name )"
+                                    [selected]="value.selected == 1 ? true : null" class="company__filter__label">
+                                    {{value.name}}
+                                </option>
+                            </select>
+
+                            <div class="icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>       
+                        <div class="sort-item mb-lg-0 mb-4" *ngIf=" control.role === 'subsection'">
+                    
+                            <select (change)="selectOption($any($event.target).value,control.role)" [class]="control.class"
+                                class="select-box" >
+                                <option *ngFor="let value of control.option" [value]="(value.type || value.name )"
+                                    [selected]="value.selected == 1 ? true : null" class="sub">
+                                    {{value.name}}
+                                </option>
+                            </select>
+                            <div class="icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="sort-item mb-lg-0 mb-4" *ngIf=" control.role === 'countries'" >
+                    
+                            <select (change)="selectOption($any($event.target).value,control.role)" [class]="control.class"
+                                class="select-box">
+                                <option *ngFor="let value of control.option" [value]="(value.type || value.name )"
+                                    [selected]="value.selected == 1 ? true : null" class="countries">
+                                    {{value.name}}
+                                </option>
+                            </select>
+                            <div class="icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="sort-item mb-lg-0 mb-4" *ngIf=" control.role === 'cities'" >
+                    
+                            <select (change)="selectOption($any($event.target).value,control.role)" [class]="control.class"
+                                class="select-box" >
+                                <option *ngFor="let value of control.option" [value]="(value.type || value.name )"
+                                    [selected]="value.selected == 1 ? true : null" class="cities">
+                                    {{value.name}}
+                                </option>
+                            </select>
+                            <div class="icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="sort-item mb-lg-0 mb-4" *ngIf=" control.role === 'sort'" >
+                            <select (change)="selectOption($any($event.target).value,control.role)" [class]="control.class"
+                                class="select-box" >
+                                <option *ngFor="let value of control.option" [value]="(value.type || value.name )"
+                                    [selected]="value.selected == 1 ? true : null" class="sort">
+                                    {{value.name}}
+                                </option>
+                            </select>
+                            <div class="icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+
+                        <a *ngIf="control.type === 'a'" [class]="control.class" class="sort-item sort-link"
+                            [routerLink]="control.routerLink">
+                            {{control.name}}
+                        </a>
+                        </section>  
+                        
+
+                    </section>
+                </div>
+                </form>
+        </div>
+    </div>
+</div>
 
 
-<div class="breadcrumb__container container">
+
+<div class="breadcrumb__container container d-lg-none d-block">
     <div class="custom__breadcrumb">
         <h1 class="page__title">{{data?.title}}</h1>
     </div>
 </div> 
-    <!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
-   <article class="inner-search-box d-lg-block d-none">
+   <!-- <article class="inner-search-box d-lg-block d-none">
     <div class="container">
         <form class="box-tabs">
             <div class="search-box-overlay"></div>
@@ -17,8 +128,6 @@
                 <input  [class]="control.class"  *ngIf="control.type === 'search'"  id="search" [type]="control.type" placeholder="بحث"
                         (input)="selectOption($any($event.target).value,control.role)" >
 
-                <!-- <i [class]="control.icon"></i>
-                <h4 class="title">{{control.name}}:</h4> -->
                 <input  [class]="control.class"  *ngIf="control.type === 'date' ||control.type === 'text'"  id="searchInput" [type]="control.type"
                         (change)="selectOption($any($event.target).value,control.role)" >
 
@@ -71,54 +180,6 @@
 
 
               <a  *ngIf="control.type === 'a'" [class]="control.class" [routerLink]="control.routerLink">{{control.name}}</a>
-<!-- 
-              <div *ngIf="control.type === 'checkbox'" class="multiselect" id="multiselect-companies">
-                <div class="selectBox" onclick="showCheckboxes('companies')">
-                    <select>
-                        <option>اختر الشركات</option>
-                    </select>
-                    <span class="warning">حد أقصي 3 شركات</span>
-                    <span class="companies-error">اختر شركة واحد علي الاقل</span>
-
-                    <div class="overSelect"></div>
-                </div>
-                <div class="checkboxes" id="checkboxes-companies">
-                    <div class="company__search">
-                        <label for="search">
-                            <input class="" id="search" name="search" placeholder="ابحث عن"
-                                   type="search">
-                        </label>
-                    </div>
-                    <label class="company__filter__label" for="company-one">
-                        <input class="checks  checks-company" id="company-one" name="companies"
-                               type="checkbox">شركة الكناني
-                        جروب</label>
-                    <label class="company__filter__label" for="company-two">
-                        <input class="checks  checks-company" id="company-two" name="companies"
-                               type="checkbox">شركة الكناني
-                        جروب</label>
-                    <label class="company__filter__label" for="company-three">
-                        <input class="checks  checks-company" id="company-three" name="companies"
-                               type="checkbox">شركة الكناني
-                        جروب</label>
-                    <label class="company__filter__label" for="company-four">
-                        <input class="checks  checks-company" id="company-four" name="companies"
-                               type="checkbox">شركة الكناني
-                        جروب</label>
-                    <label class="company__filter__label" for="company-five">
-                        <input class="checks  checks-company" id="company-five" name="companies"
-                               type="checkbox">شركة الكناني
-                        جروب</label>
-                    <label class="company__filter__label" for="company-six">
-                        <input class="checks  checks-company" id="company-six" name="companies"
-                               type="checkbox">شركة الكناني
-                        جروب</label>
-                    <label class="company__filter__label" for="company-seven">
-                        <input class="checks  checks-company" id="company-seven" name="companies"
-                               type="checkbox">شركة الكناني
-                        جروب</label>
-                </div>
-            </div> -->
             </section>
 
             
@@ -126,6 +187,5 @@
     </div>
 </article>  
 
+ -->
 
-
-   

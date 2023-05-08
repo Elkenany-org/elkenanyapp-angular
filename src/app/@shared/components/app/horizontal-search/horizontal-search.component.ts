@@ -26,10 +26,20 @@ export class HorizontalSearchComponent implements OnChanges {
   public myForm: FormGroup = this.fb.group({});
   selected: number = 1;
 
-  constructor(private fb: FormBuilder) {
 
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    // const filterDpnBtn = document.querySelector(".sorting .sorting-cont .open");
+    // const filterDpn = document.querySelector(".sorting .sorting-cont .cont section");
+
+    // console.log('====================================');
+    // console.log(filterDpn);
+    // console.log('====================================');
+    // filterDpnBtn?.addEventListener('click', () => {
+    //   filterDpn?.classList.toggle("active");
+    // });
   }
-
 
   ngOnChanges(changes: SimpleChanges) {
     // console.log(changes?.['data'])
