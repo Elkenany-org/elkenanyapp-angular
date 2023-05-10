@@ -47,19 +47,33 @@ export class BannerLogosComponent implements OnInit {
       this.mainbannerConfig.banner =res as Banner[]
     })
 
+    if(this.type == 'mostvisited'){
+
      this.logoBannerService.getMostVisited().subscribe( res => {
+            console.log('====================================');
+      console.log(res);
+      console.log('====================================');
       this.mostvisitedConfig.banner =res as Banner[]
     })
+  }
+
+    if(this.type == 'newestservices'){
 
     this.logoBannerService.getNewestServices().subscribe( res => {
+      console.log('====================================');
+      console.log(res);
+      console.log('====================================');
       this.newestservicesConfig.banner =res as Banner[]  
     })
+  }
+
+  if(this.type == 'howtouse'){
 
     this.logoBannerService.getHowtouse().subscribe( res => {
       this.howtouseConfig.banner =res as Banner[]
 
     })
-
+  }
     if(this.type == 'logo'){
           this.logoBannerService.getLogo().subscribe( res => {
           this.LogoConfig.banner =res as Logo[]

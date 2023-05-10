@@ -13,11 +13,14 @@
     left: 10px;
     transform: translateY(-50%);
   }
-.sorting .sorting-cont {
+
+
+  .sorting .sorting-cont {
     box-shadow: 0px 6px 6px #00000026;
     border-radius: 20px;
     opacity: 1;
     background-color: #F3F3F3;
+    width: 100%;
 }
 .sorting .sorting-cont .search {
     position: relative;
@@ -42,7 +45,7 @@
     border: none;
     background-color: var(--green);
     color: white;
-    border-radius: 10px;
+    border-radius: 16px;
     font-family: inherit;
     cursor: pointer;
     transition: 0.3s;
@@ -69,11 +72,13 @@
 .sorting .sorting-cont .cont {
     overflow: hidden;
 }
-.sorting .sorting-cont section {
-    // margin-top: -50px;
+.sorting .sorting-cont .sorting-items {
+    /* // margin-top: -50px; */
     transition: 0.5s;
-    // padding-bottom: 3px;
-    // padding-top: 3px;
+    gap: 10px;
+    width: 91%;
+    /* // padding-bottom: 3px; */
+    /* // padding-top: 3px; */
 
     padding: 3px;
 }
@@ -83,46 +88,53 @@
 .sorting .sorting-cont .text {
     color: var(--green);
     white-space: nowrap;
+    padding-top: 1rem;
 }
 .sort-item {
     position: relative;
-    // font-size: 0.8rem;
-    width: 12.5rem;
-    height: 2.688rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    /* width: 12.5rem; */
+    /* height: 2.688rem; */
     border-radius: 16px;
     transition: 0.3s;
     opacity: 1;
+    width: 100%;
+    height: 100%;
 }
 .sort-link {
     background-color: var(--yellow);
     color: var(--green);
-    // padding: 5px 15px;
+    /* padding: 2px 15px; */
     cursor: pointer;
     text-align: center;
-
-    box-shadow: 0px 3px 6px #00000029;
+    // padding: 13px 15px 13px 25px;
+    font-weight: bold;
+    font-size:1.1rem;
+    box-shadow: 0px 3px 6px #00000029; 
+    /* padding: 5px 15px 5px 25px; */
 }
 .sort-link:hover {
     background-color: var(--green);
     color: var(--yellow);
 }
 @media screen and (max-width: 991px) {
-    .sort-item:not(.sort-link) {
-        width: 100%;
+    .sort-link {
+        // width: inherit;
     }
-    // .sorting .sorting-cont section {
-    //     margin-top: -410px;
-    //     transition: 1s;
-    // }
-    .sorting  {
-        display: none;
+    .sorting .sorting-items {
+        width: 100% !important;
+    }
+    .sorting .big-sec {
+        margin-top: -340px;
+        transition: 0.5s;
     }
 }
 .select-box {
     appearance: none !important;
     background-color: #CECECE;
+    padding: 13px 15px 13px 25px;
     border: none;
-    padding: 5px 15px 5px 25px;
     width: 100%;
     height: 100%;
     border-radius: 16px;
@@ -133,10 +145,11 @@
     font-family: inherit;
     text-overflow: ellipsis;
     font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1;
 }
 .select-box:hover {
     background-color: var(--yellow);
-    
 }
 .select-box:focus {
     background-color: var(--yellow);
@@ -145,8 +158,6 @@ select option {
     background-color: white;
     color: var(--green);
 }
-
-
 .sort-item .icon {
     position: absolute;
     top: 50%;
@@ -158,6 +169,152 @@ select option {
     height: 100%;
     pointer-events: none;
 }
+
+// .sorting .sorting-cont {
+//     box-shadow: 0px 6px 6px #00000026;
+//     border-radius: 20px;
+//     opacity: 1;
+//     background-color: #F3F3F3;
+// }
+// .sorting .sorting-cont .search {
+//     position: relative;
+//     height: 40px;
+// }
+// .sorting .sorting-cont .search input {
+//     width: 100%;
+//     height: 100%;
+//     box-shadow: 0 5px 5px #c7c7c7;
+//     border: none;
+//     outline: none !important;
+//     border-radius: 16px;
+//     padding-right: 135px;
+//     color: var(--green);
+//     font-family: inherit;
+// }
+// .sorting .sorting-cont .search button {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     height: 100%;
+//     border: none;
+//     background-color: var(--green);
+//     color: white;
+//     border-radius: 10px;
+//     font-family: inherit;
+//     cursor: pointer;
+//     transition: 0.3s;
+// }
+// .sorting .sorting-cont .search button:hover {
+//     background-color: var(--yellow);
+//     color: var(--green);
+// }
+// .sorting .sorting-cont .search i {
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     left: 15px;
+//     color: var(--green);
+// }
+// .sorting .sorting-cont .open {
+//     color: var(--green);
+//     cursor: pointer;
+//     transition: 0.3s;
+// }
+// .sorting .sorting-cont .open:hover {
+//     color: var(--yellow);
+// }
+// .sorting .sorting-cont .cont {
+//     overflow: hidden;
+// }
+// .sorting .sorting-cont section {
+//     // margin-top: -50px;
+//     transition: 0.5s;
+//     // padding-bottom: 3px;
+//     // padding-top: 3px;
+
+//     padding: 3px;
+// }
+// .sorting .sorting-cont section.active {
+//     margin-top: 0;
+// }
+// .sorting .sorting-cont .text {
+//     color: var(--green);
+//     white-space: nowrap;
+// }
+// .sort-item {
+//     position: relative;
+//     // font-size: 0.8rem;
+//     width: 12.5rem;
+//     height: 2.688rem;
+//     border-radius: 16px;
+//     transition: 0.3s;
+//     opacity: 1;
+// }
+// .sort-link {
+//     background-color: var(--yellow);
+//     color: var(--green);
+//     // padding: 5px 15px;
+//     cursor: pointer;
+//     text-align: center;
+
+//     box-shadow: 0px 3px 6px #00000029;
+// }
+// .sort-link:hover {
+//     background-color: var(--green);
+//     color: var(--yellow);
+// }
+// @media screen and (max-width: 991px) {
+//     .sort-item:not(.sort-link) {
+//         width: 100%;
+//     }
+//     // .sorting .sorting-cont section {
+//     //     margin-top: -410px;
+//     //     transition: 1s;
+//     // }
+//     .sorting  {
+//         display: none;
+//     }
+// }
+// .select-box {
+//     appearance: none !important;
+//     background-color: #CECECE;
+//     border: none;
+//     padding: 5px 15px 5px 25px;
+//     width: 100%;
+//     height: 100%;
+//     border-radius: 16px;
+//     outline: none;
+//     cursor: pointer;
+//     color: var(--green);
+//     transition: 0.3s;
+//     font-family: inherit;
+//     text-overflow: ellipsis;
+//     font-weight: bold;
+// }
+// .select-box:hover {
+//     background-color: var(--yellow);
+    
+// }
+// .select-box:focus {
+//     background-color: var(--yellow);
+// }
+// select option {
+//     background-color: white;
+//     color: var(--green);
+// }
+
+
+// .sort-item .icon {
+//     position: absolute;
+//     top: 50%;
+//     left: 6px;
+//     transform: translateY(-50%);
+//     color: var(--green);
+//     display: flex;
+//     align-items: center;
+//     height: 100%;
+//     pointer-events: none;
+// }
 
 
 

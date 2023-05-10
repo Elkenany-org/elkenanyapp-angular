@@ -30,15 +30,15 @@ export class HorizontalSearchComponent implements OnChanges {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    // const filterDpnBtn = document.querySelector(".sorting .sorting-cont .open");
-    // const filterDpn = document.querySelector(".sorting .sorting-cont .cont section");
+    const filterDpnBtn = document.querySelector(".sorting .sorting-cont .open");
+    const filterDpn = document.querySelector(".sorting .sorting-cont .cont section");
 
-    // console.log('====================================');
-    // console.log(filterDpn);
-    // console.log('====================================');
-    // filterDpnBtn?.addEventListener('click', () => {
-    //   filterDpn?.classList.toggle("active");
-    // });
+    console.log('====================================');
+    console.log(filterDpn);
+    console.log('====================================');
+    filterDpnBtn?.addEventListener('click', () => {
+      filterDpn?.classList.toggle("active");
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {

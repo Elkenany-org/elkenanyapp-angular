@@ -2,6 +2,9 @@
     <!-- <alert></alert> -->
 
     <div class="main__content__body">
+        <div class="container" style="max-width: 70%;">
+            <h1 class="mt-3 mt-lg-0">{{h_search_form?.title}}</h1>
+        </div>
         <app-banners-logo   [type]="'banner'"></app-banners-logo>
         <app-banners-logo    [type]="'logo'"></app-banners-logo>
         <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>

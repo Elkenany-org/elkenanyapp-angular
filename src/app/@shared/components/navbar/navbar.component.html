@@ -88,10 +88,10 @@
         </div>
 
 
-        <div class="nav mx-auto d-none d-lg-block">
-            <div class="nav-items">
-                <div href="#" class="dpn nav-item py-3 px-4 ms-2">
-                    <i class="fa-solid fa-chevron-left me-3 arrow"></i>المزيد من الخدمات
+        <div class="nav mx-auto d-none d-lg-block" style="box-shadow: 0px 3px 6px #0000003B;">
+            <div class="nav-items d-flex justify-content-between align-items-center" >
+                <div href="#" class="dpn nav-item py-3 px-xl-4 " style="text-align: end;">
+                    <i class="fa-solid fa-chevron-left me-xl-4 arrow"></i><a>المزيد من الخدمات</a>
                     <div class="dpn-list">
                         <div class="list-container d-flex flex-column">
                             
@@ -149,15 +149,14 @@
                         </div>
                     </div>
                 </div>
-                <a [routerLink]="['test']" class="nav-item py-3 px-xl-4 "> <span class="d-none d-xl-block">الاستشاريين</span></a>
-                <a [routerLink]="['test']" class="nav-item py-3 px-xl-4 "><span class="d-none d-xl-block">الأكاديمية</span></a>
+                <a [routerLink]="['test']" class="nav-item py-3 px-xl-2  d-none d-xl-block"> الاستشاريين</a>
+                <a [routerLink]="['test']" class="nav-item py-3 px-xl-2 d-none d-xl-block">الأكاديمية</a>
 
-                <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-4">دليل الشركات</a>
-                <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-4">البورصة اليومية</a>
-                <div class="search-box d-inline-block py-3 px-4">
-                    <button class="p-2 me-2"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" class="search-input p-2" placeholder="...ابحث" id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)" >
-                   
+                <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-xl-2">دليل الشركات</a>
+                <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-xl-2">البورصة اليومية</a>
+                <div class="search-box py-3 px-xl-2" style="display: inline-flex;">
+                    <input type="text" class="search-input  p-4" placeholder="...ابحث" id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)" >
+                    <button class="py-2 px-3 mx-1 " style="box-shadow: 0px 3px 6px #00000029;"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
         </div>

@@ -2,6 +2,11 @@
 @import '../../../../assets/styles/abstract/mixins';
 @import '../../../../assets/styles/components/layouts/main_navbar';
 
+
+.nav-items a{
+      font-size: 1.288rem;
+      font-weight: bold;
+}
 .card-body {
     flex: 1 1 auto;
     padding: 0 !important; 
@@ -186,12 +191,11 @@ input{
 
 .nav-item .nav-link:hover{
   color: $font-color-main !important ;
+
 }
 .container{
   max-width: 90% !important;
 }
-
-
 
 
 

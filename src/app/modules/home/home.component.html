@@ -19,29 +19,23 @@
 
 <div class="about py-4">
     <div class="container">
-        <!-- <ul class="list-unstyled opt-list d-flex flex-row-reverse justify-content-end gap-3 mb-4">
-            <li class="cq">الأسألة الشائعة</li>
-            <li class="active choose">اخترنا لك</li>
-        </ul> -->
+
         <ul class="list-unstyled opt-sublist d-flex flex-row-reverse justify-content-end gap-3 mb-5 active">
-            <li class="mr" style="    line-height: 2.5rem;">أجدد الخدمات</li>
-            <li class="active mv" style="    line-height: 2.5rem;">الخدمات الأكثر زيارة</li>
+            <li [ngClass]="{'active': ns}" class="mr" style="line-height: 2.5rem;" (click)="toggle()">أجدد الخدمات</li>
+            <li [ngClass]="{'active': mv}" class=" mv" style="line-height: 2.5rem;" (click)="toggle()">الخدمات الأكثر زيارة</li>
         </ul>
-        <div class="mv-carousel active">
+        <div class="mv-carousel active" *ngIf="mv">
             <app-banners-logo  [loading]="loading" [type]="'mostvisited'" ></app-banners-logo>
 
         </div>
-        <div class="mr-carousel">
+        <div class="mr-carousel active" *ngIf="ns">
             <app-banners-logo  [loading]="loading" [type]="'newestservices'" ></app-banners-logo>
 
         </div>
-        <!-- <div class="cq-carousel">
-            <app-banners-logo  [loading]="loading" [type]="'questions'"></app-banners-logo>
-
-        </div> -->
 
     </div>
 </div>
+
 
 <div class="image-carousel py-4 main">   
     
@@ -65,6 +59,7 @@
 </div>
 
 
+
 <div class="app-download ">
     <div class="container-fluid justify-content-between">
         <div class="row ">
@@ -83,6 +78,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="d-block d-md-none small-img">
     <img class="" src="assets\images\home\app.png"  alt="">

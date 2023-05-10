@@ -6,9 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnChanges {
+export class CardComponent {
 
   @Input()flag:boolean=true
+  @Input()maincard:boolean=false
+  @Input()subcard:boolean=false
+
   @Input() data:any 
   @Input() loading:boolean = true 
 
@@ -25,16 +28,10 @@ export class CardComponent implements OnChanges {
 
   
   constructor(private router: Router) {
+
    }
 
   
-   ngOnChanges(changes: SimpleChanges) {
-//     console.log(!changes['data'])
-    
-      
-
-
-  }
 
       counter(i: number) {
       return new Array(Math.floor(i));

@@ -3,27 +3,19 @@
 
 <div class="main__content__body">
 
-        <div class="container" style="max-width: 70%;">
-            <h1 >البورصة اليومية </h1>
-        </div>
+    <div class="container" style="max-width: 70%;">
+        <h1 class="mt-3 mt-lg-0">{{h_search_form.title}}</h1>
+    </div>
+
     
     <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
     <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
     <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
 
     <article class="container global__container">
-        <div class="row">
 
-            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
-                <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
-            </section>
+                <app-card (navigation)="navigate($event)" (outpiutData)="navigateV2($event)" [flag]=false [maincard]=true [data]="stock_Ex_Data?.sub_sections" [loading] ="loading"></app-card>
 
-            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
-                <app-card (navigation)="navigate($event)" (outpiutData)="navigateV2($event)" [flag]=false [data]="stock_Ex_Data?.sub_sections" [loading] ="loading"></app-card>
-                <!-- <app-navigation></app-navigation> -->
-            </section>
-
-        </div>
     </article>
 
 </div>

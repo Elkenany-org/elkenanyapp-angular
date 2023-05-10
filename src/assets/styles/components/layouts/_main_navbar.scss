@@ -201,11 +201,11 @@
   width: 8rem;
 }
 .nav {
-  border-radius: 10px;
+  border-radius: 16px;
   background-color: white;
   box-shadow: 0 0 5px #9e9e9e;
   width: max-content;
-  // width: 65%;
+  width: 90%;
   margin-bottom: -57.5px;
 }
 .nav .nav-items .nav-item {
@@ -213,9 +213,14 @@
   color: var(--green);
   transition: 0.3s;
   cursor: pointer;
+  text-align: center;
 }
 .nav .nav-items .nav-item:hover {
   background-color: var(--yellow);
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
+  padding-top: 1.6rem !important;
+  padding-bottom: 1.6rem !important;
 }
 .nav .nav-items .nav-item:first-child {
   border-bottom-left-radius: 10px;
@@ -238,7 +243,8 @@
 .header-2 .sidebar .sidebar-nav .search-box .search-input {
   height: 31px;
   border: 1px solid white;
-  box-shadow: 0 0 7px -2px #7e7e7e;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
   border-radius: 5px;
   transition: 0.3s;
   text-align: right;

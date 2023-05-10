@@ -1,6 +1,11 @@
 <!-- <app-loader *ngIf="loading"></app-loader> -->
 
 <div class="main__content__body">
+    
+    <div class="container" style="max-width: 70%;">
+        <h1 class="mt-3 mt-lg-0">{{h_search_form.title}}</h1>
+    </div>
+
     <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
     <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
     <!-- Start Header -->
@@ -35,26 +40,18 @@
     <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
     <!-- End Search Box -->
 
+
     <!-- Start Global Content -->
     <article class="container global__container">
-        <div class="row">
-             <!-- Start Right Section -->
-            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
-                <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
-            </section>
-            <!-- End Right Section -->
-            <!-- Start Left Section -->
-            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
-                <section class="title-box">
-                    <h2 class="title">{{typeAr}}</h2>
-                    <span class="sections-number">{{Companies_Home_Data?.sub_sections?.length}} قسم</span>
-                </section>
-                <app-card (navigation)="navigate($event)" [data]="Companies_Home_Data?.sub_sections" [flag]=false [loading] ="loading" ></app-card>
-        
+        <section class="title-box">
+            <h2 class="title">{{typeAr}}</h2>
+            <span class="sections-number">{{Companies_Home_Data?.sub_sections?.length}} قسم</span>
+        </section>
 
-            </section>
-            <!-- End Left Section -->
-        </div>
-    </article>
+        <app-card (navigation)="navigate($event)" [data]="Companies_Home_Data?.sub_sections" [flag]=false [maincard]=true [loading] ="loading" ></app-card>
+        
+                
+
+        </article>
     <!-- End Global Content -->
 </div>

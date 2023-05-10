@@ -1,6 +1,9 @@
 <!-- <app-loader *ngIf="loading"></app-loader> -->
 
 <div class="main__content__body">
+    <div class="container" style="max-width: 70%;">
+        <h1 class="mt-3 mt-lg-0">{{h_search_form.title}}</h1>
+    </div>
     <!-- Start Header -->
     <header class="banner__header">
         <div class="container-fluid one-full-slider-banner">
@@ -37,18 +40,8 @@
 
     <!-- Start Global Content -->
     <article class="container global__container">
-        <div class="row">
-             <!-- Start Right Section -->
-            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
-                <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
-            </section>
-            <!-- End Right Section -->
-            <!-- Start Left Section -->
-            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
-                <!-- <section class="title-box">
-                    <span class="sections-number">{{tenders_Home_Data?.sections?.length}} قسم</span>
-                </section> -->
-                <app-card (navigation)="navigate($event)" [data]="tenders_Home_Data?.sections" [flag]=false [loading] ="loading"></app-card>
+
+                <app-card (navigation)="navigate($event)" [data]="tenders_Home_Data?.sections" [flag]=false [maincard]=true [loading] ="loading"></app-card>
                 <div class="pagination">
                     <ul>
                         <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
@@ -62,10 +55,6 @@
                     </pagination-controls>
                 </div>
 
-
-            </section>
-            <!-- End Left Section -->
-        </div>
     </article>
     <!-- End Global Content -->
 </div>

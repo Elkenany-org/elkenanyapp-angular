@@ -46,8 +46,8 @@ this.seoSocialShareService.setDescription(' تضم:- البورصة اليومي
 
 this.home.Home().subscribe( res => {
   //  this.carousel_banner.banner = res.banners
-  this.carousel_logos.banner = res.logos
-  this.carousel_banner = res.banner
+  // this.carousel_logos.banner = res.logos
+  // this.carousel_banner = res.banner
 
   this.BannerLogoService.setBanner(res.services);
   this.BannerLogoService.setLogo(res.banner);
@@ -62,14 +62,13 @@ this.home.Home().subscribe( res => {
   })
 
 
-  this.toggleTabs();
+  // this.toggleTabs();
 
 
   }
 
   swapTab(tab:string) {
     this.tabs= tab
-    // console.log(this.tabs)
   }
 
 
@@ -78,55 +77,49 @@ this.home.Home().subscribe( res => {
     if(i==this.carousel_banner.length-1){
       i=0;
     }
-    // console.log(i);
     
 }
 
+mv=true;
+ns=false;
 
-toggleTabs(){
+toggle(){
+ this.mv=!this.mv
+ this.ns=!this.ns
+}
+// toggleTabs(){
 
-  const chooseLi = document.querySelector(".about .opt-list .choose")
-  // const cqLi = document.querySelector(".about .opt-list .cq")
-  const mvLi = document.querySelector(".about .opt-sublist .mv")
-  const mrLi = document.querySelector(".about .opt-sublist .mr")
-  const optSubList = document.querySelector(".about .opt-sublist")
-  let mvCarousel = document.querySelector(".about .mv-carousel")
-  let mrCarousel = document.querySelector(".about .mr-carousel")
-  // let cqCarousel = document.querySelector(".about .cq-carousel")
+//   const chooseLi = document.querySelector(".about .opt-list .choose")
+//   const mvLi = document.querySelector(".about .opt-sublist .mv")
+//   const mrLi = document.querySelector(".about .opt-sublist .mr")
+//   const optSubList = document.querySelector(".about .opt-sublist")
+//   let mvCarousel = document.querySelector(".about .mv-carousel")
+//   let mrCarousel = document.querySelector(".about .mr-carousel")
 
-chooseLi?.addEventListener("click",()=> {
-    chooseLi.classList.add("active")
-    mrLi?.classList.remove("active")
-    mrCarousel?.classList.remove("active")
-    // cqLi?.classList.remove("active")
-    // cqCarousel?.classList.remove("active")
-    optSubList?.classList.add("active")
-    mvLi?.classList.add("active")
-    mvCarousel?.classList.add("active")
-})
-// cqLi?.addEventListener("click",()=> {
-//     cqLi.classList.add("active")
-//     cqCarousel?.classList.add("active")
-//     chooseLi?.classList.remove("active")
-//     optSubList?.classList.remove("active")
-//     mvCarousel?.classList.remove("active")
+// chooseLi?.addEventListener("click",()=> {
+//     chooseLi.classList.add("active")
+//     mrLi?.classList.remove("active")
+//     mrCarousel?.classList.remove("active")
+//     optSubList?.classList.add("active")
+//     mvLi?.classList.add("active")
+//     mvCarousel?.classList.add("active")
+// })
+
+// mvLi?.addEventListener("click",()=> {
+//     mvLi.classList.add("active")
+//     mvCarousel?.classList.add("active")
+//     mrLi?.classList.remove("active")
 //     mrCarousel?.classList.remove("active")
 // })
-mvLi?.addEventListener("click",()=> {
-    mvLi.classList.add("active")
-    mvCarousel?.classList.add("active")
-    mrLi?.classList.remove("active")
-    mrCarousel?.classList.remove("active")
-})
 
-mrLi?.addEventListener("click",()=> {
-  mrLi.classList.add("active")
-    mrCarousel?.classList.add("active")
-    mvLi?.classList.remove("active")
-    mvCarousel?.classList.remove("active")
-})
+// mrLi?.addEventListener("click",()=> {
+//   mrLi.classList.add("active")
+//     mrCarousel?.classList.add("active")
+//     mvLi?.classList.remove("active")
+//     mvCarousel?.classList.remove("active")
+// })
 
-}
+// }
 
 
 }
