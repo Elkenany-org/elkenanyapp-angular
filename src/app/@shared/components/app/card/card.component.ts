@@ -11,6 +11,7 @@ export class CardComponent {
   @Input()flag:boolean=true
   @Input()maincard:boolean=false
   @Input()subcard:boolean=false
+  @Input()newscard:boolean=false
 
   @Input() data:any 
   @Input() loading:boolean = true 
@@ -28,7 +29,6 @@ export class CardComponent {
 
   
   constructor(private router: Router) {
-
    }
 
   

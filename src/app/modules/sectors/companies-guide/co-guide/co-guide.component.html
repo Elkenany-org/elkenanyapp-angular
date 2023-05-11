@@ -41,14 +41,8 @@
 
     <!-- Start Global Content -->
     <article class="container global__container">
-        <div class="row">
-             <!-- Start Right Section -->
-            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
-                <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
-            </section>
-            <!-- End Right Section -->
+
             <!-- Start Left Section -->
-            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
                 <section class="title-box">
                     <h2 class="title">{{typeAr}}</h2>
                     <!-- <span class="sections-number">{{     (Companies?.data?.length || 1) *page.last_page}} شركة</span> -->
@@ -57,31 +51,12 @@
 
                 </section>
                 
-                <app-card  (navigation)="navigate($event)" [data]="Companies?.compsort" [flag]=true [loading] ="loading" ></app-card>
+                <app-card  (navigation)="navigate($event)" [data]="Companies?.compsort" [flag]=true  [subcard]=true [loading] ="loading" ></app-card>
                 
-                <app-card  (navigation)="navigate($event)" [data]="Companies?.data" [flag]=false [loading] ="loading"></app-card>
+                <app-card  (navigation)="navigate($event)" [data]="Companies?.data" [flag]=false [subcard]=true [loading] ="loading"></app-card>
         
                 <div class="row pagination__container">
                     <div class="col-12">
-                        <!-- <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item" (click)="next_page(page.current_page-1)">
-                                    <a aria-label="Previous" class="page-link">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"
-                                
-                                *ngFor="let _ of [].constructor(page.last_page); let i = index"><a class="page-link" (click)="next_page(i+1)"
-                                [ngStyle]="{'background-color': page.current_page == i+1? '#FFBB33' : '' }">{{i+1}}</a></li>
-                                <li class="page-item" (click)="next_page(page.current_page+1)">
-                                    <a aria-label="Next" class="page-link">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav> -->
-                   
                         <div class="pagination">
                             <ul>
                                 <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
@@ -97,9 +72,7 @@
                    
                     </div>
                 </div> 
-            </section>
             <!-- End Left Section -->
-        </div>
     </article>
     <!-- End Global Content -->
 </div>

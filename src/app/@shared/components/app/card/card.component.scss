@@ -43,7 +43,6 @@ a{
   opacity: 1;
 }
 .card:hover {
-  // background-color: var(--yellow);
   transform: scale(1.1);
   img{
     opacity: 0.7;
@@ -54,19 +53,80 @@ a{
   height: auto;
   max-height: 10.438rem;
   min-height: 10.438rem;
-
   display: block;
 }
- .more {
-  border: 2px solid var(--green);
-  font-family: inherit;
-  background-color: transparent;
+
+
+
+
+.card2 {
+  display: block;
+  overflow: hidden;
+  font-size: 17px;
   color: var(--green);
+  background-color: #FFFFFF;
+  text-align: center;
+  transition: 0.3s;
+  border: none;
+  box-shadow: 0px 6px 15px #00000029;
+  border-radius: 20px;
+  opacity: 1;
+}
+.card2:hover {
+  cursor: pointer;
+  img{
+    transform: scale(1.1);
+  }
+}
+
+.card2 img {
+  box-shadow: 0px 6px 15px #00000029;
+  width: 100px;
+  height: 120px;
+  display: block;
+  margin: auto;
+}
+
+
+.card3 {
+  display: block;
+  overflow: hidden;
+  font-size: 17px;
+  color: var(--green);
+  text-align: center;
+  transition: 0.3s;
+  border: none;
+  box-shadow: 0px 6px 15px #00000029;
+  border-radius: 20px;
+  opacity: 1;
+
+  img{
+    border-radius: 20px;
+    box-shadow: 0px 6px 15px #00000029;
+    max-height: 11rem;
+  }
+}
+
+
+.card-more {
+  display: inline-blo;
+  background-color: var(--green);
+  color: white;
   border-radius: 10px;
   transition: 0.3s;
-  cursor: pointer;
 }
- .more:hover {
+.card-more:hover {
   background-color: var(--yellow);
-  border-color: var(--yellow);
+}
+
+.counts{
+  text-align: end;
+       padding-left: 10%;
+       color: #7c7676;
+}
+
+
+
+.showcard{
+  background-color: green;
 }

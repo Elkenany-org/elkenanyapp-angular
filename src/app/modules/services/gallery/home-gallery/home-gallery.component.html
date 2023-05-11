@@ -10,36 +10,12 @@
     <app-horizontal-search (newItemEvent)="filter($event)" [data]="search_form" ></app-horizontal-search>
 
     <article class="container global__container">
-        <div class="row">
 
-            <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
-                <app-vertical-search  (newItemEvent)="filter($event)" [data]="search_form" ></app-vertical-search>
-            </section>
+                <app-card (navigation)="navigate($event)" [data]="galleryData" [subcard]="true" [loading] ="loading" [flag]=false></app-card>
 
-            <section class="main__left__container col-lg-9 col-md-12 col-sm-12">
-                <app-card (navigation)="navigate($event)" [data]="galleryData" [loading] ="loading" [flag]=false></app-card>
-                <!-- <app-navigation></app-navigation> -->
                 <div class="row pagination__container">
                     <div class="col-12">
-                        <!-- <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item" (click)="next_page(page.current_page-1)">
-                                    <a aria-label="Previous" class="page-link">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"
-                                
-                                *ngFor="let _ of [].constructor(page.last_page); let i = index"><a class="page-link" (click)="next_page(i+1)"
-                                [ngStyle]="{'background-color': page.current_page == i+1? '#FFBB33' : '' }">{{i+1}}</a></li>
-                                <li class="page-item" (click)="next_page(page.current_page+1)">
-                                    <a aria-label="Next" class="page-link">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav> -->
-                    
+
                         <div class="pagination">
                             <ul>
                                 <li *ngFor="let item of [].constructor(page.last_page) | paginate: { itemsPerPage: 1, currentPage:page.current_page }"> </li>
@@ -54,9 +30,7 @@
                         </div>
                     </div>
                 </div> 
-            </section>
 
-        </div>
     </article>
 
 </div>

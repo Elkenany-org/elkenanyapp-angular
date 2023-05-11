@@ -74,5 +74,10 @@ console.log('====================================');
     return x.split(substring, index).join(substring).length;
   }
 
+  navigate(id: string): void
+  {
+    this.router.navigate([`/news/${this.type}/${id}`]);
+  }
+
   
 }

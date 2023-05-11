@@ -12,8 +12,9 @@
                     <!-- <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo> -->
 
                     <div class="content">
+                        <div class="new-title">
                         <h1 class="content__title">{{news_content?.title}}</h1>
-                        
+                        </div>
                         <!-- <div   class="content__description"  [innerHTML]=" new.changingThisBreaksApplicationSecurity" ></div> -->
 
                         <div   class="content__description news"  [innerHTML]=" news_content?.desc" ></div>
@@ -23,28 +24,10 @@
                 <div class="read__more">
                     <h2 class="read__more-title">إقرا أيضا :</h2>
                     <div class="new__cards row">
-                        <div class="col-12 col-lg-6" *ngFor="let news of news_content?.news ">
-                            <div class="product__card min-sm-0  regular__hover">
-                                <div class="image__card semi__image">
-                                    <img alt='product-image'
-                                         [src]='news.image'/>
-                                </div>
-                                <div class="product__content">
-                                    <header class="product__title semi__title">
-                                        <a [routerLink]="['/news',type,news.id]">
-                                            {{news.title}}
-                                        </a>
-                                    </header>
-                                    <section class="product__bottom justify-content-end">
-                                        <section class="date__box">
-                                            <span class="date">{{news.created_at}}</span>
-                                        </section>
-                                    </section>
-                                </div>
-                            </div>
-                        </div>
 
-
+                        <app-card (navigation)="navigate($event)" [data]="news_content?.news" [loading] ="loading" [flag]=false [newscard]=true></app-card>
+                    
+                   
                     </div>
                 </div>
             </div>

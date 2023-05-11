@@ -2,23 +2,138 @@
 <section class="row" *ngIf="!loading && maincard" >
  
 
-<span class=" col-12 col-md-6 col-lg-3 mb-5" *ngFor="let contact of data ">        
+<span class=" col-12 col-md-6 col-lg-3 mb-5" *ngFor="let contact of data " >        
 
-   <a  class="card" *ngIf="maincard" (click)="output(contact.id,contact.type )" >
+   <a  class="card" (click)="output(contact.id,contact.type )" >
        <div class="img">
            <img src="{{contact.image}}" alt="">
        </div>
        <h5 class="my-3">
            {{contact.name || contact.title}}
        </h5>
+
+       <section class="counts" *ngIf="contact.companies_count">
+        <p class="note">{{contact.companies_count}} {{contact.type||'مكتب'}}</p>
+       </section>
+
    </a>
 
 </span>
 
 </section> 
+
+
+
+<section class="row" *ngIf="!loading && newscard" >
+
+<span class=" col-12 col-md-6 col-lg-6 mb-5" *ngFor="let contact of data ">        
+
+    <a  class="card3" (click)="output(contact.id,contact.type )" >
+            <img src="{{contact.image}}" alt="">
+
+            <div class="d-flex flex-md-row flex-column justify-content-between align-items-center m-3">
+            <h5 >
+                {{contact.name || contact.title}}
+            </h5>
+ 
+            <div class="" *ngIf="contact.address"> <i class="fas fa-map-marker-alt"></i> {{contact.address}}</div>
+            </div>
+
+         <div class="d-flex flex-md-row flex-column justify-content-between align-items-center mx-3 mb-3">
+
+            <div class="address mb-2" *ngIf="contact.created_at "><i class="fas fa-calendar" ></i> {{contact.created_at}} </div>
+             
+            
+            <div class="d-flex flex-md-row flex-column justify-content-end ">
+            <section class='product__info px-3' *ngIf="contact.salary != null && contact.type != 'job'">
+                <h5 class="note text-center">
+                     {{contact.salary}} جنيه 
+                </h5>
+            </section> 
+
+             <a class="card-more  px-5 py-1" *ngIf="!contact.date && !contact.view_count && contact.type != 'job' else intersted" (click)="output(contact.id,contact.type )">المزيد</a>
+             <ng-template class="more__details" #intersted >  
+                 <a class="card-more mx-3 px-5 py-1" *ngIf="contact.type != 'job'"  (click)="output(contact.id,contact.type )">مهتم</a>
+                 <a class="card-more mx-3 px-5 py-1" *ngIf="contact.type == 'job'"  [routerLink]="['/employment/apply',contact.id]">قدم الأن</a>
+ 
+             </ng-template>
+             </div>
+ 
+ </div>
+ 
+    </a>
+ 
+ </span>
+ 
+ </section> 
+  
+
+<section class="row " *ngIf="!loading && subcard" >
  
 
-<div *ngIf="subcard">
+    <span class="col-12 col-md-6 mb-5 " *ngFor="let contact of data ">        
+
+            <div href="#" class="card2 p-0">
+                <div class="content p-3">
+                    <div class="img">
+                        <img class="mx-auto" src="{{contact.image}}" alt="">
+                    </div>
+                    
+                    <h3 class="mt-3 mb-2">{{contact.title || contact.name}}</h3>
+                    <p class="desc mx-auto">{{contact.desc}}</p>
+
+                    <div class="mb-1 d-flex flex-md-row flex-column justify-content-between" *ngIf="contact.address">
+
+                        <div class="address mb-2" *ngIf="contact.date && contact.view_count != null"><i class="fas fa-calendar" ></i> {{contact.date}} </div>
+
+                    <div class="product__rating mx-auto" *ngIf="contact.rate ">
+                                   
+                        <i *ngFor='let in of counter1((5-contact.rate)) ;let i = index' style="color: silver;"class="fa-solid fa-star"></i>
+                        <i *ngFor='let in of counter(contact.rate) ;let i = index'  style="color: #fac864;" class="fa-solid fa-star"></i>
+
+                    </div>
+                    <div class="product__rating mx-auto" *ngIf="contact.rate==0 && !flag">
+                                
+                        <i *ngFor='let in of counter1(5) ;let i = index' style="color: silver;"class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <section class="product__bottom" *ngIf="contact.date && contact.view_count != null">
+                        <section class="content__box">
+                            <i class="fas fa-users"></i>
+                            <span class="content">{{contact.view_count}} متابع</span>
+                        </section>
+                    </section>
+</div>
+
+                    <div class="informations d-flex flex-md-row flex-column justify-content-between align-items-center" *ngIf="contact.address">
+
+
+
+                                <div class="address mb-2" *ngIf="contact.created_at && contact.salary!=null"><i class="fas fa-calendar" ></i> {{contact.created_at}} </div>
+
+                                
+                                <div class="address mb-2"> <i class="fas fa-map-marker-alt"></i> {{contact.address}}</div>
+                              
+ 
+                            <a class="card-more mx-3 px-5 py-1" *ngIf="!contact.date && !contact.view_count && contact.type != 'job' else intersted" (click)="output(contact.id,contact.type )">المزيد</a>
+                            <ng-template class="more__details" #intersted >  
+                                <a class="card-more  px-5 py-1" *ngIf="contact.type != 'job'"  (click)="output(contact.id,contact.type )">مهتم</a>
+                                <a class="card-more  px-5 py-1" *ngIf="contact.type == 'job'"  [routerLink]="['/employment/apply',contact.id]">قدم الأن</a>
+ 
+                            </ng-template>
+ 
+                    </div>
+
+
+                </div>
+            </div>
+    </span>
+
+</section>
+
+
+<!-- <div *ngIf="subcard">
    <div class="new__cards row" *ngFor="let contact of data ">
            <a class="col-12" (click)="output(contact.id,contact.type )" >
 
@@ -84,19 +199,18 @@
                                <span class="content">{{contact.view_count}} متابع</span>
                            </section>
                        </section>
+
+
                        <section class="product__bottom" *ngIf="contact.address">
 
                            <section class="address-box">
-                               <!-- <section class="product__bottom" *ngIf="contact.created_at && contact.salary!=null">
-
-                               </section> -->
-
+ 
                                <i class="fas fa-calendar" *ngIf="contact.created_at && contact.salary!=null"></i>
                                <span class="address" *ngIf="contact.created_at && contact.salary!=null"> {{contact.created_at}} </span><br>
                                <i class="fas fa-map-marker-alt"></i>
                                <span class="address"> {{contact.address}} </span>
 
-                           </section>
+                            </section>
                            <a class="more__details" *ngIf="!contact.date && !contact.view_count && contact.type != 'job' else intersted" (click)="output(contact.id,contact.type )">اعرف أكتر</a>
                            <ng-template class="more__details" #intersted >  
                                <a class="more__details" *ngIf="contact.type != 'job'"  (click)="output(contact.id,contact.type )">مهتم</a>
@@ -144,4 +258,4 @@
    
    
 </div>  
-
+ -->

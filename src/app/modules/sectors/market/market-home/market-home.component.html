@@ -25,17 +25,8 @@
 
             <!-- Start Global Content -->
     <article class="global__container container">
-        <div class="row">
-       <!-- Start Right Section -->
-       <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
-        <app-vertical-search  (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
-        </section>
-
-
-            <!-- Start Left Section -->
-            <section class="main__left__container col-lg-8 col-md-12 col-sm-12">
-                
-                <app-card (navigation)="navigate($event)" [data]="Market_Data" [loading] ="loading" [flag]=false></app-card>
+ 
+                <app-card (navigation)="navigate($event)" [data]="Market_Data" [newscard]=true [loading] ="loading" [flag]=false></app-card>
         
                 <div class="row pagination__container">
                     <div class="col-12">
@@ -55,10 +46,6 @@
                    
                     </div>
                 </div> 
-            </section>
-            <!-- End Left Section -->
-            <!-- End Left Section -->
 
-        </div>
     </article>
     <!-- End Global Content -->
