@@ -67,7 +67,21 @@
 
       }
 
-    }
+    }   
+    
+    .video{
+        background-color: $bg-color-main;
+        border-radius: 20px;
+        padding: 4rem;
+        justify-content: center;
+        display: flex;
+        width: 90%;
+        margin: auto;
+        iframe{
+          width: 533px !important;
+          height: 350px !important;
+        }
+      }
   }
 
 

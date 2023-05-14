@@ -181,7 +181,6 @@ export class HomeGalleryComponent implements OnInit {
   }
 
   navigate(id: string): void {
-    // console.log(id)
     this.router.navigate([`/gallery/${this.filterData['sector']}/${id}/about/${id}`])
   }
 

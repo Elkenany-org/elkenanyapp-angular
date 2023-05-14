@@ -104,7 +104,7 @@ export class StockExchangeComponent implements OnInit {
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   ( type_stock=='local')? res.data?.sub_sections: res.data?.fodder_sub_sections;
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/${this.filterData['sector']}/statistics/statistics-members/${this.filterData['type']}/${id}`;
       if(type_stock !='local'){
-              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/stock-exchange/${this.filterData['sector']}/comparison/${id}`;
+              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/comparison/${id}`;
       }
     })
 
@@ -217,7 +217,6 @@ export class StockExchangeComponent implements OnInit {
        this.stock_Ex_Data = data['resolve'].data  as LocalStockFodder
        this.BannerLogoService.setBanner(data['resolve'].data?.banners as Banner[]);
        this.BannerLogoService.setLogo(data['resolve'].data?.logos as Logo[]);
-      // this.stock_Ex_Data = res.data   
 
     })
 

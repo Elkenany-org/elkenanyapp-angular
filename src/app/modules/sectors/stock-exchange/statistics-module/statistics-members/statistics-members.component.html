@@ -5,63 +5,7 @@
     </div>
 
     <app-horizontal-search (newItemEvent)="filter($event,'')" [data]="h_search_form" ></app-horizontal-search>
-    <section class="special__accordion container d-lg-none d-block d-md-block">
 
-
-        <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
-                href="#accordion"
-                id="show-hide-accordion" role="button">
-            حدد بحثك
-            <i class="icon-s fas fa-search"></i>
-        </button>
-
-        
-        <div class="accordion collapse show" id="accordion">
-            
-            <form [formGroup]="fromToForm">
-                <div class="card">
-                    <div class="card-header" id="headingSearch">
-                        <h5 class="mb-0">
-                            <button aria-controls="collapseSearch" aria-expanded="false"
-                                    class="btn btn-link collapsed" data-target="#collapseSearch"
-                                    data-toggle="collapse">
-                                <i class="fas fa-search"></i>
-                                من
-                            </button>
-                        </h5>
-                    </div>
-                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
-                         id="collapseSearch">
-                        <div class="card-body">
-                            <input (change)="filter($any($event.target).value,'date-from')"class="search__input" type="date" formControlName="from">
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingSearch">
-                        <h5 class="mb-0">
-                            <button aria-controls="collapseSearch" aria-expanded="false"
-                                    class="btn btn-link collapsed" data-target="#collapseSearch"
-                                    data-toggle="collapse">
-                                <i class="fas fa-search"></i>
-                                إلى
-                            </button>
-                        </h5>
-                    </div>
-                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
-                         id="collapseSearch">
-                        <div class="card-body">
-                            <input (change)="filter($any($event.target).value , 'date-to')" formControlName="to"class="search__input" type="date">
-                        </div>
-                    </div>
-                </div>
-    
-            </form>
-     
-            
-
-        </div>
-    </section>
 
     <article class="global__container container">
         <div class="row">
@@ -193,38 +137,36 @@
                     <div class="table__main">
                         <div id="accordion" *ngFor="let i of StatisticsMemberFodder;let i1=index">
                             <div class="card" >
-                                <div class="card-header" id="headingOne368" style="background-color: #fff;border-color: #0C6A22;margin: 0;padding: 10px;">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" style="color: #0C6A22" data-toggle="collapse" [attr.data-target]="'#collapseOne-'+i1" aria-expanded="false" aria-controls="collapseOne">
-                                            <strong>{{i[0].name}}</strong>
+                                <div class="card-header mx-4" id="headingOne368" style="background-color: #fff;border-color: #0C6A22;margin: 0;padding: 1rem;">
+                                        <button class="btn btn-link collapsed" style="color: #0C6A22;text-decoration: none;" data-toggle="collapse" [attr.data-target]="'#collapseOne-'+i1" aria-expanded="false" aria-controls="collapseOne">
+                                            <h3>{{i[0].name}}</h3>
                                         </button>
-                                    </h5>
                                 </div>
 
-                                <!-- <div [id]="'collapseOne-'+i1"  class="collapse" aria-labelledby="headingOne368" data-parent="#accordion" style=""> -->
-                                    <div class="card-body">
-                                        <table class="table table-hover" style="margin: 0px">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col" class="border-right">اسم الصنف</th>
-                                                <th scope="col" class="border-right">مقدار التغير</th>
-                                                <th scope="col" class="border-right">عدد التغير</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let i of i[0].categories">
-                                                    <td class="border-right border-left company__link__container">
+                                        <section class="table__container table-hover table-chart-5 special__container" >
+                                            <section class="table__head">
+                                                <div scope="col" class="title" >اسم الصنف</div>                                                       <div class="wall"></div>
+
+                                                <div scope="col" class="title">مقدار التغير</div>                                                       <div class="wall"></div>
+
+                                                <div scope="col" class=" title">عدد التغير</div>
+                                            </section>
+                                            <div class="table__body row__shadow" style="overflow: auto;direction: ltr;">
+                                                <div class="table__row" *ngFor="let i of i[0].categories">
+                                                    <td class="company__link__container cell__container">
                                                         <a  (click)="navigatetodetails(type,i.id,i.categorize)" class="company__link">{{i.categorize}}</a>
-                                                    </td>
-                                                    <td class="border-right">
+                                                    </td>              
+                                                      <div class="wall"></div>
+
+                                                    <td class=" cell__container">
                                                         <span class="negative__content">{{i.change}}%</span>
-                                                    </td>
-                                                    <td class="border-right"><span class="negative__content"> {{i.counts}} </span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                <!-- </div> -->
+                                                    </td>             
+                                                       <div class="wall"></div>
+
+                                                    <td class=" cell__container"><span class="negative__content"> {{i.counts}} </span></td>
+                                                </div>
+                                            </div>
+                                        </section>
                             </div>
                             </div>
                     </div>
@@ -232,31 +174,29 @@
             </section>
 
 
-            <section class="col-12" *ngIf="type== 'local'">
-                <div class="table__main">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col" class="border-right border-left">أسم الصنف</th>
-                            <th scope="col" class="border-right">مقدار التغير</th>
-                            <th scope="col" class="border-right">عدد التغير</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of StatisticsMemberSlected; let i = index">
-                                <th scope="row">{{i}}</th>
-                                <td class="border-right border-left company__link__container"> 
-                                  <a (click)="navigatetodetails(type,item.id,item.name)" class="company__link"> {{item.name}}</a>                                
-                                </td>
-                                <td class="border-right"><span class="negative__content">
-                                {{item.change}} </span></td>
-                                <td class="border-right"><span class="negative__content"> {{item.counts}} </span></td>
+            <section class="col-12" *ngIf="type== 'local'" >
+                <section class="table__container table-hover table-chart-5 special__container" >
+                    <section class="table__head">
+                        <div scope="col" class="title" >#</div>                                                       <div class="wall"></div>
+                        <div scope="col" class="title" >اسم الصنف</div>                                                       <div class="wall"></div>
 
-                          
-                        </tbody>
-                    </table>
-                </div>
+                        <div scope="col" class="title">مقدار التغير</div>                                                       <div class="wall"></div>
+
+                        <div scope="col" class=" title">عدد التغير</div>
+                    </section>
+                    <div class="table__body "style="overflow: auto;direction: ltr;">
+                        <div class="table__row" *ngFor="let item of StatisticsMemberSlected; let i = index">
+                                <td scope="row" class="cell__container">{{i}}</td><div class="wall"></div>
+                                <td class="cell__container company__link__container" > 
+                                  <a (click)="navigatetodetails(type,item.id,item.name)" class="company__link"> {{item.name}}</a>                                
+                                </td><div class="wall"></div>
+                                <td class="cell__container"><span class="negative__content">
+                                {{item.change}} </span></td><div class="wall"></div>
+                                <td class="cell__container"><span class="negative__content"> {{item.counts}} </span></td>
+
+                           </div>
+                    </div>
+                </section>
             </section>
         </div>
     </article>

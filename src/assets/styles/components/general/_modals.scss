@@ -11,9 +11,14 @@
 
     .modal-content {
       border-radius: 12px;
-
+      box-shadow: inset 0px 3px 6px #0000004D, 0px 3px 6px #00000026;
+      border: 1px solid #206B00;
+      border-radius: 20px;
+      margin-top: 15%;
+      
       .modal-header {
-        border-bottom-color: $bg-color-second;
+        border: none;
+        // border-bottom-color: $bg-color-second;
         align-items: baseline;
 
         .modal__title {
@@ -25,7 +30,7 @@
         .modal__close {
           border: 0;
           border-radius: 50%;
-          background: $bg-color-main;
+          // background: $bg-color-main;
           color: $bg-color-second;
           @include semi-flex(center, center, row, nowrap);
           padding: 0.4rem 0.6rem;
@@ -41,7 +46,7 @@
           }
 
           &:hover {
-            background: $bg-color-second;
+            // background: $bg-color-second;
 
             i {
               color: $bg-color-main;

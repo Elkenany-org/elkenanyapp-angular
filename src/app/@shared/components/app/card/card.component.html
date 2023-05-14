@@ -73,7 +73,7 @@
 
     <span class="col-12 col-md-6 mb-5 " *ngFor="let contact of data ">        
 
-            <div href="#" class="card2 p-0">
+            <a (click)="output(contact.id,contact.type )" class="card2 p-0">
                 <div class="content p-3">
                     <div class="img">
                         <img class="mx-auto" src="{{contact.image}}" alt="">
@@ -127,7 +127,7 @@
 
 
                 </div>
-            </div>
+            </a>
     </span>
 
 </section>

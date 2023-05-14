@@ -43,9 +43,7 @@ href: string = "";
        this.new = this.sanitizer.bypassSecurityTrustHtml(this.news_content?.desc!);  
 
         let text=this.new.changingThisBreaksApplicationSecurity;
-console.log('====================================');
-console.log(text);
-console.log('====================================');
+
         for (let index = 0; index < 3; index++) {
               if(text.match("<iframe")){
                   let x=text.match("<iframe").index

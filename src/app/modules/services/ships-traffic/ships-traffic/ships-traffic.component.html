@@ -7,69 +7,30 @@
         </div>
         <app-banners-logo   [type]="'banner'"></app-banners-logo>
         <app-banners-logo    [type]="'logo'"></app-banners-logo>
-        <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
+        <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" [ships]="true" ></app-horizontal-search>
         
-        <section class="special__accordion container d-lg-none d-block d-md-block">
-            <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
-                    href="#accordion"
-                    id="show-hide-accordion" role="button">
-                حدد بحثك
-                <i class="icon-s fas fa-search"></i>
-            </button>
-            <div class="accordion collapse show" id="accordion">
-
-                <div class="card">
-                    <div class="card-header" id="headingSearch">
-                        <h5 class="mb-0">
-                            <button aria-controls="collapseSearch" aria-expanded="false"
-                                    class="btn btn-link collapsed" data-target="#collapseSearch"
-                                    data-toggle="collapse">
-                                <i class="fas fa-search"></i>
-                                تاريخ الوصول
-                            </button>
-                        </h5>
-                    </div>
-                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
-                         id="collapseSearch">
-                        <div class="card-body">
-                            <input (change)="filter({name: $any($event.target).value, type: 'dataOfArrival'})"  class="search__input" type="date" name="dataOfArrival">
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingFour">
-                        <h5 class="mb-0">
-                            <button aria-controls="collapseFour" aria-expanded="false"
-                                    class="btn btn-link collapsed" data-target="#collapseFour"
-                                    data-toggle="collapse">
-                                <i class="fas fa-poll"></i>
-                                الاحصائيات
-                            </button>
-                        </h5>
-                    </div>
-                    <div aria-labelledby="headingFour" class="collapse" data-parent="#accordion"
-                         id="collapseFour">
-                        <div class="card-body">
-                            <a class="stats__btn" routerLink="/ships-traffic/statistics">احصائيات</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- End Right Section -->
     
     
         <!-- Start Table 7 cols without chart -->
         <section class="table__container table-7 special__container">
             <section class="table__head">
-                <span class="title">اسم السفينة</span>
-                <span class="title">تاريخ التوجيه</span>
-                <span class="title">الحمولة / طن</span>
-                <span class="title">النوع</span>
-                <span class="title">المنشأ</span>
-                <span class="title">تاريخ الوصول</span>
-                <span class="title">الجهة المستوردة</span>
-                <span class="title">الوكيل الملاحي</span>
+                <span class="title">اسم السفينة</span>                    <div class="wall"></div>
+
+                <span class="title">تاريخ التوجيه</span>                    <div class="wall"></div>
+
+                <span class="title">الحمولة / طن</span>                    <div class="wall"></div>
+
+                <span class="title">النوع</span>                    <div class="wall"></div>
+
+                <span class="title">المنشأ</span>                    <div class="wall"></div>
+
+                <span class="title">تاريخ الوصول</span>                    <div class="wall"></div>
+
+                <span class="title">الجهة المستوردة</span>                    <div class="wall"></div>
+
+                <span class="title">الوكيل الملاحي</span>                    <div class="wall"></div>
+
                 <span class="title">ميناء التفريغ</span>
             </section>
             <!--  add row__shadow when rows length > = 3  -->

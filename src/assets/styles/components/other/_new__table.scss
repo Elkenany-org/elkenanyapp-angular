@@ -60,19 +60,28 @@
 
   .table__head {
     @include semi-flex(center, space-between, row, nowrap);
+    padding-right: 7px;
     margin-bottom: 0.5rem;
     width: 100%;
     color: $color-main;
-
+    .wall {
+      width: 2%;
+      height: 100%;
+      // background-color: $bg-color-second;
+      background-color: #FFFFFF;
+    }
     .title {
       @include semi-flex(center, center, column, nowrap);
-      border: 2px solid $bg-color-main;
       text-align: center;
       padding: 0.5rem;
-      border-radius: $rd-6;
       font-weight: $fw-semiBold;
       font-size: $fs-18;
       min-height: 4.6rem;
+      box-shadow: inset 0px 3px 6px #00000063, 0px 3px 6px #0000001A;
+      border-radius: 20px 20px 0px 0px;
+      border-top: 2rem solid;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
   }
 
@@ -86,20 +95,20 @@
       box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) inset;
       overflow-y: auto;
       direction: ltr;
-      padding: 0.6rem 0.4rem 0 0.4rem;
+      // padding: 0.6rem 0.4rem 0 0.4rem;
     }
 
     .table__row {
       direction: rtl;
       @include semi-flex(center, space-around, row, nowrap);
       color: $color-main;
-      box-shadow: $fixed-box-shadow-regular;
+      // box-shadow: $fixed-box-shadow-regular;
       border-radius: 5px;
       margin-bottom: 1em;
       min-height: 135px;
       height: 100%;
       max-height: 140px;
-
+      background: #EEEEEE;
       .cell__container {
         text-align: center;
         padding: 0.5rem;
@@ -144,9 +153,10 @@
       }
 
       .wall {
-        width: 2px;
+        width: 2%;
         height: 100%;
-        background-color: $bg-color-second;
+        // background-color: $bg-color-second;
+        background-color: #FFFFFF;
       }
 
       &.ads {
@@ -196,6 +206,7 @@
         }
       }
     }
+
   }
 
   //////////////////////////////////////////////////////////

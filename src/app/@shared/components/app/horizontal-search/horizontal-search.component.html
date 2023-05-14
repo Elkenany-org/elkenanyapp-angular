@@ -2,10 +2,10 @@
     <div class="container">
         <div class="sorting-cont px-4 py-3">
                 <form class="box-tabs">
-                    <div class="search mb-3">
+                    <div class="search mb-3" *ngIf="!ships">
                         <div class="input-container" style="height: 100%;">  
                             <button class="px-5" style="border-radius: 16px;">بحث...</button>
-                            <input id="search" type="search" style="border-radius: 16px;"
+                            <input id="search"  type="search" style="border-radius: 16px;"
                                 (input)="selectOption($any($event.target).value,'search')" placeholder="ابحث...">
                             <i class="fa-solid fa-search search-icon"></i>
                         </div>
@@ -14,7 +14,7 @@
                         
                         <h4><i class="fa-solid fa-filter ms-2"></i>حدد بحثك</h4>
                     </div>
-                <div class="cont">
+                <div class="cont1">
                     <section class="big-sec d-lg-flex pb-2" [class]="data?.class">
                         <h5 class="m-0 ms-2 text d-inline-block">
                             تصفية حسب

@@ -8,6 +8,12 @@
                 <div class="news__container-content">
                     <div class="news__header">
                         <img alt="" [src]="news_content?.image">
+                        <div class="d-flex justify-content-between m-3">
+                            <div class="text-secondary">{{news_content?.created_at}}</div>
+                            <div style="cursor: pointer;"><i data-target="#share" data-toggle="modal" class="fa-sharp fa-solid fa-share-nodes h3"></i>
+
+                            </div>
+                        </div>
                     </div>
                     <!-- <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo> -->
 
@@ -15,12 +21,15 @@
                         <div class="new-title">
                         <h1 class="content__title">{{news_content?.title}}</h1>
                         </div>
+
+
                         <!-- <div   class="content__description"  [innerHTML]=" new.changingThisBreaksApplicationSecurity" ></div> -->
 
                         <div   class="content__description news"  [innerHTML]=" news_content?.desc" ></div>
-                            <div *ngFor="let vid of video"  class=""  [innerHTML]="vid" ></div>
+                            <div *ngFor="let vid of video"  class=" video"  [innerHTML]="vid" ></div>
                     </div>
                 </div>
+
                 <div class="read__more">
                     <h2 class="read__more-title">إقرا أيضا :</h2>
                     <div class="new__cards row">
@@ -32,4 +41,45 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>            
+    
+
+                                <div
+                                aria-hidden="true"
+                                aria-labelledby="exampleModalLabel"
+                                class="modal fade"
+                                id="share"
+                                tabindex="-1"
+                        >
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header flex-row-reverse align-items-baseline">
+                                                <p class="modal__title">مشاركة </p>
+                                                <button
+                                                        aria-label="Close"
+                                                        class="modal__close"
+                                                        id="close3"
+                                                        data-dismiss="modal"
+                                                        type="button"
+                                                >
+                                                <i class="fa-regular fa-circle-xmark h3"></i>
+                                                </button>
+                                            </div>
+                        
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="share__container">
+                                                        <h2 class="pb-2">مشاركة الخبر عبر منصات التواصل الاجتماعى</h2>
+                 
+                                                        <div class="area__container" #container>
+                                                            <p id="item-to-copy" >https://elkenany.com/#/news/{{type}}/{{news_content?.id}}</p>
+                                                            <button class="p__link" ngxClipboard [cbContent]="'https://elkenany.com/#/news/'+type+'/'+news_content?.id" [container]="container">  نسخ رابط الخبر
+                                                            </button>
+                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>

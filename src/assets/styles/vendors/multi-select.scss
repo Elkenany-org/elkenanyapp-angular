@@ -29,7 +29,7 @@ li {
 }
 
 .multiselect-container > li {
-  padding: 0;
+  padding: 0.5rem;
   font-size: 1.2rem;
   outline: none;
   transition: 0.3s all ease-in-out;
@@ -153,21 +153,26 @@ li {
   direction: rtl;
   transition: 0.3s all ease-in-out;
   font-size: 1rem;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid #EFEFEF;
+  border-radius: 20px;
+  opacity: 1;
 
   button {
-    border-radius: 4px;
+    border-radius: 20px;
     background: $white;
     -webkit-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
     -moz-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
-    box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    // box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
     padding: 0 10px;
     text-align: right;
     position: relative;
     font-size: 1.2rem;
     transition: all 0.3s ease-in-out;
     color: #1a5302;
-    border: 1px solid #1a5302;
-
+    // border: 1px solid #1a5302;
+    height: 80px;
     &:after {
       position: absolute;
       top: 50%;

@@ -3,63 +3,8 @@
         <div class="container" style="max-width: 70%;">
             <h1 class="mt-3 mt-lg-0">{{h_search_form?.title}}</h1>
         </div>
-        <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-horizontal-search>
-        <section class="special__accordion container d-lg-none d-block d-md-block">
+        <app-horizontal-search (newItemEvent)="filter($event)" [data]="h_search_form" [ships]="true"></app-horizontal-search>
 
-            <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
-                    href="#accordion"
-                    id="show-hide-accordion" role="button">
-                حدد بحثك
-                <i class="icon-s fas fa-search"></i>
-            </button>
-            
-            <div class="accordion collapse show" id="accordion">
-                
-                <form [formGroup]="fromToForm">
-                    <div class="card">
-                        <div class="card-header" id="headingSearch">
-                            <h5 class="mb-0">
-                                <button aria-controls="collapseSearch" aria-expanded="false"
-                                        class="btn btn-link collapsed" data-target="#collapseSearch"
-                                        data-toggle="collapse">
-                                    <i class="fas fa-search"></i>
-                                    من
-                                </button>
-                            </h5>
-                        </div>
-                        <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
-                             id="collapseSearch">
-                            <div class="card-body">
-                                <input  (change)="filter($any($event.target).value,'date-from')" class="search__input" type="date" formControlName="from">
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingSearch">
-                            <h5 class="mb-0">
-                                <button aria-controls="collapseSearch" aria-expanded="false"
-                                        class="btn btn-link collapsed" data-target="#collapseSearch"
-                                        data-toggle="collapse">
-                                    <i class="fas fa-search"></i>
-                                    إلى
-                                </button>
-                            </h5>
-                        </div>
-                        <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
-                             id="collapseSearch">
-                            <div class="card-body">
-                                <input (change)="filter($any($event.target).value , 'date-to')"  formControlName="to"class="search__input" type="date">
-                            </div>
-                        </div>
-                    </div>
-        
-                </form>
-         
-                
-    
-            </div>
-        </section>
 
 
     <!-- End Right Section -->

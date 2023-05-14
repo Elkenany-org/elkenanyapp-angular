@@ -7,6 +7,7 @@ import { AuthGuardService } from './@core/guards/auth.guard';
 import { TestComponent } from './test/test.component';
 import { TendersHomeResolver } from './@core/resolver/tenders/tenders-home.resolver.service';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
+import { ComparisonComponent } from './modules/sectors/stock-exchange/comparison/comparison.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,11 @@ const routes: Routes = [
     path: 'stock-exchange/:type',
     loadChildren: () => 
       import('./modules/sectors/stock-exchange/stock-exchange.module').then((m) => m.StockExchangeModule),
+      
+  },
+  {
+    path: 'comparison/:id',
+    component:ComparisonComponent
       
   },
   {

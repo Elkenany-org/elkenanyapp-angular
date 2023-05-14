@@ -12,20 +12,6 @@
 
 
 
- <article class="container global__container   d-lg-none d-block d-md-block">
-    <div class="row">
-        <section class="right main__right__container col-lg-3 col-md-12 col-sm-12">
-            <app-vertical-search (newItemEvent)="filter($event)" [data]="h_search_form" ></app-vertical-search>
-        </section>
-    </div>
-
-
-
-
- </article>
-
-
-
 
 <div class="global__container" >
    
@@ -123,17 +109,29 @@
                 class="title" >{{column}}</span> -->
 
                 <span *ngIf="stock_Ex_Data?.columns[0]" class="title" >{{stock_Ex_Data?.columns[0]}}</span>
+                <div class="wall"*ngIf="stock_Ex_Data?.columns[1]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[1]" class="title" >{{stock_Ex_Data?.columns[1]}}</span>
+                <div class="wall"></div>
                 <span *ngIf="stock_Ex_Data?.columns[2]" class="title" >{{stock_Ex_Data?.columns[2]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[3]" ></div>
                 <span *ngIf="stock_Ex_Data?.columns[3]" class="title" >{{stock_Ex_Data?.columns[3]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[4]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[4]" class="title" >{{stock_Ex_Data?.columns[4]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[5]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[5]" class="title" >{{stock_Ex_Data?.columns[5]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[6]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[6]" class="title" >{{stock_Ex_Data?.columns[6]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[7]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[7]" class="title" >{{stock_Ex_Data?.columns[7]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[9]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[9]" class="title" >{{stock_Ex_Data?.columns[9]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[10]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[10]" class="title" >{{stock_Ex_Data?.columns[10]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[11]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[11]" class="title" >{{stock_Ex_Data?.columns[11]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[12]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[12]" class="title" >{{stock_Ex_Data?.columns[12]}}</span>
+                <div class="wall" *ngIf="stock_Ex_Data?.columns[8]"></div>
                 <span *ngIf="stock_Ex_Data?.columns[8]" class="title" >{{stock_Ex_Data?.columns[8]}}</span>
 
         </section>
@@ -144,7 +142,7 @@
             <!-- [ngClass]="{' title__chart  d-lg-flex d-none': isLast , 'ads':member.type}" -->
             <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart ': isLast , 'ads':member.type}">
     
-                <a class="cell__container ads" *ngIf="member.comp_id " [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.comp_id]">
+                <a class="cell__container ads"  [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.comp_id]">
                     <div class="cell__content__with__image">
                         <img alt="logo"
                              class="image"

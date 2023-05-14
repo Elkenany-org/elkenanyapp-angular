@@ -49,8 +49,9 @@ export class ComparisonComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
+console.log('====================================');
+console.log('comparison');
+console.log('====================================');
     this.h_search_form = comparsion_Search_Form_Data
 
     this.route.params.subscribe( params => { 

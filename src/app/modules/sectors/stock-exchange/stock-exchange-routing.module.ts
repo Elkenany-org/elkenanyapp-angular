@@ -23,21 +23,21 @@ const routes: Routes = [
       resolve: LocalStockLocalAndFodder
     }
   },
-
-  {
-    path: 'comparison/:id',
-    component: ComparisonComponent
-  },
+  // {
+  //   path: 'comparison/:id',
+  //   component:ComparisonComponent
+      
+  // },
   {
     path:"statistics",
     loadChildren: () => 
     import('./statistics-module/statistics.module').then((m) => m.StockExchangeModule)
   },
-  {
-    path:"comarsion",
-    component:ComparisonComponent
+  // {
+  //   path:"comparsion",
+  //   component:ComparisonComponent
 
-  },
+  // },
   {
     path: '**',
     component: NotFoundComponent,

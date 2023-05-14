@@ -6,16 +6,19 @@
     </div>
     <!-- End breadcrumb -->
     <!-- Start Search Box -->
+
+
+
     <article class="inner-search-box d-none d-sm-none d-md-none d-lg-block">
         <div class="container">
             <form class="box-tabs">
                 <div class="search-box-overlay"></div>
-                <section class="tabs tabs-2">
+                <section class="tabs tabs-2" style="border-radius:0px 20px 20px 0px;">
                     <i class="far fa-calendar-alt"></i>
                     <h4 class="title">من:</h4>
                     <input class="date" type="date" #from (change)=" filter({date:from.value, type:'from'})">
                 </section>
-                <section class="tabs tabs-2">
+                <section class="tabs tabs-2" style="border-radius: 20px 0px 0px 20px;">
                     <i class="far fa-calendar-alt"></i>
                     <h4 class="title">إلى:</h4>
                     <input class="date" type="date" #to (change)=" filter({date:to.value, type:'from'})">

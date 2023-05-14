@@ -6,6 +6,7 @@ import { NewsHomeComponent } from './news-home/news-home.component';
 import { NewsContentComponent } from './news-content/news-content.component';
 import { SharedModule } from '@app/@shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NewsRoutingModule,
     SharedModule,
     NgxPaginationModule,
+    ClipboardModule,
+
   ]
 })
 export class NewsModule { }

@@ -22,7 +22,7 @@ export class HorizontalSearchComponent implements OnChanges {
 
   @Output() newItemEvent = new EventEmitter<optionBody>();
   @Input() data?: JsonFormData 
-
+  @Input() ships?: boolean
   public myForm: FormGroup = this.fb.group({});
   selected: number = 1;
 
@@ -31,11 +31,8 @@ export class HorizontalSearchComponent implements OnChanges {
 
   ngOnInit(): void {
     const filterDpnBtn = document.querySelector(".sorting .sorting-cont .open");
-    const filterDpn = document.querySelector(".sorting .sorting-cont .cont section");
+    const filterDpn = document.querySelector(".sorting .sorting-cont .cont1 section");
 
-    console.log('====================================');
-    console.log(filterDpn);
-    console.log('====================================');
     filterDpnBtn?.addEventListener('click', () => {
       filterDpn?.classList.toggle("active");
     });
