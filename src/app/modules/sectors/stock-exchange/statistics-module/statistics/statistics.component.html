@@ -26,61 +26,8 @@
         </div>
     
     <app-horizontal-search (newItemEvent)="filter($event,'')" [data]="h_search_form" ></app-horizontal-search>
-    <section class="special__accordion container d-lg-none d-block d-md-block">
 
-        <button aria-controls="collapseExample" aria-expanded="false" class="main-title" data-toggle="collapse"
-                href="#accordion"
-                id="show-hide-accordion" role="button">
-            حدد بحثك
-            <i class="icon-s fas fa-search"></i>
-        </button>
-        
-        <div class="accordion collapse show" id="accordion">
-            
-            <form [formGroup]="fromToForm">
-                <div class="card">
-                    <div class="card-header" id="headingSearch">
-                        <h5 class="mb-0">
-                            <button aria-controls="collapseSearch" aria-expanded="false"
-                                    class="btn btn-link collapsed" data-target="#collapseSearch"
-                                    data-toggle="collapse">
-                                <i class="fas fa-search"></i>
-                                من
-                            </button>
-                        </h5>
-                    </div>
-                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
-                         id="collapseSearch">
-                        <div class="card-body">
-                            <input (change)="filter($any($event.target).value,'date-from')"class="search__input" type="date" formControlName="from">
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingSearch">
-                        <h5 class="mb-0">
-                            <button aria-controls="collapseSearch" aria-expanded="false"
-                                    class="btn btn-link collapsed" data-target="#collapseSearch"
-                                    data-toggle="collapse">
-                                <i class="fas fa-search"></i>
-                                إلى
-                            </button>
-                        </h5>
-                    </div>
-                    <div aria-labelledby="headingSearch" class="collapse show" data-parent="#accordion"
-                         id="collapseSearch">
-                        <div class="card-body">
-                            <input (change)="filter($any($event.target).value , 'date-to')" formControlName="to"class="search__input" type="date">
-                        </div>
-                    </div>
-                </div>
     
-            </form>
-     
-            
-
-        </div>
-    </section>
     <!-- Start Global Content -->
     <article class="global__container container">
         <div class="row">
@@ -139,30 +86,26 @@
 
             <!--    Table    -->
             <section class="col-12">
-                <div class="table__main">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th class="border-right border-left" scope="col">اسم الشركة</th>
-                            <th class="border-right" scope="col">مقدار التغير</th>
-                            <th class="border-right" scope="col">عدد التغير</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let item of StatisticsMemberSlected; let i = index ">
-                            <th scope="row">{{i+1}}</th>
-                            <td class="border-right border-left company__link__container">
+                <section class="table__container table-chart-5 special__container" >
+                    <section class="table__head">
+                            <th scope="col" class="title">#</th><div class="wall"></div>
+                            <th class=" border-left title" scope="col">اسم الشركة</th><div class="wall"></div>
+                            <th class=" title" scope="col">مقدار التغير</th><div class="wall"></div>
+                            <th class=" title" scope="col">عدد التغير</th>
+                        </section>
+                        <div class="table__body" style="overflow-y: auto; direction: ltr;">
+                            <section class="table__row " *ngFor="let item of StatisticsMemberSlected; let i = index ">
+                            <th scope="row" class="cell__container">{{i+1}}</th><div class="wall"></div>
+                            <td class="cell__container company__link__container">
                                 <a class="company__link" (click)="navigatetodetails(item.id,item.name)" >{{item.name}}</a>
-                            </td>
-                            <td class="border-right"><span class="negative__content"> {{item.change}}% </span></td>
-                            <td class="border-right"><span class="negative__content"> {{item.counts}} </span></td>
-                        </tr>
+                            </td><div class="wall"></div>
+                            <td class="cell__container"><span class="negative__content"> {{item.change}}% </span></td><div class="wall"></div>
+                            <td class="cell__container"><span class="negative__content"> {{item.counts}} </span></td>
+                            </section>
             
 
-                        </tbody>
-                    </table>
-                </div>
+                    </div>
+                </section>
             </section>
         </div>
     </article>
