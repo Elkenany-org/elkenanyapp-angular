@@ -92,6 +92,11 @@
       font-weight: 600;
       color: $color-main;
       font-size: 1.8rem;
+      background: #C9C9C9 ;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 20px;
+      // padding: 1rem;
+      width: fit-content;
     }
 
     .all-cards .one-card .content-box h2 {
@@ -120,14 +125,24 @@
 .tenders{
     p {
         margin-top: 1rem;
+        padding: 1rem;
         font-weight: bold;
       }
       table{
-        width: 100%;
+        width: 98%;
         margin: auto;
+       
       }
-      td{
-        border: 1px solid !important;
+
+      td{ 
+        background: #F6F6F6;
+        border-bottom: 2px solid #E5E5E5 !important;
+        box-shadow:  inset 0px 0px 2px 0px #00000029;
+
+      }
+      td:first-child{
+        background: #EDEFEC;
+        box-shadow:  inset 0px 0px 2px 0px #00000029;
       }
 }
 

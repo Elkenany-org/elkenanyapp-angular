@@ -145,9 +145,9 @@
 
                                         <section class="table__container table-hover table-chart-5 special__container" >
                                             <section class="table__head">
-                                                <div scope="col" class="title" >اسم الصنف</div>                                                       <div class="wall"></div>
+                                                <div scope="col" class="title" >اسم الصنف</div>         <div class="wall"></div>                                   
 
-                                                <div scope="col" class="title">مقدار التغير</div>                                                       <div class="wall"></div>
+                                                <div scope="col" class="title">مقدار التغير</div>     <div class="wall"></div>                                 
 
                                                 <div scope="col" class=" title">عدد التغير</div>
                                             </section>
@@ -157,13 +157,11 @@
                                                         <a  (click)="navigatetodetails(type,i.id,i.categorize)" class="company__link">{{i.categorize}}</a>
                                                     </td>              
                                                       <div class="wall"></div>
-
                                                     <td class=" cell__container">
-                                                        <span class="negative__content">{{i.change}}%</span>
+                                                        {{i.change}}%
                                                     </td>             
                                                        <div class="wall"></div>
-
-                                                    <td class=" cell__container"><span class="negative__content"> {{i.counts}} </span></td>
+                                                    <td class=" cell__container"> {{i.counts}}</td>
                                                 </div>
                                             </div>
                                         </section>

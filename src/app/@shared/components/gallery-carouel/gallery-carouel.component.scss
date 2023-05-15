@@ -16,7 +16,12 @@
 .preview-image.active{
     margin: 10px;
    //  border:solid red 23px;
-   border:solid #FFBB33 4px;
+   border:solid #FFBB33 4px;       
+
+
+}
+#current-image{
+     border-radius: 20px;
 }
 .dots-container  .dot {
     background:#0C6A22 !important
@@ -45,5 +50,6 @@
         max-width:  150px !important;
         // height: 150px !important;
         // background-clip: 100% ;
+        border-radius: 20px;
     }
 }

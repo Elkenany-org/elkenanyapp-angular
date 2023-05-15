@@ -1,5 +1,5 @@
 ﻿.main-title {
-  background-color: $bg-color-main;
+  // background-color: $bg-color-main;
   border-radius: 20px 0 20px 0;
   display: inline-block;
   padding: 10px 35px;
@@ -30,8 +30,9 @@
     margin-top: 1em;
 
     .company-image {
-      width: 100px;
-      border-radius: 0.8rem;
+      width: 188px;
+        border-radius: 20px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
   }
 

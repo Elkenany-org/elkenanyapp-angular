@@ -23,12 +23,14 @@
         <!-- Start Company Info  -->
 
 
-        <article class="cards company-info">
-            <h2 class="main-title "> {{company?.name }}</h2>
+        <article class=" company-info">
+          
             <section class="image-holder">
                 <img alt="card image" class="company-image" [src]="company?.image">
+                
             </section>
-            <p>{{company?.short_desc}}</p>
+            
+            <section class="w-100 text-center mb-2"><h3 class="main-title "> {{company?.name }}</h3> </section>
             <!--        New Rating Component        -->
 
         <div class="main__rating d-flex align-items-center justify-content-center" >
@@ -50,81 +52,101 @@
         </div>
 
     
-            <p class="raters-number" style="display: block;">
+            <p class="raters-number" style="display: block;color: #707070;">
                 <span id="msg-rate" style="display: none"><small>تم التقييم بنجاح</small><br></span>
                 <span id="msg-auth" style="display: none"><small> برجاء<a [routerLink]="['/user/login']"> تسجيل الدخول</a> </small><br></span>
 
                 <span class="customers_rate">  {{company?.count_rate}}</span> عميل</p>
-               
+
+
+                <p class="m-0">{{company?.short_desc}}</p>
+
   <!--===========================-->
 
 
         </article>
         <!-- End Company Info  -->
 
+
+        <div class="d-flex justify-content-around ">
+            <div *ngIf="company?.about " class="tab" [class.active]="activeTab === 0" (click)="changeTab(0)"><h4 class="px-2">عن الشركة</h4></div>      
+            <div *ngIf="company?.localstock?.length || company?.fodderstock?.length"  class="tab" [class.active]="activeTab === 1" (click)="changeTab(1)"><h4 class="px-2">البورصات</h4></div>
+            <div *ngIf="company?.gallary?.length" class="tab" [class.active]="activeTab === 2" (click)="changeTab(2)"><h4 class="px-2">الصور</h4></div>
+            <div *ngIf="company?.address" class="tab" [class.active]="activeTab === 3" (click)="changeTab(3)"><h4 class="px-2">بيانات الشركة</h4></div>
+        </div>
+
+        <ng-container *ngTemplateOutlet="currentTab?.content"></ng-container>
         <!-- Start About Company -->
-        <article class="cards about-company" *ngIf="company?.about">
-            <h2 class="main-title">عن الشركة</h2>
-            <p> {{company?.about}}</p>
-        </article>
+        <ng-template #about>
+                    <article class=" about-company" *ngIf="company?.about">
+                        <h2 class="main-title">عن الشركة</h2>
+                        <p> {{company?.about}}</p>
+                    </article>
+        </ng-template>
+
         <!-- End About Company -->
 
-        <article class="cards company-market"  *ngIf="company?.localstock?.length || company?.fodderstock?.length" >
-            <h2 class="main-title">البورصات</h2>
-            <!-- Start Slider -->
-            <article class="market slider">
-                <div class="container-fluid logos__holder">
-                    <section class="market-slider" dir='rtl' >
+        <ng-template #stock>
+                <article class="about-company"  *ngIf="company?.localstock?.length || company?.fodderstock?.length" >
+                    <h2 class="main-title">البورصات</h2>
+                    <!-- Start Slider -->
+                    <article class="market slider">
+                        <div class="container-fluid logos__holder">
+                            <section class="market-slider" dir='rtl' >
 
-                        <div class="row">
-                            <div class="item col-6" *ngFor="let stock of company?.localstock" >
-                                <a (click)="navigateV2(stock.id,'local')" class="logo-holder">
-                                    <img [src]="stock.image" alt="partner logo">
-                                  
-                                </a>
-                                {{stock.name}}
-                            </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="item " *ngFor="let stock of company?.localstock" >
+                                        <a (click)="navigateV2(stock.id,'local')" class="stock-image">
+                                            <img [src]="stock.image" alt="partner logo">
+                                        
+                                        </a>
+                                        <p class="p-0 mt-0">{{stock.name}}</p>
+                                    </div>
 
-                            <div class="item col-6" *ngFor="let stock of company?.fodderstock">
-                                <a (click)="navigateV2(stock.id,'fodder')" class="logo-holder">
-                                        <img [src]="stock.image" alt="partner logo">
-                                       
-                                </a>
-                                {{stock.name}}
-                            </div>
-</div>
-                    </section>
-                </div>
-            </article>
-            <!-- End Slider -->
-        </article>
+                                    <div class="item " *ngFor="let stock of company?.fodderstock">
+                                        <a (click)="navigateV2(stock.id,'fodder')" class="stock-image ">
+                                                <img [src]="stock.image" alt="partner logo">
+                                            
+                                        </a>
+                                        <p class="p-0 mt-0">{{stock.name}}</p>
+                                    </div>
+        </div>
+                            </section>
+                        </div>
+                    </article>
+                    <!-- End Slider -->
+                </article>
+        </ng-template>
+
 
 
   
+        <ng-template #gallery>
+                        <article class="about-company d-block" *ngIf="company?.gallary?.length">
+                <h2 class="main-title">الصور</h2>
 
-        <article class="cards company-market" *ngIf="company?.gallary?.length">
-            <h2 class="main-title">الصور</h2>
-            <!-- Start Slider -->
-                <app-gallery-carouel [images]="company?.gallary" ></app-gallery-carouel>
+                <article class=" company-market " >
+                <!-- Start Slider -->
+                    <app-gallery-carouel [images]="company?.gallary" ></app-gallery-carouel>
 
-            <!-- End Slider -->
-        </article>
-
+                <!-- End Slider -->
+            </article>
+            </article>
+        </ng-template>
 
 
 
         <!-- Start Company Details -->
-        <article class="cards new__company__details" *ngIf="company?.address">
-            <div class="new__title">
+        <ng-template #info>
+        <article class="about-company" *ngIf="company?.address" style="background-color: white;">
                 <h2 class="main-title">بيانات الشركة</h2>
-            </div>
             <div class="box__data">
                 <div class="box__title">
                     <span class="title__icon">
-<svg fill="#000000" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path
-    d="M0 0h24v24H0V0z" fill="none"/><path
-    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"/><circle
-    cx="12" cy="9" r="2.5"/></svg>
+                    <svg fill="#000000" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path
+                        d="M0 0h24v24H0V0z" fill="none"/><path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"/><circle
+                        cx="12" cy="9" r="2.5"/></svg>
                     </span>
                     <p class="title">العنوان</p>
                 </div>
@@ -310,6 +332,7 @@
                 </div>
             </div>
         </article>
+     </ng-template>
         <!-- End Company Details -->
     </section>
 </section>

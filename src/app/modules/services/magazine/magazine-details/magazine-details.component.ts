@@ -25,9 +25,7 @@ public addRate!: FormGroup
           this.magazineData =  data['resolve'].data 
           this.titleService.setTitle(this.magazineData?.name!);
 
-          // console.log('====================================');
-          // console.log(this.magazineData);
-          // console.log('====================================');
+
         // })
       // })
      

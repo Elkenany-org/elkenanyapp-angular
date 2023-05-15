@@ -59,6 +59,12 @@ ngOnInit(): void {
   })
 }
 
+navigate(id: string): void
+{
+  this.router.navigate([`/tenders/details/${id}`]);
+}
+
+
 getPosition(x:string, substring:string, index:any) {
   return x.split(substring, index).join(substring).length;
 }

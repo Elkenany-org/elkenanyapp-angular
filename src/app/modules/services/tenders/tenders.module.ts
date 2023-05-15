@@ -7,6 +7,7 @@ import { TendersDetailsComponent } from './tenders-details/tenders-details.compo
 import { SharedModule } from '@app/@shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TendersHomeComponent } from './tenders-home/tenders-home.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { TendersHomeComponent } from './tenders-home/tenders-home.component';
     CommonModule,
     TendersRoutingModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ClipboardModule,
+
   ]
 })
 export class TendersModule { }
