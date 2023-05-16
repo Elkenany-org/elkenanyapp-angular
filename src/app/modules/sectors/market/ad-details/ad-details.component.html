@@ -9,8 +9,37 @@
       </div>
                 
     <div class="container add__details__main">
-        <div class="row" dir="ltr">
-            <div class="col-12 col-md-3">
+        <div class="row" >
+
+            <div class="col-12 col-md-7 user__data">
+                <p class="mb-0 mt-2">تم إضافة الإعلان  {{adDetails?.created_at}} , رقم الإعلان: {{adDetails?.id}} </p>
+
+                <div class="basic-container " *ngIf="adDetails?.images">
+                    <app-gallery-carouel [images]="adDetails?.images"></app-gallery-carouel>
+                </div>
+
+                <div class="user__info">
+                    <div class="user__icon">
+                    </div>
+                    <div class="user__data">
+                        <p class="user__name"><i class="fas fa-user-alt icon ps-2"></i>تم النشر بواسطة {{adDetails?.user}} على الموقع {{adDetails?.user_created_at}}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-5 mt-md-5 pt-md-5">
+                <h1 class="main__title">{{adDetails?.title}} </h1>
+
+
+                
+                <div class="add__details">
+            
+                    <p class="add__description">
+                       {{adDetails?.desc}}
+                    </p>
+                </div>
+
                 <div class="small__bar__container">
                     <div class="price__container">
                         <p class="price__content">{{adDetails?.salary}} ج.م</p>
@@ -39,45 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="user__info">
-                        <div class="user__icon">
-                            <i class="fas fa-user-alt icon"></i>
-                        </div>
-                        <div class="user__data">
-                            <p class="user__name">{{adDetails?.user}}</p>
-                            <p class="user__date">على الموقع   {{adDetails?.user_created_at}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-9">
-                <h1 class="main__title">{{adDetails?.title}} </h1>
-                <p>تم إضافة الإعلان  {{adDetails?.created_at}} , رقم الإعلان: {{adDetails?.id}} </p>
-                <!-- <div class="images__slider__top__single slider__for">
-                    
-                    <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
-                </div> -->
-                <!-- <div class="images__slider" id="slider__nav">
-                    <app-banners-logo  [loading]="loading"  [type]="'logo'"></app-banners-logo>
-    
-                </div> -->
 
-
-
-                <div class="basic-container" *ngIf="adDetails?.images">
-                    <!-- <gallery id="basic-test" fluid [items]="items"></gallery> -->
-                    <app-gallery-carouel [images]="adDetails?.images"></app-gallery-carouel>
-                </div>
-
-
-
-
-
-                <div class="add__details">
-            
-                    <p class="add__description">
-                       {{adDetails?.desc}}
-                    </p>
                 </div>
             </div>
         </div>

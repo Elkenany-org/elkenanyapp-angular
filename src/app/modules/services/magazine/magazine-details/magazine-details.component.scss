@@ -17,3 +17,8 @@
   border-radius: 20px;
   border: 0.25px solid #ffdc97;
 }
+
+.tab.active {
+  background-color: var(--yellow);
+}
+

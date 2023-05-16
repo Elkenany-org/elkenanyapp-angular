@@ -1,5 +1,5 @@
 .page__tabs {
-  padding: 2rem 0;
+  padding: 2rem auto;
 
   &.nb-0 {
     padding-bottom: 0;
@@ -34,12 +34,11 @@
   .list__link {
     text-decoration: none;
     font-size: 1.2rem;
-    font-weight: bold;
     color: $font-color-second;
     transition: all .3s ease-in-out;
     padding: .4rem 1rem;
     min-width: 160px;
-    border-radius: 7px;
+    border-radius: 10px;
     background-color: #eee;
     display: inline-block;
     text-align: center;
@@ -49,8 +48,8 @@
     }
 
     &.active {
-      color: $font-color-second;
-      background-color: $font-color-main;
+      color: white;
+      background-color: $font-color-second;
     }
 
     @media (max-width: 767px) {
@@ -59,7 +58,7 @@
 
     &:hover {
       background-color: $font-color-second;
-      color: $font-color-main;
+      color: white;
     }
   }
 }

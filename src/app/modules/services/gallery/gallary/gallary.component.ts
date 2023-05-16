@@ -17,11 +17,6 @@ id:string='';
       // console.log((prm['id']))
       this.id=prm['id']
 
-      // this.galleryService.gallery(prm['id']).subscribe(res => {
-
-      //    console.log(res)
-
-      // })
 
     })
   }

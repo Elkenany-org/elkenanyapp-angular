@@ -2,7 +2,7 @@
 
 <div class="main__content__body">  
 
-    <div class="container" style="max-width: 70%;">
+    <div class="container" >
         <h1 class="mt-3 mt-lg-0">{{h_search_form.title}}</h1>
     </div>
 
@@ -140,9 +140,9 @@
         <div class="table__body row__shadow">
             <!-- Start One Row    add ads class if ad  -->
             <!-- [ngClass]="{' title__chart  d-lg-flex d-none': isLast , 'ads':member.type}" -->
-            <section class="table__row row__image " *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart ': isLast , 'ads':member.type}">
+            <section class="table__row row__image "  *ngFor="let member of stock_Ex_Data?.members; let isLast = last" [ngClass]="{' title__chart ': isLast , 'ads':member.type}">
     
-                <a class="cell__container ads"  [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.comp_id]">
+                <a class="cell__container ads" *ngIf="member.comp_id" [routerLink]="['/companies-guid/companies_details',filterData['sector'],member.comp_id]">
                     <div class="cell__content__with__image">
                         <img alt="logo"
                              class="image"

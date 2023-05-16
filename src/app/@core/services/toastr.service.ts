@@ -27,9 +27,9 @@ export class ToasterService {
 
   showFail(msg: string, duration = 3000): void {
     this.toast.error(msg, {
-      duration,
-    });
-  }
+        duration,
+      });
+}
 
   loading(value: string): void {
     this.toast.loading(value, {id: 'loading', position: 'top-center'});

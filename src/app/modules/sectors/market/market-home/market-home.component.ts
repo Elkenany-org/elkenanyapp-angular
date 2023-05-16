@@ -25,6 +25,7 @@ export class MarketHomeComponent implements OnInit {
   public type!:string
   public page= {last_page: 0, current_page:0}
 
+  // active:boolean=true;
   public filterData:{[key:string]:string}= {
     type:"",
     sort:"",

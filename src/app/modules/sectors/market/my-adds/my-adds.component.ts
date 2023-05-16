@@ -36,16 +36,14 @@ export class MyAddsComponent implements OnInit {
     this.titleService.setTitle('اعلاناتي');
     let url =  this.router.url.split('/') 
     this.type =  url[url.length-2] //get type from url 
-    // this.marketServices.Filter_list(this.type).subscribe( res => {
-    //   this.type= res.data?.sectors.find((i:any) => i.selected == 1)!.id+''
-    //   this.location.go(`/market/${this.type}/my-ads`);
-    // })
+
     this.marketServices.my_ads(this.type).subscribe(res => {
       this.toasterService.stopLoading();
       this.ads= res.data
     }, (err) => {
       this.toasterService.stopLoading();
       this.toasterService.showFail(err.error.error)
+
     })
 
   }
@@ -58,11 +56,7 @@ export class MyAddsComponent implements OnInit {
   removeAd(id:number):void { 
     let i = 
    
-    // console.log(   this.ads?.data.indexOf(this.ads?.data.find(i => i.id == id) as Data))
-  
-
-    // this.ads?.data
-    this.toasterService.loading('جارى التنفيذ...');
+      this.toasterService.loading('جارى التنفيذ...');
 
     this.marketServices.delete_ad(id).subscribe( 
       

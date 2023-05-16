@@ -45,6 +45,7 @@
 }
 
 .preview-inner-container{
+    overflow-x: hidden;
    width: 10%;
     img{
         max-width:  150px !important;

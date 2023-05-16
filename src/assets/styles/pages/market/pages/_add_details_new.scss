@@ -1,25 +1,31 @@
 .add__details__main {
   margin: 3rem auto;
+  .user__data p,i{
+    color: #8D8D8D;
+  }
 }
 
 .main__title {
   color: $color-main;
-  font-weight: 700;
-  font-size: 1.8rem;
+  // font-weight: 700;
+  // font-size: 1.8rem;
+  font: normal normal 900 30px/70px beIN;
 }
 
 .small__bar__container {
   .price__container {
-    background: #EEE;
     padding: 0.6rem;
     text-align: center;
-    border-radius: 12px;
+    background: #DCDCDC ;
+    box-shadow: 0px 3px 6px #00000033;
+    border-radius: 16px;
 
     .price__content {
-      font-size: 1.5rem;
-      font-weight: 500;
+      font-size: 1.7rem;
+      font-weight: 900;
       direction: rtl;
       margin-bottom: 0;
+      color: #FF0D0D;
     }
   }
 
@@ -27,14 +33,15 @@
     background: $bg-color-second;
     padding: 0.8rem;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 16px;
     margin: 0.8rem auto;
-    color: $bg-color-main;
+    color: white;
     direction: rtl;
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 6px #00000029;
     cursor: pointer;
 
     .icon {
@@ -52,6 +59,8 @@
     background-size: 100% 100%;
     background-color: #eee;
     padding: 12px;
+    border-radius: 16px;
+      box-shadow: 0px 3px 6px #00000033;
 
     p {
       margin-bottom: 0;
@@ -62,9 +71,10 @@
       justify-content: space-between;
       align-items: center;
       direction: rtl;
-      background: rgba(246, 246, 246, 0.8);
       padding: 10px 5px;
-
+      background: rgb(220, 220, 220,0.7);
+      border-radius: 16px;
+      box-shadow: 0px 3px 6px #00000033;
 
       .map__icon {
         width: 14%;
@@ -122,7 +132,6 @@
 
       .user__name {
         font-size: $fs-18;
-
       }
 
       .user__date {
@@ -228,11 +237,11 @@
 }
 
 .add__details {
-  text-align: center;
 
   .add__description {
     font-size: 1.2rem;
-  }
+    color: #474747;
+    }
 
   .add__details-services {
     .single__service {
