@@ -6,7 +6,7 @@
 
     <div     class="ngx" style="width: auto;height: 500px; ">
         <ngx-charts-pie-chart
-        class="ngx"
+        class="ngx" 
         [results]="single"
         [gradient]="gradient"
         [legend]="showLegend"
@@ -34,100 +34,35 @@
             <!--    Table    -->
             <div class="col-12 p-0 statistics__main" >
                 <!-- Start Table -->
-                <article class="table">
-                    <section class="head">
+                <article class="table table__container">
+                    <section class="table__head justify-content-around">
                         <section class="title title__categories">
-
-                                       
-                            <div class="nice-select select__categories country " [ngClass]="{'open':open}" (click)="toggle()" tabindex="0">
+                               <div class="nice-select select__categories country " [ngClass]="{'open':open}" (click)="toggle()" tabindex="0">
                                 <span class="current">{{country}}</span>
                                 <ul class="list">
                                     <li  *ngFor="let i of data?.countries" (click)="filter({ id: i.country, type: 'countries'},'')" [value]="i.country" class="option" [ngClass]="{'selected focus':country==i.country}">{{i.country}}</li>
-                                    <!-- <li *ngFor="let i of data?.countries" data-value="بلغاريا" class="option selected focus">{{i.country}}</li> -->
                  
                                 </ul>
-                            </div>
-
-
-                            <!-- <select name="country" class="select__categories country open" >
-                                <option selected="" value="">المنشأ</option>
-                                <option value="بلغاريا" selected="">بلغاريا</option>
-
-                                <option value="رومانيا">رومانيا</option>
-
-                                <option value="أوكرانيا">أوكرانيا</option>
-
-                                <option value="البرازيل">البرازيل</option>
-
-                                <option value="روسيا">روسيا</option>
-
-                                <option value="الأرجنتين">الأرجنتين</option>
-
-                                <option value="ألمانيا">ألمانيا</option>
-
-                                <option value="مولدوفا">مولدوفا</option>
-
-                                <option value="فرنسا">فرنسا</option>
-
-                                <option value="جمهورية ليتوانيا">جمهورية ليتوانيا</option>
-
-                                <option value="جمهورية مولدوفا">جمهورية مولدوفا</option>
-
-                                <option value="بولندا">بولندا</option>
-
-                            </select> -->
-                                            
-                                                 
+                            </div>                     
                         </section>
-                        <!-- <section class="title title__categories">
-                            <select name="country" class="select__categories country" style="display: none;">
-                                <option selected="" value="">المنشأ</option>
-                                                                    <option value="بلغاريا" selected="">بلغاريا</option>
 
-                                                                    <option value="رومانيا">رومانيا</option>
-
-                                                                    <option value="أوكرانيا">أوكرانيا</option>
-
-                                                                    <option value="البرازيل">البرازيل</option>
-
-                                                                    <option value="روسيا">روسيا</option>
-
-                                                                    <option value="الأرجنتين">الأرجنتين</option>
-
-                                                                    <option value="ألمانيا">ألمانيا</option>
-
-                                                                    <option value="مولدوفا">مولدوفا</option>
-
-                                                                    <option value="فرنسا">فرنسا</option>
-
-                                                                    <option value="جمهورية ليتوانيا">جمهورية ليتوانيا</option>
-
-                                                                    <option value="جمهورية مولدوفا">جمهورية مولدوفا</option>
-
-                                                                    <option value="بولندا">بولندا</option>
-
-                                                            </select><div class="nice-select select__categories country" tabindex="0"><span class="current">بلغاريا</span><ul class="list"><li data-value="" class="option">المنشأ</li><li data-value="بلغاريا" class="option selected focus">بلغاريا</li><li data-value="رومانيا" class="option">رومانيا</li><li data-value="أوكرانيا" class="option">أوكرانيا</li><li data-value="البرازيل" class="option">البرازيل</li><li data-value="روسيا" class="option">روسيا</li><li data-value="الأرجنتين" class="option">الأرجنتين</li><li data-value="ألمانيا" class="option">ألمانيا</li><li data-value="مولدوفا" class="option">مولدوفا</li><li data-value="فرنسا" class="option">فرنسا</li><li data-value="جمهورية ليتوانيا" class="option">جمهورية ليتوانيا</li><li data-value="جمهورية مولدوفا" class="option">جمهورية مولدوفا</li><li data-value="بولندا" class="option">بولندا</li></ul></div>
-                        </section> -->
-                        <!-- <h3 class="title display__flex title__categories">المنشأ</h3> -->
                         <!-- Start Dropdown Item -->
-                        <section class="title display__flex">
+                        <section class="title ">
                             الكمية
                         </section>
-                        <h3 class="title display__flex">مقدار تغير الكمية عن المركب السابقة
-                        </h3>
+                        <section class="title ">مقدار تغير الكمية عن المركب السابقة
+                        </section>
                         <!-- End Dropdown Item -->
                     </section>
-                    <div class="">
+                    <div class="border-0 table__body ">
                         <!-- Start One Row  -->
                     <section class="row rows__container "  >
-                        <!-- <div class="" style="clear: both;">
 
-                        </div> -->
-                        <!-- style="position: absolute;   width: 58%; margin: auto;" -->
+                  
                         <div id="accordion" *ngFor="let i of data?.companies;let i1=index">
                             <div></div>
-                            <div class="card " >
-                              <div class="card-header flex " id="headingOne" >
+                            <div class="card " style="border-radius: 16px;">
+                              <div class="card-header flex border-bottom-0" id="headingOne" style="border-radius: 16px;">
                                  <div style="float: right ; color:#0C6A22" class="btn" data-toggle="collapse" [attr.data-target]="'#collapseOne-'+i1"  aria-expanded="false" aria-controls="collapseOne">
                                    <h5>{{i.name}}</h5>
                                  </div>

@@ -66,7 +66,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
 
       this.data?.products.forEach(item => this.chart.push({name:item.name,value:item.load}))
       this.single =this.chart;
-      // console.log(data['resolve'].data);
+      console.log(data['resolve'].data);
       
 
     })

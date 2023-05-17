@@ -17,10 +17,13 @@
                 <div class="cont1">
                     <section class="big-sec d-lg-flex pb-2" [class]="data?.class">
                         <h5 class="m-0 ms-2 text d-inline-block">
-                            تصفية حسب
+                            <!-- تصفية حسب -->
                         </h5>
                         <section *ngFor="let control of data?.controls" class="sorting-items d-inline-flex flex-lg-row flex-column justify-content-start align-items-lg-center align-items-start">
   
+                        
+                        <!-- <h5 class="title"><i [class]="control.icon"></i>{{control.name}}:</h5> -->
+
                         <div class="sort-item " *ngIf="control.type === 'date' ||control.type === 'text'">
                             <input  [class]="control.class"    id="searchInput" [type]="control.type" class="py-2"
                                     (change)="selectOption($any($event.target).value,control.role)" style="border-radius: 16px; font-size: 1.1rem;" >

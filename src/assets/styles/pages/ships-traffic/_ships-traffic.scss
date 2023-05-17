@@ -31,6 +31,8 @@
 
     .select__categories {
       border-color: transparent;
+      background: transparent;
+      padding: 0rem;
     }
 
     .head {
@@ -82,7 +84,7 @@
       overflow-y: auto;
       direction: ltr;
       padding: 0 0.4rem;
-
+      margin: auto;
       .rows {
         direction: rtl;
         box-shadow: $fixed-box-shadow-regular;

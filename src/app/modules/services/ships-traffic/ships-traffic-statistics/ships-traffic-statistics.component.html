@@ -152,40 +152,41 @@
     
                 </div>
                 <!--    Table    -->
-                <div class="col-12 p-0 statistics__main">
+                <!-- <div class="col-12 p-0 statistics__main"> -->
                     <!-- Start Table -->
-                    <article class="table">
-                        <section class="head">
-                            <h3 class="title display__flex">النوع</h3>
+                    
+                    <section class="table__container table-hover table-chart-5 special__container">
+                        <section class="table__head">
+                            <span class="title ">النوع</span><div class="wall"></div>
                             <!-- Start Dropdown Item -->
-                            <section class="title display__flex">
+                            <span class="title ">
                                 المنشأ
-                            </section>
-                            <h3 class="title display__flex">الكمية</h3>
+                            </span><div class="wall"></div>
+                            <span class="title ">الكمية</span>
                             <!-- End Dropdown Item -->
                         </section>
-                        <div class="rows__container row__shadow">
+                        <div class="table__body row__shadow">
                             <!-- Start One Row  -->
-                        <section class="rows"  *ngFor="let i of data?.ships">
-                            <section class="data display__flex">
-                                <h4 class="data__content">
+                        <section class="table__row"  *ngFor="let i of data?.ships">
+                            <section class="cell__container">
+                                <h4 class="cell__content">
                                     <a class="item__link" [routerLink]="['/ships-traffic/statistics-details',product(i.product),i.country]">{{i.product}}</a>
                                 </h4>
                             </section>
                             <div class="wall"></div>
-                            <section class="data display__flex">
-                                <h4 class="data__content">{{i.country}}</h4>
+                            <section class="cell__container">
+                                <h4 class="cell__content">{{i.country}}</h4>
                             </section>
                             <div class="wall"></div>
-                            <section class="data display__flex">
-                                <h4 class="data__content">{{i.load}}</h4>
+                            <section class="cell__container">
+                                <h4 class="cell__content">{{i.load}}</h4>
                             </section>
                         </section>
                             <!-- End One Row  -->
                         </div>
-                    </article>
+                    </section>
                     <!-- End Table -->
-                </div>
+                <!-- </div> -->
             </div>
 
         </article>
