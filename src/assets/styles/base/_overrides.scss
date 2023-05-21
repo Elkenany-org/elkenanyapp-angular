@@ -12,14 +12,14 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FFBB33;
+  background: var(--green);
   border-radius: 10px;
   //box-shadow: inset 2px 0 2px $lightBlack, inset -2px -2px 2px $lightBlack;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(#f77d0e, 0.7);
+  background:var(--yellow);
 }
 
 /* ****************************Scroll BAR****************************** */

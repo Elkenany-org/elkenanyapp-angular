@@ -1,14 +1,117 @@
 
-    <article class="add__add__container">
+
+   <div class="job-form mt-5 mb-4">
+              <div class="container">
+                  <article class="add_add_container mx-auto">
+                      <div class="ads__holder">
+                          <div class="head p-4 d-flex flex-sm-row flex-column justify-content-between align-items-sm-center align-items-start">
+                              <h2 class="main-title mb-sm-0 mb-3"> {{pageName}}</h2>
+                              <a routerLink="/employment/job-details/{{job_id}}" class="job-info d-block p-2">تفاصيل الوظيفة</a>
+                          </div>
+                          <div class="job-head py-4 px-5 d-flex justify-content-between">
+                                  <div class="texts">
+                                      <p class="mb-3">مصمم جرافيك</p>
+                                      <p style="color: #9e9e9e;">من فضلك اجب على الأسئلة التالية</p>
+                                  </div>
+                                  <!-- <div class="img">
+                                      <img src="images/logo.jpg" alt="">
+                                  </div> -->
+                          </div>
+                          <form [formGroup]="jobForm" class="form-box px-5 pb-4" style="justify-content: start;">
+                  
+                  
+                              <!-- <input formControlName="company_id"  type="text" hidden [value]="company_id">
+                                          <input formControlName="category_id"  type="text" hidden [value]="category_id"> -->
+                  
+                              <!-- <h5 class="m-2">الشركات : </h5> -->
+                                  <h5 class="mb-3">الاسم الرباعي : <span *ngIf="f['full_name'].errors?.['required']&&f['full_name'].touched"
+                                      [ngClass]="{'error':f['full_name'].errors?.['required']&&f['full_name'].touched}"> يرجي ادخال الاسم
+                                      كامل </span>
+                                  </h5>
+                                      <input formControlName="full_name" class="job-name inputs "
+                                  placeholder="ادخل  الاسم الرباعي .. " type="text"
+                                  [ngClass]="{'invalid':f['full_name'].errors?.['required']&&f['full_name'].touched}">
+                  
+                              <h5 class="mb-3 mt-4">رقم الهاتف : <span *ngIf="f['phone'].errors?.['required']&&f['phone'].touched"
+                                      [ngClass]="{'error':f['phone'].errors?.['required']&&f['phone'].touched}"> يرجي ادخال رقم الموبايل
+                                  </span>
+                              </h5>
+                                  <input formControlName="phone" class="job-phone inputs " placeholder="ادخل رقم الهاتف .. "
+                                  type="number" [ngClass]="{'invalid':f['phone'].errors?.['required']&&f['phone'].touched}">
+      
+                              <h5 class="mb-3 mt-4">التعليم : <span *ngIf="f['education'].errors?.['required']&&f['education'].touched"
+                                      [ngClass]="{'error':f['education'].errors?.['required']&&f['education'].touched}"> يرجي ادخل التعليم
+                                  </span>
+                              </h5>
+                              <input formControlName="education" class="job-education inputs "
+                                  placeholder="ادخل المؤهل الوظيفي .. " type="text"
+                                  [ngClass]="{'invalid':f['education'].errors?.['required']&&f['education'].touched}">
+      
+                              <h5 class="mb-3 mt-4">الخبرة : <span *ngIf="f['experience'].errors?.['required']&&f['experience'].touched"
+                                      [ngClass]="{'error':f['experience'].errors?.['required']&&f['experience'].touched}"> يرجي ادخال
+                                      الخبرة </span>
+                                  </h5>
+                                      <input formControlName="experience" class="job-experience inputs "
+                                  placeholder="عدد سنين الخبرة .. " type="text"
+                                  [ngClass]="{'invalid':f['experience'].errors?.['required']&&f['experience'].touched}">
+      
+                              <h5 class="mb-3 mt-4"> الراتب المتوقع : <span
+                                      *ngIf="f['expected_salary'].errors?.['required']&&f['expected_salary'].touched"
+                                      [ngClass]="{'error':f['expected_salary'].errors?.['required']&&f['expected_salary'].touched}"> يرجي
+                                      ادخال الراتب المتوقع </span>
+                                  </h5>
+                                      <input formControlName="expected_salary" class="job-salary inputs "
+                                  placeholder="المرتب المتوقع .." type="number"
+                                  [ngClass]="{'invalid':f['expected_salary'].errors?.['required']&&f['expected_salary'].touched}">
+                  
+                              <h5 class="mb-3 mt-4">فترة الاشعار : <span
+                                      *ngIf="f['notice_period'].errors?.['required']&&f['notice_period'].touched"
+                                      [ngClass]="{'error':f['notice_period'].errors?.['required']&&f['notice_period'].touched}"> يرجي
+                                      ادخال فترة الاشعار </span>
+                                  </h5>
+                                  <input formControlName="notice_period" class="notice_period inputs "
+                                  placeholder="ادخل فترة الاشعار .. " type="text"
+                                  [ngClass]="{'invalid':f['notice_period'].errors?.['required']&&f['notice_period'].touched}">
+                  
+                              <h5 class="mb-3 mt-4">معلومات اخري : </h5>
+                              <input formControlName="other_info" class="job-info inputs "
+                                  placeholder="معلومات اخري .. " type="text">
+                  
+                              <div class="w-100">
+                                  <div class="custom-file mt-4 mb-5">
+                                      <input style="display: none;" #fileImage (change)="handleFileInput($event)" multiple
+                                          accept="application/pdf,application/doc,application/docs,application/csv,application/txt*"
+                                          aria-describedby="Upload Photo Or Video" class="d-none" type="file" />
+                                      <button (click)="fileImage.click()" class="py-2" color="primary"
+                                          mat-stroked-button type="button">
+                                          ارفاق السيرة الذاتية
+                                          <i class="fa-solid fa-arrow-up-from-bracket me-2"></i>
+                                      </button>
+                                  </div>
+                                  <div id="cv" class="my-4"></div>
+                              </div>
+                              <!-- <a class="submit" >إضافة الإعلان</a> -->
+                              <button class="submit px-5 py-1 ms-3" mat-raised-button type="submit" (click)="onSubmit()">
+                                  ارسال الاستمارة
+                              </button>
+                              <button class="cancel px-4 py-1 d-inline-flex align-items-center" routerLink="/employment">
+                                  الغاء
+                                  <i class="fa-solid fa-arrow-left me-2"></i>
+                              </button>
+                          </form>
+                      </div>
+                  </article>
+              </div>
+          </div>
+
+
+    <!-- <article class="add__add__container">
         <div class="ads__holder">
             <h2 class="main-title"> {{pageName}}</h2>
+
+
             <form [formGroup]="jobForm" class="form-box" style="justify-content: start;" >
 
-
-                <!-- <input formControlName="company_id"  type="text" hidden [value]="company_id">
-                <input formControlName="category_id"  type="text" hidden [value]="category_id"> -->
-
-                <!-- <h5 class="m-2">الشركات : </h5> -->
                 <h5 class="m-2 ">الاسم الرباعي  : <span *ngIf="f['full_name'].errors?.['required']&&f['full_name'].touched" [ngClass]="{'error':f['full_name'].errors?.['required']&&f['full_name'].touched}"> يرجي ادخال الاسم كامل </span></h5><input formControlName="full_name" class="job-name inputs " placeholder="ادخل  الاسم الرباعي .. " type="text" [ngClass]="{'invalid':f['full_name'].errors?.['required']&&f['full_name'].touched}">
 
                   <h5 class="m-2 ">رقم الهاتف  : <span *ngIf="f['phone'].errors?.['required']&&f['phone'].touched" [ngClass]="{'error':f['phone'].errors?.['required']&&f['phone'].touched}"> يرجي ادخال رقم الموبايل </span></h5><input formControlName="phone" class="job-phone inputs " placeholder="ادخل رقم الهاتف .. " type="number" [ngClass]="{'invalid':f['phone'].errors?.['required']&&f['phone'].touched}">
@@ -57,7 +160,6 @@
 
 </div>
 
-                <!-- <a class="submit" >إضافة الإعلان</a> -->
                 <button
                 class="submit"
                 mat-raised-button
@@ -66,4 +168,4 @@
               </button>
             </form>
         </div>
-    </article>
+    </article> -->

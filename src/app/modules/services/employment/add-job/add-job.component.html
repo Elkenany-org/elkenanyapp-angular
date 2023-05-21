@@ -1,14 +1,9 @@
-
-    <article class="add__add__container">
-        <div class="ads__holder">
+  
+    <article class="add__add__container d-flex justify-content-between">
+        <div class="ads__holder ">
             <h2 class="main-title"> {{pageName}}</h2>
             <form [formGroup]="jobForm" class="form-box" style="justify-content: start;" >
 
-
-                <!-- <input formControlName="company_id"  type="text" hidden [value]="company_id">
-                <input formControlName="category_id"  type="text" hidden [value]="category_id"> -->
-
-                <!-- <h5 class="m-2">الشركات : </h5> -->
                 <div class="dropdown w-100" >
                     <button 
                     (click)="myFunction()" class="dropbtn inputs "  id="company"><label style="cursor: pointer;">حدد الشركة </label> <i class="fa-sharp fa-solid fa-caret-down"></i></button>
@@ -18,7 +13,6 @@
                     </div>
                   </div>
 
-                  <!-- <h5 class="m-2">الأقسام : </h5> -->
                   <div class="dropdown w-100" >
                     <button 
                     (click)="myFunction1()" class="dropbtn inputs " id="category"><label style="cursor: pointer;">اختر القسم </label> <i class="fa-sharp fa-solid fa-caret-down"></i></button>
@@ -27,53 +21,50 @@
                     </div>
                   </div>
 
-                  <h5 class="mt-2 w-25">المسمي الوظيفي : <div class="p-1" *ngIf="f['title'].errors?.['required']&&f['title'].touched" [ngClass]="{'error':f['title'].errors?.['required']&&f['title'].touched}"> يرجي ادخال المسمي الوظيفي </div>
-</h5> 
-                  <input formControlName="title"  class="job-name inputs w-75" placeholder="الوظيفة المطلوبة" type="text" [ngClass]="{'invalid':f['title'].errors?.['required']&&f['title'].touched}">
+                  <!-- <h5 class="mt-2 w-25">المسمي الوظيفي : <div class="p-1" *ngIf="f['title'].errors?.['required']&&f['title'].touched" [ngClass]="{'error':f['title'].errors?.['required']&&f['title'].touched}"> يرجي ادخال المسمي الوظيفي </div>
+</h5>  -->
+                  <input formControlName="title"  class="job-name inputs " placeholder="الوظيفة المطلوبة" type="text" [ngClass]="{'invalid':f['title'].errors?.['required']&&f['title'].touched}">
              
-                  <h5 class="mt-2 w-25">العنوان  : <div class="p-1" *ngIf="f['address'].errors?.['required']&&f['address'].touched" [ngClass]="{'error':f['address'].errors?.['required']&&f['address'].touched}"> يرجي ادخال العنوان </div></h5>
-                  <input formControlName="address" class="job-address inputs w-75" placeholder="العنوان" type="text" [ngClass]="{'invalid':f['address'].errors?.['required']&&f['address'].touched}">
+                  <!-- <h5 class="mt-2 w-25">العنوان  : <div class="p-1" *ngIf="f['address'].errors?.['required']&&f['address'].touched" [ngClass]="{'error':f['address'].errors?.['required']&&f['address'].touched}"> يرجي ادخال العنوان </div></h5> -->
+                  <input formControlName="address" class="job-address inputs " placeholder="العنوان" type="text" [ngClass]="{'invalid':f['address'].errors?.['required']&&f['address'].touched}">
                 
-                  <!-- <h5 class="mt-2 w-25">رقم الموبايل : </h5><input formControlName="phone" class="job-phone inputs w-75" placeholder="الموبايل" type="text"> -->
                   
-                  <h5 class="mt-2 w-25">الراتب : <div class="p-1" *ngIf="f['salary'].errors?.['required']&&f['salary'].touched" [ngClass]="{'error':f['salary'].errors?.['required']&&f['salary'].touched}"> يرجي ادخال  الراتب </div></h5>
-                  <input formControlName="salary" class="job-salary inputs w-75" placeholder=" الراتب" type="number" [ngClass]="{'invalid':f['salary'].errors?.['required']&&f['salary'].touched}">
+                  <!-- <h5 class="mt-2 w-25">الراتب : <div class="p-1" *ngIf="f['salary'].errors?.['required']&&f['salary'].touched" [ngClass]="{'error':f['salary'].errors?.['required']&&f['salary'].touched}"> يرجي ادخال  الراتب </div></h5> -->
+                  <input formControlName="salary" class="job-salary inputs" placeholder=" الراتب" type="number" [ngClass]="{'invalid':f['salary'].errors?.['required']&&f['salary'].touched}">
 
                   <!-- <h5 class="mt-2 w-25">البريد الالكتروني : </h5><input formControlName="email" class="job-email inputs w-75" placeholder="البريد الالكتروني" type="text"> -->
-                  <h5 class="mt-2 w-25">الخبرة المطلوبة : <div class="p-1" *ngIf="f['experience'].errors?.['required']&&f['experience'].touched" [ngClass]="{'error':f['experience'].errors?.['required']&&f['experience'].touched}"> يرجي ادخال الخبرة المطلوبة </div></h5>
-                  <input formControlName="experience" class="job-experience inputs w-75" placeholder="الخبرة المطلوبة " type="text" [ngClass]="{'invalid':f['experience'].errors?.['required']&&f['experience'].touched}">
+                  <!-- <h5 class="mt-2 w-25">الخبرة المطلوبة : <div class="p-1" *ngIf="f['experience'].errors?.['required']&&f['experience'].touched" [ngClass]="{'error':f['experience'].errors?.['required']&&f['experience'].touched}"> يرجي ادخال الخبرة المطلوبة </div></h5> -->
+                  <input formControlName="experience" class="job-experience inputs " placeholder="الخبرة المطلوبة " type="text" [ngClass]="{'invalid':f['experience'].errors?.['required']&&f['experience'].touched}">
 
-                  <h5 class="mt-2 w-25">التفاصيل : <div class="p-1" *ngIf="f['desc'].errors?.['required']&&f['desc'].touched" [ngClass]="{'error':f['desc'].errors?.['required']&&f['desc'].touched}"> يرجي ادخال التفاصيل </div></h5>
-                  <textarea formControlName="desc" class="job-experience inputs w-75" name="desc" placeholder="تفاصيل الاعلان" rows="10" [ngClass]="{'invalid':f['desc'].errors?.['required']&&f['desc'].touched}"></textarea>
-                  
-                  <h5 class="mt-2 w-25" > الدوام:</h5>
-                  <div class="row w-75">
-                          <section class="col-3 mt-2"><input formControlName="work_hours" id="1" name="work_hours" type="radio" value="دوام كلي" ><label for="1" class="px-2 fs-6"> كلي</label></section>
-                          <section class="col-3 mt-2"><input formControlName="work_hours" id="2" name="work_hours" type="radio" value="دوام جزئي" ><label for="2" class="px-2 fs-6"> جزئي</label></section>
-                          <section class="col-3 mt-2"><input formControlName="work_hours" id="3" name="work_hours" type="radio" value="عن بعد" ><label for="3"class="px-2 fs-6" > عن بعد</label></section>
-                          <section class="col-3 mt-2"><input formControlName="work_hours" id="4" name="work_hours" type="radio" value="مرن" ><label for="4"class="px-2 fs-6" > مرن</label></section>
 
-                    </div>
+
+
+
+                  <!-- <h5 class="mt-2 w-25">التفاصيل : <div class="p-1" *ngIf="f['desc'].errors?.['required']&&f['desc'].touched" [ngClass]="{'error':f['desc'].errors?.['required']&&f['desc'].touched}"> يرجي ادخال التفاصيل </div></h5> -->
+                  <textarea formControlName="desc" class="job-experience p-2 my-2" name="desc" placeholder="تفاصيل الاعلان" rows="15" [ngClass]="{'invalid':f['desc'].errors?.['required']&&f['desc'].touched}"></textarea>
                   
 
+                  <h5 class="mt-2 ">المهارات : <div class="p-1" *ngIf="f['skills'].errors?.['required']&&f['skills'].touched" [ngClass]="{'error':f['skills'].errors?.['required']&&f['skills'].touched}"> يرجي ادخال التفاصيل </div></h5>
+                  <div formArrayName="skills">
+                    <span *ngFor="let skillControl of skills.controls; let i = index">
+                      <label class="checkbox-label">
+                        <input type="checkbox" [formControlName]="i">
+                        <span class="checkmark"></span>
+                        {{ skillsList[i] }}
+                      </label>
+                    </span>
+                  </div>               
 
-                <!-- <label >حدد الشركة:</label>    -->
-                
-                <!-- <input class="search-area " id="searchNavBar" #v (change)="selectCompany(v.value)" placeholder="ابحث عن الشركة" type="search"> -->
-                <!-- <button class="submit" type="submit"> -->
-                    <!-- <i class="fas fa-search me-2"></i>
+                  <h5 class="mt-2 ps-2" > الدوام:<div class=""></div></h5>
+                  <div class="d-flex justify-content-between">
+                          <section class=" mt-2"><input formControlName="work_hours" id="1" name="work_hours" type="radio" value="دوام كلي" ><label for="1" class="px-2 fs-6"> كلي</label></section>
+                          <section class=" mt-2"><input formControlName="work_hours" id="2" name="work_hours" type="radio" value="دوام جزئي" ><label for="2" class="px-2 fs-6"> جزئي</label></section>
+                          <section class=" mt-2"><input formControlName="work_hours" id="3" name="work_hours" type="radio" value="عن بعد" ><label for="3"class="px-2 fs-6" > عن بعد</label></section>
+                          <section class=" mt-2"><input formControlName="work_hours" id="4" name="work_hours" type="radio" value="مرن" ><label for="4"class="px-2 fs-6" > مرن</label></section>
 
-                <select (change)="selectCompany($any($event.target).value)">
-                    <option value="0">اختر الشركة --</option>
-                  <option *ngFor="let value of Companies"
-                  [value]="(value.id)"
-                  [selected]="value.selected == 1 ? true : null">
-                  {{value.name}}
-                </option>
-                </select> -->
+                  </div>
+                  
 
-
-                <!-- <a class="submit" >إضافة الإعلان</a> -->
                 <button
                 class="submit"
                 mat-raised-button
@@ -81,5 +72,8 @@
                 {{pageName}}
               </button>
             </form>
+        </div>
+        <div class="d-md-block d-none">
+          <img src="assets/images/apply.png" alt="" >
         </div>
     </article>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { sector } from '@app/@core/@data/app/filter-list';
@@ -15,6 +15,11 @@ import { ToasterService } from '@app/@core/services/toastr.service';
   styleUrls: ['./apply-job.component.scss']
 })
 export class ApplyJobComponent implements OnInit {
+
+  skillsForm!: FormGroup;
+  selectedSkills: string[] = [];
+
+  skillsList = ['HTML', 'CSS', 'JavaScript', 'Angular', 'React', 'Vue'];
 
 
   jobForm!: FormGroup
@@ -47,9 +52,31 @@ export class ApplyJobComponent implements OnInit {
     // console.log(  this.url)
     this.AdForm({} as application)
 
+    this.skillsForm = this.fb.group({
+      skills: this.buildSkills()
+    });
+
     }
 
-
+    buildSkills() {
+      const skillsArray = this.skillsList.map(skill => {
+        return this.fb.control(false);
+      });
+  
+      return this.fb.array(skillsArray);
+    }
+  
+    get skills() {
+      return this.skillsForm.get('skills') as FormArray;
+    }
+  
+    getSelectedSkills() {
+      this.selectedSkills = this.skills.controls
+        .map((control, index) => control.value ? this.skillsList[index] : null)
+        .filter(skill => skill !== null) as string[]; // Cast to string[]
+  
+      console.log(this.selectedSkills);
+    }
 
   AdForm (data: application) {
      this.jobForm = this.fb.group({

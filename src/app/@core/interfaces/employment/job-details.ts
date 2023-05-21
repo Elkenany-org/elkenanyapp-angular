@@ -16,8 +16,13 @@ export interface JobDetails {
     experience:number
     category_id:number
     company_id:number
+    company_name?:string
     user_type?:string
     work_hours:string
+    applicants_count:string
+    notqualified_count:string
+    qualified_count:string
+    skills:string[]
   }
   
 

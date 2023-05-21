@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToasterService } from '@app/@core/services/toastr.service';
@@ -23,6 +23,9 @@ interface ImageInterface {
 })
 export class AddJobComponent implements OnInit {
 
+  selectedSkills: string[] = [];
+
+  skillsList = ['HTML', 'CSS', 'JavaScript', 'Angular', 'React', 'Vue'];
 
   jobForm!: FormGroup
   pageName:string ="إضافة وظيفة"
@@ -117,9 +120,31 @@ export class AddJobComponent implements OnInit {
        experience:    [(data.id)?data.experience: '', [Validators.required]],
        category_id:    [(data.id)?data.category_id:'', [Validators.required]],
        work_hours:    [(data.id)?data.work_hours:'', [Validators.required]],
+       skills: this.buildSkills()
      })  
      
    }
+
+
+   buildSkills() {
+    const skillsArray = this.skillsList.map(skill => {
+      return this.fb.control(false);
+    });
+
+    return this.fb.array(skillsArray);
+  }
+
+  get skills() {
+    return this.jobForm.get('skills') as FormArray;
+  }
+
+  getSelectedSkills() {
+    this.selectedSkills = this.skills.controls
+      .map((control, index) => control.value ? this.skillsList[index] : null)
+      .filter(skill => skill !== null) as string[]; // Cast to string[]
+
+      return JSON.stringify(this.selectedSkills);
+  }
 
    onSubmit(): void {
 
@@ -138,9 +163,7 @@ export class AddJobComponent implements OnInit {
     formData.append('experience', this.jobForm.controls['experience'].value);
     formData.append('company_id', this.company_id+'');
     formData.append('work_hours', this.jobForm.controls['work_hours'].value);
-
-
-
+    formData.append('skills',  this.getSelectedSkills());
 
         if(this.id){
           formData.append('id', this.id);

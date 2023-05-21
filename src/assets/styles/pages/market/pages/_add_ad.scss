@@ -24,19 +24,28 @@
         width: 100%;
         padding: 0 10px;
         outline: none;
-        border-radius: 5px;
-        border: 2px solid #eee;
-        height: 48px;
+        height: 55px;
         margin-bottom: 10px;
         transition: all .5s;
+        box-shadow: inset 0px 3px 6px #0000000F, 0px 3px 6px #0000004F;
+        border: 0.25px solid #848484;
+        border-radius: 16px;
+        align-items: center;
+      }
+      textarea{
+        padding: 0 10px;
+        margin-bottom: 10px;
+        box-shadow: inset 0px 3px 6px #0000000F, 0px 3px 6px #0000004F;
+        border: 0.25px solid #848484;
+        border-radius: 16px;
       }
 
       input:not([type=radio]), textarea {
         width: 100%;
-        border-radius: 4px;
+        border-radius: 16px;
         border: 2px solid #EEE;
         color: $bg-color-main-hover;
-
+        
         &:hover {
           border: 2px solid $bg-color-second;
         }
@@ -88,8 +97,8 @@
       }
 
       .submit {
-        background-color: $font-color-main;
-        color: $font-color-second;
+        background-color: $font-color-second;
+        color: white;
         font-size: 20px;
         font-weight: bold;
         border: none;
@@ -98,11 +107,12 @@
         width: 100%;
         display: block;
         text-align: center;
-        border-radius: 5px;
+        border-radius: 16px;
         padding: 10px 0;
 
         &:hover {
-          background-color: $bg-color-main-hover;
+          color: $font-color-second;
+          background-color: var(--yellow);
         }
       }
     }

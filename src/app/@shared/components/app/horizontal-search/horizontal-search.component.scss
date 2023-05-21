@@ -2,6 +2,22 @@
 @import '../../../../../assets/styles/abstract/mixins';
 @import '../../../../../assets/styles/vendors/nice_select.scss';
 
+input[type=date] {
+    background-color: var(--green);
+    color: white;
+  }
+  
+  input[type="date"]:after {
+    color: white;
+    content: attr(placeholder) !important;
+    margin-right: 0.5em;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Inverts the color of the icon */
+    font-size: 2rem;
+    cursor: pointer;
+  }
 
 .input-container {
     position: relative;
@@ -105,18 +121,14 @@
 .sort-link {
     background-color: var(--yellow);
     color: var(--green);
-    /* padding: 2px 15px; */
     cursor: pointer;
     text-align: center;
-    // padding: 13px 15px 13px 25px;
-    font-weight: bold;
-    font-size:1.1rem;
     box-shadow: 0px 3px 6px #00000029; 
-    /* padding: 5px 15px 5px 25px; */
+    font: normal normal 900 23px/54px beIN;
 }
 .sort-link:hover {
-    background-color: var(--green);
-    color: var(--yellow);
+    // background-color: var(--green);
+    color: white;
 }
 @media screen and (max-width: 991px) {
     .sort-link {

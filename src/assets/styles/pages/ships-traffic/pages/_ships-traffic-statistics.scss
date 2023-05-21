@@ -2,9 +2,15 @@
   padding: 1rem 0;
 
   .selectCategories {
-    height: 52px;
+    color: #707070;
+    font-size: 1.3rem;
+    font-weight: bold;
+    height: 70px;
     width: 100%;
-
+    background: #E8E8E8;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    border: none;
     .current {
       text-align: start;
     }

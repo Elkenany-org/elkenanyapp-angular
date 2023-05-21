@@ -4,7 +4,9 @@
         <h1 class="mt-3 mt-lg-0">{{h_search_form.title}}</h1>
     </div>
 
-    <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+    <div class="jobs">
+        <app-banners-logo  [loading]="loading" [type]="'banner'"></app-banners-logo>
+    </div>
     <!-- End Header -->
 
     <!-- page tabs -->
@@ -27,8 +29,12 @@
             <!-- Start Global Content -->
     <article class="global__container container">
 
-                <app-card (navigation)="navigate($event)" [data]="Jobs_Data" [subcard]="true" [loading] ="loading" [flag]=false></app-card>
+                <app-card (navigation)="navigate($event)" [data]="Jobs_Data" [jobcard]="true" [loading] ="loading" [flag]=false></app-card>
         
+
+                
+
+
                 <div class="row pagination__container">
                     <div class="col-12">
                         <div class="pagination">

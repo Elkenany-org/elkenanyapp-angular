@@ -12,7 +12,7 @@ export class CardComponent {
   @Input()maincard:boolean=false
   @Input()subcard:boolean=false
   @Input()newscard:boolean=false
-
+  @Input()jobcard:boolean=false
   @Input() data:any 
   @Input() loading:boolean = true 
 

@@ -63,12 +63,14 @@
                             <div></div>
                             <div class="card " style="border-radius: 16px;">
                               <div class="card-header flex border-bottom-0" id="headingOne" style="border-radius: 16px;">
+                                
                                  <div style="float: right ; color:#0C6A22" class="btn" data-toggle="collapse" [attr.data-target]="'#collapseOne-'+i1"  aria-expanded="false" aria-controls="collapseOne">
-                                   <h5>{{i.name}}</h5>
+                                   <h5>{{i.name}}</h5> <span style="color:#686868"><i class="fa-solid fa-chevron-down px-1"></i>المزيد</span> 
                                  </div>
                                  <a  style="float: left;text-decoration: none;"class="btn btn-link" >
-                                     <a [routerLink]="['/companies-guide/poultry/companies_details/0/',2214]" style="color:#0C6A22">عن الشركة</a>
+                                     <a [routerLink]="['/companies-guide/poultry/companies_details/0/',i.id]" style="color:#0C6A22">عن الشركة</a>
                                  </a>
+                                 
                               </div>
                           
                               <div class="collapse  " aria-labelledby="headingOne" data-parent="#accordion" *ngFor="let i of i.data " [id]="'collapseOne-'+i1">

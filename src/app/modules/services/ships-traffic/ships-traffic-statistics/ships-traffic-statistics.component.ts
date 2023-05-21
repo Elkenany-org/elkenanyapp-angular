@@ -55,10 +55,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
       from: [],
       to:[]
     })
-    // this.originandSortsForm = this.fb.group({
-    //   origin:'',
-    //   sort: '',
-    // })
+
     this.h_search_form = ship_traffic_Statistics_Search_Form
     this.route.data.subscribe(data => {
       this.countries =data['resolve'].data.countries 
@@ -66,7 +63,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
 
       this.data?.products.forEach(item => this.chart.push({name:item.name,value:item.load}))
       this.single =this.chart;
-      console.log(data['resolve'].data);
+      console.log(this.single);
       
 
     })
