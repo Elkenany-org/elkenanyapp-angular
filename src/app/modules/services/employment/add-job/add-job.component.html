@@ -1,26 +1,44 @@
-  
-    <article class="add__add__container d-flex justify-content-between">
+
+ <article class="add__add__container d-flex justify-content-between">
         <div class="ads__holder ">
             <h2 class="main-title"> {{pageName}}</h2>
             <form [formGroup]="jobForm" class="form-box" style="justify-content: start;" >
 
                 <div class="dropdown w-100" >
-                    <button 
-                    (click)="myFunction()" class="dropbtn inputs "  id="company"><label style="cursor: pointer;">حدد الشركة </label> <i class="fa-sharp fa-solid fa-caret-down"></i></button>
-                    <div id="myDropdown" class="dropdown-content">
+                    <button class="dropdown-toggle inputs dropbtn" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                      حدد الشركة 
+                    </button>
+
+                    <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2" id="myDropdown">
+                      <li ><input type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()" >                      </li>
+                      <li *ngFor="let value of tempCompanies" style="cursor: pointer;" (click)="selectCompany(value.id,value.name)">{{value.name}}
+                      </li>
+                    </ul> -->
+                    <ul id="myDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                       <input type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()" >
-                      <a *ngFor="let value of tempCompanies" style="cursor: pointer;" (click)="selectCompany(value.id,value.name)">{{value.name}}</a>
-                    </div>
+                      <li *ngFor="let value of tempCompanies" style="cursor: pointer;" (click)="selectCompany(value.id,value.name)"><a>{{value.name}}</a></li>
+                    </ul>
                   </div>
 
-                  <div class="dropdown w-100" >
+                  <!-- <div class="dropdown w-100" >
                     <button 
                     (click)="myFunction1()" class="dropbtn inputs " id="category"><label style="cursor: pointer;">اختر القسم </label> <i class="fa-sharp fa-solid fa-caret-down"></i></button>
                     <div id="myDropdown1" class="dropdown-content">
                       <a *ngFor="let value of categories" style="cursor: pointer;" (click)="selectCategory(value.id,value.name)">{{value.name}}</a>
                     </div>
-                  </div>
+                  </div> -->
 
+
+                  <div class="dropdown w-100">
+                    <button class="dropdown-toggle inputs dropbtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      اختر القسم 
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li *ngFor="let value of categories" style="cursor: pointer;" (click)="selectCategory(value.id,value.name)">{{value.name}}
+                      </li>
+                    </ul>
+                  </div>
+                   
                   <!-- <h5 class="mt-2 w-25">المسمي الوظيفي : <div class="p-1" *ngIf="f['title'].errors?.['required']&&f['title'].touched" [ngClass]="{'error':f['title'].errors?.['required']&&f['title'].touched}"> يرجي ادخال المسمي الوظيفي </div>
 </h5>  -->
                   <input formControlName="title"  class="job-name inputs " placeholder="الوظيفة المطلوبة" type="text" [ngClass]="{'invalid':f['title'].errors?.['required']&&f['title'].touched}">

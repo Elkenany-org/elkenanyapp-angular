@@ -6,7 +6,7 @@
   }
 
   .tabs__list {
-    @include semi-flex(center, space-between, row, nowrap);
+    @include semi-flex(center, space-around, row, nowrap);
     list-style: none;
 
     @media (max-width: 767px) {
@@ -26,7 +26,7 @@
     }
 
     &.list__item-2 {
-      width: 45%;
+      width: 315px;
     }
 
   }
@@ -36,10 +36,10 @@
     font-size: 1.2rem;
     color: $font-color-second;
     transition: all .3s ease-in-out;
-    padding: .4rem 1rem;
+    padding: .6rem 1rem;
     min-width: 160px;
-    border-radius: 10px;
-    background-color: #eee;
+    border-radius: 20px;
+    background-color: var(--yellow);
     display: inline-block;
     text-align: center;
     width: 100%;

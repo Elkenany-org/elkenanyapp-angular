@@ -53,7 +53,7 @@ export class MarketHomeComponent implements OnInit {
           this.page.current_page = res.data?.current_page as number
           this.page.last_page = res.data?.last_page as number
           this.Market_Data =res.data?.data 
-
+    
         })
       }}
     );
@@ -67,6 +67,10 @@ export class MarketHomeComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 2).selected=0
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=1  
+
+        this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
+        this.location.go(`/market/${this.type}?sort=&page=1`); 
+
         if(! this.flagFirsttime){
         this.type = this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i:any) => i.selected == 1).id
         this.location.go(`/market/${this.type}`,`sort=&page=1`);

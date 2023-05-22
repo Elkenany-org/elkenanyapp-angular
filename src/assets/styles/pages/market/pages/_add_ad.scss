@@ -17,7 +17,7 @@
     .form-box {
       display: flex;
       flex-flow: row wrap;
-      justify-content: center;
+      justify-content: start;
       color: $font-color-second;
 
       .inputs {
@@ -70,11 +70,12 @@
         margin-top: 15px;
         font-size: 20px;
         font-weight: bold;
+        text-align: right;
       }
 
       .radio-box {
         width: 100%;
-        display: flex;
+        // display: flex;
         flex-flow: row nowrap;
         justify-content: center;
         font-weight: bold;
@@ -82,7 +83,7 @@
 
         .box {
           display: flex;
-
+          margin: 1rem 0px;
           label {
             margin: 0;
             line-height: 1;

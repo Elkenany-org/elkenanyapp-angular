@@ -19,7 +19,8 @@
     <!-- Start Global Content -->
     <article class="global__container mt-0 container">
         <div class="row">
-            <a class="action__yellow__green__button w-100" routerLink="/market/{{type}}/add-edit-ad/0">+ أضف إعلانك</a>
+            <a class="action__yellow__green__button " routerLink="/market/{{type}}/add-edit-ad/0"><i class="fa-regular fa-square-plus ms-2"></i> أضف إعلانك</a>
+            <img *ngIf="ads?.data == []"  src="assets/images/add.png" alt="">
             <div class="new__cards p-0 my-2 row">
                 <div class="col-12" *ngFor="let ad of ads?.data" >
                     <div class="product__card ultra__card regular__hover" >

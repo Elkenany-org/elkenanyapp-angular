@@ -27,7 +27,7 @@
     text-align: end; 
     
     font-size: 1.2rem !important;
-
+  
   }
   
   .notification.dropdown-toggle::after {
@@ -54,6 +54,7 @@
     max-height: 350px;
     overflow-y: auto;
     left: auto;
+    width: 415px;
 }
 .scroll-menu :hover{
   background: none!important;
@@ -62,16 +63,20 @@
   white-space: normal!important;
 }
 
+.dropdown-item .title,.dropdown-item .desc{
+  color: var(--green);
+}
+
 @media screen and (min-width:1000px) {
   .scroll-menu {
-    right: 70%;
-    left: 2%;
+    right: 97%;
+    // left: 2%;
   }
 }
 
 .small-button{
  background-color: #0C6A22;
- color: #FFBB33;
+ color: white;
  padding-left: 10px;
  padding-right: 10px;
   border-radius:10% ;
@@ -81,6 +86,11 @@
 .small-button:hover{
   color: #0C6A22 ;
  }
+
+.dropdown-item{
+  text-align: end !important;
+ }
+
  img,a{
   cursor: pointer;
  }

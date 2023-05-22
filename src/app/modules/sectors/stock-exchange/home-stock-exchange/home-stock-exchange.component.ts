@@ -68,10 +68,8 @@ export class HomeStockExchangeComponent implements OnInit  {
         this.h_search_form.controls.find((i:any) => i.role === "sector").option = res.data?.sectors
         this.h_search_form.controls.find((i:any) => i.role === "sort").option =   res.data?.sort;
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id !== 0).selected=0
-        // this.h_search_form.controls.find((i:any) => i.role === "sort").option.find((i:any) => i.id === 2).selected=0
         this.h_search_form.controls.find((i:any) => i.role === "sort").option.unshift({"id": 0,"name": "الأكثر أهمية","value": ''})
 
-// console.log(this.h_search_form.controls.find((i:any) => i.role === "sector").option);
 
     let title=this.h_search_form.controls.find((i:any) => i.role === "sector").option.find((i: { selected: number; })=>i.selected==1).name
     localStorage.setItem('stockTitle',' القسم '+title)

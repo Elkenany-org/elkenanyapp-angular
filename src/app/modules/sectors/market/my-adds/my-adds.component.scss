@@ -3,3 +3,18 @@
 a{
     cursor: pointer;
 }
+
+.action__yellow__green__button{
+    background: var(--green)!important;
+    color: white;
+    border-radius: 16px;
+    width: 460px;
+}
+
+.tabs__list{
+    background: #F3F3F3 0% 0% no-repeat padding-box;
+box-shadow: 0px 6px 6px #00000026;
+border-radius: 20px;
+padding: 2rem;
+margin-bottom: 1rem;
+}

@@ -3,16 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router, } from '@angular/router';
-import { sector } from '@app/@core/@data/app/filter-list';
 import { notificationsRes } from '@app/@core/@data/userData';
 import { AdDetials } from '@app/@core/interfaces/market/ad';
-import { Sector } from '@app/@core/interfaces/_app/app-response';
 import { AuthService } from '@app/@core/services/auth/auth.service';
 import { MarketService } from '@app/@core/services/modules/market/market.service';
 import { ToasterService } from '@app/@core/services/toastr.service';
-import { NavbarComponent } from '@app/@shared/components/navbar/navbar.component';
 
-import { environment } from "environments/environment";
 
 
 interface ImageInterface {
@@ -99,6 +95,7 @@ export class AddAdComponent implements OnInit {
 
   handleFileInput(event: any): void {
     const fileList = event.target.files;
+    
     if (fileList.length > 0) {
       for (const file of fileList) {
         // console.log(file);

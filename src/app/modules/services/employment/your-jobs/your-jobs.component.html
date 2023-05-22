@@ -2,10 +2,10 @@
 <div class="page__tabs nb-0 container">
     <ul class="tabs__list">
         <li class="list__item list__item-2" routerLink="../">
-            <a class="list__link "  [routerLinkActive]="['active']"  >الوظائف</a>
+            <a class="list__link "   >الوظائف</a>
         </li>
         <li class="list__item list__item-2"routerLink="./">
-            <a class="list__link"  [routerLinkActive]="['active']">وظائفك</a>
+            <a class="list__link active"  >وظائفك</a>
         </li>
 
     </ul>
@@ -13,7 +13,8 @@
     <!-- Start Global Content -->
     <article class="global__container mt-0 container">
         <div class="row">
-            <a class="action__yellow__green__button w-100"routerLink="/employment/{{type}}/add-job"> أضف الوظيفة +</a>
+            <a class="action__yellow__green__button"routerLink="/employment/{{type}}/add-job"><i class="fa-regular fa-square-plus ms-2"></i> أضف وظيفة </a>
+            <img *ngIf="data?.jobs == []"  src="assets/images/add.png" alt="">
             <div class="new__cards p-0 my-2 row">
                 <div class="col-12" *ngFor="let ad of data?.jobs" >
                     <div class="product__card ultra__card regular__hover" >

@@ -76,8 +76,8 @@ export class AddJobComponent implements OnInit {
                 this.auth.profile().subscribe(res => {
                     if(res.data?.company_id != null){
                       this.company_id=parseInt(res.data?.company_id);
-                      document.getElementById('company')!.innerHTML = res.data?.company_name+'<i class="fa-sharp fa-solid fa-caret-down"></i>';
-                      document.getElementById('company')!.setAttribute('disabled', '');
+                      document.getElementById('dropdownMenuButton2')!.innerHTML = res.data?.company_name+'';
+                      document.getElementById('dropdownMenuButton2')!.setAttribute('disabled', '');
                     }else{
                         this.employment.searchCompany('').subscribe(
                         (res)=>{
@@ -96,7 +96,7 @@ export class AddJobComponent implements OnInit {
               // this.jobDetails = data['resolve'].data
               this.AdForm(data['resolve'].data)
               this.category_id=data['resolve'].data.category_id
-              document.getElementById('category')!.innerHTML = data['resolve'].data.category+'<i class="fa-sharp fa-solid fa-caret-down"></i>';
+              document.getElementById('dropdownMenuButton1')!.innerHTML = data['resolve'].data.category;
             })
           }
     })
@@ -194,17 +194,17 @@ export class AddJobComponent implements OnInit {
 
   selectCategory(id:number,name:string){
     this.category_id=id;
-    document.getElementById('category')!.innerHTML = name+'<i class="fa-sharp fa-solid fa-caret-down"></i>';
+    document.getElementById('dropdownMenuButton1')!.innerHTML = name;
 
-    document.getElementById("myDropdown1")!.classList.toggle("show");
+    // document.getElementById("myDropdown1")!.classList.toggle("show");
 
   }
 
   selectCompany(id:number,name:string){
     this.company_id=id;
-    document.getElementById('company')!.innerHTML = name+'<i class="fa-sharp fa-solid fa-caret-down"></i>';
+    document.getElementById('dropdownMenuButton2')!.innerHTML = name;
     
-    document.getElementById("myDropdown")!.classList.toggle("show");
+    // document.getElementById("myDropdown")!.classList.toggle("show");
 
   }
 
@@ -233,6 +233,7 @@ toggle between hiding and showing the dropdown content */
     }
   }
 }
+
 
 
 }

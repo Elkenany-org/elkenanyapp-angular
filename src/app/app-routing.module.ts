@@ -144,6 +144,11 @@ const routes: Routes = [
       import('./modules/services/service-section/service-section.module').then(m => m.ServiceSectionModule)
     },
     {
+      path: 'consaltants',
+      loadChildren: () => 
+      import('./modules/services/consaltants/consaltants.module').then(m => m.ConsaltantsModule)
+    },
+    {
       path: '**',
       component: NotFoundComponent,
     },

@@ -37,6 +37,8 @@ export class JobApplicantsComponent implements OnInit {
        this.employment.applicants(this.id,'','').subscribe(
         (res)=>{
           this.applicants = res.data
+          this.h_search_form.title='المتقدمين لوظيفة '+ this.applicants?.job_title
+
         }
       )
     })
@@ -48,7 +50,6 @@ export class JobApplicantsComponent implements OnInit {
         this.h_search_form.controls.find((i:any) => i.role === "qualified").option =   res.data?.qualified;
         this.h_search_form.controls.find((i:any) => i.role === "qualified").option.find((i:any) => i.id == 0).selected=1
         this.h_search_form.controls.find((i:any) => i.role === "qualified").option.find((i:any) => i.id !== 0).selected=0
-            this.h_search_form.title='المتقدمين لوظيفة '+ this.applicants?.job_title
       })
 
 
