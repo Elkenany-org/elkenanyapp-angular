@@ -4,13 +4,23 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { ApiResponse } from '@app/@core/@data/API/api';
+import { Doctors } from '@app/@core/interfaces/consaltants/consaltants';
+import { ConsaltantsService } from '@app/@core/services/modules/consaltants/consaltants.service';
+import { catchError, EMPTY, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ConsaltantsResolver implements Resolve<boolean> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return of(true);
-  }
-}
+export class ConsaltantsResolver implements Resolve<ApiResponse<Doctors>> {
+  constructor(private consaltants:ConsaltantsService,private router: Router){}
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ApiResponse<Doctors>> {
+    return this.consaltants.all_doctors().pipe(
+      catchError(() => {
+        this.router.navigate([""]);
+        return EMPTY
+      })
+      )
+     }
+   }
+   

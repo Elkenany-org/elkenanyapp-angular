@@ -69,7 +69,7 @@
                     <span *ngIf="nn.key_name =='companies'" class="small-button" [routerLink]="['/companies-guide/1/companies_details/type/'+nn.key_id]"> رؤية الشركة </span>
                     <span *ngIf="nn.key_name =='showes'" class="small-button" [routerLink]="['/gallery/1/'+nn.key_id+'/about/'+nn.key_id]"> رؤية المعرض </span>
 
-                    <span style="font-weight: lighter;  color: #858585;">{{nn.time}} </span><br>
+                    <span style="font-weight: lighter;  color: #858585;">{{nn.time}} </span>
 
                     </div>
                                 <div class="dropdown-divider mt-2"></div>
@@ -97,17 +97,17 @@
 
         <div class="nav mx-auto d-none d-lg-block" style="box-shadow: 0px 3px 6px #0000003B;">
             <div class="nav-items d-flex justify-content-between align-items-center" >
-                <div href="#" class="dpn nav-item py-3 px-xl-4 " style="text-align: end;">
-                    <i class="fa-solid fa-chevron-left me-xl-4 ms-2 arrow"></i><a>المزيد من الخدمات</a>
+                <div href="#" class="dpn nav-item py-3 px-xxl-4 " style="text-align: end;">
+                    <i class="fa-solid fa-chevron-left me-xxl-4 ms-2 arrow"></i><a>المزيد من الخدمات</a>
                     <div class="dpn-list">
                         <div class="list-container d-flex flex-column">
                             
-                            <a [routerLink]="['test']" class="list-item px-4 py-2 d-xl-none">
+                            <a [routerLink]="['test']" class="list-item px-4 py-2 d-xxl-none">
                                 <i class="fa-solid fa-gavel"></i>
                                 <span class="d-block ">الاكاديمية</span>
                             </a>
 
-                            <a [routerLink]="['consaltants']" class="list-item px-4 py-2 d-xl-none">
+                            <a [routerLink]="['consaltants']" class="list-item px-4 py-2 d-xxl-none">
                                 <i class="fa-solid fa-gavel"></i>
                                 <span class="d-block ">الاستشاريين</span>
                             </a>
@@ -156,12 +156,12 @@
                         </div>
                     </div>
                 </div>
-                <a [routerLink]="['consaltants']" class="nav-item py-3 px-xl-2  d-none d-xl-block"> الاستشاريين</a>
-                <a [routerLink]="['test']" class="nav-item py-3 px-xl-2 d-none d-xl-block">الأكاديمية</a>
+                <a [routerLink]="['consaltants']" class="nav-item py-3 px-xxl-2  d-none d-xxl-block"> الاستشاريين</a>
+                <a [routerLink]="['test']" class="nav-item py-3 px-xxl-2 d-none d-xxl-block">الأكاديمية</a>
 
-                <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-xl-2">دليل الشركات</a>
-                <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-xl-2">البورصة اليومية</a>
-                <div class="search-box py-3 px-xl-2" style="display: inline-flex;">
+                <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-xxl-2">دليل الشركات</a>
+                <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-xxl-2">البورصة اليومية</a>
+                <div class="search-box py-3 px-xxl-2" style="display: inline-flex;">
                     <input type="text" class="search-input  p-4" placeholder="...ابحث" id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)" >
                     <button class="py-2 px-3 mx-1 " style="box-shadow: 0px 3px 6px #00000029;"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>

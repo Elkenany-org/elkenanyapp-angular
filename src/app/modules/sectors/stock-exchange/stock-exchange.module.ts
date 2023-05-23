@@ -17,13 +17,8 @@ import { ComparisonComponent } from './comparison/comparison.component';
     ComparisonComponent
   ],
   imports: [
-
-
-
-
     StockExchangeRoutingModule,
     SharedModule,
-    
     NgxSkeletonLoaderModule.forRoot({ animation: 'pulse', loadingText: 'This item is actually loading...' }),
     NgxEchartsModule.forRoot({
       /**

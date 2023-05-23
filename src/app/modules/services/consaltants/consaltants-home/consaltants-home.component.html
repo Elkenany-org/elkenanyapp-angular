@@ -1,3 +1,6 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
 <div class="container" >
     <h1 class="mt-3 mt-lg-0">الاستشاريين</h1>
 </div>
@@ -7,9 +10,9 @@
         <div class="bg">
             <img src="assets/images/consaltants.png" alt="">
             <div class="content">
-                <h1 class="mb-2">حابب تعرف اكثر عن الاستشاريين</h1>
-                <p class="mb-5">تقدر تعمل استشارة مجانية من خلال مستشار الشركة</p>
-                <div class="links mt-5">
+                <h1 class="my-2">حابب تعرف اكثر عن الاستشاريين</h1>
+                <p class="mb-3">تقدر تعمل استشارة مجانية من خلال مستشار الشركة</p>
+                <div class="links ">
                     <a class="link" href="">اطلب استشارة</a>
                 </div>
             </div>
@@ -43,40 +46,13 @@
     <div class="container">
         <h2 class="mb-3" style="color: var(--green);">فريق استشاريين الكنانى جروب</h2>
         <div class="gridy">
-            <div class="consultants-card">
+            <div class="consultants-card" *ngFor="let doctor of doctors ; let i=index" >
                 <div class="img">
-                    <img src="images/360_F_305776453_t7SUl48g63zLsyODxd60aj6EcWR9avVK.jpg" alt="">
+                    <img src="{{doctor.image}}" alt="">
                 </div>
                 <div class="content px-3 pb-3">
-                    <h3 style="text-align: center; color: var(--green);">اسم الشخص</h3>
-                    <a href="#" class="card-more px-3">المزيد</a>
-                </div>
-            </div>
-            <div class="consultants-card">
-                <div class="img">
-                    <img src="images/360_F_305776453_t7SUl48g63zLsyODxd60aj6EcWR9avVK.jpg" alt="">
-                </div>
-                <div class="content px-3 pb-3">
-                    <h3 style="text-align: center; color: var(--green);">اسم الشخص</h3>
-                    <a href="#" class="card-more px-3">المزيد</a>
-                </div>
-            </div>
-            <div class="consultants-card">
-                <div class="img">
-                    <img src="images/360_F_305776453_t7SUl48g63zLsyODxd60aj6EcWR9avVK.jpg" alt="">
-                </div>
-                <div class="content px-3 pb-3">
-                    <h3 style="text-align: center; color: var(--green);">اسم الشخص</h3>
-                    <a href="#" class="card-more px-3">المزيد</a>
-                </div>
-            </div>
-            <div class="consultants-card">
-                <div class="img">
-                    <img src="images/360_F_305776453_t7SUl48g63zLsyODxd60aj6EcWR9avVK.jpg" alt="">
-                </div>
-                <div class="content px-3 pb-3">
-                    <h3 style="text-align: center; color: var(--green);">اسم الشخص</h3>
-                    <a href="#" class="card-more px-3">المزيد</a>
+                    <h3 style="text-align: center; color: var(--green);">{{doctor.name}}</h3>
+                    <a href="#" class="card-more px-4">المزيد</a>
                 </div>
             </div>
         </div>

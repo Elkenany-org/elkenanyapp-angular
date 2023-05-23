@@ -5,6 +5,7 @@ import { ConsaltantsRoutingModule } from './consaltants-routing.module';
 import { ConsaltantsHomeComponent } from './consaltants-home/consaltants-home.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorsDetailsComponent } from './doctors-details/doctors-details.component';
+import { SharedModule } from '@app/@shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { DoctorsDetailsComponent } from './doctors-details/doctors-details.compo
   ],
   imports: [
     CommonModule,
-    ConsaltantsRoutingModule
+    ConsaltantsRoutingModule,
+    SharedModule,
+
   ]
 })
 export class ConsaltantsModule { }
