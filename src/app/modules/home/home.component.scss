@@ -5,6 +5,68 @@
 @import "../../../assets/styles/pages/home";
 
 
+//////////////////////new design
+.landing .bg {
+  // height: 250px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0px 3px 6px #00000029, 0px 3px 6px #00000029;
+  border-radius: 16px;
+  margin: auto;
+}
+.landing .bg img {
+  width: 100%;
+  height: 308px;
+  border-radius: 10px;
+}
+.landing .bg .content {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  right: 5%;
+  max-width: 30rem;
+  font-weight: bold;
+}
+.landing .bg .content h3 {
+  word-spacing: 5px;
+  color: #000;
+}
+.landing .bg .content p {
+  padding-top: 0.5rem;
+  color: var(--green);
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+}
+// @media screen and (max-width: 768px) {
+//   .landing .bg img {
+//       width: 150%;
+//   }
+//   .landing .bg .content p {
+//       color: black;
+//   }
+// }
+.landing .bg .link {
+  position: absolute;
+  right: 5%;
+  bottom: 6%;
+  padding: 0.75rem 5.625rem;
+  border-radius: 10px;
+  background-color: white;
+  color: var(--green);
+  transition: 0.3s;
+  font-weight: bold;
+  // font-size: 1.188rem;
+}
+.landing .bg .link:hover {
+  background-color: var(--green);
+  color: var(--yellow);
+}
+
+
+
+
+
+
 .slick-dots {
   display: none!important;
 }
@@ -24,11 +86,12 @@
 
   .home .slick-next{
     right: 20px;
-    
+    display: none !important;
   }
   .home .slick-prev{
     left:20px;
     z-index: 1000;
+    display: none !important;
   }
   .home .slick-prev:before,.home .slick-next:before{
     font-size:30px;
@@ -40,13 +103,6 @@
   .main{
     max-width: 80%;
     margin: auto;
-  }
-  .main .slick-prev{
-    // left:6.875rem;
-    // z-index: 1000;
-  }
-  .main .slick-next{
-    // right: 6.875rem;
   }
 
   .main .slick-prev:before,.main .slick-next:before {
@@ -63,14 +119,6 @@
 
   }
 
-  // @media only screen and (max-width: 800px) {
-  //   .main .slick-prev{
-  //     left:10px;
-  //   }
-  //   .main .slick-next{
-  //     right: 20px;
-  //   }
-  // }
 
   .home .container-fluid{
     top: -40px;
@@ -120,12 +168,7 @@ background-color: #FFBB33 !important;
   position: relative;
   z-index: 64000 !important;  
 }
-// .splide,#image-slider{
-//   margin-top: 0px !important;
-//   padding-top: 0px!important;
-// }
-//////////////////////////////////////test////////////////////////////////////////
-/// 
+
 .video{
   // width: 90%;
   height: 23rem;
@@ -224,9 +267,9 @@ background-color: #FFBB33 !important;
 .about .cq-carousel.active {
   display: block;
 }
-.about .container{
-  max-width: 90% !important;
-}
+// .about .container{
+//   max-width: 90% !important;
+// }
 
 
 /////////////
@@ -236,14 +279,12 @@ background-color: #FFBB33 !important;
   height: 26rem;
 }
 .small-img{
-  // background-color: var(--yellow);
   margin-top: -3px;
 }
 .app-download .iphone-img img {
   width: 90%;
   height: auto;
-  // margin-bottom: -318px;
-  // margin-left: -115px;
+
 }
 .app-download .download h1 {
   text-align: center;
@@ -306,10 +347,12 @@ background-color: #FFBB33 !important;
 
 .partners .container{
   max-width: 1300px !important;
-
-//   @media (min-width: 991px){
-//     .container {
-//     max-width: 1109px !important;
-//   }
-// }
 }
+
+
+
+[dir=rtl] .slick-prev{
+  right: 0px;
+  left: auto;
+}
+

@@ -87,39 +87,7 @@ toggle(){
  this.mv=!this.mv
  this.ns=!this.ns
 }
-// toggleTabs(){
 
-//   const chooseLi = document.querySelector(".about .opt-list .choose")
-//   const mvLi = document.querySelector(".about .opt-sublist .mv")
-//   const mrLi = document.querySelector(".about .opt-sublist .mr")
-//   const optSubList = document.querySelector(".about .opt-sublist")
-//   let mvCarousel = document.querySelector(".about .mv-carousel")
-//   let mrCarousel = document.querySelector(".about .mr-carousel")
-
-// chooseLi?.addEventListener("click",()=> {
-//     chooseLi.classList.add("active")
-//     mrLi?.classList.remove("active")
-//     mrCarousel?.classList.remove("active")
-//     optSubList?.classList.add("active")
-//     mvLi?.classList.add("active")
-//     mvCarousel?.classList.add("active")
-// })
-
-// mvLi?.addEventListener("click",()=> {
-//     mvLi.classList.add("active")
-//     mvCarousel?.classList.add("active")
-//     mrLi?.classList.remove("active")
-//     mrCarousel?.classList.remove("active")
-// })
-
-// mrLi?.addEventListener("click",()=> {
-//   mrLi.classList.add("active")
-//     mrCarousel?.classList.add("active")
-//     mvLi?.classList.remove("active")
-//     mvCarousel?.classList.remove("active")
-// })
-
-// }
 
 
 }

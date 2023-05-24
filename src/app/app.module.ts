@@ -23,7 +23,6 @@ import { environment } from 'environments/environment';
 import { initializeApp } from "firebase/app";
 import { SharedModule } from './@shared/shared.module';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
-import { AcademyComponent } from './modules/services/academy/academy.component';
 import { QuestionsComponent } from './modules/static-pages/questions/questions.component';
 
 
@@ -35,7 +34,6 @@ initializeApp(environment.firebase);
     AppComponent,
     TestComponent,
     LinktreeComponent,
-    AcademyComponent,
     QuestionsComponent,
   ],
   imports: [

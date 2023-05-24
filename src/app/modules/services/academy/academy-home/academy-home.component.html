@@ -1,0 +1,112 @@
+<!-- <app-loader *ngIf="loading"></app-loader> -->
+
+<div class="container" >
+    <h1 class="mt-3 mt-lg-0">الأكاديمية</h1>
+</div>
+
+
+<div class="landing">
+    <div class="container">
+        <div class="bg">
+            <img src="assets/images/academy.png" alt="">
+            <div class="content">
+                <h1 class="mb-2">حابب تعرف اكثر عن الأكاديمية</h1>
+                <p>شاهد كل الكورسات باشتراك واحد يناسب ميزانيتك</p>
+                <div class="links d-flex justify-content-between">
+                    <a class="link1 px-md-4 px-1" href=""> اشتراك كامل</a>
+                    <a class="link1 mx-1 px-md-4 px-1" href=""> تصفح الكورسات</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="courses py-5">
+    <div class="container">
+        <ul class="list-unstyled opt-sublist d-flex">
+            <li class="fc" [ngClass]="{'active': fc}" class="fc" style="line-height: 2.5rem;" (click)="toggle()">اشهر الدورات</li>
+            <li class="nc" [ngClass]="{'active': nc}" style="line-height: 2.5rem;" (click)="toggle()">اجدد الاقسام فى الدورات</li>
+        </ul>
+        <div class="fc-carousel active" *ngIf="fc">
+            <app-banners-logo  [loading]="loading" [type]="'mostvisited'" ></app-banners-logo>
+
+        </div>
+        <div class="nc-carousel active" *ngIf="nc">
+            <app-banners-logo  [loading]="loading" [type]="'newestservices'" ></app-banners-logo>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="browse pb-5">
+    <div class="container">
+        <div class="browse-heading">
+            <i class="fa-solid fa-globe fa-2xl ms-3"></i>
+            تصفح جميع الأقسام
+        </div>
+        <app-banners-logo  [loading]="loading" [type]="'mostvisited'" ></app-banners-logo>
+
+    </div>
+</div>
+
+
+<div class="blog">
+    <div class="container">
+        <div class="blog-heading">
+            <i class="fa-solid fa-window-maximize fa-2xl ms-3"></i>
+            المدونة
+        </div>
+        <div class="blog-content mt-4">
+            <div class="gridy">
+                <div class="blog-card">
+                    <img src="assets/images/academy.png" alt="">
+                    <p class="my-3 px-3">
+                        دليل لمعرفة اسعار السوق على الكنانى
+                    </p>
+                    <a class="d-inline-block px-5 py-2 mx-3 mb-3" href="#">المزيد</a>
+                </div>
+                <div class="blog-card">
+                    <img src="assets/images/academy.png" alt="">
+                    <p class="my-3 px-3">
+                        دليل لمعرفة اسعار السوق على الكنانى
+                    </p>
+                    <a class="d-inline-block px-4 py-1 mx-3 mb-3" href="#">المزيد</a>
+                </div>
+                <div class="blog-card">
+                    <img src="assets/images/academy.png" alt="">
+                    <p class="my-3 px-3">
+                        دليل لمعرفة اسعار السوق على الكنانى
+                    </p>
+                    <a class="d-inline-block px-4 py-1 mx-3 mb-3" href="#">المزيد</a>
+                </div>
+                <div class="blog-card">
+                    <img src="assets/images/academy.png" alt="">
+                    <p class="my-3 px-3">
+                        دليل لمعرفة اسعار السوق على الكنانى
+                    </p>
+                    <a class="d-inline-block px-4 py-1 mx-3 mb-3" href="#">المزيد</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="free-reference py-5">
+    <div class="container">
+        <div class="row">
+            <div class="desc col-lg-5 mb-4">
+                <div class="heading mb-2">
+                    <h1>استمتع باستشارة مجانية</h1>
+                </div>
+                <p>
+                    أول وأكبر منصة متعددة الخدمات في مصر والشرق الأوسط تضم خدمات : بورصة الكناني اليومية لتغطية أحدث وأدق أسعار منتجات وشركات السوق المحلي لحظة بلحظة ، دليل شركات متكامل يضم جميع بيانات الشركات ، السوق خدمة بيعية لتبادل “ بيع وشراء “ المنتجات والخدمات ، أخبار الكناني لتغطية أحدث الأخبار والأحداث اليومية ، المناقصات خدمة عرض أجدد المناقصات المطروحة في السوق المصري ، الوظائف خدمة طرح الوظائف اليومية المتاحة في سوق العمل وتعطي للشركات فرصة عرض الوظائف المتاحة لديهم ، المعارض خدمة عرض أحدث المعارض المحلية والدولية الخاصة بكل المجالات والصناعات ، دلائل ومجلات: تضم أحدث المجلات الخاصة بكل الشركات ، حركة السفن : أسهل نظام لتتبع حركة السفن التي تدخل الميناء المصرية
+                </p>
+                <a href="#" class="d-inline-block px-4 py-1 mt-3 link">اعرف التفاصيل</a>
+            </div>
+            <div class="video col-lg-7 d-flex justify-content-center align-items-center">
+                <iframe src="https://www.youtube.com/embed/-n9fo7jUMa0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

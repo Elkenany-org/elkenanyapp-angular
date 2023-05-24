@@ -1,11 +1,11 @@
 
 
-<header class="banner__header"  *ngIf="BannerConfig.banner && BannerConfig.banner.length !=0 && type=='banner'" >
+<header class="banner__header general_banner"  *ngIf="BannerConfig.banner && BannerConfig.banner.length !=0 && type=='banner'" >
 
     <div class="container-fluid one-full-slider-banner">
-        <div class="splide" id="image-slider">
+        <div class="splide" id="image-slider" >
             <div class="splide__track" >
-                <div class="splide" id="image-slider">
+                <div class="splide" id="image-slider" dir="rtl">
                                     
                     <ngx-slick-carousel class="carousel"  *ngIf="!loading && BannerConfig.banner.length >= 0 "
                         #slickModal="slick-carousel" 
@@ -76,7 +76,7 @@
     <div class="container-fluid one-full-slider-banner">
         <div class="splide" id="image-slider">
             <div class="splide__track" >
-                <div class="splide" id="image-slider">
+                <div class="splide" id="image-slider" >
                                     
                     <ngx-slick-carousel class="carousel"  *ngIf="!loading && mainbannerConfig.banner.length >= 0 "
                         #slickModal="slick-carousel" 
@@ -126,9 +126,9 @@
                             <img alt="partner logo" [class]="mostvisitedConfig.config.class"
                             src="{{ slide.image }}" style="max-height: 10rem;">
                             </div>
-                            <p class="my-4 px-3">
+                            <h5 class="my-4 px-3">
                                {{slide.desc}}
-                            </p>
+                            </h5>
                         </a>
 
 
@@ -164,9 +164,9 @@
                             <img alt="partner logo" [class]="newestservicesConfig.config.class"
                             src="{{ slide.image }}" style="max-height: 10rem;">
                             </div>
-                            <p class="my-4 px-3">
+                            <h5 class="my-4 px-3">
                                {{slide.desc}}
-                            </p>
+                            </h5>
                         </a>
 
 
@@ -186,7 +186,7 @@
 
 <header class="banner__header"  *ngIf="howtouseConfig.banner && howtouseConfig.banner.length !=0 && type=='howtouse'" >
     <div class="container-fluid one-full-slider-banner">
-        <div class="splide" id="image-slider">
+        <div class="splide" id="image-slider" dir="rtl">
             <div class="splide__track" >
                 <div class="splide" id="image-slider">
                                     

@@ -149,6 +149,11 @@ const routes: Routes = [
       import('./modules/services/consaltants/consaltants.module').then(m => m.ConsaltantsModule)
     },
     {
+      path: 'academy',
+      loadChildren: () => 
+      import('./modules/services/academy/academy.module').then(m => m.AcademyModule)
+    },
+    {
       path: '**',
       component: NotFoundComponent,
     },
