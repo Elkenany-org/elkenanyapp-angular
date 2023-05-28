@@ -170,7 +170,7 @@ export class AddJobComponent implements OnInit {
           this.employment.update_job(formData).subscribe( (res) => {
            this.toasterService.stopLoading();
            this.toasterService.showSuccess(res.message+'')
-           this.router.navigate([`employment/job-details/${res.data?.job_detials.id}`])
+           this.router.navigate([`الوظائف/job-details/${res.data?.job_detials.id}`])
  
          }, (err) => {
            this.toasterService.stopLoading();
@@ -181,7 +181,7 @@ export class AddJobComponent implements OnInit {
         this.employment.add_job(formData).subscribe( (res) => {
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')
-          this.router.navigate([`employment/job-details/${res.data?.job_detials.id}`])
+          this.router.navigate([`الوظائف/job-details/${res.data?.job_detials.id}`])
 
         }, (err) => {
           this.toasterService.stopLoading();

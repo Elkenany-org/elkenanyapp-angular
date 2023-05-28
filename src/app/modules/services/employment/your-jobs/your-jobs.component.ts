@@ -55,7 +55,7 @@ export class YourJobsComponent implements OnInit {
   }
 
   editJob(id:number){
-    this.router.navigate([`employment/edit-job/${id}`])
+    this.router.navigate([`الوظائف/edit-job/${id}`])
   }
   removeJob(id:number){
     this.toasterService.loading('جارى التنفيذ...');

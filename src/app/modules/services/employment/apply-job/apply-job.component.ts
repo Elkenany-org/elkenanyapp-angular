@@ -141,7 +141,7 @@ export class ApplyJobComponent implements OnInit {
 
           this.toasterService.stopLoading();
           this.toasterService.showSuccess(res.message+'')
-          this.router.navigate([`/employment`])
+          this.router.navigate([`/الوظائف`])
 
         }, (err) => {
           this.toasterService.stopLoading();

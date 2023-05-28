@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="statistics">
-                    <div class="sections">
+                    <div class="sections_job">
                         <div class="row m-0">
                             <div class="col-lg-3 col-sm-6 mb-lg-0 mb-3 pb-md-0 pb-3 stats-item">
                                 <span class="d-block mb-2">{{jobDetails?.applicants_count}}</span>
@@ -59,8 +59,8 @@
             </div>
             <div class="foot p-4">
 
-                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/employment/job-applicants',jobDetails?.id]" >المتقدمين للوظيفة<i class="fa-solid fa-share-nodes me-2"></i></a>
-                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/employment/apply',jobDetails?.id]" >قدم الأن <i class="fa-solid fa-share-nodes me-2"></i></a>
+                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/الوظائف/job-applicants',jobDetails?.id]" >المتقدمين للوظيفة<i class="fa-solid fa-share-nodes me-2"></i></a>
+                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/الوظائف/apply',jobDetails?.id]" >قدم الأن <i class="fa-solid fa-share-nodes me-2"></i></a>
 
             </div>
         </div>

@@ -115,7 +115,7 @@ export class EmploymentHomeComponent implements OnInit {
   navigate(id: string): void
   {
     // console.log(id)
-    this.router.navigate([`/employment/job-details/${id}`]);
+    this.router.navigate([`/الوظائف/job-details/${id}`]);
     
   }
 

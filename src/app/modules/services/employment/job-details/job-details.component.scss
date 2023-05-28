@@ -32,13 +32,13 @@
 .job-info .job-info-cont .content .info i {
     color: var(--green);
 }
-.job-info .statistics .sections {
+.job-info .statistics .sections_job {
     text-align: center;
 }
-.job-info .statistics .sections .stats-item {
+.job-info .statistics .sections_job .stats-item {
     position: relative;
 }
-.job-info .statistics .sections .stats-item:not(:last-child)::after {
+.job-info .statistics .sections_job .stats-item:not(:last-child)::after {
     content: "";
     position: absolute;
     top: 0;
@@ -48,15 +48,15 @@
     background-color: #9e9e9e;
 }
 @media screen and (max-width: 991px) {
-    .job-info .statistics .sections .stats-item:nth-child(2)::after {
+    .job-info .statistics .sections_job .stats-item:nth-child(2)::after {
         display: none;
     }
 }
 @media screen and (max-width: 596px) {
-    .job-info .statistics .sections .stats-item:nth-child(2)::after {
+    .job-info .statistics .sections_job .stats-item:nth-child(2)::after {
         display: block;
     }
-    .job-info .statistics .sections .stats-item:not(:last-child)::after {
+    .job-info .statistics .sections_job .stats-item:not(:last-child)::after {
         content: "";
         position: absolute;
         top: 100%;
@@ -66,12 +66,12 @@
         background-color: #9e9e9e;
     }
 }
-.job-info .statistics .sections span {
+.job-info .statistics .sections_job span {
     color: #7e7e7e;
     font-size: 25px;
     display: block;
 }
-.job-info .statistics .sections p {
+.job-info .statistics .sections_job p {
     color: var(--green);
 }
 .job-info .job-info-cont .foot {

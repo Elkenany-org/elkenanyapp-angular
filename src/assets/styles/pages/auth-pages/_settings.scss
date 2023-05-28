@@ -15,7 +15,7 @@
     }
 
     .titles {
-      border-bottom: 1.5px solid $bg-color-second;
+      // border-bottom: 1.5px solid $bg-color-second;
       margin: 0 20px;
       padding-bottom: .5em;
       flex-wrap: nowrap;
@@ -35,8 +35,8 @@
       text-align: center;
 
       .left-content {
-        border-right: 1.5px solid;
-        margin-top: 2em;
+        // border-right: 1.5px solid;
+        // margin-top: 2em;
         margin-bottom: 2em;
         padding: 0 2em;
 
@@ -104,18 +104,21 @@
               flex-flow: row nowrap;
               justify-content: flex-end;
               border-radius: 5px;
-              border: 2px solid $bg-color-second;
+              // border: 2px solid $bg-color-second;
               padding: 0 10px;
               margin-bottom: 2em;
-
+              box-shadow: inset 0px 3px 6px #0000000F, 0px 3px 6px #0000004F;
+              border: 1px solid #C7C5C5;
+              border-radius: 12px;
               input {
                 width: 90%;
                 border: none;
                 background-color: transparent;
                 direction: rtl;
                 padding: 0;
-                height: 45px;
+                height: 58px;
                 outline: none;
+                color: #737373;
               }
 
               .email, .date {
@@ -137,7 +140,7 @@
 
             .submit {
               width: 100%;
-              height: 45px;
+              height: 58px;
               margin-top: 10px;
               background-color: $font-color-main;
               color: $font-color-second;
@@ -165,28 +168,31 @@
           .nav-link {
             color: $font-color-second;
             font-weight: bold;
-            border-radius: 15px;
+            // border-radius: 15px;
             padding: 10px;
             margin: 15px 20px 0;
             display: flex;
+            justify-content: center;
             flex-flow: row nowrap;
             font-size: 20px;
             transition: all .3s;
             direction: rtl;
-
+            box-shadow: inset 0px 3px 6px #0000000F, 0px 3px 6px #0000004F;
+            border: 1px solid #C7C5C5;
+            border-radius: 12px;
             i {
               margin: 3px 0 0 10px;
             }
 
             &:hover {
-              color: $font-color-main;
-              background-color: $bg-color-second;
+              color: $font-color-second;
+              background-color: $bg-color-main;
             }
           }
 
           .active {
-            color: $font-color-main;
-            background-color: $bg-color-second;
+            color: $font-color-second;
+            background-color: $bg-color-main;
           }
         }
       }

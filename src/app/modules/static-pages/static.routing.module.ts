@@ -11,22 +11,22 @@ import { ContactUsComponent } from "./contact-us/contact-us.component";
 
 const routes: Routes = [
 
-  {
-    path: 'about-us',
-    component: AboutUsComponent,
-  },
-  {
-    path: 'contact-us',
-    component: ContactUsComponent,
-  },
-  {
-    path: 'privacy-policy',
-    component: PrivacyPolicyComponent,
-  },
-  {
-    path: 'terms-and-conditions',
-    component: TermsAndConditionsComponent,
-  },
+  // {
+  //   path: 'about-us',
+  //   component: AboutUsComponent,
+  // },
+  // {
+  //   path: 'contact-us',
+  //   component: ContactUsComponent,
+  // },
+  // {
+  //   path: 'privacy-policy',
+  //   component: PrivacyPolicyComponent,
+  // },
+  // {
+  //   path: 'terms-and-conditions',
+  //   component: TermsAndConditionsComponent,
+  // },
 
     
   ];

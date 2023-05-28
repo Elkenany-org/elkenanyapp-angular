@@ -8,6 +8,10 @@ import { TestComponent } from './test/test.component';
 import { TendersHomeResolver } from './@core/resolver/tenders/tenders-home.resolver.service';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
 import { ComparisonComponent } from './modules/sectors/stock-exchange/comparison/comparison.component';
+import { AboutUsComponent } from './modules/static-pages/about-us/about-us.component';
+import { ContactUsComponent } from './modules/static-pages/contact-us/contact-us.component';
+import { PrivacyPolicyComponent } from './modules/static-pages/privacy-policy/privacy-policy.component';
+import { TermsAndConditionsComponent } from './modules/static-pages/terms-and-conditions/terms-and-conditions.component';
 
 const routes: Routes = [
   {
@@ -37,7 +41,7 @@ const routes: Routes = [
       
   },
   {
-    path: 'user/setting',
+    path: 'الإعدادات',
 
     loadChildren: () => 
       import('./modules/@auth/setting/setting.module').then((m) => m.SettingModule),
@@ -120,7 +124,7 @@ const routes: Routes = [
       import('./modules/services/tenders/tenders.module').then(m=> m.TendersModule)
     },
     {
-      path:'employment',
+      path:'الوظائف',
       loadChildren:()=>
       import('./modules/services/employment/employment.module').then(m=> m.EmploymentModule)
     },
@@ -135,21 +139,37 @@ const routes: Routes = [
       import('./modules/static-pages/static-pages.module').then(m => m.StaticPagesModule)
     },
     {
+      path: 'من-نحن',
+      component: AboutUsComponent,
+    },
+    {
+      path: 'اتصل-بنا',
+      component: ContactUsComponent,
+    },
+    {
+      path: 'شروط-الإستخدام-و-الخصوصية',
+      component: PrivacyPolicyComponent,
+    },
+    // {
+    //   path: 'terms-and-conditions',
+    //   component: TermsAndConditionsComponent,
+    // },
+    {
       path: 'company-profile',
       component: LinktreeComponent,
     },
     {
-      path: 'service-section',
+      path: 'القسم-الخدمي',
       loadChildren: () => 
       import('./modules/services/service-section/service-section.module').then(m => m.ServiceSectionModule)
     },
     {
-      path: 'consaltants',
+      path: 'الاستشاريين',
       loadChildren: () => 
       import('./modules/services/consaltants/consaltants.module').then(m => m.ConsaltantsModule)
     },
     {
-      path: 'academy',
+      path: 'الأكاديمية',
       loadChildren: () => 
       import('./modules/services/academy/academy.module').then(m => m.AcademyModule)
     },

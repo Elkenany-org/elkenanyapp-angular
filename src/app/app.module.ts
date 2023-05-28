@@ -69,7 +69,7 @@ initializeApp(environment.firebase);
 
     SocialAuthService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    // {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]
 })

@@ -4,12 +4,12 @@
     <div class="container">
         <div class="header-content d-flex justify-content-between align-items-center">
             <div class="header-items d-flex">
-                <a [routerLink]="['/static-pages/contact-us']" class="header-item me-4">
+                <a [routerLink]="['/اتصل-بنا']" class="header-item me-4">
                     <span class="me-4">تواصل معنا</span>
                     <i class="fa-solid fa-phone"></i>
                 </a>   
                 
-                <a [routerLink]="['/static-pages/about-us']" class="header-item me-4">
+                <a [routerLink]="['/من-نحن']" class="header-item me-4">
                     <span class="me-4">من نحن</span>
                     <i class="fa-solid fa-phone"></i>
                 </a>
@@ -25,7 +25,7 @@
 
                         <span class="dropbtn">{{Profile?.name}}<img alt="profile pic" class="profile-photo ms-1" [src]="[Profile?.image]"></span>
                         <div class="dropdown-content">
-                            <a routerLink="/user/setting">الإعدادات</a>
+                            <a routerLink="/الإعدادات">الإعدادات</a>
                             <div class="dropdown-divider"></div>
                             <a (click)="logout()" style="cursor: pointer;">تسجيل الخروج</a>           
                         
@@ -102,12 +102,12 @@
                     <div class="dpn-list">
                         <div class="list-container d-flex flex-column">
                             
-                            <a [routerLink]="['academy']" class="list-item px-4 py-2 d-xxl-none">
+                            <a [routerLink]="['الأكاديمية']" class="list-item px-4 py-2 d-xxl-none">
                                 <i class="fa-solid fa-gavel"></i>
                                 <span class="d-block ">الاكاديمية</span>
                             </a>
 
-                            <a [routerLink]="['consaltants']" class="list-item px-4 py-2 d-xxl-none">
+                            <a [routerLink]="['الاستشاريين']" class="list-item px-4 py-2 d-xxl-none">
                                 <i class="fa-solid fa-gavel"></i>
                                 <span class="d-block ">الاستشاريين</span>
                             </a>
@@ -139,12 +139,12 @@
                             
 
 
-                            <a [routerLink]="['/employment']" class="list-item px-4 py-2">
+                            <a [routerLink]="['/الوظائف']" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-gavel"></i>
                                 الوظائف
                             </a>
 
-                            <a [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }" class="list-item px-4 py-2">
+                            <a [routerLink]="['/القسم-الخدمي/6']" [queryParams]="{page: 1,sub:180 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-gear"></i>
                                 قسم خدمى
                             </a>
@@ -156,8 +156,8 @@
                         </div>
                     </div>
                 </div>
-                <a [routerLink]="['consaltants']" class="nav-item py-3 px-xxl-2  d-none d-xxl-block"> الاستشاريين</a>
-                <a [routerLink]="['academy']" class="nav-item py-3 px-xxl-2 d-none d-xxl-block">الأكاديمية</a>
+                <a [routerLink]="['الاستشاريين']" class="nav-item py-3 px-xxl-2  d-none d-xxl-block"> الاستشاريين</a>
+                <a [routerLink]="['الأكاديمية']" class="nav-item py-3 px-xxl-2 d-none d-xxl-block">الأكاديمية</a>
 
                 <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-xxl-2">دليل الشركات</a>
                 <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-xxl-2">البورصة اليومية</a>
@@ -214,8 +214,8 @@
 
             <a [routerLink]="['/stock-exchange/0']" class="nav-item px-3 py-2">البورصة اليومية</a>  
             <a [routerLink]="['/companies-guide/0']" class="nav-item px-3 py-2">دليل الشركات</a>
-            <a [routerLink]="['consaltants']" class="nav-item px-3 py-2">الاستشاريين</a>
-            <a [routerLink]="['academy']" class="nav-item px-3 py-2">الأكاديمية</a>
+            <a [routerLink]="['الاستشاريين']" class="nav-item px-3 py-2">الاستشاريين</a>
+            <a [routerLink]="['الأكاديمية']" class="nav-item px-3 py-2">الأكاديمية</a>
             <div class="dpn" >
                 <div class="dpn-list nav-item px-3 py-1" (click)="toggledropinsidebar()" href="#" >
                     المزيد من الخدمات
@@ -247,7 +247,7 @@
                             <i class="fa-solid fa-gavel"></i>
                             المناقصات
                         </a>
-                        <a [routerLink]="['/employment']" class="list-item px-4 py-2"><i class="fa-solid fa-gavel"></i>الوظائف</a>
+                        <a [routerLink]="['/الوظائف']" class="list-item px-4 py-2"><i class="fa-solid fa-gavel"></i>الوظائف</a>
 
                         <a [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-gear"></i>
