@@ -11,9 +11,11 @@
                 
                 <a [routerLink]="['/من-نحن']" class="header-item me-4">
                     <span class="me-4">من نحن</span>
-                    <i class="fa-solid fa-phone"></i>
+                    <i class="fa-sharp fa-solid fa-users"></i>
+                
                 </a>
-                <a *ngIf="islogedIn==0"  [routerLink]="['/user/login']" class="header-item">
+
+                <a *ngIf="islogedIn==0"  [routerLink]="['تسجيل-الدخول']" class="header-item">
                     <span class="me-4">تسجيل الدخول</span>
                     <i class="fa-solid fa-user"></i>
                 </a>
@@ -41,8 +43,8 @@
             id="notification" role="button" (click)="check()">  
             
             <i class="fa-solid fa-chevron-down me-2 ms-3 arrow"></i> 
+            <i class="fa-sharp fa-solid fa-bell "></i>
 
-            <i class="fa-regular fa-bell" ></i>
             <span class="badge" *ngIf="totalLength != 0">{{totalLength}}</span>
             </a>
             <div aria-labelledby="notification" class="dropdown-menu scroll-menu"  *ngIf="message != []">
@@ -103,12 +105,12 @@
                         <div class="list-container d-flex flex-column">
                             
                             <a [routerLink]="['الأكاديمية']" class="list-item px-4 py-2 d-xxl-none">
-                                <i class="fa-solid fa-gavel"></i>
+                                <i class="fa-solid fa-chalkboard-user"></i>
                                 <span class="d-block ">الاكاديمية</span>
                             </a>
 
                             <a [routerLink]="['الاستشاريين']" class="list-item px-4 py-2 d-xxl-none">
-                                <i class="fa-solid fa-gavel"></i>
+                                <i class="fa-solid fa-phone-volume"></i>
                                 <span class="d-block ">الاستشاريين</span>
                             </a>
 
@@ -140,7 +142,7 @@
 
 
                             <a [routerLink]="['/الوظائف']" class="list-item px-4 py-2">
-                                <i class="fa-solid fa-gavel"></i>
+                                <i class="fa-solid fa-briefcase"></i>
                                 الوظائف
                             </a>
 
@@ -149,9 +151,9 @@
                                 قسم خدمى
                             </a>
 
-                            <a [routerLink]="['/test']" class="list-item px-4 py-2">
-                                <i class="fa-solid fa-gavel"></i>
-                                الاسئلة الشائعة
+                            <a [routerLink]="['/الاسئلة-الشائعة']" class="list-item px-4 py-2">
+                                <i class="fa-solid fa-person-circle-question"></i>
+                                الأسئلة الشائعة
                             </a>
                         </div>
                     </div>
@@ -160,7 +162,7 @@
                 <a [routerLink]="['الأكاديمية']" class="nav-item py-3 px-xxl-2 d-none d-xxl-block">الأكاديمية</a>
 
                 <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-xxl-2">دليل الشركات</a>
-                <a [routerLink]="['/stock-exchange/0']" class="nav-item py-3 px-xxl-2">البورصة اليومية</a>
+                <a [routerLink]="['/البورصة/0']" class="nav-item py-3 px-xxl-2">البورصة اليومية</a>
                 <div class="search-box py-3 px-xxl-2" style="display: inline-flex;">
                     <input type="text" class="search-input  p-4" placeholder="...ابحث" id="searchNavBar" #v (change)="goToSearch(v.value)" ($event)="goToSearch(v.value)" >
                     <button class="py-2 px-3 mx-1 " style="box-shadow: 0px 3px 6px #00000029;"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -191,7 +193,7 @@
 
 
 
-            <a *ngIf="islogedIn==0" [routerLink]="['/user/login']" class="contact-item" >
+            <a *ngIf="islogedIn==0" [routerLink]="['تسجيل-الدخول']" class="contact-item" >
                 <span class="me-3 ">تسجيل الدخول</span>
                 <i class="fa-solid fa-user"></i>
             </a>
@@ -212,7 +214,7 @@
         <hr class="my-3">
         <div class="sidebar-nav" >
 
-            <a [routerLink]="['/stock-exchange/0']" class="nav-item px-3 py-2">البورصة اليومية</a>  
+            <a [routerLink]="['/البورصة/0']" class="nav-item px-3 py-2">البورصة اليومية</a>  
             <a [routerLink]="['/companies-guide/0']" class="nav-item px-3 py-2">دليل الشركات</a>
             <a [routerLink]="['الاستشاريين']" class="nav-item px-3 py-2">الاستشاريين</a>
             <a [routerLink]="['الأكاديمية']" class="nav-item px-3 py-2">الأكاديمية</a>
@@ -247,16 +249,16 @@
                             <i class="fa-solid fa-gavel"></i>
                             المناقصات
                         </a>
-                        <a [routerLink]="['/الوظائف']" class="list-item px-4 py-2"><i class="fa-solid fa-gavel"></i>الوظائف</a>
+                        <a [routerLink]="['/الوظائف']" class="list-item px-4 py-2"><i class="fa-solid fa-briefcase"></i>الوظائف</a>
 
                         <a [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }" class="list-item px-4 py-2">
                             <i class="fa-solid fa-gear"></i>
                             قسم خدمى
                         </a>
 
-                        <a [routerLink]="['/test']"  class="list-item px-4 py-2">
-                            <i class="fa-solid fa-gear"></i>
-                            الاسئلة الشائعة
+                        <a [routerLink]="['/الاسئلة-الشائعة']"  class="list-item px-4 py-2">
+                            <i class="fa-solid fa-person-circle-question"></i>
+                            الأسئلة الشائعة
                         </a>
 
                     </div>

@@ -101,7 +101,7 @@ message=""
         this.message=res.message!
         setTimeout(() => {
           this.message=""
-          this.router.navigate(['/user/login']);
+          this.router.navigate(['تسجيل-الدخول']);
         }, 2000);
 
       },

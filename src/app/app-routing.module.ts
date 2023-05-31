@@ -12,11 +12,12 @@ import { AboutUsComponent } from './modules/static-pages/about-us/about-us.compo
 import { ContactUsComponent } from './modules/static-pages/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './modules/static-pages/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './modules/static-pages/terms-and-conditions/terms-and-conditions.component';
+import { QuestionsComponent } from './modules/static-pages/questions/questions.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'الرئيسية',
     pathMatch: 'full'
   },
 {
@@ -28,13 +29,13 @@ const routes: Routes = [
   import('./modules/payment/payment.module').then((m)=>m.PaymentModule),
 },
   {
-    path: 'home',
+    path: 'الرئيسية',
     loadChildren: () => 
     import('./modules/home/home.module').then((m) => m.HomeModule),
     
   },
   {
-    path: 'user/login',
+    path: 'تسجيل-الدخول',
 
     loadChildren: () => 
       import('./modules/@auth/login/login.module').then((m) => m.LoginModule),
@@ -49,13 +50,13 @@ const routes: Routes = [
       
   },
   {
-    path: 'user/register',
+    path: 'إنشاء-حساب',
     loadChildren: () => 
       import('./modules/@auth/register/register.module').then((m) => m.RegisterModule),
       
   },
   {
-    path: 'user/forget-password',
+    path: 'نسيت-كلمة-السر',
     loadChildren: () => 
       import('./modules/@auth/forget-password/forget-password.module').then((m) => m.ForgetPasswordModule),
       
@@ -67,13 +68,13 @@ const routes: Routes = [
       
   },
   {
-    path: 'stock-exchange/:type',
+    path: 'البورصة/:type',
     loadChildren: () => 
       import('./modules/sectors/stock-exchange/stock-exchange.module').then((m) => m.StockExchangeModule),
       
   },
   {
-    path: 'comparison/:id',
+    path: 'مقارنة/:id',
     component:ComparisonComponent
       
   },
@@ -150,10 +151,10 @@ const routes: Routes = [
       path: 'شروط-الإستخدام-و-الخصوصية',
       component: PrivacyPolicyComponent,
     },
-    // {
-    //   path: 'terms-and-conditions',
-    //   component: TermsAndConditionsComponent,
-    // },
+    {
+      path: 'الاسئلة-الشائعة',
+      component: QuestionsComponent,
+    },
     {
       path: 'company-profile',
       component: LinktreeComponent,

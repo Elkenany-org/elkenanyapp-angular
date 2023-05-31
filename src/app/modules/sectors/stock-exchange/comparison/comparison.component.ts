@@ -49,12 +49,12 @@ export class ComparisonComponent implements OnInit {
 
   ngOnInit(): void {
 
-console.log('====================================');
-console.log('comparison');
-console.log('====================================');
     this.h_search_form = comparsion_Search_Form_Data
 
     this.route.params.subscribe( params => { 
+      console.log('====================================');
+      console.log(params['id']);
+      console.log('====================================');
       this.StockService.ComprisonFodder(params['id']).subscribe(res => {
         this.comparisonData= res.data
 

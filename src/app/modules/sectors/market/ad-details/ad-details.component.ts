@@ -51,7 +51,7 @@ export class AdDetailsComponent implements OnInit {
       this.startChat =res.data
 
     },err=>{
-      this.message='برجاء تسجيل الدخول للتمكن من ارسال رسالة'
+      this.message='برجاء تسجيل الدخول للتمكن من إرسال رسالة'
     })
   }
 

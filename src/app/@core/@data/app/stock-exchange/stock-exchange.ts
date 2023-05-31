@@ -50,13 +50,13 @@ export let Stock_Search_Form_Data: JsonFormData =
         value: "",
         icon:"fas fa-poll",
         type: "a",
-        routerLink: "/stock-exchange/poultry/comarsion",
+        routerLink: "/البورصة/1/comarsion",
         validators: {
           required: false,
         }
       },
       {
-        name: "احصائيات",
+        name: "إحصائيات",
         label: "Size",
         class:"stats__btn",
         role:"statistics",
@@ -113,7 +113,7 @@ export let Stock_Search_Form_Data: JsonFormData =
           }
         },
         {
-          name: "احصائيات",
+          name: "إحصائيات",
           label: "Size",
           class:"stats__btn",
           role:"statistics",
@@ -173,7 +173,7 @@ export let Home_Stock_Search_Form_Data: JsonFormData =
       },
    
       {
-        name: "احصائيات",
+        name: "إحصائيات",
         label: "Size",
         class:"stats__btn",
         role:"statistics",

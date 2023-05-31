@@ -20,7 +20,7 @@ const routes: Routes = [
     }
   },
     {
-    path: 'statistics-members/:type/:id',
+    path: ':type/:id',
     component: StatisticsMembersComponent,
     // canActivate:[AuthGuardService],
     resolve: {
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'statistics-detials/:type/:id',
+    path: 'تفاصيل/:type/:id',
     component: StatisticsDetialsComponent,
     canActivate:[AuthGuardService]
   },

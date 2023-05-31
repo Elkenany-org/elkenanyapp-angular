@@ -26,7 +26,7 @@ const routes: Routes = [
                 },
       },
       {
-        path: 'your-jobs',
+        path: 'وظائفك',
         component: YourJobsComponent
       },
     ]
@@ -34,17 +34,17 @@ const routes: Routes = [
   },
 
   {
-    path: 'apply/:id',
+    path: 'تقديم/:id',
     component: ApplyJobComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: 'add-job',
+    path: 'إضافة-وظيفة',
     component: AddJobComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: 'edit-job/:id',
+    path: 'تعديل-وظيفة/:id',
     component: AddJobComponent,
     resolve: {
       resolve: JobDetailsResolver
@@ -52,7 +52,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'job-details/:id',
+    path: 'تفاصيل-الوظيفة/:id',
     component: JobDetailsComponent,
     resolve: {
       resolve: JobDetailsResolver
@@ -60,13 +60,13 @@ const routes: Routes = [
   },
 
   {
-    path: 'job-applicants/:id',
+    path: 'المتقدمين-للوظيفة/:id',
     component: JobApplicantsComponent,
     canActivate: [AuthGuardService]
 
   },
   {
-    path: 'application-details/:id',
+    path: 'تفاصيل-المتقدم/:id',
     component: ApplicationDetailsComponent,
     canActivate: [AuthGuardService]
 

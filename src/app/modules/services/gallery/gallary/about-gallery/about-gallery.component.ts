@@ -117,7 +117,7 @@ export class AboutGallery implements OnInit  {
       }, 5000);
    },
     err=>{
-      this.router.navigate(['/user/login']);
+      this.router.navigate(['تسجيل-الدخول']);
     }
   )
     }

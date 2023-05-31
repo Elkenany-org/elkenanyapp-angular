@@ -19,9 +19,14 @@ export class LocalStockLocalAndFodder implements Resolve<ApiResponse<Fodder |Loc
 
   resolve(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot):  Observable<ApiResponse<Fodder| LocalStockFodder>>  {
 
+    let stock_type='local'
+    if( route.paramMap.get('type_stock') === 'المحلية'){
+      stock_type='local';
+    }else if(route.paramMap.get('type_stock') === 'الأعلاف') {  
+      stock_type='fodder';
+    }
 
-
-    if(route.paramMap.get('type_stock') === 'fodder' ){
+    if(stock_type === 'fodder' ){
       return this.stock.fodder(route.paramMap.get('id')|| '',this.today,'','').pipe(
         catchError(() => {
           this.router.navigate([""]);

@@ -60,7 +60,7 @@
         "type": "text"
       },
       {
-        "name": "احصائيات",
+        "name": "إحصائيات",
         "label": "Size",
         "class":"stats__btn",
         "value": "",

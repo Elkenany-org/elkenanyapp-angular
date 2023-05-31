@@ -34,7 +34,7 @@ export class StockExchangeComponent implements OnInit {
   public collapse:number= 0
   public today= new FormatDate().shortDate(Date())
   public flag=false;
-
+ public stock_type:string = 'local';
   public filterData:{[key:string]:string}= {
     type:'',
     id:'',
@@ -58,15 +58,23 @@ export class StockExchangeComponent implements OnInit {
   ngOnInit(): void {
 
     this.getDataFromResolver()
-    this.route.params.subscribe((prm:Params) => {
-    this.search_Filter(prm['id'],prm['type'], prm['type_stock'])
-    this.filterData['stock_id']=prm['id'],
-    this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
-    this.filterData['stok']=prm['type_stock'] // تاكد منها فيما بعد
 
+    this.route.params.subscribe((prm:Params) => {
+    if( prm['type_stock'] === 'المحلية'){
+      this.stock_type='local';
+    }else 
+    if(prm['type_stock'] === 'الأعلاف') {  
+      this.stock_type='fodder';
+    }
+
+    this.search_Filter(prm['id'],prm['type'], this.stock_type)
+    this.filterData['stock_id']=prm['id']
+    this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
+    this.filterData['stok']=this.stock_type // تاكد منها فيما بعد
     this.filterData['sector']=prm['type']
 
-    if(prm['type_stock'] === 'fodder') {  
+
+    if(this.stock_type === 'fodder') {  
         this.h_search_form = Stock_Search_Form_Data
 
         this.stockExchange.feeds_items(prm['id']).subscribe( res => {
@@ -76,11 +84,9 @@ export class StockExchangeComponent implements OnInit {
         this.productList=JSON.parse(JSON.stringify(this.feedsList));  
         let temp= this.productList?.find(i=> i.selected==1);
         document.getElementById('product')!.innerText =temp?.name!
-        // document.getElementById(temp?.id+'')?.innerHTML!="selected";
          this.loading = false; 
       })
       this.stockExchange.companies_items(prm['id']).subscribe( res => {
-        // console.log(res.data);
         
         this.companies= res.data
         this.companiesList = this.companies
@@ -102,9 +108,9 @@ export class StockExchangeComponent implements OnInit {
 
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   ( type_stock=='local')? res.data?.sub_sections: res.data?.fodder_sub_sections;
-      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/stock-exchange/${this.filterData['sector']}/statistics/statistics-members/${this.filterData['type']}/${id}`;
+      this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/البورصة/${this.filterData['sector']}/إحصائيات/${this.filterData['type']}/${id}`;
       if(type_stock !='local'){
-              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/comparison/${id}`;
+              this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/مقارنة/${id}`;
       }
     })
 
@@ -118,7 +124,7 @@ export class StockExchangeComponent implements OnInit {
       this.filterData['sector'] = params['type']
       switch ( value.type ) {
         case "sector":
-          this.router.navigate(['/stock-exchange',value.id])
+          this.router.navigate(['/البورصة',value.id])
           this.filterData['sector'] = value.id
           localStorage.setItem('stockTitle',value.title)
 
@@ -146,7 +152,7 @@ export class StockExchangeComponent implements OnInit {
           this.filterData['com_id'] = '' 
           this.filterData['date'] = ''
 
-          this.router.navigate(['/stock-exchange/'+params['type']+'/'+params['type_stock']+'/'+value.id]);
+          this.router.navigate(['/البورصة/'+params['type']+'/'+params['type_stock']+'/'+value.id]);
 
 
           break;

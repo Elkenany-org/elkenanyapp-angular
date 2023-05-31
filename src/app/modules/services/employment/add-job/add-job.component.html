@@ -62,7 +62,7 @@
                   <textarea formControlName="desc" class="job-experience p-2 my-2" name="desc" placeholder="تفاصيل الاعلان" rows="15" [ngClass]="{'invalid':f['desc'].errors?.['required']&&f['desc'].touched}"></textarea>
                   
 
-                  <h5 class="mt-2 ">المهارات : <div class="p-1" *ngIf="f['skills'].errors?.['required']&&f['skills'].touched" [ngClass]="{'error':f['skills'].errors?.['required']&&f['skills'].touched}"> يرجي ادخال التفاصيل </div></h5>
+                  <h5 class="mt-2 ">المهارات والأدوات : <div class="p-1" *ngIf="f['skills'].errors?.['required']&&f['skills'].touched" [ngClass]="{'error':f['skills'].errors?.['required']&&f['skills'].touched}"> يرجي ادخال التفاصيل </div></h5>
                   <div formArrayName="skills">
                     <span *ngFor="let skillControl of skills.controls; let i = index">
                       <label class="checkbox-label">

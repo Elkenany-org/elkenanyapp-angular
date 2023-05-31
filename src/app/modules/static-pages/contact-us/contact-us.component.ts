@@ -39,11 +39,11 @@ export class ContactUsComponent implements OnInit {
     };
     this.contactService.contactUs(payload).subscribe(
       (res) => {
-        this.alertService.success('تم الارسال ')
+        this.alertService.success('تم الإرسال ')
       },
       (err) => {
         console.log(err);
-        this.alertService.error(' خطأ بالارسال ');
+        this.alertService.error(' خطأ بالإرسال ');
     
       }
     );

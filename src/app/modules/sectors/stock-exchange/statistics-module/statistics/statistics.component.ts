@@ -84,7 +84,7 @@ alert:boolean=false
     // this.id = sector.find(i => i.type == this.type)?.id+''
     // this.geTstatisticsByDate(180)
 
-    this.h_search_form.title=' احصائيات '+localStorage.getItem('stockTitle')
+    this.h_search_form.title=' إحصائيات '+localStorage.getItem('stockTitle')
     this.titleService.setTitle(this.h_search_form.title);
 
 
@@ -196,7 +196,7 @@ alert:boolean=false
   }
 
   navigatetodetails(id:any,categorize:string){
-    this.router.navigate([`/stock-exchange/no/statistics/statistics-detials/notype/${id}`])
+    this.router.navigate([`/البورصة/no/إحصائيات/تفاصيل/notype/${id}`])
     localStorage.setItem('type',categorize);
     localStorage.setItem('title','');
   }

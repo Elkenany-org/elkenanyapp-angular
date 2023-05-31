@@ -119,14 +119,14 @@
 
                 <div ngxSlickItem *ngFor="let slide of mostvisitedConfig.banner;let i=index;" class="slide">
                         
-                    <div class="item" style="margin-bottom: 3px;">
+                    <div class="item" style="margin-bottom: 3px;height: 311px;">
 
-                        <a class="carousel-card" target="_blank" href="{{ slide.link}}">
+                        <a class="carousel-card" target="_blank" href="{{ slide.link}}" style="height: 307px;">
                             <div class="img">
                             <img alt="partner logo" [class]="mostvisitedConfig.config.class"
                             src="{{ slide.image }}" style="max-height: 10rem;">
                             </div>
-                            <h5 class="my-4 px-3">
+                            <h5 class="my-4 px-3 text-end " style="font: normal normal 900 22px/35px beIN;color: #217000;">
                                {{slide.desc}}
                             </h5>
                         </a>
@@ -157,14 +157,14 @@
 
                 <div ngxSlickItem *ngFor="let slide of newestservicesConfig.banner;let i=index;" >
                         
-                    <div class="item" style="margin-bottom: 3px;">
+                    <div class="item" style="margin-bottom: 3px;height: 311px;">
 
-                        <a class="carousel-card " target="_blank" href="{{ slide.link}}">
+                        <a class="carousel-card " target="_blank" href="{{ slide.link}}" style="height: 307px;">
                             <div class="img">
                             <img alt="partner logo" [class]="newestservicesConfig.config.class"
                             src="{{ slide.image }}" style="max-height: 10rem;">
                             </div>
-                            <h5 class="my-4 px-3">
+                            <h5 class="my-4 px-3 text-end"  style="font: normal normal 900 22px/35px beIN;color: #217000;">
                                {{slide.desc}}
                             </h5>
                         </a>

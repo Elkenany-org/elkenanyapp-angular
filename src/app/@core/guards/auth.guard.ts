@@ -24,7 +24,7 @@ export class AuthGuardService implements CanActivate {
         this.localstorageService.state$.value['token'] === null ||
         this.localstorageService.state$.value['token'] === ''
       ) {
-        this.router.navigate(['/user/login'], { queryParams: { returnUrl: state.url }}).then();
+        this.router.navigate(['تسجيل-الدخول'], { queryParams: { returnUrl: state.url }}).then();
 
         return false;
       }

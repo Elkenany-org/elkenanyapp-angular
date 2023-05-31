@@ -20,20 +20,25 @@ export class StatisticsDetialsComponent implements OnInit {
     from:'',
     to: ''
   }
-  title:string='احصائيات';
+  title:string='إحصائيات';
   constructor(private statistics: StatisticsService,
               private route: ActivatedRoute,private titleService:Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle(' احصائيات '+localStorage.getItem('title'));
-    this.title=' احصائيات '+localStorage.getItem('title')+' - '+localStorage.getItem('type')
+    this.titleService.setTitle(' إحصائيات '+localStorage.getItem('title'));
+    this.title=' إحصائيات '+localStorage.getItem('title')+' - '+localStorage.getItem('type')
     this.route.params.subscribe(prm => {
       this.id= prm['id']
-      this.filterData['type']=prm['type']
-      if(prm['type'] === 'local' || prm['type'] ===   'fodder') {
-        // console.log(prm['type'], this.id);
-        
-        this.getStatisicsMembersDetials(prm['type'],'','',this.id)
+      if( prm['type'] === 'المحلية'){
+        this.filterData['type']='local';
+      }else 
+      if(prm['type'] === 'الأعلاف') {  
+        this.filterData['type']='fodder';
+      }
+  
+      // this.filterData['type']=prm['type']
+      if(this.filterData['type'] === 'local' || this.filterData['type'] ===   'fodder') {        
+        this.getStatisicsMembersDetials(this.filterData['type'],'','',this.id)
       }else {
         this.getstatisicsDetailsData( this.id,'','')
       }
@@ -55,9 +60,6 @@ export class StatisticsDetialsComponent implements OnInit {
   getStatisicsMembersDetials( type:string,from:string,to:string,id:string){
     this.statistics.StatisicsMembersDetials(type,from,to,id).subscribe(res => {
       this.dataLocalOrFodder= res.data
-      // console.log('====================================');
-      // console.log(this.dataLocalOrFodder);
-      // console.log('====================================');
     })
   }
 
@@ -65,9 +67,6 @@ export class StatisticsDetialsComponent implements OnInit {
     this.statistics.StatisicsStocksDetials(id,from,).subscribe(res => {
       
       this.data= res.data
-      // console.log('====================================');
-      // console.log(this.data);
-      // console.log('====================================');
     })  
   }
 

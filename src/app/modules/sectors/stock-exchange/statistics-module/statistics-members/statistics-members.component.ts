@@ -31,6 +31,7 @@ export class StatisticsMembersComponent implements OnInit {
   fromToForm!:FormGroup
   h_search_form:any
   type!:string
+  type_ar!:string
   id: string = ''
   stockId: string = ''
 
@@ -55,7 +56,7 @@ export class StatisticsMembersComponent implements OnInit {
 
 
     this.h_search_form = Statistics_Search_Form
-    this.h_search_form.title=' احصائيات '+localStorage.getItem('title')
+    this.h_search_form.title=' إحصائيات '+localStorage.getItem('title')
     this.titleService.setTitle(this.h_search_form.title);
 
     this.fromToForm= this.fb.group({
@@ -66,20 +67,24 @@ export class StatisticsMembersComponent implements OnInit {
 
     this.roure.params.subscribe((prm: Params) => {
     this.stockId=  prm['id']//get type from url
-    this.type= prm['type']
+    this.type_ar=prm['type'];
+    if( prm['type'] === 'المحلية'){
+      this.type='local';
+    }else if(prm['type'] === 'الأعلاف') {  
+      this.type='fodder';
+    }
+
+
+    // this.type= prm['type']
 
 
 
     this.roure.data.subscribe(data => {
       
-      // console.log(data['resolve']);
       if(this.type == "fodder"){
         this.message=true;
-        //  console.log(data['resolve'].data);
         this.StatisticsMemberLocal=data['resolve'].data
         this.StatisticsListLocal=data['resolve'].data
-  
-
       }else if (this.type == "local"){
         this.StatisticsMemberLocal=data['resolve'].data
 
@@ -353,9 +358,7 @@ document.getElementById('product')!.innerText = 'الكل';
            arr2=arr.filter((i: { changes: any[]; })=>i.changes.length != 0)  
       // }
         
-      // console.log('============');
-      
-    //  console.log(arr2);
+
 
       this.chartOptions=  this.chart.drowShart(arr2)
       
@@ -364,39 +367,6 @@ document.getElementById('product')!.innerText = 'الكل';
       }, 100);
 
 
-
-      // this.statistics.StatisicsMembersFodder(id,type,from,to,'').subscribe(res => {
-        
-      //   this.StatisticsMemberLocal=res.data
-      //   this.chartOptions=  this.chart.drowShart(res.data!.changes_members)
-      //     console.log(this.StatisticsMemberLocal);
-        
-      //   let members= res.data!.changes_members
-      //   let array:any = []
-      //   for(let i = 0 ; i< members.length ; i++) {
-      //     let is_item_exist= 0
-
-      //     if(i+1 != members.length) {
-      //       for (let j = 0; j < array.length; j++) {
-      //         if(array[j].find((element:any) => members[i].name == element.name)){
-      //           is_item_exist=1
-      //         }else{
-      //           is_item_exist=0
-      //         }
-      //       }
-      //       if(is_item_exist==0) {
-      //         array.push([
-      //           {
-      //              name:  members[i].name,
-      //              categories: members.filter((element:any) => element.name == members[i].name)
-      //           }
-      //         ])    
-      //       }
-      //     }
-      //   }
-      //   this.StatisticsMemberFodder = array
-
-      // })
 
     }
     else{
@@ -530,7 +500,7 @@ document.getElementById('product')!.innerText = 'الكل';
   }
 
   navigatetodetails(type:any,id:any,categorize:string){
-    this.router.navigate([`/stock-exchange/no/statistics/statistics-detials/${type}/${id}`])
+    this.router.navigate([`/البورصة/no/إحصائيات/تفاصيل/${type}/${id}`])
     localStorage.setItem('type',categorize);
   }
 }

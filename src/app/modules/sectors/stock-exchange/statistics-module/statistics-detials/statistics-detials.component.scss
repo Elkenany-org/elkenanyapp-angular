@@ -17,3 +17,20 @@ input{
     color: white;
 
 }
+
+input[type=date] {
+    background-color: var(--green);
+    color: white;
+  }
+  
+  input[type="date"]:after {
+    color: white;
+    content: attr(placeholder) !important;
+    margin-right: 0.5em;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Inverts the color of the icon */
+    font-size: 2rem;
+    cursor: pointer;
+  }

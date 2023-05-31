@@ -27,6 +27,11 @@ export class StatisticsMembersResolver implements Resolve<ApiResponse<Statistics
     let id = route.paramMap.get('id') || ''
     let arr=''
 
+    if( type === 'المحلية'){
+      type='local';
+    }else if(type === 'الأعلاف') {  
+      type='fodder';
+    }
     // console.log("resolver is work ",id,type)
     
     if(type == "fodder") {

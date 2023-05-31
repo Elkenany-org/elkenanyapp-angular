@@ -64,7 +64,7 @@ export class AppComponent  implements OnInit {
 
     this.router.events.subscribe(events => {
       if (events instanceof NavigationEnd) {
-        this.routeurl1 = this.router.url
+        this.routeurl1 = decodeURIComponent(this.router.url)
       }
     });
 

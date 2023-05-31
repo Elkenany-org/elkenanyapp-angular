@@ -59,8 +59,8 @@
             </div>
             <div class="foot p-4">
 
-                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/الوظائف/job-applicants',jobDetails?.id]" >المتقدمين للوظيفة<i class="fa-solid fa-share-nodes me-2"></i></a>
-                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/الوظائف/apply',jobDetails?.id]" >قدم الأن <i class="fa-solid fa-share-nodes me-2"></i></a>
+                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type == 'recruiter'" [routerLink]="['/الوظائف/المتقدمين-للوظيفة',jobDetails?.id]" >المتقدمين للوظيفة<i class="fa-solid fa-share-nodes me-2"></i></a>
+                <a class="d-inline-block py-2 px-3" *ngIf="jobDetails?.user_type != 'recruiter'" [routerLink]="['/الوظائف/تقديم',jobDetails?.id]" >قدم الأن <i class="fa-solid fa-share-nodes me-2"></i></a>
 
             </div>
         </div>
@@ -114,7 +114,7 @@
 <div class="job-skills my-4">
     <div class="container">
         <div class="job-skills-cont p-4">
-            <h2 class="mb-4" style="color: var(--green);">المهارات والادوات</h2>
+            <h2 class="mb-4" style="color: var(--green);">المهارات والأدوات</h2>
             <div class="skills-cont">
                 <span class="d-inline-block py-2 px-4" *ngFor="let skill of jobDetails?.skills">{{skill}}</span>
             </div>

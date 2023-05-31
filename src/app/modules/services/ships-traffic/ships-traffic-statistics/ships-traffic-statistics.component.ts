@@ -49,7 +49,7 @@ export class ShipsTrafficStatisticsComponent implements OnInit {
               }
 
   ngOnInit(): void {
-    this.titleService.setTitle('احصائيات حركة السفن');
+    this.titleService.setTitle('إحصائيات حركة السفن');
 
     this.fromToForm= this.fb.group({
       from: [],

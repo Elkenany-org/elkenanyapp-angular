@@ -356,3 +356,34 @@ background-color: #FFBB33 !important;
   left: auto;
 }
 
+@media (min-width: 1400px){
+  .landing .container , .about .container{
+      max-width: 1320px;
+  }
+  }
+
+
+  .most .slick-prev:before,.most .slick-next:before {
+    font-size: 30px;
+    background: #efe9e9;
+    padding-top: 8rem;
+    color: var(--yellow);
+    padding-bottom: 8rem;
+    border-radius: 10px;
+    padding-left: 0.8rem;
+    font-family: monospace;
+    padding-right: 0.8rem;  
+    // content: "→";
+
+  }
+
+ .most .slick-next:before {
+
+  margin-left: -1rem;
+
+  }
+
+  .most .slick-prev:before{
+    margin-left: 1rem;
+
+  }

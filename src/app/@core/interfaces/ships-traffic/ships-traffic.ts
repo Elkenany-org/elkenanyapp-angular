@@ -19,7 +19,7 @@ export const ship_traffic_Search_Form: JsonFormData  =
         }
       },
       {
-        name: "احصائيات",
+        name: "إحصائيات",
         label: "Size",
         class:"stats__btn",
         role:"statistics",

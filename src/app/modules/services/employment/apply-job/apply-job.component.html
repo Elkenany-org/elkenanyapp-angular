@@ -6,12 +6,12 @@
                       <div class="ads__holder">
                           <div class="head p-4 d-flex flex-sm-row flex-column justify-content-between align-items-sm-center align-items-start">
                               <h2 class="main-title mb-sm-0 mb-3"> {{pageName}}</h2>
-                              <a routerLink="/الوظائف/job-details/{{job_id}}" class="job-info d-block p-2">تفاصيل الوظيفة</a>
+                              <a routerLink="/الوظائف/تفاصيل-الوظيفة/{{job_id}}" class="job-info d-block p-2">تفاصيل الوظيفة</a>
                           </div>
                           <div class="job-head py-4 px-5 d-flex justify-content-between">
                                   <div class="texts">
                                       <p class="mb-3">مصمم جرافيك</p>
-                                      <p style="color: #9e9e9e;">من فضلك اجب على الأسئلة التالية</p>
+                                      <p style="color: #9e9e9e;">من فضلك أجب على الأسئلة التالية</p>
                                   </div>
                                   <!-- <div class="img">
                                       <img src="images/logo.jpg" alt="">
@@ -92,10 +92,10 @@
                               </div>
                               <!-- <a class="submit" >إضافة الإعلان</a> -->
                               <button class="submit px-5 py-1 ms-3" mat-raised-button type="submit" (click)="onSubmit()">
-                                  ارسال الاستمارة
+                                إرسال الاستمارة
                               </button>
                               <button class="cancel px-4 py-1 d-inline-flex align-items-center" routerLink="/employment">
-                                  الغاء
+                                  إلغاء
                                   <i class="fa-solid fa-arrow-left me-2"></i>
                               </button>
                           </form>
@@ -164,7 +164,7 @@
                 class="submit"
                 mat-raised-button
                 type="submit" (click)="onSubmit()">
-                ارسال
+                إرسال
               </button>
             </form>
         </div>

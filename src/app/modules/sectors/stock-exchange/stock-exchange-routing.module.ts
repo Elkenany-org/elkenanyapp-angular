@@ -24,12 +24,12 @@ const routes: Routes = [
     }
   },
   // {
-  //   path: 'comparison/:id',
+  //   path: 'مقارنة/:id',
   //   component:ComparisonComponent
       
   // },
   {
-    path:"statistics",
+    path:"إحصائيات",
     loadChildren: () => 
     import('./statistics-module/statistics.module').then((m) => m.StockExchangeModule)
   },
