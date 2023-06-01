@@ -1,0 +1,230 @@
+<div class="header sticky-top d-none d-lg-block">
+    <div class="container d-flex justify-content-between">
+        <div class="img py-2">
+            <img src="assets/images/drlogo2.png" alt="">
+        </div>
+        <ul class="list-unstyled d-flex gx-3 m-0">
+            <li *ngFor="let item of navigationItems" [class.active]="item.isActive" (click)="setActive(item)" >
+              {{ item.label }}
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div class="header-2 sticky-top d-block d-lg-none">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="img py-2">
+            <img src="assets/images/drlogo2.png" alt="">
+        </div>
+        <div class="menu-icon d-flex flex-column justify-content-center align-items-end">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="dpn">
+        <ul class="list-unstyled m-0">
+            <li class="active" id="landing">home</li>
+            <li id="about">about</li>
+            <li id="history">Founder Of</li>
+            <li id="business">Achievements & Awards</li>
+            <li id="contact">contact</li>
+        </ul>
+    </div>
+</div>
+<div class="landing pt-md-0 pt-4 section" #home>
+    <div class="container h-100">
+        <div class="row justify-content-between align-items-center h-100">
+            <div class="content col-md-7 text-md-start text-center mb-md-0 mb-4">
+                <h1 class="mb-3">Dr.Gamal Mahmoud Taha EL-Kenany</h1>
+                <p class="mb-3 mx-md-0 mx-auto">Chairman at El-Kenany Group for Industry & Investment.</p>
+                <a href="#" class="d-inline-block px-4 py-2">Know more</a>
+            </div>
+            <div class="img col-md-5 h-100">
+                <img src="assets/images/drgamal2.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about py-5 section" #about>
+    <div class="container">
+        <div class="row justify-content-lg-evenly justify-content-md-between px-md-0 px-3">
+            <div class="imgs col-lg-4 col-md-5 mb-md-0 mb-4">
+                <img src="assets/images/drgamal1.png" alt="">
+                <img src="assets/images/drgamal2.jpg" alt="">
+            </div>
+            <div class="content col-md-6">
+                <h2 class="mb-3">About Gamal El-Kenany</h2>
+                <p class="text-black-50 fs-5">Chairman at El-Kenany Group for Industry & Investment, El-Kenany Application, GMT Advertising Agency, STARLIGHT International Trading Company.
+
+                    He has a Bachelor Degree of Veterinary Medicine and General Surgery, El-Mansoura University year 2008 – 2009.
+                    
+                    Gamal El-Kenany is an Egyptian passionate entrepreneur takes most of the risk and initiative for his new businesses trying to serve the Egyptian market & the middle east as he considered a major player in the Egyptian market today.
+                    
+                    His success started from believing in his dream by spent time, make efforts, and working so hard to pursuit, with his long-standing expertise through his launch of the businesses that supports small, and medium enterprises in Egypt.
+                    
+                    Due to his believing in his role in the social responsibilities, he initiates to participate as Vice Chairman of Agriculture Committee in Arab Women Investors Union, Member of the Egyptian Technical Analysts Association.</p>
+                <!-- <p class="text-black-50">I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine .</p> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="history pt-2 section" #history>
+    <img class="bg" src="images/Group 692.png" alt="">
+    <div class="container">
+        <h2 class="text-center mb-3">Founder Of</h2>
+        <div class="content pb-4">
+            <div class="row justify-content-between">
+                <div class="left col-md-5">
+                    <div class="img mb-3">
+                        <img class="img-fluid" src="assets/images/history-app.jpg" alt="">
+                    </div>
+                    <span class="d-block text-center py-2 mb-3">2018</span>
+                    <h3 class="mb-2 ">Elkenany APP</h3>
+                    <p class="mb-3">
+                       
+                        The second step DR. Gamal El-Kenany have taken is provide  Elkenany Application to the market, the first and most significant Integrated service application in Egypt & The Middle East provides many digital services as: 
+                        Stock Market - Companies Guide - Tenders - Ship Movement - News - The Market - Exhibitions - Magazine.
+                    </p>
+                    <div class="img mb-3">
+                        <img class="img-fluid" src="assets/images/history-starlight.jpg" alt="">
+                    </div>
+                    <span class="d-block text-center py-2 mb-3">2023</span>
+                    <h3 class="mb-2 ">STARLIGHT</h3>
+                    <p class="mb-md-3 mb-0">
+                        The last but not least established STARLIGHT INTERNATIONAL TRADING COMPANY L.L.C START-UP company in Dubai in 2023, for Consistent efforts towards “Importing & exporting and general trading” to be one of the Important mena market leaders in the trading field & around the world.
+                    </p>
+                </div>
+                <div class="right col-md-5 mt-md-0 mt-">
+                    <span class="d-block text-center py-2 mb-3">2010</span>
+                    <div class="img mb-3">
+                        <img class="img-fluid" src="assets/images/history-elkenanygroup.jpg" alt="">
+                    </div>
+                    <!-- <p class="mb-3">I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine .</p> -->
+                     <h3 class="mb-2 ">El-Kenany Group</h3>
+                    <p class="mb-3">
+                       
+                        When DR. Gamal El-Kenany founded Elkenany Group in 2010, the main goal was to be the first choice as an Importer & Distributor for Commodities with high quality in the market also it is the holding company acts as umbrella where other companies fall under it.
+                    </p>
+                    <span class="d-block text-center py-2 mb-3">2020</span> 
+                    <h3 class="mb-2">GMT Advertising Agency</h3>
+                    <p class="mb-3">
+                       
+                        After that DR. Gamal El-Kenany pursue to Create an independent advertising agency in Egypt to serve Egypt & The Middle East market, providing the service through high level of capabilities & skills, combined with creativity to become an incredibly powerful services that make a difference to our client’s business and their consumers.
+                    </p>
+                    <!-- <p class="mb-3">I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine I'm Dr Gamal Elkenany chairman of the board of elkenany group graduated from the college of veterinary medicine .</p> -->
+                    <div class="img mb-3">
+                        <img class="img-fluid" src="assets/images/history-gmt.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="business py-5 section" >
+    <div class="container">
+        <div class="gridy">
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/Untitled-1.png" alt="">
+                </div>
+            </div>
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/Untitled-2.png" alt="">
+                </div>
+            </div>
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/Untitled-3.png" alt="">
+                </div>
+            </div>
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/Untitled-4.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="business py-5 section" #business>
+    <div class="container">
+        <h2 class="text-center mb-3">Achievements & Awards</h2>
+        <div class="gridy">
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/employment.jpg" alt="">
+                </div>
+                <div class="text px-2 py-3 mt-3">
+                    <p class="mb-0 ">Received the integrated training program to deepen the idea of self-employment</p>
+                </div>
+            </div>
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/poultry.jpg" alt="">
+                </div>
+                <div class="text px-2 py-3 mt-3">
+                    <p class="mb-0 ">Qualification of veterinarian to work in poultry breeding farms</p>
+                </div>
+            </div>
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/trade.jpg" alt="">
+                </div>
+                <div class="text px-2 py-3 mt-3">
+                    <p class="mb-0 ">Certification of a course in the foundations of successful trading with China</p>
+                </div>
+            </div>
+            <div class="g-item">
+                <div class="img">
+                    <img class="img-fluid" src="assets/images/contract.jpg" alt="">
+                </div>
+                <div class="text px-2 py-3 mt-3">
+                    <p class="mb-0 ">Passed the arbitration program of investment disputes and drafting legal contracts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer contact py-5 section" #contact>
+    <div class="container">
+        <div class="gridy">
+            <div class="g-item">
+                <div class="img d-flex justify-content-center">
+                    <img src="images/Group 79.png" alt="">
+                </div>
+                <p class="my-3">© 2023 by Gamal El-Kenany. All rights reserved.</p>
+                <div class="d-flex fs-5 fw-bold">
+                    Follow Me:
+                    <div class="links ms-3">
+                        <a class="me-3" href=""><i class="fa-brands fa-facebook-f"></i></a>
+                        <a class="me-3" href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a class="me-3" href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="g-item">
+                <h3 class="mb-3">Contact Us</h3>
+                <p>Email: dr.gamal@elkenanygroup.com</p>
+            </div>
+            <div class="g-item">
+                <h3 class="mb-3">Get In Touch</h3>
+                <form>
+                    <div class="inputs d-flex mb-3">
+                        <input class="w-50 p-2" type="text" placeholder="Your Name">
+                        <input class="w-50 p-2" type="text" placeholder="Your Email">
+                    </div>
+                    <input type="text" class="w-100 p-2 mb-3" placeholder="Your Message">
+                    <input class="submit py-2 px-4" type="submit" value="Send Message">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyrights py-3">
+    <p class="text-center text-black-50 m-0">© 2024 by Dr gamal elkenany. All rights .reserved</p>
+</div>

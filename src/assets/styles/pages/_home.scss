@@ -8,8 +8,8 @@
 .home__page__container {
   direction: rtl;
   width: 100vw;
-  height: 450px;
-  min-height: 450px;
+  height: 352px;
+  min-height: 352px;
   margin-top: 0;
   position: relative;
   z-index: 1;
@@ -37,7 +37,7 @@
 
     .item {
       height: 40vh;
-      min-height: 450px;
+      min-height: 352px;
       width: 100%;
       @media (min-width: 768px) and (max-width: 990px) {
         height: 300px;

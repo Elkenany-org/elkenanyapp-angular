@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShipsTrafficResolver } from './@core/resolver/ships-traffic/ships-traffic-resolver.service';
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
@@ -13,6 +13,7 @@ import { ContactUsComponent } from './modules/static-pages/contact-us/contact-us
 import { PrivacyPolicyComponent } from './modules/static-pages/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './modules/static-pages/terms-and-conditions/terms-and-conditions.component';
 import { QuestionsComponent } from './modules/static-pages/questions/questions.component';
+import { DrGamalComponent } from './modules/dr-gamal/dr-gamal.component';
 
 const routes: Routes = [
   {
@@ -158,6 +159,10 @@ const routes: Routes = [
     {
       path: 'company-profile',
       component: LinktreeComponent,
+    },
+    {
+      path:'Gamal-Elkenany',
+      component: DrGamalComponent,
     },
     {
       path: 'القسم-الخدمي',
