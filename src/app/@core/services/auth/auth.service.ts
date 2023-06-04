@@ -38,39 +38,9 @@ export class AuthService {
     public afAuth: AngularFireAuth
 
   ) {
-    // this.profileUser();
-    // gapi.load('auth2', () => {
-    //   this.auth2 = gapi.auth2.init({
-    //     client_id:'804758451233-ar5o87feftpucm7mqpn1msf0go9haa3k.apps.googleusercontent.com'
-    //   })
-    // })
+
   }
 
-
-  // public signIn() {
-  //   this.auth2?.signIn({
-  //     scope: 'https://www.googleapis.com/auth/gmail.readonly'
-  //   }).then( user => {
-  //     console.log(user);
-      
-  //     this.subject.next(user)
-  //   }).catch(() => {
-  //     console.log('h');
-  //     this.subject.next(null)
-
-  //   })
-  // }
-
-  // public signOut2 () {
-  //   this.auth2?.signOut()
-  //   .then( ()=> {
-  //     this.subject.next(null)
-  //   })
-  // }
-
-  // public observable() {
-  //   return this.subject.asObservable()
-  // }
 
 
   GoogleAuth() {

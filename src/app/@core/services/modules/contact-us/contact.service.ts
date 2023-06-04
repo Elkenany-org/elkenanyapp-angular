@@ -17,4 +17,7 @@ export class ContactService {
   contactUs( formData: FormData ):Observable<ApiResponse<any>> {
     return this.http.post<ApiResponse<any>>(`${env.ApiUrl}/contuct-us`, formData)
   }
+  sendMessage( formData: FormData ):Observable<ApiResponse<any>> {
+    return this.http.post<ApiResponse<any>>(`${env.ApiUrl}/send-message`, formData)
+  }
 }

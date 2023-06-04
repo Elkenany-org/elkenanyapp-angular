@@ -1,47 +1,50 @@
-<div class="header sticky-top d-none d-lg-block">
+
+<div class="header sticky-top d-none d-md-block">
     <div class="container d-flex justify-content-between">
         <div class="img py-2">
             <img src="assets/images/drlogo2.png" alt="">
         </div>
         <ul class="list-unstyled d-flex gx-3 m-0">
-            <li *ngFor="let item of navigationItems" [class.active]="item.isActive" (click)="setActive(item)" >
+            <li *ngFor="let item of navigationItems1" [class.active]="item.isActive" (click)="setActive(item)" >
               {{ item.label }}
             </li>
         </ul>
 
     </div>
 </div>
-<div class="header-2 sticky-top d-block d-lg-none">
-    <div class="container d-flex justify-content-between align-items-center">
+<div class="header-2 sticky-top d-block d-md-none "  >
+    <div class="container d-flex justify-content-between align-items-center px-4">
         <div class="img py-2">
             <img src="assets/images/drlogo2.png" alt="">
         </div>
-        <div class="menu-icon d-flex flex-column justify-content-center align-items-end">
+        <div class="menu-icon d-flex flex-column justify-content-center align-items-end" (click)="toggleHeader()" >
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
-    <div class="dpn">
+    <div class="dpn d-flex justify-content-around" >
+        <div class="img py-2">
+            <img src="assets/images/drlogo2.png" alt="">
+        </div>
         <ul class="list-unstyled m-0">
-            <li class="active" id="landing">home</li>
-            <li id="about">about</li>
-            <li id="history">Founder Of</li>
-            <li id="business">Achievements & Awards</li>
-            <li id="contact">contact</li>
+            <li *ngFor="let item of navigationItems2" [class.active]="item.isActive" (click)="setActive(item)" >
+              {{ item.label }}
+            </li>
         </ul>
     </div>
 </div>
 <div class="landing pt-md-0 pt-4 section" #home>
     <div class="container h-100">
         <div class="row justify-content-between align-items-center h-100">
-            <div class="content col-md-7 text-md-start text-center mb-md-0 mb-4">
+            <div class="content col-md-7 text-md-start text-center mb-md-0 mb-4  px-4 px-md-0">
                 <h1 class="mb-3">Dr.Gamal Mahmoud Taha EL-Kenany</h1>
-                <p class="mb-3 mx-md-0 mx-auto">Chairman at El-Kenany Group for Industry & Investment.</p>
-                <a href="#" class="d-inline-block px-4 py-2">Know more</a>
+                <p class="mb-3 mx-md-0 ">Chairman at El-Kenany Group for Industry & Investment.</p>
+                <a (click)="setActive({ label: 'about', isActive: true ,offset:0})" class="d-inline-block px-4 py-2">Know more</a>
             </div>
             <div class="img col-md-5 h-100">
-                <img src="assets/images/drgamal2.png" alt="">
+                <img class="d-block d-md-none d-lg-block" src="assets/images/drgamal2.png" alt="">
+                <img class="d-md-block d-none d-lg-none" src="assets/images/drgamal3.png" alt="">
             </div>
         </div>
     </div>
@@ -50,7 +53,7 @@
     <div class="container">
         <div class="row justify-content-lg-evenly justify-content-md-between px-md-0 px-3">
             <div class="imgs col-lg-4 col-md-5 mb-md-0 mb-4">
-                <img src="assets/images/drgamal1.png" alt="">
+                <img src="assets/images/drgamal4.jpg" alt="">
                 <img src="assets/images/drgamal2.jpg" alt="">
             </div>
             <div class="content col-md-6">
@@ -74,8 +77,8 @@
     <div class="container">
         <h2 class="text-center mb-3">Founder Of</h2>
         <div class="content pb-4">
-            <div class="row justify-content-between">
-                <div class="left col-md-5">
+            <div class="row px-md-0 px-3 justify-content-between">
+                <div class="left p-0 col-md-5">
                     <div class="img mb-3">
                         <img class="img-fluid" src="assets/images/history-app.jpg" alt="">
                     </div>
@@ -95,7 +98,7 @@
                         The last but not least established STARLIGHT INTERNATIONAL TRADING COMPANY L.L.C START-UP company in Dubai in 2023, for Consistent efforts towards “Importing & exporting and general trading” to be one of the Important mena market leaders in the trading field & around the world.
                     </p>
                 </div>
-                <div class="right col-md-5 mt-md-0 mt-">
+                <div class="right p-0 col-md-5 mt-md-0 mt-">
                     <span class="d-block text-center py-2 mb-3">2010</span>
                     <div class="img mb-3">
                         <img class="img-fluid" src="assets/images/history-elkenanygroup.jpg" alt="">
@@ -194,18 +197,19 @@
         <div class="gridy">
             <div class="g-item">
                 <div class="img d-flex justify-content-center">
-                    <img src="images/Group 79.png" alt="">
+                    <img src="assets/images/drlogo2.png" alt="">
                 </div>
-                <p class="my-3">© 2023 by Gamal El-Kenany. All rights reserved.</p>
-                <div class="d-flex fs-5 fw-bold">
+                
+                <div class="d-flex fs-5 fw-bold pt-2">
                     Follow Me:
                     <div class="links ms-3">
-                        <a class="me-3" href=""><i class="fa-brands fa-facebook-f"></i></a>
-                        <a class="me-3" href=""><i class="fa-brands fa-instagram"></i></a>
-                        <a class="me-3" href=""><i class="fa-brands fa-twitter"></i></a>
-                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a class="me-3" href="https://www.facebook.com/Gamal.Elkenany/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a class="me-3" href="https://www.instagram.com/dr.gamal_elkenany/?fbclid=IwAR2VhMvSDnFG0pbJvcU2Q0bL9nteCz2_wl8HbdCptewjHQNIwvKpaFTTopQ" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a class="me-3" href="https://twitter.com/GamalElkenany?fbclid=IwAR0E20FLNBQmEOB7ly7PNDinbSo6fyY5e0SHRKNYFViCrfGBXTJq2ifNDbc" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/Dr.%20Gamal%20ElKenany?fbclid=IwAR1Jzx6TPAOqFLNUR8eC8F6pMBfBYR5wq3zJdU4VPdQx79b2IfQVqpCgIe0" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
+                <p class="my-3">© 2023 by Gamal El-Kenany All rights reserved.</p>
             </div>
             <div class="g-item">
                 <h3 class="mb-3">Contact Us</h3>
@@ -213,12 +217,12 @@
             </div>
             <div class="g-item">
                 <h3 class="mb-3">Get In Touch</h3>
-                <form>
+                <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
                     <div class="inputs d-flex mb-3">
-                        <input class="w-50 p-2" type="text" placeholder="Your Name">
-                        <input class="w-50 p-2" type="text" placeholder="Your Email">
+                        <input class="w-50 p-2" type="text" placeholder="Your Name" formControlName="name">
+                        <input class="w-50 p-2" type="text" placeholder="Your Email" formControlName="email">
                     </div>
-                    <input type="text" class="w-100 p-2 mb-3" placeholder="Your Message">
+                    <input type="text" class="w-100 p-2 mb-3" placeholder="Your Message" formControlName="message">
                     <input class="submit py-2 px-4" type="submit" value="Send Message">
                 </form>
             </div>
@@ -226,5 +230,5 @@
     </div>
 </div>
 <div class="copyrights py-3">
-    <p class="text-center text-black-50 m-0">© 2024 by Dr gamal elkenany. All rights .reserved</p>
+    <p class="text-center text-black-50 m-0">.© 2024 by Dr gamal elkenany All rights reserved</p>
 </div>
