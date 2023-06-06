@@ -105,7 +105,7 @@ export class DrGamalComponent implements OnInit {
         this.scroll.scrollToPosition([0,1075+item.offset]);
       }
       else if(item.label=='Achievements & Awards'){
-        this.scroll.scrollToPosition([0,2604+item.offset]);
+        this.scroll.scrollToPosition([0,2404+item.offset]);
 
       }
       else if(item.label=='contact'){
