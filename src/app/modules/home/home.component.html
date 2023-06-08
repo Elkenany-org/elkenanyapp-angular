@@ -11,7 +11,7 @@
                 </h3>
                 <p>بيع واشتري منتجاتك من خلال أكبر سوق الكتروني</p>
             </div>
-            <a class="d-block link" routetLink="/market/0">ابدأ معنا</a>
+            <a class="d-block link" [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }">ابدأ معنا</a>
         </div>
     </div>
 </div>
@@ -74,7 +74,7 @@
             </div>  
             
             <div class="iphone-img col-md-6 d-none d-md-block  ">
-                <img class="" src="assets\images\home\app1.png" alt="">
+                <img class="" src="assets\images\app2.png" alt="">
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
 
 
 <div class="d-block d-md-none small-img">
-    <img class="" src="assets\images\home\app.png"  alt="">
+    <img class="" src="assets\images\app2.png"  alt="">
 </div>
 
 
@@ -105,7 +105,7 @@
     <h1 class="elknany__title">أول واكبر منصة <br> خدمات الكرتونية متكاملة</h1>
 
     <div class="row m-auto justify-content-center kenany-desc" >
-                <div class=" col-12 col-md-6 col-lg-5 col-xl-4 px-5 p-md-0 mt-md-5"  >
+                <div class=" col-12 col-md-6 col-lg-5 col-xl-4 px-5 p-md-0 "  >
                     <h1 >عن الكناني </h1>
                     
 
@@ -123,7 +123,17 @@
                 <div class=" col-0 col-md-1 col-lg-1 col-xl-1" ></div>
                 <div class=" col-10 col-md-4 col-lg-4 col-xl-4 px-lg-5 p-md-0">
                     <div class="video my-5 my-xs-1 ">
-                        <iframe src="https://www.youtube.com/embed/-n9fo7jUMa0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <!-- <iframe src="https://www.youtube.com/embed/f4qIphcwE3Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+                        <!-- <iframe src="https://www.youtube.com/embed/Ca6yMVeZHC0"
+                        title="YouTube video player"
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+     -->
+                        <iframe width="315" height="560"
+src="https://www.youtube.com/embed/Ca6yMVeZHC0"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
                     </div>
                 </div>
     </div>

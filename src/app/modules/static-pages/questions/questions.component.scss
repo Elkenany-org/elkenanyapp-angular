@@ -4,4 +4,35 @@ img{
 }
 p{
     font: normal normal normal 18px/30px beIN Normal;
+    color:#737373;
+}
+
+h2{
+    color: var(--green);
+}
+
+a{
+    text-decoration: none;
+}
+.card{
+    background: #FFFFFF ;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #E8E8E8;
+    border-radius: 16px;
+}
+.card-header{
+    background: #FFFFFF ;
+    border-top: 1px solid #E8E8E8;
+    border-radius: 16px;
+    border-bottom: none;
+}
+.card-body{
+    border-top: 1px solid #E8E8E8;
+}
+.card{
+    margin-bottom: 1rem !important;
+}
+
+img{
+    width:75% ;
 }

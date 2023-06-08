@@ -98,7 +98,7 @@
                     <div class="dpn-list">
                         <div class="list-container d-flex flex-column">
                             
-                            <a [routerLink]="['الأكاديمية']" class="list-item px-4 py-2 d-xxl-none">
+                            <!-- <a [routerLink]="['الأكاديمية']" class="list-item px-4 py-2 d-xxl-none">
                                 <i class="fa-solid fa-chalkboard-user"></i>
                                 <span class="d-block ">الاكاديمية</span>
                             </a>
@@ -106,16 +106,22 @@
                             <a [routerLink]="['الاستشاريين']" class="list-item px-4 py-2 d-xxl-none">
                                 <i class="fa-solid fa-phone-volume"></i>
                                 <span class="d-block ">الاستشاريين</span>
+                            </a> -->
+
+                            <a [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2 d-xxl-none">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                السوق
                             </a>
+                            <a [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2 d-xxl-none">
+                                <i class="fa-solid fa-gavel"></i>
+                                المناقصات
+                            </a>    
 
                             <a [routerLink]="['/news/0']" [queryParams]="{sort:1, page: 0 }" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-newspaper"></i>
                                 الاخبار
                             </a>
-                            <a [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                السوق
-                            </a>
+
                             <a [routerLink]="['/ships-traffic']" class="list-item px-4 py-2">
                                 <i class="fa-solid fa-ship"></i>
                                 حركة السفن
@@ -128,10 +134,7 @@
                                 <i class="fa-solid fa-book"></i>
                                 دلائل ومجلات
                             </a>
-                            <a [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
-                                <i class="fa-solid fa-gavel"></i>
-                                المناقصات
-                            </a>       
+  
                             
 
 
@@ -152,9 +155,16 @@
                         </div>
                     </div>
                 </div>
-                <a [routerLink]="['الاستشاريين']" class="nav-item py-3 px-xxl-2  d-none d-xxl-block"> الاستشاريين</a>
-                <a [routerLink]="['الأكاديمية']" class="nav-item py-3 px-xxl-2 d-none d-xxl-block">الأكاديمية</a>
-
+                <!-- <a [routerLink]="['الاستشاريين']" class="nav-item py-3 px-xxl-2  d-none d-xxl-block"> الاستشاريين</a>
+                <a [routerLink]="['الأكاديمية']" class="nav-item py-3 px-xxl-2 d-none d-xxl-block">الأكاديمية</a> -->
+                <a [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" class="nav-item py-3 px-xxl-2  d-none d-xxl-block">
+                    <!-- <i class="fa-solid fa-cart-shopping"></i> -->
+                    السوق
+                </a>
+                <a [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" class="nav-item py-3 px-xxl-2  d-none d-xxl-block">
+                    <!-- <i class="fa-solid fa-gavel"></i> -->
+                    المناقصات
+                </a>     
                 <a [routerLink]="['/companies-guide/0']" class="nav-item py-3 px-xxl-2">دليل الشركات</a>
                 <a [routerLink]="['/البورصة/0']" class="nav-item py-3 px-xxl-2">البورصة اليومية</a>
                 <div class="search-box py-3 px-xxl-2" style="display: inline-flex;">
@@ -210,8 +220,16 @@
 
             <a [routerLink]="['/البورصة/0']" class="nav-item px-3 py-2">البورصة اليومية</a>  
             <a [routerLink]="['/companies-guide/0']" class="nav-item px-3 py-2">دليل الشركات</a>
-            <a [routerLink]="['الاستشاريين']" class="nav-item px-3 py-2">الاستشاريين</a>
-            <a [routerLink]="['الأكاديمية']" class="nav-item px-3 py-2">الأكاديمية</a>
+            <!-- <a [routerLink]="['الاستشاريين']" class="nav-item px-3 py-2">الاستشاريين</a>
+            <a [routerLink]="['الأكاديمية']" class="nav-item px-3 py-2">الأكاديمية</a> -->
+            <a [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" class="nav-item px-3 py-2">
+                <!-- <i class="fa-solid fa-gavel"></i> -->
+                المناقصات
+            </a>
+            <a [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" class="nav-item px-3 py-2">
+                <!-- <i class="fa-solid fa-cart-shopping"></i> -->
+                السوق
+            </a>
             <div class="dpn" >
                 <div class="dpn-list nav-item px-3 py-1" (click)="toggledropinsidebar()" href="#" >
                     المزيد من الخدمات
@@ -223,10 +241,7 @@
                             <i class="fa-solid fa-newspaper"></i>
                             الاخبار
                         </a>
-                        <a [routerLink]="['/market/0']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            السوق
-                        </a>
+
                         <a [routerLink]="['/ships-traffic']" class="list-item px-4 py-2">
                             <i class="fa-solid fa-ship"></i>
                             حركة السفن
@@ -239,10 +254,7 @@
                             <i class="fa-solid fa-book"></i>
                             دلائل ومجلات
                         </a>
-                        <a [routerLink]="['/tenders']" [queryParams]="{ sort:'', page: 1 }" class="list-item px-4 py-2">
-                            <i class="fa-solid fa-gavel"></i>
-                            المناقصات
-                        </a>
+ 
                         <a [routerLink]="['/الوظائف']" class="list-item px-4 py-2"><i class="fa-solid fa-briefcase"></i>الوظائف</a>
 
                         <a [routerLink]="['/service-section/6']" [queryParams]="{page: 1,sub:180 }" class="list-item px-4 py-2">

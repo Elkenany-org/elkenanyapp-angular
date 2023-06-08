@@ -50,7 +50,7 @@ this.home.Home().subscribe( res => {
   // this.carousel_banner = res.banner
 
   this.BannerLogoService.setBanner(res.services);
-  this.BannerLogoService.setLogo(res.banner);
+  this.BannerLogoService.setLogo(res.logos);
   this.BannerLogoService.setMostVisited(res.most_visited);//attribute will replaces with another response when
   this.BannerLogoService.setNewestServices(res.newest);
   this.BannerLogoService.setHowtouse(res.howtouse);
