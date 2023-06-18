@@ -15,7 +15,6 @@ import {
   SocialAuthService,
   GoogleLoginProvider,
 } from 'angularx-social-login';
-import { TestComponent } from './test/test.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -33,13 +32,12 @@ initializeApp(environment.firebase);
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
     LinktreeComponent,
     QuestionsComponent,
     DrGamalComponent,
   ],
   imports: [
-  BrowserModule,
+  BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     CollapseModule.forRoot(), BsDropdownModule.forRoot(),
     CoreModule,
@@ -71,7 +69,7 @@ initializeApp(environment.firebase);
 
     SocialAuthService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    // {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,6 @@ import { ShipsTrafficResolver } from './@core/resolver/ships-traffic/ships-traff
 import { NotFoundComponent } from './@shared/pages/not-found/not-found.component';
 import { NewsHomeResolver } from './@core/resolver/news/news-home-resolver.service';
 import { AuthGuardService } from './@core/guards/auth.guard';
-import { TestComponent } from './test/test.component';
 import { TendersHomeResolver } from './@core/resolver/tenders/tenders-home.resolver.service';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
 import { ComparisonComponent } from './modules/sectors/stock-exchange/comparison/comparison.component';
@@ -15,6 +14,7 @@ import { TermsAndConditionsComponent } from './modules/static-pages/terms-and-co
 import { QuestionsComponent } from './modules/static-pages/questions/questions.component';
 import { DrGamalComponent } from './modules/dr-gamal/dr-gamal.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -22,9 +22,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 {
-  path: "callbak",
-  component:TestComponent
-},{
   path: 'payment',
   loadChildren: () => 
   import('./modules/payment/payment.module').then((m)=>m.PaymentModule),
@@ -187,7 +184,7 @@ const routes: Routes = [
 
 @NgModule({
   // imports: [RouterModule.forRoot(routes,{useHash: true})],
-  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'enabled'})],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', initialNavigation: 'enabledBlocking' })],
 
 exports: [RouterModule]
 })
