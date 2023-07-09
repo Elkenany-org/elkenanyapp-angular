@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from './@core/core.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,14 +17,12 @@ import {
 } from 'angularx-social-login';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from 'environments/environment';
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import { SharedModule } from './@shared/shared.module';
 import { LinktreeComponent } from './modules/linktree/linktree.component';
 import { QuestionsComponent } from './modules/static-pages/questions/questions.component';
 import { DrGamalComponent } from './modules/dr-gamal/dr-gamal.component';
-
 
 initializeApp(environment.firebase);
 
@@ -37,9 +35,10 @@ initializeApp(environment.firebase);
     DrGamalComponent,
   ],
   imports: [
-  BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    CollapseModule.forRoot(), BsDropdownModule.forRoot(),
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
     CoreModule,
     SharedModule,
   ],
@@ -57,20 +56,23 @@ initializeApp(environment.firebase);
           },
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com'),
-            plugin_name:'google login project1'
-
+            provider: new GoogleLoginProvider(
+              '552649577410-qs09ipcibvdfcfd97phi3drru3qufis0.apps.googleusercontent.com'
+            ),
+            plugin_name: 'google login project1',
           },
-        ],onError:(err) => {
+        ],
+        onError: (err) => {
           // console.log(err)
-        }
+        },
       } as SocialAuthServiceConfig,
     },
 
     SocialAuthService,
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    // { provide: LocationStrategy, useClass: PathLocationStrategy },
     // {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
