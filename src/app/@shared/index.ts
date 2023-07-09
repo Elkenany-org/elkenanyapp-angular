@@ -15,6 +15,7 @@ import { NavigationComponent } from "./components/app/navigation/navigation.comp
 import { NoDataComponent } from './pages/no-data/no-data.component';
 import { ShortDatePipe } from './pipes/short-date.pipe';
 import { GalleryCarouelComponent } from './components/gallery-carouel/gallery-carouel.component';
+import { PopupComponent } from "./components/app/popup/popup.component";
 
 
 export  const pipes: any[] = [
@@ -38,5 +39,5 @@ export  const components: any[] = [
     NavigationComponent,
     BannerLogosComponent,
     NoDataComponent,
-    GalleryCarouelComponent
+    GalleryCarouelComponent,
 ];

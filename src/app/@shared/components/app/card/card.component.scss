@@ -41,6 +41,9 @@ a{
   box-shadow: inset 0px 3px 6px #00000029, 0px 3px 6px #00000029;
   border-radius: 16px;
   opacity: 1;
+  h5{
+      min-height: 50px;
+  }
 }
 .card:hover {
   transform: scale(1.1);

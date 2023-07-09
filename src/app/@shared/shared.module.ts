@@ -13,6 +13,7 @@ import { GalleryModule as GalleryModule3 } from '@bmangesh/angular-image-gallery
 import { environment as env} from '../../environments/environment'
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+// import { PopupComponent } from './components/app/popup/popup.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
   declarations: [
     ...Shared.pipes,
     ...Shared.components,
+    // PopupComponent,
 
 
 

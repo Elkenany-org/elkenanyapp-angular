@@ -30,6 +30,8 @@ export interface AllNews { //for news and tenders
     image: string
     desc: string
     created_at: string
+    date:string
+    time:string
     news: News[]
   }
   

@@ -46,7 +46,7 @@
                 <section class="title-box">
                     <h2 class="title">{{typeAr}}</h2>
                     <!-- <span class="sections-number">{{     (Companies?.data?.length || 1) *page.last_page}} شركة</span> -->
-                    <span class="sections-number" *ngIf="page.last_page > 1">{{     ((10) * (page.last_page-1) ) + comLength}} شركة</span>
+                    <span class="sections-number" *ngIf="page.last_page > 1">{{     ((12) * (page.last_page-1) ) + comLength}} شركة</span>
                     <span class="sections-number" *ngIf="page.last_page == 1">{{Companies?.data?.length}} شركة</span>
 
                 </section>

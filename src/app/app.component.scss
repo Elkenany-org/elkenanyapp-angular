@@ -46,3 +46,17 @@ nav i {
   a{
     cursor: pointer!important;
 }
+
+/* Media Query for Phone View */
+@media only screen and (max-width: 767px) {
+  app-popup {
+    display: block ;
+  }
+}
+
+/* Media Query for Phone View */
+@media only screen and (min-width: 768px) {
+  app-popup {
+    display: none ;
+  }
+}
