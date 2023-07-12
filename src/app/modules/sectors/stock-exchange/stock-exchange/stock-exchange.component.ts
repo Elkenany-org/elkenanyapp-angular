@@ -62,14 +62,17 @@ export class StockExchangeComponent implements OnInit {
     this.route.params.subscribe((prm:Params) => {
     if( prm['type_stock'] === 'المحلية'){
       this.stock_type='local';
+      this.filterData['type']='local';
     }else 
     if(prm['type_stock'] === 'الأعلاف') {  
       this.stock_type='fodder';
+      this.filterData['type']='fodder';
+
     }
 
     this.search_Filter(prm['id'],prm['type'], this.stock_type)
     this.filterData['stock_id']=prm['id']
-    this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
+    // this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
     this.filterData['stok']=this.stock_type // تاكد منها فيما بعد
     this.filterData['sector']=prm['type']
 

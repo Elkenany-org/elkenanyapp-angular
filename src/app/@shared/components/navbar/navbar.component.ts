@@ -14,6 +14,15 @@ import { NotificationsService } from '@app/@core/services/modules/notifications/
 export class NavbarComponent implements OnInit  {
   // @Output() deviceToken = new EventEmitter<string>();
 
+  // sidebarVisible: boolean = true;
+
+  // @HostListener('window:scroll')
+  // onWindowScroll() {
+  //   this.closeSidebar();
+  // }
+  // closeSidebar() {
+  //   this.sidebarVisible = false;
+  // }
 
   message:any=[];
   notification_ads:any=[]

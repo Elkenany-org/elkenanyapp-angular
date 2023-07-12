@@ -47,9 +47,13 @@
 // }
 .landing .bg .link {
   position: absolute;
-  right: 5%;
-  bottom: 6%;
-  padding: 0.75rem 5.625rem;
+  // right: 5%;
+  // bottom: 6%;
+  // padding: 0.75rem 5.625rem;
+  right: 8%;
+  bottom: 20%;
+  padding: 0.8rem 4.9rem;
+
   border-radius: 10px;
   background-color: white;
   color: var(--green);
@@ -77,7 +81,7 @@
 }
 .home .banner {
   clear: both;
-    object-fit: cover;
+    // object-fit: cover;
   }
   .home header.banner__header .banner {
         border-radius:0px;
@@ -307,7 +311,7 @@ background-color: #FFBB33 !important;
   font-size: 1.2rem;
   background-color: white;
   color: var(--green);
-  border-radius: 10px;
+  border-radius: 25px;
   width: 15.125rem;
   text-align: center;
   box-shadow: 0 0 4px #7e7e7e;

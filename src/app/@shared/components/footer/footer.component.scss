@@ -84,11 +84,20 @@
     border-radius: 50%;
     position: absolute;
     transition: 0.3s;
+    animation: 1.5s linear 0s normal none infinite focuse;
 }
 .footer .footer-icons .footer-icon:hover::before {
     width: 90%;
     height: 90%;
 }
+.copyright__text{
+    color: white;
+    top: 3rem;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .footer::before,
     .footer::after {

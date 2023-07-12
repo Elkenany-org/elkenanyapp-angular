@@ -194,6 +194,14 @@ input{
   padding-bottom: 0px !important;
 }
 
+// .visible {
+//   transform: translateX(0);
+// }
+
+// .hidden {
+//   transform: translateX(-100%);
+// }
+
 // a:hover{
 //   background-color: #F0F0F0;
 //   border-radius: 10px;
@@ -206,7 +214,6 @@ input{
 .container{
   max-width: 75% !important;
 }
-
 
 @media screen and (max-width:1545px) {
 

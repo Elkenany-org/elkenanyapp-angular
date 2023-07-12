@@ -95,6 +95,8 @@
       box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2) inset;
       overflow-y: auto;
       direction: ltr;
+      overflow-x: hidden;
+
       // padding: 0.6rem 0.4rem 0 0.4rem;
     }
 
@@ -111,7 +113,7 @@
       background: #EEEEEE;
       .cell__container {
         text-align: center;
-        padding: 0.5rem;
+        // padding: 0.5rem;
         @include semi-flex(center, center, column, nowrap);
 
         a {
@@ -272,7 +274,7 @@
     .table__head {
       .title {
         font-size: $fs-16;
-        min-height: 4.6rem;
+        min-height: 7rem;
       }
     }
 
@@ -566,7 +568,7 @@
     }
 
     &.table-7 {
-      @include table__resize(14%, 12px);
+      @include table__resize(11%, 12px);
     }
 
     //////////////////////////////////////////////////////////

@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
     ) {}
 
 
+    app?:string
     
 ngOnInit(): void {
 // this.titleService.setTitle('الكناني | الرئيسية');
@@ -48,7 +49,7 @@ this.home.Home().subscribe( res => {
   //  this.carousel_banner.banner = res.banners
   // this.carousel_logos.banner = res.logos
   // this.carousel_banner = res.banner
-
+this.app =res.app[0].image;
   this.BannerLogoService.setBanner(res.services);
   this.BannerLogoService.setLogo(res.logos);
   this.BannerLogoService.setMostVisited(res.most_visited);//attribute will replaces with another response when
