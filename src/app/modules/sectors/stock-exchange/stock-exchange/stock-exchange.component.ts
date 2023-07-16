@@ -62,17 +62,17 @@ export class StockExchangeComponent implements OnInit {
     this.route.params.subscribe((prm:Params) => {
     if( prm['type_stock'] === 'المحلية'){
       this.stock_type='local';
-      this.filterData['type']='local';
+      // this.filterData['type']='local';
     }else 
     if(prm['type_stock'] === 'الأعلاف') {  
       this.stock_type='fodder';
-      this.filterData['type']='fodder';
+      // this.filterData['type']='fodder';
 
     }
 
     this.search_Filter(prm['id'],prm['type'], this.stock_type)
     this.filterData['stock_id']=prm['id']
-    // this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
+    this.filterData['type']=prm['type_stock'] // تاكد منها فيما بعد
     this.filterData['stok']=this.stock_type // تاكد منها فيما بعد
     this.filterData['sector']=prm['type']
 
@@ -108,9 +108,9 @@ export class StockExchangeComponent implements OnInit {
       this.h_search_form.title =   ( type_stock=='local')? res.data?.sub_sections.find(i=> i.id==id)?.name: res.data?.fodder_sub_sections.find(i=> i.id==id)?.name;
       localStorage.setItem('title',this.h_search_form.title)
       this.titleService.setTitle(this.h_search_form.title);
-
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "sector").option = res.data?.sections
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "stock").option =   ( type_stock=='local')? res.data?.sub_sections: res.data?.fodder_sub_sections;
+
       this.h_search_form.controls.find((control:JsonFormControls) => control.role === "statistics").routerLink =   `/البورصة/${this.filterData['sector']}/إحصائيات/${this.filterData['type']}/${id}`;
       if(type_stock !='local'){
               this.h_search_form.controls.find((control:JsonFormControls) => control.role === "comparison").routerLink =   `/مقارنة/${id}`;

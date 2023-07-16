@@ -54,7 +54,6 @@ export class StatisticsMembersComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.h_search_form = Statistics_Search_Form
     this.h_search_form.title=' إحصائيات '+localStorage.getItem('title')
     this.titleService.setTitle(this.h_search_form.title);
@@ -68,6 +67,9 @@ export class StatisticsMembersComponent implements OnInit {
     this.roure.params.subscribe((prm: Params) => {
     this.stockId=  prm['id']//get type from url
     this.type_ar=prm['type'];
+    console.log('====================================');
+    console.log(prm['type']);
+    console.log('====================================');
     if( prm['type'] === 'المحلية'){
       this.type='local';
     }else if(prm['type'] === 'الأعلاف') {  
@@ -80,11 +82,14 @@ export class StatisticsMembersComponent implements OnInit {
 
 
     this.roure.data.subscribe(data => {
-      
       if(this.type == "fodder"){
+        console.log('====================================');
+        console.log(data);
+        console.log('====================================');
         this.message=true;
         this.StatisticsMemberLocal=data['resolve'].data
         this.StatisticsListLocal=data['resolve'].data
+ 
       }else if (this.type == "local"){
         this.StatisticsMemberLocal=data['resolve'].data
 
