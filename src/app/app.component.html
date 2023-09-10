@@ -1,5 +1,12 @@
-<app-popup></app-popup>
+<!-- <app-popup></app-popup> -->
+<div>
+  <!-- Your main content goes here -->
 
+  <!-- Conditionally show the popup -->
+  <ng-container *ngIf="!hasDownloadedApp">
+    <app-popup (click)="downloadApp()"></app-popup>
+  </ng-container>
+</div>
 
 <app-navbar *ngIf="routeurl1 !='/تسجيل-الدخول' && routeurl1 !='/إنشاء-حساب' && routeurl1 !='/company-profile' && routeurl1 !='/Gamal-Elkenany'"></app-navbar>
 <!-- <alert></alert> -->

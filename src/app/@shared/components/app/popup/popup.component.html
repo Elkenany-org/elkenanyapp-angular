@@ -3,7 +3,7 @@
       <h2>Download Elkenany App</h2>
       <!-- <p>Scan the QR code or click the button below to download the mobile application.</p> -->
       <img src="logo.png" alt="Elkenany App QR Code">
-      <a *ngIf="downloadLink" [href]="downloadLink">Download Now </a>
+      <a target="_blank" *ngIf="downloadLink" [href]="downloadLink">Download Now </a>
       <span class="close-popup" (click)="closePopup()">&times;</span>
     </div>
   </div>

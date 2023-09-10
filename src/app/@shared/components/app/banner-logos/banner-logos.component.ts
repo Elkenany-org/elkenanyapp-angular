@@ -45,14 +45,14 @@ export class BannerLogosComponent implements OnInit {
 
     this.logoBannerService.getBanner().subscribe( res => {
       this.mainbannerConfig.banner =res as Banner[]
+      console.log('====================================');
+      console.log(this.mainbannerConfig.banner);
+      console.log('====================================');
     })
 
     if(this.type == 'mostvisited'){
 
      this.logoBannerService.getMostVisited().subscribe( res => {
-            console.log('====================================');
-      console.log(res);
-      console.log('====================================');
       this.mostvisitedConfig.banner =res as Banner[]
     })
   }
@@ -60,9 +60,6 @@ export class BannerLogosComponent implements OnInit {
     if(this.type == 'newestservices'){
 
     this.logoBannerService.getNewestServices().subscribe( res => {
-      console.log('====================================');
-      console.log(res);
-      console.log('====================================');
       this.newestservicesConfig.banner =res as Banner[]  
     })
   }

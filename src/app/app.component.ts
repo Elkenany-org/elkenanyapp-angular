@@ -32,6 +32,7 @@ export class AppComponent  implements OnInit {
 
     data:any;
 
+    hasDownloadedApp!: boolean;
 
   constructor(private _loading: ToasterService,
     private scroll: ViewportScroller ,
@@ -53,6 +54,9 @@ export class AppComponent  implements OnInit {
 
 }
   ngOnInit(): void {
+
+    this.hasDownloadedApp = localStorage.getItem('hasDownloadedApp') === 'true';
+
     this.listenToLoading();
     this.setUpAnalytics();
     this.auth.requestPermission();
@@ -71,6 +75,11 @@ export class AppComponent  implements OnInit {
   
   }
 
+  downloadApp() {
+    this.hasDownloadedApp = true;
+    localStorage.setItem('hasDownloadedApp', 'true');
+
+  }
 scrollToTop(){
   this.scroll.scrollToPosition([0,0]);
 }
